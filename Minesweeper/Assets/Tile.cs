@@ -41,10 +41,27 @@ public class Tile : MonoBehaviour
                 myText = "!";
             else if (isQuestioned)
                 myText = "?";
-        }
-        
-
+        }     
 
         text.SetText(myText);
     }
+
+    public void FlagToggle()
+    {
+        isFlagged = !isFlagged;
+        if (isFlagged)
+            isQuestioned = false;
+    }
+
+    public void QuestionToggle()
+    {
+        isQuestioned = !isQuestioned;
+        if (isQuestioned)
+            isFlagged = false;
+    }
+
+    public void Reveal()
+    {
+        isRevealed = true;
+    }    
 }
