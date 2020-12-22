@@ -198,6 +198,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671b37139aa7664459cdc52a8dcc47a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coordX: 0
+  coordY: 0
+  isMine: 0
+  isFlagged: 0
+  isQuestioned: 0
+  isRevealed: 1
+  nearbyMines: 0
 --- !u!1 &8151892197458067332
 GameObject:
   m_ObjectHideFlags: 0
