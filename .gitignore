@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Minesweeper/Library/PackageCache/
+Minesweeper/Library/Artifacts/
+Minesweeper/Library/ShaderCache/
