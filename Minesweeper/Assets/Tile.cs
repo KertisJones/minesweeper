@@ -33,7 +33,7 @@ public class Tile : MonoBehaviour
             if (nearbyMines == 0)
                 myText = "";
             if (isMine)
-                myText = "M";
+                myText = "💣";
         }
         else
         {

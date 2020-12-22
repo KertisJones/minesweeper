@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeX: 10
   sizeY: 10
-  numMines: 5
+  numMines: 20
   tile: {fileID: 4675045439334439888, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
 --- !u!4 &780965504
 Transform:
