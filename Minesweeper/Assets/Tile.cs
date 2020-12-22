@@ -17,10 +17,13 @@ public class Tile : MonoBehaviour
 
     TextMeshProUGUI text;
 
+    GameManager gm;
+
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -62,6 +65,12 @@ public class Tile : MonoBehaviour
 
     public void Reveal()
     {
-        isRevealed = true;
+        if (!isRevealed && !isFlagged)
+        {
+            isRevealed = true;
+            gm.RevealTile(coordX, coordY, nearbyMines, isMine);
+
+            GetComponentInChildren<Button>().interactable = false;
+        }
     }    
 }

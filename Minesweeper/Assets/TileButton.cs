@@ -10,8 +10,7 @@ public class TileButton : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            GetComponentInParent<Tile>().Reveal();
-            GetComponent<Button>().interactable = false;
+            GetComponentInParent<Tile>().Reveal();            
         }            
         else if (eventData.button == PointerEventData.InputButton.Middle)
             GetComponentInParent<Tile>().QuestionToggle();
