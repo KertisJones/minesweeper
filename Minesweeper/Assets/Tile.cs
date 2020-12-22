@@ -30,6 +30,8 @@ public class Tile : MonoBehaviour
         if (isRevealed)
         {
             myText = nearbyMines.ToString();
+            if (nearbyMines == 0)
+                myText = "";
             if (isMine)
                 myText = "M";
         }

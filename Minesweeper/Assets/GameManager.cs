@@ -62,17 +62,37 @@ public class GameManager : MonoBehaviour
             int randX = Random.Range(0, sizeX - 1);
             int randY = Random.Range(0, sizeY - 1);
 
-            Debug.Log(randX + ", " + randY);
-            Debug.Log(gameBoard[randX].GetValue(randY));
-
             if (gameBoard[randX][randY].GetComponent<Tile>().isMine == false)
             {
                 gameBoard[randX][randY].GetComponent<Tile>().isMine = true;
-
+                DetectProximity(randX, randY);
                 currentMines += 1;
             }            
         }
     }
 
-    
+    void DetectProximity(int i, int j)
+    {
+        if (i > 0)
+        {
+            gameBoard[i - 1][j].GetComponent<Tile>().nearbyMines += 1;
+            if (j > 0)
+                gameBoard[i - 1][j - 1].GetComponent<Tile>().nearbyMines += 1;
+            if (j < sizeY - 1)
+                gameBoard[i - 1][j + 1].GetComponent<Tile>().nearbyMines += 1;
+
+        }
+        if (i < sizeX - 1)
+        {
+            gameBoard[i + 1][j].GetComponent<Tile>().nearbyMines += 1;
+            if (j > 0)
+                gameBoard[i + 1][j - 1].GetComponent<Tile>().nearbyMines += 1;
+            if (j < sizeY - 1)
+                gameBoard[i + 1][j + 1].GetComponent<Tile>().nearbyMines += 1;
+        }
+        if (j > 0)
+            gameBoard[i][j - 1].GetComponent<Tile>().nearbyMines += 1;
+        if (j < sizeY - 1)
+            gameBoard[i][j + 1].GetComponent<Tile>().nearbyMines += 1;
+    }
 }
