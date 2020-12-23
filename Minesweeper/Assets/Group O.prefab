@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33f8e70a831d99449f2b111a69adcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minePercent: 20
+  pivotPoint: {x: 0.5, y: 0.5, z: 0}
 --- !u!1001 &79466987120044133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57,19 +57,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2651337402332369188, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_Color.r
@@ -151,19 +151,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2651337402332369188, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_Color.r
@@ -245,19 +245,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2651337402332369188, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_Color.r
@@ -339,19 +339,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2651337402332369188, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_Color.r

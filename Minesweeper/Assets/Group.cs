@@ -11,6 +11,8 @@ public class Group : MonoBehaviour
 
     float minePercent = 30;
 
+    public Vector3 pivotPoint = new Vector3(0, 0, 0);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -112,7 +114,9 @@ public class Group : MonoBehaviour
         // Rotate
         else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
-            transform.Rotate(0, 0, -90);
+            //transform.Rotate(0, 0, -90);
+            transform.RotateAround(transform.TransformPoint(pivotPoint), new Vector3(0, 0, 1), -90);
+
 
             // See if valid
             if (isValidGridPos())
