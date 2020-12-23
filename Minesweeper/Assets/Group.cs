@@ -80,7 +80,7 @@ public class Group : MonoBehaviour
     void Update()
     {
         // Move Left
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
             // Modify position
             transform.position += new Vector3(-1, 0, 0);
@@ -95,7 +95,7 @@ public class Group : MonoBehaviour
         }
 
         // Move Right
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             // Modify position
             transform.position += new Vector3(1, 0, 0);
@@ -110,7 +110,7 @@ public class Group : MonoBehaviour
         }
 
         // Rotate
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             transform.Rotate(0, 0, -90);
 
@@ -124,8 +124,7 @@ public class Group : MonoBehaviour
         }
 
         // Move Downwards and Fall
-        else if (Input.GetKeyDown(KeyCode.DownArrow) ||
-                 Time.time - lastFall >= fallSpeed)
+        else if (Time.time - lastFall >= fallSpeed || (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
             // Modify position
             transform.position += new Vector3(0, -1, 0);
