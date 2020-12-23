@@ -123,6 +123,57 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &126897449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 126897451}
+  - component: {fileID: 126897450}
+  m_Layer: 0
+  m_Name: Tetromino Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &126897450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126897449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2504c2c70d3522d41b96483aa1eb247c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groups:
+  - {fileID: 4171321229741126624, guid: f8eb7923fbc59a044b7a9fd0d0742a68, type: 3}
+  - {fileID: 587917321819818592, guid: 7e240a2d6a53fac4e8dfcdb674d2a27c, type: 3}
+  - {fileID: 8216512838658175497, guid: 93999914ce74500468bda03794b16b52, type: 3}
+  - {fileID: 5635427920445249702, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
+  - {fileID: 5654239573006305394, guid: c3f9a2ae9471add40b6435101caf685a, type: 3}
+  - {fileID: 2885834540060685055, guid: 6d1a1f3ae2c1769429283a76dd4f23f4, type: 3}
+  - {fileID: 2154150086583572294, guid: 91e60c4313b719f4e993720443543837, type: 3}
+--- !u!4 &126897451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126897449}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +227,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -200,7 +251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 4.5, z: -10}
+  m_LocalPosition: {x: 4.5, y: 9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -235,9 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad782ec5250bafd42af3b3deea4dd698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeX: 10
-  sizeY: 10
-  numMines: 16
   tile: {fileID: 4675045439334439888, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
 --- !u!4 &780965504
 Transform:
@@ -247,7 +295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780965502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.010249779, y: -0.6463817, z: -1.7319847}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -13,7 +13,10 @@ public class Tile : MonoBehaviour
     public bool isFlagged = false;
     public bool isQuestioned = false;
     public bool isRevealed = false;
+    public bool isDisplay = false;
     public int nearbyMines = 0;
+    
+    float fallClock = 1;
 
     TextMeshProUGUI text;
 
@@ -24,10 +27,34 @@ public class Tile : MonoBehaviour
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
+        Vector2 v = GameManager.roundVec2(transform.position);
+        coordX = (int)v.x;
+        coordY = (int)v.y;
+
+        if (isDisplay)
+            GetComponentInChildren<Button>().interactable = false;
     }
 
     // Update is called once per frame
     void Update()
+    {
+        this.transform.position = new Vector3(coordX, coordY, 0);
+        this.name = "Tile (" + coordX + ", " + coordY + ")";
+        
+        UpdateText();
+        if (!isMine)
+            DetectProximity();
+
+        /*fallClock -= Time.deltaTime;
+        if (fallClock <= 0)
+        {
+            fallClock = 1;
+            Fall();
+        }*/
+    }
+
+    void UpdateText()
     {
         string myText = "";
         if (isRevealed)
@@ -44,9 +71,10 @@ public class Tile : MonoBehaviour
                 myText = "!";
             else if (isQuestioned)
                 myText = "?";
-        }     
+        }
 
-        text.SetText(myText);
+        if (text != null)
+            text.SetText(myText);
     }
 
     public void FlagToggle()
@@ -65,12 +93,51 @@ public class Tile : MonoBehaviour
 
     public void Reveal()
     {
-        if (!isRevealed && !isFlagged)
+        if (!isRevealed && !isFlagged && !isDisplay)
         {
             isRevealed = true;
-            gm.RevealTile(coordX, coordY, nearbyMines, isMine);
+            //gm.RevealTile(coordX, coordY, nearbyMines, isMine);            
+
+            if (isMine)
+                gm.EndGame();
+
+            ZeroCascade();
 
             GetComponentInChildren<Button>().interactable = false;
         }
-    }    
+    }
+
+    void ZeroCascade()
+    {
+        if (nearbyMines == 0 && !isMine && isRevealed)
+        {
+            foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
+            {
+                t.Reveal();
+            }
+        }
+    }
+
+    void DetectProximity()
+    {
+        int nearbyMinesTemp = 0;
+        foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
+        {
+            if (t.isMine)
+                nearbyMinesTemp += 1;
+        }
+        nearbyMines = nearbyMinesTemp;
+        if (nearbyMines == 0)
+            ZeroCascade();
+        
+    }
+
+    /*void Fall()
+    {
+        if (coordY > 0)
+        {
+            Debug.Log("fall");
+            gm.MoveTile(this.gameObject, coordX, coordY - 1);
+        }
+    }*/
 }
