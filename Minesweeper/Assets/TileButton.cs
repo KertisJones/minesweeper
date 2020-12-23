@@ -6,6 +6,12 @@ using UnityEngine.EventSystems;
 
 public class TileButton : MonoBehaviour, IPointerClickHandler
 {
+    void Update()
+    {
+        Debug.Log(transform.root.eulerAngles.z);
+        transform.eulerAngles = new Vector3(0, 0, 0);
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
