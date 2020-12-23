@@ -81,7 +81,10 @@ public class Tile : MonoBehaviour
     {
         isFlagged = !isFlagged;
         if (isFlagged)
+        {
             isQuestioned = false;
+            GameManager.deleteFullRows();            
+        }
     }
 
     public void QuestionToggle()
@@ -104,6 +107,8 @@ public class Tile : MonoBehaviour
             ZeroCascade();
 
             GetComponentInChildren<Button>().interactable = false;
+
+            GameManager.deleteFullRows();
         }
     }
 

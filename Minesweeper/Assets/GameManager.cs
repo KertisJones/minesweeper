@@ -238,15 +238,31 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
+    public static bool isRowSolved(int y)
+    {
+        bool isSolved = true;
+        for (int x = 0; x < sizeX; ++x)
+            if (gameBoard[x][y] != null)
+            {
+                if (!(gameBoard[x][y].GetComponent<Tile>().isRevealed && !gameBoard[x][y].GetComponent<Tile>().isMine)
+                    && !(!gameBoard[x][y].GetComponent<Tile>().isRevealed && gameBoard[x][y].GetComponent<Tile>().isMine && gameBoard[x][y].GetComponent<Tile>().isFlagged))
+                    isSolved = false;
+            }
+        return isSolved;
+    }
+
     public static void deleteFullRows()
     {
         for (int y = 0; y < sizeY; ++y)
         {
             if (isRowFull(y))
             {
-                deleteRow(y);
-                decreaseRowsAbove(y + 1);
-                --y;
+                if (isRowSolved(y))
+                {
+                    deleteRow(y);
+                    decreaseRowsAbove(y + 1);
+                    --y;
+                }                
             }
         }
     }
