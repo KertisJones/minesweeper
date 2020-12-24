@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject tile;
 
+    public AudioClip lineClearSound;
+    public AudioClip gameOverSound;
+
     //private GameObject blankTile;
 
     // Start is called before the first frame update
@@ -197,7 +200,8 @@ public class GameManager : MonoBehaviour
     {
         return ((int)pos.x >= 0 &&
                 (int)pos.x < sizeX &&
-                (int)pos.y >= 0);
+                (int)pos.y >= 0 &&
+                (int)pos.y < sizeY);
     }
 
     public static void deleteRow(int y)
@@ -266,6 +270,10 @@ public class GameManager : MonoBehaviour
                     deleteRow(y);
                     decreaseRowsAbove(y + 1);
                     --y;
+
+                    GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                    AudioSource.PlayClipAtPoint(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().lineClearSound, new Vector3(0, 0, 0));
+
                     GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
                 }
             }
@@ -290,6 +298,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>().Stop();
+
+        GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+        AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0));
 
         StartCoroutine(ReloadScene());
         
@@ -297,7 +309,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ReloadScene()
     {
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(2.9f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

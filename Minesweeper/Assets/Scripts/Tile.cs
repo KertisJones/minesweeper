@@ -19,6 +19,10 @@ public class Tile : MonoBehaviour
     public float screenShakeDuration = 0.1f;
     public float screenShakeStrength = 0.1f;
 
+    public AudioClip revealSound;
+    public AudioClip flagSound;
+    public AudioClip unflagSound;
+
     public SpriteRenderer explodedMineBackground;
     
     TextMeshProUGUI text;    
@@ -34,7 +38,7 @@ public class Tile : MonoBehaviour
         Vector2 v = GameManager.roundVec2(transform.position);
         coordX = (int)v.x;
         coordY = (int)v.y;
-
+        
         if (isDisplay)
             GetComponentInChildren<Button>().interactable = false;
     }
@@ -120,26 +124,45 @@ public class Tile : MonoBehaviour
 
     public void FlagToggle()
     {
-        if (gm.isGameOver)
+        if (gm.isGameOver || isRevealed)
             return;
 
         isFlagged = !isFlagged;
         if (isFlagged)
         {
             isQuestioned = false;
+
+            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            AudioSource.PlayClipAtPoint(flagSound, new Vector3(0, 0, 0));
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+
             GameManager.deleteFullRows();            
+        }
+        else
+        {
+            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0));
         }
     }
 
     public void QuestionToggle()
     {
-        if (gm.isGameOver)
+        if (gm.isGameOver || isRevealed)
             return;
 
         isQuestioned = !isQuestioned;
         if (isQuestioned)
+        {
             isFlagged = false;
+
+            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            AudioSource.PlayClipAtPoint(flagSound, new Vector3(0, 0, 0));
+        }
+        else
+        {
+            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0));
+        }
     }
 
     public void Reveal()
@@ -155,6 +178,12 @@ public class Tile : MonoBehaviour
                     explodedMineBackground.enabled = true;
                 gm.EndGame();
             }
+            else if (gm.isGameOver == false)
+            {
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0));
+            }
+
             ZeroCascade();
 
             GetComponentInChildren<Button>().interactable = false;
@@ -162,6 +191,14 @@ public class Tile : MonoBehaviour
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
             GameManager.deleteFullRows();
+        }
+        else if (isFlagged && gm.isGameOver && !isMine)
+        {
+            isRevealed = true;
+            explodedMineBackground.enabled = true;
+
+            ZeroCascade();
+            GetComponentInChildren<Button>().interactable = false;
         }
     }
 

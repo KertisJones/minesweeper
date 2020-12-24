@@ -16,6 +16,11 @@ public class Group : MonoBehaviour
 
     public Vector3 pivotPoint = new Vector3(0, 0, 0);
 
+    public AudioClip moveSound;
+    public AudioClip downSound;
+    public AudioClip turnSound;
+    public AudioClip landSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +42,7 @@ public class Group : MonoBehaviour
             {
                 child.gameObject.GetComponent<Tile>().isMine = true;
             }
-        }
-
-        
+        }        
     }
 
     bool isValidGridPos()
@@ -95,12 +98,17 @@ public class Group : MonoBehaviour
 
             // See if valid
             if (isValidGridPos())
+            {
                 // It's valid. Update grid.
                 updateGrid();
+
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0));
+            }
             else
             {
                 // It's not valid. revert.
-                transform.position += new Vector3(1, 0, 0);                
+                transform.position += new Vector3(1, 0, 0);
             }
         }
 
@@ -112,8 +120,13 @@ public class Group : MonoBehaviour
 
             // See if valid
             if (isValidGridPos())
+            {
                 // It's valid. Update grid.
                 updateGrid();
+
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0));
+            }
             else
                 // It's not valid. revert.
                 transform.position += new Vector3(-1, 0, 0);
@@ -128,8 +141,13 @@ public class Group : MonoBehaviour
 
             // See if valid
             if (isValidGridPos())
+            {
                 // It's valid. Update grid.
                 updateGrid();
+
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0));
+            }
             else
                 // It's not valid. revert.
                 transform.Rotate(0, 0, 90);
@@ -147,10 +165,20 @@ public class Group : MonoBehaviour
                 // It's valid. Update grid.
                 updateGrid();
 
+                if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+                {
+                    GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                    AudioSource.PlayClipAtPoint(downSound, new Vector3(0, 0, 0));
+                }
                 // Detect the moment it lands
                 transform.position += new Vector3(0, -1, 0);
                 if (!isValidGridPos())
+                {
+                    GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                    AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0));
+
                     GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+                }
                 transform.position += new Vector3(0, 1, 0);
 
             }
