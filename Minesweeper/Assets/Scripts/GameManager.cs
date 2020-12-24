@@ -9,9 +9,14 @@ public class GameManager : MonoBehaviour
     public static int sizeY = 24;
     public static int numMines = 5;
 
+    static float screenShakeDuration = 0.2f;
+    static float screenShakeStrength = 1f;
+
     private bool minesPlaced = false;
 
     public static GameObject[][] gameBoard;
+
+    public bool isGameOver = false;
 
     public GameObject tile;
 
@@ -35,10 +40,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown("escape"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        if (Input.GetKeyDown("space"))
-        {
-            PlaceTile(5, 0);
         }
     }
 
@@ -253,6 +254,9 @@ public class GameManager : MonoBehaviour
 
     public static void deleteFullRows()
     {
+        if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().isGameOver)
+            return;
+
         for (int y = 0; y < sizeY; ++y)
         {
             if (isRowFull(y))
@@ -262,39 +266,38 @@ public class GameManager : MonoBehaviour
                     deleteRow(y);
                     decreaseRowsAbove(y + 1);
                     --y;
-                }                
+                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+                }
             }
         }
     }
 
-
-    /*public void MoveTile(GameObject tile, int newX, int newY)
-    {
-        if (GetGameTile(newX, newY) == blankTile)
-        {
-            int oldX = tile.GetComponent<Tile>().coordX;
-            int oldY = tile.GetComponent<Tile>().coordY;
-
-            tile.GetComponent<Tile>().coordX = newX;
-            tile.GetComponent<Tile>().coordY = newY;
-
-            gameBoard[newX][newY] = tile;
-            gameBoard[oldX][oldY] = blankTile;
-        }
-    }*/
-
-    public void PlaceTile(int x, int y)
-    {
-        /*GameObject newTile = Instantiate(tile, new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-        newTile.name = "Tile (" + x + ", " + y + ")";
-        newTile.GetComponent<Tile>().coordX = x;
-        newTile.GetComponent<Tile>().coordY = y;
-
-        gameBoard[x][y] = newTile;*/
-    }
-
     public void EndGame()
     {
+        isGameOver = true;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
+
+        // Reveal all tiles!
+        for (int i = 0; i < sizeX; i++)
+        {
+            for (int j = 0; j < sizeY; j++)
+            {
+                if (GetGameTile(i, j) != null)
+                {
+                    //GetGameTile(i, j).isFlagged = false;
+                    GetGameTile(i, j).Reveal();
+                }
+            }
+        }
+
+
+        StartCoroutine(ReloadScene());
+        
+    }
+
+    IEnumerator ReloadScene()
+    {
+        yield return new WaitForSeconds(1.1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

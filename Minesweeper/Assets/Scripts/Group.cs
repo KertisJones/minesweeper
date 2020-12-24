@@ -11,6 +11,9 @@ public class Group : MonoBehaviour
 
     float minePercent = 30;
 
+    float screenShakeDuration = 0.1f;
+    float screenShakeStrength = 0.4f;
+
     public Vector3 pivotPoint = new Vector3(0, 0, 0);
 
     // Start is called before the first frame update
@@ -22,7 +25,7 @@ public class Group : MonoBehaviour
         if (!isValidGridPos())
         {
             gm.EndGame();
-            Debug.Log("GAME OVER");
+            //Debug.Log("GAME OVER");
             Destroy(gameObject);
         }
 
@@ -81,6 +84,9 @@ public class Group : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gm.isGameOver)
+            return;
+
         // Move Left
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
@@ -92,8 +98,10 @@ public class Group : MonoBehaviour
                 // It's valid. Update grid.
                 updateGrid();
             else
+            {
                 // It's not valid. revert.
-                transform.position += new Vector3(1, 0, 0);
+                transform.position += new Vector3(1, 0, 0);                
+            }
         }
 
         // Move Right
@@ -138,6 +146,13 @@ public class Group : MonoBehaviour
             {
                 // It's valid. Update grid.
                 updateGrid();
+
+                // Detect the moment it lands
+                transform.position += new Vector3(0, -1, 0);
+                if (!isValidGridPos())
+                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+                transform.position += new Vector3(0, 1, 0);
+
             }
             else
             {
@@ -146,6 +161,17 @@ public class Group : MonoBehaviour
 
                 // Clear filled horizontal lines
                 GameManager.deleteFullRows();
+
+                // Failsafe in case block is off screen
+                foreach (Transform child in transform)
+                {
+                    if (child.position.y > 20)
+                    {
+                        gm.EndGame();
+                        //Debug.Log("GAME OVER");
+                        Destroy(this.gameObject);
+                    }
+                }                
 
                 // Spawn next Group
                 FindObjectOfType<TetrominoSpawner>().spawnNext();

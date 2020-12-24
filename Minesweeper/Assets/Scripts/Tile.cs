@@ -15,10 +15,13 @@ public class Tile : MonoBehaviour
     public bool isRevealed = false;
     public bool isDisplay = false;
     public int nearbyMines = 0;
-    
-    float fallClock = 1;
 
-    TextMeshProUGUI text;
+    public float screenShakeDuration = 0.1f;
+    public float screenShakeStrength = 0.1f;
+
+    public SpriteRenderer explodedMineBackground;
+    
+    TextMeshProUGUI text;    
 
     GameManager gm;
 
@@ -57,38 +60,83 @@ public class Tile : MonoBehaviour
     void UpdateText()
     {
         string myText = "";
+        Color32 myColor = new Color32(0, 0, 0, 255);
+
+        switch (nearbyMines)
+        {
+            case 1:
+                myColor = new Color32(0, 0, 253, 255);
+                break;
+            case 2:
+                myColor = new Color32(0, 126, 0, 255);
+                break;
+            case 3:
+                myColor = new Color32(254, 0, 0, 255);
+                break;
+            case 4:
+                myColor = new Color32(1, 0, 128, 255);
+                break;
+            case 5:
+                myColor = new Color32(130, 1, 2, 255);
+                break;
+            case 6:
+                myColor = new Color32(0, 128, 128, 255);
+                break;
+            case 7:
+                myColor = new Color32(0, 0, 0, 255);
+                break;
+            case 8:
+                myColor = new Color32(128, 128, 128, 255);
+                break;
+            default:
+                myColor = new Color32(0, 0, 0, 255);
+                break;
+        }
+
         if (isRevealed)
         {
             myText = nearbyMines.ToString();
+
             if (nearbyMines == 0)
                 myText = "";
             if (isMine)
-                myText = "💣";
+                myText = "*";
+                
         }
         else
         {
             if (isFlagged)
-                myText = "!";
+                myText = "<sprite=0>";
             else if (isQuestioned)
                 myText = "?";
         }
 
         if (text != null)
+        {
             text.SetText(myText);
+            text.color = myColor;
+        }
     }
 
     public void FlagToggle()
     {
+        if (gm.isGameOver)
+            return;
+
         isFlagged = !isFlagged;
         if (isFlagged)
         {
             isQuestioned = false;
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
             GameManager.deleteFullRows();            
         }
     }
 
     public void QuestionToggle()
     {
+        if (gm.isGameOver)
+            return;
+
         isQuestioned = !isQuestioned;
         if (isQuestioned)
             isFlagged = false;
@@ -102,11 +150,16 @@ public class Tile : MonoBehaviour
             //gm.RevealTile(coordX, coordY, nearbyMines, isMine);            
 
             if (isMine)
+            {
+                if (!gm.isGameOver)
+                    explodedMineBackground.enabled = true;
                 gm.EndGame();
-
+            }
             ZeroCascade();
 
             GetComponentInChildren<Button>().interactable = false;
+
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
             GameManager.deleteFullRows();
         }

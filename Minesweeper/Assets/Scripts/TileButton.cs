@@ -13,6 +13,9 @@ public class TileButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().isGameOver)
+            return;
+
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             GetComponentInParent<Tile>().Reveal();            
