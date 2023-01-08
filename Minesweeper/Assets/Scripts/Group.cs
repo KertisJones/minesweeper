@@ -89,7 +89,9 @@ public class Group : MonoBehaviour
     {
         if (gm.isGameOver)
             return;
-
+        //if (gm.isPaused)
+            //return;
+        
         // Move Left
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
@@ -149,10 +151,15 @@ public class Group : MonoBehaviour
                 AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0));
             }
             else
+            {
                 // It's not valid. revert.
-                transform.Rotate(0, 0, 90);
+                //transform.Rotate(0, 0, 90);
+            }
         }
-
+        
+        if (gm.isPaused)
+            return;
+            
         // Move Downwards and Fall
         else if (Time.time - lastFall >= fallSpeed || (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,11 +18,17 @@ public class GameManager : MonoBehaviour
     public static GameObject[][] gameBoard;
 
     public bool isGameOver = false;
+    public bool isPaused = false;
 
     public GameObject tile;
 
     public AudioClip lineClearSound;
     public AudioClip gameOverSound;
+
+    [Range(0.0f, 1.0f)]
+    public float audioVolume = 0.5f; 
+
+
 
     //private GameObject blankTile;
 
@@ -34,6 +41,7 @@ public class GameManager : MonoBehaviour
         blankTile.name = "Blank Tile";*/
 
         BuildGameBoard();
+        AudioListener.volume = audioVolume;
         //PopulateMines();
     }
 
@@ -301,7 +309,7 @@ public class GameManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>().Stop();
 
         GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-        AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0));
+        AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0), 0.1f);
 
         StartCoroutine(ReloadScene());
         

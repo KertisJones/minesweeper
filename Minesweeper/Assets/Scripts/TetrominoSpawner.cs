@@ -14,12 +14,6 @@ public class TetrominoSpawner : MonoBehaviour
         spawnNext();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void spawnNext()
     {
         if (groupStack.Count == 0)
