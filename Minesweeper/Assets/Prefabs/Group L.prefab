@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7137472970560982441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4989480764542450944}
+  m_Layer: 0
+  m_Name: Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4989480764542450944
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7137472970560982441}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 658720671210819337}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8216512838658175497
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,6 +63,7 @@ Transform:
   - {fileID: 8459419264075861102}
   - {fileID: 4698964174089614627}
   - {fileID: 8581050165675670966}
+  - {fileID: 4989480764542450944}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,7 +79,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33f8e70a831d99449f2b111a69adcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minePercent: 30
+  isDisplay: 0
   pivotPoint: {x: 0, y: 0, z: 0}
+  pivot: {fileID: 4989480764542450944}
   moveSound: {fileID: 8300000, guid: b887aed25407f814288d38f1b5790f0b, type: 3}
   downSound: {fileID: 8300000, guid: 1ccfa3070b4c9b14d8f41342cd280e8b, type: 3}
   turnSound: {fileID: 8300000, guid: 1c11e6a77d1043f4494b2a13df581d1a, type: 3}

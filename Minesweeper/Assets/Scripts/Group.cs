@@ -17,7 +17,7 @@ public class Group : MonoBehaviour
 
     public bool isDisplay = false;
 
-    public Vector3 pivotPoint = new Vector3(0, 0, 0);
+    public Transform pivot;
 
     public AudioClip moveSound;
     public AudioClip downSound;
@@ -34,18 +34,28 @@ public class Group : MonoBehaviour
         {
             gm.EndGame();
             //Debug.Log("GAME OVER");
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
-
+        
         // Populate random mines in children
-        foreach (Transform child in transform)
+        int numberOfMines = 0;
+        while (numberOfMines == 0)
         {
-            float randNum = Random.Range(1, 100);
-            if (randNum <= minePercent)
+            foreach (Transform child in transform)
             {
-                child.gameObject.GetComponent<Tile>().isMine = true;
+                if (child.gameObject.GetComponent<Tile>() != null)
+                {
+                    float randNum = Random.Range(1, 100);
+                    if (randNum <= minePercent)
+                    {
+                        child.gameObject.GetComponent<Tile>().isMine = true;
+                        numberOfMines += 1;
+                    }
+                }
             }
-        }        
+            if (Random.Range(1, 10) == 1 || isDisplay)
+                numberOfMines += 1;
+        }
     }
 
     bool isValidGridPos()
@@ -79,10 +89,13 @@ public class Group : MonoBehaviour
         // Add new children to grid
         foreach (Transform child in transform)
         {
-            Vector2 v = GameManager.roundVec2(child.position);
-            child.gameObject.GetComponent<Tile>().coordX = (int)v.x;
-            child.gameObject.GetComponent<Tile>().coordY = (int)v.y;
-            GameManager.gameBoard[(int)v.x][(int)v.y] = child.gameObject;
+            if (child.gameObject.GetComponent<Tile>() != null)
+            {
+                Vector2 v = GameManager.roundVec2(child.position);
+                child.gameObject.GetComponent<Tile>().coordX = (int)v.x;
+                child.gameObject.GetComponent<Tile>().coordY = (int)v.y;
+                GameManager.gameBoard[(int)v.x][(int)v.y] = child.gameObject;
+            }
         }
     }
 
@@ -92,8 +105,8 @@ public class Group : MonoBehaviour
     {
         if (gm.isGameOver)
             return;
-        if (gm.isPaused)
-            return;
+        //if (gm.isPaused)
+            //return;
         if (isDisplay)
             return;        
         
@@ -108,7 +121,7 @@ public class Group : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             //transform.Rotate(0, 0, -90);
-            transform.RotateAround(transform.TransformPoint(pivotPoint), new Vector3(0, 0, 1), -90);
+            transform.RotateAround(transform.TransformPoint(pivot.localPosition), new Vector3(0, 0, 1), -90);
 
 
             // See if valid
@@ -127,7 +140,8 @@ public class Group : MonoBehaviour
             }
         }
         
-        
+        if (gm.isPaused)
+            return;
 
         // Move Downwards and Fall
         else if (Time.time - lastFall >= fallSpeed || (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))

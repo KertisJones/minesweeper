@@ -96,9 +96,8 @@ public class GameManager : MonoBehaviour
             newTile.name = "Tile Group (" + -1 + ", " + i + ")";
             newTile.GetComponentInChildren<Tile>().coordX = -1;
             newTile.GetComponentInChildren<Tile>().coordY = i;
-            newTile.GetComponent<Group>().isDisplay = true;
-            if (i >= sizeY - 4)
-                newTile.GetComponent<Group>().minePercent = 0;
+            newTile.GetComponent<Group>().isDisplay = true;            
+            newTile.GetComponent<Group>().minePercent = 1;
             leftTiles[i] = newTile;
 
             //place display tile on right side
@@ -106,10 +105,26 @@ public class GameManager : MonoBehaviour
             newTile.name = "Tile Group (" + sizeX + ", " + i + ")";
             newTile.GetComponentInChildren<Tile>().coordX = sizeX;
             newTile.GetComponentInChildren<Tile>().coordY = i;
-            newTile.GetComponent<Group>().isDisplay = true;
-            if (i >= sizeY - 4)
-                newTile.GetComponent<Group>().minePercent = 0;
+            newTile.GetComponent<Group>().isDisplay = true;            
+            newTile.GetComponent<Group>().minePercent = 1;
             rightTiles[i] = newTile;
+        }
+
+        // Place bombs evenly on Left and Right Tiles
+        for (int i = 0; i < sizeY - 4; i+=4)
+        {
+            int randNumLeft = Random.Range(0, 8);
+            int randNumRight = Random.Range(0, 8);
+            if (i == 0)
+            {
+                randNumLeft = Random.Range(0, 5);
+                randNumRight = Random.Range(0, 5);
+            }
+
+            if (i + randNumLeft < sizeY - 4)
+                leftTiles[i + randNumLeft].GetComponentInChildren<Tile>().isMine = true;
+            if (i + randNumRight < sizeY - 4)
+                rightTiles[i + randNumRight].GetComponentInChildren<Tile>().isMine = true;
         }
     }
 
