@@ -8,6 +8,7 @@ public class Group : MonoBehaviour
 
     float fallSpeed = 0.5f;
     float lastFall = 0;
+    float lastMove = 0;
 
     public float minePercent = 30;
 
@@ -97,46 +98,11 @@ public class Group : MonoBehaviour
             return;        
         
         // Move Left
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
-        {
-            // Modify position
-            transform.position += new Vector3(-1, 0, 0);
-
-            // See if valid
-            if (isValidGridPos())
-            {
-                // It's valid. Update grid.
-                updateGrid();
-
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0));
-            }
-            else
-            {
-                // It's not valid. revert.
-                transform.position += new Vector3(1, 0, 0);
-            }
-        }
-
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || (Input.GetAxis("Horizontal") == -1 && Time.time - lastMove >= fallSpeed / 10))
+            Move(-1);
         // Move Right
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-        {
-            // Modify position
-            transform.position += new Vector3(1, 0, 0);
-
-            // See if valid
-            if (isValidGridPos())
-            {
-                // It's valid. Update grid.
-                updateGrid();
-
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0));
-            }
-            else
-                // It's not valid. revert.
-                transform.position += new Vector3(-1, 0, 0);
-        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) || (Input.GetAxis("Horizontal") == 1 && Time.time - lastMove >= fallSpeed / 10))
+            Move(1);
 
         // Rotate
         else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
@@ -157,7 +123,7 @@ public class Group : MonoBehaviour
             else
             {
                 // It's not valid. revert.
-                //transform.Rotate(0, 0, 90);
+                transform.Rotate(0, 0, 90);
             }
         }
         
@@ -221,5 +187,27 @@ public class Group : MonoBehaviour
             lastFall = Time.time;
         }
 
+    }
+
+    void Move (float dir = 1) // -1 is Left, 1 is Right
+    {
+        // Modify position
+        transform.position += new Vector3(dir, 0, 0);
+
+        // See if valid
+        if (isValidGridPos())
+        {
+            // It's valid. Update grid.
+            updateGrid();
+
+            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0));
+        }
+        else
+        {
+            // It's not valid. revert.
+            transform.position += new Vector3(dir * -1, 0, 0);
+        }
+        lastMove = Time.time;
     }
 }
