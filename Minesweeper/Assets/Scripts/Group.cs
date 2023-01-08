@@ -9,10 +9,12 @@ public class Group : MonoBehaviour
     float fallSpeed = 0.5f;
     float lastFall = 0;
 
-    float minePercent = 30;
+    public float minePercent = 30;
 
     float screenShakeDuration = 0.1f;
     float screenShakeStrength = 0.4f;
+
+    public bool isDisplay = false;
 
     public Vector3 pivotPoint = new Vector3(0, 0, 0);
 
@@ -27,7 +29,7 @@ public class Group : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
         // Default position not valid? Then it's game over
-        if (!isValidGridPos())
+        if (!isValidGridPos() && !isDisplay)
         {
             gm.EndGame();
             //Debug.Log("GAME OVER");
@@ -89,8 +91,10 @@ public class Group : MonoBehaviour
     {
         if (gm.isGameOver)
             return;
-        //if (gm.isPaused)
-            //return;
+        if (gm.isPaused)
+            return;
+        if (isDisplay)
+            return;        
         
         // Move Left
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
@@ -157,8 +161,7 @@ public class Group : MonoBehaviour
             }
         }
         
-        if (gm.isPaused)
-            return;
+        
 
         // Move Downwards and Fall
         else if (Time.time - lastFall >= fallSpeed || (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))

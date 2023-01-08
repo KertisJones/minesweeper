@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 2226751831432351248}
   - component: {fileID: 768701328770524795}
   m_Layer: 0
-  m_Name: 76px-Minesweeper_unopened_square.svg 1
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1208,6 +1208,7 @@ MonoBehaviour:
   revealSound: {fileID: 8300000, guid: e1d070787e3eb164999bddf10246c1fe, type: 3}
   flagSound: {fileID: 8300000, guid: 51432cb738fdea545bc1a128c05bc50c, type: 3}
   unflagSound: {fileID: 8300000, guid: bdfdd4aa660ced24fad70a11e34d4139, type: 3}
+  tileBackground: {fileID: 768701328770524795}
   explodedMineBackground: {fileID: 4100585407620534530}
 --- !u!61 &2392166828705645681
 BoxCollider2D:

@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 126897451}
   - component: {fileID: 126897450}
-  - component: {fileID: 126897452}
   m_Layer: 0
   m_Name: Tetromino Spawner
   m_TagString: Untagged
@@ -148,7 +147,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126897449}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2504c2c70d3522d41b96483aa1eb247c, type: 3}
   m_Name: 
@@ -176,21 +175,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &126897452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126897449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2504c2c70d3522d41b96483aa1eb247c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groups:
-  - {fileID: 5635427920445249702, guid: 0eb1fa25a92ff8f47a33fb0cac22aa35, type: 3}
-  currentTetromino: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +475,7 @@ MonoBehaviour:
   isGameOver: 0
   isPaused: 0
   tile: {fileID: 4675045439334439888, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
+  tileGroup: {fileID: 5635427920445249702, guid: 0eb1fa25a92ff8f47a33fb0cac22aa35, type: 3}
   lineClearSound: {fileID: 8300000, guid: cad7ca4f9e0fa3e4494e767134f5b835, type: 3}
   gameOverSound: {fileID: 8300000, guid: a994636b57e1d714b8b09e4270e1b2a3, type: 3}
   audioVolume: 0.25

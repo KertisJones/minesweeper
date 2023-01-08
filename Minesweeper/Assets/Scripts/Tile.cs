@@ -23,6 +23,7 @@ public class Tile : MonoBehaviour
     public AudioClip flagSound;
     public AudioClip unflagSound;
 
+    public SpriteRenderer tileBackground;
     public SpriteRenderer explodedMineBackground;
     
     TextMeshProUGUI text;    
@@ -40,7 +41,11 @@ public class Tile : MonoBehaviour
         coordY = (int)v.y;
         
         if (isDisplay)
+        {
             GetComponentInChildren<Button>().interactable = false;
+            //Debug.Log ("Display " + gameObject.name);
+            //tileBackground.color = new Color(215, 215, 215, 255);
+        }
     }
 
     // Update is called once per frame
@@ -178,6 +183,12 @@ public class Tile : MonoBehaviour
                     explodedMineBackground.enabled = true;
                 gm.EndGame();
             }
+            else if (gm == null) // Error catching, can sometimes happen when the scene loads
+            {
+                Debug.LogWarning("Game Manager can't be found, I'll assume it's a new game");
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0));
+            }
             else if (gm.isGameOver == false)
             {
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
@@ -208,7 +219,8 @@ public class Tile : MonoBehaviour
         {
             foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
             {
-                t.Reveal();
+                if (!t.isMine)
+                    t.Reveal();
             }
         }
     }

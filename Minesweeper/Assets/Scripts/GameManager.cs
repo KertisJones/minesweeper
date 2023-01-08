@@ -16,11 +16,15 @@ public class GameManager : MonoBehaviour
     private bool minesPlaced = false;
 
     public static GameObject[][] gameBoard;
+    GameObject[] leftTiles;
+    GameObject[] rightTiles;
+
 
     public bool isGameOver = false;
     public bool isPaused = false;
 
     public GameObject tile;
+    public GameObject tileGroup;
 
     public AudioClip lineClearSound;
     public AudioClip gameOverSound;
@@ -33,7 +37,7 @@ public class GameManager : MonoBehaviour
     //private GameObject blankTile;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         /*blankTile = Instantiate(new GameObject(), new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;        
         blankTile.AddComponent<Tile>();
@@ -56,6 +60,7 @@ public class GameManager : MonoBehaviour
 
     void BuildGameBoard()
     {
+        // Playable Game Board
         gameBoard = new GameObject[sizeX][];
         for (int i = 0; i < sizeX; i++)
         {
@@ -66,6 +71,12 @@ public class GameManager : MonoBehaviour
                 tileColumn[j] = null; // blankTile;
             }
 
+            gameBoard[i] = tileColumn;
+        }
+
+        // Bottom Display Tiles
+        for (int i = -1; i <= sizeX; i++)
+        {
             //place display tiles at bottom
             GameObject newTile = Instantiate(tile, new Vector3(i, -1, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
             newTile.name = "Tile (" + i + ", " + -1 + ")";
@@ -73,12 +84,36 @@ public class GameManager : MonoBehaviour
             newTile.GetComponent<Tile>().coordY = -1;
             newTile.GetComponent<Tile>().isRevealed = true;
             newTile.GetComponent<Tile>().isDisplay = true;
+        }
 
-            gameBoard[i] = tileColumn;
+        // Left and Right Tiles
+        leftTiles = new GameObject[sizeY];
+        rightTiles = new GameObject[sizeY];
+        for (int i = 0; i < sizeY; i++)
+        {
+            //place display tile on left side
+            GameObject newTile = Instantiate(tileGroup, new Vector3(-1, i, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+            newTile.name = "Tile Group (" + -1 + ", " + i + ")";
+            newTile.GetComponentInChildren<Tile>().coordX = -1;
+            newTile.GetComponentInChildren<Tile>().coordY = i;
+            newTile.GetComponent<Group>().isDisplay = true;
+            if (i >= sizeY - 4)
+                newTile.GetComponent<Group>().minePercent = 0;
+            leftTiles[i] = newTile;
+
+            //place display tile on right side
+            newTile = Instantiate(tileGroup, new Vector3(sizeX, i, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+            newTile.name = "Tile Group (" + sizeX + ", " + i + ")";
+            newTile.GetComponentInChildren<Tile>().coordX = sizeX;
+            newTile.GetComponentInChildren<Tile>().coordY = i;
+            newTile.GetComponent<Group>().isDisplay = true;
+            if (i >= sizeY - 4)
+                newTile.GetComponent<Group>().minePercent = 0;
+            rightTiles[i] = newTile;
         }
     }
 
-    void BuildMinesweeperBoard()
+    /*void BuildMinesweeperBoard()
     {
         gameBoard = new GameObject[sizeX][];
         for (int i = 0; i < sizeX; i++)
@@ -97,9 +132,9 @@ public class GameManager : MonoBehaviour
 
             gameBoard[i] = tileColumn;
         }
-    }
+    }*/
 
-    void PopulateMines(int startX = -10, int startY = -10)
+    /*void PopulateMines(int startX = -10, int startY = -10)
     {
         int currentMines = 0;
 
@@ -128,15 +163,15 @@ public class GameManager : MonoBehaviour
         }
 
         minesPlaced = true;
-    }
+    }*/
 
-    void DetectProximity(int x, int y)
+    /*void DetectProximity(int x, int y)
     {
         foreach (Tile t in GetNeighborTiles(x, y))
         {
             t.nearbyMines += 1;
         }
-    }
+    }*/
 
     //public void RevealTile(int x, int y, int nearbyMines, bool isMine)
     //{
@@ -147,8 +182,26 @@ public class GameManager : MonoBehaviour
     public ArrayList GetNeighborTiles(int x, int y)
     {
         ArrayList neighbors = new ArrayList();
+
+        if (GetGameTile(x - 1, y) != null)
+            neighbors.Add(GetGameTile(x - 1, y));
+        if (GetGameTile(x - 1, y - 1) != null)
+            neighbors.Add(GetGameTile(x - 1, y - 1));
+        if (GetGameTile(x - 1, y + 1) != null)
+            neighbors.Add(GetGameTile(x - 1, y + 1));
+        if (GetGameTile(x + 1, y) != null)
+            neighbors.Add(GetGameTile(x + 1, y));
+        if (GetGameTile(x + 1, y - 1) != null)
+            neighbors.Add(GetGameTile(x + 1, y - 1));
+        if (GetGameTile(x + 1, y + 1) != null)
+            neighbors.Add(GetGameTile(x + 1, y + 1));
+        if (GetGameTile(x, y - 1) != null)
+            neighbors.Add(GetGameTile(x, y - 1));
+        if (GetGameTile(x, y + 1) != null)
+            neighbors.Add(GetGameTile(x, y + 1));
+
         
-        if (x > 0)
+        /*if (x > 0)
         {
             if (y >= 0)
                 if (GetGameTile(x - 1, y) != null)
@@ -185,17 +238,35 @@ public class GameManager : MonoBehaviour
         if (y < sizeY - 1)
             if (y >= -1)
                 if (GetGameTile(x, y + 1) != null)
-                    neighbors.Add(GetGameTile(x, y + 1));
+                    neighbors.Add(GetGameTile(x, y + 1));*/
 
         return neighbors;
     }
 
     public Tile GetGameTile(int x, int y)
     {
-        if (gameBoard[x][y] != null)
-            return gameBoard[x][y].GetComponent<Tile>();
-        else
+        /*if (x < 0 || y < 0 || x >= gameBoard.GetLength(0) || y >= gameBoard.GetLength(1))
+        {
+            Debug.Log("GetGameTile: Out of Bounds; " + x + ", " + y);
             return null;
+        }*/
+        if (x >= 0 && x < sizeX && y >= 0 && y < sizeY)
+        {
+            if (gameBoard[x][y] != null)
+                return gameBoard[x][y].GetComponent<Tile>();
+            else
+                return null;
+        }
+        else if (x == -1 && y >= 0 && y < sizeY)
+        {
+            return leftTiles[y].GetComponentInChildren<Tile>();
+        }
+        else if (x == sizeX && y >= 0 && y < sizeY)
+        {
+            return rightTiles[y].GetComponentInChildren<Tile>();
+        }
+        //Debug.Log("Failed to find tile " + x + ", " + y);
+        return null;
     }
 
     public static Vector2 roundVec2(Vector2 v)
@@ -294,9 +365,9 @@ public class GameManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
 
         // Reveal all tiles!
-        for (int i = 0; i < sizeX; i++)
+        for (int i = -1; i <= sizeX; i++)
         {
-            for (int j = 0; j < sizeY + 4; j++)
+            for (int j = -1; j < sizeY + 4; j++)
             {
                 if (GetGameTile(i, j) != null)
                 {
