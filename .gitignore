@@ -62,3 +62,7 @@ Minesweeper/Library/PackageCache/
 Minesweeper/Library/Artifacts/
 Minesweeper/Library/ShaderCache/
 Minesweeper/Temp/
+Minesweeper/Library/il2cpp_cache/
+Minesweeper/Library/PlayerDataCache/
+Minesweeper/Library/webgl_cache/
+*.meta
