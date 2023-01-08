@@ -62,16 +62,19 @@ public class Group : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            Vector2 v = GameManager.roundVec2(child.position);
+            if (child.gameObject.GetComponent<Tile>() != null)
+            {
+                Vector2 v = GameManager.roundVec2(child.position);
 
-            // Not inside Border?
-            if (!GameManager.insideBorder(v))
-                return false;
-            //Debug.Log(v);
-            // Block in grid cell (and not part of same group)?
-            if (GameManager.gameBoard[(int)v.x][(int)v.y] != null &&
-                GameManager.gameBoard[(int)v.x][(int)v.y].transform.parent != transform)
-                return false;
+                // Not inside Border?
+                if (!GameManager.insideBorder(v))
+                    return false;
+                //Debug.Log(v);
+                // Block in grid cell (and not part of same group)?
+                if (GameManager.gameBoard[(int)v.x][(int)v.y] != null &&
+                    GameManager.gameBoard[(int)v.x][(int)v.y].transform.parent != transform)
+                    return false;
+            }
         }
         return true;
     }
@@ -181,7 +184,7 @@ public class Group : MonoBehaviour
                 FindObjectOfType<TetrominoSpawner>().spawnNext();
 
                 // Clear filled horizontal lines
-                GameManager.deleteFullRows();
+                GameManager.scoreFullRows(this.transform);
 
                 // Failsafe in case block is off screen
                 foreach (Transform child in transform)
