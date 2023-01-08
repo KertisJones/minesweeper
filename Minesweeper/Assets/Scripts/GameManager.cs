@@ -296,7 +296,7 @@ public class GameManager : MonoBehaviour
         // Reveal all tiles!
         for (int i = 0; i < sizeX; i++)
         {
-            for (int j = 0; j < sizeY; j++)
+            for (int j = 0; j < sizeY + 4; j++)
             {
                 if (GetGameTile(i, j) != null)
                 {

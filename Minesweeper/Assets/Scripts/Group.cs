@@ -159,7 +159,7 @@ public class Group : MonoBehaviour
         
         if (gm.isPaused)
             return;
-            
+
         // Move Downwards and Fall
         else if (Time.time - lastFall >= fallSpeed || (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
@@ -194,22 +194,22 @@ public class Group : MonoBehaviour
                 // It's not valid. revert.
                 transform.position += new Vector3(0, 1, 0);
 
+                // Spawn next Group
+                FindObjectOfType<TetrominoSpawner>().spawnNext();
+
                 // Clear filled horizontal lines
                 GameManager.deleteFullRows();
 
                 // Failsafe in case block is off screen
                 foreach (Transform child in transform)
                 {
-                    if (child.position.y > 20)
+                    if (child.position.y >= 20)
                     {
                         gm.EndGame();
                         //Debug.Log("GAME OVER");
                         Destroy(this.gameObject);
                     }
-                }                
-
-                // Spawn next Group
-                FindObjectOfType<TetrominoSpawner>().spawnNext();
+                }      
 
                 // Disable script
                 enabled = false;

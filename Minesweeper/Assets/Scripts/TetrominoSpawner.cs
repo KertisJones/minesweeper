@@ -6,6 +6,8 @@ public class TetrominoSpawner : MonoBehaviour
 {
     public GameObject[] groups;
 
+    public GameObject currentTetromino;
+
     ArrayList groupStack = new ArrayList();
 
     // Start is called before the first frame update
@@ -25,7 +27,7 @@ public class TetrominoSpawner : MonoBehaviour
         int i = Random.Range(0, groupStack.Count);
 
         // Spawn Group at current Position
-        Instantiate((GameObject)groupStack[i], this.transform.position, Quaternion.identity);
+        currentTetromino = Instantiate((GameObject)groupStack[i], this.transform.position, Quaternion.identity);
 
         groupStack.Remove(groupStack[i]);
     }
