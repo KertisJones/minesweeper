@@ -17,6 +17,7 @@ public class Group : MonoBehaviour
 
     public bool isDisplay = false;
     public bool isBonus = false;
+    public bool isHeld = false;
 
     public Transform pivot;
 
@@ -76,6 +77,9 @@ public class Group : MonoBehaviour
 
     bool isValidGridPos()
     {
+        if (isHeld)
+            return true;
+        
         foreach (Transform child in transform)
         {
             if (child.gameObject.GetComponent<Tile>() != null)
@@ -96,7 +100,13 @@ public class Group : MonoBehaviour
     }
 
 
-    void updateGrid()
+    public void UpdateGrid()
+    {
+        UpdateGridRemove();
+        UpdateGridAdd();
+    }
+
+    public void UpdateGridRemove()
     {
         // Remove old children from grid
         for (int y = 0; y < GameManager.sizeY; ++y)
@@ -104,7 +114,10 @@ public class Group : MonoBehaviour
                 if (GameManager.gameBoard[x][y] != null)
                     if (GameManager.gameBoard[x][y].transform.parent == transform)
                         GameManager.gameBoard[x][y] = null;
+    }
 
+    public void UpdateGridAdd()
+    {
         // Add new children to grid
         foreach (Transform child in transform)
         {
@@ -113,9 +126,10 @@ public class Group : MonoBehaviour
                 Vector2 v = GameManager.roundVec2(child.position);
                 child.gameObject.GetComponent<Tile>().coordX = (int)v.x;
                 child.gameObject.GetComponent<Tile>().coordY = (int)v.y;
-                GameManager.gameBoard[(int)v.x][(int)v.y] = child.gameObject;
+                if (!isHeld)
+                    GameManager.gameBoard[(int)v.x][(int)v.y] = child.gameObject;
             }
-        }
+        }    
     }
 
 
@@ -127,7 +141,9 @@ public class Group : MonoBehaviour
         //if (gm.isPaused)
             //return;
         if (isDisplay)
-            return;        
+            return;
+        if (isHeld)
+            return;
         
         // Move Left
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || (Input.GetAxis("Horizontal") == -1 && Time.time - lastMove >= fallSpeed / 10))
@@ -166,7 +182,7 @@ public class Group : MonoBehaviour
         if (isValidGridPos())
         {
             // It's valid. Update grid.
-            updateGrid();
+            UpdateGrid();
 
             if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             {
@@ -231,7 +247,7 @@ public class Group : MonoBehaviour
         if (isValidGridPos())
         {
             // It's valid. Update grid.
-            updateGrid();
+            UpdateGrid();
 
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0));
@@ -264,7 +280,7 @@ public class Group : MonoBehaviour
         if (isValidGridPos())
         {
             // It's valid. Update grid.
-            updateGrid();
+            UpdateGrid();
 
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0));
@@ -289,7 +305,7 @@ public class Group : MonoBehaviour
         if (isValidGridPos())
         {
             // It's valid. Update grid.
-            updateGrid();
+            UpdateGrid();
 
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0));

@@ -134,7 +134,7 @@ public class Tile : MonoBehaviour
 
     public void FlagToggle()
     {
-        if (gm.isGameOver || isRevealed)
+        if (gm.isGameOver || isRevealed || GetComponentInParent<Group>().isHeld)
             return;
 
         isFlagged = !isFlagged;
@@ -181,7 +181,7 @@ public class Tile : MonoBehaviour
 
     public void Reveal()
     {
-        if (!isRevealed && !isFlagged && !isDisplay)
+        if (!isRevealed && !isFlagged && !isDisplay && !GetComponentInParent<Group>().isHeld)
         {
             isRevealed = true;
             //gm.RevealTile(coordX, coordY, nearbyMines, isMine);            
