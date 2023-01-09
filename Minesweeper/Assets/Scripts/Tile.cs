@@ -39,11 +39,8 @@ public class Tile : MonoBehaviour
         Vector2 v = GameManager.roundVec2(transform.position);
         coordX = (int)v.x;
         coordY = (int)v.y;
-
-        if (isMine)
-        {
-            gm.currentMines += 1;
-        }
+        
+        CountMine();
         
         if (isDisplay)
         {
@@ -69,6 +66,11 @@ public class Tile : MonoBehaviour
             fallClock = 1;
             Fall();
         }*/
+    }
+
+    public void CountMine() {
+        if (isMine && gm != null)
+            gm.currentMines += 1;
     }
 
     void UpdateText()

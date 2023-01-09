@@ -39,6 +39,12 @@ public class Group : MonoBehaviour
             //Destroy(gameObject);
         }
         
+        if (!isHeld)
+            LayMines();
+    }
+
+    public void LayMines()
+    {
         if (!isBonus)
         {
             // Populate random mines in children
@@ -51,6 +57,7 @@ public class Group : MonoBehaviour
                     if (randNum <= minePercent && !child.gameObject.GetComponent<Tile>().isMine)
                     {
                         child.gameObject.GetComponent<Tile>().isMine = true;
+                        child.gameObject.GetComponent<Tile>().CountMine();
                         numberOfMines += 1;
                     }
                 }
@@ -58,7 +65,9 @@ public class Group : MonoBehaviour
 
             if (numberOfMines == 0 && !isDisplay)
             {
-                this.transform.GetChild(Random.Range(0, 4)).GetComponent<Tile>().isMine = true;
+                Tile child = this.transform.GetChild(Random.Range(0, 4)).GetComponent<Tile>();
+                child.isMine = true;
+                child.gameObject.GetComponent<Tile>().CountMine();
                 numberOfMines += 1;
             }
         }
@@ -68,7 +77,7 @@ public class Group : MonoBehaviour
             {
                 if (child.gameObject.GetComponent<Tile>() != null)
                 {
-                    child.GetComponent<Tile>().isRevealed = true;
+                    child.GetComponent<Tile>().Reveal();//.isRevealed = true;
                     child.GetComponent<Tile>().isDisplay = true;
                 }
             }

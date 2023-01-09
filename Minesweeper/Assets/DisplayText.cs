@@ -6,6 +6,7 @@ using TMPro;
 public class DisplayText : MonoBehaviour
 {
     GameManager gm;
+    ScoreKeeper sk;
 
     public enum TextType // your custom enumeration
     {
@@ -13,7 +14,8 @@ public class DisplayText : MonoBehaviour
         minesMissing, 
         minesTotal,
         flagsTotal,
-        time
+        time, 
+        bestScore
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
@@ -21,6 +23,7 @@ public class DisplayText : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        sk = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>();
     }
 
     // Update is called once per frame
@@ -49,6 +52,10 @@ public class DisplayText : MonoBehaviour
         else if (displayType == TextType.time)
         {
             this.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.time;
+        }
+        else if (displayType == TextType.bestScore)
+        {
+            this.GetComponent<TextMeshProUGUI>().text = "Hi Score: " + sk.bestScore;
         }
     }
 }
