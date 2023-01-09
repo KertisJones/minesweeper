@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
+    public int score = 0;
     public static int sizeX = 10;
     public static int sizeY = 24;
     public static int numMines = 5;
@@ -29,7 +30,10 @@ public class GameManager : MonoBehaviour
     public GameObject tileGroup;
 
     public AudioClip lineClearSound;
-    public AudioClip lineFullSound;
+    public AudioClip lineFullSound1;
+    public AudioClip lineFullSound2;
+    public AudioClip lineFullSound3;
+    public AudioClip lineFullSound4;
     public AudioClip gameOverSound;
 
     [Range(0.0f, 1.0f)]
@@ -380,9 +384,24 @@ public class GameManager : MonoBehaviour
         return isSolved;
     }
 
+    public static int scoreSolvedRow(int y)
+    {
+        int rowScore = 0;
+        for (int x = 0; x < sizeX; ++x)
+            if (gameBoard[x][y] != null)
+            {
+                if (gameBoard[x][y].GetComponent<Tile>().isMine)
+                    rowScore += 50;
+                else
+                    rowScore += gameBoard[x][y].GetComponent<Tile>().nearbyMines;
+            }
+        return rowScore;
+    }
+
     public static void scoreFullRows(Transform tetronimo)
     {
-        if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().isGameOver)
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        if (gm.isGameOver)
             return;
 
         HashSet<int> rowsToCheck = new HashSet<int>(); 
@@ -402,20 +421,44 @@ public class GameManager : MonoBehaviour
             {
                 fullRows++;
 
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().lineFullSound, new Vector3(0, 0, 0));
-
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
             }
         }
+        if (fullRows > 0)
+        {
+        AudioClip clipToPlay = null;
+            switch (fullRows) {
+                case 1:
+                    clipToPlay = gm.lineFullSound1;
+                    gm.score += 40;
+                    break;
+                case 2:
+                    clipToPlay = gm.lineFullSound2;
+                    gm.score += 100;
+                    break;
+                case 3:
+                    clipToPlay = gm.lineFullSound3;
+                    gm.score += 300;
+                    break;
+                default:
+                    clipToPlay = gm.lineFullSound4;
+                    gm.score += 1200;
+                    break;
+            }
 
-        Debug.Log("Tetris rows full: " + fullRows);
-        deleteFullRows();
+            gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            AudioSource.PlayClipAtPoint(clipToPlay, new Vector3(0, 0, 0));
+
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+
+            Debug.Log("Tetris rows full: " + fullRows);
+            deleteFullRows();
+        }        
     }
 
     public static void deleteFullRows()
     {
-        if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().isGameOver)
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        if (gm.isGameOver)
             return;
 
         for (int y = 0; y < sizeY; ++y)
@@ -424,12 +467,13 @@ public class GameManager : MonoBehaviour
             {
                 if (isRowSolved(y))
                 {
+                    gm.score += scoreSolvedRow(y);
                     deleteRow(y);
                     decreaseRowsAbove(y + 1);
                     --y;
 
-                    GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                    AudioSource.PlayClipAtPoint(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().lineClearSound, new Vector3(0, 0, 0));
+                    gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                    AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0));
 
                     GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
                 }

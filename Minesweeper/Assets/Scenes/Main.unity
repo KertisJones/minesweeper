@@ -555,12 +555,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad782ec5250bafd42af3b3deea4dd698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   isGameOver: 0
   isPaused: 0
   tile: {fileID: 4675045439334439888, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
   tileGroup: {fileID: 5635427920445249702, guid: 0eb1fa25a92ff8f47a33fb0cac22aa35, type: 3}
   lineClearSound: {fileID: 8300000, guid: cad7ca4f9e0fa3e4494e767134f5b835, type: 3}
-  lineFullSound: {fileID: 8300000, guid: a7bde30d6b46a494a89e75341386d6b8, type: 3}
+  lineFullSound1: {fileID: 8300000, guid: a7bde30d6b46a494a89e75341386d6b8, type: 3}
+  lineFullSound2: {fileID: 8300000, guid: 0d9fa3c551940cb4db5e834b505cbf76, type: 3}
+  lineFullSound3: {fileID: 8300000, guid: 1b6b2c5c945553c4f8431c5d5e7fbcc8, type: 3}
+  lineFullSound4: {fileID: 8300000, guid: 4840e3cd2e1b5bd4592308066bd6c587, type: 3}
   gameOverSound: {fileID: 8300000, guid: a994636b57e1d714b8b09e4270e1b2a3, type: 3}
   audioVolume: 0.25
 --- !u!4 &780965504

@@ -193,6 +193,13 @@ public class Tile : MonoBehaviour
             {
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0));
+
+                // Scoring
+                if (!GetComponentInParent<Group>().isDisplay)
+                {
+                    // Each revealed tile is equal to 1 point.
+                    gm.score += 1;
+                }
             }
 
             ZeroCascade();
