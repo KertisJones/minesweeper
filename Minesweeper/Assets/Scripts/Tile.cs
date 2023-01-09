@@ -39,6 +39,11 @@ public class Tile : MonoBehaviour
         Vector2 v = GameManager.roundVec2(transform.position);
         coordX = (int)v.x;
         coordY = (int)v.y;
+
+        if (isMine)
+        {
+            gm.currentMines += 1;
+        }
         
         if (isDisplay)
         {
@@ -141,12 +146,16 @@ public class Tile : MonoBehaviour
             AudioSource.PlayClipAtPoint(flagSound, new Vector3(0, 0, 0));
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
+            gm.currentFlags += 1;
+
             GameManager.deleteFullRows();            
         }
         else
         {
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0));
+
+            gm.currentFlags -= 1;
         }
     }
 

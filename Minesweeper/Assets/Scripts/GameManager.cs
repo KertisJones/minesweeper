@@ -7,6 +7,8 @@ using UnityEngine.Audio;
 public class GameManager : MonoBehaviour
 {
     public int score = 0;
+    public int currentMines = 0;
+    public int currentFlags = 0;
     public static int sizeX = 10;
     public static int sizeY = 24;
     public static int numMines = 5;
@@ -14,7 +16,7 @@ public class GameManager : MonoBehaviour
     static float screenShakeDuration = 0.2f;
     static float screenShakeStrength = 1f;
 
-    private bool minesPlaced = false;
+    //private bool minesPlaced = false;
 
     public static GameObject[][] gameBoard;
     GameObject[] leftBorderTiles;
@@ -129,9 +131,15 @@ public class GameManager : MonoBehaviour
             }
 
             if (i + randNumLeft < sizeY - 4)
+            {
                 leftBorderTiles[i + randNumLeft].GetComponentInChildren<Tile>().isMine = true;
+                //currentMines++;
+            }
             if (i + randNumRight < sizeY - 4)
+            {
                 rightBorderTiles[i + randNumRight].GetComponentInChildren<Tile>().isMine = true;
+                //currentMines++;
+            }
         }
     }
 
@@ -387,14 +395,24 @@ public class GameManager : MonoBehaviour
     public static int scoreSolvedRow(int y)
     {
         int rowScore = 0;
+        int minesFlagged = 0;
         for (int x = 0; x < sizeX; ++x)
+        {
             if (gameBoard[x][y] != null)
             {
                 if (gameBoard[x][y].GetComponent<Tile>().isMine)
+                {
                     rowScore += 50;
+                    minesFlagged += 1;
+                }
                 else
+                {
                     rowScore += gameBoard[x][y].GetComponent<Tile>().nearbyMines;
+                }
             }
+        }
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().currentMines -= minesFlagged;
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().currentFlags -= minesFlagged;
         return rowScore;
     }
 

@@ -39,23 +39,28 @@ public class Group : MonoBehaviour
         
         // Populate random mines in children
         int numberOfMines = 0;
-        while (numberOfMines == 0)
+        foreach (Transform child in transform)
         {
-            foreach (Transform child in transform)
+            if (child.gameObject.GetComponent<Tile>() != null)
             {
-                if (child.gameObject.GetComponent<Tile>() != null)
+                float randNum = Random.Range(1, 100);
+                if (randNum <= minePercent && !child.gameObject.GetComponent<Tile>().isMine)
                 {
-                    float randNum = Random.Range(1, 100);
-                    if (randNum <= minePercent)
-                    {
-                        child.gameObject.GetComponent<Tile>().isMine = true;
-                        numberOfMines += 1;
-                    }
+                    child.gameObject.GetComponent<Tile>().isMine = true;
+                    numberOfMines += 1;
                 }
             }
-            if (Random.Range(1, 10) == 1 || isDisplay)
-                numberOfMines += 1;
         }
+
+        if (numberOfMines == 0 && !isDisplay)
+        {
+            if (Random.Range(1, 10) > 1)
+            {
+                this.transform.GetChild(Random.Range(0, 4)).GetComponent<Tile>().isMine = true;
+                numberOfMines += 1;
+            }
+        }
+        //gm.currentMines += numberOfMines;
     }
 
     bool isValidGridPos()
