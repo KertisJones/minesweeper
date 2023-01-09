@@ -16,7 +16,7 @@ public class TetrominoSpawner : MonoBehaviour
         spawnNext();
     }
 
-    public void spawnNext()
+    public void spawnNext(bool bonusTile = false)
     {
         if (groupStack.Count == 0)
         {
@@ -28,6 +28,12 @@ public class TetrominoSpawner : MonoBehaviour
 
         // Spawn Group at current Position
         currentTetromino = Instantiate((GameObject)groupStack[i], this.transform.position, Quaternion.identity);
+
+        // If the previous score was a Tetris (4 rows), spawn a bonus tetromino with no mines!
+        if (bonusTile)
+        {
+            currentTetromino.GetComponent<Group>().isBonus = true;            
+        }
 
         groupStack.Remove(groupStack[i]);
     }

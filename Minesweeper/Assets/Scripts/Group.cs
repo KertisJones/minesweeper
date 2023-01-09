@@ -10,12 +10,13 @@ public class Group : MonoBehaviour
     float lastFall = 0;
     float lastMove = 0;
 
-    public float minePercent = 30;
+    public float minePercent = 10;
 
     float screenShakeDuration = 0.1f;
     float screenShakeStrength = 0.4f;
 
     public bool isDisplay = false;
+    public bool isBonus = false;
 
     public Transform pivot;
 
@@ -37,30 +38,40 @@ public class Group : MonoBehaviour
             //Destroy(gameObject);
         }
         
-        // Populate random mines in children
-        int numberOfMines = 0;
-        foreach (Transform child in transform)
+        if (!isBonus)
         {
-            if (child.gameObject.GetComponent<Tile>() != null)
+            // Populate random mines in children
+            int numberOfMines = 0;
+            foreach (Transform child in transform)
             {
-                float randNum = Random.Range(1, 100);
-                if (randNum <= minePercent && !child.gameObject.GetComponent<Tile>().isMine)
+                if (child.gameObject.GetComponent<Tile>() != null)
                 {
-                    child.gameObject.GetComponent<Tile>().isMine = true;
-                    numberOfMines += 1;
+                    float randNum = Random.Range(1, 100);
+                    if (randNum <= minePercent && !child.gameObject.GetComponent<Tile>().isMine)
+                    {
+                        child.gameObject.GetComponent<Tile>().isMine = true;
+                        numberOfMines += 1;
+                    }
                 }
             }
-        }
 
-        if (numberOfMines == 0 && !isDisplay)
-        {
-            if (Random.Range(1, 10) > 1)
+            if (numberOfMines == 0 && !isDisplay)
             {
                 this.transform.GetChild(Random.Range(0, 4)).GetComponent<Tile>().isMine = true;
                 numberOfMines += 1;
             }
         }
-        //gm.currentMines += numberOfMines;
+        else // Bonus Tiles should be revealed
+        {
+            foreach (Transform child in transform) 
+            {
+                if (child.gameObject.GetComponent<Tile>() != null)
+                {
+                    child.GetComponent<Tile>().isRevealed = true;
+                    child.GetComponent<Tile>().isDisplay = true;
+                }
+            }
+        }
     }
 
     bool isValidGridPos()
@@ -152,9 +163,21 @@ public class Group : MonoBehaviour
             return;
 
         // Move Downwards and Fall
-        else if (Time.time - lastFall >= fallSpeed || (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        bool fallInput = (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S);
+        if (fallInput)
         {
-            // Modify position
+            gm.score +=1;
+        }        
+        if (Time.time - lastFall >= fallSpeed || fallInput)
+        {
+            Fall();
+        }
+
+    }
+
+    void Fall ()
+    {
+                    // Modify position
             transform.position += new Vector3(0, -1, 0);
 
             // See if valid
@@ -185,11 +208,20 @@ public class Group : MonoBehaviour
                 // It's not valid. revert.
                 transform.position += new Vector3(0, 1, 0);
 
-                // Spawn next Group
-                FindObjectOfType<TetrominoSpawner>().spawnNext();
+                
+                
+
+                // Score filled horizontal lines
+                int rowsFilled = GameManager.scoreFullRows(this.transform);
+
+                // Spawn next Group; if playere scored a Tetris, spawn a fully revealed Tetronimo
+                if (rowsFilled < 4)
+                    FindObjectOfType<TetrominoSpawner>().spawnNext();
+                else
+                    FindObjectOfType<TetrominoSpawner>().spawnNext(true);
 
                 // Clear filled horizontal lines
-                GameManager.scoreFullRows(this.transform);
+                GameManager.deleteFullRows();
 
                 // Failsafe in case block is off screen
                 foreach (Transform child in transform)
@@ -207,8 +239,6 @@ public class Group : MonoBehaviour
             }
 
             lastFall = Time.time;
-        }
-
     }
 
     void Move (float dir = 1) // -1 is Left, 1 is Right

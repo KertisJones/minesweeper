@@ -416,11 +416,11 @@ public class GameManager : MonoBehaviour
         return rowScore;
     }
 
-    public static void scoreFullRows(Transform tetronimo)
+    public static int scoreFullRows(Transform tetronimo)
     {
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (gm.isGameOver)
-            return;
+            return 0;
 
         HashSet<int> rowsToCheck = new HashSet<int>(); 
 
@@ -443,7 +443,7 @@ public class GameManager : MonoBehaviour
         }
         if (fullRows > 0)
         {
-        AudioClip clipToPlay = null;
+            AudioClip clipToPlay = null;
             switch (fullRows) {
                 case 1:
                     clipToPlay = gm.lineFullSound1;
@@ -469,8 +469,9 @@ public class GameManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
             Debug.Log("Tetris rows full: " + fullRows);
-            deleteFullRows();
+            
         }        
+        return fullRows;
     }
 
     public static void deleteFullRows()
