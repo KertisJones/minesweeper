@@ -139,24 +139,7 @@ public class Group : MonoBehaviour
         // Rotate
         else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
-            //transform.Rotate(0, 0, -90);
-            transform.RotateAround(transform.TransformPoint(pivot.localPosition), new Vector3(0, 0, 1), -90);
-
-
-            // See if valid
-            if (isValidGridPos())
-            {
-                // It's valid. Update grid.
-                updateGrid();
-
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0));
-            }
-            else
-            {
-                // It's not valid. revert.
-                transform.Rotate(0, 0, 90);
-            }
+            Rotate();
         }
         
         if (gm.isPaused)
@@ -172,48 +155,57 @@ public class Group : MonoBehaviour
         {
             Fall();
         }
-
     }
 
     void Fall ()
     {
-                    // Modify position
-            transform.position += new Vector3(0, -1, 0);
+        // Modify position
+        transform.position += new Vector3(0, -1, 0);
 
-            // See if valid
-            if (isValidGridPos())
+        // See if valid
+        if (isValidGridPos())
+        {
+            // It's valid. Update grid.
+            updateGrid();
+
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             {
-                // It's valid. Update grid.
-                updateGrid();
-
-                if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-                {
-                    GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                    AudioSource.PlayClipAtPoint(downSound, new Vector3(0, 0, 0));
-                }
-                // Detect the moment it lands
-                transform.position += new Vector3(0, -1, 0);
-                if (!isValidGridPos())
-                {
-                    GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                    AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0));
-
-                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
-                }
-                transform.position += new Vector3(0, 1, 0);
-
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(downSound, new Vector3(0, 0, 0));
             }
-            else
+            // Detect the moment it lands
+            transform.position += new Vector3(0, -1, 0);
+            if (!isValidGridPos())
             {
-                // It's not valid. revert.
-                transform.position += new Vector3(0, 1, 0);
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0));
 
-                
-                
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+            }
+            transform.position += new Vector3(0, 1, 0);
 
-                // Score filled horizontal lines
-                int rowsFilled = GameManager.scoreFullRows(this.transform);
+        }
+        else
+        {
+            // It's not valid. revert.
+            transform.position += new Vector3(0, 1, 0);
 
+            // Score filled horizontal lines
+            int rowsFilled = GameManager.scoreFullRows(this.transform);
+
+            // Failsafe in case block is off screen
+            foreach (Transform child in transform)
+            {
+                if (child.position.y >= 20)
+                {
+                    gm.EndGame();
+                    //Debug.Log("GAME OVER");
+                    //Destroy(this.gameObject);
+                }
+            }
+
+            if (!gm.isGameOver)
+            {
                 // Spawn next Group; if playere scored a Tetris, spawn a fully revealed Tetronimo
                 if (rowsFilled < 4)
                     FindObjectOfType<TetrominoSpawner>().spawnNext();
@@ -222,23 +214,70 @@ public class Group : MonoBehaviour
 
                 // Clear filled horizontal lines
                 GameManager.deleteFullRows();
-
-                // Failsafe in case block is off screen
-                foreach (Transform child in transform)
-                {
-                    if (child.position.y >= 20)
-                    {
-                        gm.EndGame();
-                        //Debug.Log("GAME OVER");
-                        Destroy(this.gameObject);
-                    }
-                }      
-
-                // Disable script
-                enabled = false;
             }
 
-            lastFall = Time.time;
+            // Disable script
+            enabled = false;
+        }
+
+        lastFall = Time.time;
+    }
+
+    void Rotate (int dir = -1)
+    {
+        transform.RotateAround(transform.TransformPoint(pivot.localPosition), new Vector3(0, 0, 1), 90 * dir);
+
+        // See if valid
+        if (isValidGridPos())
+        {
+            // It's valid. Update grid.
+            updateGrid();
+
+            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0));
+        }
+        else
+        {
+            // It's not valid. Try Wall Kick to the Right
+            bool valid = WallKickMove(1);
+            if (valid)
+                return;
+            valid = WallKickMove(2);
+            if (valid)
+                return;
+            // It's not valid. Try Wall Kick to the Left
+            valid = WallKickMove(-1);
+            if (valid)
+                return;
+            valid = WallKickMove(-2);
+            if (valid)
+                return;
+            //Can't find a valid position
+            transform.RotateAround(transform.TransformPoint(pivot.localPosition), new Vector3(0, 0, 1), 90 * dir * -1);
+            Debug.Log("Rotation Wall Kicks failed");
+        }
+    }
+
+    bool WallKickMove(float dir) // -1 is Left, 1 is Right
+    {
+        transform.position += new Vector3(dir, 0, 0);
+        if (isValidGridPos())
+        {
+            // It's valid. Update grid.
+            updateGrid();
+
+            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0));
+
+            Debug.Log("Rotation Wall Kick " + dir);
+            return true;
+        }
+        else
+        {
+            // It's not valid. Revert back to center and revert rotation.
+            transform.position += new Vector3(dir * -1, 0, 0);
+            return false;
+        }
     }
 
     void Move (float dir = 1) // -1 is Left, 1 is Right
