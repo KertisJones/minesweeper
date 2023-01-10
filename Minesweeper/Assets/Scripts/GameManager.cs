@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public bool isGameOver = false;
     public bool isPaused = false;
+    public bool cheatGodMode = false;
 
     public GameObject tile;
     public GameObject tileGroup;
@@ -106,7 +107,7 @@ public class GameManager : MonoBehaviour
             newTile.GetComponentInChildren<Tile>().coordX = -1;
             newTile.GetComponentInChildren<Tile>().coordY = i;
             newTile.GetComponent<Group>().isDisplay = true;            
-            newTile.GetComponent<Group>().minePercent = 1;
+            newTile.GetComponent<Group>().minePercent = 10;
             leftBorderTiles[i] = newTile;
 
             //place display tile on right side
@@ -115,31 +116,33 @@ public class GameManager : MonoBehaviour
             newTile.GetComponentInChildren<Tile>().coordX = sizeX;
             newTile.GetComponentInChildren<Tile>().coordY = i;
             newTile.GetComponent<Group>().isDisplay = true;            
-            newTile.GetComponent<Group>().minePercent = 1;
+            newTile.GetComponent<Group>().minePercent = 10;
             rightBorderTiles[i] = newTile;
         }
 
-        // Place bombs evenly on Left and Right Tiles
-        for (int i = 0; i < sizeY - 4; i+=4)
-        {
-            int randNumLeft = Random.Range(0, 8);
-            int randNumRight = Random.Range(0, 8);
-            if (i == 0)
-            {
-                randNumLeft = Random.Range(0, 5);
-                randNumRight = Random.Range(0, 5);
-            }
+        // Place bombs Left and Right Tiles
+        // Max free space at bottom is 5
+        leftBorderTiles[Random.Range(0, 5)].GetComponentInChildren<Tile>().isMine = true;
+        rightBorderTiles[Random.Range(0, 5)].GetComponentInChildren<Tile>().isMine = true;
+        // One random mid-height bomb on each side
+        leftBorderTiles[Random.Range(5, 9)].GetComponentInChildren<Tile>().isMine = true;
+        rightBorderTiles[Random.Range(5, 9)].GetComponentInChildren<Tile>().isMine = true;
+        // One random bottom-half bomb on each side
+        leftBorderTiles[Random.Range(0, 10)].GetComponentInChildren<Tile>().isMine = true;
+        rightBorderTiles[Random.Range(0, 10)].GetComponentInChildren<Tile>().isMine = true;
 
-            if (i + randNumLeft < sizeY - 4)
-            {
-                leftBorderTiles[i + randNumLeft].GetComponentInChildren<Tile>().isMine = true;
-                //currentMines++;
-            }
-            if (i + randNumRight < sizeY - 4)
-            {
-                rightBorderTiles[i + randNumRight].GetComponentInChildren<Tile>().isMine = true;
-                //currentMines++;
-            }
+        // Prevent any 0-Cascade tiles from spawning at index 10-18
+        for (int i = 9+Random.Range(0, 3); i < sizeY - 5; i+=Random.Range(1, 4))
+        {
+            if (i < sizeY - 4)
+                if (!leftBorderTiles[i-1].GetComponentInChildren<Tile>().isMine || !leftBorderTiles[i-2].GetComponentInChildren<Tile>().isMine)
+                    leftBorderTiles[i].GetComponentInChildren<Tile>().isMine = true;
+        }
+        for (int i = 9+Random.Range(0, 3); i < sizeY - 5; i+=Random.Range(1, 4))
+        {
+            if (i < sizeY - 4)
+                if (!rightBorderTiles[i-1].GetComponentInChildren<Tile>().isMine || !rightBorderTiles[i-2].GetComponentInChildren<Tile>().isMine)
+                    rightBorderTiles[i].GetComponentInChildren<Tile>().isMine = true;
         }
     }
 
@@ -376,6 +379,8 @@ public class GameManager : MonoBehaviour
         for (int x = 0; x < sizeX; ++x)
             if (gameBoard[x][y] == null)
                 return false;
+            else if (gameBoard[x][y].GetComponentInParent<Group>().isFalling)
+                return false;
         return true;
     }
 
@@ -502,6 +507,9 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        if (cheatGodMode)
+            return;
+        
         isGameOver = true;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
 

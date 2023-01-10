@@ -2,16 +2,17 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - CameraShake
+    - DisplayText
     - GameManager
     - Group
+    - HoldTetromino
+    - ScoreKeeper
     - TetrominoSpawner
     - Tile
     - TileButton
     - UnityStandardAssets._2D.Camera2DFollow
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
-    Unity.2D.SpriteShape.Editor.dll:
-    - UnityEditor.U2D.SpriteShapeEditorAnalytics
     Unity.2D.SpriteShape.Runtime.dll:
     - UnityEngine.U2D.SpriteShape
     - UnityEngine.U2D.SpriteShapeController
@@ -29,8 +30,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
-    Unity.Timeline.Editor.dll:
-    - TimelineProjectSettings
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -68,48 +67,52 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
-    - Class: 109
-      Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11754}
+      Script: {instanceID: 11764}
     - Class: 114
-      Script: {instanceID: 12114}
+      Script: {instanceID: 11842}
     - Class: 114
-      Script: {instanceID: 12150}
+      Script: {instanceID: 12126}
     - Class: 114
-      Script: {instanceID: 12386}
+      Script: {instanceID: 12162}
     - Class: 114
-      Script: {instanceID: 12820}
+      Script: {instanceID: 12204}
     - Class: 114
-      Script: {instanceID: 12840}
+      Script: {instanceID: 12402}
     - Class: 114
-      Script: {instanceID: 12878}
+      Script: {instanceID: 12836}
     - Class: 114
-      Script: {instanceID: 13032}
+      Script: {instanceID: 12856}
     - Class: 114
-      Script: {instanceID: 13596}
+      Script: {instanceID: 12894}
     - Class: 114
-      Script: {instanceID: 13968}
+      Script: {instanceID: 13048}
     - Class: 114
-      Script: {instanceID: 13988}
+      Script: {instanceID: 13416}
     - Class: 114
-      Script: {instanceID: 14308}
+      Script: {instanceID: 13464}
     - Class: 114
-      Script: {instanceID: 14412}
+      Script: {instanceID: 13620}
     - Class: 114
-      Script: {instanceID: 14702}
+      Script: {instanceID: 13992}
     - Class: 114
-      Script: {instanceID: 14902}
+      Script: {instanceID: 14012}
     - Class: 114
-      Script: {instanceID: 15048}
+      Script: {instanceID: 14332}
     - Class: 114
-      Script: {instanceID: 19120}
+      Script: {instanceID: 14438}
     - Class: 114
-      Script: {instanceID: 22210}
+      Script: {instanceID: 14728}
     - Class: 114
-      Script: {instanceID: 84676}
+      Script: {instanceID: 14780}
     - Class: 114
-      Script: {instanceID: 84712}
+      Script: {instanceID: 14930}
+    - Class: 114
+      Script: {instanceID: 15076}
+    - Class: 114
+      Script: {instanceID: 78230}
+    - Class: 114
+      Script: {instanceID: 95994}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -155,6 +158,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Dropdown
+  - hash:
+      serializedVersion: 2
+      Hash: f37e85b0f489f1cc22b6127acc6e9d30
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Group
   - hash:
       serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
@@ -223,6 +232,12 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
+      Hash: 7b1808d0b5fce5d150133eda64b2ac20
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraShake
+  - hash:
+      serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -253,7 +268,13 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 1b94ce760b68d78a3512a26a9d10a11d
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ForceAspectRatio
+  - hash:
+      serializedVersion: 2
+      Hash: e1262d116418446a601355c824d7371b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Tile
@@ -361,7 +382,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: d5be7dcc3c2b011c3ff86a83c771aec4
+      Hash: b140c225211c17a60a4db85428ded27e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -391,6 +412,18 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
+      Hash: 26652b67ce94477a244f65daa914409f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TetrominoSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: 87223aed25ebf0b8859ec4bca518c717
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DisplayText
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -401,6 +434,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextContainer
+  - hash:
+      serializedVersion: 2
+      Hash: cacedee9bab035040370122eedd3b7d0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Tiling
   - hash:
       serializedVersion: 2
       Hash: f087c23fbfa15475a0d110af46fb0496
@@ -487,6 +526,12 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
+      Hash: 2cf978567cffee0bb7d659a551a82b28
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RandomPitch
+  - hash:
+      serializedVersion: 2
       Hash: f336e086360abe49a3323e5f1583c35a
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -515,6 +560,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: 0d902f48c5c3159dd0e819ea88f651e1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: UnityStandardAssets._2D
+    className: Camera2DFollow
   - hash:
       serializedVersion: 2
       Hash: da4cc51a02ce84afe2cecd27cfe6997a
@@ -619,42 +670,18 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: c396a75e7abb7b36bbab08bc640766fd
+      Hash: 341ed07f331bb9457ae8ba7168ba4d53
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: TetrominoSpawner
+    className: HoldTetromino
   - hash:
       serializedVersion: 2
-      Hash: 618c06dcbf87d474dac410041bbd9d41
+      Hash: d4e45b2a43bf1b434239a0fad6665800
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Group
-  - hash:
-      serializedVersion: 2
-      Hash: 7b1808d0b5fce5d150133eda64b2ac20
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CameraShake
-  - hash:
-      serializedVersion: 2
-      Hash: 0d902f48c5c3159dd0e819ea88f651e1
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: UnityStandardAssets._2D
-    className: Camera2DFollow
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ForceAspectRatio
-  - hash:
-      serializedVersion: 2
-      Hash: 2cf978567cffee0bb7d659a551a82b28
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: RandomPitch
+    className: ScoreKeeper
   platform: 5
   scenePathNames:
   - Assets/Scenes/Main.unity
   playerPath: C:/Users/KertisJones/Documents/Programming Stuff/Unity/Tetrisweeper/Build
-    1.0/Tetrisweeper.exe
+    1.1.1/Tetrisweeper.exe

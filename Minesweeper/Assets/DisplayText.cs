@@ -30,7 +30,12 @@ public class DisplayText : MonoBehaviour
     void Update()
     {
         if (displayType == TextType.score)
-            this.GetComponent<TextMeshProUGUI>().text = "Score: " + gm.score;
+        {
+            if (gm.score > 0)
+                this.GetComponent<TextMeshProUGUI>().text = "Score: " + gm.score.ToString("#,#");
+            else
+                this.GetComponent<TextMeshProUGUI>().text = "Score: " + gm.score;
+        }
         else if (displayType == TextType.minesMissing)
         {
             int currentMines = gm.currentMines;
@@ -55,7 +60,10 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.bestScore)
         {
-            this.GetComponent<TextMeshProUGUI>().text = "Hi Score: " + sk.bestScore;
+            if (sk.bestScore > 0)
+                this.GetComponent<TextMeshProUGUI>().text = "Hi: " + sk.bestScore.ToString("#,#");
+            else
+                this.GetComponent<TextMeshProUGUI>().text = "Hi: " + sk.bestScore;
         }
     }
 }

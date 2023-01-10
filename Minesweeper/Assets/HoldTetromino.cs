@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HoldTetromino : MonoBehaviour
 {
+    GameManager gm;
     public TetrominoSpawner tetrominoSpawner;
     public Transform targetPosition;
     public GameObject heldTetromino;
@@ -12,7 +13,7 @@ public class HoldTetromino : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -20,7 +21,8 @@ public class HoldTetromino : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            Hold();
+            if (!gm.isGameOver)
+                Hold();
         }
     }
 

@@ -52,6 +52,7 @@ MonoBehaviour:
   minePercent: 20
   isDisplay: 0
   isBonus: 0
+  isHeld: 0
   pivot: {fileID: 3078156628427436773}
   moveSound: {fileID: 8300000, guid: b887aed25407f814288d38f1b5790f0b, type: 3}
   downSound: {fileID: 8300000, guid: 1ccfa3070b4c9b14d8f41342cd280e8b, type: 3}

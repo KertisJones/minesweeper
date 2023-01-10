@@ -18,6 +18,7 @@ public class Group : MonoBehaviour
     public bool isDisplay = false;
     public bool isBonus = false;
     public bool isHeld = false;
+    public bool isFalling = true;
 
     public Transform pivot;
 
@@ -65,10 +66,13 @@ public class Group : MonoBehaviour
 
             if (numberOfMines == 0 && !isDisplay)
             {
-                Tile child = this.transform.GetChild(Random.Range(0, 4)).GetComponent<Tile>();
-                child.isMine = true;
-                child.gameObject.GetComponent<Tile>().CountMine();
-                numberOfMines += 1;
+                if (Random.Range(1,20) > 1) // 5% chance to still spawn with 0 mines
+                {
+                    Tile child = this.transform.GetChild(Random.Range(0, 4)).GetComponent<Tile>();
+                    child.isMine = true;
+                    child.gameObject.GetComponent<Tile>().CountMine();
+                    numberOfMines += 1;
+                }
             }
         }
         else // Bonus Tiles should be revealed
@@ -210,10 +214,13 @@ public class Group : MonoBehaviour
             transform.position += new Vector3(0, 1, 0);
 
         }
-        else
+        else // Lock the piece in place
         {
             // It's not valid. revert.
             transform.position += new Vector3(0, 1, 0);
+
+            // Allow the tetromino to be scored
+            isFalling = false;
 
             // Score filled horizontal lines
             int rowsFilled = GameManager.scoreFullRows(this.transform);
