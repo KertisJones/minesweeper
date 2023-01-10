@@ -15,6 +15,7 @@ public class Tile : MonoBehaviour
     public bool isRevealed = false;
     public bool isDisplay = false;
     public int nearbyMines = 0;
+    public int nearbyFlags = 0;
 
     public float screenShakeDuration = 0.1f;
     public float screenShakeStrength = 0.1f;
@@ -29,12 +30,14 @@ public class Tile : MonoBehaviour
     TextMeshProUGUI text;    
 
     GameManager gm;
+    Camera camera;
 
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
         Vector2 v = GameManager.roundVec2(transform.position);
         coordX = (int)v.x;
@@ -67,6 +70,7 @@ public class Tile : MonoBehaviour
             Fall();
         }*/
     }
+
 
     public void CountMine() {
         if (isMine && gm != null)
@@ -108,6 +112,8 @@ public class Tile : MonoBehaviour
                 myColor = new Color32(0, 0, 0, 255);
                 break;
         }
+        if (isQuestioned)
+            myColor = Color.black;
 
         if (isRevealed)
         {
@@ -186,6 +192,7 @@ public class Tile : MonoBehaviour
         if (!isRevealed && !isFlagged && !isDisplay && !GetComponentInParent<Group>().isHeld)
         {
             isRevealed = true;
+            isQuestioned = false;
             //gm.RevealTile(coordX, coordY, nearbyMines, isMine);            
 
             if (isMine)
@@ -231,6 +238,7 @@ public class Tile : MonoBehaviour
         }
     }
 
+    // When this mine has no adjacent mines, all adjacent tiles should be revealed.
     void ZeroCascade()
     {
         if (nearbyMines == 0 && !isMine && isRevealed)
@@ -243,15 +251,36 @@ public class Tile : MonoBehaviour
         }
     }
 
+    // When an uncovered square with a number has exactly the correct number of adjacent squares flagged, performing a click on it will uncover all unmarked squares.
+    public void Chord()
+    {
+        Debug.Log("Attempting Chord...");
+        if (isRevealed && nearbyFlags == nearbyMines && !isMine)
+        {
+            Debug.Log("Chording!");
+            foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
+            {
+                if (!t.isFlagged)
+                    t.Reveal();
+            }
+        }
+        else
+            Debug.Log("Chord Failed.");
+    }
+
     void DetectProximity()
     {
         int nearbyMinesTemp = 0;
+        int nearbyFlagsTemp = 0;
         foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
         {
             if (t.isMine)
                 nearbyMinesTemp += 1;
+            if (t.isFlagged)
+                nearbyFlagsTemp += 1;
         }
         nearbyMines = nearbyMinesTemp;
+        nearbyFlags = nearbyFlagsTemp;
         if (nearbyMines == 0)
             ZeroCascade();
         

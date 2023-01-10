@@ -6,8 +6,10 @@ using UnityEngine.EventSystems;
 
 public class TileButton : MonoBehaviour, IPointerClickHandler
 {
+    Tile tile;
     void Update()
     {
+        tile = GetComponentInParent<Tile>();
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
@@ -18,11 +20,20 @@ public class TileButton : MonoBehaviour, IPointerClickHandler
 
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            GetComponentInParent<Tile>().Reveal();            
+            tile.Reveal();
+            if (Input.GetMouseButton(1))
+                tile.Chord();
         }            
-        else if (eventData.button == PointerEventData.InputButton.Middle)
-            GetComponentInParent<Tile>().QuestionToggle();
-        else if (eventData.button == PointerEventData.InputButton.Right)
-            GetComponentInParent<Tile>().FlagToggle();
+        if (eventData.button == PointerEventData.InputButton.Middle)
+        {
+            tile.QuestionToggle();
+            tile.Chord();
+        }
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            tile.FlagToggle();
+            if (Input.GetMouseButton(0))
+                tile.Chord();
+        }
     }
 }

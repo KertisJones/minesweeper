@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
         leftBorderTiles[Random.Range(0, 10)].GetComponentInChildren<Tile>().isMine = true;
         rightBorderTiles[Random.Range(0, 10)].GetComponentInChildren<Tile>().isMine = true;
 
-        // Prevent any 0-Cascade tiles from spawning at index 10-18
+        // Prevent most 0-Cascade tiles from spawning at index 10-18
         for (int i = 9+Random.Range(0, 3); i < sizeY - 5; i+=Random.Range(1, 4))
         {
             if (i < sizeY - 4)
