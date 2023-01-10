@@ -21,6 +21,8 @@ public class Group : MonoBehaviour
     public bool isFalling = true;
 
     public Transform pivot;
+    public Vector3 pivotStaticBackup = new Vector3();
+
 
     public AudioClip moveSound;
     public AudioClip downSound;
@@ -257,7 +259,11 @@ public class Group : MonoBehaviour
 
     void Rotate (int dir = -1)
     {
-        transform.RotateAround(transform.TransformPoint(pivot.localPosition), new Vector3(0, 0, 1), 90 * dir);
+        Vector3 localPivot = pivotStaticBackup;
+        if (pivot != null)
+            localPivot = pivot.localPosition;
+        
+        transform.RotateAround(transform.TransformPoint(localPivot), new Vector3(0, 0, 1), 90 * dir);
 
         // See if valid
         if (isValidGridPos())
@@ -285,7 +291,7 @@ public class Group : MonoBehaviour
             if (valid)
                 return;
             //Can't find a valid position
-            transform.RotateAround(transform.TransformPoint(pivot.localPosition), new Vector3(0, 0, 1), 90 * dir * -1);
+            transform.RotateAround(transform.TransformPoint(localPivot), new Vector3(0, 0, 1), 90 * dir * -1);
             Debug.Log("Rotation Wall Kicks failed");
         }
     }
