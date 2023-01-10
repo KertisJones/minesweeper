@@ -15,7 +15,8 @@ public class DisplayText : MonoBehaviour
         minesTotal,
         flagsTotal,
         time, 
-        bestScore
+        bestScore, 
+        linesCleared
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
@@ -56,7 +57,11 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.time)
         {
-            this.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.time;
+            float time = gm.GetTime();
+            int seconds = ((int)time % 60);
+            int minutes = ((int) time / 60);
+
+            this.GetComponent<TextMeshProUGUI>().text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
         }
         else if (displayType == TextType.bestScore)
         {
@@ -64,6 +69,10 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TextMeshProUGUI>().text = "Hi: " + sk.bestScore.ToString("#,#");
             else
                 this.GetComponent<TextMeshProUGUI>().text = "Hi: " + sk.bestScore;
+        }
+        else if (displayType == TextType.linesCleared)
+        {
+            this.GetComponent<TextMeshProUGUI>().text = "Lines: " + gm.linesCleared;
         }
     }
 }

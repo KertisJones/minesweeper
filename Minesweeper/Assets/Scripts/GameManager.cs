@@ -6,7 +6,9 @@ using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
+    float startTime;
     public int score = 0;
+    public int linesCleared = 0;
     public int currentMines = 0;
     public int currentFlags = 0;
     public static int sizeX = 10;
@@ -56,6 +58,7 @@ public class GameManager : MonoBehaviour
 
         BuildGameBoard();
         AudioListener.volume = audioVolume;
+        startTime = Time.time;
         //PopulateMines();
     }
 
@@ -492,6 +495,7 @@ public class GameManager : MonoBehaviour
                 if (isRowSolved(y))
                 {
                     gm.score += scoreSolvedRow(y);
+                    gm.linesCleared++;
                     deleteRow(y);
                     decreaseRowsAbove(y + 1);
                     --y;
@@ -533,6 +537,11 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(ReloadScene());
         
+    }
+
+    public float GetTime()
+    {
+        return Time.time - startTime;
     }
 
     IEnumerator ReloadScene()

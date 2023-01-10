@@ -168,20 +168,32 @@ public class Group : MonoBehaviour
             Move(1);
 
         // Rotate
-        else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
-        {
-            Rotate();
-        }
+        else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.UpArrow)) // Rotate Clockwise
+            Rotate(-1);
+        else if (Input.GetKeyDown(KeyCode.Q)) // Rotate Counterclockwise
+            Rotate(1);
         
         if (gm.isPaused)
             return;
 
         // Move Downwards and Fall
+        // Hard Drop
+        else if (Input.GetKeyDown(KeyCode.W) && !isHeld && lastFall > 0)
+        {
+            while (isFalling)
+            {
+                gm.score +=2;
+                Fall();
+            }
+        }
+        // Soft Drop
         bool fallInput = (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S);
         if (fallInput)
         {
-            gm.score +=1;
-        }        
+            if (isFalling)
+                gm.score +=1;
+        }
+        // Basic Fall
         if (Time.time - lastFall >= fallSpeed || fallInput)
         {
             Fall();
