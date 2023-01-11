@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     float startTime;
     public int score = 0;
     public int linesCleared = 0;
+    public int linesClearedTetrisweeps = 0;
     public int currentMines = 0;
     public int currentFlags = 0;
     public static int sizeX = 10;
@@ -357,17 +358,32 @@ public class GameManager : MonoBehaviour
 
     public static void decreaseRow(int y)
     {
+        Group activeTetrominoInRow = null;
         for (int x = 0; x < sizeX; ++x)
         {
             if (gameBoard[x][y] != null)
             {
-                // Move one towards bottom
-                gameBoard[x][y - 1] = gameBoard[x][y];
-                gameBoard[x][y] = null;
+                if (gameBoard[x][y].GetComponentInParent<Group>().isFalling) // Active tetromino should not be moved directly, or it will cause a rotation error
+                {
+                    activeTetrominoInRow = gameBoard[x][y].GetComponentInParent<Group>();
+                }
+                else // All static tiles should be moved down
+                {
+                    // Move one towards bottom
+                    gameBoard[x][y - 1] = gameBoard[x][y];
+                    gameBoard[x][y] = null;
 
-                // Update Block position
-                gameBoard[x][y - 1].GetComponent<Tile>().coordY -= 1;
+                    // Update Block position
+                    gameBoard[x][y - 1].GetComponent<Tile>().coordY -= 1;
+                }                
             }
+        }
+
+        if (activeTetrominoInRow != null) // Move the active tetromino after the rest of the row has finished
+        {
+            // The active tetromino should not change position, unless it needs to fall in order for blocks above it to have a place to land
+            activeTetrominoInRow.WallKickMove(0, 1); // Attempt to move the tetromino up. This will do nothing if the space is blocked
+            activeTetrominoInRow.Fall(); // Move the tetromino down. This will put it back in the same place if it was moved up, otherwise it will get the tetromino out of the way
         }
     }
 

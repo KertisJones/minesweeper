@@ -90,7 +90,7 @@ public class Group : MonoBehaviour
         }
     }
 
-    bool isValidGridPos()
+    public bool isValidGridPos()
     {
         if (isHeld)
             return true;
@@ -151,6 +151,8 @@ public class Group : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (this.transform.childCount == 0)
+            Destroy(this.gameObject);
         if (gm.isGameOver)
             return;
         //if (gm.isPaused)
@@ -159,18 +161,20 @@ public class Group : MonoBehaviour
             return;
         if (isHeld)
             return;
+        if (!isFalling)
+            return;
         
         // Move Left
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || (Input.GetAxis("Horizontal") == -1 && Time.time - lastMove >= fallSpeed / 10))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Keypad4) || (Input.GetAxis("Horizontal") == -1 && Time.time - lastMove >= fallSpeed / 10))
             Move(-1);
         // Move Right
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) || (Input.GetAxis("Horizontal") == 1 && Time.time - lastMove >= fallSpeed / 10))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Keypad6) || (Input.GetAxis("Horizontal") == 1 && Time.time - lastMove >= fallSpeed / 10))
             Move(1);
 
         // Rotate
-        else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.UpArrow)) // Rotate Clockwise
+        else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Keypad9)) // Rotate Clockwise
             Rotate(-1);
-        else if (Input.GetKeyDown(KeyCode.Q)) // Rotate Counterclockwise
+        else if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Keypad7)) // Rotate Counterclockwise
             Rotate(1);
         
         if (gm.isPaused)
@@ -178,7 +182,7 @@ public class Group : MonoBehaviour
 
         // Move Downwards and Fall
         // Hard Drop
-        else if (Input.GetKeyDown(KeyCode.W) && !isHeld && lastFall > 0)
+        else if ((Input.GetKeyDown(KeyCode.Space)  || Input.GetKeyDown(KeyCode.Keypad8)) && lastFall > 0)
         {
             while (isFalling)
             {
@@ -187,7 +191,7 @@ public class Group : MonoBehaviour
             }
         }
         // Soft Drop
-        bool fallInput = (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S);
+        bool fallInput = (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Keypad2);
         if (fallInput)
         {
             if (isFalling)
@@ -200,7 +204,7 @@ public class Group : MonoBehaviour
         }
     }
 
-    void Fall ()
+    public void Fall()
     {
         // Modify position
         transform.position += new Vector3(0, -1, 0);
@@ -261,9 +265,6 @@ public class Group : MonoBehaviour
                 // Clear filled horizontal lines
                 GameManager.deleteFullRows();
             }
-
-            // Disable script
-            enabled = false;
         }
 
         lastFall = Time.time;
@@ -308,9 +309,9 @@ public class Group : MonoBehaviour
         }
     }
 
-    bool WallKickMove(float dir) // -1 is Left, 1 is Right
+    public bool WallKickMove(float dirH, float dirV = 0) // -1 is Left, 1 is Right
     {
-        transform.position += new Vector3(dir, 0, 0);
+        transform.position += new Vector3(dirH, dirV, 0);
         if (isValidGridPos())
         {
             // It's valid. Update grid.
@@ -319,13 +320,13 @@ public class Group : MonoBehaviour
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0));
 
-            Debug.Log("Rotation Wall Kick " + dir);
+            Debug.Log("Rotation Wall Kick (" + dirH + ", " + dirV + ")");
             return true;
         }
         else
         {
             // It's not valid. Revert back to center and revert rotation.
-            transform.position += new Vector3(dir * -1, 0, 0);
+            transform.position += new Vector3(dirH * -1, dirV * -1, 0);
             return false;
         }
     }

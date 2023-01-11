@@ -160,7 +160,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: f37e85b0f489f1cc22b6127acc6e9d30
+      Hash: e41675bdde92e39c53b0e84221cabae2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Group
@@ -274,7 +274,7 @@ ScriptsOnlyBuild:
     className: ForceAspectRatio
   - hash:
       serializedVersion: 2
-      Hash: e1262d116418446a601355c824d7371b
+      Hash: 7bfa0cf8439679684f86b2896c38643c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Tile
@@ -382,7 +382,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: b140c225211c17a60a4db85428ded27e
+      Hash: 594626594209f57d8d0a7c7a54438f15
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -684,4 +684,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Main.unity
   playerPath: C:/Users/KertisJones/Documents/Programming Stuff/Unity/Tetrisweeper/Build
-    1.1.1/Tetrisweeper.exe
+    1.2/Tetrisweeper.exe
