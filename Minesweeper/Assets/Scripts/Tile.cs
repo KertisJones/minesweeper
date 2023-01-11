@@ -161,7 +161,7 @@ public class Tile : MonoBehaviour
         else
         {
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0));
+            AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0), 0.5f);
 
             gm.currentFlags -= 1;
         }
@@ -183,7 +183,7 @@ public class Tile : MonoBehaviour
         else
         {
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0));
+            AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0), 0.75f);
         }
     }
 
@@ -204,13 +204,11 @@ public class Tile : MonoBehaviour
             else if (gm == null) // Error catching, can sometimes happen when the scene loads
             {
                 Debug.LogWarning("Game Manager can't be found, I'll assume it's a new game");
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0));
             }
             else if (gm.isGameOver == false)
             {
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0));
+                AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0), 0.75f);
 
                 // Scoring
                 if (!GetComponentInParent<Group>().isDisplay)

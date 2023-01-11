@@ -301,7 +301,7 @@ public class Group : MonoBehaviour
             UpdateGrid();
 
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0));
+            AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f);
         }
         else
         {
@@ -334,7 +334,7 @@ public class Group : MonoBehaviour
             UpdateGrid();
 
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0));
+            AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f);
 
             Debug.Log("Rotation Wall Kick (" + dirH + ", " + dirV + ")");
             return true;

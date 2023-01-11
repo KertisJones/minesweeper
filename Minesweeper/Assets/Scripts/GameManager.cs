@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Dynamic;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -447,6 +448,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().SetScoreMultiplier(1, 2f);
+        
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().currentMines -= minesFlagged;
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().currentFlags -= minesFlagged;
         return rowScore;
@@ -529,7 +532,7 @@ public class GameManager : MonoBehaviour
                     --y;
 
                     gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                    AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0));
+                    AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f);
 
                     GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
                 }
