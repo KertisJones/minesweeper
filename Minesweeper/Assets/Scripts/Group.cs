@@ -19,6 +19,8 @@ public class Group : MonoBehaviour
     public bool isBonus = false;
     public bool isHeld = false;
     public bool isFalling = true;
+    [HideInInspector]
+    public int rowsFilled = 0;
 
     public Transform pivot;
     public Vector3 pivotStaticBackup = new Vector3();
@@ -152,7 +154,16 @@ public class Group : MonoBehaviour
     void Update()
     {
         if (this.transform.childCount == 0)
+        {
+            // Detect if TETRISWEEP was achieved (4-row Tetris was solved with minesweeper before the next piece locks)
+            if (rowsFilled == 4 && gm.previousTetromino == this.gameObject)
+            {
+                gm.tetrisweepsCleared += 1;
+                gm.score += 5950; // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
+            }
+            // Clean up
             Destroy(this.gameObject);
+        }
         if (gm.isGameOver)
             return;
         //if (gm.isPaused)
@@ -240,8 +251,11 @@ public class Group : MonoBehaviour
             // Allow the tetromino to be scored
             isFalling = false;
 
+            // Set this as the previous tetromino
+            gm.previousTetromino = this.gameObject;
+
             // Score filled horizontal lines
-            int rowsFilled = GameManager.scoreFullRows(this.transform);
+            rowsFilled = GameManager.scoreFullRows(this.transform);
 
             // Failsafe in case block is off screen
             foreach (Transform child in transform)

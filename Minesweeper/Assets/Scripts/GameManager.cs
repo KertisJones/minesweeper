@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     float startTime;
     public int score = 0;
     public int linesCleared = 0;
-    public int linesClearedTetrisweeps = 0;
+    public int tetrisweepsCleared = 0;    
     public int currentMines = 0;
     public int currentFlags = 0;
     public static int sizeX = 10;
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     GameObject[] rightBorderTiles;
     public static GameObject[][] leftOuterBoard;
     public static GameObject[][] rightOuterBoard;
-
+    public GameObject previousTetromino = null;
 
     public bool isGameOver = false;
     public bool isPaused = false;
@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().runs += 1;
         /*blankTile = Instantiate(new GameObject(), new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;        
         blankTile.AddComponent<Tile>();
         blankTile.GetComponent<Tile>().isDisplay = true;
@@ -503,7 +504,7 @@ public class GameManager : MonoBehaviour
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (gm.isGameOver)
             return;
-
+        
         for (int y = 0; y < sizeY; ++y)
         {
             if (isRowFull(y))
@@ -553,6 +554,16 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(ReloadScene());
         
+    }
+
+    public float GetScore()
+    {
+        return score;
+    }
+
+    public void AddScore(int newScore) 
+    {
+        score += newScore;
     }
 
     public float GetTime()

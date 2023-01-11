@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScoreKeeper : MonoBehaviour
 {
     public int bestScore;
+    public int runs;
     GameManager gm;
     // Start is called before the first frame update
     void Awake()

@@ -8,6 +8,11 @@ public class DisplayText : MonoBehaviour
     GameManager gm;
     ScoreKeeper sk;
 
+    float timer = 0.0f;
+    int colorIndex = 0;
+    private Color startColor = Color.red;
+
+
     public enum TextType // your custom enumeration
     {
         score, 
@@ -16,7 +21,8 @@ public class DisplayText : MonoBehaviour
         flagsTotal,
         time, 
         bestScore, 
-        linesCleared
+        linesCleared,
+        tetrisweepsCleard
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
@@ -69,10 +75,24 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TextMeshProUGUI>().text = "Hi: " + sk.bestScore.ToString("#,#");
             else
                 this.GetComponent<TextMeshProUGUI>().text = "Hi: " + sk.bestScore;
+            
+            if (sk.bestScore <= gm.score && sk.runs > 1 && sk.bestScore > 0)
+                this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
         }
         else if (displayType == TextType.linesCleared)
         {
             this.GetComponent<TextMeshProUGUI>().text = "Lines: " + gm.linesCleared;
+        }
+        else if (displayType == TextType.tetrisweepsCleard)
+        {
+            if (gm.tetrisweepsCleared == 0)
+                this.GetComponent<TextMeshProUGUI>().text = "";
+            else
+            {
+                this.GetComponent<TextMeshProUGUI>().text = "Tetrisweeps: " + gm.tetrisweepsCleared;
+                this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
+                this.GetComponent<VertexColorCyclerGradient>().enabled = true;
+            }
         }
     }
 }
