@@ -216,7 +216,7 @@ public class Tile : MonoBehaviour
                 if (!GetComponentInParent<Group>().isDisplay)
                 {
                     // Each revealed tile is equal to 1 point.
-                    gm.score += 5;
+                    gm.AddScore(5);
                 }
             }
 

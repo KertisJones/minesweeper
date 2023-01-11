@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreKeeper : MonoBehaviour
 {
-    public int bestScore;
+    public float bestScore;
     public int runs;
     GameManager gm;
     // Start is called before the first frame update
@@ -26,7 +26,7 @@ public class ScoreKeeper : MonoBehaviour
     {
         if (gm == null)
             gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        if (gm.score > bestScore)
-            bestScore = gm.score;
+        if (gm.GetScore() > bestScore)
+            bestScore = gm.GetScore();
     }
 }

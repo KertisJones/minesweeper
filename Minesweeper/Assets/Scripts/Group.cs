@@ -159,7 +159,8 @@ public class Group : MonoBehaviour
             if (rowsFilled == 4 && gm.previousTetromino == this.gameObject)
             {
                 gm.tetrisweepsCleared += 1;
-                gm.score += 5950; // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
+                gm.AddScore(595); // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
+                gm.SetScoreMultiplier(rowsFilled, 30);
             }
             // Clean up
             Destroy(this.gameObject);
@@ -195,18 +196,19 @@ public class Group : MonoBehaviour
         // Hard Drop
         else if ((Input.GetKeyDown(KeyCode.Space)  || Input.GetKeyDown(KeyCode.Keypad8)) && lastFall > 0)
         {
+            gm.SetScoreMultiplier(0.25f, 2f);
             while (isFalling)
             {
-                gm.score +=2;
+                gm.AddScore(2);
                 Fall();
-            }
+            }            
         }
         // Soft Drop
         bool fallInput = (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Keypad2);
         if (fallInput)
         {
             if (isFalling)
-                gm.score +=1;
+                gm.AddScore(1);
         }
         // Basic Fall
         if (Time.time - lastFall >= fallSpeed || fallInput)

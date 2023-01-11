@@ -7,9 +7,11 @@ using UnityEngine.Audio;
 public class GameManager : MonoBehaviour
 {
     float startTime;
-    public int score = 0;
+    private float score = 0;
+    public float scoreMultiplier = 0;
+    public float scoreMultiplierTimer = 0;
     public int linesCleared = 0;
-    public int tetrisweepsCleared = 0;    
+    public int tetrisweepsCleared = 0;
     public int currentMines = 0;
     public int currentFlags = 0;
     public static int sizeX = 10;
@@ -67,6 +69,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        scoreMultiplierTimer -= Time.deltaTime;
+        if (scoreMultiplierTimer <= 0)
+            scoreMultiplier = 0;
+        
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SetScoreMultiplier(4f, 30);
+        }
+        
         if (Input.GetKeyDown("escape"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -472,19 +483,19 @@ public class GameManager : MonoBehaviour
             switch (fullRows) {
                 case 1:
                     clipToPlay = gm.lineFullSound1;
-                    gm.score += 40;
+                    gm.AddScore(40);
                     break;
                 case 2:
                     clipToPlay = gm.lineFullSound2;
-                    gm.score += 100;
+                    gm.AddScore(100);
                     break;
                 case 3:
                     clipToPlay = gm.lineFullSound3;
-                    gm.score += 300;
+                    gm.AddScore(300);
                     break;
                 default:
                     clipToPlay = gm.lineFullSound4;
-                    gm.score += 1200;
+                    gm.AddScore(1200);
                     break;
             }
 
@@ -511,7 +522,7 @@ public class GameManager : MonoBehaviour
             {
                 if (isRowSolved(y))
                 {
-                    gm.score += scoreSolvedRow(y);
+                    gm.AddScore(scoreSolvedRow(y));
                     gm.linesCleared++;
                     deleteRow(y);
                     decreaseRowsAbove(y + 1);
@@ -563,12 +574,26 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int newScore) 
     {
-        score += newScore;
+        if (scoreMultiplier > 1)
+            score += newScore * scoreMultiplier;
+        else
+            score += newScore;
+    }
+
+    public void SetScoreMultiplier (float mult, float duration) {
+        scoreMultiplier = scoreMultiplier + mult;
+        if (duration > scoreMultiplierTimer)
+            scoreMultiplierTimer = duration;
     }
 
     public float GetTime()
     {
         return Time.time - startTime;
+    }
+    IEnumerator ResetScoreMultiplier(float mult, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        scoreMultiplier = scoreMultiplier / mult;
     }
 
     IEnumerator ReloadScene()

@@ -22,7 +22,8 @@ public class DisplayText : MonoBehaviour
         time, 
         bestScore, 
         linesCleared,
-        tetrisweepsCleard
+        tetrisweepsCleard,
+        scoreMultiplier
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
@@ -38,19 +39,45 @@ public class DisplayText : MonoBehaviour
     {
         if (displayType == TextType.score)
         {
-            if (gm.score > 0)
-                this.GetComponent<TextMeshProUGUI>().text = "Score: " + gm.score.ToString("#,#");
+            if (gm.GetScore() > 0)
+                this.GetComponent<TextMeshProUGUI>().text = gm.GetScore().ToString("#,#");
             else
-                this.GetComponent<TextMeshProUGUI>().text = "Score: " + gm.score;
+                this.GetComponent<TextMeshProUGUI>().text = gm.GetScore().ToString();
+        }
+        else if (displayType == TextType.scoreMultiplier)
+        {
+            string suffix = "";
+            if (gm.scoreMultiplierTimer > 25)
+                suffix = "!!!!!";
+            else if (gm.scoreMultiplierTimer > 20)
+                suffix = "!!!!";
+            else if (gm.scoreMultiplierTimer > 15)
+                suffix = "!!!";
+            else if (gm.scoreMultiplierTimer > 10)
+                suffix = "!!";
+            else if (gm.scoreMultiplierTimer > 5)
+                suffix = "!";
+            else if (gm.scoreMultiplierTimer <= 1)
+                suffix = "...";
+            else if (gm.scoreMultiplierTimer <= 2)
+                suffix = "..";
+            else if (gm.scoreMultiplierTimer <= 3)
+                suffix = "."; 
+            
+            
+            if (gm.scoreMultiplier > 1)
+                this.GetComponent<TextMeshProUGUI>().text = "x" + gm.scoreMultiplier + suffix;
+            else
+                this.GetComponent<TextMeshProUGUI>().text = "";
         }
         else if (displayType == TextType.minesMissing)
         {
             int currentMines = gm.currentMines;
             int currentFlags = gm.currentFlags;
             int unknownMines = currentMines - currentFlags;
-            string suffix = "";
+            string suffix = " *";
             if (unknownMines < 0)
-                suffix = "?";
+                suffix = "? *";
             this.GetComponent<TextMeshProUGUI>().text = "Mines: " + unknownMines + suffix;
         }
         else if (displayType == TextType.minesTotal)
@@ -72,11 +99,11 @@ public class DisplayText : MonoBehaviour
         else if (displayType == TextType.bestScore)
         {
             if (sk.bestScore > 0)
-                this.GetComponent<TextMeshProUGUI>().text = "Hi: " + sk.bestScore.ToString("#,#");
+                this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString("#,#");
             else
-                this.GetComponent<TextMeshProUGUI>().text = "Hi: " + sk.bestScore;
+                this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString();
             
-            if (sk.bestScore <= gm.score && sk.runs > 1 && sk.bestScore > 0)
+            if (sk.bestScore <= gm.GetScore() && sk.runs > 1 && sk.bestScore > 0)
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
         }
         else if (displayType == TextType.linesCleared)
