@@ -52,6 +52,9 @@ public class Group : MonoBehaviour
 
     public void LayMines()
     {
+        if (isDisplay && transform.position.y >= 20)
+            return;
+        
         if (!isBonus)
         {
             // Populate random mines in children

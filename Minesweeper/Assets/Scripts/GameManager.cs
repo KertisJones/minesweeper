@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     //private bool minesPlaced = false;
 
     public static GameObject[][] gameBoard;
-    GameObject[] leftBorderTiles;
-    GameObject[] rightBorderTiles;
+    List<GameObject> leftBorderTiles;
+    List<GameObject> rightBorderTiles;
     public static GameObject[][] leftOuterBoard;
     public static GameObject[][] rightOuterBoard;
     public GameObject previousTetromino = null;
@@ -47,8 +47,6 @@ public class GameManager : MonoBehaviour
 
     [Range(0.0f, 1.0f)]
     public float audioVolume = 0.5f; 
-
-
 
     #region Game Setup
     // Start is called before the first frame update
@@ -113,8 +111,8 @@ public class GameManager : MonoBehaviour
         }
 
         // Left and Right Tiles
-        leftBorderTiles = new GameObject[sizeY];
-        rightBorderTiles = new GameObject[sizeY];
+        leftBorderTiles = new List<GameObject>();
+        rightBorderTiles = new List<GameObject>();
         for (int i = 0; i < sizeY; i++)
         {
             //place display tile on left side
@@ -124,7 +122,7 @@ public class GameManager : MonoBehaviour
             newTile.GetComponentInChildren<Tile>().coordY = i;
             newTile.GetComponent<Group>().isDisplay = true;            
             newTile.GetComponent<Group>().minePercent = 10;
-            leftBorderTiles[i] = newTile;
+            leftBorderTiles.Add(newTile);
 
             //place display tile on right side
             newTile = Instantiate(tileGroup, new Vector3(sizeX, i, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
@@ -133,7 +131,7 @@ public class GameManager : MonoBehaviour
             newTile.GetComponentInChildren<Tile>().coordY = i;
             newTile.GetComponent<Group>().isDisplay = true;            
             newTile.GetComponent<Group>().minePercent = 10;
-            rightBorderTiles[i] = newTile;
+            rightBorderTiles.Add(newTile);
         }
 
         // Place bombs Left and Right Tiles
@@ -385,20 +383,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Tetrisweeper Solved Logic
-    public static bool isRowSolved(int y)
-    {
-        bool isSolved = true;
-        for (int x = 0; x < sizeX; ++x)
-            if (gameBoard[x][y] != null)
-            {
-                if (!(gameBoard[x][y].GetComponent<Tile>().isRevealed && !gameBoard[x][y].GetComponent<Tile>().isMine)
-                    && !(!gameBoard[x][y].GetComponent<Tile>().isRevealed && gameBoard[x][y].GetComponent<Tile>().isMine && gameBoard[x][y].GetComponent<Tile>().isFlagged))
-                    isSolved = false;
-            }
-        return isSolved;
-    }
-
-
     public static void deleteFullRows()
     {
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
@@ -425,7 +409,62 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public static bool isRowSolved(int y)
+    {
+        bool isSolved = true;
+        for (int x = 0; x < sizeX; ++x)
+            if (gameBoard[x][y] != null)
+            {
+                if (!(gameBoard[x][y].GetComponent<Tile>().isRevealed && !gameBoard[x][y].GetComponent<Tile>().isMine)
+                    && !(!gameBoard[x][y].GetComponent<Tile>().isRevealed && gameBoard[x][y].GetComponent<Tile>().isMine && gameBoard[x][y].GetComponent<Tile>().isFlagged))
+                    isSolved = false;
+            }
+        return isSolved;
+    }
+
+    public void AddSafeTileToEdges() {
+        // Left and Right Tiles
+        //leftBorderTiles = new GameObject[sizeY];
+        //rightBorderTiles = new GameObject[sizeY];
+        for (int i = 0; i < sizeY-4; i++)
+        {
+            //place display tile on left side
+            GameObject newTile = Instantiate(tileGroup, new Vector3(-1, i, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+            newTile.name = "Tile Group (" + -1 + ", " + i + ")";
+            newTile.GetComponentInChildren<Tile>().coordX = -1;
+            newTile.GetComponentInChildren<Tile>().coordY = i;
+            newTile.GetComponent<Group>().isDisplay = true;            
+            newTile.GetComponent<Group>().minePercent = 10;
+            leftBorderTiles[i] = newTile;
+
+            //place display tile on right side
+            newTile = Instantiate(tileGroup, new Vector3(sizeX, i, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+            newTile.name = "Tile Group (" + sizeX + ", " + i + ")";
+            newTile.GetComponentInChildren<Tile>().coordX = sizeX;
+            newTile.GetComponentInChildren<Tile>().coordY = i;
+            newTile.GetComponent<Group>().isDisplay = true;            
+            newTile.GetComponent<Group>().minePercent = 10;
+            rightBorderTiles[i] = newTile;
+        }
+        List<GameObject> test = new List<GameObject>();
+        //test.
+
+        /*for (int x = 0; x < sizeX; ++x)
+        {
+            if (gameBoard[x][y] != null)
+            {
+                // Move one towards bottom
+                    gameBoard[x][y - 1] = gameBoard[x][y];
+                    gameBoard[x][y] = null;
+
+                    // Update Block position
+                    gameBoard[x][y - 1].GetComponent<Tile>().coordY -= 1;             
+            }
+        }*/
+    }
     #endregion
+    #region Gamestate Logic
     public void EndGame()
     {
         if (cheatGodMode)
@@ -455,6 +494,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ReloadScene());        
     }
 
+    IEnumerator ReloadScene()
+    {
+        yield return new WaitForSeconds(2.9f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    #endregion
     #region Scoring
     public void AddScore(int newScore) 
     {
@@ -470,10 +515,12 @@ public class GameManager : MonoBehaviour
             scoreMultiplierTimer = duration;
     }
 
-        public static int scoreSolvedRow(int y)
+    public static int scoreSolvedRow(int y)
     {
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         int rowScore = 0;
         int minesFlagged = 0;
+        bool containsPreviousTetromino = false;
         for (int x = 0; x < sizeX; ++x)
         {
             if (gameBoard[x][y] != null)
@@ -487,12 +534,19 @@ public class GameManager : MonoBehaviour
                 {
                     rowScore += gameBoard[x][y].GetComponent<Tile>().nearbyMines;
                 }
+                if (gameBoard[x][y].GetComponentInParent<Group>().gameObject == gm.previousTetromino)
+                    containsPreviousTetromino = true;
             }
         }
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().SetScoreMultiplier(1, 2f);
+        gm.SetScoreMultiplier(0.5f, 2f);
+        // Linesweep: Row was solved before the next tetromino was placed
+        if (containsPreviousTetromino)
+        {
+            gm.SetScoreMultiplier(1f, 2f);
+        }        
         
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().currentMines -= minesFlagged;
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().currentFlags -= minesFlagged;
+        gm.currentMines -= minesFlagged;
+        gm.currentFlags -= minesFlagged;
         return rowScore;
     }
 
@@ -502,7 +556,7 @@ public class GameManager : MonoBehaviour
         if (gm.isGameOver)
             return 0;
 
-        HashSet<int> rowsToCheck = new HashSet<int>(); 
+        HashSet<int> rowsToCheck = new HashSet<int>();
 
         foreach (Transform child in tetronimo.transform)
         {
@@ -568,11 +622,6 @@ public class GameManager : MonoBehaviour
     {
         return new Vector2(Mathf.Round(v.x),
                            Mathf.Round(v.y));
-    }
-    IEnumerator ReloadScene()
-    {
-        yield return new WaitForSeconds(2.9f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     #endregion
 }
