@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     public int tetrisweepsCleared = 0;
     public int currentMines = 0;
     public int currentFlags = 0;
+    public int safeEdgeTilesGained = 0;
     public static int sizeX = 10;
     public static int sizeY = 24;
     public static int numMines = 5;
@@ -71,9 +73,12 @@ public class GameManager : MonoBehaviour
         if (scoreMultiplierTimer <= 0)
             scoreMultiplier = 0;
         
-        if (cheatGodMode && Input.GetKeyDown(KeyCode.L))
+        if (cheatGodMode)
         {
-            SetScoreMultiplier(4f, 30);
+            if (Input.GetKeyDown(KeyCode.L))
+                SetScoreMultiplier(4f, 30);
+            if (Input.GetKeyDown(KeyCode.K))
+                AddSafeTileToEdges();
         }
         
         if (Input.GetKeyDown("escape"))
@@ -425,43 +430,49 @@ public class GameManager : MonoBehaviour
 
     public void AddSafeTileToEdges() {
         // Left and Right Tiles
-        //leftBorderTiles = new GameObject[sizeY];
-        //rightBorderTiles = new GameObject[sizeY];
-        for (int i = 0; i < sizeY-4; i++)
+        GameObject topLeftTile = leftBorderTiles[leftBorderTiles.Count - 1];
+        GameObject topRightTile = rightBorderTiles[rightBorderTiles.Count - 1];
+        leftBorderTiles.RemoveAt(leftBorderTiles.Count - 1);
+        rightBorderTiles.RemoveAt(rightBorderTiles.Count - 1);
+        Destroy(topLeftTile);
+        Destroy(topRightTile);
+        for (int i = 0; i < leftBorderTiles.Count; i++)
         {
-            //place display tile on left side
-            GameObject newTile = Instantiate(tileGroup, new Vector3(-1, i, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-            newTile.name = "Tile Group (" + -1 + ", " + i + ")";
-            newTile.GetComponentInChildren<Tile>().coordX = -1;
-            newTile.GetComponentInChildren<Tile>().coordY = i;
-            newTile.GetComponent<Group>().isDisplay = true;            
-            newTile.GetComponent<Group>().minePercent = 10;
-            leftBorderTiles[i] = newTile;
+            leftBorderTiles[i].GetComponentInChildren<Tile>().coordY += 1;
+            rightBorderTiles[i].GetComponentInChildren<Tile>().coordY += 1;
 
-            //place display tile on right side
-            newTile = Instantiate(tileGroup, new Vector3(sizeX, i, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-            newTile.name = "Tile Group (" + sizeX + ", " + i + ")";
-            newTile.GetComponentInChildren<Tile>().coordX = sizeX;
-            newTile.GetComponentInChildren<Tile>().coordY = i;
-            newTile.GetComponent<Group>().isDisplay = true;            
-            newTile.GetComponent<Group>().minePercent = 10;
-            rightBorderTiles[i] = newTile;
-        }
-        List<GameObject> test = new List<GameObject>();
-        //test.
-
-        /*for (int x = 0; x < sizeX; ++x)
-        {
-            if (gameBoard[x][y] != null)
+            if (leftBorderTiles[i].GetComponentInChildren<Tile>().isMine && leftBorderTiles[i].GetComponentInChildren<Tile>().coordY >= sizeY - 4)
             {
-                // Move one towards bottom
-                    gameBoard[x][y - 1] = gameBoard[x][y];
-                    gameBoard[x][y] = null;
-
-                    // Update Block position
-                    gameBoard[x][y - 1].GetComponent<Tile>().coordY -= 1;             
+                currentMines--;
+                leftBorderTiles[i].GetComponentInChildren<Tile>().isMine = false;
             }
-        }*/
+            if (rightBorderTiles[i].GetComponentInChildren<Tile>().isMine && rightBorderTiles[i].GetComponentInChildren<Tile>().coordY >= sizeY - 4)
+            {
+                currentMines--;
+                rightBorderTiles[i].GetComponentInChildren<Tile>().isMine = false;
+            }
+        }
+        GameObject newTile = Instantiate(tile, new Vector3(-1, -100, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+        newTile.name = "Tile (" + -1 + ", " + 0 + ")";
+        newTile.GetComponentInChildren<Button>().interactable = false;
+        newTile.transform.position = new Vector3(-1, 0, 0);
+        newTile.GetComponent<Tile>().coordX = -1;
+        newTile.GetComponent<Tile>().coordY = 0;
+        newTile.GetComponent<Tile>().isRevealed = true;
+        newTile.GetComponent<Tile>().isDisplay = true;
+        leftBorderTiles.Insert(0, newTile); 
+
+        newTile = Instantiate(tile, new Vector3(10, -100, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+        newTile.name = "Tile (" + 10 + ", " + 0 + ")";
+        newTile.GetComponentInChildren<Button>().interactable = false;
+        newTile.transform.position = new Vector3(10, 0, 0);
+        newTile.GetComponent<Tile>().coordX = 10;
+        newTile.GetComponent<Tile>().coordY = 0;
+        newTile.GetComponent<Tile>().isRevealed = true;
+        newTile.GetComponent<Tile>().isDisplay = true;
+        rightBorderTiles.Insert(0, newTile); 
+
+        safeEdgeTilesGained++;
     }
     #endregion
     #region Gamestate Logic
@@ -543,6 +554,11 @@ public class GameManager : MonoBehaviour
         if (containsPreviousTetromino)
         {
             gm.SetScoreMultiplier(1f, 2f);
+            if (y > gm.safeEdgeTilesGained - 1)
+            {
+                Debug.Log("Linesweep " + y);
+                gm.AddSafeTileToEdges();
+            }
         }        
         
         gm.currentMines -= minesFlagged;

@@ -205,7 +205,7 @@ public class Tile : MonoBehaviour
             {
                 Debug.LogWarning("Game Manager can't be found, I'll assume it's a new game");
             }
-            else if (gm.isGameOver == false)
+            else if (!gm.isGameOver)
             {
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0), 0.75f);

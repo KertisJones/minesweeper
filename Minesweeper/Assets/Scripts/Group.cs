@@ -331,12 +331,12 @@ public class Group : MonoBehaviour
                     else if (!GameManager.gameBoard[coordX][i].transform.IsChildOf(transform))
                         i = -1;                                            
                 }
-                Debug.Log(fallDistance);
+                //Debug.Log(fallDistance);
                 if (minFallDistance > fallDistance)
                     minFallDistance = fallDistance;
             }
         }
-        Debug.Log("Final distance: " + maximumFallDistance);
+        //Debug.Log("Final distance: " + maximumFallDistance);
         maximumFallDistance = minFallDistance;
     }
 
