@@ -67,3 +67,4 @@ Minesweeper/Library/PlayerDataCache/
 Minesweeper/Library/webgl_cache/
 *.meta
 Minesweeper/Library/
+Minesweeper/obj/
