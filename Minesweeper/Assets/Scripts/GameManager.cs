@@ -50,8 +50,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    //private GameObject blankTile;
-
+    #region Game Setup
     // Start is called before the first frame update
     void Awake()
     {
@@ -163,34 +162,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /*void BuildMinesweeperOuterBoards()
-    {
-        int outerSize = 13;
-
-        leftOuterBoard = new GameObject[outerSize][];
-        rightOuterBoard = new GameObject[outerSize][];
-        for (int i = 0; i < outerSize; i++)
-        {
-            GameObject[] leftTileColumn = new GameObject[sizeY];
-            GameObject[] rightTileColumn = new GameObject[sizeY];
-
-            for (int j = -1; j < sizeY; j++)
-            {
-                
-                GameObject newTileLeft = Instantiate(tile, new Vector3(i, j, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-                newTileLeft.name = "Tile (" + i + ", " + j + ")";
-                newTileLeft.GetComponent<Tile>().coordX = i;
-                newTileLeft.GetComponent<Tile>().coordY = j;
-
-                leftTileColumn[j] = newTileLeft;
-            }
-
-            leftOuterBoard[i] = leftTileColumn;
-            rightOuterBoard[i] = rightTileColumn;
-        }
-    }*/
-
-        /*void BuildMinesweeperBoard()
+    /*void BuildMinesweeperBoard()
     {
         gameBoard = new GameObject[sizeX][];
         for (int i = 0; i < sizeX; i++)
@@ -255,7 +227,8 @@ public class GameManager : MonoBehaviour
         //if (!minesPlaced)
             //PopulateMines(x, y);
     //}
-
+    #endregion
+    #region Minesweeper Logic
     public ArrayList GetNeighborTiles(int x, int y)
     {
         ArrayList neighbors = new ArrayList();
@@ -344,13 +317,7 @@ public class GameManager : MonoBehaviour
         }
         //Debug.Log("Failed to find tile " + x + ", " + y);
         return null;
-    }
-
-    public static Vector2 roundVec2(Vector2 v)
-    {
-        return new Vector2(Mathf.Round(v.x),
-                           Mathf.Round(v.y));
-    }
+    }   
 
     public static bool insideBorder(Vector2 pos)
     {
@@ -359,7 +326,8 @@ public class GameManager : MonoBehaviour
                 (int)pos.y >= 0 &&
                 (int)pos.y < sizeY);
     }
-
+    #endregion
+    #region Tetris Logic
     public static void deleteRow(int y)
     {
         for (int x = 0; x < sizeX; ++x)
@@ -415,7 +383,8 @@ public class GameManager : MonoBehaviour
                 return false;
         return true;
     }
-
+    #endregion
+    #region Tetrisweeper Solved Logic
     public static bool isRowSolved(int y)
     {
         bool isSolved = true;
@@ -429,7 +398,79 @@ public class GameManager : MonoBehaviour
         return isSolved;
     }
 
-    public static int scoreSolvedRow(int y)
+
+    public static void deleteFullRows()
+    {
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        if (gm.isGameOver)
+            return;
+        
+        for (int y = 0; y < sizeY; ++y)
+        {
+            if (isRowFull(y))
+            {
+                if (isRowSolved(y))
+                {
+                    gm.AddScore(scoreSolvedRow(y));
+                    gm.linesCleared++;
+                    deleteRow(y);
+                    decreaseRowsAbove(y + 1);
+                    --y;
+
+                    gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                    AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f);
+
+                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+                }
+            }
+        }
+    }
+    #endregion
+    public void EndGame()
+    {
+        if (cheatGodMode)
+            return;
+        
+        isGameOver = true;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
+
+        // Reveal all tiles!
+        for (int i = -1; i <= sizeX; i++)
+        {
+            for (int j = -1; j < sizeY + 4; j++)
+            {
+                if (GetGameTile(i, j) != null)
+                {
+                    //GetGameTile(i, j).isFlagged = false;
+                    GetGameTile(i, j).Reveal();
+                }
+            }
+        }
+
+        GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>().Stop();
+
+        GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+        AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0), 0.1f);
+
+        StartCoroutine(ReloadScene());        
+    }
+
+    #region Scoring
+    public void AddScore(int newScore) 
+    {
+        if (scoreMultiplier > 1)
+            score += newScore * scoreMultiplier;
+        else
+            score += newScore;
+    }
+
+    public void SetScoreMultiplier (float mult, float duration) {
+        scoreMultiplier = scoreMultiplier + mult;
+        if (duration > scoreMultiplierTimer)
+            scoreMultiplierTimer = duration;
+    }
+
+        public static int scoreSolvedRow(int y)
     {
         int rowScore = 0;
         int minesFlagged = 0;
@@ -512,96 +553,26 @@ public class GameManager : MonoBehaviour
         }        
         return fullRows;
     }
-
-    public static void deleteFullRows()
+    #endregion
+    #region Helper Functions
+    public float GetTime()
     {
-        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        if (gm.isGameOver)
-            return;
-        
-        for (int y = 0; y < sizeY; ++y)
-        {
-            if (isRowFull(y))
-            {
-                if (isRowSolved(y))
-                {
-                    gm.AddScore(scoreSolvedRow(y));
-                    gm.linesCleared++;
-                    deleteRow(y);
-                    decreaseRowsAbove(y + 1);
-                    --y;
-
-                    gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                    AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f);
-
-                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
-                }
-            }
-        }
+        return Time.time - startTime;
     }
-
-    public void EndGame()
-    {
-        if (cheatGodMode)
-            return;
-        
-        isGameOver = true;
-        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
-
-        // Reveal all tiles!
-        for (int i = -1; i <= sizeX; i++)
-        {
-            for (int j = -1; j < sizeY + 4; j++)
-            {
-                if (GetGameTile(i, j) != null)
-                {
-                    //GetGameTile(i, j).isFlagged = false;
-                    GetGameTile(i, j).Reveal();
-                }
-            }
-        }
-
-        GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>().Stop();
-
-        GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-        AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0), 0.1f);
-
-        StartCoroutine(ReloadScene());
-        
-    }
-
     public float GetScore()
     {
         return score;
     }
 
-    public void AddScore(int newScore) 
+    public static Vector2 roundVec2(Vector2 v)
     {
-        if (scoreMultiplier > 1)
-            score += newScore * scoreMultiplier;
-        else
-            score += newScore;
+        return new Vector2(Mathf.Round(v.x),
+                           Mathf.Round(v.y));
     }
-
-    public void SetScoreMultiplier (float mult, float duration) {
-        scoreMultiplier = scoreMultiplier + mult;
-        if (duration > scoreMultiplierTimer)
-            scoreMultiplierTimer = duration;
-    }
-
-    public float GetTime()
-    {
-        return Time.time - startTime;
-    }
-    IEnumerator ResetScoreMultiplier(float mult, float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        scoreMultiplier = scoreMultiplier / mult;
-    }
-
     IEnumerator ReloadScene()
     {
         yield return new WaitForSeconds(2.9f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    #endregion
 }
