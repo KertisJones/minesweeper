@@ -21,6 +21,8 @@ public class Group : MonoBehaviour
     public bool isFalling = true;
     [HideInInspector]
     public int rowsFilled = 0;
+    [HideInInspector]
+    public int maximumFallDistance = 0;
 
     public Transform pivot;
     public Vector3 pivotStaticBackup = new Vector3();
@@ -121,6 +123,7 @@ public class Group : MonoBehaviour
     {
         UpdateGridRemove();
         UpdateGridAdd();
+        SetMaximumFallDistance();
     }
 
     public void UpdateGridRemove()
@@ -284,6 +287,54 @@ public class Group : MonoBehaviour
         }
 
         lastFall = Time.time;
+    }
+    public void SetMaximumFallDistance()
+    {
+        /*int fallDistance = 0;
+        while (isValidGridPos())
+        {
+            transform.position += new Vector3(0, -1, 0);
+            fallDistance++;
+        }
+        fallDistance--;
+        // Put the tetromino back into place
+        transform.position += new Vector3(0, fallDistance, 0);
+        maximumFallDistance = fallDistance;
+
+        for (int i = 0; i < GameManager.sizeX; i++)
+        {
+            for (int j = 0; j < GameManager.sizeY; j++)
+            {
+                GameManager.gameBoard[i][j] = null; // blankTile;
+            }
+        }*/
+
+        int minFallDistance = 100;
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.GetComponent<Tile>() != null)
+            {
+                int fallDistance = 0;
+                int coordX = child.gameObject.GetComponent<Tile>().coordX;
+                int coordY = child.gameObject.GetComponent<Tile>().coordY;
+                for (int i = coordY; i >= 0; i--)
+                {
+                    // Not inside Border?
+                    if (!GameManager.insideBorder(new Vector2(coordX, i)))
+                        return;
+                    // Block in grid cell (and not part of same group)?
+                    if (GameManager.gameBoard[coordX][i] == null)
+                        fallDistance++;
+                    else if (!GameManager.gameBoard[coordX][i].transform.IsChildOf(transform))
+                        i = -1;                                            
+                }
+                Debug.Log(fallDistance);
+                if (minFallDistance > fallDistance)
+                    minFallDistance = fallDistance;
+            }
+        }
+        Debug.Log("Final distance: " + maximumFallDistance);
+        maximumFallDistance = minFallDistance;
     }
 
     void Rotate (int dir = -1)

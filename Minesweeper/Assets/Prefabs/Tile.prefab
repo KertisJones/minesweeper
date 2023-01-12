@@ -1203,6 +1203,7 @@ MonoBehaviour:
   isRevealed: 0
   isDisplay: 0
   nearbyMines: 0
+  nearbyFlags: 0
   screenShakeDuration: 0.1
   screenShakeStrength: 0.1
   revealSound: {fileID: 8300000, guid: e1d070787e3eb164999bddf10246c1fe, type: 3}

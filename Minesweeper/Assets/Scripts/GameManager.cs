@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         if (scoreMultiplierTimer <= 0)
             scoreMultiplier = 0;
         
-        if (Input.GetKeyDown(KeyCode.L))
+        if (cheatGodMode && Input.GetKeyDown(KeyCode.L))
         {
             SetScoreMultiplier(4f, 30);
         }
