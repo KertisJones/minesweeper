@@ -151,24 +151,18 @@ public class GameManager : MonoBehaviour
         }
 
         // Place bombs Left and Right Tiles
-        // Max free space at bottom is 5
-        leftBorderTiles[Random.Range(0, 5)].GetComponentInChildren<Tile>().isMine = true;
-        rightBorderTiles[Random.Range(0, 5)].GetComponentInChildren<Tile>().isMine = true;
-        // One random mid-height bomb on each side
-        leftBorderTiles[Random.Range(5, 9)].GetComponentInChildren<Tile>().isMine = true;
-        rightBorderTiles[Random.Range(5, 9)].GetComponentInChildren<Tile>().isMine = true;
-        // One random bottom-half bomb on each side
-        leftBorderTiles[Random.Range(0, 10)].GetComponentInChildren<Tile>().isMine = true;
-        rightBorderTiles[Random.Range(0, 10)].GetComponentInChildren<Tile>().isMine = true;
+        // Place mine at bottom most space
+        leftBorderTiles[0].GetComponentInChildren<Tile>().isMine = true;
+        rightBorderTiles[0].GetComponentInChildren<Tile>().isMine = true;
 
         // Prevent most 0-Cascade tiles from spawning at index 10-18
-        for (int i = 9+Random.Range(0, 3); i < sizeY - 5; i+=Random.Range(1, 4))
+        for (int i = 2+Random.Range(0, 3); i < sizeY - 5; i+=Random.Range(1, 4))
         {
             if (i < sizeY - 4)
                 if (!leftBorderTiles[i-1].GetComponentInChildren<Tile>().isMine || !leftBorderTiles[i-2].GetComponentInChildren<Tile>().isMine)
                     leftBorderTiles[i].GetComponentInChildren<Tile>().isMine = true;
         }
-        for (int i = 9+Random.Range(0, 3); i < sizeY - 5; i+=Random.Range(1, 4))
+        for (int i = 2+Random.Range(0, 3); i < sizeY - 5; i+=Random.Range(1, 4))
         {
             if (i < sizeY - 4)
                 if (!rightBorderTiles[i-1].GetComponentInChildren<Tile>().isMine || !rightBorderTiles[i-2].GetComponentInChildren<Tile>().isMine)
