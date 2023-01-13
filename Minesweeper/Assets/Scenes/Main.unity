@@ -1087,11 +1087,10 @@ SpriteShapeRenderer:
   m_Color: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b94b97e3c4053854d834a09fd2b1638f, type: 3}
-  m_Sprites:
-  - {fileID: 21300000, guid: 18ba741e08f2922488a255ac4d0ff939, type: 3}
+  m_Sprites: []
   m_LocalAABB:
-    m_Center: {x: -0.5, y: 9.190001, z: -0.0001}
-    m_Extent: {x: 5.0000005, y: 10.690001, z: 0.0001}
+    m_Center: {x: -0.5, y: 9.000001, z: 0}
+    m_Extent: {x: 5.0000005, y: 10.500001, z: 0}
 --- !u!1 &471147063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1199,7 @@ SpriteShapeRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471147063}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 0
@@ -1231,17 +1230,16 @@ SpriteShapeRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 505304587
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b94b97e3c4053854d834a09fd2b1638f, type: 3}
-  m_Sprites:
-  - {fileID: 21300000, guid: 18ba741e08f2922488a255ac4d0ff939, type: 3}
+  m_Sprites: []
   m_LocalAABB:
-    m_Center: {x: -0.5, y: 9.190001, z: -0.0001}
-    m_Extent: {x: 5.0000005, y: 10.690001, z: 0.0001}
+    m_Center: {x: -0.5, y: 9.000001, z: 0}
+    m_Extent: {x: 5.0000005, y: 10.500001, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,7 +1457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &709135401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1536,7 +1534,7 @@ SpriteShapeRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709135400}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 0
@@ -1668,6 +1666,7 @@ MonoBehaviour:
   isGameOver: 0
   isPaused: 0
   cheatGodMode: 0
+  cheatAutoFlagMode: 0
   tile: {fileID: 4675045439334439888, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
   tileGroup: {fileID: 5635427920445249702, guid: 0eb1fa25a92ff8f47a33fb0cac22aa35, type: 3}
   backgroundAnimated: {fileID: 1077694101}
@@ -2251,7 +2250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1077694102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2328,7 +2327,7 @@ SpriteShapeRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077694101}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 0
@@ -2359,17 +2358,16 @@ SpriteShapeRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 505304587
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b94b97e3c4053854d834a09fd2b1638f, type: 3}
-  m_Sprites:
-  - {fileID: 21300000, guid: 18ba741e08f2922488a255ac4d0ff939, type: 3}
+  m_Sprites: []
   m_LocalAABB:
-    m_Center: {x: -0.5, y: 9.190001, z: -0.0001}
-    m_Extent: {x: 5.0000005, y: 10.690001, z: 0.0001}
+    m_Center: {x: -0.5, y: 9.000001, z: 0}
+    m_Extent: {x: 5.0000005, y: 10.500001, z: 0}
 --- !u!4 &1077694104
 Transform:
   m_ObjectHideFlags: 0
@@ -2378,7 +2376,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077694101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 1}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 10, z: 1}
   m_Children:
   - {fileID: 1536718770}
@@ -3563,11 +3561,10 @@ SpriteShapeRenderer:
   m_Color: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b94b97e3c4053854d834a09fd2b1638f, type: 3}
-  m_Sprites:
-  - {fileID: 21300000, guid: 18ba741e08f2922488a255ac4d0ff939, type: 3}
+  m_Sprites: []
   m_LocalAABB:
-    m_Center: {x: -0.5, y: 9.190001, z: -0.0001}
-    m_Extent: {x: 5.0000005, y: 10.690001, z: 0.0001}
+    m_Center: {x: -0.5, y: 9.000001, z: 0}
+    m_Extent: {x: 5.0000005, y: 10.500001, z: 0}
 --- !u!1 &1502269145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3810,7 +3807,7 @@ SpriteShapeRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536718769}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 0
@@ -3841,17 +3838,16 @@ SpriteShapeRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 505304587
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b94b97e3c4053854d834a09fd2b1638f, type: 3}
-  m_Sprites:
-  - {fileID: 21300000, guid: 18ba741e08f2922488a255ac4d0ff939, type: 3}
+  m_Sprites: []
   m_LocalAABB:
-    m_Center: {x: -0.5, y: 9.190001, z: -0.0001}
-    m_Extent: {x: 5.0000005, y: 10.690001, z: 0.0001}
+    m_Center: {x: -0.5, y: 9.000001, z: 0}
+    m_Extent: {x: 5.0000005, y: 10.500001, z: 0}
 --- !u!1 &1565227483
 GameObject:
   m_ObjectHideFlags: 0

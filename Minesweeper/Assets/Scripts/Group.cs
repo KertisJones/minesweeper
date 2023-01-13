@@ -23,6 +23,7 @@ public class Group : MonoBehaviour
     public int rowsFilled = 0;
     [HideInInspector]
     public int maximumFallDistance = 0;
+    bool canHardDrop = false;
 
     public Transform pivot;
     public Vector3 pivotStaticBackup = new Vector3();
@@ -181,6 +182,8 @@ public class Group : MonoBehaviour
             return;
         if (!isFalling)
             return;
+        //if (FindObjectOfType<TetrominoSpawner>().currentTetromino != this.gameObject)
+            //return;
         
         // Move Left
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Keypad4) || (Input.GetAxis("Horizontal") == -1 && Time.time - lastMove >= fallSpeed / 10))
@@ -190,7 +193,7 @@ public class Group : MonoBehaviour
             Move(1);
 
         // Rotate
-        else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Keypad9)) // Rotate Clockwise
+        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Keypad9)) // Rotate Clockwise
             Rotate(-1);
         else if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Keypad7)) // Rotate Counterclockwise
             Rotate(1);
@@ -199,18 +202,28 @@ public class Group : MonoBehaviour
             return;
 
         // Move Downwards and Fall
+        int fallDistance = 1;
+        // Soft Drop
+        bool fallInput = (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Keypad2);
         // Hard Drop
-        else if ((Input.GetKeyDown(KeyCode.Space)  || Input.GetKeyDown(KeyCode.Keypad8)) && lastFall > 0)
+        if (canHardDrop && ((Input.GetKeyDown(KeyCode.Space)  || Input.GetKeyDown(KeyCode.Keypad8)) && lastFall > 0))
         {
+            fallDistance = maximumFallDistance;
+            fallInput = true;
+            //maximumFallDistance;
             gm.SetScoreMultiplier(0.25f, 2f);
-            while (isFalling)
+            gm.AddScore(maximumFallDistance * 2);
+            //Fall(maximumFallDistance);
+            //Fall();
+            //lastFall = 0;
+            /*while (isFalling)
             {
                 gm.AddScore(2);
                 Fall();
-            }            
+            } */           
         }
         // Soft Drop
-        bool fallInput = (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Keypad2);
+        
         if (fallInput)
         {
             if (isFalling)
@@ -219,77 +232,93 @@ public class Group : MonoBehaviour
         // Basic Fall
         if (Time.time - lastFall >= fallSpeed || fallInput)
         {
-            Fall();
+            Fall(fallDistance);
+            canHardDrop = true;
         }
     }
 
-    public void Fall()
+    public void Fall(int fallDistance = 1)
     {
         // Modify position
-        transform.position += new Vector3(0, -1, 0);
-
+        transform.position += new Vector3(0, fallDistance * -1, 0);
+        //Debug.Log(fallDistance + ", Maximum " + maximumFallDistance);
         // See if valid
         if (isValidGridPos())
         {
-            // It's valid. Update grid.
-            UpdateGrid();
+            
 
-            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            if (fallDistance == maximumFallDistance && fallDistance > 1)
             {
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(downSound, new Vector3(0, 0, 0));
+                //Debug.Log(fallDistance);
+                UpdateGrid();
+                //Fall();
+                LockTetromino();
             }
-            // Detect the moment it lands
-            transform.position += new Vector3(0, -1, 0);
-            if (!isValidGridPos())
+            else
             {
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0));
+                // It's valid. Update grid.
+                UpdateGrid();
 
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+                if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+                {
+                    GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                    AudioSource.PlayClipAtPoint(downSound, new Vector3(0, 0, 0));
+                }
+                // Detect the moment it lands
+                transform.position += new Vector3(0, -1, 0);
+                if (!isValidGridPos())
+                {
+                    GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                    AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0));
+
+                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+                }
+                transform.position += new Vector3(0, 1, 0);
             }
-            transform.position += new Vector3(0, 1, 0);
-
         }
         else // Lock the piece in place
         {
             // It's not valid. revert.
             transform.position += new Vector3(0, 1, 0);
-
-            // Allow the tetromino to be scored
-            isFalling = false;
-
-            // Set this as the previous tetromino
-            gm.previousTetromino = this.gameObject;
-
-            // Score filled horizontal lines
-            rowsFilled = GameManager.scoreFullRows(this.transform);
-
-            // Failsafe in case block is off screen
-            foreach (Transform child in transform)
-            {
-                if (child.position.y >= 20)
-                {
-                    gm.EndGame();
-                    //Debug.Log("GAME OVER");
-                    //Destroy(this.gameObject);
-                }
-            }
-
-            if (!gm.isGameOver)
-            {
-                // Spawn next Group; if playere scored a Tetris, spawn a fully revealed Tetronimo
-                if (rowsFilled < 4)
-                    FindObjectOfType<TetrominoSpawner>().spawnNext();
-                else
-                    FindObjectOfType<TetrominoSpawner>().spawnNext(true);
-
-                // Clear filled horizontal lines
-                GameManager.deleteFullRows();
-            }
+            LockTetromino();
         }
 
         lastFall = Time.time;
+    }
+
+    public void LockTetromino()
+    {
+        // Allow the tetromino to be scored
+        isFalling = false;
+
+        // Set this as the previous tetromino
+        gm.previousTetromino = this.gameObject;
+
+        // Score filled horizontal lines
+        rowsFilled = GameManager.scoreFullRows(this.transform);
+
+        // Failsafe in case block is off screen
+        foreach (Transform child in transform)
+        {
+            if (child.position.y >= 20)
+            {
+                gm.EndGame();
+                //Debug.Log("GAME OVER");
+                //Destroy(this.gameObject);
+            }
+        }
+
+        if (!gm.isGameOver)
+        {
+            // Spawn next Group; if playere scored a Tetris, spawn a fully revealed Tetronimo
+            if (rowsFilled < 4)
+                FindObjectOfType<TetrominoSpawner>().spawnNext();
+            else
+                FindObjectOfType<TetrominoSpawner>().spawnNext(true);
+
+            // Clear filled horizontal lines
+            GameManager.deleteFullRows();
+        }
     }
     public void SetMaximumFallDistance()
     {

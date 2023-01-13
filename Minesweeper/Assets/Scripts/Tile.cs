@@ -58,6 +58,13 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gm.cheatAutoFlagMode)
+        {
+            if (isMine)
+                isFlagged = true;
+            else
+                Reveal();
+        }
         this.transform.position = new Vector3(coordX, coordY, 0);
         this.name = "Tile (" + coordX + ", " + coordY + ")";
         

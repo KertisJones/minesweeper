@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public bool isGameOver = false;
     public bool isPaused = false;
     public bool cheatGodMode = false;
+    public bool cheatAutoFlagMode = false;
 
     public GameObject tile;
     public GameObject tileGroup;
@@ -604,7 +605,6 @@ public class GameManager : MonoBehaviour
             if (isRowFull(row))
             {
                 fullRows++;
-
             }
         }
         if (fullRows > 0)
