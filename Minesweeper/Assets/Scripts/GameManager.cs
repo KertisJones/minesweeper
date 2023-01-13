@@ -484,29 +484,6 @@ public class GameManager : MonoBehaviour
         topRightTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
         leftBorderTiles.Insert(0, topLeftTile); 
         rightBorderTiles.Insert(0, topRightTile); 
-        /*float posY = sizeY - leftBorderTiles.Count;
-        GameObject newTile = Instantiate(tile, new Vector3(-1, -100, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-        newTile.name = "Tile (" + -1 + ", " + posY + ")";
-        newTile.GetComponentInChildren<Button>().interactable = false;
-        newTile.transform.position = new Vector3(-1, posY, 0);
-        newTile.GetComponent<Tile>().coordX = -1;
-        newTile.GetComponent<Tile>().coordY = Mathf.RoundToInt(posY);
-        newTile.GetComponent<Tile>().isRevealed = true;
-        newTile.GetComponent<Tile>().isDisplay = true;
-        newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
-        leftBorderTiles.Insert(0, newTile); 
-
-        posY = sizeY - rightBorderTiles.Count;
-        newTile = Instantiate(tile, new Vector3(10, -100, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-        newTile.name = "Tile (" + 10 + ", " + posY + ")";
-        newTile.GetComponentInChildren<Button>().interactable = false;
-        newTile.transform.position = new Vector3(10, posY, 0);
-        newTile.GetComponent<Tile>().coordX = 10;
-        newTile.GetComponent<Tile>().coordY = Mathf.RoundToInt(posY);
-        newTile.GetComponent<Tile>().isRevealed = true;
-        newTile.GetComponent<Tile>().isDisplay = true;
-        newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
-        rightBorderTiles.Insert(0, newTile);*/
 
         if (safeEdgeTilesGained == 0)
         {

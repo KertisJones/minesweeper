@@ -9,6 +9,7 @@ public class HoldTetromino : MonoBehaviour
     public Transform targetPosition;
     public GameObject heldTetromino;
     public GameObject heldTetrominoPrevious;
+    public GameObject swapPartner;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,9 @@ public class HoldTetromino : MonoBehaviour
         GameObject currentTetromino = tetrominoSpawner.currentTetromino;
         if (currentTetromino == heldTetromino || currentTetromino == heldTetrominoPrevious)
             return;
-        
+        if (swapPartner != null)
+            if (swapPartner.GetComponent<Group>().isFalling)
+                return;
         RemoveFromBoard(currentTetromino);
         AddToBoard(heldTetromino);
 
@@ -53,7 +56,10 @@ public class HoldTetromino : MonoBehaviour
         tetromino.GetComponent<Group>().UpdateGrid();
 
         if (heldTetromino == null)
+        {
+            swapPartner = tetrominoSpawner.nextTetromino;
             tetrominoSpawner.spawnNext();
+        }            
         else
             tetrominoSpawner.currentTetromino = null;
     }
