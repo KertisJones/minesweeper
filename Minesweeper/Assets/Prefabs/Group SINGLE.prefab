@@ -50,6 +50,8 @@ MonoBehaviour:
   isBonus: 0
   isHeld: 0
   isFalling: 1
+  rowsFilled: 0
+  maximumFallDistance: 0
   pivot: {fileID: 1545551967001642789}
   pivotStaticBackup: {x: 0, y: 0, z: 0}
   moveSound: {fileID: 8300000, guid: b887aed25407f814288d38f1b5790f0b, type: 3}
@@ -163,6 +165,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 768701328770524795, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 0

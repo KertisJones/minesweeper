@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.U2D;
 
 public class Tile : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class Tile : MonoBehaviour
 
     public SpriteRenderer tileBackground;
     public SpriteRenderer explodedMineBackground;
+    public SpriteShapeRenderer shimmerOverlay;
     
     TextMeshProUGUI text;    
 

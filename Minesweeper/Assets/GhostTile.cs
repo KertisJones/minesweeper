@@ -43,7 +43,7 @@ public class GhostTile : MonoBehaviour
         ghostTile4.transform.position = tiles[3].position + new Vector3(0, group.maximumFallDistance * -1, 0);
 
         Color color = tiles[0].GetComponentInChildren<TileButton>().gameObject.GetComponent<Image>().color;
-        color.a = 0.8f;
+        color.a = 0.5f;
         ghostTile1.GetComponent<SpriteRenderer>().color = color;
         ghostTile2.GetComponent<SpriteRenderer>().color = color;
         ghostTile3.GetComponent<SpriteRenderer>().color = color;

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.U2D;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject tile;
     public GameObject tileGroup;
+    //public GameObject backgroundStatic;
+    public GameObject backgroundAnimated;
 
     public AudioClip lineClearSound;
     public AudioClip lineFullSound1;
@@ -69,9 +72,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreMultiplierTimer -= Time.deltaTime;
-        if (scoreMultiplierTimer <= 0)
+        
+        if (scoreMultiplierTimer <= 0 && scoreMultiplier > 0)
+        {
             scoreMultiplier = 0;
+            //backgroundStatic.SetActive(true);
+            backgroundAnimated.SetActive(false);
+        }
+        else
+        {
+            scoreMultiplierTimer -= Time.deltaTime;
+        }
         
         if (cheatGodMode)
         {
@@ -460,6 +471,7 @@ public class GameManager : MonoBehaviour
         newTile.GetComponent<Tile>().coordY = 0;
         newTile.GetComponent<Tile>().isRevealed = true;
         newTile.GetComponent<Tile>().isDisplay = true;
+        newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
         leftBorderTiles.Insert(0, newTile); 
 
         newTile = Instantiate(tile, new Vector3(10, -100, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
@@ -470,7 +482,14 @@ public class GameManager : MonoBehaviour
         newTile.GetComponent<Tile>().coordY = 0;
         newTile.GetComponent<Tile>().isRevealed = true;
         newTile.GetComponent<Tile>().isDisplay = true;
+        newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
         rightBorderTiles.Insert(0, newTile); 
+
+        if (safeEdgeTilesGained == 0)
+        {
+            GameObject.Find("Tile (-1, -1)").GetComponent<Tile>().shimmerOverlay.gameObject.SetActive(true);
+            GameObject.Find("Tile (10, -1)").GetComponent<Tile>().shimmerOverlay.gameObject.SetActive(true);
+        }
 
         safeEdgeTilesGained++;
     }
@@ -524,6 +543,9 @@ public class GameManager : MonoBehaviour
         scoreMultiplier = scoreMultiplier + mult;
         if (duration > scoreMultiplierTimer)
             scoreMultiplierTimer = duration;
+        //backgroundStatic.SetActive(false);
+        if (scoreMultiplier > 1)
+            backgroundAnimated.SetActive(true);
     }
 
     public static int scoreSolvedRow(int y)
