@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HologramShimmer 1
+  m_Name: HologramShimmerUp
   m_Shader: {fileID: 4800000, guid: 72d02a391ea40104e8bfd8b63b73e8e2, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -97,6 +97,6 @@ Material:
     - _GlitchValue: {r: 0, g: 0, b: 0, a: 0}
     - _HoloColor: {r: 1, g: 1, b: 1, a: 0.39215687}
     - _HoloDir: {r: 0, g: 1, b: 0, a: 1}
-    - _HoloDirection: {r: -1, g: -0.5, b: 0, a: 0}
+    - _HoloDirection: {r: 0, g: -0.5, b: 0, a: 0}
     - _RimColor: {r: 0.5477066, g: 0, b: 1, a: 1}
   m_BuildTextureStacks: []

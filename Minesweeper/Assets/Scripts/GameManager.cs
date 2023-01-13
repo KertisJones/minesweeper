@@ -438,47 +438,75 @@ public class GameManager : MonoBehaviour
         // Left and Right Tiles
         GameObject topLeftTile = leftBorderTiles[leftBorderTiles.Count - 1];
         GameObject topRightTile = rightBorderTiles[rightBorderTiles.Count - 1];
+        int posY = leftBorderTiles[0].GetComponentInChildren<Tile>().coordY;
         leftBorderTiles.RemoveAt(leftBorderTiles.Count - 1);
         rightBorderTiles.RemoveAt(rightBorderTiles.Count - 1);
-        Destroy(topLeftTile);
-        Destroy(topRightTile);
+        //Destroy(topLeftTile);
+        //Destroy(topRightTile);
         for (int i = 0; i < leftBorderTiles.Count; i++)
         {
             leftBorderTiles[i].GetComponentInChildren<Tile>().coordY += 1;
             rightBorderTiles[i].GetComponentInChildren<Tile>().coordY += 1;
 
-            if (leftBorderTiles[i].GetComponentInChildren<Tile>().isMine && leftBorderTiles[i].GetComponentInChildren<Tile>().coordY >= sizeY - 4)
+            if (leftBorderTiles[i].GetComponentInChildren<Tile>().coordY >= sizeY - 4)
             {
-                currentMines--;
-                leftBorderTiles[i].GetComponentInChildren<Tile>().isMine = false;
+                if (leftBorderTiles[i].GetComponentInChildren<Tile>().isMine)
+                {
+                    currentMines--;
+                    leftBorderTiles[i].GetComponentInChildren<Tile>().isMine = false;
+                }
+                if (leftBorderTiles[i].GetComponentInChildren<Tile>().isFlagged)
+                {
+                    currentFlags--;
+                    leftBorderTiles[i].GetComponentInChildren<Tile>().isFlagged = false;
+                }
+                
             }
-            if (rightBorderTiles[i].GetComponentInChildren<Tile>().isMine && rightBorderTiles[i].GetComponentInChildren<Tile>().coordY >= sizeY - 4)
+            if (rightBorderTiles[i].GetComponentInChildren<Tile>().coordY >= sizeY - 4)
             {
-                currentMines--;
-                rightBorderTiles[i].GetComponentInChildren<Tile>().isMine = false;
+                if (rightBorderTiles[i].GetComponentInChildren<Tile>().isMine)
+                {
+                    currentMines--;
+                    rightBorderTiles[i].GetComponentInChildren<Tile>().isMine = false;
+                }
+                if (rightBorderTiles[i].GetComponentInChildren<Tile>().isFlagged)
+                {
+                    currentFlags--;
+                    rightBorderTiles[i].GetComponentInChildren<Tile>().isFlagged = false;
+                }
             }
         }
+        topLeftTile.GetComponentInChildren<Tile>().coordY = posY;
+        topRightTile.GetComponentInChildren<Tile>().coordY = posY;
+        topLeftTile.GetComponentInChildren<Tile>().Reveal();
+        topRightTile.GetComponentInChildren<Tile>().Reveal();
+        topLeftTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
+        topRightTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
+        leftBorderTiles.Insert(0, topLeftTile); 
+        rightBorderTiles.Insert(0, topRightTile); 
+        /*float posY = sizeY - leftBorderTiles.Count;
         GameObject newTile = Instantiate(tile, new Vector3(-1, -100, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-        newTile.name = "Tile (" + -1 + ", " + 0 + ")";
+        newTile.name = "Tile (" + -1 + ", " + posY + ")";
         newTile.GetComponentInChildren<Button>().interactable = false;
-        newTile.transform.position = new Vector3(-1, 0, 0);
+        newTile.transform.position = new Vector3(-1, posY, 0);
         newTile.GetComponent<Tile>().coordX = -1;
-        newTile.GetComponent<Tile>().coordY = 0;
+        newTile.GetComponent<Tile>().coordY = Mathf.RoundToInt(posY);
         newTile.GetComponent<Tile>().isRevealed = true;
         newTile.GetComponent<Tile>().isDisplay = true;
         newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
         leftBorderTiles.Insert(0, newTile); 
 
+        posY = sizeY - rightBorderTiles.Count;
         newTile = Instantiate(tile, new Vector3(10, -100, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-        newTile.name = "Tile (" + 10 + ", " + 0 + ")";
+        newTile.name = "Tile (" + 10 + ", " + posY + ")";
         newTile.GetComponentInChildren<Button>().interactable = false;
-        newTile.transform.position = new Vector3(10, 0, 0);
+        newTile.transform.position = new Vector3(10, posY, 0);
         newTile.GetComponent<Tile>().coordX = 10;
-        newTile.GetComponent<Tile>().coordY = 0;
+        newTile.GetComponent<Tile>().coordY = Mathf.RoundToInt(posY);
         newTile.GetComponent<Tile>().isRevealed = true;
         newTile.GetComponent<Tile>().isDisplay = true;
         newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
-        rightBorderTiles.Insert(0, newTile); 
+        rightBorderTiles.Insert(0, newTile);*/
 
         if (safeEdgeTilesGained == 0)
         {

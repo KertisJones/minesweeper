@@ -245,7 +245,16 @@ public class Group : MonoBehaviour
         // See if valid
         if (isValidGridPos())
         {
-            
+            // Detect the moment it lands
+            transform.position += new Vector3(0, -1, 0);
+            if (!isValidGridPos())
+            {
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0));
+
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+            }
+            transform.position += new Vector3(0, 1, 0);
 
             if (fallDistance == maximumFallDistance && fallDistance > 1)
             {
@@ -263,17 +272,7 @@ public class Group : MonoBehaviour
                 {
                     GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                     AudioSource.PlayClipAtPoint(downSound, new Vector3(0, 0, 0));
-                }
-                // Detect the moment it lands
-                transform.position += new Vector3(0, -1, 0);
-                if (!isValidGridPos())
-                {
-                    GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                    AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0));
-
-                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
-                }
-                transform.position += new Vector3(0, 1, 0);
+                }                
             }
         }
         else // Lock the piece in place
