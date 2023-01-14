@@ -296,14 +296,29 @@ public class Group : MonoBehaviour
         // Score filled horizontal lines
         rowsFilled = GameManager.scoreFullRows(this.transform);
 
+        // Detect if an in-place spin has occured
+        if (!WallKickMove(1, 0, false) && !WallKickMove(-1, 0, false) && !WallKickMove(0, 1, false))
+        {
+            Debug.Log("In-Place spin locked! Rows filled: " + rowsFilled);
+            // Score += 100, doubled for each row filled
+            if (rowsFilled == 0)
+                gm.AddScore(100);
+            else if (rowsFilled == 1)
+                gm.AddScore(200);
+            else if (rowsFilled == 2)
+                gm.AddScore(400);
+            else if (rowsFilled == 3)
+                gm.AddScore(800);
+            else if (rowsFilled == 4)
+                gm.AddScore(1600);
+        }
+
         // Failsafe in case block is off screen
         foreach (Transform child in transform)
         {
             if (child.position.y >= 20)
             {
                 gm.EndGame();
-                //Debug.Log("GAME OVER");
-                //Destroy(this.gameObject);
             }
         }
 
@@ -407,16 +422,24 @@ public class Group : MonoBehaviour
         }
     }
 
-    public bool WallKickMove(float dirH, float dirV = 0) // -1 is Left, 1 is Right
+    public bool WallKickMove(float dirH, float dirV = 0, bool setPos = true) // -1 is Left, 1 is Right
     {
         transform.position += new Vector3(dirH, dirV, 0);
         if (isValidGridPos())
         {
-            // It's valid. Update grid.
-            UpdateGrid();
+            // It's valid. Update grid if it's allowed to do so.
+            if (setPos)
+            {
+                UpdateGrid();
 
-            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f);
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f);
+            }
+            else
+            {
+                // Reset position, but return true
+                transform.position += new Vector3(dirH * -1, dirV * -1, 0);
+            }
 
             Debug.Log("Rotation Wall Kick (" + dirH + ", " + dirV + ")");
             return true;
