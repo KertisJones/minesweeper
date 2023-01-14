@@ -23,7 +23,8 @@ public class DisplayText : MonoBehaviour
         bestScore, 
         linesCleared,
         tetrisweepsCleard,
-        scoreMultiplier
+        scoreMultiplier,
+        quit
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
@@ -120,6 +121,13 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                 this.GetComponent<VertexColorCyclerGradient>().enabled = true;
             }
+        }
+        else if (displayType == TextType.quit)
+        {
+            if (Application.platform == RuntimePlatform.WebGLPlayer && gm.hasQuit)
+                this.GetComponent<TextMeshProUGUI>().text = "Can't Quit in Browser";
+            else
+                this.GetComponent<TextMeshProUGUI>().text = "Quit";
         }
     }
 }

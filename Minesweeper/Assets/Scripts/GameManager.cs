@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     public bool isGameOver = false;
     public bool isPaused = false;
+    public bool hasQuit = false;
     public bool cheatGodMode = false;
     public bool cheatAutoFlagMode = false;
 
@@ -694,6 +695,7 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+        hasQuit = true;    
     }
     public void Pause(bool pause) 
     {
@@ -725,7 +727,6 @@ public class GameManager : MonoBehaviour
     {
         return score;
     }
-
     public static Vector2 roundVec2(Vector2 v)
     {
         return new Vector2(Mathf.Round(v.x), Mathf.Round(v.y));
