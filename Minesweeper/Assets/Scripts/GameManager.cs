@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.U2D;
+using Krivodeling.UI.Effects;
 
 public class GameManager : MonoBehaviour
 {
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
     public GameObject tile;
     public GameObject tileGroup;
     public GameObject backgroundAnimated;
+    public PauseMenuMove pauseMenu;
 
     public AudioClip lineClearSound;
     public AudioClip lineFullSound1;
@@ -681,22 +683,30 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Helper Functions
-    void ReloadThisScene()
+    public void ReloadThisScene()
     {
-        Pause(false);
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void Pause (bool pause) 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+    public void Pause(bool pause) 
     {
         if (pause)
         {
             Time.timeScale = 0;
             isPaused = true;
+            pauseMenu.isActive = true;
+            //pauseMenu.GetComponentInChildren<UIBlur>().BeginBlur(2);
         }
         else
         {
             Time.timeScale = 1;
-            isPaused = false;            
+            isPaused = false;       
+            pauseMenu.isActive = false;     
+            //pauseMenu.GetComponentInChildren<UIBlur>().EndBlur(2);
         }        
     }
     public float GetTime()
@@ -710,8 +720,7 @@ public class GameManager : MonoBehaviour
 
     public static Vector2 roundVec2(Vector2 v)
     {
-        return new Vector2(Mathf.Round(v.x),
-                           Mathf.Round(v.y));
+        return new Vector2(Mathf.Round(v.x), Mathf.Round(v.y));
     }
     #endregion
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseMenuButtons : MonoBehaviour {
 
@@ -10,7 +11,7 @@ public class PauseMenuButtons : MonoBehaviour {
     public enum OptionType {resume, options, statistics, credits, quit, returnToPause};
     public OptionType optionType;
 
-    public GameObject persistentGameObject;
+    //public GameObject persistentGameObject;
 
     public PauseMenuMove pauseMenu;
     public PauseMenuMove statisticsMenu;
@@ -19,10 +20,10 @@ public class PauseMenuButtons : MonoBehaviour {
     void Start () {
         if (gm == null)
         {
-            gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+            gm = GameObject.FindObjectOfType<GameManager>();
         }
 
-        persistentGameObject = GameObject.FindGameObjectWithTag("Persistent Object");
+        //persistentGameObject = GameObject.FindGameObjectWithTag("Persistent Object");
     }
 	
 	// Update is called once per frame
@@ -30,18 +31,14 @@ public class PauseMenuButtons : MonoBehaviour {
 		
 	}
 
-    private void OnMouseDown()
+    public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("OnPointerClick");
+        if (eventData.button != PointerEventData.InputButton.Left)
+            return;
         if (optionType == OptionType.resume)
         {
-            pauseMenu.isActive = false;
-
-            //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDeath>().freezePlayer = false;
-
-            //Time.timeScale = 1;
-            gm.isPaused = false;
-
-            Time.timeScale = 1;
+            gm.Pause(false);
         }
         else if (optionType == OptionType.options)
         {

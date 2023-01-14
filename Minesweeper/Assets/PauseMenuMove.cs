@@ -5,8 +5,8 @@ public class PauseMenuMove : MonoBehaviour {
 
     public float offsetX;
     public float offsetY;
-    public Transform targetRest;
-    public Transform targetActive;
+    public Vector3 targetRest;
+    public Vector3 targetActive;
     public float speed = 6f;
     public bool isActive = false;
     private void Start() {
@@ -17,11 +17,11 @@ public class PauseMenuMove : MonoBehaviour {
     {
         if (isActive)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetActive.position, speed);
+            transform.position = Vector3.MoveTowards(transform.position, targetActive, speed);
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetRest.position, speed);
+            transform.position = Vector3.MoveTowards(transform.position, targetRest, speed);
         }
     }
 

@@ -142,11 +142,14 @@ public class Tile : MonoBehaviour
                 myText = "?";
         }
 
+        if (gm.isPaused)
+            myText = "";
+
         if (text != null)
         {
             text.SetText(myText);
             text.color = myColor;
-        }
+        }        
     }
 
     public void FlagToggle()
