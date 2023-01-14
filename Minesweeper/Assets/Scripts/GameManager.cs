@@ -11,6 +11,7 @@ using Krivodeling.UI.Effects;
 public class GameManager : MonoBehaviour
 {
     float startTime;
+    float endtime;
     private float score = 0;
     public float scoreMultiplier = 0;
     public float scoreMultiplierTimer = 0;
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
     public GameObject tileGroup;
     public GameObject backgroundAnimated;
     public PauseMenuMove pauseMenu;
+    public PauseMenuMove gameOverMenu;
 
     public AudioClip lineClearSound;
     public AudioClip lineFullSound1;
@@ -108,7 +110,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F5))
         {
-            ReloadThisScene();
+            ReloadScene();
         }
     }
 
@@ -539,6 +541,7 @@ public class GameManager : MonoBehaviour
             return;
         
         isGameOver = true;
+        endtime = startTime + GetTime();
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
 
         // Reveal all tiles!
@@ -559,13 +562,13 @@ public class GameManager : MonoBehaviour
         GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0), 0.1f);
 
-        StartCoroutine(ReloadScene());        
+        StartCoroutine(GameOver());        
     }
 
-    IEnumerator ReloadScene()
+    IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(2.9f);
-        ReloadThisScene();
+        yield return new WaitForSeconds(1f);
+        gameOverMenu.isActive = true;
     }
     #endregion
     #region Scoring
@@ -683,7 +686,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Helper Functions
-    public void ReloadThisScene()
+    public void ReloadScene()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -694,23 +697,28 @@ public class GameManager : MonoBehaviour
     }
     public void Pause(bool pause) 
     {
+        if (isGameOver)
+            return;
         if (pause)
         {
             Time.timeScale = 0;
             isPaused = true;
             pauseMenu.isActive = true;
-            //pauseMenu.GetComponentInChildren<UIBlur>().BeginBlur(2);
         }
         else
         {
-            Time.timeScale = 1;
-            isPaused = false;       
-            pauseMenu.isActive = false;     
-            //pauseMenu.GetComponentInChildren<UIBlur>().EndBlur(2);
+            if (!isGameOver)
+            {
+                Time.timeScale = 1;
+                isPaused = false;       
+                pauseMenu.isActive = false;
+            }
         }        
     }
     public float GetTime()
     {
+        if (isGameOver)
+            return endtime;
         return Time.time - startTime;
     }
     public float GetScore()
