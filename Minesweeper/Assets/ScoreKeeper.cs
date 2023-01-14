@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreKeeper : MonoBehaviour
 {
@@ -28,5 +29,7 @@ public class ScoreKeeper : MonoBehaviour
             gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (gm.GetScore() > bestScore)
             bestScore = gm.GetScore();
+        if (GameObject.FindGameObjectWithTag("Volume") != null)
+            AudioListener.volume = GameObject.FindGameObjectWithTag("Volume").GetComponent<Slider>().value;
     }
 }

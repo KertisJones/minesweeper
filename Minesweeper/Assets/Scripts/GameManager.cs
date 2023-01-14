@@ -64,9 +64,6 @@ public class GameManager : MonoBehaviour
     public AudioClip lineFullSound4;
     public AudioClip gameOverSound;
 
-    [Range(0.0f, 1.0f)]
-    public float audioVolume = 0.5f; 
-
     #region Game Setup
     // Start is called before the first frame update
     void Awake()
@@ -78,7 +75,7 @@ public class GameManager : MonoBehaviour
         blankTile.name = "Blank Tile";*/
 
         BuildGameBoard();
-        AudioListener.volume = audioVolume;
+        
         startTime = Time.time;
         //PopulateMines();
     }
@@ -86,7 +83,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (scoreMultiplierTimer <= 0 && scoreMultiplier > 0)
         {
             scoreMultiplier = 0;
