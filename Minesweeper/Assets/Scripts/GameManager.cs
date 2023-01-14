@@ -102,7 +102,11 @@ public class GameManager : MonoBehaviour
         
         if (Input.GetKeyDown("escape"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Pause(!isPaused);
+        }
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            ReloadThisScene();
         }
     }
 
@@ -559,7 +563,7 @@ public class GameManager : MonoBehaviour
     IEnumerator ReloadScene()
     {
         yield return new WaitForSeconds(2.9f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        ReloadThisScene();
     }
     #endregion
     #region Scoring
@@ -677,6 +681,24 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Helper Functions
+    void ReloadThisScene()
+    {
+        Pause(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void Pause (bool pause) 
+    {
+        if (pause)
+        {
+            Time.timeScale = 0;
+            isPaused = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            isPaused = false;            
+        }        
+    }
     public float GetTime()
     {
         return Time.time - startTime;

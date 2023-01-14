@@ -174,8 +174,8 @@ public class Group : MonoBehaviour
         }
         if (gm.isGameOver)
             return;
-        //if (gm.isPaused)
-            //return;
+        if (gm.isPaused)
+            return;
         if (isDisplay)
             return;
         if (isHeld)
@@ -198,8 +198,8 @@ public class Group : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Keypad7)) // Rotate Counterclockwise
             Rotate(1);
         
-        if (gm.isPaused)
-            return;
+        //if (gm.isPaused)
+            //return;
 
         // Move Downwards and Fall
         int fallDistance = 1;
@@ -256,7 +256,7 @@ public class Group : MonoBehaviour
             }
             transform.position += new Vector3(0, 1, 0);
 
-            if (fallDistance == maximumFallDistance && fallDistance > 1)
+            if (fallDistance == maximumFallDistance && fallDistance != 1)
             {
                 //Debug.Log(fallDistance);
                 UpdateGrid();

@@ -7,6 +7,10 @@ using UnityEngine.EventSystems;
 public class TileButton : MonoBehaviour, IPointerClickHandler
 {
     Tile tile;
+    GameManager gm;
+    private void Start() {
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
     void Update()
     {
         tile = GetComponentInParent<Tile>();
@@ -15,7 +19,7 @@ public class TileButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().isGameOver)
+        if (gm.isGameOver || gm.isPaused)
             return;
 
         if (eventData.button == PointerEventData.InputButton.Left)
