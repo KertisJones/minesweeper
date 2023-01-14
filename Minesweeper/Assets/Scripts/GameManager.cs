@@ -30,8 +30,6 @@ public class GameManager : MonoBehaviour
     public static GameObject[][] gameBoard;
     List<GameObject> leftBorderTiles;
     List<GameObject> rightBorderTiles;
-    public static GameObject[][] leftOuterBoard;
-    public static GameObject[][] rightOuterBoard;
     public GameObject previousTetromino = null;
 
     public bool isGameOver = false;
@@ -39,9 +37,19 @@ public class GameManager : MonoBehaviour
     public bool cheatGodMode = false;
     public bool cheatAutoFlagMode = false;
 
+    public bool wallTilesPlayableActive = false;
+
+    // Options
+    /*public enum WallType // your custom enumeration
+    {
+        disabledUntilAdded,
+        playableWalls,
+        zeroTileWalls,
+        noWalls
+    };
+    public WallType wallType = WallType.disabledUntilAdded;*/
     public GameObject tile;
     public GameObject tileGroup;
-    //public GameObject backgroundStatic;
     public GameObject backgroundAnimated;
 
     public AudioClip lineClearSound;
@@ -77,7 +85,6 @@ public class GameManager : MonoBehaviour
         if (scoreMultiplierTimer <= 0 && scoreMultiplier > 0)
         {
             scoreMultiplier = 0;
-            //backgroundStatic.SetActive(true);
             backgroundAnimated.SetActive(false);
         }
         else
@@ -130,44 +137,47 @@ public class GameManager : MonoBehaviour
         // Left and Right Tiles
         leftBorderTiles = new List<GameObject>();
         rightBorderTiles = new List<GameObject>();
-        for (int i = 0; i < sizeY; i++)
+        if (wallTilesPlayableActive)
         {
-            //place display tile on left side
-            GameObject newTile = Instantiate(tileGroup, new Vector3(-1, i, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-            newTile.name = "Tile Group (" + -1 + ", " + i + ")";
-            newTile.GetComponentInChildren<Tile>().coordX = -1;
-            newTile.GetComponentInChildren<Tile>().coordY = i;
-            newTile.GetComponent<Group>().isDisplay = true;            
-            newTile.GetComponent<Group>().minePercent = 10;
-            leftBorderTiles.Add(newTile);
+            for (int i = 0; i < sizeY; i++)
+            {
+                //place display tile on left side
+                GameObject newTile = Instantiate(tileGroup, new Vector3(-1, i, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+                newTile.name = "Tile Group (" + -1 + ", " + i + ")";
+                newTile.GetComponentInChildren<Tile>().coordX = -1;
+                newTile.GetComponentInChildren<Tile>().coordY = i;
+                newTile.GetComponent<Group>().isDisplay = true;            
+                newTile.GetComponent<Group>().minePercent = 10;
+                leftBorderTiles.Add(newTile);
 
-            //place display tile on right side
-            newTile = Instantiate(tileGroup, new Vector3(sizeX, i, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-            newTile.name = "Tile Group (" + sizeX + ", " + i + ")";
-            newTile.GetComponentInChildren<Tile>().coordX = sizeX;
-            newTile.GetComponentInChildren<Tile>().coordY = i;
-            newTile.GetComponent<Group>().isDisplay = true;            
-            newTile.GetComponent<Group>().minePercent = 10;
-            rightBorderTiles.Add(newTile);
-        }
+                //place display tile on right side
+                newTile = Instantiate(tileGroup, new Vector3(sizeX, i, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+                newTile.name = "Tile Group (" + sizeX + ", " + i + ")";
+                newTile.GetComponentInChildren<Tile>().coordX = sizeX;
+                newTile.GetComponentInChildren<Tile>().coordY = i;
+                newTile.GetComponent<Group>().isDisplay = true;            
+                newTile.GetComponent<Group>().minePercent = 10;
+                rightBorderTiles.Add(newTile);
+            }
 
-        // Place bombs Left and Right Tiles
-        // Place mine at bottom most space
-        leftBorderTiles[0].GetComponentInChildren<Tile>().isMine = true;
-        rightBorderTiles[0].GetComponentInChildren<Tile>().isMine = true;
+            // Place bombs Left and Right Tiles
+            // Place mine at bottom most space
+            leftBorderTiles[0].GetComponentInChildren<Tile>().isMine = true;
+            rightBorderTiles[0].GetComponentInChildren<Tile>().isMine = true;
 
-        // Prevent most 0-Cascade tiles from spawning at index 10-18
-        for (int i = 2+Random.Range(0, 3); i < sizeY - 5; i+=Random.Range(1, 4))
-        {
-            if (i < sizeY - 4)
-                if (!leftBorderTiles[i-1].GetComponentInChildren<Tile>().isMine || !leftBorderTiles[i-2].GetComponentInChildren<Tile>().isMine)
-                    leftBorderTiles[i].GetComponentInChildren<Tile>().isMine = true;
-        }
-        for (int i = 2+Random.Range(0, 3); i < sizeY - 5; i+=Random.Range(1, 4))
-        {
-            if (i < sizeY - 4)
-                if (!rightBorderTiles[i-1].GetComponentInChildren<Tile>().isMine || !rightBorderTiles[i-2].GetComponentInChildren<Tile>().isMine)
-                    rightBorderTiles[i].GetComponentInChildren<Tile>().isMine = true;
+            // Prevent most 0-Cascade tiles from spawning at index 10-18
+            for (int i = 2+Random.Range(0, 3); i < sizeY - 5; i+=Random.Range(1, 4))
+            {
+                if (i < sizeY - 4)
+                    if (!leftBorderTiles[i-1].GetComponentInChildren<Tile>().isMine || !leftBorderTiles[i-2].GetComponentInChildren<Tile>().isMine)
+                        leftBorderTiles[i].GetComponentInChildren<Tile>().isMine = true;
+            }
+            for (int i = 2+Random.Range(0, 3); i < sizeY - 5; i+=Random.Range(1, 4))
+            {
+                if (i < sizeY - 4)
+                    if (!rightBorderTiles[i-1].GetComponentInChildren<Tile>().isMine || !rightBorderTiles[i-2].GetComponentInChildren<Tile>().isMine)
+                        rightBorderTiles[i].GetComponentInChildren<Tile>().isMine = true;
+            }
         }
     }
 
@@ -316,11 +326,11 @@ public class GameManager : MonoBehaviour
             else
                 return null;
         }
-        else if (x == -1 && y >= 0 && y < sizeY)
+        else if (x == -1 && y >= 0 && y < leftBorderTiles.Count)
         {
             return leftBorderTiles[y].GetComponentInChildren<Tile>();
         }
-        else if (x == sizeX && y >= 0 && y < sizeY)
+        else if (x == sizeX && y >= 0 && y < rightBorderTiles.Count)
         {
             return rightBorderTiles[y].GetComponentInChildren<Tile>();
         }
@@ -435,9 +445,30 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddSafeTileToEdges() {
+
+        //place display tiles at bottom
+        GameObject newTile = Instantiate(tile, new Vector3(-1, leftBorderTiles.Count, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+        newTile.name = "Tile (" + -1 + ", " + leftBorderTiles.Count + ")";
+        newTile.GetComponent<Tile>().coordX = -1;
+        newTile.GetComponent<Tile>().coordY = leftBorderTiles.Count;
+        newTile.GetComponent<Tile>().isRevealed = true;
+        newTile.GetComponent<Tile>().isDisplay = true;
+        newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
+        leftBorderTiles.Add(newTile); 
+
+        newTile = Instantiate(tile, new Vector3(10, rightBorderTiles.Count, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+        newTile.name = "Tile (" + 10 + ", " + rightBorderTiles.Count + ")";
+        newTile.GetComponent<Tile>().coordX = 10;
+        newTile.GetComponent<Tile>().coordY = rightBorderTiles.Count;
+        newTile.GetComponent<Tile>().isRevealed = true;
+        newTile.GetComponent<Tile>().isDisplay = true;
+        newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
+        rightBorderTiles.Add(newTile); 
+
         // Left and Right Tiles
-        GameObject topLeftTile = leftBorderTiles[leftBorderTiles.Count - 1];
-        GameObject topRightTile = rightBorderTiles[rightBorderTiles.Count - 1];
+        /*
+        //GameObject topLeftTile = leftBorderTiles[leftBorderTiles.Count - 1];
+        //GameObject topRightTile = rightBorderTiles[rightBorderTiles.Count - 1];
         int posY = leftBorderTiles[0].GetComponentInChildren<Tile>().coordY;
         leftBorderTiles.RemoveAt(leftBorderTiles.Count - 1);
         rightBorderTiles.RemoveAt(rightBorderTiles.Count - 1);
@@ -484,6 +515,7 @@ public class GameManager : MonoBehaviour
         topRightTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
         leftBorderTiles.Insert(0, topLeftTile); 
         rightBorderTiles.Insert(0, topRightTile); 
+        */
 
         if (safeEdgeTilesGained == 0)
         {
@@ -543,7 +575,6 @@ public class GameManager : MonoBehaviour
         scoreMultiplier = scoreMultiplier + mult;
         if (duration > scoreMultiplierTimer)
             scoreMultiplierTimer = duration;
-        //backgroundStatic.SetActive(false);
         if (scoreMultiplier > 1)
             backgroundAnimated.SetActive(true);
     }
