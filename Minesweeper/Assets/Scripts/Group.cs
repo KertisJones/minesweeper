@@ -6,7 +6,7 @@ public class Group : MonoBehaviour
 {
     GameManager gm;
 
-    float fallSpeed = 0.5f;
+    float fallSpeed = 0.8f;
     float lastFall = 0;
     float lastMove = 0;
 
@@ -38,6 +38,9 @@ public class Group : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
+        //Official Guidline Gravity Curve: Time = (0.8-((Level-1)*0.007))(Level-1)
+        fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
 
         // Default position not valid? Then it's game over
         if (!isValidGridPos() && !isDisplay)
@@ -204,12 +207,13 @@ public class Group : MonoBehaviour
         // Move Downwards and Fall
         int fallDistance = 1;
         // Soft Drop
-        bool fallInput = (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Keypad2);
+        bool isSoftDrop = (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Keypad2);
         // Hard Drop
-        if (canHardDrop && ((Input.GetKeyDown(KeyCode.Space)  || Input.GetKeyDown(KeyCode.Keypad8)) && lastFall > 0))
+        bool isHardDrop = false;
+        if (canHardDrop && ((Input.GetKeyDown(KeyCode.Space)  || Input.GetKeyDown(KeyCode.Keypad8)) && lastFall > 0 || Input.GetKeyDown(KeyCode.Return)))
         {
             fallDistance = maximumFallDistance;
-            fallInput = true;
+            isHardDrop = true;
             //maximumFallDistance;
             gm.SetScoreMultiplier(0.25f, 2f);
             gm.AddScore(maximumFallDistance * 2);
@@ -224,20 +228,20 @@ public class Group : MonoBehaviour
         }
         // Soft Drop
         
-        if (fallInput)
+        if (isSoftDrop)
         {
             if (isFalling)
                 gm.AddScore(1);
         }
         // Basic Fall
-        if (Time.time - lastFall >= fallSpeed || fallInput)
+        if (Time.time - lastFall >= fallSpeed || isSoftDrop || isHardDrop)
         {
-            Fall(fallDistance);
+            Fall(fallDistance, isHardDrop);
             canHardDrop = true;
         }
     }
 
-    public void Fall(int fallDistance = 1)
+    public void Fall(int fallDistance = 1, bool isHardDrop = false)
     {
         // Modify position
         transform.position += new Vector3(0, fallDistance * -1, 0);
@@ -256,11 +260,9 @@ public class Group : MonoBehaviour
             }
             transform.position += new Vector3(0, 1, 0);
 
-            if (fallDistance == maximumFallDistance && fallDistance != 1)
+            if (isHardDrop)
             {
-                //Debug.Log(fallDistance);
                 UpdateGrid();
-                //Fall();
                 LockTetromino();
             }
             else

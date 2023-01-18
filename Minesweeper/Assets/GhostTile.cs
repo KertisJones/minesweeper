@@ -37,10 +37,10 @@ public class GhostTile : MonoBehaviour
         }
 
         int offsetDistance = group.maximumFallDistance;
-        ghostTile1.transform.position = tiles[0].position + new Vector3(0, group.maximumFallDistance * -1, 0);
-        ghostTile2.transform.position = tiles[1].position + new Vector3(0, group.maximumFallDistance * -1, 0);
-        ghostTile3.transform.position = tiles[2].position + new Vector3(0, group.maximumFallDistance * -1, 0);
-        ghostTile4.transform.position = tiles[3].position + new Vector3(0, group.maximumFallDistance * -1, 0);
+        ghostTile1.transform.position = tiles[0].position + new Vector3(0, group.maximumFallDistance * -1, 2);
+        ghostTile2.transform.position = tiles[1].position + new Vector3(0, group.maximumFallDistance * -1, 2);
+        ghostTile3.transform.position = tiles[2].position + new Vector3(0, group.maximumFallDistance * -1, 2);
+        ghostTile4.transform.position = tiles[3].position + new Vector3(0, group.maximumFallDistance * -1, 2);
 
         Color color = tiles[0].GetComponentInChildren<TileButton>().gameObject.GetComponent<Image>().color;
         color.a = 0.5f;

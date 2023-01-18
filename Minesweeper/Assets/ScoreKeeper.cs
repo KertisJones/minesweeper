@@ -7,6 +7,7 @@ public class ScoreKeeper : MonoBehaviour
 {
     public float bestScore;
     public int runs;
+    public static float masterVolume  = 0.2f;
     GameManager gm;
     // Start is called before the first frame update
     void Awake()
@@ -17,6 +18,8 @@ public class ScoreKeeper : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        //masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -29,7 +32,8 @@ public class ScoreKeeper : MonoBehaviour
             gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (gm.GetScore() > bestScore)
             bestScore = gm.GetScore();
-        if (GameObject.FindGameObjectWithTag("Volume") != null)
-            AudioListener.volume = GameObject.FindGameObjectWithTag("Volume").GetComponent<Slider>().value;
+        AudioListener.volume = masterVolume;
+        /*if (GameObject.FindGameObjectWithTag("Volume") != null)
+            AudioListener.volume = GameObject.FindGameObjectWithTag("Volume").GetComponent<Slider>().value;*/
     }
 }

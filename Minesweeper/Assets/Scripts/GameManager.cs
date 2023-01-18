@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public float scoreMultiplierTimer = 0;
     public int linesCleared = 0;
     public int tetrisweepsCleared = 0;
+    public int level = 1;
     public int currentMines = 0;
     public int currentFlags = 0;
     public int safeEdgeTilesGained = 0;
@@ -88,17 +89,23 @@ public class GameManager : MonoBehaviour
             scoreMultiplier = 0;
             backgroundAnimated.SetActive(false);
         }
-        else
+        else if (!isGameOver)
         {
             scoreMultiplierTimer -= Time.deltaTime;
         }
+
+        // Fixed Marathon: 10 per level
+        if (linesCleared >= level * 10)
+            level += 1;
         
         if (cheatGodMode)
         {
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.M))
                 SetScoreMultiplier(4f, 30);
             if (Input.GetKeyDown(KeyCode.K))
                 AddSafeTileToEdges();
+            if (Input.GetKeyDown(KeyCode.L))
+                linesCleared++;
         }
         
         if (Input.GetKeyDown("escape"))
@@ -538,7 +545,7 @@ public class GameManager : MonoBehaviour
             return;
         
         isGameOver = true;
-        endtime = startTime + GetTime();
+        endtime = GetTime();
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
 
         // Reveal all tiles!
@@ -569,12 +576,14 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Scoring
-    public void AddScore(int newScore) 
+    public void AddScore(int newScore, bool levelMultiplier = true) 
     {
+        float tempScore = newScore;
         if (scoreMultiplier > 1)
-            score += newScore * scoreMultiplier;
-        else
-            score += newScore;
+            tempScore = tempScore * scoreMultiplier;
+        if (levelMultiplier)
+            tempScore = tempScore * level;        
+        score += tempScore;
     }
 
     public void SetScoreMultiplier (float mult, float duration) {
