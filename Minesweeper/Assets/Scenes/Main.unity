@@ -3354,7 +3354,7 @@ MonoBehaviour:
   isGameOver: 0
   isPaused: 0
   hasQuit: 0
-  cheatGodMode: 1
+  cheatGodMode: 0
   cheatAutoFlagMode: 0
   wallTilesPlayableActive: 0
   tile: {fileID: 4675045439334439888, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
@@ -8224,6 +8224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46109f8ed4e070940baf1c8c8d035671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenuMove: {fileID: 2020009348}
   masterVolumeSlider: {fileID: 1139962693}
 --- !u!1 &2080675314
 GameObject:

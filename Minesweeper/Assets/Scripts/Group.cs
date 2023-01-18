@@ -7,8 +7,10 @@ public class Group : MonoBehaviour
     GameManager gm;
 
     float fallSpeed = 0.8f;
+    float lockDelay = 0.5f;
     float lastFall = 0;
     float lastMove = 0;
+    float lastLockDelayStep = 0;
 
     public float minePercent = 10;
 
@@ -189,10 +191,10 @@ public class Group : MonoBehaviour
             //return;
         
         // Move Left
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Keypad4) || (Input.GetAxis("Horizontal") == -1 && Time.time - lastMove >= fallSpeed / 10))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Keypad4) || (Input.GetAxis("Horizontal") == -1 && Time.time - lastMove >= lockDelay / 10))
             Move(-1);
         // Move Right
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Keypad6) || (Input.GetAxis("Horizontal") == 1 && Time.time - lastMove >= fallSpeed / 10))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Keypad6) || (Input.GetAxis("Horizontal") == 1 && Time.time - lastMove >= lockDelay / 10))
             Move(1);
 
         // Rotate
@@ -253,6 +255,8 @@ public class Group : MonoBehaviour
             transform.position += new Vector3(0, -1, 0);
             if (!isValidGridPos())
             {
+                StartCoroutine(LockTetrominoDelay());
+
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0));
 
@@ -281,14 +285,34 @@ public class Group : MonoBehaviour
         {
             // It's not valid. revert.
             transform.position += new Vector3(0, 1, 0);
-            LockTetromino();
+            StartCoroutine(LockTetrominoDelay());
         }
 
         lastFall = Time.time;
+        
+    }
+
+    public IEnumerator LockTetrominoDelay()
+    {
+        yield return new WaitForSeconds(lockDelay);
+        // Detect if next step will lock
+        bool willLock = false;
+        transform.position += new Vector3(0, -1, 0);
+        if (!isValidGridPos())
+        {
+            willLock = true;
+        }
+        transform.position += new Vector3(0, 1, 0);
+
+        // If it's at the bottom, lock it
+        if (willLock)
+            LockTetromino();
     }
 
     public void LockTetromino()
     {
+        if (!isFalling)
+            return;
         // Allow the tetromino to be scored
         isFalling = false;
 

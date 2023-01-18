@@ -95,8 +95,8 @@ public class GameManager : MonoBehaviour
         }
 
         // Fixed Marathon: 10 per level
-        if (linesCleared >= level * 10)
-            level += 1;
+        //if (linesCleared >= level * 10)
+            //level += 1;
         
         if (cheatGodMode)
         {
