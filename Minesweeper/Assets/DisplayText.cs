@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -47,7 +48,7 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.scoreMultiplier)
         {
-            string suffix = "";
+            /*string suffix = "";
             if (gm.scoreMultiplierTimer > 25)
                 suffix = "!!!!!";
             else if (gm.scoreMultiplierTimer > 20)
@@ -63,11 +64,11 @@ public class DisplayText : MonoBehaviour
             else if (gm.scoreMultiplierTimer <= 2)
                 suffix = "..";
             else if (gm.scoreMultiplierTimer <= 3)
-                suffix = "."; 
+                suffix = "."; */
             
             
-            if (gm.scoreMultiplier > 1)
-                this.GetComponent<TextMeshProUGUI>().text = "x" + gm.scoreMultiplier + suffix;
+            if (gm.GetScoreMultiplier() > 0)
+                this.GetComponent<TextMeshProUGUI>().text = "x" + (1 + gm.GetScoreMultiplier()); //(Math.Truncate(gm.scoreMultiplier * 100) / 100));
             else
                 this.GetComponent<TextMeshProUGUI>().text = "";
         }

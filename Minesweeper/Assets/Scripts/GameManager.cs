@@ -13,8 +13,10 @@ public class GameManager : MonoBehaviour
     float startTime;
     float endtime;
     private float score = 0;
-    public float scoreMultiplier = 0;
-    public float scoreMultiplierTimer = 0;
+    private float scoreMultiplier = 0;
+    public float scoreMultiplierDecayPerTick= 0.1f;
+    private int scoreMultiplierDecayTicksPerSecond = 5;
+    private float lastMultiplierTick = 0;
     public int linesCleared = 0;
     public int tetrisweepsCleared = 0;
     public int level = 1;
@@ -84,19 +86,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (scoreMultiplierTimer <= 0 && scoreMultiplier > 0)
+        if (Time.time - lastMultiplierTick >= 1f / scoreMultiplierDecayTicksPerSecond && !isGameOver)
         {
-            scoreMultiplier = 0;
-            backgroundAnimated.SetActive(false);
-        }
-        else if (!isGameOver)
-        {
-            scoreMultiplierTimer -= Time.deltaTime;
+            if (GetScoreMultiplier() > 0)
+            {
+                SetScoreMultiplier(-1 * scoreMultiplierDecayPerTick, 0);
+                if (GetScoreMultiplier() <= 0)
+                    backgroundAnimated.SetActive(false);
+            }
+            lastMultiplierTick = Time.time;
         }
 
         // Fixed Marathon: 10 per level
-        //if (linesCleared >= level * 10)
-            //level += 1;
+        if (linesCleared >= level * 10)
+            level += 1;
         
         if (cheatGodMode)
         {
@@ -579,19 +582,25 @@ public class GameManager : MonoBehaviour
     public void AddScore(int newScore, bool levelMultiplier = true) 
     {
         float tempScore = newScore;
-        if (scoreMultiplier > 1)
-            tempScore = tempScore * scoreMultiplier;
+        if (GetScoreMultiplier() > 0)
+            tempScore = tempScore * (1 + GetScoreMultiplier());
         if (levelMultiplier)
             tempScore = tempScore * level;        
         score += tempScore;
     }
 
-    public void SetScoreMultiplier (float mult, float duration) {
+    public void SetScoreMultiplier(float mult, float duration) {
         scoreMultiplier = scoreMultiplier + mult;
-        if (duration > scoreMultiplierTimer)
-            scoreMultiplierTimer = duration;
-        if (scoreMultiplier > 1)
+        //if (duration > scoreMultiplierTimer)
+            //scoreMultiplierTimer = duration;
+        if (GetScoreMultiplier() > 0)
             backgroundAnimated.SetActive(true);
+    }
+
+    public float GetScoreMultiplier()
+    {
+        scoreMultiplier = Mathf.Floor(scoreMultiplier * 10) / 10;
+        return scoreMultiplier;
     }
 
     public static int scoreSolvedRow(int y)
