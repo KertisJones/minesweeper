@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
     public AudioClip lineFullSound2;
     public AudioClip lineFullSound3;
     public AudioClip lineFullSound4;
+    public AudioClip perfectClearSound;
     public AudioClip gameOverSound;
 
     #region Game Setup
@@ -469,6 +470,9 @@ public class GameManager : MonoBehaviour
         AddScore(2000);
         SetScoreMultiplier(15, 30);
         AddSafeTileToEdges();
+
+        GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+        AudioSource.PlayClipAtPoint(perfectClearSound, new Vector3(0, 0, 0), 1f);
     }
     #endregion
     #region Tetrisweeper Solved Logic

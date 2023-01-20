@@ -3577,6 +3577,7 @@ MonoBehaviour:
   lineFullSound2: {fileID: 8300000, guid: 0d9fa3c551940cb4db5e834b505cbf76, type: 3}
   lineFullSound3: {fileID: 8300000, guid: 1b6b2c5c945553c4f8431c5d5e7fbcc8, type: 3}
   lineFullSound4: {fileID: 8300000, guid: 4840e3cd2e1b5bd4592308066bd6c587, type: 3}
+  perfectClearSound: {fileID: 8300000, guid: 5874bc7528f45de4ebaf002fe0273e11, type: 3}
   gameOverSound: {fileID: 8300000, guid: a994636b57e1d714b8b09e4270e1b2a3, type: 3}
 --- !u!4 &780965504
 Transform:

@@ -24,7 +24,9 @@ public class Group : MonoBehaviour
     float lastMove = 0;
     //float lastLockDelayStep = 0;
     bool isLocking = false;
-    int lockResets = 0;
+    int lockResetsRotate = 0;
+    int lockResetsMove = 0;
+
     float lockDelayTimer = 0;
 
     public float minePercent = 10;
@@ -234,8 +236,7 @@ public class Group : MonoBehaviour
 
         // Lock Delay
         if (isLocking)
-        {
-            lockDelayTimer -= Time.deltaTime;
+        {            
             if (lockDelayTimer <= 0)
             {
                 // Detect if next step will lock
@@ -253,9 +254,11 @@ public class Group : MonoBehaviour
                 else
                 {
                     isLocking = false;
-                    lockResets = 0;
+                    lockResetsRotate = 0;
+                    lockResetsMove = 0;
                 }
             }
+            lockDelayTimer -= Time.deltaTime;
         }
 
         // Update Speed if level has changed
@@ -388,15 +391,27 @@ public class Group : MonoBehaviour
             LockTetromino();*/
     }
 
-    public void LockDelayReset()
+    public void LockDelayReset(bool moveReset = false)
     {
         if (isLocking)
         {
-            if (lockResets < 4)
+            if (moveReset)
             {
-                lockDelayTimer = lockDelay;
-                lockResets++;
-            }        
+                if (lockResetsMove <= 10)
+                {
+                    lockDelayTimer = lockDelay;
+                    lockResetsRotate++;
+                }
+            }
+            else
+            {
+                if (lockResetsRotate <= 8)
+                {
+                    lockDelayTimer = lockDelay;
+                    lockResetsRotate++;
+                }
+            }
+            
         }
     }
 
@@ -938,7 +953,7 @@ public class Group : MonoBehaviour
         {
             // It's valid. Update grid.
             UpdateGrid();
-            LockDelayReset();
+            LockDelayReset(true);
 
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0));
