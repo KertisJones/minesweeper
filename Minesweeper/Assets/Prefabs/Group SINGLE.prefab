@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33f8e70a831d99449f2b111a69adcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tetrominoType: 3
   minePercent: 20
   isDisplay: 0
   isBonus: 0

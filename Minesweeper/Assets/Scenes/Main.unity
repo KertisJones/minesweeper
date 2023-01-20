@@ -3342,6 +3342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad782ec5250bafd42af3b3deea4dd698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameModeType: 0
   scoreMultiplierDecayPerTick: 0.1
   linesCleared: 0
   tetrisweepsCleared: 0
@@ -7159,7 +7160,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v1.6.0 beta
+  m_text: v1.6.1 beta
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
   m_sharedMaterial: {fileID: 4449517523809245107, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}

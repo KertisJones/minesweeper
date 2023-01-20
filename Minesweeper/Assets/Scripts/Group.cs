@@ -6,6 +6,18 @@ public class Group : MonoBehaviour
 {
     GameManager gm;
 
+    public enum TetrominoType // your custom enumeration
+    {
+        ITetromino,
+        JTetromino,
+        LTetromino,
+        OTetromino,
+        STetromino,
+        TTetromino,
+        ZTetromino
+    };
+    public TetrominoType tetrominoType;
+
     float fallSpeed = 0.8f;
     float lockDelay = 0.5f;
     float lastFall = 0;
@@ -26,6 +38,8 @@ public class Group : MonoBehaviour
     [HideInInspector]
     public int maximumFallDistance = 0;
     bool canHardDrop = false;
+
+    public int currentRotation = 0; // 0 = spawn state, 1 = counter-clockwise rotation from spawn, 2 = 2 successive rotations from spawn, 3 = clockwise rotation from spawn
 
     public Transform pivot;
     public Vector3 pivotStaticBackup = new Vector3();
@@ -416,6 +430,11 @@ public class Group : MonoBehaviour
             localPivot = pivot.localPosition;
         
         transform.RotateAround(transform.TransformPoint(localPivot), new Vector3(0, 0, 1), 90 * dir);
+        int previousRotation = currentRotation;
+        currentRotation += dir;
+        currentRotation = currentRotation % 4;
+        if (currentRotation == -1)
+            currentRotation = 3;
 
         // See if valid
         if (isValidGridPos())
@@ -428,6 +447,278 @@ public class Group : MonoBehaviour
         }
         else
         {
+            bool valid = false;
+            // SRS Kick System: https://tetris.wiki/Super_Rotation_System
+            // currentRotation key: 
+            //     0 = spawn state
+            //     1 = L - counter-clockwise rotation from spawn
+            //     2 = 2 successive rotations from spawn
+            //     3 = R - clockwise rotation from spawn
+
+            if (tetrominoType == TetrominoType.ITetromino)
+            {
+                if (previousRotation == 0 && currentRotation == 3)
+                {
+                    // 0->R	( 0, 0)	(-2, 0)	(+1, 0)	(-2,-1)	(+1,+2)
+                    valid = WallKickMove(-2, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-2, -1);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, 2);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 3 && currentRotation == 0)
+                {
+                    // R->0	( 0, 0)	(+2, 0)	(-1, 0)	(+2,+1)	(-1,-2)
+                    valid = WallKickMove(2, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(2, 1);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, -2);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 3 && currentRotation == 2)
+                {
+                    // R->2	( 0, 0)	(-1, 0)	(+2, 0)	(-1,+2)	(+2,-1)
+                    valid = WallKickMove(-1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(2, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, +2);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(+2, -1);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 2 && currentRotation == 3)
+                {
+                    // 2->R	( 0, 0)	(+1, 0)	(-2, 0)	(+1,-2)	(-2,+1)
+                    valid = WallKickMove(1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-2, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, -2);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-2, 1);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 2 && currentRotation == 1)
+                {
+                    // 2->L	( 0, 0)	(+2, 0)	(-1, 0)	(+2,+1)	(-1,-2)
+                    valid = WallKickMove(2, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(2, 1);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, -2);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 1 && currentRotation == 2)
+                {
+                    // L->2	( 0, 0)	(-2, 0)	(+1, 0)	(-2,-1)	(+1,+2)
+                    valid = WallKickMove(-2, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-2, -1);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, 2);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 1 && currentRotation == 0)
+                {
+                    // L->0	( 0, 0)	(+1, 0)	(-2, 0)	(+1,-2)	(-2,+1)
+                    valid = WallKickMove(1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-2, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, -2);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-2, 1);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 0 && currentRotation == 1)
+                {
+                    // 0->L	( 0, 0)	(-1, 0)	(+2, 0)	(-1,+2)	(+2,-1)
+                    valid = WallKickMove(-1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(2, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, 2);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(2, -1);
+                    if (valid)
+                        return;
+                }
+            }
+            else // J, L, S, T, Z Tetrominoes; O shouldn't have made it this far
+            {
+                if (previousRotation == 0 && currentRotation == 3)
+                {
+                    // 0->R	( 0, 0)	(-1, 0)	(-1,+1)	( 0,-2)	(-1,-2)
+                    valid = WallKickMove(-1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, 1);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(0, -2);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, -2);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 3 && currentRotation == 0)
+                {
+                    // R->0	( 0, 0)	(+1, 0)	(+1,-1)	( 0,+2)	(+1,+2)
+                    valid = WallKickMove(1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, -1);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(0, 2);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, 2);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 3 && currentRotation == 2)
+                {
+                    // R->2	( 0, 0)	(+1, 0)	(+1,-1)	( 0,+2)	(+1,+2)
+                    valid = WallKickMove(1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, -2);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(0, 2);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, 2);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 2 && currentRotation == 3)
+                {
+                    // 2->R	( 0, 0)	(-1, 0)	(-1,+1)	( 0,-2)	(-1,-2)
+                    valid = WallKickMove(-1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, 1);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(0, -2);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, -2);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 2 && currentRotation == 1)
+                {
+                    // 2->L	( 0, 0)	(+1, 0)	(+1,+1)	( 0,-2)	(+1,-2)
+                    valid = WallKickMove(1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, 1);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(0, -2);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, -2);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 1 && currentRotation == 2)
+                {
+                    // L->2	( 0, 0)	(-1, 0)	(-1,-1)	( 0,+2)	(-1,+2)
+                    valid = WallKickMove(-1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, -1);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(0, 2);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, 2);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 1 && currentRotation == 0)
+                {
+                    // L->0	( 0, 0)	(-1, 0)	(-1,-1)	( 0,+2)	(-1,+2)
+                    valid = WallKickMove(-1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, -1);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(0, 2);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(-1, 2);
+                    if (valid)
+                        return;
+                }
+                else if (previousRotation == 0 && currentRotation == 1)
+                {
+                    // 0->L	( 0, 0)	(+1, 0)	(+1,+1)	( 0,-2)	(+1,-2)
+                    valid = WallKickMove(1, 0);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, 1);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(0, -2);
+                    if (valid)
+                        return;
+                    valid = WallKickMove(1, -2);
+                    if (valid)
+                        return;
+                }
+            }
+            /*
+            // Super-Wide Kick System:
             // It's not valid. Try Wall Kick to the Right
             bool valid = WallKickMove(1);
             if (valid)
@@ -441,9 +732,11 @@ public class Group : MonoBehaviour
                 return;
             valid = WallKickMove(-2);
             if (valid)
-                return;
-            //Can't find a valid position
+                return;*/
+            
+            // Can't find a valid position - revert
             transform.RotateAround(transform.TransformPoint(localPivot), new Vector3(0, 0, 1), 90 * dir * -1);
+            currentRotation = previousRotation;
             Debug.Log("Rotation Wall Kicks failed");
         }
     }

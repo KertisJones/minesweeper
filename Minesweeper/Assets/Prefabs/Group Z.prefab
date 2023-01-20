@@ -48,11 +48,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33f8e70a831d99449f2b111a69adcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tetrominoType: 6
   minePercent: 20
   isDisplay: 0
   isBonus: 0
   isHeld: 0
   isFalling: 1
+  rowsFilled: 0
+  maximumFallDistance: 0
   pivot: {fileID: 6037855896460648434}
   pivotStaticBackup: {x: 0, y: 0, z: 0}
   moveSound: {fileID: 8300000, guid: b887aed25407f814288d38f1b5790f0b, type: 3}

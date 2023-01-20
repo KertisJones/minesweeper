@@ -10,6 +10,17 @@ using Krivodeling.UI.Effects;
 
 public class GameManager : MonoBehaviour
 {
+    public enum GameModeType // your custom enumeration
+    {
+        standard,
+        classic, // No levels, score doesn't decay, score reset timer
+        tetrisweepOnly,
+        zen,
+        sprint40Line,
+        throwback
+    };
+    public GameModeType gameModeType = GameModeType.standard; 
+
     float startTime;
     float endtime;
     private float score = 0;
@@ -547,8 +558,9 @@ public class GameManager : MonoBehaviour
         if (cheatGodMode)
             return;
         
-        isGameOver = true;
         endtime = GetTime();
+        isGameOver = true;
+        
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
 
         // Reveal all tiles!
