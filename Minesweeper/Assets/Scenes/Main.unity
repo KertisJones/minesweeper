@@ -3553,6 +3553,7 @@ MonoBehaviour:
   scoreMultiplierDecayPerTick: 0.1
   comboLinesFilled: -1
   lastFillWasDifficult: 0
+  perfectClearThisRound: 0
   linesCleared: 0
   tetrisweepsCleared: 0
   level: 1

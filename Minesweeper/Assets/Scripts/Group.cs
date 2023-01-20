@@ -22,7 +22,10 @@ public class Group : MonoBehaviour
     float lockDelay = 0.5f;
     float lastFall = 0;
     float lastMove = 0;
-    float lastLockDelayStep = 0;
+    //float lastLockDelayStep = 0;
+    bool isLocking = false;
+    int lockResets = 0;
+    float lockDelayTimer = 0;
 
     public float minePercent = 10;
 
@@ -228,7 +231,33 @@ public class Group : MonoBehaviour
             return;
         //if (FindObjectOfType<TetrominoSpawner>().currentTetromino != this.gameObject)
             //return;
-        
+
+        // Lock Delay
+        if (isLocking)
+        {
+            lockDelayTimer -= Time.deltaTime;
+            if (lockDelayTimer <= 0)
+            {
+                // Detect if next step will lock
+                bool willLock = false;
+                transform.position += new Vector3(0, -1, 0);
+                if (!isValidGridPos())
+                {
+                    willLock = true;
+                }
+                transform.position += new Vector3(0, 1, 0);
+
+                // If it's at the bottom, lock it
+                if (willLock)
+                    LockTetromino();
+                else
+                {
+                    isLocking = false;
+                    lockResets = 0;
+                }
+            }
+        }
+
         // Update Speed if level has changed
         fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
             
@@ -300,7 +329,7 @@ public class Group : MonoBehaviour
 
             if (!isValidGridPos())
             {
-                StartCoroutine(LockTetrominoDelay());
+                LockTetrominoDelay();
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0));
@@ -330,15 +359,21 @@ public class Group : MonoBehaviour
         {
             // It's not valid. revert.
             transform.position += new Vector3(0, 1, 0);
-            StartCoroutine(LockTetrominoDelay());
+            LockTetrominoDelay();
         }
 
         lastFall = Time.time;
     }
 
-    public IEnumerator LockTetrominoDelay()
+    public void LockTetrominoDelay()
     {
-        yield return new WaitForSeconds(lockDelay);
+        if (!isLocking)
+        {
+            lockDelayTimer = lockDelay;
+            isLocking = true;
+        }
+        
+        /*yield return new WaitForSeconds(lockDelay);
         // Detect if next step will lock
         bool willLock = false;
         transform.position += new Vector3(0, -1, 0);
@@ -350,7 +385,19 @@ public class Group : MonoBehaviour
 
         // If it's at the bottom, lock it
         if (willLock)
-            LockTetromino();
+            LockTetromino();*/
+    }
+
+    public void LockDelayReset()
+    {
+        if (isLocking)
+        {
+            if (lockResets < 4)
+            {
+                lockDelayTimer = lockDelay;
+                lockResets++;
+            }        
+        }
     }
 
     public void LockTetromino()
@@ -548,6 +595,7 @@ public class Group : MonoBehaviour
         {
             // It's valid. Update grid.
             UpdateGrid();
+            LockDelayReset();
 
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f);
@@ -733,7 +781,7 @@ public class Group : MonoBehaviour
                     valid = WallKickMove(1, 0);
                     if (valid)
                         return;
-                    valid = WallKickMove(1, -2);
+                    valid = WallKickMove(1, -1);
                     if (valid)
                         return;
                     valid = WallKickMove(0, 2);
@@ -858,6 +906,7 @@ public class Group : MonoBehaviour
             if (setPos)
             {
                 UpdateGrid();
+                LockDelayReset();
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f);
@@ -889,6 +938,7 @@ public class Group : MonoBehaviour
         {
             // It's valid. Update grid.
             UpdateGrid();
+            LockDelayReset();
 
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0));
