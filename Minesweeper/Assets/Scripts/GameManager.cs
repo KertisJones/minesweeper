@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     private float lastMultiplierTick = 0;
     public int comboLinesFilled = -1; // C=-1; +1 when mino locks & line filled; C= when mino locks & line not filled
     public bool lastFillWasDifficult = false; // Difficult fills are Tetrises or T-Spins
+    public bool perfectClearThisRound = true;
     public int linesCleared = 0;
     public int tetrisweepsCleared = 0;
     public int level = 1;
@@ -437,6 +438,38 @@ public class GameManager : MonoBehaviour
                 return false;
         return true;
     }
+
+    public static bool isRowEmpty(int y)
+    {
+        for (int x = 0; x < sizeX; ++x)
+            if (gameBoard[x][y] != null)
+                if (!gameBoard[x][y].GetComponentInParent<Group>().isFalling)
+                    return false;
+        return true;
+    }
+
+    public void CheckForPerfectClear()
+    {
+        if (perfectClearThisRound)
+            return;
+        if (linesCleared == 0)
+            return;
+        //if (linesCleared == 0)
+            //return;
+        // Make sure nothing is on the board
+        for (int y = 0; y < sizeY; ++y)
+        {
+            if (!isRowEmpty(y))
+                return;
+        }
+
+        perfectClearThisRound = true;
+
+        // Give rewards for a perfect clear!
+        AddScore(2000);
+        SetScoreMultiplier(15, 30);
+        AddSafeTileToEdges();
+    }
     #endregion
     #region Tetrisweeper Solved Logic
     public static void deleteFullRows()
@@ -451,7 +484,7 @@ public class GameManager : MonoBehaviour
             {
                 if (isRowSolved(y))
                 {
-                    gm.AddScore(scoreSolvedRow(y));
+                    scoreSolvedRow(y);
                     gm.linesCleared++;
                     deleteRow(y);
                     decreaseRowsAbove(y + 1);
@@ -464,6 +497,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        gm.CheckForPerfectClear();
     }
 
     public static bool isRowSolved(int y)
@@ -624,10 +659,10 @@ public class GameManager : MonoBehaviour
         return scoreMultiplier;
     }
 
-    public static int scoreSolvedRow(int y)
+    public static void scoreSolvedRow(int y)
     {
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        int rowScore = 0;
+        //int rowScore = 0;
         int minesFlagged = 0;
         bool containsPreviousTetromino = false;
         for (int x = 0; x < sizeX; ++x)
@@ -636,13 +671,13 @@ public class GameManager : MonoBehaviour
             {
                 if (gameBoard[x][y].GetComponent<Tile>().isMine)
                 {
-                    rowScore += 50;
+                    //rowScore += 50;
                     minesFlagged += 1;
                 }
-                else
+                /*else
                 {
                     rowScore += gameBoard[x][y].GetComponent<Tile>().nearbyMines;
-                }
+                }*/
                 if (gameBoard[x][y].GetComponentInParent<Group>().gameObject == gm.previousTetromino)
                     containsPreviousTetromino = true;
             }
@@ -663,7 +698,7 @@ public class GameManager : MonoBehaviour
         
         gm.currentMines -= minesFlagged;
         gm.currentFlags -= minesFlagged;
-        return rowScore;
+        //return rowScore;
     }
 
     public static int scoreFullRows(Transform tetronimo)
@@ -719,6 +754,9 @@ public class GameManager : MonoBehaviour
                     gm.SetScoreMultiplier(1f, 5f);
                     break;
             }
+            // C-c-c-Combo!
+            if (gm.comboLinesFilled > 0)
+                gm.AddScore(50 * gm.comboLinesFilled);
 
             gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(clipToPlay, new Vector3(0, 0, 0));

@@ -48,18 +48,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33f8e70a831d99449f2b111a69adcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tetrominoType: 0
   minePercent: 20
   isDisplay: 0
   isBonus: 0
   isHeld: 0
   isFalling: 1
   rowsFilled: 0
+  maximumFallDistance: 0
   pivot: {fileID: 0}
   pivotStaticBackup: {x: 0.5, y: -0.5, z: 0}
   moveSound: {fileID: 8300000, guid: b887aed25407f814288d38f1b5790f0b, type: 3}
   downSound: {fileID: 8300000, guid: 1ccfa3070b4c9b14d8f41342cd280e8b, type: 3}
   turnSound: {fileID: 8300000, guid: 1c11e6a77d1043f4494b2a13df581d1a, type: 3}
   landSound: {fileID: 8300000, guid: febe9af54fc0468439e36219c816b204, type: 3}
+  tetrisweepSound: {fileID: 8300000, guid: 22d3ef7d8d14c3c489edbc8fe1c9b648, type: 3}
+  tSpinSound: {fileID: 8300000, guid: 644c8ba5bc6fbf740b2ea940adc82164, type: 3}
 --- !u!82 &982824414662888951
 AudioSource:
   m_ObjectHideFlags: 0

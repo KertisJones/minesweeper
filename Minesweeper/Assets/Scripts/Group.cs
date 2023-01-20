@@ -53,6 +53,8 @@ public class Group : MonoBehaviour
     public AudioClip downSound;
     public AudioClip turnSound;
     public AudioClip landSound;
+    public AudioClip tetrisweepSound;
+    public AudioClip tSpinSound;
 
     // Start is called before the first frame update
     void Start()
@@ -192,13 +194,22 @@ public class Group : MonoBehaviour
                 gm.tetrisweepsCleared += 1;
                 gm.AddScore(595 * (bottomHeight + 1)); // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
                 gm.SetScoreMultiplier(topHeight + 1, 30);
+
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0));
+
                 if (topHeight > gm.safeEdgeTilesGained - 1)
                     gm.AddSafeTileToEdges();
+                
             }
-            else if (isTspin && gm.previousTetromino == this.gameObject)
+            else if (isTspin && gm.previousTetromino == this.gameObject) // Detect if T-Sweep was achieved
             {
                 gm.AddScore(250 * rowsFilled * (bottomHeight + 1));
                 gm.SetScoreMultiplier(rowsFilled, 30);
+
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0));
+
                 if (topHeight > gm.safeEdgeTilesGained - 1)
                     gm.AddSafeTileToEdges();
             }
@@ -217,6 +228,10 @@ public class Group : MonoBehaviour
             return;
         //if (FindObjectOfType<TetrominoSpawner>().currentTetromino != this.gameObject)
             //return;
+        
+        // Update Speed if level has changed
+        fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
+            
         
         // Move Left
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Keypad4) || (Input.GetAxis("Horizontal") == -1 && Time.time - lastMove >= lockDelay / 10))
@@ -418,6 +433,12 @@ public class Group : MonoBehaviour
                     gm.SetScoreMultiplier(2, 10);
                     fillWasDifficult = true;
                 }
+
+                if (rowsFilled > 0)
+                {
+                    GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                    AudioSource.PlayClipAtPoint(tSpinSound, new Vector3(0, 0, 0));
+                }
             }
         }
 
@@ -442,7 +463,7 @@ public class Group : MonoBehaviour
                 gm.comboLinesFilled = -1;
             gm.lastFillWasDifficult = fillWasDifficult;
             
-
+            gm.perfectClearThisRound = false;
             // Clear filled horizontal lines
             GameManager.deleteFullRows();
         }

@@ -25,7 +25,8 @@ public class DisplayText : MonoBehaviour
         linesCleared,
         tetrisweepsCleard,
         scoreMultiplier,
-        quit
+        quit,
+        level
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
@@ -129,6 +130,10 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TextMeshProUGUI>().text = "Can't Quit in Browser";
             else
                 this.GetComponent<TextMeshProUGUI>().text = "Quit";
+        }
+        else if (displayType == TextType.level)
+        {
+            this.GetComponent<TextMeshProUGUI>().text = "Level: " + gm.level;
         }
     }
 }
