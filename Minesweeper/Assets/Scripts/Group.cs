@@ -39,7 +39,8 @@ public class Group : MonoBehaviour
     public int maximumFallDistance = 0;
     bool canHardDrop = false;
 
-    public int currentRotation = 0; // 0 = spawn state, 1 = counter-clockwise rotation from spawn, 2 = 2 successive rotations from spawn, 3 = clockwise rotation from spawn
+    int currentRotation = 0; // 0 = spawn state, 1 = counter-clockwise rotation from spawn, 2 = 2 successive rotations from spawn, 3 = clockwise rotation from spawn
+    bool lastSuccessfulMovementWasRotation = false;
 
     public Transform pivot;
     public Vector3 pivotStaticBackup = new Vector3();
@@ -267,6 +268,8 @@ public class Group : MonoBehaviour
         {
             // Detect the moment it lands
             transform.position += new Vector3(0, -1, 0);
+            lastSuccessfulMovementWasRotation = false;
+
             if (!isValidGridPos())
             {
                 StartCoroutine(LockTetrominoDelay());
@@ -303,7 +306,6 @@ public class Group : MonoBehaviour
         }
 
         lastFall = Time.time;
-        
     }
 
     public IEnumerator LockTetrominoDelay()
@@ -336,6 +338,9 @@ public class Group : MonoBehaviour
         // Score filled horizontal lines
         rowsFilled = GameManager.scoreFullRows(this.transform);
 
+        // Will the next tetromino be safe?
+        bool nextTetrominoIsBonus = (rowsFilled == 4);
+
         // Detect if an in-place spin has occured
         if (!WallKickMove(1, 0, false) && !WallKickMove(-1, 0, false) && !WallKickMove(0, 1, false))
         {
@@ -353,6 +358,47 @@ public class Group : MonoBehaviour
                 gm.AddScore(1600);
         }
 
+        // Detect if a T-Spin has occured
+        if (tetrominoType == TetrominoType.TTetromino && lastSuccessfulMovementWasRotation)
+        {
+            // Three of the 4 squares diagonally adjacent to the T's center are occupied. The walls and floor surrounding the playfield are considered "occupied".
+            int filledDiagonalTiles = 0;
+            if (gm.GetGameTile(Mathf.RoundToInt(pivot.position.x + 1), Mathf.RoundToInt(pivot.position.y + 1)) != null)
+                filledDiagonalTiles++;
+            if (gm.GetGameTile(Mathf.RoundToInt(pivot.position.x - 1), Mathf.RoundToInt(pivot.position.y - 1)) != null)
+                filledDiagonalTiles++;
+            if (gm.GetGameTile(Mathf.RoundToInt(pivot.position.x + 1), Mathf.RoundToInt(pivot.position.y - 1)) != null)
+                filledDiagonalTiles++;
+            if (gm.GetGameTile(Mathf.RoundToInt(pivot.position.x - 1), Mathf.RoundToInt(pivot.position.y + 1)) != null)
+                filledDiagonalTiles++;
+            
+            if (rowsFilled == 0) // T-Spin no lines
+            {
+                gm.AddScore(400);
+                gm.SetScoreMultiplier(0.1f, 5);
+            }
+            else if (rowsFilled == 1) // T-Spin Single
+            {
+                gm.AddScore(800);
+                gm.SetScoreMultiplier(0.5f, 10);
+                nextTetrominoIsBonus = true;
+            }
+            else if (rowsFilled == 2) // T-Spin Double
+            {
+                gm.AddScore(1200);
+                gm.SetScoreMultiplier(1, 10);
+                nextTetrominoIsBonus = true;
+            }
+            else if (rowsFilled == 3) // T-Spin Triple
+            {
+                gm.AddScore(1600);
+                gm.SetScoreMultiplier(2, 10);
+                nextTetrominoIsBonus = true;
+            }
+            
+            // pivot.position;
+        }
+
         // Failsafe in case block is off screen
         foreach (Transform child in transform)
         {
@@ -368,7 +414,7 @@ public class Group : MonoBehaviour
             if (rowsFilled < 4)
                 FindObjectOfType<TetrominoSpawner>().spawnNext();
             else
-                FindObjectOfType<TetrominoSpawner>().spawnNext(true);
+                FindObjectOfType<TetrominoSpawner>().spawnNext(nextTetrominoIsBonus);
 
             // Clear filled horizontal lines
             GameManager.deleteFullRows();
@@ -435,6 +481,9 @@ public class Group : MonoBehaviour
         currentRotation = currentRotation % 4;
         if (currentRotation == -1)
             currentRotation = 3;
+        
+        bool lastSuccessfulMovementWasRotationTemp = lastSuccessfulMovementWasRotation;
+        lastSuccessfulMovementWasRotation = true;
 
         // See if valid
         if (isValidGridPos())
@@ -737,6 +786,7 @@ public class Group : MonoBehaviour
             // Can't find a valid position - revert
             transform.RotateAround(transform.TransformPoint(localPivot), new Vector3(0, 0, 1), 90 * dir * -1);
             currentRotation = previousRotation;
+            lastSuccessfulMovementWasRotation = lastSuccessfulMovementWasRotationTemp;
             Debug.Log("Rotation Wall Kicks failed");
         }
     }
@@ -771,7 +821,7 @@ public class Group : MonoBehaviour
         }
     }
 
-    void Move (float dir = 1) // -1 is Left, 1 is Right
+    void Move(float dir = 1) // -1 is Left, 1 is Right
     {
         // Modify position
         transform.position += new Vector3(dir, 0, 0);
@@ -784,6 +834,8 @@ public class Group : MonoBehaviour
 
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0));
+
+            lastSuccessfulMovementWasRotation = false;
         }
         else
         {

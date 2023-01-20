@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     //private bool minesPlaced = false;
 
     public static GameObject[][] gameBoard;
+    List<GameObject> floorTiles;
     List<GameObject> leftBorderTiles;
     List<GameObject> rightBorderTiles;
     public GameObject previousTetromino = null;
@@ -149,6 +150,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Bottom Display Tiles
+        floorTiles = new List<GameObject>();
         for (int i = -1; i <= sizeX; i++)
         {
             //place display tiles at bottom
@@ -158,6 +160,7 @@ public class GameManager : MonoBehaviour
             newTile.GetComponent<Tile>().coordY = -1;
             newTile.GetComponent<Tile>().isRevealed = true;
             newTile.GetComponent<Tile>().isDisplay = true;
+            floorTiles.Add(newTile);
         }
 
         // Left and Right Tiles
@@ -359,6 +362,10 @@ public class GameManager : MonoBehaviour
         else if (x == sizeX && y >= 0 && y < rightBorderTiles.Count)
         {
             return rightBorderTiles[y].GetComponentInChildren<Tile>();
+        }
+        else if (x >= -1 && x <= sizeX && y == -1)
+        {
+            return floorTiles[x+1].GetComponent<Tile>();
         }
         //Debug.Log("Failed to find tile " + x + ", " + y);
         return null;
