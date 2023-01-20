@@ -35,6 +35,9 @@ public class Group : MonoBehaviour
     public bool isFalling = true;
     [HideInInspector]
     public int rowsFilled = 0;
+    int bottomHeight = 99999;
+    int topHeight = -99999;
+    bool isTspin = false;
     [HideInInspector]
     public int maximumFallDistance = 0;
     bool canHardDrop = false;
@@ -162,6 +165,7 @@ public class Group : MonoBehaviour
 
     public void UpdateGridAdd()
     {
+        
         // Add new children to grid
         foreach (Transform child in transform)
         {
@@ -186,8 +190,17 @@ public class Group : MonoBehaviour
             if (rowsFilled == 4 && gm.previousTetromino == this.gameObject)
             {
                 gm.tetrisweepsCleared += 1;
-                gm.AddScore(595); // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
+                gm.AddScore(595 * (bottomHeight + 1)); // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
+                gm.SetScoreMultiplier(topHeight + 1, 30);
+                if (topHeight > gm.safeEdgeTilesGained - 1)
+                    gm.AddSafeTileToEdges();
+            }
+            else if (isTspin && gm.previousTetromino == this.gameObject)
+            {
+                gm.AddScore(250 * rowsFilled * (bottomHeight + 1));
                 gm.SetScoreMultiplier(rowsFilled, 30);
+                if (topHeight > gm.safeEdgeTilesGained - 1)
+                    gm.AddSafeTileToEdges();
             }
             // Clean up
             Destroy(this.gameObject);
@@ -232,8 +245,8 @@ public class Group : MonoBehaviour
             fallDistance = maximumFallDistance;
             isHardDrop = true;
             //maximumFallDistance;
-            gm.SetScoreMultiplier(0.25f, 2f);
             gm.AddScore(maximumFallDistance * 2);
+            gm.SetScoreMultiplier(0.2f, 1f);            
             //Fall(maximumFallDistance);
             //Fall();
             //lastFall = 0;
@@ -339,23 +352,13 @@ public class Group : MonoBehaviour
         rowsFilled = GameManager.scoreFullRows(this.transform);
 
         // Will the next tetromino be safe?
-        bool nextTetrominoIsBonus = (rowsFilled == 4);
+        bool fillWasDifficult = (rowsFilled == 4);
 
         // Detect if an in-place spin has occured
         if (!WallKickMove(1, 0, false) && !WallKickMove(-1, 0, false) && !WallKickMove(0, 1, false))
         {
             Debug.Log("In-Place spin locked! Rows filled: " + rowsFilled);
-            // Score += 100, doubled for each row filled
-            if (rowsFilled == 0)
-                gm.AddScore(100);
-            else if (rowsFilled == 1)
-                gm.AddScore(200);
-            else if (rowsFilled == 2)
-                gm.AddScore(400);
-            else if (rowsFilled == 3)
-                gm.AddScore(800);
-            else if (rowsFilled == 4)
-                gm.AddScore(1600);
+            gm.SetScoreMultiplier(0.5f, 5);
         }
 
         // Detect if a T-Spin has occured
@@ -372,31 +375,50 @@ public class Group : MonoBehaviour
             if (gm.GetGameTile(Mathf.RoundToInt(pivot.position.x - 1), Mathf.RoundToInt(pivot.position.y + 1)) != null)
                 filledDiagonalTiles++;
             
-            if (rowsFilled == 0) // T-Spin no lines
+            if (filledDiagonalTiles >= 3) // It's a T-Spin!
             {
-                gm.AddScore(400);
-                gm.SetScoreMultiplier(0.1f, 5);
+                isTspin = true;
+
+                if (rowsFilled == 0) // T-Spin no lines
+                {
+                    Debug.Log("T-Spin (No Lines)");
+                    gm.AddScore(400);
+                    gm.SetScoreMultiplier(0.1f, 5);
+                }
+                else if (rowsFilled == 1) // T-Spin Single
+                {
+                    Debug.Log("T-Spin Single");
+                    int actionScore = 800;
+                    if (gm.lastFillWasDifficult)
+                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
+                    else
+                        gm.AddScore(actionScore);
+                    gm.SetScoreMultiplier(0.5f, 10);
+                    fillWasDifficult = true;
+                }
+                else if (rowsFilled == 2) // T-Spin Double
+                {
+                    Debug.Log("T-Spin Double");
+                    int actionScore = 1200;
+                    if (gm.lastFillWasDifficult)
+                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
+                    else
+                        gm.AddScore(actionScore);
+                    gm.SetScoreMultiplier(1, 10);
+                    fillWasDifficult = true;
+                }
+                else if (rowsFilled == 3) // T-Spin Triple
+                {
+                    Debug.Log("T-Spin Triple");
+                    int actionScore = 1600;
+                    if (gm.lastFillWasDifficult)
+                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
+                    else
+                        gm.AddScore(actionScore);
+                    gm.SetScoreMultiplier(2, 10);
+                    fillWasDifficult = true;
+                }
             }
-            else if (rowsFilled == 1) // T-Spin Single
-            {
-                gm.AddScore(800);
-                gm.SetScoreMultiplier(0.5f, 10);
-                nextTetrominoIsBonus = true;
-            }
-            else if (rowsFilled == 2) // T-Spin Double
-            {
-                gm.AddScore(1200);
-                gm.SetScoreMultiplier(1, 10);
-                nextTetrominoIsBonus = true;
-            }
-            else if (rowsFilled == 3) // T-Spin Triple
-            {
-                gm.AddScore(1600);
-                gm.SetScoreMultiplier(2, 10);
-                nextTetrominoIsBonus = true;
-            }
-            
-            // pivot.position;
         }
 
         // Failsafe in case block is off screen
@@ -411,10 +433,15 @@ public class Group : MonoBehaviour
         if (!gm.isGameOver)
         {
             // Spawn next Group; if playere scored a Tetris, spawn a fully revealed Tetronimo
-            if (rowsFilled < 4)
-                FindObjectOfType<TetrominoSpawner>().spawnNext();
+            FindObjectOfType<TetrominoSpawner>().spawnNext(fillWasDifficult);
+
+            // Combo Checks!
+            if (rowsFilled > 0)
+                gm.comboLinesFilled++;
             else
-                FindObjectOfType<TetrominoSpawner>().spawnNext(nextTetrominoIsBonus);
+                gm.comboLinesFilled = -1;
+            gm.lastFillWasDifficult = fillWasDifficult;
+            
 
             // Clear filled horizontal lines
             GameManager.deleteFullRows();
@@ -442,6 +469,9 @@ public class Group : MonoBehaviour
         }*/
 
         int minFallDistance = 100;
+        int newBottomHeight = 99999;
+        int newTopHeight = -99999;
+
         foreach (Transform child in transform)
         {
             if (child.gameObject.GetComponent<Tile>() != null)
@@ -463,10 +493,17 @@ public class Group : MonoBehaviour
                 //Debug.Log(fallDistance);
                 if (minFallDistance > fallDistance)
                     minFallDistance = fallDistance;
+                
+                if (newBottomHeight > coordY)
+                    newBottomHeight = coordY;
+                if (newTopHeight < coordY)
+                    newTopHeight = coordY;
             }
         }
         //Debug.Log("Final distance: " + maximumFallDistance);
         maximumFallDistance = minFallDistance;
+        bottomHeight = newBottomHeight;
+        topHeight = newTopHeight;
     }
 
     void Rotate (int dir = -1)

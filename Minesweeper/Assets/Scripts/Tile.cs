@@ -226,7 +226,7 @@ public class Tile : MonoBehaviour
                 if (!GetComponentInParent<Group>().isDisplay)
                 {
                     // Each revealed tile is equal to 1 point.
-                    gm.AddScore(5);
+                    gm.AddScore(nearbyMines * nearbyFlags * (coordY + 1));
                 }
             }
 

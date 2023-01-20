@@ -26,8 +26,10 @@ public class GameManager : MonoBehaviour
     private float score = 0;
     private float scoreMultiplier = 0;
     public float scoreMultiplierDecayPerTick= 0.1f;
-    private int scoreMultiplierDecayTicksPerSecond = 5;
+    private int scoreMultiplierDecayTicksPerSecond = 4;
     private float lastMultiplierTick = 0;
+    public int comboLinesFilled = -1; // C=-1; +1 when mino locks & line filled; C= when mino locks & line not filled
+    public bool lastFillWasDifficult = false; // Difficult fills are Tetrises or T-Spins
     public int linesCleared = 0;
     public int tetrisweepsCleared = 0;
     public int level = 1;
@@ -645,11 +647,13 @@ public class GameManager : MonoBehaviour
                     containsPreviousTetromino = true;
             }
         }
-        gm.SetScoreMultiplier(0.5f, 2f);
+        gm.AddScore(50 * (y + 1));
+        gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
         // Linesweep: Row was solved before the next tetromino was placed
         if (containsPreviousTetromino)
         {
-            gm.SetScoreMultiplier(1f, 2f);
+            gm.AddScore(50 * (y + 1));
+            gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
             if (y > gm.safeEdgeTilesGained - 1)
             {
                 Debug.Log("Linesweep " + y);
@@ -692,19 +696,27 @@ public class GameManager : MonoBehaviour
             switch (fullRows) {
                 case 1:
                     clipToPlay = gm.lineFullSound1;
-                    gm.AddScore(40);
+                    gm.AddScore(100);
+                    gm.SetScoreMultiplier(0.3f, 5f);
                     break;
                 case 2:
                     clipToPlay = gm.lineFullSound2;
-                    gm.AddScore(100);
+                    gm.AddScore(300);
+                    gm.SetScoreMultiplier(0.5f, 5f);
                     break;
                 case 3:
                     clipToPlay = gm.lineFullSound3;
-                    gm.AddScore(300);
+                    gm.AddScore(500);
+                    gm.SetScoreMultiplier(0.8f, 5f);
                     break;
                 default:
                     clipToPlay = gm.lineFullSound4;
-                    gm.AddScore(1200);
+                    int actionScore = 800;
+                    if (gm.lastFillWasDifficult)
+                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
+                    else
+                        gm.AddScore(actionScore);
+                    gm.SetScoreMultiplier(1f, 5f);
                     break;
             }
 

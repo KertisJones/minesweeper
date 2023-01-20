@@ -30,7 +30,7 @@ public class TileButton : MonoBehaviour, IPointerClickHandler
         }            
         if (eventData.button == PointerEventData.InputButton.Middle)
         {
-            tile.QuestionToggle();
+            tile.FlagToggle();
             tile.Chord();
         }
         if (eventData.button == PointerEventData.InputButton.Right)
