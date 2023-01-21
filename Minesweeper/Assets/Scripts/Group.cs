@@ -68,6 +68,7 @@ public class Group : MonoBehaviour
 
         //Official Guidline Gravity Curve: Time = (0.8-((Level-1)*0.007))(Level-1)
         fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
+        lockDelay = 0.1f + (fallSpeed / 2);
 
         // Default position not valid? Then it's game over
         if (!isValidGridPos() && !isDisplay)
@@ -209,6 +210,7 @@ public class Group : MonoBehaviour
             }
             else if (isTspin && gm.previousTetromino == this.gameObject) // Detect if T-Sweep was achieved
             {
+                gm.tSpinsweepsCleared += 1;
                 gm.AddScore(250 * rowsFilled * (bottomHeight + 1));
                 gm.SetScoreMultiplier(rowsFilled, 30);
 
@@ -239,30 +241,14 @@ public class Group : MonoBehaviour
         {            
             if (lockDelayTimer <= 0)
             {
-                // Detect if next step will lock
-                bool willLock = false;
-                transform.position += new Vector3(0, -1, 0);
-                if (!isValidGridPos())
-                {
-                    willLock = true;
-                }
-                transform.position += new Vector3(0, 1, 0);
-
-                // If it's at the bottom, lock it
-                if (willLock)
-                    LockTetromino();
-                else
-                {
-                    isLocking = false;
-                    lockResetsRotate = 0;
-                    lockResetsMove = 0;
-                }
+                CheckIfLockIsValid();
             }
             lockDelayTimer -= Time.deltaTime;
         }
 
         // Update Speed if level has changed
         fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
+        lockDelay = 0.1f + (fallSpeed / 2);
             
         
         // Move Left
@@ -284,7 +270,7 @@ public class Group : MonoBehaviour
         // Move Downwards and Fall
         int fallDistance = 1;
         // Soft Drop
-        bool isSoftDrop = (Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Keypad2);
+        bool isSoftDrop = ((Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Keypad2));
         // Hard Drop
         bool isHardDrop = false;
         if (canHardDrop && ((Input.GetKeyDown(KeyCode.Space)  || Input.GetKeyDown(KeyCode.Keypad8)) && lastFall > 0 || Input.GetKeyDown(KeyCode.Return)))
@@ -307,7 +293,7 @@ public class Group : MonoBehaviour
         
         if (isSoftDrop)
         {
-            if (isFalling)
+            if (isFalling && !isHeld && !isLocking)
                 gm.AddScore(1);
         }
         // Basic Fall
@@ -400,7 +386,7 @@ public class Group : MonoBehaviour
                 if (lockResetsMove <= 10)
                 {
                     lockDelayTimer = lockDelay;
-                    lockResetsRotate++;
+                    lockResetsMove++;
                 }
             }
             else
@@ -415,10 +401,37 @@ public class Group : MonoBehaviour
         }
     }
 
+    public void CheckIfLockIsValid()
+    {
+        // Detect if next step will lock
+        bool willLock = false;
+        transform.position += new Vector3(0, -1, 0);
+        if (!isValidGridPos())
+        {
+            willLock = true;
+        }
+        transform.position += new Vector3(0, 1, 0);
+
+        // If it's at the bottom, lock it
+        if (willLock)
+            LockTetromino();
+        else
+        {
+            isLocking = false;
+            lockResetsRotate = 0;
+            lockResetsMove = 0;
+        }
+    }
+
     public void LockTetromino()
     {
         if (!isFalling)
             return;
+        
+        /*isLocking = false;
+                    lockResetsRotate = 0;
+                    lockResetsMove = 0;*/
+
         // Allow the tetromino to be scored
         isFalling = false;
 
@@ -668,10 +681,10 @@ public class Group : MonoBehaviour
                     valid = WallKickMove(2, 0);
                     if (valid)
                         return;
-                    valid = WallKickMove(-1, +2);
+                    valid = WallKickMove(-1, 2);
                     if (valid)
                         return;
-                    valid = WallKickMove(+2, -1);
+                    valid = WallKickMove(2, -1);
                     if (valid)
                         return;
                 }
@@ -922,6 +935,10 @@ public class Group : MonoBehaviour
             {
                 UpdateGrid();
                 LockDelayReset();
+
+                // If it gets kicked upwards, check if it should be locked. This will also prevent points from being scored by soft drops.
+                if (dirV > 0)
+                    LockTetrominoDelay();
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f);

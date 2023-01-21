@@ -26,7 +26,8 @@ public class DisplayText : MonoBehaviour
         tetrisweepsCleard,
         scoreMultiplier,
         quit,
-        level
+        level,
+        tSpinSweeps
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
@@ -134,6 +135,17 @@ public class DisplayText : MonoBehaviour
         else if (displayType == TextType.level)
         {
             this.GetComponent<TextMeshProUGUI>().text = "Level: " + gm.level;
+        }
+        else if (displayType == TextType.tSpinSweeps)
+        {
+            if (gm.tSpinsweepsCleared == 0)
+                this.GetComponent<TextMeshProUGUI>().text = "T-Spinsweeps";
+            else
+            {
+                this.GetComponent<TextMeshProUGUI>().text = "T-Spinsweeps: " + gm.tSpinsweepsCleared;
+                this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
+                this.GetComponent<VertexColorCyclerGradient>().enabled = true;
+            }            
         }
     }
 }

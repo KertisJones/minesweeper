@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public bool perfectClearThisRound = true;
     public int linesCleared = 0;
     public int tetrisweepsCleared = 0;
+    public int tSpinsweepsCleared = 0;
     public int level = 1;
     public int currentMines = 0;
     public int currentFlags = 0;
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     public bool isGameOver = false;
     public bool isPaused = false;
+    bool canPause = true;
     public bool hasQuit = false;
     public bool cheatGodMode = false;
     public bool cheatAutoFlagMode = false;
@@ -788,11 +790,15 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver)
             return;
+        if (pause && !canPause)
+            return;
+
         if (pause)
         {
             Time.timeScale = 0;
             isPaused = true;
             pauseMenu.isActive = true;
+            canPause = false;
         }
         else
         {
@@ -801,8 +807,14 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1;
                 isPaused = false;       
                 pauseMenu.isActive = false;
+                StartCoroutine(ResetPause());
             }
         }        
+    }
+    IEnumerator ResetPause()
+    {
+        yield return new WaitForSeconds(0.4f);
+        canPause = true;
     }
     public float GetTime()
     {
