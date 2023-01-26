@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreKeeper : MonoBehaviour
+public class ScoreKeeper : MonoBehaviour, ISaveable
 {
     public float bestScore;
     public int runs;
@@ -21,6 +21,8 @@ public class ScoreKeeper : MonoBehaviour
 
         //masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
 
+        LoadJsonData(this.GetComponent<ScoreKeeper>());
+
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -31,9 +33,53 @@ public class ScoreKeeper : MonoBehaviour
         if (gm == null)
             gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (gm.GetScore() > bestScore)
+        {
             bestScore = gm.GetScore();
+            SaveJsonData(this.GetComponent<ScoreKeeper>());
+        }
+            
         AudioListener.volume = masterVolume;
+        
         /*if (GameObject.FindGameObjectWithTag("Volume") != null)
             AudioListener.volume = GameObject.FindGameObjectWithTag("Volume").GetComponent<Slider>().value;*/
+    }
+
+    public void SaveJsonData(ScoreKeeper a_ScoreKeepeer) 
+    {
+        SaveData sd = new SaveData();
+        a_ScoreKeepeer.PopulateSaveData(sd);
+
+        if (FileManager.WriteToFile("SaveData.dat", sd.ToJson()))
+        {
+            Debug.Log("Save successful");
+        }
+    }
+
+    public void LoadJsonData (ScoreKeeper a_ScoreKeeper) {
+        if (FileManager.LoadFromFile("SaveData.dat", out var json))
+        {
+            SaveData sd = new SaveData();
+            sd.LoadFromJson(json);
+
+            a_ScoreKeeper.LoadFromSaveData(sd);
+            Debug.Log("Load complete");
+        }
+    }
+
+    public void PopulateSaveData(SaveData a_SaveData)
+    {
+        SaveData.GameStatsData gameStatsData = new SaveData.GameStatsData();
+        gameStatsData.m_score = gm.GetScore();
+        gameStatsData.dateTime = System.DateTime.Now; // TODO
+        a_SaveData.m_GameStatsData.Add(gameStatsData);
+    }
+    public void LoadFromSaveData (SaveData a_SaveData) {
+        float bestSavedScore = 0;
+        foreach (SaveData.GameStatsData gameStat in a_SaveData.m_GameStatsData)
+        {
+            if (bestSavedScore < gameStat.m_score)
+                bestSavedScore = gameStat.m_score;
+        }
+        bestScore = bestSavedScore;
     }
 }
