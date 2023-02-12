@@ -3556,6 +3556,7 @@ MonoBehaviour:
   perfectClearThisRound: 0
   linesCleared: 0
   tetrisweepsCleared: 0
+  tSpinsweepsCleared: 0
   level: 1
   currentMines: 0
   currentFlags: 0

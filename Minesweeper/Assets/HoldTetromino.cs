@@ -40,6 +40,7 @@ public class HoldTetromino : MonoBehaviour
         RemoveFromBoard(currentTetromino);
         AddToBoard(heldTetromino);
 
+        gm.holds += 1;
 
         heldTetrominoPrevious = heldTetromino;
         heldTetromino = currentTetromino;

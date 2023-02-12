@@ -62,6 +62,25 @@ public class GameManager : MonoBehaviour
 
     public bool wallTilesPlayableActive = false;
 
+    // Statistics
+    public int piecesPlaced;
+    public int holds;
+    public int linesweepsCleared;
+    public float highestScoreMultiplier;
+    public int minesSweeped;
+    public int perfectClears;
+    public int singlesFilled;
+    public int doublesFilled;
+    public int triplesFilled;
+    public int tetrisesFilled;
+    public int tSpinMiniNoLines;
+    public int tSpinMiniSingle;
+    public int tSpinMiniDouble;
+    public int tSpinNoLines;
+    public int tSpinSingle;
+    public int tSpinDouble;
+    public int tSpinTriple;
+
     // Options
     /*public enum WallType // your custom enumeration
     {
@@ -473,6 +492,8 @@ public class GameManager : MonoBehaviour
         SetScoreMultiplier(15, 30);
         AddSafeTileToEdges();
 
+        perfectClears += 1;
+
         GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(perfectClearSound, new Vector3(0, 0, 0), 1f);
     }
@@ -657,6 +678,8 @@ public class GameManager : MonoBehaviour
             //scoreMultiplierTimer = duration;
         if (GetScoreMultiplier() > 0)
             backgroundAnimated.SetActive(true);
+        if (GetScoreMultiplier() > highestScoreMultiplier)
+            highestScoreMultiplier = GetScoreMultiplier();
     }
 
     public float GetScoreMultiplier()
@@ -690,6 +713,7 @@ public class GameManager : MonoBehaviour
         }
         gm.AddScore(50 * (y + 1));
         gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
+
         // Linesweep: Row was solved before the next tetromino was placed
         if (containsPreviousTetromino)
         {
@@ -697,13 +721,15 @@ public class GameManager : MonoBehaviour
             gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
             if (y > gm.safeEdgeTilesGained - 1)
             {
-                Debug.Log("Linesweep " + y);
+                //Debug.Log("Linesweep " + y);
+                gm.linesweepsCleared += 1;
                 gm.AddSafeTileToEdges();
             }
         }        
         
         gm.currentMines -= minesFlagged;
         gm.currentFlags -= minesFlagged;
+        gm.minesSweeped += minesFlagged;
         //return rowScore;
     }
 

@@ -41,7 +41,8 @@ public class Group : MonoBehaviour
     [HideInInspector]
     public int rowsFilled = 0;
     int bottomHeight = 99999;
-    int topHeight = -99999;
+    int topHeight = -99999;    
+    bool isWallKickThisTick = false;
     bool isTspin = false;
     [HideInInspector]
     public int maximumFallDistance = 0;
@@ -327,6 +328,8 @@ public class Group : MonoBehaviour
             }
             transform.position += new Vector3(0, 1, 0);
 
+            isWallKickThisTick = false;
+
             if (isHardDrop)
             {
                 UpdateGrid();
@@ -441,6 +444,24 @@ public class Group : MonoBehaviour
         // Score filled horizontal lines
         rowsFilled = GameManager.scoreFullRows(this.transform);
 
+        
+        switch (rowsFilled) {
+            case 1:
+                gm.singlesFilled++;
+                break;
+            case 2:
+                gm.doublesFilled++;
+                break;
+            case 3:
+                gm.triplesFilled++;
+                break;
+            case 4:
+                gm.tetrisesFilled++;
+                break;
+            default:            
+                break;
+        }
+
         // Will the next tetromino be safe?
         bool fillWasDifficult = (rowsFilled == 4);
 
@@ -471,25 +492,58 @@ public class Group : MonoBehaviour
 
                 if (rowsFilled == 0) // T-Spin no lines
                 {
-                    Debug.Log("T-Spin (No Lines)");
-                    gm.AddScore(400);
+                    if (isWallKickThisTick) // T-Spin Mini no lines	
+                    {
+                        Debug.Log("T-Spin Mini (No Lines)");
+                        gm.tSpinMiniNoLines++;
+                        gm.AddScore(100);
+                    }
+                    else // T-Spin no lines
+                    {
+                        Debug.Log("T-Spin (No Lines)");
+                        gm.tSpinNoLines++;
+                        gm.AddScore(400);                        
+                    }
                     gm.SetScoreMultiplier(0.1f, 5);
                 }
                 else if (rowsFilled == 1) // T-Spin Single
                 {
-                    Debug.Log("T-Spin Single");
                     int actionScore = 800;
+                    if (isWallKickThisTick)
+                    {
+                        Debug.Log("T-Spin Mini Single");
+                        gm.tSpinMiniSingle++;
+                        actionScore = 200;
+                    }
+                    else
+                    {
+                        Debug.Log("T-Spin Single");
+                        gm.tSpinSingle++;
+                    }
+                    
                     if (gm.lastFillWasDifficult)
                         gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
                     else
                         gm.AddScore(actionScore);
+                    
                     gm.SetScoreMultiplier(0.5f, 10);
                     fillWasDifficult = true;
                 }
                 else if (rowsFilled == 2) // T-Spin Double
                 {
-                    Debug.Log("T-Spin Double");
                     int actionScore = 1200;
+                    if (isWallKickThisTick)
+                    {
+                        Debug.Log("T-Spin Mini Double");
+                        gm.tSpinMiniDouble++;
+                        actionScore = 400;
+                    }
+                    else
+                    {
+                        Debug.Log("T-Spin Double");
+                        gm.tSpinDouble++;
+                    }
+
                     if (gm.lastFillWasDifficult)
                         gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
                     else
@@ -500,6 +554,7 @@ public class Group : MonoBehaviour
                 else if (rowsFilled == 3) // T-Spin Triple
                 {
                     Debug.Log("T-Spin Triple");
+                    gm.tSpinTriple++;
                     int actionScore = 1600;
                     if (gm.lastFillWasDifficult)
                         gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
@@ -537,6 +592,8 @@ public class Group : MonoBehaviour
             else
                 gm.comboLinesFilled = -1;
             gm.lastFillWasDifficult = fillWasDifficult;
+
+            gm.piecesPlaced += 1;
             
             gm.perfectClearThisRound = false;
             // Clear filled horizontal lines
@@ -939,6 +996,8 @@ public class Group : MonoBehaviour
                 // If it gets kicked upwards, check if it should be locked. This will also prevent points from being scored by soft drops.
                 if (dirV > 0)
                     LockTetrominoDelay();
+                
+                isWallKickThisTick = true;
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f);

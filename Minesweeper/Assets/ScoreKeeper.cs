@@ -55,7 +55,8 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
         }
     }
 
-    public void LoadJsonData (ScoreKeeper a_ScoreKeeper) {
+    public void LoadJsonData (ScoreKeeper a_ScoreKeeper) 
+    {
         if (FileManager.LoadFromFile("SaveData.dat", out var json))
         {
             SaveData sd = new SaveData();
@@ -69,11 +70,38 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
     public void PopulateSaveData(SaveData a_SaveData)
     {
         SaveData.GameStatsData gameStatsData = new SaveData.GameStatsData();
+        gameStatsData.gameModeType = gm.gameModeType;
+        gameStatsData.dateTime = System.DateTime.Now;
         gameStatsData.m_score = gm.GetScore();
-        gameStatsData.dateTime = System.DateTime.Now; // TODO
+        gameStatsData.m_gameTime = gm.GetTime();
+        gameStatsData.m_level = gm.level;
+        gameStatsData.m_linesCleared = gm.linesCleared;
+        gameStatsData.m_tetrisweepsCleared = gm.tetrisweepsCleared;
+        gameStatsData.m_tSpinsweepsCleared = gm.tSpinsweepsCleared;
+
+        gameStatsData.m_piecesPlaced = gm.piecesPlaced;
+        gameStatsData.m_holds = gm.holds;
+        gameStatsData.m_linesweepsCleared = gm.linesweepsCleared;
+        gameStatsData.m_highestScoreMultiplier = gm.highestScoreMultiplier;
+        gameStatsData.m_minesSweeped = gm.minesSweeped;
+        gameStatsData.m_perfectClears = gm.perfectClears;
+        gameStatsData.m_singlesFilled = gm.singlesFilled;
+        gameStatsData.m_doublesFilled = gm.doublesFilled;
+        gameStatsData.m_triplesFilled = gm.triplesFilled;
+        gameStatsData.m_tetrisesFilled = gm.tetrisesFilled;
+        gameStatsData.m_tSpinMiniNoLines = gm.tSpinMiniNoLines;
+        gameStatsData.m_tSpinMiniSingle = gm.tSpinMiniSingle;
+        gameStatsData.m_tSpinMiniDouble = gm.tSpinMiniDouble;
+        gameStatsData.m_tSpinNoLines = gm.tSpinNoLines;
+        gameStatsData.m_tSpinSingle = gm.tSpinSingle;
+        gameStatsData.m_tSpinDouble = gm.tSpinDouble;
+        gameStatsData.m_tSpinTriple = gm.tSpinTriple;
+        
         a_SaveData.m_GameStatsData.Add(gameStatsData);
     }
-    public void LoadFromSaveData (SaveData a_SaveData) {
+
+    public void LoadFromSaveData (SaveData a_SaveData) 
+    {
         float bestSavedScore = 0;
         foreach (SaveData.GameStatsData gameStat in a_SaveData.m_GameStatsData)
         {
