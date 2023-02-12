@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ScoreKeeper : MonoBehaviour, ISaveable
 {
     public float bestScore;
+    public float bestScoreToday = 0;
     public int runs;
     public static float masterVolume  = 0.2f;
     GameManager gm;
@@ -34,8 +35,11 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
             gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (gm.GetScore() > bestScore)
         {
-            bestScore = gm.GetScore();
-            SaveJsonData(this.GetComponent<ScoreKeeper>());
+            bestScore = gm.GetScore();            
+        }
+        if (gm.GetScore() > bestScoreToday)
+        {
+            bestScoreToday = gm.GetScore();            
         }
             
         AudioListener.volume = masterVolume;
@@ -44,10 +48,22 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
             AudioListener.volume = GameObject.FindGameObjectWithTag("Volume").GetComponent<Slider>().value;*/
     }
 
-    public void SaveJsonData(ScoreKeeper a_ScoreKeepeer) 
+    public void SaveCurrentGame() 
+    {
+        SaveJsonData(this.GetComponent<ScoreKeeper>());
+    }
+
+    public void SaveJsonData(ScoreKeeper a_ScoreKeeper) 
     {
         SaveData sd = new SaveData();
-        a_ScoreKeepeer.PopulateSaveData(sd);
+        // Get current save data, if it exists
+        if (FileManager.LoadFromFile("SaveData.dat", out var json))
+        {
+            sd.LoadFromJson(json);
+            Debug.Log("Previous Save Found");
+        }
+
+        a_ScoreKeeper.PopulateSaveData(sd);
 
         if (FileManager.WriteToFile("SaveData.dat", sd.ToJson()))
         {

@@ -22,6 +22,7 @@ public class DisplayText : MonoBehaviour
         flagsTotal,
         time, 
         bestScore, 
+        bestScoreTitle,
         linesCleared,
         tetrisweepsCleard,
         scoreMultiplier,
@@ -47,6 +48,11 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TextMeshProUGUI>().text = gm.GetScore().ToString("#,#");
             else
                 this.GetComponent<TextMeshProUGUI>().text = gm.GetScore().ToString();
+            
+            if (sk.bestScoreToday <= gm.GetScore() && sk.runs > 1 && sk.bestScoreToday > 0)
+                this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
+            if (sk.bestScore <= gm.GetScore() && sk.bestScore > 0)
+                this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
         }
         else if (displayType == TextType.scoreMultiplier)
         {
@@ -102,13 +108,28 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.bestScore)
         {
-            if (sk.bestScore > 0)
-                this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString("#,#");
-            else
+            // Display Best Score Today while your current score is under Best Score Today, unless it's the first run of the game.
+            // Otherwise, display your total high score
+
+            if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
+                this.GetComponent<TextMeshProUGUI>().text = sk.bestScoreToday.ToString("#,#");
+            else if (sk.bestScore > 0) // Best Score Total
+                this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString("#,#"); 
+            else // Hi Score = 0 
                 this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString();
             
-            if (sk.bestScore <= gm.GetScore() && sk.runs > 1 && sk.bestScore > 0)
+            if (sk.bestScore <= gm.GetScore() && sk.bestScore > 0)
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
+        }
+        else if (displayType == TextType.bestScoreTitle)
+        {
+            if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
+                this.GetComponent<TextMeshProUGUI>().text = "Best Today:";
+            else if (sk.bestScore > 0) // Best Score Total
+                this.GetComponent<TextMeshProUGUI>().text = "High Score:"; 
+            
+            if (sk.bestScoreToday == sk.bestScore)
+                this.GetComponent<TextMeshProUGUI>().text = "High Score:"; 
         }
         else if (displayType == TextType.linesCleared)
         {

@@ -628,9 +628,13 @@ public class GameManager : MonoBehaviour
     {
         if (cheatGodMode)
             return;
+        if (isGameOver)
+            return;
         
         endtime = GetTime();
         isGameOver = true;
+
+        GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().SaveCurrentGame();
         
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
 
