@@ -45,6 +45,8 @@ public class TetrominoSpawner : MonoBehaviour
         currentTetromino = nextTetromino;
         currentTetromino.transform.position = this.transform.position; 
         currentTetromino.GetComponent<Group>().isHeld = false;
+        if (!currentTetromino.GetComponent<Group>().isValidGridPos() && !currentTetromino.GetComponent<Group>().isDisplay)
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().EndGame();
         currentTetromino.GetComponent<Group>().UpdateGrid();
 
         // If the previous score was a Tetris (4 rows), spawn a bonus tetromino with no mines!

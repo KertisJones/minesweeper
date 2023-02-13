@@ -17,6 +17,7 @@ public class Group : MonoBehaviour
         ZTetromino
     };
     public TetrominoType tetrominoType;
+    public bool isSetupTetromino = false;
 
     float fallSpeed = 0.8f;
     float lockDelay = 0.5f;
@@ -71,6 +72,12 @@ public class Group : MonoBehaviour
         fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
         lockDelay = 0.1f + (fallSpeed / 2);
 
+        if (isSetupTetromino)
+        {
+            isFalling = false;
+            UpdateGrid();
+        }   
+
         // Default position not valid? Then it's game over
         if (!isValidGridPos() && !isDisplay)
         {
@@ -80,7 +87,7 @@ public class Group : MonoBehaviour
         }
         
         if (!isHeld)
-            LayMines();
+            LayMines();                 
     }
 
     public void LayMines()
@@ -206,8 +213,7 @@ public class Group : MonoBehaviour
                 AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0));
 
                 if (topHeight > gm.safeEdgeTilesGained - 1)
-                    gm.AddSafeTileToEdges();
-                
+                    gm.AddSafeTileToEdges();                
             }
             else if (isTspin && gm.previousTetromino == this.gameObject) // Detect if T-Sweep was achieved
             {
@@ -315,7 +321,8 @@ public class Group : MonoBehaviour
         {
             // Detect the moment it lands
             transform.position += new Vector3(0, -1, 0);
-            lastSuccessfulMovementWasRotation = false;
+            if (!isHardDrop)
+                lastSuccessfulMovementWasRotation = false;
 
             if (!isValidGridPos())
             {
@@ -572,14 +579,17 @@ public class Group : MonoBehaviour
             }
         }
 
-        // Failsafe in case block is off screen
+        // Failsafe in case block is completely off screen
+        bool tetrominoIsOffScreen = true;
         foreach (Transform child in transform)
         {
-            if (child.position.y >= 20)
+            if (child.position.y < 20)
             {
-                gm.EndGame();
+                tetrominoIsOffScreen = false;
             }
         }
+        if (tetrominoIsOffScreen)
+            gm.EndGame();
 
         if (!gm.isGameOver)
         {

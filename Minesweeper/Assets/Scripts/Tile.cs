@@ -121,7 +121,7 @@ public class Tile : MonoBehaviour
                 myColor = new Color32(0, 0, 0, 255);
                 break;
         }
-        if (isQuestioned)
+        if (isQuestioned || isMine)
             myColor = Color.black;
 
         if (isRevealed)
@@ -230,7 +230,7 @@ public class Tile : MonoBehaviour
                 }
             }
 
-            ZeroCascade();
+            DetectProximity();
 
             GetComponentInChildren<Button>().interactable = false;
 
@@ -250,7 +250,7 @@ public class Tile : MonoBehaviour
 
     // When this mine has no adjacent mines, all adjacent tiles should be revealed.
     void ZeroCascade()
-    {
+    {        
         if (nearbyMines == 0 && !isMine && isRevealed)
         {
             foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))

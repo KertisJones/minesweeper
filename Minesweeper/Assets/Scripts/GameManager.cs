@@ -488,11 +488,20 @@ public class GameManager : MonoBehaviour
         perfectClearThisRound = true;
 
         // Give rewards for a perfect clear!
-        AddScore(2000);
-        SetScoreMultiplier(15, 30);
+        if (previousTetromino.GetComponent<Group>().rowsFilled == 4) // Tetrisweep Perfect Clear!
+        {
+            Debug.Log("Tetrisweep Perfect Clear!");
+            AddScore(3200);
+            SetScoreMultiplier(30, 30);
+        }
+        else // Normal Perfect Clear!
+        {
+            Debug.Log("Perfect Clear!");
+            AddScore(2000);
+            SetScoreMultiplier(15, 30);
+        }
         AddSafeTileToEdges();
-
-        perfectClears += 1;
+        perfectClears += 1;        
 
         GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(perfectClearSound, new Vector3(0, 0, 0), 1f);
