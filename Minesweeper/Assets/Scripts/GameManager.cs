@@ -736,7 +736,7 @@ public class GameManager : MonoBehaviour
             {
                 //Debug.Log("Linesweep " + y);
                 gm.linesweepsCleared += 1;
-                gm.AddSafeTileToEdges();
+                //gm.AddSafeTileToEdges();
             }
         }        
         
