@@ -85,6 +85,46 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
 
     public void PopulateSaveData(SaveData a_SaveData)
     {
+        /*
+          
+        */
+        a_SaveData.m_HiScore = bestScore;
+        if (gm.linesCleared > a_SaveData.m_linesClearedBest)
+            a_SaveData.m_linesClearedBest = gm.linesCleared;
+        if (gm.tetrisweepsCleared > a_SaveData.m_tetrisweepsClearedBest)
+            a_SaveData.m_tetrisweepsClearedBest = gm.tetrisweepsCleared;
+        if (gm.tSpinsweepsCleared > a_SaveData.m_tSpinsweepsClearedBest)
+            a_SaveData.m_tSpinsweepsClearedBest = gm.tSpinsweepsCleared;
+
+        a_SaveData.m_gameTimeTotal++;
+        a_SaveData.m_linesClearedTotal += gm.linesCleared;
+
+        a_SaveData.m_piecesPlacedTotal += gm.piecesPlaced;
+        a_SaveData.m_tetrisweepsClearedTotal += gm.tetrisweepsCleared;
+        a_SaveData.m_tSpinsweepsClearedTotal += gm.tSpinsweepsCleared;
+        a_SaveData.m_linesweepsClearedTotal += gm.linesweepsCleared;
+        a_SaveData.m_highestScoreMultiplierTotal += gm.highestScoreMultiplier;
+        a_SaveData.m_minesSweepedTotal += gm.minesSweeped;
+        a_SaveData.m_perfectClearsTotal += gm.perfectClears;
+        a_SaveData.m_singlesFilledTotal += gm.singlesFilled;
+        a_SaveData.m_doublesFilledTotal += gm.doublesFilled;
+        a_SaveData.m_triplesFilledTotal += gm.triplesFilled;
+        a_SaveData.m_tetrisesFilledTotal += gm.tetrisesFilled;
+        a_SaveData.m_tSpinMiniNoLinesTotal += gm.tSpinMiniNoLines;
+        a_SaveData.m_tSpinMiniSingleTotal += gm.tSpinMiniSingle;
+        a_SaveData.m_tSpinMiniDoubleTotal += gm.tSpinMiniDouble;
+        a_SaveData.m_tSpinNoLinesTotal += gm.tSpinNoLines;
+        a_SaveData.m_tSpinSingleTotal += gm.tSpinSingle;
+        a_SaveData.m_tSpinDoubleTotal += gm.tSpinDouble;
+        a_SaveData.m_tSpinTripleTotal += gm.tSpinTriple;  
+
+
+        if (gm.GetScore() >= bestScore || gm.linesCleared >= a_SaveData.m_linesClearedBest || gm.tetrisweepsCleared >= a_SaveData.m_tetrisweepsClearedBest || gm.tSpinsweepsCleared >= a_SaveData.m_tSpinsweepsClearedBest)
+            a_SaveData.m_GameStatsData.Add(PopulateSaveDataHighScores());
+    }
+
+    public SaveData.GameStatsData PopulateSaveDataHighScores()
+    {
         SaveData.GameStatsData gameStatsData = new SaveData.GameStatsData();
         gameStatsData.gameModeType = gm.gameModeType;
         gameStatsData.dateTime = System.DateTime.Now;
@@ -112,8 +152,8 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
         gameStatsData.m_tSpinSingle = gm.tSpinSingle;
         gameStatsData.m_tSpinDouble = gm.tSpinDouble;
         gameStatsData.m_tSpinTriple = gm.tSpinTriple;
+        return gameStatsData;
         
-        a_SaveData.m_GameStatsData.Add(gameStatsData);
     }
 
     public void LoadFromSaveData (SaveData a_SaveData) 
