@@ -11,7 +11,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void Awake()
     {
-        //masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
+        masterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.2f);
         //musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
         //soundVolume = PlayerPrefs.GetFloat("SoundVolume", 1f);
         //controlScheme = PlayerPrefs.GetInt("ControlScheme", 0);
@@ -21,8 +21,8 @@ public class SettingsMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (ScoreKeeper.masterVolume != null)
-            masterVolume = ScoreKeeper.masterVolume;
+        //if (ScoreKeeper.masterVolume != null)
+            //masterVolume = ScoreKeeper.masterVolume;
         masterVolumeSlider.value = masterVolume;
         masterVolumeSlider.onValueChanged.AddListener(delegate { MasterVolumeSlider(); });
     }
@@ -44,7 +44,7 @@ public class SettingsMenu : MonoBehaviour
     public void MasterVolumeSlider() // Sets the Master Volume Slider from PlayerPrefs
     {
         masterVolume = masterVolumeSlider.value;
-        //PlayerPrefs.SetFloat("MasterVolume", masterVolume);
-        ScoreKeeper.masterVolume = masterVolume;
+        PlayerPrefs.SetFloat("MasterVolume", masterVolume);
+        //ScoreKeeper.masterVolume = masterVolume;
     }
 }
