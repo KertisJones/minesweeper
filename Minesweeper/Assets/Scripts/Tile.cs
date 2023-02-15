@@ -264,18 +264,18 @@ public class Tile : MonoBehaviour
     // When an uncovered square with a number has exactly the correct number of adjacent squares flagged, performing a click on it will uncover all unmarked squares.
     public void Chord()
     {
-        Debug.Log("Attempting Chord...");
+        //Debug.Log("Attempting Chord...");
         if (isRevealed && nearbyFlags == nearbyMines && !isMine)
         {
-            Debug.Log("Chording!");
+            //Debug.Log("Chording!");
             foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
             {
                 if (!t.isFlagged)
                     t.Reveal();
             }
         }
-        else
-            Debug.Log("Chord Failed.");
+        //else
+            //Debug.Log("Chord Failed.");
     }
 
     void DetectProximity()
