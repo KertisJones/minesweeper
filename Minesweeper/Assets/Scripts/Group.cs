@@ -23,12 +23,13 @@ public class Group : MonoBehaviour
     float lockDelay = 0.5f;
     float lastFall = 0;
     float lastMove = 0;
-    //float lastLockDelayStep = 0;
+    // Locking
     bool isLocking = false;
-    int lockResetsRotate = 0;
-    int lockResetsMove = 0;
-
+    int lockResets = 0;
+    //int lockResetsRotate = 0;
+    //int lockResetsMove = 0;
     float lockDelayTimer = 0;
+    //
 
     public float minePercent = 10;
 
@@ -70,7 +71,8 @@ public class Group : MonoBehaviour
 
         //Official Guidline Gravity Curve: Time = (0.8-((Level-1)*0.007))(Level-1)
         fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
-        lockDelay = 0.1f + (fallSpeed / 2);
+        //if (gameMode.dynamicTime) // TODO
+        //  lockDelay = 0.1f + (fallSpeed / 2);
 
         if (isSetupTetromino)
         {
@@ -112,7 +114,7 @@ public class Group : MonoBehaviour
                     }
                 }
             }
-
+            // I don't want big areas of nothing, so only spawn a 0-mine tile on a 'crit'
             if (numberOfMines == 0 && !isDisplay)
             {
                 if (Random.Range(1,20) > 1) // 5% chance to still spawn with 0 mines
@@ -210,7 +212,7 @@ public class Group : MonoBehaviour
                 gm.SetScoreMultiplier(topHeight + 1, 30);
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0));
+                AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
                 if (topHeight > gm.safeEdgeTilesGained - 1)
                     gm.AddSafeTileToEdges();                
@@ -222,7 +224,7 @@ public class Group : MonoBehaviour
                 gm.SetScoreMultiplier(rowsFilled, 30);
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0));
+                AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
                 if (topHeight > gm.safeEdgeTilesGained - 1)
                     gm.AddSafeTileToEdges();
@@ -255,7 +257,7 @@ public class Group : MonoBehaviour
 
         // Update Speed if level has changed
         fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
-        lockDelay = 0.1f + (fallSpeed / 2);
+        //lockDelay = 0.1f + (fallSpeed / 2);
             
         
         // Move Left
@@ -329,7 +331,7 @@ public class Group : MonoBehaviour
                 LockTetrominoDelay();
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0));
+                AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
             }
@@ -350,7 +352,7 @@ public class Group : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
                 {
                     GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                    AudioSource.PlayClipAtPoint(downSound, new Vector3(0, 0, 0));
+                    AudioSource.PlayClipAtPoint(downSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                 }                
             }
         }
@@ -391,7 +393,13 @@ public class Group : MonoBehaviour
     {
         if (isLocking)
         {
-            if (moveReset)
+            if (lockResets <= 15)
+            {
+                lockDelayTimer = lockDelay;
+                lockResets++;
+            }
+
+            /*if (moveReset)
             {
                 if (lockResetsMove <= 10)
                 {
@@ -406,8 +414,7 @@ public class Group : MonoBehaviour
                     lockDelayTimer = lockDelay;
                     lockResetsRotate++;
                 }
-            }
-            
+            }*/            
         }
     }
 
@@ -428,8 +435,9 @@ public class Group : MonoBehaviour
         else
         {
             isLocking = false;
-            lockResetsRotate = 0;
-            lockResetsMove = 0;
+            lockResets = 0;
+            //lockResetsRotate = 0;
+            //lockResetsMove = 0;
         }
     }
 
@@ -438,10 +446,6 @@ public class Group : MonoBehaviour
         if (!isFalling)
             return;
         
-        /*isLocking = false;
-                    lockResetsRotate = 0;
-                    lockResetsMove = 0;*/
-
         // Allow the tetromino to be scored
         isFalling = false;
 
@@ -574,7 +578,7 @@ public class Group : MonoBehaviour
                 if (rowsFilled > 0)
                 {
                     GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                    AudioSource.PlayClipAtPoint(tSpinSound, new Vector3(0, 0, 0));
+                    AudioSource.PlayClipAtPoint(tSpinSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                 }
             }
         }
@@ -693,7 +697,7 @@ public class Group : MonoBehaviour
             LockDelayReset();
 
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f);
+            AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
         }
         else
         {
@@ -1010,7 +1014,7 @@ public class Group : MonoBehaviour
                 isWallKickThisTick = true;
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f);
+                AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
             }
             else
             {
@@ -1042,7 +1046,7 @@ public class Group : MonoBehaviour
             LockDelayReset(true);
 
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0));
+            AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
             lastSuccessfulMovementWasRotation = false;
         }

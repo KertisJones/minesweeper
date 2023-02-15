@@ -7,13 +7,17 @@ public class SettingsMenu : MonoBehaviour
 {
     public PauseMenuMove pauseMenuMove;
     public Slider masterVolumeSlider;
-    float masterVolume = 0.2f;
+    public Slider musicVolumeSlider;
+    public Slider soundVolumeSlider;
+    float masterVolume = 0.4f; //Max 0.8
+    float musicVolume = 0.25f; //Max 0.5
+    float soundVolume = 0.5f; //Max 1
 
     private void Awake()
     {
-        masterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.2f);
-        //musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
-        //soundVolume = PlayerPrefs.GetFloat("SoundVolume", 1f);
+        masterVolume = PlayerPrefs.GetFloat("MasterVolume", masterVolume);
+        musicVolume = PlayerPrefs.GetFloat("MusicVolume", musicVolume);
+        soundVolume = PlayerPrefs.GetFloat("SoundVolume", soundVolume);
         //controlScheme = PlayerPrefs.GetInt("ControlScheme", 0);
         //abTest = PlayerPrefs.GetInt("ABTest", 0);
     }
@@ -25,6 +29,10 @@ public class SettingsMenu : MonoBehaviour
             //masterVolume = ScoreKeeper.masterVolume;
         masterVolumeSlider.value = masterVolume;
         masterVolumeSlider.onValueChanged.AddListener(delegate { MasterVolumeSlider(); });
+        musicVolumeSlider.value = musicVolume;
+        musicVolumeSlider.onValueChanged.AddListener(delegate { MusicVolumeSlider(); });
+        soundVolumeSlider.value = soundVolume;
+        soundVolumeSlider.onValueChanged.AddListener(delegate { SoundVolumeSlider(); });
     }
 
     // Update is called once per frame
@@ -38,6 +46,22 @@ public class SettingsMenu : MonoBehaviour
             else
                 masterVolumeSlider.interactable = false;
         }
+        if (musicVolumeSlider != null)
+        {
+            musicVolumeSlider.value = musicVolume;
+            if (pauseMenuMove.isActive)
+                musicVolumeSlider.interactable = true;
+            else
+                musicVolumeSlider.interactable = false;
+        }
+        if (soundVolumeSlider != null)
+        {
+            soundVolumeSlider.value = soundVolume;
+            if (pauseMenuMove.isActive)
+                soundVolumeSlider.interactable = true;
+            else
+                soundVolumeSlider.interactable = false;
+        }
             
     }
 
@@ -46,5 +70,15 @@ public class SettingsMenu : MonoBehaviour
         masterVolume = masterVolumeSlider.value;
         PlayerPrefs.SetFloat("MasterVolume", masterVolume);
         //ScoreKeeper.masterVolume = masterVolume;
+    }
+    public void MusicVolumeSlider() // Sets the Music Volume Slider from PlayerPrefs
+    {
+        musicVolume = musicVolumeSlider.value;
+        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
+    }
+    public void SoundVolumeSlider() // Sets the SFX Volume Slider from PlayerPrefs
+    {
+        soundVolume = soundVolumeSlider.value;
+        PlayerPrefs.SetFloat("SoundVolume", soundVolume);
     }
 }

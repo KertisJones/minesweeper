@@ -504,7 +504,7 @@ public class GameManager : MonoBehaviour
         perfectClears += 1;        
 
         GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-        AudioSource.PlayClipAtPoint(perfectClearSound, new Vector3(0, 0, 0), 1f);
+        AudioSource.PlayClipAtPoint(perfectClearSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
     }
     #endregion
     #region Tetrisweeper Solved Logic
@@ -527,7 +527,7 @@ public class GameManager : MonoBehaviour
                     --y;
 
                     gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                    AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f);
+                    AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
                     GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
                 }
@@ -663,7 +663,7 @@ public class GameManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>().Stop();
 
         GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-        AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0), 0.1f);
+        AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0), 0.1f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
         StartCoroutine(GameOver());        
     }
@@ -804,7 +804,7 @@ public class GameManager : MonoBehaviour
                 gm.AddScore(50 * gm.comboLinesFilled);
 
             gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(clipToPlay, new Vector3(0, 0, 0));
+            AudioSource.PlayClipAtPoint(clipToPlay, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
