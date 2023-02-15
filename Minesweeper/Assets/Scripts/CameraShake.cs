@@ -6,6 +6,7 @@ public class CameraShake : MonoBehaviour
 	// Transform of the camera to shake. Grabs the gameObject's transform
 	// if null.
 	public Transform camTransform;
+    public bool isActive = true;
 
     // How long the object should shake for.
     private float currentShakeDuration = 0.25f;
@@ -69,6 +70,9 @@ public class CameraShake : MonoBehaviour
 
     public void Shake(float duration = 0.25f, float strength = 1)
     {
+        if (!isActive)
+            return;
+        
         if (shakeDurationClock < duration * durationModifier)
         {
             shakeDurationClock = duration * durationModifier;

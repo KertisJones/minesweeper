@@ -11,6 +11,7 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
     //public static float masterVolume  = 0.2f;
     GameManager gm;
     AudioSource musicSource;
+    CameraShake cameraShake;
     // Start is called before the first frame update
     void Awake()
     {
@@ -36,6 +37,8 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
             gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (musicSource == null)
             musicSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
+        if (cameraShake == null)
+            cameraShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
         
         if (gm.GetScore() > bestScore)
         {
@@ -49,6 +52,12 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
         AudioListener.volume = PlayerPrefs.GetFloat("MasterVolume", 1f);
         if (musicSource != null)
             musicSource.volume = PlayerPrefs.GetFloat("MusicVolume", 0.25f);
+
+        if (cameraShake != null)
+        {
+            cameraShake.isActive = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
+        }
+            //(PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0)
         
         /*if (GameObject.FindGameObjectWithTag("Volume") != null)
             AudioListener.volume = GameObject.FindGameObjectWithTag("Volume").GetComponent<Slider>().value;*/

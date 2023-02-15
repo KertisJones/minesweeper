@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour
     public GameObject tileGroup;
     public GameObject backgroundAnimated;
     public PauseMenuMove pauseMenu;
+    public PauseMenuMove settingsMenu;
     public PauseMenuMove gameOverMenu;
 
     public AudioClip lineClearSound;
@@ -846,6 +847,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1;
                 isPaused = false;       
                 pauseMenu.isActive = false;
+                settingsMenu.isActive = false;
                 StartCoroutine(ResetPause());
             }
         }        

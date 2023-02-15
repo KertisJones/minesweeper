@@ -9,15 +9,18 @@ public class SettingsMenu : MonoBehaviour
     public Slider masterVolumeSlider;
     public Slider musicVolumeSlider;
     public Slider soundVolumeSlider;
+    public Toggle screenShakeToggle;
     float masterVolume = 0.4f; //Max 0.8
     float musicVolume = 0.25f; //Max 0.5
     float soundVolume = 0.5f; //Max 1
+    bool screenShakeEnabled = true;
 
     private void Awake()
     {
         masterVolume = PlayerPrefs.GetFloat("MasterVolume", masterVolume);
         musicVolume = PlayerPrefs.GetFloat("MusicVolume", musicVolume);
         soundVolume = PlayerPrefs.GetFloat("SoundVolume", soundVolume);
+        screenShakeEnabled = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
         //controlScheme = PlayerPrefs.GetInt("ControlScheme", 0);
         //abTest = PlayerPrefs.GetInt("ABTest", 0);
     }
@@ -33,6 +36,8 @@ public class SettingsMenu : MonoBehaviour
         musicVolumeSlider.onValueChanged.AddListener(delegate { MusicVolumeSlider(); });
         soundVolumeSlider.value = soundVolume;
         soundVolumeSlider.onValueChanged.AddListener(delegate { SoundVolumeSlider(); });
+        screenShakeToggle.isOn = screenShakeEnabled;
+        screenShakeToggle.onValueChanged.AddListener(delegate  { ScreenShakeToggle(); });
     }
 
     // Update is called once per frame
@@ -62,6 +67,14 @@ public class SettingsMenu : MonoBehaviour
             else
                 soundVolumeSlider.interactable = false;
         }
+        if (screenShakeToggle != null)
+        {
+            screenShakeToggle.isOn = screenShakeEnabled;
+            if (screenShakeToggle.isActiveAndEnabled)
+                soundVolumeSlider.interactable = true;
+            else
+                soundVolumeSlider.interactable = false;
+        }
             
     }
 
@@ -80,5 +93,10 @@ public class SettingsMenu : MonoBehaviour
     {
         soundVolume = soundVolumeSlider.value;
         PlayerPrefs.SetFloat("SoundVolume", soundVolume);
+    }
+    public void ScreenShakeToggle() // Sets the Screen Shake from PlayerPrefs
+    {
+        screenShakeEnabled = screenShakeToggle.isOn;
+        PlayerPrefs.SetInt("ScreenShakeEnabled", (screenShakeEnabled ? 1 : 0));
     }
 }

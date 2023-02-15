@@ -9,8 +9,9 @@ public class PauseMenuMove : MonoBehaviour {
     public Vector3 targetActive;
     public float speed = 6f;
     public bool isActive = false;
-    private void Start() {
-        
+    public void SetActive(bool isActiveNew)
+    {
+        isActive = isActiveNew;
     }
 
     void Update()
