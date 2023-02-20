@@ -596,18 +596,17 @@ public class Group : MonoBehaviour
             }
         }
 
-        // Failsafe in case block is completely off screen
-        bool tetrominoIsOffScreen = true;
-        foreach (Transform child in transform)
+        // End Game if block is completely off screen
+        if (CheckIfTetrominoIsOffScreen())
         {
-            if (child.position.y < 20)
-            {
-                tetrominoIsOffScreen = false;
-            }
+            // Uh oh, the game's over. Check if the player could be saved by hard clearing solved rows.
+            GameManager.deleteFullRows(false);
+            // Check if the tetromino is still off screen. If so, the game is over.
+            if (CheckIfTetrominoIsOffScreen())
+                gm.EndGame();
         }
-        if (tetrominoIsOffScreen)
-            gm.EndGame();
-
+            
+        //GameManager.deleteFullRows();
         if (!gm.isGameOver)
         {
             // Spawn next Group; if playere scored a Tetris, spawn a fully revealed Tetronimo
@@ -629,6 +628,20 @@ public class Group : MonoBehaviour
             // Set this as the previous tetromino
             gm.previousTetromino = this.gameObject;
         }
+    }
+
+    // Failsafe in case block is completely off screen
+    bool CheckIfTetrominoIsOffScreen()
+    {
+        bool tetrominoIsOffScreen = true;
+        foreach (Transform child in transform)
+        {
+            if (child.position.y < 20)
+            {
+                tetrominoIsOffScreen = false;
+            }
+        }
+        return tetrominoIsOffScreen;
     }
     public void SetMaximumFallDistance()
     {

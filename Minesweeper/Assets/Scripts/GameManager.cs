@@ -541,8 +541,9 @@ public class GameManager : MonoBehaviour
         if (gm.isGameOver)
             return;
         
-        int linesCleared = 0;
+        int rowsCleared = 0;
         
+        // Score all of the solved rows
         for (int y = 0; y < sizeY; ++y)
         {
             if (isRowSolved(y))
@@ -552,22 +553,34 @@ public class GameManager : MonoBehaviour
 
                 scoreSolvedRow(y, getMultiplier);
                 gm.linesCleared++;
-                deleteRow(y);
-                decreaseRowsAbove(y + 1);
-                --y;
-                linesCleared++;
-
-                gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+                rowsCleared++;
             }
         }
+
+        // Delete the finished Rows
+        for (int y = 0; y < sizeY; ++y)
+        {
+            if (isRowSolved(y))
+            {
+                deleteRow(y);
+                decreaseRowsAbove(y + 1);
+                --y;                
+            }
+        }
+
+        if (rowsCleared > 0)
+        {
+            gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+        }
+
         // Lines Cleared Points
-        gm.AddScore(100 * linesCleared);
+        gm.AddScore(100 * rowsCleared);
         //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
         if (getMultiplier)
-            gm.SetScoreMultiplier(linesCleared * linesCleared, (linesCleared * linesCleared) / 2);
+            gm.SetScoreMultiplier(rowsCleared * rowsCleared, (rowsCleared * rowsCleared) / 2);
         
         if (gm.previousTetromino != null)
             gm.previousTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier);
