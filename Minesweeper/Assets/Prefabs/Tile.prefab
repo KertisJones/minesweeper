@@ -1226,6 +1226,9 @@ MonoBehaviour:
   nearbyFlags: 0
   screenShakeDuration: 0.1
   screenShakeStrength: 0.1
+  isDestroyed: 0
+  isRowSolved: 0
+  solvedMarkColor: {r: 0.88235295, g: 0.88235295, b: 0.88235295, a: 1}
   revealSound: {fileID: 8300000, guid: e1d070787e3eb164999bddf10246c1fe, type: 3}
   flagSound: {fileID: 8300000, guid: 51432cb738fdea545bc1a128c05bc50c, type: 3}
   unflagSound: {fileID: 8300000, guid: bdfdd4aa660ced24fad70a11e34d4139, type: 3}
@@ -2365,7 +2368,7 @@ SpriteShapeRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9075311146745735747}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 0

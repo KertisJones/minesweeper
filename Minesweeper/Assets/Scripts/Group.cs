@@ -150,7 +150,7 @@ public class Group : MonoBehaviour
             foreach (Tile child in childTiles) 
             {
                 child.Reveal();//.isRevealed = true;
-                child.isDisplay = true;
+                //child.isDisplay = true;
             }
         }
     }
@@ -212,37 +212,8 @@ public class Group : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // This tetromino has been fully cleared. Score points and delete this object.
-        if (this.transform.childCount == 0)
-        {
-            // Detect if TETRISWEEP was achieved (4-row Tetris was solved with minesweeper before the next piece locks)
-            if (rowsFilled == 4 && gm.previousTetromino == this.gameObject)
-            {
-                gm.tetrisweepsCleared += 1;
-                gm.AddScore(595 * (bottomHeight)); // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
-                gm.SetScoreMultiplier(topHeight, 30);
-
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-
-                if (topHeight > gm.safeEdgeTilesGained - 1)
-                    gm.AddSafeTileToEdges();                
-            }
-            else if (isTspin && gm.previousTetromino == this.gameObject) // Detect if T-Sweep was achieved
-            {
-                gm.tSpinsweepsCleared += 1;
-                gm.AddScore(250 * rowsFilled * bottomHeight);
-                gm.SetScoreMultiplier(topHeight, 30);
-
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-
-                if (topHeight > gm.safeEdgeTilesGained - 1)
-                    gm.AddSafeTileToEdges();
-            }
-            // Clean up
-            Destroy(this.gameObject);
-        }
+        // Score tetrisweeps/tspinsweeps and delete this object if it's children tiles are gone.
+        CheckForTetrisweeps();
 
         // Don't go any further if this shouldn't be moved 
         if (gm.isGameOver)
@@ -494,12 +465,8 @@ public class Group : MonoBehaviour
         // Allow the tetromino to be scored
         isFalling = false;
 
-        // Set this as the previous tetromino
-        gm.previousTetromino = this.gameObject;
-
         // Score filled horizontal lines
         rowsFilled = GameManager.scoreFullRows(this.transform);
-
         
         switch (rowsFilled) {
             case 1:
@@ -544,7 +511,8 @@ public class Group : MonoBehaviour
             
             if (filledDiagonalTiles >= 3) // It's a T-Spin!
             {
-                isTspin = true;
+                if (rowsFilled >= 2)
+                    isTspin = true;
 
                 if (rowsFilled == 0) // T-Spin no lines
                 {
@@ -657,6 +625,9 @@ public class Group : MonoBehaviour
             gm.perfectClearThisRound = false;
             // Clear filled horizontal lines
             GameManager.deleteFullRows();
+
+            // Set this as the previous tetromino
+            gm.previousTetromino = this.gameObject;
         }
     }
     public void SetMaximumFallDistance()
@@ -1082,5 +1053,53 @@ public class Group : MonoBehaviour
             transform.position += new Vector3(dir * -1, 0, 0);
         }
         lastMove = Time.time;
+    }
+
+    public void CheckForTetrisweeps(bool getMultiplier = true)
+    {
+        // The child object isn't destroyed until the next Update loop, so you should check for its destroyed tag.
+        List<Tile> childrenTiles = GetChildTiles();
+        List<Tile> childrenTilesNotDestroyed = new List<Tile>();
+        foreach (Tile childTile in childrenTiles)
+        {
+            if (!childTile.isDestroyed)
+                childrenTilesNotDestroyed.Add(childTile);
+        }
+
+        //Debug.Log ("CheckForTetrisweeps. " + (gm.previousTetromino == this.gameObject) + ", Type: " + tetrominoType + ", Children: " + childrenTilesNotDestroyed.Count + ", Rows: " + rowsFilled);
+
+        // This tetromino has been fully cleared. Score points and delete this object.
+        if (childrenTilesNotDestroyed.Count == 0)
+        {            
+            // Detect if TETRISWEEP was achieved (4-row Tetris was solved with minesweeper before the next piece locks)
+            if (rowsFilled == 4 && gm.previousTetromino == this.gameObject)
+            {
+                gm.tetrisweepsCleared += 1;
+                gm.AddScore(595 * (bottomHeight)); // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
+                if (getMultiplier)
+                    gm.SetScoreMultiplier(topHeight * 0.5f, 30);
+
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+
+                if (topHeight > gm.safeEdgeTilesGained - 1)
+                    gm.AddSafeTileToEdges();                
+            }
+            else if (isTspin && gm.previousTetromino == this.gameObject) // Detect if T-Sweep was achieved
+            {
+                gm.tSpinsweepsCleared += 1;
+                gm.AddScore(250 * rowsFilled * bottomHeight);
+                if (getMultiplier)
+                    gm.SetScoreMultiplier(topHeight * 0.5f, 30);
+
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+
+                if (topHeight > gm.safeEdgeTilesGained - 1)
+                    gm.AddSafeTileToEdges();
+            }
+            // Clean up
+            Destroy(this.gameObject);
+        }
     }
 }

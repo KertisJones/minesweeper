@@ -157,6 +157,10 @@ public class GameManager : MonoBehaviour
         {
             ReloadScene();
         }
+        if (Input.GetKeyDown(KeyCode.F1) || Input.GetKeyDown(KeyCode.Backspace))
+        {            
+            deleteFullRows(false);
+        }
     }
 
     void BuildGameBoard()
@@ -410,6 +414,7 @@ public class GameManager : MonoBehaviour
     {
         for (int x = 0; x < sizeX; ++x)
         {
+            gameBoard[x][y].gameObject.GetComponent<Tile>().isDestroyed = true;
             Destroy(gameBoard[x][y].gameObject);
             gameBoard[x][y] = null;
         }
@@ -507,7 +512,10 @@ public class GameManager : MonoBehaviour
         perfectClearThisRound = true;
 
         // Give rewards for a perfect clear!
-        if (previousTetromino.GetComponent<Group>().rowsFilled == 4) // Tetrisweep Perfect Clear!
+        AddScore(8000);        
+        SetScoreMultiplier(5, 30);
+
+        /*if (previousTetromino.GetComponent<Group>().rowsFilled == 4) // Tetrisweep Perfect Clear!
         {
             Debug.Log("Tetrisweep Perfect Clear!");
             AddScore(3200);
@@ -518,7 +526,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Perfect Clear!");
             AddScore(2000);
             SetScoreMultiplier(15, 30);
-        }
+        }*/
         AddSafeTileToEdges();
         perfectClears += 1;        
 
@@ -527,7 +535,48 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Tetrisweeper Solved Logic
-    public static void deleteFullRows()
+    public static void deleteFullRows(bool getMultiplier = true)
+    {
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        if (gm.isGameOver)
+            return;
+        
+        int linesCleared = 0;
+        
+        for (int y = 0; y < sizeY; ++y)
+        {
+            if (isRowSolved(y))
+            {
+                if (!getMultiplier)
+                    gm.ResetScoreMultiplier();
+
+                scoreSolvedRow(y, getMultiplier);
+                gm.linesCleared++;
+                deleteRow(y);
+                decreaseRowsAbove(y + 1);
+                --y;
+                linesCleared++;
+
+                gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+            }
+        }
+        // Lines Cleared Points
+        gm.AddScore(100 * linesCleared);
+        //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
+        if (getMultiplier)
+            gm.SetScoreMultiplier(linesCleared * linesCleared, (linesCleared * linesCleared) / 2);
+        
+        if (gm.previousTetromino != null)
+            gm.previousTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier);
+
+        gm.CheckForPerfectClear();
+        GameManager.markSolvedRows();        
+    }
+
+    public static void markSolvedRows()
     {
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (gm.isGameOver)
@@ -535,37 +584,49 @@ public class GameManager : MonoBehaviour
         
         for (int y = 0; y < sizeY; ++y)
         {
-            if (isRowFull(y))
+            if (isRowSolved(y))
             {
-                if (isRowSolved(y))
+                for (int x = 0; x < sizeX; ++x)
                 {
-                    scoreSolvedRow(y);
-                    gm.linesCleared++;
-                    deleteRow(y);
-                    decreaseRowsAbove(y + 1);
-                    --y;
-
-                    gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                    AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-
-                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+                    gm.GetGameTile(x, y).isRowSolved = true;
                 }
+                if (gm.GetGameTile(-1, y) != null)
+                    gm.GetGameTile(-1, y).isRowSolved = true;
+                if (gm.GetGameTile(sizeX, y) != null)
+                    gm.GetGameTile(sizeX, y).isRowSolved = true;
+            }
+            else
+            {
+                for (int x = 0; x < sizeX; ++x)
+                {
+                    if (gm.GetGameTile(x, y) != null)
+                    {
+                        gm.GetGameTile(x, y).isRowSolved = false;
+                    }
+                }
+                if (gm.GetGameTile(-1, y) != null)
+                    gm.GetGameTile(-1, y).isRowSolved = false;
+                if (gm.GetGameTile(sizeX, y) != null)
+                    gm.GetGameTile(sizeX, y).isRowSolved = false;
             }
         }
-
-        gm.CheckForPerfectClear();
     }
 
     public static bool isRowSolved(int y)
     {
+        if (!isRowFull(y))
+            return false;
+        
         bool isSolved = true;
         for (int x = 0; x < sizeX; ++x)
+        {
             if (gameBoard[x][y] != null)
             {
                 if (!(gameBoard[x][y].GetComponent<Tile>().isRevealed && !gameBoard[x][y].GetComponent<Tile>().isMine)
                     && !(!gameBoard[x][y].GetComponent<Tile>().isRevealed && gameBoard[x][y].GetComponent<Tile>().isMine && gameBoard[x][y].GetComponent<Tile>().isFlagged))
                     isSolved = false;
             }
+        }
         return isSolved;
     }
 
@@ -704,7 +765,8 @@ public class GameManager : MonoBehaviour
         score += tempScore;
     }
 
-    public void SetScoreMultiplier(float mult, float duration) {
+    public void SetScoreMultiplier(float mult, float duration)
+    {
         scoreMultiplier = GetScoreMultiplier() + mult;
         //if (duration > scoreMultiplierTimer)
             //scoreMultiplierTimer = duration;
@@ -715,13 +777,19 @@ public class GameManager : MonoBehaviour
         lastMultiplierTick = Time.time;
     }
 
+    public void ResetScoreMultiplier()
+    {
+        scoreMultiplier = 0;
+        //scoreMultiplierTimer = 0;
+    }
+
     public float GetScoreMultiplier()
     {
         scoreMultiplier = Mathf.Floor(scoreMultiplier * 10) / 10;
         return scoreMultiplier;
     }
 
-    public static void scoreSolvedRow(int y)
+    public static void scoreSolvedRow(int y, bool getMultiplier = true)
     {
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         //int rowScore = 0;
@@ -744,16 +812,18 @@ public class GameManager : MonoBehaviour
                     containsPreviousTetromino = true;
             }
         }
-        gm.AddScore(50 * (y + 1));
+        //gm.AddScore(50 * (y + 1));
         //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
-        gm.SetScoreMultiplier(0.5f, 2f);
+        //if (getMultiplier)
+            //gm.SetScoreMultiplier(0.5f, 2f);
 
         // Linesweep: Row was solved before the next tetromino was placed
         if (containsPreviousTetromino)
         {
             gm.AddScore(50 * (y + 1));
             //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
-            gm.SetScoreMultiplier(1, 2f);
+            //if (getMultiplier)
+                //gm.SetScoreMultiplier(1, 2f);
             if (y > gm.safeEdgeTilesGained - 1)
             {
                 //Debug.Log("Linesweep " + y);

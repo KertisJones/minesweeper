@@ -68,3 +68,5 @@ Minesweeper/Library/webgl_cache/
 *.meta
 Minesweeper/Library/
 Minesweeper/obj/
+Minesweeper/Logs/
+Minesweeper/UserSettings/

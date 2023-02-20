@@ -20,6 +20,9 @@ public class Tile : MonoBehaviour
 
     public float screenShakeDuration = 0.1f;
     public float screenShakeStrength = 0.1f;
+    public bool isDestroyed = false;
+    public bool isRowSolved = false;
+    public Color solvedMarkColor;
 
     public AudioClip revealSound;
     public AudioClip flagSound;
@@ -71,6 +74,19 @@ public class Tile : MonoBehaviour
         UpdateText();
         if (!isMine)
             DetectProximity();
+        
+        if (isRowSolved)
+        {
+            tileBackground.color = solvedMarkColor;
+            shimmerOverlay.gameObject.SetActive(true);
+        }            
+        else
+        {
+            tileBackground.color = Color.white;
+            if (!isDisplay)
+                shimmerOverlay.gameObject.SetActive(false);
+        }
+            
 
         /*fallClock -= Time.deltaTime;
         if (fallClock <= 0)
@@ -168,7 +184,7 @@ public class Tile : MonoBehaviour
 
             gm.currentFlags += 1;
 
-            GameManager.deleteFullRows();            
+            //GameManager.deleteFullRows();            
         }
         else
         {
@@ -177,6 +193,7 @@ public class Tile : MonoBehaviour
 
             gm.currentFlags -= 1;
         }
+        GameManager.markSolvedRows();
     }
 
     public void QuestionToggle()
@@ -226,7 +243,7 @@ public class Tile : MonoBehaviour
                 if (!GetComponentInParent<Group>().isDisplay)
                 {
                     // Each revealed tile is equal to 1 point.
-                    gm.AddScore(nearbyMines * nearbyFlags * (coordY + 1));
+                    gm.AddScore(nearbyMines * nearbyMines * (coordY + 1));
                 }
             }
 
@@ -236,7 +253,8 @@ public class Tile : MonoBehaviour
 
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
-            GameManager.deleteFullRows();
+            //GameManager.deleteFullRows();
+            GameManager.markSolvedRows();
         }
         else if (isFlagged && gm.isGameOver && !isMine)
         {
