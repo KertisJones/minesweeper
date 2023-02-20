@@ -8,12 +8,9 @@ public class DisplayText : MonoBehaviour
 {
     GameManager gm;
     ScoreKeeper sk;
-
-    float timer = 0.0f;
+    /*float timer = 0.0f;
     int colorIndex = 0;
-    private Color startColor = Color.red;
-
-
+    private Color startColor = Color.red;*/
     public enum TextType // your custom enumeration
     {
         score, 
@@ -28,7 +25,8 @@ public class DisplayText : MonoBehaviour
         scoreMultiplier,
         quit,
         level,
-        tSpinSweeps
+        tSpinSweeps,
+        TESTCurrentMinoLockDelay
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
@@ -167,6 +165,25 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                 this.GetComponent<VertexColorCyclerGradient>().enabled = true;
             }            
+        }
+        else if (displayType == TextType.TESTCurrentMinoLockDelay)
+        {
+            Group activeTetromino = gm.GetActiveTetromino();
+            if (activeTetromino == null)
+            {
+                this.GetComponent<TextMeshProUGUI>().text = "Null";
+            }
+            else
+            {
+                int resets = 15 - activeTetromino.lockResets;
+                if (resets < 0)
+                    resets = 0;
+
+                if (activeTetromino.lockDelayTimer > 0 && activeTetromino.isLocking)
+                    this.GetComponent<TextMeshProUGUI>().text = "Lock: " + activeTetromino.lockDelayTimer.ToString("#,#.#") + ", Resets: " + resets;
+                else
+                    this.GetComponent<TextMeshProUGUI>().text = "Lock: 0.5" + ", Resets: " + resets;
+            }
         }
     }
 }

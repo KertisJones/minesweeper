@@ -24,9 +24,10 @@ public class GameManager : MonoBehaviour
     float startTime;
     float endtime;
     private float score = 0;
+    [SerializeField]
     private float scoreMultiplier = 0;
     public float scoreMultiplierDecayPerTick= 0.1f;
-    private int scoreMultiplierDecayTicksPerSecond = 4;
+    private int scoreMultiplierDecayTicksPerSecond = 5;
     private float lastMultiplierTick = 0;
     public int comboLinesFilled = -1; // C=-1; +1 when mino locks & line filled; C= when mino locks & line not filled
     public bool lastFillWasDifficult = false; // Difficult fills are Tetrises or T-Spins
@@ -131,8 +132,7 @@ public class GameManager : MonoBehaviour
                 SetScoreMultiplier(-1 * scoreMultiplierDecayPerTick, 0);
                 if (GetScoreMultiplier() <= 0)
                     backgroundAnimated.SetActive(false);
-            }
-            lastMultiplierTick = Time.time;
+            }            
         }
 
         // Fixed Marathon: 10 per level
@@ -446,6 +446,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public Group GetActiveTetromino()
+    {
+        for (int x = 0; x < sizeX; ++x)
+        {
+            for (int y = 0; y < sizeY; ++y)
+            {
+                if (gameBoard[x][y] != null)
+                {
+                    if (gameBoard[x][y].GetComponentInParent<Group>().isFalling) // Active tetromino should not be moved directly, or it will cause a rotation error
+                    {
+                        return gameBoard[x][y].GetComponentInParent<Group>();
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     public static void decreaseRowsAbove(int y)
     {
         for (int i = y; i < sizeY; ++i)
@@ -493,7 +511,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Tetrisweep Perfect Clear!");
             AddScore(3200);
-            SetScoreMultiplier(30, 30);
+            SetScoreMultiplier(50, 50);
         }
         else // Normal Perfect Clear!
         {
@@ -687,13 +705,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetScoreMultiplier(float mult, float duration) {
-        scoreMultiplier = scoreMultiplier + mult;
+        scoreMultiplier = GetScoreMultiplier() + mult;
         //if (duration > scoreMultiplierTimer)
             //scoreMultiplierTimer = duration;
         if (GetScoreMultiplier() > 0)
             backgroundAnimated.SetActive(true);
         if (GetScoreMultiplier() > highestScoreMultiplier)
             highestScoreMultiplier = GetScoreMultiplier();
+        lastMultiplierTick = Time.time;
     }
 
     public float GetScoreMultiplier()
@@ -726,13 +745,15 @@ public class GameManager : MonoBehaviour
             }
         }
         gm.AddScore(50 * (y + 1));
-        gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
+        //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
+        gm.SetScoreMultiplier(0.5f, 2f);
 
         // Linesweep: Row was solved before the next tetromino was placed
         if (containsPreviousTetromino)
         {
             gm.AddScore(50 * (y + 1));
-            gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
+            //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
+            gm.SetScoreMultiplier(1, 2f);
             if (y > gm.safeEdgeTilesGained - 1)
             {
                 //Debug.Log("Linesweep " + y);
@@ -809,7 +830,7 @@ public class GameManager : MonoBehaviour
 
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
-            Debug.Log("Tetris rows full: " + fullRows);
+            //Debug.Log("Tetris rows full: " + fullRows);
             
         }        
         return fullRows;

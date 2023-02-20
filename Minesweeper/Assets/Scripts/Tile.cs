@@ -32,14 +32,14 @@ public class Tile : MonoBehaviour
     TextMeshProUGUI text;    
 
     GameManager gm;
-    Camera camera;
+    Camera cam;
 
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
         Vector2 v = GameManager.roundVec2(transform.position);
         coordX = (int)v.x;

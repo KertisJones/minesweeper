@@ -51,7 +51,7 @@ public class HoldTetromino : MonoBehaviour
     {
         if (tetromino == null)
             return;
-        Debug.Log("HOLD! RemoveFromBoard");
+        //Debug.Log("HOLD! RemoveFromBoard");
         tetromino.transform.position = targetPosition.position;
         tetromino.transform.rotation = new Quaternion(0, 0, 0, 0);
         tetromino.GetComponent<Group>().isHeld = true;        
@@ -70,7 +70,7 @@ public class HoldTetromino : MonoBehaviour
     {
         if (tetromino == null)
             return;
-        Debug.Log("HOLD! AddToBoard");
+        //Debug.Log("HOLD! AddToBoard");
         tetromino.transform.position = tetrominoSpawner.transform.position;
         tetromino.GetComponent<Group>().isHeld = false;
         tetromino.GetComponent<Group>().UpdateGrid();

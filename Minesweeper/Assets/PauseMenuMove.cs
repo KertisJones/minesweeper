@@ -9,6 +9,11 @@ public class PauseMenuMove : MonoBehaviour {
     public Vector3 targetActive;
     public float speed = 6f;
     public bool isActive = false;
+    GameManager gm;
+    void Start()
+    {
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
     public void SetActive(bool isActiveNew)
     {
         isActive = isActiveNew;
@@ -24,6 +29,13 @@ public class PauseMenuMove : MonoBehaviour {
         {
             transform.position = Vector3.MoveTowards(transform.position, targetRest, speed);
         }
+        if (gm != null)
+        {
+            if (!gm.isPaused && !gm.isGameOver)
+            {
+                isActive = false;
+            }
+        }        
     }
 
 }

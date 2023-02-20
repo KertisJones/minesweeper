@@ -94,7 +94,7 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
             sd.LoadFromJson(json);
 
             a_ScoreKeeper.LoadFromSaveData(sd);
-            Debug.Log("Load complete");
+            //Debug.Log("Load complete");
         }
     }
 

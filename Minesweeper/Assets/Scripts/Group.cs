@@ -1,4 +1,5 @@
-﻿using System.Collections;
+using System.Net.Mime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,15 +21,16 @@ public class Group : MonoBehaviour
     public bool isSetupTetromino = false;
 
     float fallSpeed = 0.8f;
-    float lockDelay = 0.5f;
+    float lockDelayBase = 0.5f;
+    float lockDelayActive = 0.5f;
     float lastFall = 0;
     float lastMove = 0;
     // Locking
-    bool isLocking = false;
-    int lockResets = 0;
+    public bool isLocking = false;
+    public int lockResets = 0;
     //int lockResetsRotate = 0;
     //int lockResetsMove = 0;
-    float lockDelayTimer = 0;
+    public float lockDelayTimer = 0;
     //
 
     public float minePercent = 10;
@@ -44,6 +46,7 @@ public class Group : MonoBehaviour
     public int rowsFilled = 0;
     int bottomHeight = 99999;
     int topHeight = -99999;    
+    int bottomHeightLowest = 99999;
     bool isWallKickThisTick = false;
     bool isTspin = false;
     [HideInInspector]
@@ -72,7 +75,11 @@ public class Group : MonoBehaviour
         //Official Guidline Gravity Curve: Time = (0.8-((Level-1)*0.007))(Level-1)
         fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
         //if (gameMode.dynamicTime) // TODO
-        //  lockDelay = 0.1f + (fallSpeed / 2);
+        //  lockDelayActive = 0.1f + (fallSpeed / 2);
+        /*if (lockDelayBase < fallSpeed)
+            lockDelayActive = fallSpeed;
+        else
+            lockDelayActive = lockDelayBase;*/
 
         if (isSetupTetromino)
         {
@@ -92,26 +99,38 @@ public class Group : MonoBehaviour
             LayMines();                 
     }
 
+    public List<Tile> GetChildTiles() {
+        List<Tile> childTiles = new List<Tile>();
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.GetComponent<Tile>() != null)
+            {
+                childTiles.Add(child.GetComponent<Tile>());
+            }
+        }
+        return childTiles;
+    }
+
     public void LayMines()
     {
         if (isDisplay && transform.position.y >= 20)
             return;
         
+        List<Tile> childTiles = GetChildTiles();
+        
         if (!isBonus)
         {
+            
             // Populate random mines in children
             int numberOfMines = 0;
-            foreach (Transform child in transform)
+            foreach (Tile child in childTiles)
             {
-                if (child.gameObject.GetComponent<Tile>() != null)
+                float randNum = Random.Range(1, 100);
+                if (randNum <= minePercent && !child.isMine)
                 {
-                    float randNum = Random.Range(1, 100);
-                    if (randNum <= minePercent && !child.gameObject.GetComponent<Tile>().isMine)
-                    {
-                        child.gameObject.GetComponent<Tile>().isMine = true;
-                        child.gameObject.GetComponent<Tile>().CountMine();
-                        numberOfMines += 1;
-                    }
+                    child.isMine = true;
+                    child.CountMine();
+                    numberOfMines += 1;
                 }
             }
             // I don't want big areas of nothing, so only spawn a 0-mine tile on a 'crit'
@@ -119,22 +138,19 @@ public class Group : MonoBehaviour
             {
                 if (Random.Range(1,20) > 1) // 5% chance to still spawn with 0 mines
                 {
-                    Tile child = this.transform.GetChild(Random.Range(0, 4)).GetComponent<Tile>();
+                    Tile child = childTiles[Random.Range(0, 4)];
                     child.isMine = true;
-                    child.gameObject.GetComponent<Tile>().CountMine();
+                    child.CountMine();
                     numberOfMines += 1;
                 }
             }
         }
         else // Bonus Tiles should be revealed
         {
-            foreach (Transform child in transform) 
+            foreach (Tile child in childTiles) 
             {
-                if (child.gameObject.GetComponent<Tile>() != null)
-                {
-                    child.GetComponent<Tile>().Reveal();//.isRevealed = true;
-                    child.GetComponent<Tile>().isDisplay = true;
-                }
+                child.Reveal();//.isRevealed = true;
+                child.isDisplay = true;
             }
         }
     }
@@ -144,21 +160,18 @@ public class Group : MonoBehaviour
         if (isHeld)
             return true;
         
-        foreach (Transform child in transform)
+        foreach (Tile child in GetChildTiles())
         {
-            if (child.gameObject.GetComponent<Tile>() != null)
-            {
-                Vector2 v = GameManager.roundVec2(child.position);
+            Vector2 v = GameManager.roundVec2(child.transform.position);
 
-                // Not inside Border?
-                if (!GameManager.insideBorder(v))
-                    return false;
-                //Debug.Log(v);
-                // Block in grid cell (and not part of same group)?
-                if (GameManager.gameBoard[(int)v.x][(int)v.y] != null &&
-                    GameManager.gameBoard[(int)v.x][(int)v.y].transform.parent != transform)
-                    return false;
-            }
+            // Not inside Border?
+            if (!GameManager.insideBorder(v))
+                return false;
+            //Debug.Log(v);
+            // Block in grid cell (and not part of same group)?
+            if (GameManager.gameBoard[(int)v.x][(int)v.y] != null &&
+                GameManager.gameBoard[(int)v.x][(int)v.y].transform.parent != transform)
+                return false;
         }
         return true;
     }
@@ -185,16 +198,13 @@ public class Group : MonoBehaviour
     {
         
         // Add new children to grid
-        foreach (Transform child in transform)
+        foreach (Tile child in GetChildTiles())
         {
-            if (child.gameObject.GetComponent<Tile>() != null)
-            {
-                Vector2 v = GameManager.roundVec2(child.position);
-                child.gameObject.GetComponent<Tile>().coordX = (int)v.x;
-                child.gameObject.GetComponent<Tile>().coordY = (int)v.y;
-                if (!isHeld)
-                    GameManager.gameBoard[(int)v.x][(int)v.y] = child.gameObject;
-            }
+            Vector2 v = GameManager.roundVec2(child.transform.position);
+            child.coordX = (int)v.x;
+            child.coordY = (int)v.y;
+            if (!isHeld)
+                GameManager.gameBoard[(int)v.x][(int)v.y] = child.gameObject;
         }    
     }
 
@@ -202,14 +212,15 @@ public class Group : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // This tetromino has been fully cleared. Score points and delete this object.
         if (this.transform.childCount == 0)
         {
             // Detect if TETRISWEEP was achieved (4-row Tetris was solved with minesweeper before the next piece locks)
             if (rowsFilled == 4 && gm.previousTetromino == this.gameObject)
             {
                 gm.tetrisweepsCleared += 1;
-                gm.AddScore(595 * (bottomHeight + 1)); // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
-                gm.SetScoreMultiplier(topHeight + 1, 30);
+                gm.AddScore(595 * (bottomHeight)); // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
+                gm.SetScoreMultiplier(topHeight, 30);
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
@@ -220,8 +231,8 @@ public class Group : MonoBehaviour
             else if (isTspin && gm.previousTetromino == this.gameObject) // Detect if T-Sweep was achieved
             {
                 gm.tSpinsweepsCleared += 1;
-                gm.AddScore(250 * rowsFilled * (bottomHeight + 1));
-                gm.SetScoreMultiplier(rowsFilled, 30);
+                gm.AddScore(250 * rowsFilled * bottomHeight);
+                gm.SetScoreMultiplier(topHeight, 30);
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
@@ -232,6 +243,8 @@ public class Group : MonoBehaviour
             // Clean up
             Destroy(this.gameObject);
         }
+
+        // Don't go any further if this shouldn't be moved 
         if (gm.isGameOver)
             return;
         if (gm.isPaused)
@@ -239,32 +252,25 @@ public class Group : MonoBehaviour
         if (isDisplay)
             return;
         if (isHeld)
+        {
+            bottomHeightLowest = 99999; // Reset the minimum bottom height for when this is spawned again
             return;
+        }            
         if (!isFalling)
             return;
         //if (FindObjectOfType<TetrominoSpawner>().currentTetromino != this.gameObject)
-            //return;
-
-        // Lock Delay
-        if (isLocking)
-        {            
-            if (lockDelayTimer <= 0)
-            {
-                CheckIfLockIsValid();
-            }
-            lockDelayTimer -= Time.deltaTime;
-        }
+            //return;        
 
         // Update Speed if level has changed
         fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
-        //lockDelay = 0.1f + (fallSpeed / 2);
+        //lockDelayActive = 0.1f + (fallSpeed / 2);
             
         
         // Move Left
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Keypad4) || (Input.GetAxis("Horizontal") == -1 && Time.time - lastMove >= lockDelay / 10))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Keypad4) || (Input.GetAxis("Horizontal") == -1 && Time.time - lastMove >= lockDelayActive / 10))
             Move(-1);
         // Move Right
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Keypad6) || (Input.GetAxis("Horizontal") == 1 && Time.time - lastMove >= lockDelay / 10))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Keypad6) || (Input.GetAxis("Horizontal") == 1 && Time.time - lastMove >= lockDelayActive / 10))
             Move(1);
 
         // Rotate
@@ -286,30 +292,36 @@ public class Group : MonoBehaviour
         {
             fallDistance = maximumFallDistance;
             isHardDrop = true;
-            //maximumFallDistance;
-            gm.AddScore(maximumFallDistance * 2);
-            gm.SetScoreMultiplier(0.2f, 1f);            
-            //Fall(maximumFallDistance);
-            //Fall();
-            //lastFall = 0;
-            /*while (isFalling)
+            
+            if (maximumFallDistance > 0)
             {
-                gm.AddScore(2);
-                Fall();
-            } */           
+                gm.AddScore(maximumFallDistance * 2);
+                gm.SetScoreMultiplier(0.2f, 1f);
+            }
         }
         // Soft Drop
         
         if (isSoftDrop)
         {
             if (isFalling && !isHeld && !isLocking)
-                gm.AddScore(1);
+                if (bottomHeight <= bottomHeightLowest)
+                    gm.AddScore(1);
         }
         // Basic Fall
         if (Time.time - lastFall >= fallSpeed || isSoftDrop || isHardDrop)
         {
             Fall(fallDistance, isHardDrop);
             canHardDrop = true;
+        }
+
+        // Lock Delay
+        if (isLocking)
+        {            
+            if (lockDelayTimer <= 0)
+            {
+                CheckIfLockIsValid();
+            }
+            lockDelayTimer -= Time.deltaTime;
         }
     }
 
@@ -321,21 +333,8 @@ public class Group : MonoBehaviour
         // See if valid
         if (isValidGridPos())
         {
-            // Detect the moment it lands
-            transform.position += new Vector3(0, -1, 0);
             if (!isHardDrop)
                 lastSuccessfulMovementWasRotation = false;
-
-            if (!isValidGridPos())
-            {
-                LockTetrominoDelay();
-
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
-            }
-            transform.position += new Vector3(0, 1, 0);
 
             isWallKickThisTick = false;
 
@@ -346,8 +345,13 @@ public class Group : MonoBehaviour
             }
             else
             {
+                //int oldbottomHeight = bottomHeight;
+                LockDelayReset(true);
                 // It's valid. Update grid.
                 UpdateGrid();
+
+                // Step Reset for Lock Delay
+                //LockDelayReset(true, oldbottomHeight);
 
                 if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
                 {
@@ -355,6 +359,9 @@ public class Group : MonoBehaviour
                     AudioSource.PlayClipAtPoint(downSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                 }                
             }
+
+            // Detect the moment it lands
+            DetectIfLanded(true);
         }
         else // Lock the piece in place
         {
@@ -366,15 +373,35 @@ public class Group : MonoBehaviour
         lastFall = Time.time;
     }
 
+    void DetectIfLanded(bool rumble = false)
+    {
+        // Detect the moment it lands
+        transform.position += new Vector3(0, -1, 0);
+
+        if (!isValidGridPos())
+        {
+            LockTetrominoDelay();
+            
+            if (rumble)
+            {
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+            }
+        }
+        transform.position += new Vector3(0, 1, 0);
+    }
+
     public void LockTetrominoDelay()
     {
         if (!isLocking)
         {
-            lockDelayTimer = lockDelay;
+            lockDelayTimer = lockDelayActive;
             isLocking = true;
         }
         
-        /*yield return new WaitForSeconds(lockDelay);
+        /*yield return new WaitForSeconds(lockDelayActive);
         // Detect if next step will lock
         bool willLock = false;
         transform.position += new Vector3(0, -1, 0);
@@ -389,21 +416,39 @@ public class Group : MonoBehaviour
             LockTetromino();*/
     }
 
-    public void LockDelayReset(bool moveReset = false)
+    public void LockDelayReset(bool resetWithoutLimit = false)//, int bottomRow = 999999)
     {
         if (isLocking)
         {
-            if (lockResets <= 15)
+            if (resetWithoutLimit) 
             {
-                lockDelayTimer = lockDelay;
-                lockResets++;
+                // This has fallen, so reset the timer without a limit
+                lockDelayTimer = lockDelayActive;
+                // If this is the farthest it has fallen, fully reset locking.
+                //Debug.Log("Bottom Height: " + bottomHeight + ", lowest Row: " + bottomHeightLowest);
+                if (bottomHeight <= bottomHeightLowest)
+                {
+                    //Debug.Log("Bottom Height: " + bottomHeight + ", lowest Row: " + bottomHeightLowest);
+                    lockResets = 0;
+                    isLocking = false;
+                }
+                    
             }
+            else
+            {
+                if (lockResets <= 15)
+                {
+                    lockDelayTimer = lockDelayActive;
+                    lockResets++;
+                }
+            }
+            
 
             /*if (moveReset)
             {
                 if (lockResetsMove <= 10)
                 {
-                    lockDelayTimer = lockDelay;
+                    lockDelayTimer = lockDelayActive;
                     lockResetsMove++;
                 }
             }
@@ -411,7 +456,7 @@ public class Group : MonoBehaviour
             {
                 if (lockResetsRotate <= 8)
                 {
-                    lockDelayTimer = lockDelay;
+                    lockDelayTimer = lockDelayActive;
                     lockResetsRotate++;
                 }
             }*/            
@@ -435,7 +480,7 @@ public class Group : MonoBehaviour
         else
         {
             isLocking = false;
-            lockResets = 0;
+            //lockResets = 0;
             //lockResetsRotate = 0;
             //lockResetsMove = 0;
         }
@@ -616,60 +661,40 @@ public class Group : MonoBehaviour
     }
     public void SetMaximumFallDistance()
     {
-        /*int fallDistance = 0;
-        while (isValidGridPos())
-        {
-            transform.position += new Vector3(0, -1, 0);
-            fallDistance++;
-        }
-        fallDistance--;
-        // Put the tetromino back into place
-        transform.position += new Vector3(0, fallDistance, 0);
-        maximumFallDistance = fallDistance;
-
-        for (int i = 0; i < GameManager.sizeX; i++)
-        {
-            for (int j = 0; j < GameManager.sizeY; j++)
-            {
-                GameManager.gameBoard[i][j] = null; // blankTile;
-            }
-        }*/
-
         int minFallDistance = 100;
         int newBottomHeight = 99999;
         int newTopHeight = -99999;
 
-        foreach (Transform child in transform)
+        foreach (Tile child in GetChildTiles())
         {
-            if (child.gameObject.GetComponent<Tile>() != null)
+            int fallDistance = 0;
+            int coordX = child.coordX;
+            int coordY = child.coordY;
+            for (int i = coordY; i >= 0; i--)
             {
-                int fallDistance = 0;
-                int coordX = child.gameObject.GetComponent<Tile>().coordX;
-                int coordY = child.gameObject.GetComponent<Tile>().coordY;
-                for (int i = coordY; i >= 0; i--)
-                {
-                    // Not inside Border?
-                    if (!GameManager.insideBorder(new Vector2(coordX, i)))
-                        return;
-                    // Block in grid cell (and not part of same group)?
-                    if (GameManager.gameBoard[coordX][i] == null)
-                        fallDistance++;
-                    else if (!GameManager.gameBoard[coordX][i].transform.IsChildOf(transform))
-                        i = -1;                                            
-                }
-                //Debug.Log(fallDistance);
-                if (minFallDistance > fallDistance)
-                    minFallDistance = fallDistance;
-                
-                if (newBottomHeight > coordY)
-                    newBottomHeight = coordY;
-                if (newTopHeight < coordY)
-                    newTopHeight = coordY;
+                // Not inside Border?
+                if (!GameManager.insideBorder(new Vector2(coordX, i)))
+                    return;
+                // Block in grid cell (and not part of same group)?
+                if (GameManager.gameBoard[coordX][i] == null)
+                    fallDistance++;
+                else if (!GameManager.gameBoard[coordX][i].transform.IsChildOf(transform))
+                    i = -1;                                            
             }
+            //Debug.Log(fallDistance);
+            if (minFallDistance > fallDistance)
+                minFallDistance = fallDistance;
+            
+            if (newBottomHeight > coordY)
+                newBottomHeight = coordY;
+            if (newTopHeight < coordY)
+                newTopHeight = coordY;
         }
         //Debug.Log("Final distance: " + maximumFallDistance);
         maximumFallDistance = minFallDistance;
         bottomHeight = newBottomHeight;
+        if (bottomHeight < bottomHeightLowest)
+            bottomHeightLowest = bottomHeight;
         topHeight = newTopHeight;
     }
 
@@ -992,7 +1017,7 @@ public class Group : MonoBehaviour
             transform.RotateAround(transform.TransformPoint(localPivot), new Vector3(0, 0, 1), 90 * dir * -1);
             currentRotation = previousRotation;
             lastSuccessfulMovementWasRotation = lastSuccessfulMovementWasRotationTemp;
-            Debug.Log("Rotation Wall Kicks failed");
+            //Debug.Log("Rotation Wall Kicks failed");
         }
     }
 
@@ -1007,9 +1032,8 @@ public class Group : MonoBehaviour
                 UpdateGrid();
                 LockDelayReset();
 
-                // If it gets kicked upwards, check if it should be locked. This will also prevent points from being scored by soft drops.
-                if (dirV > 0)
-                    LockTetrominoDelay();
+                // Check if this kick causes the mino to land, to start lock timer.
+                DetectIfLanded();
                 
                 isWallKickThisTick = true;
 
@@ -1022,7 +1046,7 @@ public class Group : MonoBehaviour
                 transform.position += new Vector3(dirH * -1, dirV * -1, 0);
             }
 
-            Debug.Log("Rotation Wall Kick (" + dirH + ", " + dirV + ")");
+            //Debug.Log("Rotation Wall Kick (" + dirH + ", " + dirV + ")");
             return true;
         }
         else
@@ -1043,7 +1067,9 @@ public class Group : MonoBehaviour
         {
             // It's valid. Update grid.
             UpdateGrid();
-            LockDelayReset(true);
+            LockDelayReset();
+
+            DetectIfLanded();
 
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
