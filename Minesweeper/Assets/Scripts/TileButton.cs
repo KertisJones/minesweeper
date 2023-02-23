@@ -4,10 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class TileButton : MonoBehaviour, IPointerClickHandler
+public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     Tile tile;
+    private InputManager inputManager;
     GameManager gm;
+    bool hover = false;
+    bool buttonRevealDown = false;
+    bool buttonFlagDown = false;
+    void Awake()
+    {
+        inputManager = InputManager.Instance;
+    }
     private void Start() {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
@@ -17,27 +25,81 @@ public class TileButton : MonoBehaviour, IPointerClickHandler
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    #region Input
+    void OnEnable()
+    {
+        inputManager.revealTilePress.started += _ => PressReveal();
+        inputManager.revealTilePress.canceled += _ => ReleaseReveal();
+        inputManager.flagTilePress.started += _ => PressFlag();
+        inputManager.flagTilePress.canceled += _ => ReleaseFlag();
+        inputManager.chordTilePress.started += _ => PressChord();
+    }
+    void OnDisable()
+    {
+        inputManager.revealTilePress.started -= _ => PressReveal();
+        inputManager.revealTilePress.canceled -= _ => ReleaseReveal();
+        inputManager.flagTilePress.started -= _ => PressFlag();
+        inputManager.flagTilePress.canceled -= _ => ReleaseFlag();
+        inputManager.chordTilePress.started -= _ => PressChord();
+    }
+    void PressReveal()
     {
         if (gm.isGameOver || gm.isPaused)
             return;
-
-        if (eventData.button == PointerEventData.InputButton.Left)
+        
+        if (hover)
         {
             tile.Reveal();
-            if (Input.GetMouseButton(1))
+            if (buttonFlagDown)
                 tile.Chord();
-        }            
-        if (eventData.button == PointerEventData.InputButton.Middle)
+        }
+            
+        buttonRevealDown = true;
+    }
+    void ReleaseReveal()
+    {
+        buttonRevealDown = false;
+    }
+    void PressFlag()
+    {
+        if (gm.isGameOver || gm.isPaused)
+            return;
+        
+        if (hover)
+        {
+            tile.FlagToggle();
+            if (buttonRevealDown)
+                tile.Chord();
+        }
+            
+        buttonFlagDown = true;
+    }
+    void ReleaseFlag()
+    {
+        buttonFlagDown = false;
+    }
+    void PressChord()
+    {
+        if (gm.isGameOver || gm.isPaused)
+            return;
+        if (hover)
         {
             tile.FlagToggle();
             tile.Chord();
-        }
-        if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            tile.FlagToggle();
-            if (Input.GetMouseButton(0))
-                tile.Chord();
-        }
+        }        
     }
+    #endregion
+
+
+
+    public void OnPointerEnter(PointerEventData eventData) 
+    {
+        hover = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData) 
+    {
+        hover = false;
+    }
+
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class Group : MonoBehaviour
 {
     GameManager gm;
+    private InputManager inputManager;
 
     public enum TetrominoType // your custom enumeration
     {
@@ -52,6 +53,17 @@ public class Group : MonoBehaviour
     [HideInInspector]
     public int maximumFallDistance = 0;
     bool canHardDrop = false;
+    // Input
+    public float dasDelay = 0.25f;
+    public float autoRepeatRate = 0.05f;
+    bool buttonLeftHeld = false;
+    bool buttonLeftHeldSecondary = false;
+    float lastLeftButtonDown = 0;
+    bool buttonRightHeld = false;
+    bool buttonRightHeldSecondary = false;
+    float lastRightButtonDown = 0;
+    bool buttonSoftDropHeld = false;
+    float lastSoftDropDown = 0;
 
     int currentRotation = 0; // 0 = spawn state, 1 = counter-clockwise rotation from spawn, 2 = 2 successive rotations from spawn, 3 = clockwise rotation from spawn
     bool lastSuccessfulMovementWasRotation = false;
@@ -66,6 +78,124 @@ public class Group : MonoBehaviour
     public AudioClip landSound;
     public AudioClip tetrisweepSound;
     public AudioClip tSpinSound;
+    void Awake()
+    {
+        inputManager = InputManager.Instance;
+    }
+
+    #region Input
+    void OnEnable()
+    {
+        inputManager.leftPress.started += _ => PressLeft();
+        inputManager.leftPress.canceled += _ => ReleaseLeft();
+        inputManager.rightPress.started += _ => PressRight();
+        inputManager.rightPress.canceled += _ => ReleaseRight();
+        inputManager.rotateClockwisePress.started += _ => PressRotateClockwise();
+        inputManager.rotateCounterClockwisePress.started += _ => PressRotateCounterClockwise();
+        inputManager.softDropPress.started += _ => PressSoftDrop();
+        inputManager.softDropPress.canceled += _ => ReleaseSoftDrop();
+        inputManager.hardDroptPress.started += _ => PressHardDrop();
+    }
+    void OnDisable()
+    {
+        inputManager.leftPress.started -= _ => PressLeft();
+        inputManager.leftPress.canceled -= _ => ReleaseLeft();
+        inputManager.rightPress.started -= _ => PressRight();
+        inputManager.rightPress.canceled -= _ => ReleaseRight();
+        inputManager.rotateClockwisePress.started -= _ => PressRotateClockwise();
+        inputManager.rotateCounterClockwisePress.started -= _ => PressRotateCounterClockwise();
+        inputManager.softDropPress.started -= _ => PressSoftDrop();
+        inputManager.softDropPress.canceled -= _ => ReleaseSoftDrop();
+        inputManager.hardDroptPress.started -= _ => PressHardDrop();
+    }
+    void PressLeft()
+    {
+        // Don't go any further if this shouldn't be moved 
+        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
+            return;
+        if (!buttonRightHeld)
+            buttonLeftHeld = true;
+        buttonLeftHeldSecondary = true;
+        lastLeftButtonDown = Time.time;
+        Move(-1);
+    }
+    void ReleaseLeft()
+    {
+        buttonLeftHeld = false;
+        buttonLeftHeldSecondary = false;
+        if (!buttonRightHeld && buttonRightHeldSecondary)
+            buttonRightHeld = true;
+    }
+    void PressRight()
+    {
+        // Don't go any further if this shouldn't be moved 
+        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
+            return;
+        if (!buttonLeftHeld)
+            buttonRightHeld = true;
+        buttonRightHeldSecondary = true;
+        lastRightButtonDown = Time.time;
+        Move(1);
+    }
+    void ReleaseRight()
+    {
+        buttonRightHeld = false;
+        buttonRightHeldSecondary = false;
+        if (!buttonLeftHeld && buttonLeftHeldSecondary)
+            buttonLeftHeld = true;
+    }
+    void PressRotateClockwise()
+    {
+        // Don't go any further if this shouldn't be moved 
+        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
+            return;
+
+        Rotate(-1);
+    }
+    void PressRotateCounterClockwise()
+    {
+        // Don't go any further if this shouldn't be moved 
+        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
+            return;
+
+        Rotate(1);
+    }
+    void PressSoftDrop()
+    {
+        // Don't go any further if this shouldn't be moved 
+        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
+            return;
+
+        buttonSoftDropHeld = true;
+        lastSoftDropDown = Time.time;
+
+        GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+        AudioSource.PlayClipAtPoint(downSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        
+        SoftDrop();
+    }
+    
+    void ReleaseSoftDrop()
+    {
+        buttonSoftDropHeld = false;
+    }
+    void PressHardDrop()
+    {
+        // Don't go any further if this shouldn't be moved 
+        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
+            return;
+        
+        if (canHardDrop) //((Input.GetKeyDown(KeyCode.Space)  || Input.GetKeyDown(KeyCode.Keypad8)) && lastFall > 0 || Input.GetKeyDown(KeyCode.Return)))
+        {            
+            if (maximumFallDistance > 0)
+            {
+                gm.AddScore(maximumFallDistance * 2);
+                gm.SetScoreMultiplier(0.2f, 1f);
+            }
+            Fall(maximumFallDistance, true);
+        }
+    }
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -236,30 +366,38 @@ public class Group : MonoBehaviour
         fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
         //lockDelayActive = 0.1f + (fallSpeed / 2);
             
-        
+        // DAS Move
         // Move Left
+        if (buttonLeftHeld && Time.time - lastLeftButtonDown >= dasDelay && Time.time - lastMove >= autoRepeatRate)
+            Move(-1);
+        // Move Right
+        if (buttonRightHeld && Time.time - lastRightButtonDown >= dasDelay && Time.time - lastMove >= autoRepeatRate)
+            Move(1);
+        /*// Move Left
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Keypad4) || (Input.GetAxis("Horizontal") == -1 && Time.time - lastMove >= lockDelayActive / 10))
             Move(-1);
         // Move Right
         else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Keypad6) || (Input.GetAxis("Horizontal") == 1 && Time.time - lastMove >= lockDelayActive / 10))
-            Move(1);
+            Move(1);*/
 
-        // Rotate
+        /*// Rotate
         if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Keypad9)) // Rotate Clockwise
             Rotate(-1);
         else if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Keypad7)) // Rotate Counterclockwise
-            Rotate(1);
+            Rotate(1);*/
         
         //if (gm.isPaused)
             //return;
 
         // Move Downwards and Fall
-        int fallDistance = 1;
+        //int fallDistance = 1;
         // Soft Drop
-        bool isSoftDrop = ((Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Keypad2));
+        if (buttonSoftDropHeld && Time.time - lastSoftDropDown >= dasDelay && Time.time - lastFall >= autoRepeatRate)
+            SoftDrop();
+        //bool isSoftDrop = false;// ((Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Keypad2));
         // Hard Drop
-        bool isHardDrop = false;
-        if (canHardDrop && ((Input.GetKeyDown(KeyCode.Space)  || Input.GetKeyDown(KeyCode.Keypad8)) && lastFall > 0 || Input.GetKeyDown(KeyCode.Return)))
+        //bool isHardDrop = false;
+        /*if (canHardDrop && false) //((Input.GetKeyDown(KeyCode.Space)  || Input.GetKeyDown(KeyCode.Keypad8)) && lastFall > 0 || Input.GetKeyDown(KeyCode.Return)))
         {
             fallDistance = maximumFallDistance;
             isHardDrop = true;
@@ -269,19 +407,19 @@ public class Group : MonoBehaviour
                 gm.AddScore(maximumFallDistance * 2);
                 gm.SetScoreMultiplier(0.2f, 1f);
             }
-        }
+        }*/
         // Soft Drop
         
-        if (isSoftDrop)
+        /*if (isSoftDrop)
         {
             if (isFalling && !isHeld && !isLocking)
                 if (bottomHeight <= bottomHeightLowest)
                     gm.AddScore(1);
-        }
+        }*/
         // Basic Fall
-        if (Time.time - lastFall >= fallSpeed || isSoftDrop || isHardDrop)
+        if (Time.time - lastFall >= fallSpeed)// || isSoftDrop || isHardDrop)
         {
-            Fall(fallDistance, isHardDrop);
+            Fall();//fallDistance, isHardDrop);
             canHardDrop = true;
         }
 
@@ -294,6 +432,15 @@ public class Group : MonoBehaviour
             }
             lockDelayTimer -= Time.deltaTime;
         }
+    }
+
+    void SoftDrop()
+    {
+        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
+            return;
+        if (!isLocking && bottomHeight <= bottomHeightLowest)
+            gm.AddScore(1);
+        Fall();
     }
 
     public void Fall(int fallDistance = 1, bool isHardDrop = false)
@@ -324,11 +471,11 @@ public class Group : MonoBehaviour
                 // Step Reset for Lock Delay
                 //LockDelayReset(true, oldbottomHeight);
 
-                if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+                /*if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) //TODO
                 {
                     GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                     AudioSource.PlayClipAtPoint(downSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-                }                
+                }          */      
             }
 
             // Detect the moment it lands

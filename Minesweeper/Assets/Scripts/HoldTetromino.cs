@@ -5,11 +5,16 @@ using UnityEngine;
 public class HoldTetromino : MonoBehaviour
 {
     GameManager gm;
+    private InputManager inputManager;
     public TetrominoSpawner tetrominoSpawner;
     public Transform targetPosition;
     public GameObject heldTetromino;
     public GameObject heldTetrominoPrevious;
     public GameObject swapPartner;
+    void Awake()
+    {
+        inputManager = InputManager.Instance;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -22,11 +27,26 @@ public class HoldTetromino : MonoBehaviour
     {
         if (gm.isPaused || gm.isGameOver)
             return;
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.H) || Input.GetKeyDown(KeyCode.RightShift))
+        /*if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.H) || Input.GetKeyDown(KeyCode.RightShift))
         {
             Hold();
-        }
+        }*/
     }
+
+    #region Input
+    void OnEnable()
+    {
+        inputManager.holdPress.started += _ => PressHold();
+    }
+    void OnDisable()
+    {
+        inputManager.holdPress.started -= _ => PressHold();
+    }
+    void PressHold()
+    {
+        Hold();
+    }
+    #endregion
 
     void Hold()
     {

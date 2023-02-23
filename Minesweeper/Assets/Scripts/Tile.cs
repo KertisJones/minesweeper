@@ -33,7 +33,7 @@ public class Tile : MonoBehaviour
     public SpriteShapeRenderer shimmerOverlay;
     
     TextMeshProUGUI text;    
-
+    
     GameManager gm;
     Camera cam;
 

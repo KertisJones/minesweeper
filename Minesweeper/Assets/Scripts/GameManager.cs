@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
         noWalls
     };
     public WallType wallType = WallType.disabledUntilAdded;*/
+    private InputManager inputManager;
     public GameObject tile;
     public GameObject tileGroup;
     public GameObject backgroundAnimated;
@@ -110,6 +111,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        inputManager = InputManager.Instance;
+
         GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().runs += 1;
         /*blankTile = Instantiate(new GameObject(), new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;        
         blankTile.AddComponent<Tile>();
@@ -121,6 +124,33 @@ public class GameManager : MonoBehaviour
         startTime = Time.time;
         //PopulateMines();
     }
+
+    #region Input
+    void OnEnable()
+    {
+        inputManager.escapePress.started += _ => PressEscape();
+        inputManager.restartPress.started += _ => PressRestart();
+        inputManager.hardClearPress.started += _ => PressHardClear();
+    }
+    void OnDisable()
+    {
+        inputManager.escapePress.started -= _ => PressEscape();
+        inputManager.restartPress.started -= _ => PressRestart();
+        inputManager.hardClearPress.started -= _ => PressHardClear();
+    }
+    void PressEscape()
+    {
+        Pause(!isPaused);
+    }
+    void PressRestart()
+    {
+        ReloadScene();
+    }
+    void PressHardClear()
+    {
+        deleteFullRows(false);
+    }
+    #endregion
 
     // Update is called once per frame
     void Update()
@@ -139,7 +169,7 @@ public class GameManager : MonoBehaviour
         if (linesCleared >= level * 10)
             level += 1;
         
-        if (cheatGodMode)
+        /*if (cheatGodMode)
         {
             if (Input.GetKeyDown(KeyCode.M))
                 SetScoreMultiplier(4f, 30);
@@ -147,20 +177,7 @@ public class GameManager : MonoBehaviour
                 AddSafeTileToEdges();
             if (Input.GetKeyDown(KeyCode.L))
                 linesCleared++;
-        }
-        
-        if (Input.GetKeyDown("escape"))
-        {
-            Pause(!isPaused);
-        }
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            ReloadScene();
-        }
-        if (Input.GetKeyDown(KeyCode.F1) || Input.GetKeyDown(KeyCode.Backspace))
-        {            
-            deleteFullRows(false);
-        }
+        }*/
     }
 
     void BuildGameBoard()
