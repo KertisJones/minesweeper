@@ -108,7 +108,7 @@ public class Group : MonoBehaviour
         inputManager.softDropPress.canceled -= _ => ReleaseSoftDrop();
         inputManager.hardDroptPress.started -= _ => PressHardDrop();
     }
-    void PressLeft()
+    public void PressLeft()
     {
         // Don't go any further if this shouldn't be moved 
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
@@ -126,7 +126,7 @@ public class Group : MonoBehaviour
         if (!buttonRightHeld && buttonRightHeldSecondary)
             buttonRightHeld = true;
     }
-    void PressRight()
+    public void PressRight()
     {
         // Don't go any further if this shouldn't be moved 
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
@@ -190,7 +190,7 @@ public class Group : MonoBehaviour
             if (maximumFallDistance > 0)
             {
                 gm.AddScore(maximumFallDistance * 2);
-                gm.SetScoreMultiplier(0.2f, 1f);
+                gm.SetScoreMultiplier(2, 1f);
             }
             Fall(maximumFallDistance, true);
         }
@@ -639,7 +639,7 @@ public class Group : MonoBehaviour
         if (!WallKickMove(1, 0, false) && !WallKickMove(-1, 0, false) && !WallKickMove(0, 1, false))
         {
             Debug.Log("In-Place spin locked! Rows filled: " + rowsFilled);
-            gm.SetScoreMultiplier(0.5f, 5);
+            gm.SetScoreMultiplier(5, 5);
         }
 
         // Detect if a T-Spin has occured
@@ -675,7 +675,7 @@ public class Group : MonoBehaviour
                         gm.tSpinNoLines++;
                         gm.AddScore(400);                        
                     }
-                    gm.SetScoreMultiplier(0.1f, 5);
+                    gm.SetScoreMultiplier(1, 5);
                 }
                 else if (rowsFilled == 1) // T-Spin Single
                 {
@@ -697,7 +697,7 @@ public class Group : MonoBehaviour
                     else
                         gm.AddScore(actionScore);
                     
-                    gm.SetScoreMultiplier(0.5f, 10);
+                    gm.SetScoreMultiplier(5, 10);
                     fillWasDifficult = true;
                 }
                 else if (rowsFilled == 2) // T-Spin Double
@@ -719,7 +719,7 @@ public class Group : MonoBehaviour
                         gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
                     else
                         gm.AddScore(actionScore);
-                    gm.SetScoreMultiplier(1, 10);
+                    gm.SetScoreMultiplier(10, 10);
                     fillWasDifficult = true;
                 }
                 else if (rowsFilled == 3) // T-Spin Triple
@@ -731,7 +731,7 @@ public class Group : MonoBehaviour
                         gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
                     else
                         gm.AddScore(actionScore);
-                    gm.SetScoreMultiplier(2, 10);
+                    gm.SetScoreMultiplier(20, 10);
                     fillWasDifficult = true;
                 }
 
@@ -774,6 +774,12 @@ public class Group : MonoBehaviour
 
             // Set this as the previous tetromino
             gm.previousTetromino = this.gameObject;
+
+            // Input DAS for next tetromino
+            if (buttonLeftHeld)
+                gm.GetActiveTetromino().PressLeft();
+            if (buttonRightHeld)
+                gm.GetActiveTetromino().PressRight();
         }
     }
 
@@ -1237,7 +1243,7 @@ public class Group : MonoBehaviour
                 gm.tetrisweepsCleared += 1;
                 gm.AddScore(595 * (bottomHeight)); // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
                 if (getMultiplier)
-                    gm.SetScoreMultiplier(topHeight * 0.5f, 30);
+                    gm.SetScoreMultiplier(topHeight * 5, 30);
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
@@ -1250,7 +1256,7 @@ public class Group : MonoBehaviour
                 gm.tSpinsweepsCleared += 1;
                 gm.AddScore(250 * rowsFilled * bottomHeight);
                 if (getMultiplier)
-                    gm.SetScoreMultiplier(topHeight * 0.5f, 30);
+                    gm.SetScoreMultiplier(topHeight * 10, 30);
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));

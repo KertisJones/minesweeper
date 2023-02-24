@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.U2D;
-using Krivodeling.UI.Effects;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,9 +24,10 @@ public class GameManager : MonoBehaviour
     float endtime;
     private float score = 0;
     [SerializeField]
-    private float scoreMultiplier = 0;
+    public int scoreMultiplier = 0;
     public float scoreMultiplierDecayPerTick= 0.1f;
     private int scoreMultiplierDecayTicksPerSecond = 5;
+    public float scoreMultiplierTimer = 0f;
     private float lastMultiplierTick = 0;
     public int comboLinesFilled = -1; // C=-1; +1 when mino locks & line filled; C= when mino locks & line not filled
     public bool lastFillWasDifficult = false; // Difficult fills are Tetrises or T-Spins
@@ -154,16 +154,25 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Time.time - lastMultiplierTick >= 1f / scoreMultiplierDecayTicksPerSecond && !isGameOver)
+    {        
+        //Debug.Log((Mathf.Floor(0.04f * 100) / 100) + 0.01f);
+        if (scoreMultiplierTimer > 0 && !isGameOver)
+            scoreMultiplierTimer -= Time.deltaTime;
+        if (scoreMultiplierTimer <= 0)
         {
-            if (GetScoreMultiplier() > 0)
+            if (Time.time - lastMultiplierTick >= 0.02f && !isGameOver) // 1f / scoreMultiplierDecayTicksPerSecond
             {
-                SetScoreMultiplier(-1 * scoreMultiplierDecayPerTick, 0);
-                if (GetScoreMultiplier() <= 0)
-                    backgroundAnimated.SetActive(false);
-            }            
+                if (GetScoreMultiplier() > 0)
+                {
+                    SetScoreMultiplier(-1, 0);
+                    if (GetScoreMultiplier() <= 0)
+                        backgroundAnimated.SetActive(false);
+                }            
+            }
+            scoreMultiplierTimer = 0;
         }
+        
+        
 
         // Fixed Marathon: 10 per level
         if (linesCleared >= level * 10)
@@ -530,7 +539,7 @@ public class GameManager : MonoBehaviour
 
         // Give rewards for a perfect clear!
         AddScore(8000);        
-        SetScoreMultiplier(5, 30);
+        SetScoreMultiplier(100, 30);
 
         /*if (previousTetromino.GetComponent<Group>().rowsFilled == 4) // Tetrisweep Perfect Clear!
         {
@@ -597,7 +606,10 @@ public class GameManager : MonoBehaviour
         gm.AddScore(100 * rowsCleared);
         //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
         if (getMultiplier)
-            gm.SetScoreMultiplier(rowsCleared * rowsCleared, (rowsCleared * rowsCleared) / 2);
+            gm.SetScoreMultiplier((rowsCleared * rowsCleared) * 10, rowsCleared);
+        
+        if (rowsCleared > gm.safeEdgeTilesGained)
+            gm.AddSafeTileToEdges();
         
         if (gm.previousTetromino != null)
             gm.previousTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier);
@@ -795,11 +807,25 @@ public class GameManager : MonoBehaviour
         score += tempScore;
     }
 
-    public void SetScoreMultiplier(float mult, float duration)
+    public void SetScoreMultiplier(int mult, float duration)
     {
-        scoreMultiplier = GetScoreMultiplier() + mult;
+        float sm = GetScoreMultiplier();
+        scoreMultiplier += mult;
+        if (scoreMultiplier < 0)
+            scoreMultiplier = 0;
+        //Debug.Log(gameObject.name + ": " + sm + " + " + mult + " = " + scoreMultiplier + " -> " + GetScoreMultiplier());
         //if (duration > scoreMultiplierTimer)
             //scoreMultiplierTimer = duration;
+        if (mult > 0)
+        {
+            if (scoreMultiplierTimer >= 0)
+                scoreMultiplierTimer += 0.75f;
+            else
+                scoreMultiplierTimer = 0.75f;
+            if (scoreMultiplierTimer > 30)
+                scoreMultiplierTimer = 30;
+        }
+
         if (GetScoreMultiplier() > 0)
             backgroundAnimated.SetActive(true);
         if (GetScoreMultiplier() > highestScoreMultiplier)
@@ -810,13 +836,13 @@ public class GameManager : MonoBehaviour
     public void ResetScoreMultiplier()
     {
         scoreMultiplier = 0;
-        //scoreMultiplierTimer = 0;
+        scoreMultiplierTimer = 0;
     }
 
     public float GetScoreMultiplier()
     {
-        scoreMultiplier = Mathf.Floor(scoreMultiplier * 10) / 10;
-        return scoreMultiplier;
+        //scoreMultiplier = Mathf.Floor(scoreMultiplier * 100) / 100;
+        return scoreMultiplier / 100f;
     }
 
     public static void scoreSolvedRow(int y, bool getMultiplier = true)
@@ -852,14 +878,15 @@ public class GameManager : MonoBehaviour
         {
             gm.AddScore(50 * (y + 1));
             //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
-            //if (getMultiplier)
-                //gm.SetScoreMultiplier(1, 2f);
-            if (y > gm.safeEdgeTilesGained - 1)
+            if (getMultiplier)
+                gm.SetScoreMultiplier(5, 2f);
+            /*if (y > gm.safeEdgeTilesGained - 1)
             {
                 //Debug.Log("Linesweep " + y);
-                gm.linesweepsCleared += 1;
+                
                 //gm.AddSafeTileToEdges();
-            }
+            }*/
+            gm.linesweepsCleared += 1;
         }        
         
         gm.currentMines -= minesFlagged;
@@ -899,17 +926,17 @@ public class GameManager : MonoBehaviour
                 case 1:
                     clipToPlay = gm.lineFullSound1;
                     gm.AddScore(100);
-                    gm.SetScoreMultiplier(0.3f, 5f);
+                    gm.SetScoreMultiplier(3, 5f);
                     break;
                 case 2:
                     clipToPlay = gm.lineFullSound2;
                     gm.AddScore(300);
-                    gm.SetScoreMultiplier(0.5f, 5f);
+                    gm.SetScoreMultiplier(5, 5f);
                     break;
                 case 3:
                     clipToPlay = gm.lineFullSound3;
                     gm.AddScore(500);
-                    gm.SetScoreMultiplier(0.8f, 5f);
+                    gm.SetScoreMultiplier(8, 5f);
                     break;
                 default:
                     clipToPlay = gm.lineFullSound4;
@@ -918,7 +945,7 @@ public class GameManager : MonoBehaviour
                         gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
                     else
                         gm.AddScore(actionScore);
-                    gm.SetScoreMultiplier(1f, 5f);
+                    gm.SetScoreMultiplier(10, 5f);
                     break;
             }
             // C-c-c-Combo!

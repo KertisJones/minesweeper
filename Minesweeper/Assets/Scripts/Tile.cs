@@ -182,6 +182,10 @@ public class Tile : MonoBehaviour
             AudioSource.PlayClipAtPoint(flagSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
+            float sm = gm.GetScoreMultiplier();
+            gm.SetScoreMultiplier(1, 1f);
+            Debug.Log(gameObject.name + ": " + sm + " + 0.01 = " + gm.GetScoreMultiplier());
+
             gm.currentFlags += 1;
 
             //GameManager.deleteFullRows();            
@@ -190,6 +194,8 @@ public class Tile : MonoBehaviour
         {
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+
+            gm.ResetScoreMultiplier();
 
             gm.currentFlags -= 1;
         }
@@ -222,7 +228,7 @@ public class Tile : MonoBehaviour
         {
             isRevealed = true;
             isQuestioned = false;
-            //gm.RevealTile(coordX, coordY, nearbyMines, isMine);            
+            //gm.RevealTile(coordX, coordY, nearbyMines, isMine);
 
             if (isMine)
             {
@@ -244,6 +250,7 @@ public class Tile : MonoBehaviour
                 {
                     // Each revealed tile is equal to 1 point.
                     gm.AddScore(nearbyMines * nearbyMines * (coordY + 1));
+                    gm.SetScoreMultiplier(1, 1f);
                 }
             }
 

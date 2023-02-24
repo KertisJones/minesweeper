@@ -54,7 +54,7 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.scoreMultiplier)
         {
-            /*string suffix = "";
+            string suffix = "";
             if (gm.scoreMultiplierTimer > 25)
                 suffix = "!!!!!";
             else if (gm.scoreMultiplierTimer > 20)
@@ -70,11 +70,12 @@ public class DisplayText : MonoBehaviour
             else if (gm.scoreMultiplierTimer <= 2)
                 suffix = "..";
             else if (gm.scoreMultiplierTimer <= 3)
-                suffix = "."; */
-            
+                suffix = ".";
+            else if (gm.scoreMultiplierTimer <= 0)
+                suffix = "";
             
             if (gm.GetScoreMultiplier() > 0)
-                this.GetComponent<TextMeshProUGUI>().text = "x" + (1 + gm.GetScoreMultiplier()); //(Math.Truncate(gm.scoreMultiplier * 100) / 100));
+                this.GetComponent<TextMeshProUGUI>().text = "+" + gm.scoreMultiplier + "%" + suffix; //(Math.Truncate(gm.scoreMultiplier * 100) / 100));
             else
                 this.GetComponent<TextMeshProUGUI>().text = "";
         }
