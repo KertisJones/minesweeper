@@ -4,7 +4,7 @@ using System.Collections;
 public class ForceAspectRatio : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () 
+	void Update () 
 	{
 		// set the desired aspect ratio (the values in this example are
 		// hard-coded for 16:9, but you could make them into public

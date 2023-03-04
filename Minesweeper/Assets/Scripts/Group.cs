@@ -56,16 +56,18 @@ public class Group : MonoBehaviour
     // Input
     public float dasDelay = 0.25f;
     public float autoRepeatRate = 0.05f;
-    bool buttonLeftHeld = false;
+    [HideInInspector]
+    public bool buttonLeftHeld = false;
     bool buttonLeftHeldSecondary = false;
     float lastLeftButtonDown = 0;
-    bool buttonRightHeld = false;
+    [HideInInspector]
+    public bool buttonRightHeld = false;
     bool buttonRightHeldSecondary = false;
     float lastRightButtonDown = 0;
     bool buttonSoftDropHeld = false;
     float lastSoftDropDown = 0;
 
-    int currentRotation = 0; // 0 = spawn state, 1 = counter-clockwise rotation from spawn, 2 = 2 successive rotations from spawn, 3 = clockwise rotation from spawn
+    public int currentRotation = 0; // 0 = spawn state, 1 = counter-clockwise rotation from spawn, 2 = 2 successive rotations from spawn, 3 = clockwise rotation from spawn
     bool lastSuccessfulMovementWasRotation = false;
 
     public Transform pivot;
@@ -638,7 +640,7 @@ public class Group : MonoBehaviour
         // Detect if an in-place spin has occured
         if (!WallKickMove(1, 0, false) && !WallKickMove(-1, 0, false) && !WallKickMove(0, 1, false))
         {
-            Debug.Log("In-Place spin locked! Rows filled: " + rowsFilled);
+            //Debug.Log("In-Place spin locked! Rows filled: " + rowsFilled);
             gm.SetScoreMultiplier(5, 5);
         }
 
@@ -693,11 +695,15 @@ public class Group : MonoBehaviour
                     }
                     
                     if (gm.lastFillWasDifficult)
+                    {
                         gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
+                        gm.SetScoreMultiplier(10, 10);
+                    }                        
                     else
+                    {
                         gm.AddScore(actionScore);
-                    
-                    gm.SetScoreMultiplier(5, 10);
+                        gm.SetScoreMultiplier(5, 10);
+                    }                                          
                     fillWasDifficult = true;
                 }
                 else if (rowsFilled == 2) // T-Spin Double
@@ -716,10 +722,15 @@ public class Group : MonoBehaviour
                     }
 
                     if (gm.lastFillWasDifficult)
+                    {
                         gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
+                        gm.SetScoreMultiplier(20, 10);
+                    }                        
                     else
+                    {
                         gm.AddScore(actionScore);
-                    gm.SetScoreMultiplier(10, 10);
+                        gm.SetScoreMultiplier(10, 10);
+                    }                    
                     fillWasDifficult = true;
                 }
                 else if (rowsFilled == 3) // T-Spin Triple
@@ -728,10 +739,15 @@ public class Group : MonoBehaviour
                     gm.tSpinTriple++;
                     int actionScore = 1600;
                     if (gm.lastFillWasDifficult)
+                    {
                         gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
+                        gm.SetScoreMultiplier(40, 10);
+                    }                        
                     else
+                    {
                         gm.AddScore(actionScore);
-                    gm.SetScoreMultiplier(20, 10);
+                        gm.SetScoreMultiplier(20, 10);
+                    }
                     fillWasDifficult = true;
                 }
 

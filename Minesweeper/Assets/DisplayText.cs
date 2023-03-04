@@ -11,6 +11,7 @@ public class DisplayText : MonoBehaviour
     /*float timer = 0.0f;
     int colorIndex = 0;
     private Color startColor = Color.red;*/
+    private Color startColor = Color.white;
     public enum TextType // your custom enumeration
     {
         score, 
@@ -27,6 +28,8 @@ public class DisplayText : MonoBehaviour
         level,
         tSpinSweeps,
         TESTCurrentMinoLockDelay
+        ,
+        TESTCurrentMinoRotation
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
@@ -35,6 +38,7 @@ public class DisplayText : MonoBehaviour
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         sk = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>();
+        startColor = this.GetComponent<TextMeshProUGUI>().color;
     }
 
     // Update is called once per frame
@@ -55,29 +59,53 @@ public class DisplayText : MonoBehaviour
         else if (displayType == TextType.scoreMultiplier)
         {
             string suffix = "";
-            if (gm.scoreMultiplierTimer > 25)
+
+
+            if (gm.scoreMultiplierTimer >= 25)
                 suffix = "!!!!!";
-            else if (gm.scoreMultiplierTimer > 20)
+            else if (gm.scoreMultiplierTimer >= 20)
                 suffix = "!!!!";
-            else if (gm.scoreMultiplierTimer > 15)
+            else if (gm.scoreMultiplierTimer >= 15)
                 suffix = "!!!";
-            else if (gm.scoreMultiplierTimer > 10)
+            else if (gm.scoreMultiplierTimer >= 10)
                 suffix = "!!";
-            else if (gm.scoreMultiplierTimer > 5)
+            else if (gm.scoreMultiplierTimer >= 5)
                 suffix = "!";
+            else if (gm.scoreMultiplierTimer <= 0)
+                suffix = "";
             else if (gm.scoreMultiplierTimer <= 1)
                 suffix = "...";
             else if (gm.scoreMultiplierTimer <= 2)
                 suffix = "..";
             else if (gm.scoreMultiplierTimer <= 3)
                 suffix = ".";
-            else if (gm.scoreMultiplierTimer <= 0)
-                suffix = "";
             
+            
+            string scoreStr = (100 + gm.scoreMultiplier).ToString();
+            string scoreStrFront = scoreStr.Substring(0, scoreStr.Length - 2);
+            string scoreStrBack = "";
+            string scoreStrTenths = scoreStr.Substring(scoreStr.Length - 2, 1);
+            string scoreStrHundredths = scoreStr.Substring(scoreStr.Length - 1);
+            if (scoreStrTenths != "0" && scoreStrHundredths == "0")
+                scoreStrBack = "." + scoreStrTenths;
+            else if (scoreStrHundredths != "0")
+                scoreStrBack = "." + scoreStrTenths + scoreStrHundredths;
             if (gm.GetScoreMultiplier() > 0)
-                this.GetComponent<TextMeshProUGUI>().text = "+" + gm.scoreMultiplier + "%" + suffix; //(Math.Truncate(gm.scoreMultiplier * 100) / 100));
+                this.GetComponent<TextMeshProUGUI>().text = "x" + scoreStrFront + scoreStrBack + suffix; //(Math.Truncate(gm.scoreMultiplier * 100) / 100));
             else
                 this.GetComponent<TextMeshProUGUI>().text = "";
+
+            if (gm.scoreMultiplier >= gm.scoreMultiplierLimit)
+                this.GetComponent<VertexColorCyclerGradient>().enabled = true;
+            else
+            {
+                this.GetComponent<VertexColorCyclerGradient>().enabled = false;
+                if (gm.scoreMultiplierTimer <= 0)
+                    this.GetComponent<TextMeshProUGUI>().color = Color.red;
+                else
+                    this.GetComponent<TextMeshProUGUI>().color = startColor;
+            }
+                
         }
         else if (displayType == TextType.minesMissing)
         {
@@ -159,7 +187,7 @@ public class DisplayText : MonoBehaviour
         else if (displayType == TextType.tSpinSweeps)
         {
             if (gm.tSpinsweepsCleared == 0)
-                this.GetComponent<TextMeshProUGUI>().text = "T-Spinsweeps";
+                this.GetComponent<TextMeshProUGUI>().text = "";
             else
             {
                 this.GetComponent<TextMeshProUGUI>().text = "T-Spinsweeps: " + gm.tSpinsweepsCleared;
@@ -184,6 +212,35 @@ public class DisplayText : MonoBehaviour
                     this.GetComponent<TextMeshProUGUI>().text = "Lock: " + activeTetromino.lockDelayTimer.ToString("#,#.#") + ", Resets: " + resets;
                 else
                     this.GetComponent<TextMeshProUGUI>().text = "Lock: 0.5" + ", Resets: " + resets;
+            }
+        }
+        else if (displayType == TextType.TESTCurrentMinoRotation)
+        {
+            Group activeTetromino = gm.GetActiveTetromino();
+            if (activeTetromino == null)
+            {
+                this.GetComponent<TextMeshProUGUI>().text = "Null";
+            }
+            else
+            {                
+                // 0 = spawn state, 1 = counter-clockwise rotation from spawn, 2 = 2 successive rotations from spawn, 3 = clockwise rotation from spawn
+                switch (activeTetromino.currentRotation) {
+                    case 0:
+                        this.GetComponent<TextMeshProUGUI>().text = "0: spawn state";
+                        break;
+                    case 1:
+                        this.GetComponent<TextMeshProUGUI>().text = "1: counter-clockwise";
+                        break;
+                    case 2:
+                        this.GetComponent<TextMeshProUGUI>().text = "2: Upside-down";
+                        break;
+                    case 3:
+                        this.GetComponent<TextMeshProUGUI>().text = "3: clockwise";
+                        break;
+                    default :
+                        this.GetComponent<TextMeshProUGUI>().text = "?: no rotation found?";
+                        break;
+                }
             }
         }
     }

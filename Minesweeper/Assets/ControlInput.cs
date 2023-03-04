@@ -1065,6 +1065,17 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""555b0b31-d204-480f-b4d4-14f42778a718"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HardClear"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""2ea379b0-e4a9-4ecd-ba70-6842bfcdb50b"",
                     ""path"": ""<Keyboard>/backspace"",
                     ""interactions"": """",

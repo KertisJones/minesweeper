@@ -20,6 +20,16 @@ public class VertexColorCyclerGradient : MonoBehaviour
             StartCoroutine(AnimateVertexColors());
         }
 
+        void OnEnable()
+        {
+            StartCoroutine(AnimateVertexColors());
+        }
+
+        void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
 
         /// <summary>
         /// Method to animate vertex colors of a TMP Text object.

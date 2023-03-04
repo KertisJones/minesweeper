@@ -50,6 +50,8 @@ public class HoldTetromino : MonoBehaviour
 
     void Hold()
     {
+        if (gm.isGameOver)
+            return;
         
         GameObject currentTetromino = tetrominoSpawner.currentTetromino;
         if (currentTetromino == heldTetromino || currentTetromino == heldTetrominoPrevious)
@@ -57,6 +59,7 @@ public class HoldTetromino : MonoBehaviour
         if (swapPartner != null)
             if (swapPartner.GetComponent<Group>().isFalling)
                 return;
+        
         RemoveFromBoard(currentTetromino);
         AddToBoard(heldTetromino);
 
@@ -65,6 +68,12 @@ public class HoldTetromino : MonoBehaviour
         heldTetrominoPrevious = heldTetromino;
         heldTetromino = currentTetromino;
 
+        // Input DAS for next tetromino
+        if (heldTetromino.GetComponent<Group>().buttonLeftHeld)
+            gm.GetActiveTetromino().PressLeft();
+        if (heldTetromino.GetComponent<Group>().buttonRightHeld)
+            gm.GetActiveTetromino().PressRight();
+        heldTetromino.GetComponent<Group>().currentRotation = 0;
     }
 
     void RemoveFromBoard(GameObject tetromino)

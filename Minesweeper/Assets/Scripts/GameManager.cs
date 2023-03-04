@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     private float score = 0;
     [SerializeField]
     public int scoreMultiplier = 0;
+    public int scoreMultiplierLimit = 5000;
     public float scoreMultiplierDecayPerTick= 0.1f;
     private int scoreMultiplierDecayTicksPerSecond = 5;
     public float scoreMultiplierTimer = 0f;
@@ -160,7 +161,31 @@ public class GameManager : MonoBehaviour
             scoreMultiplierTimer -= Time.deltaTime;
         if (scoreMultiplierTimer <= 0)
         {
-            if (Time.time - lastMultiplierTick >= 0.02f && !isGameOver) // 1f / scoreMultiplierDecayTicksPerSecond
+            float tickTime = 0.04f; // x0.25 / sec
+            if (scoreMultiplier > scoreMultiplierLimit * 0.1f)
+                tickTime = 0.03f; // x0.33 / sec
+            if (scoreMultiplier > scoreMultiplierLimit * 0.2f)
+                tickTime = 0.02f; // x0.50 / sec
+
+            if (scoreMultiplier > scoreMultiplierLimit * 0.3f)
+                tickTime = 0.01f; // x1 / sec
+            if (scoreMultiplier > scoreMultiplierLimit * 0.4f)
+                tickTime = 0.005f; // x1.5 / sec
+            
+            if (scoreMultiplier > scoreMultiplierLimit * 0.5f)
+                tickTime = 0.0025f; // x2 / sec
+            if (scoreMultiplier > scoreMultiplierLimit * 0.6f)
+                tickTime = 0.00125f; // x2.5 / sec
+            
+            if (scoreMultiplier > scoreMultiplierLimit * 0.7f)
+                tickTime = 0.000625f; // x3 / sec
+            if (scoreMultiplier > scoreMultiplierLimit * 0.8f)
+                tickTime = 0.0003125f; // x3.5 / sec
+            if (scoreMultiplier > scoreMultiplierLimit * 0.9f)
+                tickTime = 0.00015625f; // x4 / sec
+            
+            
+            if (Time.time - lastMultiplierTick >= tickTime && !isGameOver) // 1f / scoreMultiplierDecayTicksPerSecond
             {
                 if (GetScoreMultiplier() > 0)
                 {
@@ -575,7 +600,10 @@ public class GameManager : MonoBehaviour
             if (isRowSolved(y))
             {
                 if (!getMultiplier)
+                {
                     gm.ResetScoreMultiplier();
+                    gm.RemoveSafeTileFromEdges();
+                }
 
                 scoreSolvedRow(y, getMultiplier);
                 gm.linesCleared++;
@@ -603,7 +631,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Lines Cleared Points
-        gm.AddScore(100 * rowsCleared);
+        gm.AddScore(50 * (rowsCleared * rowsCleared));
         //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
         if (getMultiplier)
             gm.SetScoreMultiplier((rowsCleared * rowsCleared) * 10, rowsCleared);
@@ -674,7 +702,7 @@ public class GameManager : MonoBehaviour
 
     public void AddSafeTileToEdges() {
 
-        //place display tiles at bottom
+        // Place display tiles at bottom
         GameObject newTile = Instantiate(tile, new Vector3(-1, leftBorderTiles.Count, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
         newTile.name = "Tile (" + -1 + ", " + leftBorderTiles.Count + ")";
         newTile.GetComponent<Tile>().coordX = -1;
@@ -753,6 +781,22 @@ public class GameManager : MonoBehaviour
 
         safeEdgeTilesGained++;
     }
+
+    public void RemoveSafeTileFromEdges() 
+    {
+        if (safeEdgeTilesGained == 0)
+            return;
+        // Remove display tiles from the top
+        GameObject leftTile = leftBorderTiles[leftBorderTiles.Count-1];
+        leftBorderTiles.RemoveAt(leftBorderTiles.Count-1);
+        Destroy(leftTile);
+
+        GameObject rightTile = rightBorderTiles[rightBorderTiles.Count-1];
+        rightBorderTiles.RemoveAt(rightBorderTiles.Count-1);
+        Destroy(rightTile);
+
+        safeEdgeTilesGained--;
+    }
     #endregion
     #region Gamestate Logic
     public void EndGame()
@@ -807,23 +851,28 @@ public class GameManager : MonoBehaviour
         score += tempScore;
     }
 
-    public void SetScoreMultiplier(int mult, float duration)
+    public void SetScoreMultiplier(int mult, float duration, bool isSweep = false)
     {
         float sm = GetScoreMultiplier();
         scoreMultiplier += mult;
         if (scoreMultiplier < 0)
             scoreMultiplier = 0;
+        if (scoreMultiplier > scoreMultiplierLimit)
+            scoreMultiplier = scoreMultiplierLimit;
         //Debug.Log(gameObject.name + ": " + sm + " + " + mult + " = " + scoreMultiplier + " -> " + GetScoreMultiplier());
         //if (duration > scoreMultiplierTimer)
             //scoreMultiplierTimer = duration;
+        float addDuration = 0.25f;
+        if (isSweep)
+            addDuration = 1f;
         if (mult > 0)
         {
             if (scoreMultiplierTimer >= 0)
-                scoreMultiplierTimer += 0.75f;
+                scoreMultiplierTimer += addDuration;
             else
-                scoreMultiplierTimer = 0.75f;
-            if (scoreMultiplierTimer > 30)
-                scoreMultiplierTimer = 30;
+                scoreMultiplierTimer = addDuration;
+            if (scoreMultiplierTimer > 16)
+                scoreMultiplierTimer = 16;
         }
 
         if (GetScoreMultiplier() > 0)
@@ -835,8 +884,8 @@ public class GameManager : MonoBehaviour
 
     public void ResetScoreMultiplier()
     {
-        scoreMultiplier = 0;
-        scoreMultiplierTimer = 0;
+        //scoreMultiplier = 0;
+        scoreMultiplierTimer = 0;        
     }
 
     public float GetScoreMultiplier()
@@ -942,10 +991,15 @@ public class GameManager : MonoBehaviour
                     clipToPlay = gm.lineFullSound4;
                     int actionScore = 800;
                     if (gm.lastFillWasDifficult)
+                    {
                         gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
+                        gm.SetScoreMultiplier(20, 5f);
+                    }                        
                     else
+                    {
                         gm.AddScore(actionScore);
-                    gm.SetScoreMultiplier(10, 5f);
+                        gm.SetScoreMultiplier(10, 5f);
+                    }
                     break;
             }
             // C-c-c-Combo!

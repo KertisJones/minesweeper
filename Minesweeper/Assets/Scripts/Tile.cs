@@ -22,6 +22,7 @@ public class Tile : MonoBehaviour
     public float screenShakeStrength = 0.1f;
     public bool isDestroyed = false;
     public bool isRowSolved = false;
+    public bool is8Triggered = false;
     public Color solvedMarkColor;
 
     public AudioClip revealSound;
@@ -74,6 +75,30 @@ public class Tile : MonoBehaviour
         UpdateText();
         if (!isMine)
             DetectProximity();
+        
+        if (!is8Triggered && nearbyMines == 8)
+        {
+            // You're an 8 -- a minesweeper unicorn! Give 'em some points!
+            // Make sure this mino is locked
+            if (!GetComponentInParent<Group>().isFalling)
+            {
+                // Make sure neighbors are locked
+                bool neighborsAreLocked = true;
+                foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
+                {
+                    if (t.GetComponentInParent<Group>().isFalling)
+                        neighborsAreLocked = false;
+                }
+                if (neighborsAreLocked)
+                {
+                    gm.AddScore(888);
+                    gm.SetScoreMultiplier(8, 1f, true);
+                    if (coordY > gm.safeEdgeTilesGained - 1)
+                        gm.AddSafeTileToEdges();
+                    is8Triggered = true;
+                }                
+            }            
+        }
         
         if (isRowSolved)
         {
@@ -183,8 +208,8 @@ public class Tile : MonoBehaviour
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
             float sm = gm.GetScoreMultiplier();
-            gm.SetScoreMultiplier(1, 1f);
-            Debug.Log(gameObject.name + ": " + sm + " + 0.01 = " + gm.GetScoreMultiplier());
+            gm.SetScoreMultiplier(1, 1f, true);
+            //Debug.Log(gameObject.name + ": " + sm + " + 0.01 = " + gm.GetScoreMultiplier());
 
             gm.currentFlags += 1;
 
@@ -250,7 +275,7 @@ public class Tile : MonoBehaviour
                 {
                     // Each revealed tile is equal to 1 point.
                     gm.AddScore(nearbyMines * nearbyMines * (coordY + 1));
-                    gm.SetScoreMultiplier(1, 1f);
+                    gm.SetScoreMultiplier(1, 1f, true);
                 }
             }
 
