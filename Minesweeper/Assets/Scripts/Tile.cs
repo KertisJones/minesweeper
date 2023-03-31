@@ -94,12 +94,12 @@ public class Tile : MonoBehaviour
                 }
                 if (neighborsAreLocked)
                 {
-                    gm.AddScore(888);
+                    gm.AddScore(8888);
                     gm.SetScoreMultiplier(8, 1f, true);
-                    if (coordY > gm.safeEdgeTilesGained - 1)
+                    if (gm.safeEdgeTilesGained < 8)
                         gm.AddSafeTileToEdges();
                     is8Triggered = true;
-                }                
+                }
             }            
         }
         
@@ -275,7 +275,7 @@ public class Tile : MonoBehaviour
                 AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
                 // Scoring
-                if (!GetComponentInParent<Group>().isDisplay && !GetComponentInParent<Group>().isFalling)
+                if (!GetComponentInParent<Group>().isDisplay && !GetComponentInParent<Group>().isFalling && !GetComponentInParent<Group>().isHeld)
                 {
                     // Each revealed tile is equal to 1 point.
                     gm.AddScore(nearbyMines * nearbyMines * (coordY + 1));

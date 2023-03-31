@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public int comboLinesFilled = -1; // C=-1; +1 when mino locks & line filled; C= when mino locks & line not filled
     public bool lastFillWasDifficult = false; // Difficult fills are Tetrises or T-Spins
     public bool perfectClearThisRound = true;
+    public bool previousPCWasTetris = false;
     public int linesCleared = 0;
     public int tetrisweepsCleared = 0;
     public int tSpinsweepsCleared = 0;
@@ -150,6 +151,7 @@ public class GameManager : MonoBehaviour
     void PressHardClear()
     {
         deleteFullRows(false);
+        previousTetromino = null;
     }
     #endregion
 
@@ -558,7 +560,7 @@ public class GameManager : MonoBehaviour
         deleteFullRows();
     }
 
-    public void CheckForPerfectClear()
+    public void CheckForPerfectClear(int rowsCleared)
     {
         if (perfectClearThisRound)
             return;
@@ -573,11 +575,36 @@ public class GameManager : MonoBehaviour
                 return;
         }
 
-        perfectClearThisRound = true;
+        perfectClearThisRound = true;        
 
         // Give rewards for a perfect clear!
-        AddScore(8000);        
-        SetScoreMultiplier(100, 30);
+        if (rowsCleared == 1)
+        {
+            AddScore(800);        
+            SetScoreMultiplier(10, 30);
+            previousPCWasTetris = false;
+        }
+        else if (rowsCleared == 2)
+        {
+            AddScore(1200);        
+            SetScoreMultiplier(25, 30);
+            previousPCWasTetris = false;
+        }
+        else if (rowsCleared == 3)
+        {
+            AddScore(1800);        
+            SetScoreMultiplier(50, 30);
+            previousPCWasTetris = false;
+        }
+        else if (rowsCleared >= 4)
+        {
+            float pcScore = 500 * rowsCleared;
+            if (previousPCWasTetris)
+                pcScore = pcScore * 1.6f;
+            AddScore(((int)pcScore));
+            SetScoreMultiplier(100, 30);
+            previousPCWasTetris = true;
+        }
 
         /*if (previousTetromino.GetComponent<Group>().rowsFilled == 4) // Tetrisweep Perfect Clear!
         {
@@ -591,7 +618,9 @@ public class GameManager : MonoBehaviour
             AddScore(2000);
             SetScoreMultiplier(15, 30);
         }*/
-        AddSafeTileToEdges();
+        if (safeEdgeTilesGained < 10)
+            AddSafeTileToEdges();
+        
         perfectClears += 1;        
 
         GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
@@ -644,7 +673,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Lines Cleared Points
-        gm.AddScore(50 * (rowsCleared * rowsCleared));
+        gm.AddScore(75 * (rowsCleared * rowsCleared));
         //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
         if (getMultiplier)
             gm.SetScoreMultiplier((rowsCleared * rowsCleared) * 10, rowsCleared);
@@ -655,7 +684,7 @@ public class GameManager : MonoBehaviour
         if (gm.previousTetromino != null)
             gm.previousTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier);
 
-        gm.CheckForPerfectClear();
+        gm.CheckForPerfectClear(rowsCleared);
         GameManager.markSolvedRows();        
     }
 
@@ -938,7 +967,8 @@ public class GameManager : MonoBehaviour
         // Linesweep: Row was solved before the next tetromino was placed
         if (containsPreviousTetromino)
         {
-            gm.AddScore(50 * (y + 1));
+            //gm.AddScore(50 * (y + 1));
+            gm.AddScore(250);
             //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
             if (getMultiplier)
                 gm.SetScoreMultiplier(5, 2f);

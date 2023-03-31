@@ -1258,7 +1258,7 @@ public class Group : MonoBehaviour
             if (rowsFilled == 4 && gm.previousTetromino == this.gameObject)
             {
                 gm.tetrisweepsCleared += 1;
-                gm.AddScore(595 * (bottomHeight)); // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
+                gm.AddScore(595 + (200 * (bottomHeight - 1))); // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
                 if (getMultiplier)
                     gm.SetScoreMultiplier(topHeight * 5, 30);
 
@@ -1270,19 +1270,33 @@ public class Group : MonoBehaviour
             }
             else if (isTspin && gm.previousTetromino == this.gameObject) // Detect if T-Sweep was achieved
             {
-                gm.tSpinsweepsCleared += 1;
-                gm.AddScore(250 * rowsFilled * bottomHeight);
-                if (getMultiplier)
-                    gm.SetScoreMultiplier(topHeight * 10, 30);
-
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-
-                if (topHeight > gm.safeEdgeTilesGained - 1)
-                    gm.AddSafeTileToEdges();
+                AddTspinsweep(getMultiplier);
             }
             // Clean up
             Destroy(this.gameObject);
         }
+        // Count as a T-spinsweep if 
+        else if (childrenTilesNotDestroyed.Count == 1)
+        {
+            if (isTspin && gm.previousTetromino == this.gameObject) // Detect if T-Sweep was achieved
+            {
+                AddTspinsweep(getMultiplier);
+                gm.previousTetromino = null;
+            }
+        }
+    }
+
+    void AddTspinsweep(bool getMultiplier = true)
+    {
+        gm.tSpinsweepsCleared += 1;
+        gm.AddScore(595 + (200 * (bottomHeight - 1)));
+        if (getMultiplier)
+            gm.SetScoreMultiplier(topHeight * 10, 30);
+
+        GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+        AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+
+        if (topHeight > gm.safeEdgeTilesGained - 1)
+            gm.AddSafeTileToEdges();
     }
 }
