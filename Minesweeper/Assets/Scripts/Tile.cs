@@ -74,7 +74,10 @@ public class Tile : MonoBehaviour
         
         UpdateText();
         if (!isMine)
-            DetectProximity();
+        {
+            //DetectProximity();
+            ZeroCascade();
+        }
         
         if (!is8Triggered && nearbyMines == 8)
         {
@@ -214,6 +217,7 @@ public class Tile : MonoBehaviour
             gm.currentFlags += 1;
 
             //GameManager.deleteFullRows();            
+            GameManager.CheckForPossiblePerfectClear();
         }
         else
         {
@@ -271,7 +275,7 @@ public class Tile : MonoBehaviour
                 AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
                 // Scoring
-                if (!GetComponentInParent<Group>().isDisplay)
+                if (!GetComponentInParent<Group>().isDisplay && !GetComponentInParent<Group>().isFalling)
                 {
                     // Each revealed tile is equal to 1 point.
                     gm.AddScore(nearbyMines * nearbyMines * (coordY + 1));
@@ -279,7 +283,8 @@ public class Tile : MonoBehaviour
                 }
             }
 
-            DetectProximity();
+            //DetectProximity();
+            ZeroCascade();
 
             GetComponentInChildren<Button>().interactable = false;
 
@@ -287,6 +292,7 @@ public class Tile : MonoBehaviour
 
             //GameManager.deleteFullRows();
             GameManager.markSolvedRows();
+            GameManager.CheckForPossiblePerfectClear();
         }
         else if (isFlagged && gm.isGameOver && !isMine)
         {
@@ -300,7 +306,8 @@ public class Tile : MonoBehaviour
 
     // When this mine has no adjacent mines, all adjacent tiles should be revealed.
     void ZeroCascade()
-    {        
+    {
+        DetectProximity();
         if (nearbyMines == 0 && !isMine && isRevealed)
         {
             foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
@@ -341,8 +348,8 @@ public class Tile : MonoBehaviour
         }
         nearbyMines = nearbyMinesTemp;
         nearbyFlags = nearbyFlagsTemp;
-        if (nearbyMines == 0)
-            ZeroCascade();
+        //if (nearbyMines == 0)
+            //ZeroCascade();
         
     }
 

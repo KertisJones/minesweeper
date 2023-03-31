@@ -205,7 +205,8 @@ public class Group : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
         //Official Guidline Gravity Curve: Time = (0.8-((Level-1)*0.007))(Level-1)
-        fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
+        fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), (gm.level - 1));
+
         //if (gameMode.dynamicTime) // TODO
         //  lockDelayActive = 0.1f + (fallSpeed / 2);
         /*if (lockDelayBase < fallSpeed)
@@ -453,7 +454,7 @@ public class Group : MonoBehaviour
         // See if valid
         if (isValidGridPos())
         {
-            if (!isHardDrop)
+            if (fallDistance >= 1)
                 lastSuccessfulMovementWasRotation = false;
 
             isWallKickThisTick = false;
@@ -538,7 +539,7 @@ public class Group : MonoBehaviour
 
     public void LockDelayReset(bool resetWithoutLimit = false)//, int bottomRow = 999999)
     {
-        if (isLocking)
+        if (isLocking || resetWithoutLimit)
         {
             if (resetWithoutLimit) 
             {

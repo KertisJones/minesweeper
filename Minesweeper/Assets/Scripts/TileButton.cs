@@ -44,6 +44,8 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     void PressReveal()
     {
+        if (gm == null)
+            return;
         if (gm.isGameOver || gm.isPaused || tile == null)
             return;
         
@@ -62,9 +64,10 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     void PressFlag()
     {
-        if (gm.isGameOver || gm.isPaused || tile == null)
+        if (gm == null)
             return;
-        
+        if (gm.isGameOver || gm.isPaused || tile == null)
+            return;        
         if (hover)
         {
             tile.FlagToggle();
@@ -80,6 +83,8 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     void PressChord()
     {
+        if (gm == null)
+            return;
         if (gm.isGameOver || gm.isPaused || tile == null)
             return;
         if (hover)

@@ -545,6 +545,19 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
+    // Checks whether a perfect clear is possible if all currently solved lines were cleared, then clears those lines if it would create a PC.
+    public static void CheckForPossiblePerfectClear()
+    {        
+        for (int y = 0; y < sizeY; ++y)
+        {
+            if (!isRowEmpty(y))
+                if (!isRowSolved(y))
+                    return;
+        }
+        
+        deleteFullRows();
+    }
+
     public void CheckForPerfectClear()
     {
         if (perfectClearThisRound)
