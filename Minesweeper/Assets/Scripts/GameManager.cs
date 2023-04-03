@@ -184,14 +184,23 @@ public class GameManager : MonoBehaviour
             if (scoreMultiplier > scoreMultiplierLimit * 0.8f)
                 tickTime = 0.0003125f; // x3.5 / sec
             if (scoreMultiplier > scoreMultiplierLimit * 0.9f)
-                tickTime = 0.00015625f; // x4 / sec
-            
-            
+                tickTime = 0.00015625f; // x4 / sec            
             if (Time.time - lastMultiplierTick >= tickTime && !isGameOver) // 1f / scoreMultiplierDecayTicksPerSecond
             {
                 if (GetScoreMultiplier() > 0)
                 {
-                    SetScoreMultiplier(-1, 0);
+                    // Get the current level, but cap it at 30: endless mode should not be affected.
+                    float tempLevel = level;
+                    if (tempLevel > 30)
+                        tempLevel = 30;
+                    // Multiplier drain per tick will be half of the level
+                    int multiplierDrain = Mathf.CeilToInt(tempLevel / 2);
+                    // If the level is a multiple of 5, increase it by 1 so that the display doesn't flash between .5 and no decimal; the true cap on marathon games is 16 at level 29.
+                    if (multiplierDrain % 5 == 0)
+                        multiplierDrain += 1;
+                    // Drain the multiplier...
+                    SetScoreMultiplier(-1 * multiplierDrain, 0);
+                    // If the multiplier is gone, turn off the background animation.
                     if (GetScoreMultiplier() <= 0)
                         backgroundAnimated.SetActive(false);
                 }            
@@ -660,7 +669,7 @@ public class GameManager : MonoBehaviour
             {
                 deleteRow(y);
                 decreaseRowsAbove(y + 1);
-                --y;                
+                --y;
             }
         }
 
@@ -883,12 +892,12 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Scoring
-    public void AddScore(int newScore, bool levelMultiplier = true) 
+    public void AddScore(int newScore, bool levelMultiplierActive = true, bool scoreMultiplierActive = true) 
     {
         float tempScore = newScore;
         if (GetScoreMultiplier() > 0)
             tempScore = tempScore * (1 + GetScoreMultiplier());
-        if (levelMultiplier)
+        if (levelMultiplierActive)
             tempScore = tempScore * level;        
         score += tempScore;
     }

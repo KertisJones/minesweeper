@@ -43,6 +43,7 @@ public class Group : MonoBehaviour
     public bool isBonus = false;
     public bool isHeld = false;
     public bool isFalling = true;
+    
     [HideInInspector]
     public int rowsFilled = 0;
     int bottomHeight = 99999;
@@ -328,8 +329,7 @@ public class Group : MonoBehaviour
     }
 
     public void UpdateGridAdd()
-    {
-        
+    {        
         // Add new children to grid
         foreach (Tile child in GetChildTiles())
         {
@@ -362,6 +362,8 @@ public class Group : MonoBehaviour
         }            
         if (!isFalling)
             return;
+        
+        //SetMaximumFallDistance();
         //if (FindObjectOfType<TetrominoSpawner>().currentTetromino != this.gameObject)
             //return;        
 
@@ -516,11 +518,11 @@ public class Group : MonoBehaviour
 
     public void LockTetrominoDelay()
     {
-        if (!isLocking)
-        {
-            lockDelayTimer = lockDelayActive;
-            isLocking = true;
-        }
+        if (!isFalling || isLocking)
+            return;
+        
+        lockDelayTimer = lockDelayActive;
+        isLocking = true;
         
         /*yield return new WaitForSeconds(lockDelayActive);
         // Detect if next step will lock
@@ -757,7 +759,7 @@ public class Group : MonoBehaviour
                     GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                     AudioSource.PlayClipAtPoint(tSpinSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                 }
-            }
+            }            
         }
 
         // End Game if block is completely off screen
@@ -765,6 +767,9 @@ public class Group : MonoBehaviour
         {
             // Uh oh, the game's over. Check if the player could be saved by hard clearing solved rows.
             GameManager.deleteFullRows(false);
+            // Cascade this block down if a line cleared that would have allowed the mino to hard drop farther down.
+            CascadeTetromino();
+
             // Check if the tetromino is still off screen. If so, the game is over.
             if (CheckIfTetrominoIsOffScreen())
                 gm.EndGame();
@@ -773,21 +778,22 @@ public class Group : MonoBehaviour
         //GameManager.deleteFullRows();
         if (!gm.isGameOver)
         {
-            // Spawn next Group; if playere scored a Tetris, spawn a fully revealed Tetronimo
-            FindObjectOfType<TetrominoSpawner>().spawnNext(fillWasDifficult);
-
             // Combo Checks!
             if (rowsFilled > 0)
                 gm.comboLinesFilled++;
             else
-                gm.comboLinesFilled = -1;
+                gm.comboLinesFilled = -1;            
             gm.lastFillWasDifficult = fillWasDifficult;
-
-            gm.piecesPlaced += 1;
-            
+            gm.piecesPlaced += 1;            
             gm.perfectClearThisRound = false;
+
             // Clear filled horizontal lines
-            GameManager.deleteFullRows();
+            GameManager.deleteFullRows();            
+            // Cascade this block down if a line cleared that would have allowed the mino to hard drop farther down.
+            CascadeTetromino();
+
+            // Spawn next Group; if playere scored a Tetris, spawn a fully revealed Tetronimo
+            FindObjectOfType<TetrominoSpawner>().spawnNext(fillWasDifficult);
 
             // Set this as the previous tetromino
             gm.previousTetromino = this.gameObject;
@@ -798,6 +804,36 @@ public class Group : MonoBehaviour
             if (buttonRightHeld)
                 gm.GetActiveTetromino().PressRight();
         }
+    }
+
+    void CascadeTetromino()
+    {
+        
+        //Debug.Log("Row Position before UpdateGrid(): " + transform.position.y + ", maximumFallDistance: " + maximumFallDistance);
+        //UpdateGrid();
+        SetMaximumFallDistance();
+        Debug.Log("Row Position after UpdateGrid(): " + transform.position.y + ", maximumFallDistance: " + maximumFallDistance);
+        if (maximumFallDistance > 0)
+        {
+            foreach (Tile child in GetChildTiles())
+            {
+                int x = child.GetComponent<Tile>().coordX;
+                int y = child.GetComponent<Tile>().coordY;
+
+                // Move one towards bottom
+                GameManager.gameBoard[x][y - maximumFallDistance] = GameManager.gameBoard[x][y];
+                GameManager.gameBoard[x][y] = null;
+
+                // Update Block position
+                child.GetComponent<Tile>().coordY -= maximumFallDistance;
+            }
+            /*Debug.Log("Current Row Position: " + transform.position.y + ", maximumFallDistance: " + maximumFallDistance);
+            transform.position += new Vector3(0, maximumFallDistance * -1, 0);
+            Debug.Log("New Row Position: " + transform.position.y);
+            UpdateGrid();
+            Debug.Log("Row Position after UpdateGrid(): " + transform.position.y);*/
+            //Fall(maximumFallDistance, true);
+        }        
     }
 
     // Failsafe in case block is completely off screen
