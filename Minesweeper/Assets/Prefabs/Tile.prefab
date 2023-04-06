@@ -1228,7 +1228,7 @@ MonoBehaviour:
   screenShakeStrength: 0.1
   isDestroyed: 0
   isRowSolved: 0
-  hover: 0
+  is8Triggered: 0
   solvedMarkColor: {r: 0.88235295, g: 0.88235295, b: 0.88235295, a: 1}
   revealSound: {fileID: 8300000, guid: e1d070787e3eb164999bddf10246c1fe, type: 3}
   flagSound: {fileID: 8300000, guid: 51432cb738fdea545bc1a128c05bc50c, type: 3}

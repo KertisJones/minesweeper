@@ -34,9 +34,11 @@ public class GameManager : MonoBehaviour
     public bool lastFillWasDifficult = false; // Difficult fills are Tetrises or T-Spins
     public bool perfectClearThisRound = true;
     public bool previousPCWasTetris = false;
+    public int linesClearedTarget = 150;    
     public int linesCleared = 0;
     public int tetrisweepsCleared = 0;
     public int tSpinsweepsCleared = 0;
+    public bool previousClearWasDifficultSweep = false;
     public int level = 1;
     public int currentMines = 0;
     public int currentFlags = 0;
@@ -54,9 +56,11 @@ public class GameManager : MonoBehaviour
     List<GameObject> floorTiles;
     List<GameObject> leftBorderTiles;
     List<GameObject> rightBorderTiles;
+    public GameObject currentTetromino = null;
     public GameObject previousTetromino = null;
 
     public bool isGameOver = false;
+    bool isEndless = false;
     public bool isPaused = false;
     bool canPause = true;
     public bool hasQuit = false;
@@ -99,6 +103,7 @@ public class GameManager : MonoBehaviour
     public GameObject backgroundAnimated;
     public PauseMenuMove pauseMenu;
     public PauseMenuMove settingsMenu;
+    public PauseMenuMove marathonOverMenu;
     public PauseMenuMove gameOverMenu;
 
     public AudioClip lineClearSound;
@@ -152,6 +157,7 @@ public class GameManager : MonoBehaviour
     {
         deleteFullRows(false);
         previousTetromino = null;
+        currentTetromino = null;
     }
     #endregion
 
@@ -637,11 +643,11 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Tetrisweeper Solved Logic
-    public static void deleteFullRows(bool getMultiplier = true)
+    public static int deleteFullRows(bool getMultiplier = true)
     {
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (gm.isGameOver)
-            return;
+            return 0;
         
         int rowsCleared = 0;
         
@@ -679,22 +685,32 @@ public class GameManager : MonoBehaviour
             AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+        
+            // Lines Cleared Points
+            gm.AddScore(75 * (rowsCleared * rowsCleared));
+            //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
+            if (getMultiplier)
+                gm.SetScoreMultiplier((rowsCleared * rowsCleared) * 10, rowsCleared);
+            
+            if (rowsCleared > gm.safeEdgeTilesGained)
+                gm.AddSafeTileToEdges();
+            
+            bool isDifficultSweep = false;
+            if (gm.previousTetromino != null)
+                if (gm.previousTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier))
+                    isDifficultSweep = true;
+            if (gm.currentTetromino != null)
+                if (gm.currentTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier))
+                    isDifficultSweep = true;
+
+            gm.previousClearWasDifficultSweep = isDifficultSweep;
+            //currentTetromino = null;
         }
-
-        // Lines Cleared Points
-        gm.AddScore(75 * (rowsCleared * rowsCleared));
-        //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
-        if (getMultiplier)
-            gm.SetScoreMultiplier((rowsCleared * rowsCleared) * 10, rowsCleared);
-        
-        if (rowsCleared > gm.safeEdgeTilesGained)
-            gm.AddSafeTileToEdges();
-        
-        if (gm.previousTetromino != null)
-            gm.previousTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier);
-
         gm.CheckForPerfectClear(rowsCleared);
-        GameManager.markSolvedRows();        
+        GameManager.markSolvedRows();
+        if (gm.linesCleared >= gm.linesClearedTarget && gm.isEndless == false) 
+            gm.Pause(true, true);
+        return rowsCleared;
     }
 
     public static void markSolvedRows()
@@ -872,7 +888,7 @@ public class GameManager : MonoBehaviour
                 if (GetGameTile(i, j) != null)
                 {
                     //GetGameTile(i, j).isFlagged = false;
-                    GetGameTile(i, j).Reveal();
+                    GetGameTile(i, j).Reveal(true);
                 }
             }
         }
@@ -1080,7 +1096,8 @@ public class GameManager : MonoBehaviour
         Application.Quit();
         hasQuit = true;    
     }
-    public void Pause(bool pause) 
+    
+    public void Pause(bool pause, bool isMarathonOverPause = false) 
     {
         if (isGameOver)
             return;
@@ -1090,9 +1107,17 @@ public class GameManager : MonoBehaviour
         if (pause)
         {
             Time.timeScale = 0;
-            isPaused = true;
-            pauseMenu.isActive = true;
+            isPaused = true;            
             canPause = false;
+            if (isMarathonOverPause)
+            {
+                isEndless = true;
+                marathonOverMenu.isActive = true;                
+            }
+            else
+            {
+                pauseMenu.isActive = true;
+            }
         }
         else
         {
@@ -1101,6 +1126,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1;
                 isPaused = false;       
                 pauseMenu.isActive = false;
+                marathonOverMenu.isActive = false;
                 settingsMenu.isActive = false;
                 StartCoroutine(ResetPause());
             }
@@ -1110,6 +1136,10 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         canPause = true;
+    }
+    public void Resume()
+    {
+        Pause(false);
     }
     public float GetTime()
     {

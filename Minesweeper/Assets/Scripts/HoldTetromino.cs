@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HoldTetromino : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class HoldTetromino : MonoBehaviour
     public GameObject heldTetromino;
     public GameObject heldTetrominoPrevious;
     public GameObject swapPartner;
+    public GameObject cleanseButton;
     void Awake()
     {
         inputManager = InputManager.Instance;
@@ -27,6 +29,10 @@ public class HoldTetromino : MonoBehaviour
     {
         if (gm.isPaused || gm.isGameOver)
             return;
+        if (CleanseIsPossible())
+            cleanseButton.SetActive(true);
+        else
+            cleanseButton.SetActive(false);
         /*if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.H) || Input.GetKeyDown(KeyCode.RightShift))
         {
             Hold();
@@ -105,5 +111,56 @@ public class HoldTetromino : MonoBehaviour
         tetromino.GetComponent<Group>().UpdateGrid();
 
         tetrominoSpawner.currentTetromino = tetromino;
+    }
+
+    bool CleanseIsPossible()
+    {
+        // Don't allow Cleanse if player doesn't have enough edge tiles to spend
+        if (gm.safeEdgeTilesGained < 4)
+            return false;
+        
+        if (heldTetromino == null)
+            return false;
+        
+        // Don't allow Cleanse if the held mino doesn't have any unrevealed tiles
+        foreach (Tile tile in heldTetromino.GetComponent<Group>().GetChildTiles())
+        {
+            if (!tile.isRevealed)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void Cleanse()
+    {
+        if (gm.isPaused || gm.isGameOver)
+            return;
+        if (!CleanseIsPossible())
+            return;
+        
+        gm.RemoveSafeTileFromEdges();
+        gm.RemoveSafeTileFromEdges();
+        gm.RemoveSafeTileFromEdges();
+        gm.RemoveSafeTileFromEdges();
+
+        foreach (Tile tile in heldTetromino.GetComponent<Group>().GetChildTiles())
+        {
+            if (tile.isMine)
+            {
+                tile.isMine = false;
+                gm.currentMines -= 1;
+            }
+            if (tile.isFlagged)
+            {
+                tile.isFlagged = false;
+                gm.currentFlags -= 1;
+            }
+            tile.Reveal(true);
+        }
+        
+        gm.AddScore(250);
     }
 }

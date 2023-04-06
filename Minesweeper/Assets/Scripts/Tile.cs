@@ -186,7 +186,7 @@ public class Tile : MonoBehaviour
                 myText = "?";
         }
 
-        if (gm.isPaused)
+        if (gm.isPaused && !gm.marathonOverMenu.isActive)
             myText = "";
 
         if (text != null)
@@ -251,9 +251,9 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public void Reveal()
+    public void Reveal(bool isAutomatic = false)
     {
-        if (!isRevealed && !isFlagged && !isDisplay && !GetComponentInParent<Group>().isHeld)
+        if (!isRevealed && !isFlagged && !isDisplay && (!GetComponentInParent<Group>().isHeld || isAutomatic))
         {
             isRevealed = true;
             isQuestioned = false;
@@ -321,6 +321,8 @@ public class Tile : MonoBehaviour
     // When an uncovered square with a number has exactly the correct number of adjacent squares flagged, performing a click on it will uncover all unmarked squares.
     public void Chord()
     {
+        DetectProximity();
+
         //Debug.Log("Attempting Chord...");
         if (isRevealed && nearbyFlags == nearbyMines && !isMine)
         {
