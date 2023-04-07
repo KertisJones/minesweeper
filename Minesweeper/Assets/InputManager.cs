@@ -11,7 +11,6 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
 {
     public static InputManager Instance { get; private set; }
 
-
     #region Events    
     // InputActions
     public InputAction leftPress; // A key, Left Arrow
@@ -29,6 +28,7 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
     public InputAction chordTilePress;
     public InputAction anyKey; // Any key pressed
     public InputAction inputScroll; // Scroll input
+    public InputAction cleansePress;
     
     
     /*public InputAction inputPressPrimary; // Left Click, (mobile) Tap
@@ -82,6 +82,7 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
         chordTilePress = controlInput.TetrisweepMap.ChordTile;
         anyKey = controlInput.TetrisweepMap.AnyKey;
         inputScroll = controlInput.TetrisweepMap.InputScroll;
+        cleansePress = controlInput.TetrisweepMap.Cleanse;
 
         /*// Drag Input
         inputPressPrimary.started += ctx => StartDragPrimary(ctx); //InputDelay(StartDragPrimary, ctx);

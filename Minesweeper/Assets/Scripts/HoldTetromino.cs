@@ -43,10 +43,12 @@ public class HoldTetromino : MonoBehaviour
     void OnEnable()
     {
         inputManager.holdPress.started += _ => PressHold();
+        inputManager.cleansePress.started += _ => Cleanse();
     }
     void OnDisable()
     {
         inputManager.holdPress.started -= _ => PressHold();
+        inputManager.cleansePress.started -= _ => Cleanse();
     }
     void PressHold()
     {

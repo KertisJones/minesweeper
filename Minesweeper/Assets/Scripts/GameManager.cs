@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
     public int scoreMultiplier = 0;
     public int scoreMultiplierLimit = 5000;
     public float scoreMultiplierDecayPerTick= 0.1f;
-    private int scoreMultiplierDecayTicksPerSecond = 5;
     public float scoreMultiplierTimer = 0f;
     private float lastMultiplierTick = 0;
     public int comboLinesFilled = -1; // C=-1; +1 when mino locks & line filled; C= when mino locks & line not filled
@@ -191,7 +190,7 @@ public class GameManager : MonoBehaviour
                 tickTime = 0.0003125f; // x3.5 / sec
             if (scoreMultiplier > scoreMultiplierLimit * 0.9f)
                 tickTime = 0.00015625f; // x4 / sec            
-            if (Time.time - lastMultiplierTick >= tickTime && !isGameOver) // 1f / scoreMultiplierDecayTicksPerSecond
+            if (Time.time - lastMultiplierTick >= tickTime && !isGameOver)
             {
                 if (GetScoreMultiplier() > 0)
                 {
@@ -633,7 +632,7 @@ public class GameManager : MonoBehaviour
             AddScore(2000);
             SetScoreMultiplier(15, 30);
         }*/
-        if (safeEdgeTilesGained < 10)
+        if (safeEdgeTilesGained < 10 || rowsCleared >= 4)
             AddSafeTileToEdges();
         
         perfectClears += 1;        

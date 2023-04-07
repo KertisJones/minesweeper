@@ -277,8 +277,11 @@ public class Tile : MonoBehaviour
                 // Scoring
                 if (!GetComponentInParent<Group>().isDisplay && !GetComponentInParent<Group>().isFalling && !GetComponentInParent<Group>().isHeld)
                 {
-                    // Each revealed tile is equal to 1 point.
-                    gm.AddScore(nearbyMines * nearbyMines * (coordY + 1));
+                    // If the mino is falling, don't give a huge bonus for being revealed in the air
+                    if (GetComponentInParent<Group>().isFalling)
+                        gm.AddScore(nearbyMines * nearbyMines);
+                    else
+                        gm.AddScore(nearbyMines * nearbyMines * (coordY + 1));
                     gm.SetScoreMultiplier(1, 1f, true);
                 }
             }

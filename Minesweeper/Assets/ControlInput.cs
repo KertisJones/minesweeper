@@ -24,544 +24,6 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
     ""name"": ""ControlInput"",
     ""maps"": [
         {
-            ""name"": ""InputMapX"",
-            ""id"": ""106f31de-2a38-415a-aae7-f2498c6d62af"",
-            ""actions"": [
-                {
-                    ""name"": ""PrimaryTouchContact"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""8466cbd1-a081-4e8d-a2f2-695744b182ce"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SecondaryTouchContact"",
-                    ""type"": ""Button"",
-                    ""id"": ""6a322186-348e-4c24-b18d-c1f794301236"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""InputPressPrimary"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""cd820cab-0233-4b3a-aff9-e57d168a45aa"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""InputPressSecondary"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""da1f89cb-836a-4145-a814-364361084d07"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""InputSecondaryDrag"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""1c106e82-0648-4434-bf00-f655d69f5f92"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""MousePosition"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""b5392092-5c2e-469f-b48f-4910008bed7c"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""PrimaryTouchPosition"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""90449ff4-de40-4037-9f8a-1a9239899ec5"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SecondaryTouchPosition"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""ddd7b28c-cfca-40c8-af41-9a11d9c33816"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""AnyKey"",
-                    ""type"": ""Button"",
-                    ""id"": ""742400be-12fa-4f02-bb8b-88efa25a98c1"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""InputPressDrag"",
-                    ""type"": ""Button"",
-                    ""id"": ""b548664a-fc84-492b-8bb1-d83163f92453"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""InputScroll"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""50162594-b06a-43f7-9d1f-1f712f9839e6"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""PrimaryTouchRadius"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""47ef974e-6b5e-4478-a242-e220f4191206"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Escape"",
-                    ""type"": ""Button"",
-                    ""id"": ""7fcdebe9-4956-4be9-9ff1-ee5f26c48868"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Enter"",
-                    ""type"": ""Button"",
-                    ""id"": ""dfc11ef4-238a-43cc-88ae-bd57a88dbe88"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Space"",
-                    ""type"": ""Button"",
-                    ""id"": ""d6f11852-13c7-485d-956a-7da0698306c5"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Tab"",
-                    ""type"": ""Button"",
-                    ""id"": ""48ef45a2-f296-4333-aa49-bfcc30a39f88"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Backspace"",
-                    ""type"": ""Button"",
-                    ""id"": ""62cdac09-7124-49ea-9078-45792396a223"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Forward"",
-                    ""type"": ""Button"",
-                    ""id"": ""be678e48-800b-4509-baa7-faa4cd2b0183"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Backward"",
-                    ""type"": ""Button"",
-                    ""id"": ""d84b59b9-53b3-4168-badd-3cddf0199285"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Left"",
-                    ""type"": ""Button"",
-                    ""id"": ""6eb28069-0000-4e3c-a937-4803a773b64f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Right"",
-                    ""type"": ""Button"",
-                    ""id"": ""23b22bb4-454e-4387-b1c1-83e573c8efd5"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""b114447e-dfe9-411f-853c-4cc3f5e8e5ec"",
-                    ""path"": ""<Touchscreen>/primaryTouch/press"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PrimaryTouchContact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5569542c-3d37-4af6-9515-14fa1c2e538f"",
-                    ""path"": ""<Touchscreen>/primaryTouch/press"",
-                    ""interactions"": ""Hold"",
-                    ""processors"": ""Invert"",
-                    ""groups"": """",
-                    ""action"": ""InputPressPrimary"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f8e192de-a467-4022-b437-a70e37640540"",
-                    ""path"": ""<Pen>/press"",
-                    ""interactions"": ""Hold"",
-                    ""processors"": ""Invert"",
-                    ""groups"": """",
-                    ""action"": ""InputPressPrimary"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""78e5943b-183f-4850-b4e1-304c6c7f9951"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""InputPressPrimary"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""88b6456d-8f37-432a-9fa3-32a3b302b73c"",
-                    ""path"": ""<Touchscreen>/primaryTouch/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PrimaryTouchPosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b60388fc-3d66-4362-953b-804c15adfd83"",
-                    ""path"": ""<Touchscreen>/primaryTouch/press"",
-                    ""interactions"": ""Hold"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""InputPressSecondary"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5f038d3e-8976-4724-83fb-e3dbb248ccec"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""InputPressSecondary"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6b4c5252-9642-46fd-95d6-478a9b64e217"",
-                    ""path"": ""<Keyboard>/anyKey"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AnyKey"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b5a9b55c-a0b2-4846-bc10-6f3731b6a067"",
-                    ""path"": ""<Touchscreen>/primaryTouch/press"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""InputPressDrag"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b07f481c-dfe5-4aea-af87-f110a2c01a5f"",
-                    ""path"": ""<Mouse>/scroll/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""InputScroll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d789d9c8-6cd9-45ef-b794-d1be4d22cbae"",
-                    ""path"": ""<VirtualMouse>/scroll/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""InputScroll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a9449185-ef07-4df8-9ef0-debe2fe392fd"",
-                    ""path"": ""<Touchscreen>/touch1/press"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SecondaryTouchContact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a6011238-d28f-457d-a543-05c31f2c3c33"",
-                    ""path"": ""<Touchscreen>/touch1/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SecondaryTouchPosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8a4e9631-e29c-46e3-9c0a-7e8743950d20"",
-                    ""path"": ""<Touchscreen>/primaryTouch/radius"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PrimaryTouchRadius"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""48606fda-84a5-4aa2-9576-3d16072aa00d"",
-                    ""path"": ""<Touchscreen>/primaryTouch/press"",
-                    ""interactions"": ""Hold"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""InputSecondaryDrag"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3946324e-becd-4d6f-8a6c-4330cbd98aff"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""InputSecondaryDrag"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5b60698f-5321-415d-b371-6083b14dff12"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Escape"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""dbe81c46-0fdd-4418-af07-12d08e2dcee4"",
-                    ""path"": ""<Keyboard>/enter"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Enter"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ede7cefd-326e-4ec9-9087-4420fe8eab0d"",
-                    ""path"": ""<Keyboard>/numpadEnter"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Enter"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d5777b86-b563-4c2c-ba6c-6fa0148480a0"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Space"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5e038081-3c54-4df7-b7d4-b359c838a928"",
-                    ""path"": ""<Keyboard>/tab"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tab"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""72ed2058-2f2f-4725-828f-e52e1d4d3934"",
-                    ""path"": ""<Keyboard>/backspace"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Backspace"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1f43df67-0b89-40d0-ab0f-7f388aaf3bee"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Forward"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f0f95032-a50f-4fde-88d5-7256b1906918"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Forward"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fbf161dc-c5df-4046-8707-19e8bfd222c7"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Backward"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ee4dba74-13a7-4516-bb8b-8fd360f12182"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Backward"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""56c81763-a6e6-49f1-a1d2-61c56ac30d0e"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""41c575ec-ea57-43e0-a794-0c93ddd21ca1"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""af8b48e3-2be2-4623-909c-18654cdf35f0"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Right"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e3e0e950-821a-4287-bc97-8bf9f5a5a485"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Right"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""97293018-33ee-4c5e-8d01-32e4d7abbd2c"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MousePosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
             ""name"": ""TetrisweepMap"",
             ""id"": ""e06d8a4e-36aa-4997-ae39-c739a7266edd"",
             ""actions"": [
@@ -704,6 +166,15 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""name"": ""AnyKey"",
                     ""type"": ""Button"",
                     ""id"": ""51a69947-5563-4c48-91f6-acfdab2c09a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cleanse"",
+                    ""type"": ""Button"",
+                    ""id"": ""9a960323-2b5a-4b20-869f-660b51c7d236"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press"",
@@ -1183,35 +654,23 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""action"": ""InputScroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b25ad541-2970-4097-a44b-01c2510bc12b"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cleanse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // InputMapX
-        m_InputMapX = asset.FindActionMap("InputMapX", throwIfNotFound: true);
-        m_InputMapX_PrimaryTouchContact = m_InputMapX.FindAction("PrimaryTouchContact", throwIfNotFound: true);
-        m_InputMapX_SecondaryTouchContact = m_InputMapX.FindAction("SecondaryTouchContact", throwIfNotFound: true);
-        m_InputMapX_InputPressPrimary = m_InputMapX.FindAction("InputPressPrimary", throwIfNotFound: true);
-        m_InputMapX_InputPressSecondary = m_InputMapX.FindAction("InputPressSecondary", throwIfNotFound: true);
-        m_InputMapX_InputSecondaryDrag = m_InputMapX.FindAction("InputSecondaryDrag", throwIfNotFound: true);
-        m_InputMapX_MousePosition = m_InputMapX.FindAction("MousePosition", throwIfNotFound: true);
-        m_InputMapX_PrimaryTouchPosition = m_InputMapX.FindAction("PrimaryTouchPosition", throwIfNotFound: true);
-        m_InputMapX_SecondaryTouchPosition = m_InputMapX.FindAction("SecondaryTouchPosition", throwIfNotFound: true);
-        m_InputMapX_AnyKey = m_InputMapX.FindAction("AnyKey", throwIfNotFound: true);
-        m_InputMapX_InputPressDrag = m_InputMapX.FindAction("InputPressDrag", throwIfNotFound: true);
-        m_InputMapX_InputScroll = m_InputMapX.FindAction("InputScroll", throwIfNotFound: true);
-        m_InputMapX_PrimaryTouchRadius = m_InputMapX.FindAction("PrimaryTouchRadius", throwIfNotFound: true);
-        m_InputMapX_Escape = m_InputMapX.FindAction("Escape", throwIfNotFound: true);
-        m_InputMapX_Enter = m_InputMapX.FindAction("Enter", throwIfNotFound: true);
-        m_InputMapX_Space = m_InputMapX.FindAction("Space", throwIfNotFound: true);
-        m_InputMapX_Tab = m_InputMapX.FindAction("Tab", throwIfNotFound: true);
-        m_InputMapX_Backspace = m_InputMapX.FindAction("Backspace", throwIfNotFound: true);
-        m_InputMapX_Forward = m_InputMapX.FindAction("Forward", throwIfNotFound: true);
-        m_InputMapX_Backward = m_InputMapX.FindAction("Backward", throwIfNotFound: true);
-        m_InputMapX_Left = m_InputMapX.FindAction("Left", throwIfNotFound: true);
-        m_InputMapX_Right = m_InputMapX.FindAction("Right", throwIfNotFound: true);
         // TetrisweepMap
         m_TetrisweepMap = asset.FindActionMap("TetrisweepMap", throwIfNotFound: true);
         m_TetrisweepMap_Left = m_TetrisweepMap.FindAction("Left", throwIfNotFound: true);
@@ -1230,6 +689,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
         m_TetrisweepMap_MousePosition = m_TetrisweepMap.FindAction("MousePosition", throwIfNotFound: true);
         m_TetrisweepMap_InputScroll = m_TetrisweepMap.FindAction("InputScroll", throwIfNotFound: true);
         m_TetrisweepMap_AnyKey = m_TetrisweepMap.FindAction("AnyKey", throwIfNotFound: true);
+        m_TetrisweepMap_Cleanse = m_TetrisweepMap.FindAction("Cleanse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1286,199 +746,6 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // InputMapX
-    private readonly InputActionMap m_InputMapX;
-    private IInputMapXActions m_InputMapXActionsCallbackInterface;
-    private readonly InputAction m_InputMapX_PrimaryTouchContact;
-    private readonly InputAction m_InputMapX_SecondaryTouchContact;
-    private readonly InputAction m_InputMapX_InputPressPrimary;
-    private readonly InputAction m_InputMapX_InputPressSecondary;
-    private readonly InputAction m_InputMapX_InputSecondaryDrag;
-    private readonly InputAction m_InputMapX_MousePosition;
-    private readonly InputAction m_InputMapX_PrimaryTouchPosition;
-    private readonly InputAction m_InputMapX_SecondaryTouchPosition;
-    private readonly InputAction m_InputMapX_AnyKey;
-    private readonly InputAction m_InputMapX_InputPressDrag;
-    private readonly InputAction m_InputMapX_InputScroll;
-    private readonly InputAction m_InputMapX_PrimaryTouchRadius;
-    private readonly InputAction m_InputMapX_Escape;
-    private readonly InputAction m_InputMapX_Enter;
-    private readonly InputAction m_InputMapX_Space;
-    private readonly InputAction m_InputMapX_Tab;
-    private readonly InputAction m_InputMapX_Backspace;
-    private readonly InputAction m_InputMapX_Forward;
-    private readonly InputAction m_InputMapX_Backward;
-    private readonly InputAction m_InputMapX_Left;
-    private readonly InputAction m_InputMapX_Right;
-    public struct InputMapXActions
-    {
-        private @ControlInput m_Wrapper;
-        public InputMapXActions(@ControlInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @PrimaryTouchContact => m_Wrapper.m_InputMapX_PrimaryTouchContact;
-        public InputAction @SecondaryTouchContact => m_Wrapper.m_InputMapX_SecondaryTouchContact;
-        public InputAction @InputPressPrimary => m_Wrapper.m_InputMapX_InputPressPrimary;
-        public InputAction @InputPressSecondary => m_Wrapper.m_InputMapX_InputPressSecondary;
-        public InputAction @InputSecondaryDrag => m_Wrapper.m_InputMapX_InputSecondaryDrag;
-        public InputAction @MousePosition => m_Wrapper.m_InputMapX_MousePosition;
-        public InputAction @PrimaryTouchPosition => m_Wrapper.m_InputMapX_PrimaryTouchPosition;
-        public InputAction @SecondaryTouchPosition => m_Wrapper.m_InputMapX_SecondaryTouchPosition;
-        public InputAction @AnyKey => m_Wrapper.m_InputMapX_AnyKey;
-        public InputAction @InputPressDrag => m_Wrapper.m_InputMapX_InputPressDrag;
-        public InputAction @InputScroll => m_Wrapper.m_InputMapX_InputScroll;
-        public InputAction @PrimaryTouchRadius => m_Wrapper.m_InputMapX_PrimaryTouchRadius;
-        public InputAction @Escape => m_Wrapper.m_InputMapX_Escape;
-        public InputAction @Enter => m_Wrapper.m_InputMapX_Enter;
-        public InputAction @Space => m_Wrapper.m_InputMapX_Space;
-        public InputAction @Tab => m_Wrapper.m_InputMapX_Tab;
-        public InputAction @Backspace => m_Wrapper.m_InputMapX_Backspace;
-        public InputAction @Forward => m_Wrapper.m_InputMapX_Forward;
-        public InputAction @Backward => m_Wrapper.m_InputMapX_Backward;
-        public InputAction @Left => m_Wrapper.m_InputMapX_Left;
-        public InputAction @Right => m_Wrapper.m_InputMapX_Right;
-        public InputActionMap Get() { return m_Wrapper.m_InputMapX; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(InputMapXActions set) { return set.Get(); }
-        public void SetCallbacks(IInputMapXActions instance)
-        {
-            if (m_Wrapper.m_InputMapXActionsCallbackInterface != null)
-            {
-                @PrimaryTouchContact.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnPrimaryTouchContact;
-                @PrimaryTouchContact.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnPrimaryTouchContact;
-                @PrimaryTouchContact.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnPrimaryTouchContact;
-                @SecondaryTouchContact.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnSecondaryTouchContact;
-                @SecondaryTouchContact.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnSecondaryTouchContact;
-                @SecondaryTouchContact.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnSecondaryTouchContact;
-                @InputPressPrimary.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputPressPrimary;
-                @InputPressPrimary.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputPressPrimary;
-                @InputPressPrimary.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputPressPrimary;
-                @InputPressSecondary.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputPressSecondary;
-                @InputPressSecondary.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputPressSecondary;
-                @InputPressSecondary.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputPressSecondary;
-                @InputSecondaryDrag.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputSecondaryDrag;
-                @InputSecondaryDrag.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputSecondaryDrag;
-                @InputSecondaryDrag.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputSecondaryDrag;
-                @MousePosition.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnMousePosition;
-                @MousePosition.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnMousePosition;
-                @MousePosition.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnMousePosition;
-                @PrimaryTouchPosition.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnPrimaryTouchPosition;
-                @PrimaryTouchPosition.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnPrimaryTouchPosition;
-                @PrimaryTouchPosition.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnPrimaryTouchPosition;
-                @SecondaryTouchPosition.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnSecondaryTouchPosition;
-                @SecondaryTouchPosition.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnSecondaryTouchPosition;
-                @SecondaryTouchPosition.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnSecondaryTouchPosition;
-                @AnyKey.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnAnyKey;
-                @AnyKey.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnAnyKey;
-                @AnyKey.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnAnyKey;
-                @InputPressDrag.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputPressDrag;
-                @InputPressDrag.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputPressDrag;
-                @InputPressDrag.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputPressDrag;
-                @InputScroll.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputScroll;
-                @InputScroll.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputScroll;
-                @InputScroll.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnInputScroll;
-                @PrimaryTouchRadius.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnPrimaryTouchRadius;
-                @PrimaryTouchRadius.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnPrimaryTouchRadius;
-                @PrimaryTouchRadius.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnPrimaryTouchRadius;
-                @Escape.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnEscape;
-                @Escape.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnEscape;
-                @Escape.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnEscape;
-                @Enter.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnEnter;
-                @Enter.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnEnter;
-                @Enter.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnEnter;
-                @Space.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnSpace;
-                @Space.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnSpace;
-                @Space.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnSpace;
-                @Tab.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnTab;
-                @Tab.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnTab;
-                @Tab.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnTab;
-                @Backspace.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnBackspace;
-                @Backspace.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnBackspace;
-                @Backspace.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnBackspace;
-                @Forward.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnForward;
-                @Forward.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnForward;
-                @Forward.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnForward;
-                @Backward.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnBackward;
-                @Backward.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnBackward;
-                @Backward.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnBackward;
-                @Left.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnLeft;
-                @Left.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnLeft;
-                @Left.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnLeft;
-                @Right.started -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnRight;
-                @Right.performed -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnRight;
-                @Right.canceled -= m_Wrapper.m_InputMapXActionsCallbackInterface.OnRight;
-            }
-            m_Wrapper.m_InputMapXActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @PrimaryTouchContact.started += instance.OnPrimaryTouchContact;
-                @PrimaryTouchContact.performed += instance.OnPrimaryTouchContact;
-                @PrimaryTouchContact.canceled += instance.OnPrimaryTouchContact;
-                @SecondaryTouchContact.started += instance.OnSecondaryTouchContact;
-                @SecondaryTouchContact.performed += instance.OnSecondaryTouchContact;
-                @SecondaryTouchContact.canceled += instance.OnSecondaryTouchContact;
-                @InputPressPrimary.started += instance.OnInputPressPrimary;
-                @InputPressPrimary.performed += instance.OnInputPressPrimary;
-                @InputPressPrimary.canceled += instance.OnInputPressPrimary;
-                @InputPressSecondary.started += instance.OnInputPressSecondary;
-                @InputPressSecondary.performed += instance.OnInputPressSecondary;
-                @InputPressSecondary.canceled += instance.OnInputPressSecondary;
-                @InputSecondaryDrag.started += instance.OnInputSecondaryDrag;
-                @InputSecondaryDrag.performed += instance.OnInputSecondaryDrag;
-                @InputSecondaryDrag.canceled += instance.OnInputSecondaryDrag;
-                @MousePosition.started += instance.OnMousePosition;
-                @MousePosition.performed += instance.OnMousePosition;
-                @MousePosition.canceled += instance.OnMousePosition;
-                @PrimaryTouchPosition.started += instance.OnPrimaryTouchPosition;
-                @PrimaryTouchPosition.performed += instance.OnPrimaryTouchPosition;
-                @PrimaryTouchPosition.canceled += instance.OnPrimaryTouchPosition;
-                @SecondaryTouchPosition.started += instance.OnSecondaryTouchPosition;
-                @SecondaryTouchPosition.performed += instance.OnSecondaryTouchPosition;
-                @SecondaryTouchPosition.canceled += instance.OnSecondaryTouchPosition;
-                @AnyKey.started += instance.OnAnyKey;
-                @AnyKey.performed += instance.OnAnyKey;
-                @AnyKey.canceled += instance.OnAnyKey;
-                @InputPressDrag.started += instance.OnInputPressDrag;
-                @InputPressDrag.performed += instance.OnInputPressDrag;
-                @InputPressDrag.canceled += instance.OnInputPressDrag;
-                @InputScroll.started += instance.OnInputScroll;
-                @InputScroll.performed += instance.OnInputScroll;
-                @InputScroll.canceled += instance.OnInputScroll;
-                @PrimaryTouchRadius.started += instance.OnPrimaryTouchRadius;
-                @PrimaryTouchRadius.performed += instance.OnPrimaryTouchRadius;
-                @PrimaryTouchRadius.canceled += instance.OnPrimaryTouchRadius;
-                @Escape.started += instance.OnEscape;
-                @Escape.performed += instance.OnEscape;
-                @Escape.canceled += instance.OnEscape;
-                @Enter.started += instance.OnEnter;
-                @Enter.performed += instance.OnEnter;
-                @Enter.canceled += instance.OnEnter;
-                @Space.started += instance.OnSpace;
-                @Space.performed += instance.OnSpace;
-                @Space.canceled += instance.OnSpace;
-                @Tab.started += instance.OnTab;
-                @Tab.performed += instance.OnTab;
-                @Tab.canceled += instance.OnTab;
-                @Backspace.started += instance.OnBackspace;
-                @Backspace.performed += instance.OnBackspace;
-                @Backspace.canceled += instance.OnBackspace;
-                @Forward.started += instance.OnForward;
-                @Forward.performed += instance.OnForward;
-                @Forward.canceled += instance.OnForward;
-                @Backward.started += instance.OnBackward;
-                @Backward.performed += instance.OnBackward;
-                @Backward.canceled += instance.OnBackward;
-                @Left.started += instance.OnLeft;
-                @Left.performed += instance.OnLeft;
-                @Left.canceled += instance.OnLeft;
-                @Right.started += instance.OnRight;
-                @Right.performed += instance.OnRight;
-                @Right.canceled += instance.OnRight;
-            }
-        }
-    }
-    public InputMapXActions @InputMapX => new InputMapXActions(this);
-
     // TetrisweepMap
     private readonly InputActionMap m_TetrisweepMap;
     private ITetrisweepMapActions m_TetrisweepMapActionsCallbackInterface;
@@ -1498,6 +765,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_TetrisweepMap_MousePosition;
     private readonly InputAction m_TetrisweepMap_InputScroll;
     private readonly InputAction m_TetrisweepMap_AnyKey;
+    private readonly InputAction m_TetrisweepMap_Cleanse;
     public struct TetrisweepMapActions
     {
         private @ControlInput m_Wrapper;
@@ -1518,6 +786,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
         public InputAction @MousePosition => m_Wrapper.m_TetrisweepMap_MousePosition;
         public InputAction @InputScroll => m_Wrapper.m_TetrisweepMap_InputScroll;
         public InputAction @AnyKey => m_Wrapper.m_TetrisweepMap_AnyKey;
+        public InputAction @Cleanse => m_Wrapper.m_TetrisweepMap_Cleanse;
         public InputActionMap Get() { return m_Wrapper.m_TetrisweepMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1575,6 +844,9 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                 @AnyKey.started -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnAnyKey;
                 @AnyKey.performed -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnAnyKey;
                 @AnyKey.canceled -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnAnyKey;
+                @Cleanse.started -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnCleanse;
+                @Cleanse.performed -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnCleanse;
+                @Cleanse.canceled -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnCleanse;
             }
             m_Wrapper.m_TetrisweepMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -1627,34 +899,13 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                 @AnyKey.started += instance.OnAnyKey;
                 @AnyKey.performed += instance.OnAnyKey;
                 @AnyKey.canceled += instance.OnAnyKey;
+                @Cleanse.started += instance.OnCleanse;
+                @Cleanse.performed += instance.OnCleanse;
+                @Cleanse.canceled += instance.OnCleanse;
             }
         }
     }
     public TetrisweepMapActions @TetrisweepMap => new TetrisweepMapActions(this);
-    public interface IInputMapXActions
-    {
-        void OnPrimaryTouchContact(InputAction.CallbackContext context);
-        void OnSecondaryTouchContact(InputAction.CallbackContext context);
-        void OnInputPressPrimary(InputAction.CallbackContext context);
-        void OnInputPressSecondary(InputAction.CallbackContext context);
-        void OnInputSecondaryDrag(InputAction.CallbackContext context);
-        void OnMousePosition(InputAction.CallbackContext context);
-        void OnPrimaryTouchPosition(InputAction.CallbackContext context);
-        void OnSecondaryTouchPosition(InputAction.CallbackContext context);
-        void OnAnyKey(InputAction.CallbackContext context);
-        void OnInputPressDrag(InputAction.CallbackContext context);
-        void OnInputScroll(InputAction.CallbackContext context);
-        void OnPrimaryTouchRadius(InputAction.CallbackContext context);
-        void OnEscape(InputAction.CallbackContext context);
-        void OnEnter(InputAction.CallbackContext context);
-        void OnSpace(InputAction.CallbackContext context);
-        void OnTab(InputAction.CallbackContext context);
-        void OnBackspace(InputAction.CallbackContext context);
-        void OnForward(InputAction.CallbackContext context);
-        void OnBackward(InputAction.CallbackContext context);
-        void OnLeft(InputAction.CallbackContext context);
-        void OnRight(InputAction.CallbackContext context);
-    }
     public interface ITetrisweepMapActions
     {
         void OnLeft(InputAction.CallbackContext context);
@@ -1673,5 +924,6 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
         void OnMousePosition(InputAction.CallbackContext context);
         void OnInputScroll(InputAction.CallbackContext context);
         void OnAnyKey(InputAction.CallbackContext context);
+        void OnCleanse(InputAction.CallbackContext context);
     }
 }

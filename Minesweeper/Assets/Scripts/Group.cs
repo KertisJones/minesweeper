@@ -19,20 +19,17 @@ public class Group : MonoBehaviour
         ZTetromino
     };
     public TetrominoType tetrominoType;
+    public int tilesInMino = 4;
     public bool isSetupTetromino = false;
 
     float fallSpeed = 0.8f;
-    float lockDelayBase = 0.5f;
     float lockDelayActive = 0.5f;
     float lastFall = 0;
     float lastMove = 0;
     // Locking
     public bool isLocking = false;
     public int lockResets = 0;
-    //int lockResetsRotate = 0;
-    //int lockResetsMove = 0;
     public float lockDelayTimer = 0;
-    //
 
     public float minePercent = 10;
 
@@ -234,14 +231,14 @@ public class Group : MonoBehaviour
             LayMines();                 
     }
 
+    // Get a list of all child tiles, excluding those that will be destroyed at the end of this Update Cycle
     public List<Tile> GetChildTiles() {
         List<Tile> childTiles = new List<Tile>();
         foreach (Transform child in transform)
         {
             if (child.gameObject.GetComponent<Tile>() != null)
-            {
-                childTiles.Add(child.GetComponent<Tile>());
-            }
+                if (!child.gameObject.GetComponent<Tile>().isDestroyed)
+                    childTiles.Add(child.GetComponent<Tile>());
         }
         return childTiles;
     }
@@ -566,24 +563,6 @@ public class Group : MonoBehaviour
                     lockResets++;
                 }
             }
-            
-
-            /*if (moveReset)
-            {
-                if (lockResetsMove <= 10)
-                {
-                    lockDelayTimer = lockDelayActive;
-                    lockResetsMove++;
-                }
-            }
-            else
-            {
-                if (lockResetsRotate <= 8)
-                {
-                    lockDelayTimer = lockDelayActive;
-                    lockResetsRotate++;
-                }
-            }*/            
         }
     }
 
@@ -604,9 +583,6 @@ public class Group : MonoBehaviour
         else
         {
             isLocking = false;
-            //lockResets = 0;
-            //lockResetsRotate = 0;
-            //lockResetsMove = 0;
         }
     }
 
@@ -809,13 +785,14 @@ public class Group : MonoBehaviour
     {
         // Clear filled horizontal lines
         int rowsCleared = GameManager.deleteFullRows(getMultiplier);
-        while (rowsCleared > 0)
+        if (rowsCleared > 0)
         {
             // Cascade this block down if a line cleared that would have allowed the mino to hard drop farther down.
             CascadeTetromino();
             
             // Clear filled horizontal lines again
-            rowsCleared = GameManager.deleteFullRows(getMultiplier);
+            //rowsCleared = GameManager.deleteFullRows(getMultiplier);
+            GameManager.markSolvedRows();
 
             // Update the fall distance for the new mino so ghost blocks don't get out of sync
             FindObjectOfType<TetrominoSpawner>().currentTetromino.GetComponent<Group>().SetMaximumFallDistance();
@@ -825,7 +802,10 @@ public class Group : MonoBehaviour
 
     void CascadeTetromino()
     {
-        
+        List<Tile> children = GetChildTiles();
+        //Debug.Log(children.Count);
+        if (children.Count < tilesInMino)
+            return;
         //Debug.Log("Row Position before UpdateGrid(): " + transform.position.y + ", maximumFallDistance: " + maximumFallDistance);
         //UpdateGrid();
         SetMaximumFallDistance();
@@ -833,7 +813,7 @@ public class Group : MonoBehaviour
         if (maximumFallDistance > 0)
         {
             //List<Vector2> childrenPositions = new List<Vector2>();
-            foreach (Tile child in GetChildTiles())
+            foreach (Tile child in children)
             {
                 int x = child.GetComponent<Tile>().coordX;
                 int y = child.GetComponent<Tile>().coordY;
@@ -845,7 +825,7 @@ public class Group : MonoBehaviour
                 // Update Block position
                 //child.GetComponent<Tile>().coordY -= maximumFallDistance;
             }
-            foreach (Tile child in GetChildTiles())
+            foreach (Tile child in children)
             {
                 int x = child.GetComponent<Tile>().coordX;
                 int y = child.GetComponent<Tile>().coordY;
@@ -1310,17 +1290,17 @@ public class Group : MonoBehaviour
             return false;
         // The child object isn't destroyed until the next Update loop, so you should check for its destroyed tag.
         List<Tile> childrenTiles = GetChildTiles();
-        List<Tile> childrenTilesNotDestroyed = new List<Tile>();
+        /*List<Tile> childrenTilesNotDestroyed = new List<Tile>();
         foreach (Tile childTile in childrenTiles)
         {
             if (!childTile.isDestroyed)
                 childrenTilesNotDestroyed.Add(childTile);
-        }
+        }*/
 
         //Debug.Log ("CheckForTetrisweeps. " + (gm.previousTetromino == this.gameObject) + ", Type: " + tetrominoType + ", Children: " + childrenTilesNotDestroyed.Count + ", Rows: " + rowsFilled);
 
         // This tetromino has been fully cleared. Score points and delete this object.
-        if (childrenTilesNotDestroyed.Count == 0)
+        if (childrenTiles.Count == 0)
         {            
             // Detect if TETRISWEEP was achieved (4-row Tetris was solved with minesweeper before the next piece locks) 
             if (rowsFilled == 4 && (gm.previousTetromino == this.gameObject || gm.currentTetromino == this.gameObject))
@@ -1332,12 +1312,12 @@ public class Group : MonoBehaviour
                 int actionScore = 595 + (200 * bottomHeight); 
                 if (gm.previousClearWasDifficultSweep)
                 {
-                    Debug.Log("previousClearWasDifficultSweep: " + gm.previousClearWasDifficultSweep + "; " + Mathf.RoundToInt(actionScore * 1.5f));
+                    //Debug.Log("previousClearWasDifficultSweep: " + gm.previousClearWasDifficultSweep + "; " + Mathf.RoundToInt(actionScore * 1.5f));
                     gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f)); 
                 }                    
                 else
                 {
-                    Debug.Log("previousClearWasDifficultSweep: " + gm.previousClearWasDifficultSweep + "; " + actionScore);
+                    //Debug.Log("previousClearWasDifficultSweep: " + gm.previousClearWasDifficultSweep + "; " + actionScore);
                     gm.AddScore(actionScore); 
                 }                    
 
@@ -1359,7 +1339,7 @@ public class Group : MonoBehaviour
             Destroy(this.gameObject);
         }
         // Count as a T-spinsweep if 
-        else if (childrenTilesNotDestroyed.Count == 1)
+        else if (childrenTiles.Count == 1)
         {
             if (isTspin && (gm.previousTetromino == this.gameObject || gm.currentTetromino == this.gameObject)) // Detect if T-Sweep was achieved
             {
@@ -1379,12 +1359,12 @@ public class Group : MonoBehaviour
         int actionScore = 595 + (200 * bottomHeight); 
         if (gm.previousClearWasDifficultSweep)
         {
-            Debug.Log("previousClearWasDifficultSweep: " + gm.previousClearWasDifficultSweep + "; " + Mathf.RoundToInt(actionScore * 1.5f));
+            //Debug.Log("previousClearWasDifficultSweep: " + gm.previousClearWasDifficultSweep + "; " + Mathf.RoundToInt(actionScore * 1.5f));
             gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f)); 
         }            
         else
         {
-            Debug.Log("previousClearWasDifficultSweep: " + gm.previousClearWasDifficultSweep + "; " + actionScore);
+            //Debug.Log("previousClearWasDifficultSweep: " + gm.previousClearWasDifficultSweep + "; " + actionScore);
             gm.AddScore(actionScore); 
         }
             
