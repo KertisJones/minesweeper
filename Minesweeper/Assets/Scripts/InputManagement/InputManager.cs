@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using TMPro;
 
     [DefaultExecutionOrder(-1)]
 public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
@@ -48,7 +49,11 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
     public InputAction rightPress; // D key, Right Arrow*/
     #endregion
 
-    private ControlInput controlInput;
+    public static ControlInput controlInput;
+    public static event Action rebindComplete;
+    public static event Action rebindCanceled;
+    public static event Action<InputAction, int> rebindStarted;
+
     private Camera mainCamera;
 
     protected void Awake() //override
@@ -64,6 +69,24 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
         } 
 
         //base.Awake();
+        SetBindings();
+
+        /*// Drag Input
+        inputPressPrimary.started += ctx => StartDragPrimary(ctx); //InputDelay(StartDragPrimary, ctx);
+        inputPressPrimary.canceled += ctx => EndDragPrimary(ctx);
+
+        controlInput.InputMap.InputSecondaryDrag.started += ctx => StartDragSecondary(ctx); //InputDelay(StartDragSecondary, ctx);
+        controlInput.InputMap.InputSecondaryDrag.performed += ctx => PerformDragSecondary(ctx);
+        controlInput.InputMap.InputSecondaryDrag.canceled += ctx => EndDragSecondary(ctx);
+
+        // Zoom Input - Touch
+        secondaryTouchContact.started += ctx => ZoomTouchStart();
+        secondaryTouchContact.canceled += _ => ZoomTouchEnd();
+        primaryTouchContact.canceled += _ => ZoomTouchEnd();*/
+    }
+
+    public void SetBindings()
+    {
         controlInput = new ControlInput();
         mainCamera = Camera.main;
 
@@ -83,19 +106,6 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
         anyKey = controlInput.TetrisweepMap.AnyKey;
         inputScroll = controlInput.TetrisweepMap.InputScroll;
         cleansePress = controlInput.TetrisweepMap.Cleanse;
-
-        /*// Drag Input
-        inputPressPrimary.started += ctx => StartDragPrimary(ctx); //InputDelay(StartDragPrimary, ctx);
-        inputPressPrimary.canceled += ctx => EndDragPrimary(ctx);
-
-        controlInput.InputMap.InputSecondaryDrag.started += ctx => StartDragSecondary(ctx); //InputDelay(StartDragSecondary, ctx);
-        controlInput.InputMap.InputSecondaryDrag.performed += ctx => PerformDragSecondary(ctx);
-        controlInput.InputMap.InputSecondaryDrag.canceled += ctx => EndDragSecondary(ctx);
-
-        // Zoom Input - Touch
-        secondaryTouchContact.started += ctx => ZoomTouchStart();
-        secondaryTouchContact.canceled += _ => ZoomTouchEnd();
-        primaryTouchContact.canceled += _ => ZoomTouchEnd();*/
     }
 
     private void OnEnable()
@@ -108,13 +118,7 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
         controlInput.Disable();
     }
 
-    #region Helper
-    private Vector3 ScreenToWorld(Vector3 point) {
-        Vector3 worldPos = mainCamera.ScreenToWorldPoint(point);
-        worldPos.z = mainCamera.nearClipPlane;
-        return worldPos;
-     }
-    #endregion
+
 
     public Vector2 GetMousePosition()
     {
