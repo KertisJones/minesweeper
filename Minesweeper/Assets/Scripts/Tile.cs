@@ -310,6 +310,8 @@ public class Tile : MonoBehaviour
     // When this mine has no adjacent mines, all adjacent tiles should be revealed.
     void ZeroCascade()
     {
+        if (gm.isGameOver)
+            return;
         DetectProximity();
         if (nearbyMines == 0 && !isMine && isRevealed)
         {
