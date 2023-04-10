@@ -118,10 +118,139 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
         controlInput.Disable();
     }
 
-
-
     public Vector2 GetMousePosition()
     {
         return controlInput.TetrisweepMap.MousePosition.ReadValue<Vector2>();
     }
+
+        #region Rebind
+    public static void LoadBindingOverride(string actionName)
+    {
+        if (controlInput == null)
+            controlInput = new ControlInput();
+
+        InputAction action = controlInput.asset.FindAction(actionName);
+
+        for (int i = 0; i < action.bindings.Count; i++)
+        {
+            if (!string.IsNullOrEmpty(PlayerPrefs.GetString(action.actionMap + action.name + i)))
+                action.ApplyBindingOverride(i, PlayerPrefs.GetString(action.actionMap + action.name + i));
+        }
+    }
+    public static InputAction GetAction(string actionName)
+    {
+        if (controlInput == null)
+            controlInput = new ControlInput();
+
+        return controlInput.asset.FindAction(actionName);
+    }
+
+    public static string GetBindingName(string actionName, int bindingIndex)
+    {
+        if (controlInput == null)
+            controlInput = new ControlInput();
+
+        InputAction action = controlInput.asset.FindAction(actionName);
+        return action.GetBindingDisplayString(bindingIndex);
+    }
+
+    public static void StartRebind(string actionName, int bindingIndex, TMP_Text statusText, bool excludeMouse)
+    {
+        InputAction action = controlInput.asset.FindAction(actionName);
+        if (action == null || action.bindings.Count <= bindingIndex)
+        {
+            Debug.Log("Couldn't find action or binding");
+            return;
+        }
+
+        if (action.bindings[bindingIndex].isComposite)
+        {
+            var firstPartIndex = bindingIndex + 1;
+            if (firstPartIndex < action.bindings.Count && action.bindings[firstPartIndex].isComposite)
+                DoRebind(action, bindingIndex, statusText, true, excludeMouse);
+        }
+        else
+            DoRebind(action, bindingIndex, statusText, false, excludeMouse);
+    }
+
+    private static void DoRebind(InputAction actionToRebind, int bindingIndex, TMP_Text statusText, bool allCompositeParts, bool excludeMouse)
+    {
+        if (actionToRebind == null || bindingIndex < 0)
+            return;
+
+        statusText.text = $"Press a {actionToRebind.expectedControlType}";
+
+        actionToRebind.Disable();
+
+        var rebind = actionToRebind.PerformInteractiveRebinding(bindingIndex);
+
+        rebind.OnComplete(operation =>
+        {
+            actionToRebind.Enable();
+            operation.Dispose();
+
+            if(allCompositeParts)
+            {
+                var nextBindingIndex = bindingIndex + 1;
+                if (nextBindingIndex < actionToRebind.bindings.Count && actionToRebind.bindings[nextBindingIndex].isComposite)
+                    DoRebind(actionToRebind, nextBindingIndex, statusText, allCompositeParts, excludeMouse);
+            }
+
+            SaveBindingOverride(actionToRebind);
+            rebindComplete?.Invoke();
+        });
+
+        rebind.OnCancel(operation =>
+        {
+            actionToRebind.Enable();
+            operation.Dispose();
+
+            rebindCanceled?.Invoke();
+        });
+
+        rebind.WithCancelingThrough("<Keyboard>/escape");
+
+        if (excludeMouse)
+            rebind.WithControlsExcluding("Mouse");
+
+        rebindStarted?.Invoke(actionToRebind, bindingIndex);
+        rebind.Start(); //actually starts the rebinding process
+    }
+
+    private static void SaveBindingOverride(InputAction action)
+    {
+        for (int i = 0; i < action.bindings.Count; i++)
+        {
+            PlayerPrefs.SetString(action.actionMap + action.name + i, action.bindings[i].overridePath);
+        }
+    }
+    public static void ResetBinding(string actionName, int bindingIndex)
+    {
+        InputAction action = controlInput.asset.FindAction(actionName);
+
+        if(action == null || action.bindings.Count <= bindingIndex)
+        {
+            Debug.Log("Could not find action or binding");
+            return;
+        }
+
+        if (action.bindings[bindingIndex].isComposite)
+        {
+            for (int i = bindingIndex; i < action.bindings.Count && action.bindings[i].isComposite; i++)
+                action.RemoveBindingOverride(i);
+        }
+        else
+            action.RemoveBindingOverride(bindingIndex);
+
+        SaveBindingOverride(action);
+    }
+    #endregion
+
+    #region Helper
+    private Vector3 ScreenToWorld(Vector3 point) {
+        Vector3 worldPos = mainCamera.ScreenToWorldPoint(point);
+        worldPos.z = mainCamera.nearClipPlane;
+        return worldPos;
+     }
+    #endregion
 }

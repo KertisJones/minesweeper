@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RotateClockwise",
+                    "name": "Rotate Clockwise",
                     "type": "Button",
                     "id": "20995644-8c91-425a-bd1c-fa588678e726",
                     "expectedControlType": "Button",
@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RotateCounterClockwise",
+                    "name": "Rotate Counter-Clockwise",
                     "type": "Button",
                     "id": "b8b4058b-2907-4eae-9d24-49a04b1abecd",
                     "expectedControlType": "Button",
@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SoftDrop",
+                    "name": "Soft Drop",
                     "type": "Button",
                     "id": "791ce69c-bfa7-4177-8e34-9658394783ba",
                     "expectedControlType": "Button",
@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "HardDrop",
+                    "name": "Hard Drop",
                     "type": "Button",
                     "id": "c037d4a6-2060-4f84-9180-fa4629eb92c0",
                     "expectedControlType": "Button",
@@ -87,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "HardClear",
+                    "name": "Hard Clear",
                     "type": "Button",
                     "id": "0fa7cd96-0c7f-4104-842a-180f21e0caf3",
                     "expectedControlType": "Button",
@@ -96,7 +96,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RevealTile",
+                    "name": "Reveal Tile",
                     "type": "Button",
                     "id": "fc3e733d-df83-4f45-ae4e-227ff33bb91b",
                     "expectedControlType": "Button",
@@ -105,7 +105,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "FlagTile",
+                    "name": "Flag Tile",
                     "type": "Button",
                     "id": "11ffbcc9-dfe2-4ee7-897c-76d1c5959ecd",
                     "expectedControlType": "Button",
@@ -114,7 +114,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChordTile",
+                    "name": "Chord Tile",
                     "type": "Button",
                     "id": "21efb4ff-75b6-4f57-9b07-4038c4be3829",
                     "expectedControlType": "Button",
@@ -233,7 +233,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateClockwise",
+                    "action": "Rotate Clockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -244,7 +244,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateClockwise",
+                    "action": "Rotate Clockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -255,7 +255,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateClockwise",
+                    "action": "Rotate Clockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -266,7 +266,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateClockwise",
+                    "action": "Rotate Clockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -277,7 +277,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateClockwise",
+                    "action": "Rotate Clockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -288,7 +288,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateClockwise",
+                    "action": "Rotate Clockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -299,7 +299,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateClockwise",
+                    "action": "Rotate Clockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -310,7 +310,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateCounterClockwise",
+                    "action": "Rotate Counter-Clockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -321,7 +321,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateCounterClockwise",
+                    "action": "Rotate Counter-Clockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -332,7 +332,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateCounterClockwise",
+                    "action": "Rotate Counter-Clockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -343,7 +343,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateCounterClockwise",
+                    "action": "Rotate Counter-Clockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -354,7 +354,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateCounterClockwise",
+                    "action": "Rotate Counter-Clockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -365,7 +365,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SoftDrop",
+                    "action": "Soft Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -376,7 +376,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SoftDrop",
+                    "action": "Soft Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -387,7 +387,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SoftDrop",
+                    "action": "Soft Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -398,7 +398,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HardDrop",
+                    "action": "Hard Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -409,7 +409,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HardDrop",
+                    "action": "Hard Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -420,7 +420,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HardDrop",
+                    "action": "Hard Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -431,7 +431,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HardDrop",
+                    "action": "Hard Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -508,7 +508,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HardClear",
+                    "action": "Hard Clear",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -519,7 +519,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HardClear",
+                    "action": "Hard Clear",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -530,7 +530,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HardClear",
+                    "action": "Hard Clear",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -541,7 +541,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RevealTile",
+                    "action": "Reveal Tile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -552,7 +552,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RevealTile",
+                    "action": "Reveal Tile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -563,7 +563,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FlagTile",
+                    "action": "Flag Tile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -574,7 +574,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FlagTile",
+                    "action": "Flag Tile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -585,7 +585,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChordTile",
+                    "action": "Chord Tile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

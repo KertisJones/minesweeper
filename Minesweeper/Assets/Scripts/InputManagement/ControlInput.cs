@@ -46,7 +46,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RotateClockwise"",
+                    ""name"": ""Rotate Clockwise"",
                     ""type"": ""Button"",
                     ""id"": ""20995644-8c91-425a-bd1c-fa588678e726"",
                     ""expectedControlType"": ""Button"",
@@ -55,7 +55,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RotateCounterClockwise"",
+                    ""name"": ""Rotate Counter-Clockwise"",
                     ""type"": ""Button"",
                     ""id"": ""b8b4058b-2907-4eae-9d24-49a04b1abecd"",
                     ""expectedControlType"": ""Button"",
@@ -255,7 +255,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateClockwise"",
+                    ""action"": ""Rotate Clockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -266,7 +266,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateClockwise"",
+                    ""action"": ""Rotate Clockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -277,7 +277,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateClockwise"",
+                    ""action"": ""Rotate Clockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -288,7 +288,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateClockwise"",
+                    ""action"": ""Rotate Clockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -299,7 +299,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateClockwise"",
+                    ""action"": ""Rotate Clockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -310,7 +310,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateClockwise"",
+                    ""action"": ""Rotate Clockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -321,7 +321,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateClockwise"",
+                    ""action"": ""Rotate Clockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -332,7 +332,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateCounterClockwise"",
+                    ""action"": ""Rotate Counter-Clockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -343,7 +343,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateCounterClockwise"",
+                    ""action"": ""Rotate Counter-Clockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -354,7 +354,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateCounterClockwise"",
+                    ""action"": ""Rotate Counter-Clockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -365,7 +365,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateCounterClockwise"",
+                    ""action"": ""Rotate Counter-Clockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -376,7 +376,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateCounterClockwise"",
+                    ""action"": ""Rotate Counter-Clockwise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -681,8 +681,8 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
         m_TetrisweepMap = asset.FindActionMap("TetrisweepMap", throwIfNotFound: true);
         m_TetrisweepMap_Left = m_TetrisweepMap.FindAction("Left", throwIfNotFound: true);
         m_TetrisweepMap_Right = m_TetrisweepMap.FindAction("Right", throwIfNotFound: true);
-        m_TetrisweepMap_RotateClockwise = m_TetrisweepMap.FindAction("RotateClockwise", throwIfNotFound: true);
-        m_TetrisweepMap_RotateCounterClockwise = m_TetrisweepMap.FindAction("RotateCounterClockwise", throwIfNotFound: true);
+        m_TetrisweepMap_RotateClockwise = m_TetrisweepMap.FindAction("Rotate Clockwise", throwIfNotFound: true);
+        m_TetrisweepMap_RotateCounterClockwise = m_TetrisweepMap.FindAction("Rotate Counter-Clockwise", throwIfNotFound: true);
         m_TetrisweepMap_SoftDrop = m_TetrisweepMap.FindAction("SoftDrop", throwIfNotFound: true);
         m_TetrisweepMap_HardDrop = m_TetrisweepMap.FindAction("HardDrop", throwIfNotFound: true);
         m_TetrisweepMap_Hold = m_TetrisweepMap.FindAction("Hold", throwIfNotFound: true);

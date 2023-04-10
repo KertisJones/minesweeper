@@ -205,8 +205,8 @@ public class DisplayText : MonoBehaviour
             else
             {
                 int resets = 15 - activeTetromino.lockResets;
-                if (resets < 0)
-                    resets = 0;
+                //if (resets < 0)
+                    //resets = 0;
 
                 if (activeTetromino.lockDelayTimer > 0 && activeTetromino.isLocking)
                     this.GetComponent<TextMeshProUGUI>().text = "Lock: " + activeTetromino.lockDelayTimer.ToString("#,#.#") + ", Resets: " + resets;

@@ -516,7 +516,11 @@ public class Group : MonoBehaviour
 
     public void LockTetrominoDelay()
     {
-        if (!isFalling || isLocking)
+        if (!isFalling)
+            return;
+        if (lockResets >= 15)
+            LockTetromino();
+        if (isLocking)
             return;
         
         lockDelayTimer = lockDelayActive;
@@ -557,7 +561,7 @@ public class Group : MonoBehaviour
             }
             else
             {
-                if (lockResets <= 15)
+                if (lockResets < 15)
                 {
                     lockDelayTimer = lockDelayActive;
                     lockResets++;
