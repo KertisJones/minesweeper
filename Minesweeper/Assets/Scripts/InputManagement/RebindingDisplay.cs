@@ -79,6 +79,7 @@ public class RebindingDisplay : MonoBehaviour
 
     private void UpdateUI()
     {
+        InputAction action = InputManager.GetAction(actionName);
         if (actionText != null)
             actionText.text = actionName;
 
@@ -88,18 +89,30 @@ public class RebindingDisplay : MonoBehaviour
             
             if (Application.isPlaying)
             {
-                rebindText.text = InputManager.GetAction(actionName).bindings[bindingIndex].ToDisplayString(displayStringOptions);
+                rebindText.text = action.bindings[bindingIndex].ToDisplayString(displayStringOptions);
                 //InputControlPath.ToHumanReadableString(inputActionReference.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);; 
                 //InputManager.GetBindingName(actionName, bindingIndex);
             }
             else
                 rebindText.text = inputActionReference.action.bindings[bindingIndex].ToDisplayString(displayStringOptions); //inputActionReference.action.GetBindingDisplayString(bindingIndex, displayStringOptions);
         }
+
+        if (rebindButton != null)
+        {
+            if (InputManager.CheckDuplicateBindings(action, bindingIndex, action.bindings[bindingIndex].isComposite, true))
+            {
+                rebindButton.gameObject.GetComponent<Image>().color = Color.red;
+            }
+            else
+            {
+                rebindButton.gameObject.GetComponent<Image>().color = Color.white;
+            }
+        }
     }
 
     private void DoRebind()
     {
-        InputManager.StartRebind(actionName, bindingIndex, rebindText, excludeMouse);
+        InputManager.StartRebind(actionName, bindingIndex, rebindText, excludeMouse, true);
     }
 
     private void ResetBinding()
@@ -107,7 +120,6 @@ public class RebindingDisplay : MonoBehaviour
         InputManager.ResetBinding(actionName, bindingIndex);
         UpdateUI();
     }
-
 
     /*[SerializeField] private InputManager playerController = null;
     [SerializeField] private TMP_Text bindingDisplayNameText = null;
