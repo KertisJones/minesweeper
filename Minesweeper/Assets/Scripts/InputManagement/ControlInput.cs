@@ -64,7 +64,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SoftDrop"",
+                    ""name"": ""Soft Drop"",
                     ""type"": ""Button"",
                     ""id"": ""791ce69c-bfa7-4177-8e34-9658394783ba"",
                     ""expectedControlType"": ""Button"",
@@ -73,7 +73,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""HardDrop"",
+                    ""name"": ""Hard Drop"",
                     ""type"": ""Button"",
                     ""id"": ""c037d4a6-2060-4f84-9180-fa4629eb92c0"",
                     ""expectedControlType"": ""Button"",
@@ -109,7 +109,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""HardClear"",
+                    ""name"": ""Hard Clear"",
                     ""type"": ""Button"",
                     ""id"": ""0fa7cd96-0c7f-4104-842a-180f21e0caf3"",
                     ""expectedControlType"": ""Button"",
@@ -118,7 +118,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RevealTile"",
+                    ""name"": ""Reveal Tile"",
                     ""type"": ""Button"",
                     ""id"": ""fc3e733d-df83-4f45-ae4e-227ff33bb91b"",
                     ""expectedControlType"": ""Button"",
@@ -127,7 +127,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""FlagTile"",
+                    ""name"": ""Flag Tile"",
                     ""type"": ""Button"",
                     ""id"": ""11ffbcc9-dfe2-4ee7-897c-76d1c5959ecd"",
                     ""expectedControlType"": ""Button"",
@@ -136,7 +136,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ChordTile"",
+                    ""name"": ""Chord Tile"",
                     ""type"": ""Button"",
                     ""id"": ""21efb4ff-75b6-4f57-9b07-4038c4be3829"",
                     ""expectedControlType"": ""Button"",
@@ -387,7 +387,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SoftDrop"",
+                    ""action"": ""Soft Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -398,7 +398,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SoftDrop"",
+                    ""action"": ""Soft Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -409,7 +409,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SoftDrop"",
+                    ""action"": ""Soft Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -420,7 +420,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HardDrop"",
+                    ""action"": ""Hard Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -431,7 +431,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HardDrop"",
+                    ""action"": ""Hard Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -442,7 +442,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HardDrop"",
+                    ""action"": ""Hard Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -453,7 +453,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HardDrop"",
+                    ""action"": ""Hard Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -492,17 +492,6 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""18bfcb1f-e956-4039-927d-8bf875710d10"",
-                    ""path"": ""<Keyboard>/h"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Hold"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""dece4115-9bdc-41d8-b298-7114f37b59d5"",
                     ""path"": ""<Keyboard>/f5"",
                     ""interactions"": """",
@@ -530,7 +519,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HardClear"",
+                    ""action"": ""Hard Clear"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -541,7 +530,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HardClear"",
+                    ""action"": ""Hard Clear"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -552,7 +541,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HardClear"",
+                    ""action"": ""Hard Clear"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -563,7 +552,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RevealTile"",
+                    ""action"": ""Reveal Tile"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -574,7 +563,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RevealTile"",
+                    ""action"": ""Reveal Tile"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -585,7 +574,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""FlagTile"",
+                    ""action"": ""Flag Tile"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -596,7 +585,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""FlagTile"",
+                    ""action"": ""Flag Tile"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -607,7 +596,7 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChordTile"",
+                    ""action"": ""Chord Tile"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -665,6 +654,28 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""action"": ""Cleanse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ebe8d2b5-51dd-4809-88ce-992697fe3afe"",
+                    ""path"": ""<Keyboard>/f2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cleanse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b06992ce-82a1-4b83-853e-73ac21437d7a"",
+                    ""path"": ""<Keyboard>/comma"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Chord Tile"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -683,15 +694,15 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
         m_TetrisweepMap_Right = m_TetrisweepMap.FindAction("Right", throwIfNotFound: true);
         m_TetrisweepMap_RotateClockwise = m_TetrisweepMap.FindAction("Rotate Clockwise", throwIfNotFound: true);
         m_TetrisweepMap_RotateCounterClockwise = m_TetrisweepMap.FindAction("Rotate Counter-Clockwise", throwIfNotFound: true);
-        m_TetrisweepMap_SoftDrop = m_TetrisweepMap.FindAction("SoftDrop", throwIfNotFound: true);
-        m_TetrisweepMap_HardDrop = m_TetrisweepMap.FindAction("HardDrop", throwIfNotFound: true);
+        m_TetrisweepMap_SoftDrop = m_TetrisweepMap.FindAction("Soft Drop", throwIfNotFound: true);
+        m_TetrisweepMap_HardDrop = m_TetrisweepMap.FindAction("Hard Drop", throwIfNotFound: true);
         m_TetrisweepMap_Hold = m_TetrisweepMap.FindAction("Hold", throwIfNotFound: true);
         m_TetrisweepMap_Escape = m_TetrisweepMap.FindAction("Escape", throwIfNotFound: true);
         m_TetrisweepMap_Restart = m_TetrisweepMap.FindAction("Restart", throwIfNotFound: true);
-        m_TetrisweepMap_HardClear = m_TetrisweepMap.FindAction("HardClear", throwIfNotFound: true);
-        m_TetrisweepMap_RevealTile = m_TetrisweepMap.FindAction("RevealTile", throwIfNotFound: true);
-        m_TetrisweepMap_FlagTile = m_TetrisweepMap.FindAction("FlagTile", throwIfNotFound: true);
-        m_TetrisweepMap_ChordTile = m_TetrisweepMap.FindAction("ChordTile", throwIfNotFound: true);
+        m_TetrisweepMap_HardClear = m_TetrisweepMap.FindAction("Hard Clear", throwIfNotFound: true);
+        m_TetrisweepMap_RevealTile = m_TetrisweepMap.FindAction("Reveal Tile", throwIfNotFound: true);
+        m_TetrisweepMap_FlagTile = m_TetrisweepMap.FindAction("Flag Tile", throwIfNotFound: true);
+        m_TetrisweepMap_ChordTile = m_TetrisweepMap.FindAction("Chord Tile", throwIfNotFound: true);
         m_TetrisweepMap_MousePosition = m_TetrisweepMap.FindAction("MousePosition", throwIfNotFound: true);
         m_TetrisweepMap_InputScroll = m_TetrisweepMap.FindAction("InputScroll", throwIfNotFound: true);
         m_TetrisweepMap_AnyKey = m_TetrisweepMap.FindAction("AnyKey", throwIfNotFound: true);

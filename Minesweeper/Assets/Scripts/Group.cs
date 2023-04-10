@@ -112,6 +112,8 @@ public class Group : MonoBehaviour
     public void PressLeft()
     {
         // Don't go any further if this shouldn't be moved 
+        if (gm == null)
+            return;
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
             return;
         if (!buttonRightHeld)
@@ -130,6 +132,8 @@ public class Group : MonoBehaviour
     public void PressRight()
     {
         // Don't go any further if this shouldn't be moved 
+        if (gm == null)
+            return;
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
             return;
         if (!buttonLeftHeld)
@@ -148,6 +152,8 @@ public class Group : MonoBehaviour
     void PressRotateClockwise()
     {
         // Don't go any further if this shouldn't be moved 
+        if (gm == null)
+            return;
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
             return;
 
@@ -156,6 +162,8 @@ public class Group : MonoBehaviour
     void PressRotateCounterClockwise()
     {
         // Don't go any further if this shouldn't be moved 
+        if (gm == null)
+            return;
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
             return;
 
@@ -164,6 +172,8 @@ public class Group : MonoBehaviour
     void PressSoftDrop()
     {
         // Don't go any further if this shouldn't be moved 
+        if (gm == null)
+            return;
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
             return;
 
@@ -183,6 +193,8 @@ public class Group : MonoBehaviour
     void PressHardDrop()
     {
         // Don't go any further if this shouldn't be moved 
+        if (gm == null)
+            return;
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
             return;
         
@@ -347,6 +359,8 @@ public class Group : MonoBehaviour
         CheckForTetrisweeps();
 
         // Don't go any further if this shouldn't be moved 
+        if (gm == null)
+            return;
         if (gm.isGameOver)
             return;
         if (gm.isPaused)
@@ -439,6 +453,8 @@ public class Group : MonoBehaviour
 
     void SoftDrop()
     {
+        if (gm == null)
+            return;
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
             return;
         if (!isLocking && bottomHeight <= bottomHeightLowest)

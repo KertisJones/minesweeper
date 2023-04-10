@@ -33,7 +33,22 @@ public class RebindingDisplay : MonoBehaviour
     private TMP_Text rebindText;
     [SerializeField]
     private Button resetButton;
+/*
+Move Left: Left | A; Num 4
+Move Right: Right | D; Num 6
+Soft Drop: Down | S; Num 2
+Hard Drop: Space | Enter; Num 8, Num Enter
+Rotate Clockwise: Up, X | W, E; Num 1, Num 5, Num 9
+Rotate Counter-Clockwise: Left Control, Z | Q; Num 3, Num 7
+// Rotate 180: Alt | R
+Hold: Shift | C; Num 0
 
+Reveal Tile: LMB | N
+Flag Tile: RMB | M
+Chord Tile: MMB | ,
+Hard Clear: T | F1, Backspace
+Cleanse: F | F2
+*/
     private void OnEnable()
     {
         rebindButton.onClick.AddListener(() => DoRebind());
@@ -102,10 +117,12 @@ public class RebindingDisplay : MonoBehaviour
             if (InputManager.CheckDuplicateBindings(action, bindingIndex, action.bindings[bindingIndex].isComposite, true))
             {
                 rebindButton.gameObject.GetComponent<Image>().color = Color.red;
+                rebindText.color = Color.white;
             }
             else
             {
                 rebindButton.gameObject.GetComponent<Image>().color = Color.white;
+                rebindText.color = new Color(0.1960784f, 0.1960784f, 0.1960784f);
             }
         }
     }

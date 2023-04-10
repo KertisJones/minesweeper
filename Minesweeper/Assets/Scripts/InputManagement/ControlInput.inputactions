@@ -470,17 +470,6 @@
                 },
                 {
                     "name": "",
-                    "id": "18bfcb1f-e956-4039-927d-8bf875710d10",
-                    "path": "<Keyboard>/h",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Hold",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "dece4115-9bdc-41d8-b298-7114f37b59d5",
                     "path": "<Keyboard>/f5",
                     "interactions": "",
@@ -641,6 +630,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Cleanse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ebe8d2b5-51dd-4809-88ce-992697fe3afe",
+                    "path": "<Keyboard>/f2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cleanse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b06992ce-82a1-4b83-853e-73ac21437d7a",
+                    "path": "<Keyboard>/comma",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chord Tile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
