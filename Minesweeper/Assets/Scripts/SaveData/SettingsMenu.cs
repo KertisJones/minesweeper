@@ -10,10 +10,12 @@ public class SettingsMenu : MonoBehaviour
     public Slider musicVolumeSlider;
     public Slider soundVolumeSlider;
     public Toggle screenShakeToggle;
+    public Toggle lockDelayDisplayToggle;
     float masterVolume = 0.4f; //Max 0.8
     float musicVolume = 0.25f; //Max 0.5
     float soundVolume = 0.5f; //Max 1
     bool screenShakeEnabled = true;
+    bool lockDelayDisplayEnabled = true;
 
     private void Awake()
     {
@@ -21,6 +23,7 @@ public class SettingsMenu : MonoBehaviour
         musicVolume = PlayerPrefs.GetFloat("MusicVolume", musicVolume);
         soundVolume = PlayerPrefs.GetFloat("SoundVolume", soundVolume);
         screenShakeEnabled = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
+        lockDelayDisplayEnabled = (PlayerPrefs.GetInt("LockDelayDisplayEnabled", 0) != 0);
         //controlScheme = PlayerPrefs.GetInt("ControlScheme", 0);
         //abTest = PlayerPrefs.GetInt("ABTest", 0);
     }
@@ -38,6 +41,8 @@ public class SettingsMenu : MonoBehaviour
         soundVolumeSlider.onValueChanged.AddListener(delegate { SoundVolumeSlider(); });
         screenShakeToggle.isOn = screenShakeEnabled;
         screenShakeToggle.onValueChanged.AddListener(delegate  { ScreenShakeToggle(); });
+        lockDelayDisplayToggle.isOn = lockDelayDisplayEnabled;
+        lockDelayDisplayToggle.onValueChanged.AddListener(delegate  { LockDelayDisplayToggle(); });
     }
 
     // Update is called once per frame
@@ -70,12 +75,19 @@ public class SettingsMenu : MonoBehaviour
         if (screenShakeToggle != null)
         {
             screenShakeToggle.isOn = screenShakeEnabled;
-            if (screenShakeToggle.isActiveAndEnabled)
-                soundVolumeSlider.interactable = true;
+            if (pauseMenuMove.isActive)
+                screenShakeToggle.interactable = true;
             else
-                soundVolumeSlider.interactable = false;
+                screenShakeToggle.interactable = false;
         }
-            
+        if (lockDelayDisplayToggle != null)
+        {
+            lockDelayDisplayToggle.isOn = lockDelayDisplayEnabled;
+            if (pauseMenuMove.isActive)
+                lockDelayDisplayToggle.interactable = true;
+            else
+                lockDelayDisplayToggle.interactable = false;
+        }
     }
 
     public void MasterVolumeSlider() // Sets the Master Volume Slider from PlayerPrefs
@@ -98,5 +110,10 @@ public class SettingsMenu : MonoBehaviour
     {
         screenShakeEnabled = screenShakeToggle.isOn;
         PlayerPrefs.SetInt("ScreenShakeEnabled", (screenShakeEnabled ? 1 : 0));
+    }
+    public void LockDelayDisplayToggle() // Sets the Lock Delay Display from PlayerPrefs
+    {
+        lockDelayDisplayEnabled = lockDelayDisplayToggle.isOn;
+        PlayerPrefs.SetInt("LockDelayDisplayEnabled", (lockDelayDisplayEnabled ? 1 : 0));
     }
 }

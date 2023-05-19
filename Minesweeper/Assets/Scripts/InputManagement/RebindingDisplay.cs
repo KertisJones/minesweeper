@@ -55,9 +55,9 @@ Cleanse: F | F2
         resetButton.onClick.AddListener(() => ResetBinding());
 
         if(inputActionReference != null)
-        {
-            InputManager.LoadBindingOverride(actionName);
+        {            
             GetBindingInfo();
+            InputManager.LoadBindingOverride(actionName);
             UpdateUI();
         }
 

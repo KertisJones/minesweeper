@@ -197,10 +197,16 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.TESTCurrentMinoLockDelay)
         {
+            if (PlayerPrefs.GetInt("LockDelayDisplayEnabled", 0) == 0)
+            {
+                this.GetComponent<TextMeshProUGUI>().text = "";
+                return;
+            }
+                
             Group activeTetromino = gm.GetActiveTetromino();
             if (activeTetromino == null)
             {
-                this.GetComponent<TextMeshProUGUI>().text = "Null";
+                this.GetComponent<TextMeshProUGUI>().text = "";
             }
             else
             {

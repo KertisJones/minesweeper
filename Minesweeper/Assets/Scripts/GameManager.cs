@@ -570,11 +570,13 @@ public class GameManager : MonoBehaviour
                 if (!isRowSolved(y))
                     return;
         }
-        
-        deleteFullRows();
+        int rowsFilled = 0;
+        if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().previousTetromino != null)
+            rowsFilled = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().previousTetromino.GetComponent<Group>().rowsFilled;
+        deleteFullRows(true, rowsFilled);
     }
 
-    public void CheckForPerfectClear(int rowsCleared)
+    public void CheckForPerfectClear(int rowsCleared, int rowsFilled, bool isInstantPC)
     {
         if (perfectClearThisRound)
             return;
@@ -589,36 +591,49 @@ public class GameManager : MonoBehaviour
                 return;
         }
 
-        perfectClearThisRound = true;        
+        perfectClearThisRound = true;
+        
+        int rowsActuallyFilled = rowsFilled;
+        if (rowsCleared < rowsActuallyFilled)
+            rowsActuallyFilled = rowsCleared;
+        
+        float pcScore = 800;
 
         // Give rewards for a perfect clear!
-        if (rowsCleared == 1)
+        if (rowsActuallyFilled == 0 || rowsActuallyFilled == 1)
         {
-            AddScore(800);        
+            pcScore = 800 + (100 * (rowsCleared - 1));        
             SetScoreMultiplier(10, 30);
             previousPCWasTetris = false;
         }
-        else if (rowsCleared == 2)
+        else if (rowsActuallyFilled == 2)
         {
-            AddScore(1200);        
+            pcScore = 1200 + (150 * (rowsCleared - 2));        
             SetScoreMultiplier(25, 30);
             previousPCWasTetris = false;
         }
-        else if (rowsCleared == 3)
+        else if (rowsActuallyFilled == 3)
         {
-            AddScore(1800);        
+            pcScore = 1800 + (200 * (rowsCleared - 3));        
             SetScoreMultiplier(50, 30);
             previousPCWasTetris = false;
         }
-        else if (rowsCleared >= 4)
+        else if (rowsActuallyFilled >= 4)
         {
-            float pcScore = 500 * rowsCleared;
+            pcScore = 500 * rowsCleared;
             if (previousPCWasTetris)
-                pcScore = pcScore * 1.6f;
-            AddScore(((int)pcScore));
+                pcScore = pcScore * 1.6f;            
             SetScoreMultiplier(100, 30);
             previousPCWasTetris = true;
         }
+
+        if (isInstantPC)
+        {
+            AddSafeTileToEdges();
+            pcScore = pcScore * 1.5f;
+        }
+
+        AddScore(((int)pcScore));
 
         /*if (previousTetromino.GetComponent<Group>().rowsFilled == 4) // Tetrisweep Perfect Clear!
         {
@@ -632,8 +647,6 @@ public class GameManager : MonoBehaviour
             AddScore(2000);
             SetScoreMultiplier(15, 30);
         }*/
-        if (safeEdgeTilesGained < 10 || rowsCleared >= 4)
-            AddSafeTileToEdges();
         
         perfectClears += 1;        
 
@@ -642,13 +655,14 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Tetrisweeper Solved Logic
-    public static int deleteFullRows(bool getMultiplier = true)
+    public static int deleteFullRows(bool getMultiplier = true, int rowsFilled = 0, bool isTriggeredByLock = false)
     {
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (gm.isGameOver)
             return 0;
         
         int rowsCleared = 0;
+        int linesweepsCleared = 0;
         
         // Score all of the solved rows
         for (int y = 0; y < sizeY; ++y)
@@ -661,9 +675,16 @@ public class GameManager : MonoBehaviour
                     gm.RemoveSafeTileFromEdges();
                 }
 
-                scoreSolvedRow(y, getMultiplier);
+                bool isLinesweep = scoreSolvedRow(y, getMultiplier);
+                
                 gm.linesCleared++;
                 rowsCleared++;
+                if (isLinesweep)
+                {
+                    linesweepsCleared++;
+                    gm.linesweepsCleared += 1;
+                }
+                    
             }
         }
 
@@ -678,6 +699,20 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        // Linesweep: Row was solved before the next tetromino was placed
+        if (linesweepsCleared > 0)
+        {
+            int linesweepScore = 75 * (linesweepsCleared * linesweepsCleared);
+            
+            if (isTriggeredByLock) // Instant Sweep multiplier
+                gm.AddScore((int)(linesweepScore * 1.5f));
+            else
+                gm.AddScore(linesweepScore);
+
+            if (getMultiplier)
+                gm.SetScoreMultiplier(10 * linesweepsCleared, 10f);
+        } 
+
         if (rowsCleared > 0)
         {
             gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
@@ -689,7 +724,7 @@ public class GameManager : MonoBehaviour
             gm.AddScore(75 * (rowsCleared * rowsCleared));
             //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
             if (getMultiplier)
-                gm.SetScoreMultiplier((rowsCleared * rowsCleared) * 10, rowsCleared);
+                gm.SetScoreMultiplier(rowsCleared * 5, rowsCleared * 2);
             
             if (rowsCleared > gm.safeEdgeTilesGained)
                 gm.AddSafeTileToEdges();
@@ -699,13 +734,13 @@ public class GameManager : MonoBehaviour
                 if (gm.previousTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier))
                     isDifficultSweep = true;
             if (gm.currentTetromino != null)
-                if (gm.currentTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier))
+                if (gm.currentTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, isTriggeredByLock))
                     isDifficultSweep = true;
 
             gm.previousClearWasDifficultSweep = isDifficultSweep;
             //currentTetromino = null;
         }
-        gm.CheckForPerfectClear(rowsCleared);
+        gm.CheckForPerfectClear(rowsCleared, rowsFilled, isTriggeredByLock);
         GameManager.markSolvedRows();
         if (gm.linesCleared >= gm.linesClearedTarget && gm.isEndless == false) 
             gm.Pause(true, true);
@@ -960,7 +995,8 @@ public class GameManager : MonoBehaviour
         return scoreMultiplier / 100f;
     }
 
-    public static void scoreSolvedRow(int y, bool getMultiplier = true)
+    // Returns true if this row was a linesweep
+    public static bool scoreSolvedRow(int y, bool getMultiplier = true)
     {
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         //int rowScore = 0;
@@ -987,28 +1023,11 @@ public class GameManager : MonoBehaviour
         //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
         //if (getMultiplier)
             //gm.SetScoreMultiplier(0.5f, 2f);
-
-        // Linesweep: Row was solved before the next tetromino was placed
-        if (containsPreviousTetromino)
-        {
-            //gm.AddScore(50 * (y + 1));
-            gm.AddScore(250);
-            //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
-            if (getMultiplier)
-                gm.SetScoreMultiplier(5, 2f);
-            /*if (y > gm.safeEdgeTilesGained - 1)
-            {
-                //Debug.Log("Linesweep " + y);
-                
-                //gm.AddSafeTileToEdges();
-            }*/
-            gm.linesweepsCleared += 1;
-        }        
         
         gm.currentMines -= minesFlagged;
         gm.currentFlags -= minesFlagged;
         gm.minesSweeped += minesFlagged;
-        //return rowScore;
+        return containsPreviousTetromino;
     }
 
     public static int scoreFullRows(Transform tetronimo)

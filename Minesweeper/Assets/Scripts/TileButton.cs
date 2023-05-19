@@ -89,7 +89,7 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             return;
         if (hover)
         {
-            tile.FlagToggle();
+            //tile.FlagToggle();
             tile.Chord();
         }        
     }

@@ -246,8 +246,16 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
             }
             else if (binding.effectivePath == newBinding.effectivePath)
             {
-                Debug.Log("Duplicate binding found: " + newBinding.effectivePath + " with " + binding.action);
-                return true;
+                if ((binding.action == "Flag Tile" && newBinding.action == "Chord Tile") || (newBinding.action == "Flag Tile" && binding.action == "Chord Tile")
+                    || (binding.action == "Reveal Tile" && newBinding.action == "Chord Tile") || (newBinding.action == "Reveal Tile" && binding.action == "Chord Tile"))
+                {
+                    continue;
+                }
+                else
+                {
+                    Debug.Log("Duplicate binding found: " + newBinding.effectivePath + " with " + binding.action);
+                    return true;
+                }                
             }
         }
         // Check for duplicate composite bindings

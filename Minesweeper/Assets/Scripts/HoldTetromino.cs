@@ -58,7 +58,7 @@ public class HoldTetromino : MonoBehaviour
 
     void Hold()
     {
-        if (gm.isGameOver)
+        if (gm.isGameOver || gm.isPaused)
             return;
         
         GameObject currentTetromino = tetrominoSpawner.currentTetromino;

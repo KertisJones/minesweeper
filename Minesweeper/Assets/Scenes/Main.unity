@@ -4202,7 +4202,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &951645581
 GameObject:
@@ -4222,7 +4222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &951645582
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5644,7 +5644,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1228654260 stripped
 Transform:
@@ -6887,7 +6887,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1391884541
 PrefabInstance:
@@ -8515,7 +8515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v1.7.8 beta
+  m_text: v1.7.9 beta
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
   m_sharedMaterial: {fileID: 4449517523809245107, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
@@ -9654,7 +9654,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1919787197
 GameObject:
@@ -9840,7 +9840,7 @@ Transform:
   - {fileID: 772025784}
   - {fileID: 1321862875}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1971394622 stripped
 Transform:
@@ -10357,6 +10357,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 593537493044333184, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
+      propertyPath: speed
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 593537493044333184, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
       propertyPath: targetRest.y
       value: 30
       objectReference: {fileID: 0}
@@ -10452,6 +10456,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rebind Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 593537493044333215, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 593537493210928383, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -10480,6 +10488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Text - Controls
       objectReference: {fileID: 0}
+    - target: {fileID: 593537494437829206, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 593537494437829207, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -10504,6 +10516,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Rotate Counter-Clockwise
       objectReference: {fileID: 0}
+    - target: {fileID: 5980658754296809790, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
+      propertyPath: m_text
+      value: Flag Tile
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
 --- !u!1001 &1594162121159569053
@@ -10523,7 +10539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1594162120200497930, guid: 7fcfdca23214e1e429a6ed6c70ab7f5a, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 1594162120200497930, guid: 7fcfdca23214e1e429a6ed6c70ab7f5a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10601,6 +10617,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1594162120200497934, guid: 7fcfdca23214e1e429a6ed6c70ab7f5a, type: 3}
+      propertyPath: speed
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1594162120200497935, guid: 7fcfdca23214e1e429a6ed6c70ab7f5a, type: 3}
       propertyPath: m_Name
       value: Marathon Complete Menu
@@ -10648,7 +10668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2064147738162804857, guid: 3c0dd675cf17d9547992c8732e00a951, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2064147738162804857, guid: 3c0dd675cf17d9547992c8732e00a951, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10826,7 +10846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7095111356794976450, guid: fbc223cdb4484ba43953054b0a033497, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7095111356794976450, guid: fbc223cdb4484ba43953054b0a033497, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10900,6 +10920,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7095111356794976454, guid: fbc223cdb4484ba43953054b0a033497, type: 3}
+      propertyPath: speed
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbc223cdb4484ba43953054b0a033497, type: 3}
 --- !u!1001 &7129975174797640975
@@ -10959,7 +10983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129975174766691698, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7129975174766691698, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_AnchorMax.x
@@ -11037,6 +11061,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 7129975174766691702, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
+      propertyPath: speed
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7129975174766691704, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_Name
       value: Settings Menu

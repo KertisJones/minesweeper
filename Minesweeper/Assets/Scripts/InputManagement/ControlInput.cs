@@ -580,6 +580,17 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fd94f963-7eed-4724-8641-5ed34d3931e8"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flag Tile"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""27352509-aaec-4ce3-947c-ef944ea0bc49"",
                     ""path"": ""<Keyboard>/m"",
                     ""interactions"": """",

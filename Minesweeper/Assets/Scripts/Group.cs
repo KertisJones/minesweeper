@@ -660,8 +660,7 @@ public class Group : MonoBehaviour
             
             if (filledDiagonalTiles >= 3) // It's a T-Spin!
             {
-                if (rowsFilled >= 2)
-                    isTspin = true;
+                isTspin = true;
 
                 if (rowsFilled == 0) // T-Spin no lines
                 {
@@ -804,7 +803,7 @@ public class Group : MonoBehaviour
     void ClearRows(bool getMultiplier = true)
     {
         // Clear filled horizontal lines
-        int rowsCleared = GameManager.deleteFullRows(getMultiplier);
+        int rowsCleared = GameManager.deleteFullRows(getMultiplier, rowsFilled, getMultiplier);
         if (rowsCleared > 0)
         {
             // Cascade this block down if a line cleared that would have allowed the mino to hard drop farther down.
@@ -1304,7 +1303,7 @@ public class Group : MonoBehaviour
         lastMove = Time.time;
     }
 
-    public bool CheckForTetrisweeps(bool getMultiplier = true)
+    public bool CheckForTetrisweeps(bool getMultiplier = true, bool isInstantSweep = false)
     {
         if (difficultSweepScored)
             return false;
@@ -1329,20 +1328,15 @@ public class Group : MonoBehaviour
                 difficultSweepScored = true;
 
                 // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
-                int actionScore = 595 + (200 * bottomHeight); 
+                float actionScore = 595 + (100 * bottomHeight); 
                 if (gm.previousClearWasDifficultSweep)
-                {
-                    //Debug.Log("previousClearWasDifficultSweep: " + gm.previousClearWasDifficultSweep + "; " + Mathf.RoundToInt(actionScore * 1.5f));
-                    gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f)); 
-                }                    
-                else
-                {
-                    //Debug.Log("previousClearWasDifficultSweep: " + gm.previousClearWasDifficultSweep + "; " + actionScore);
-                    gm.AddScore(actionScore); 
-                }                    
+                    actionScore = actionScore * 1.5f; 
+                if (isInstantSweep)
+                    actionScore = actionScore * 1.5f;
+                gm.AddScore((int)actionScore);        
 
                 if (getMultiplier)
-                    gm.SetScoreMultiplier(topHeight * 5, 30);
+                    gm.SetScoreMultiplier(25, 30);
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
@@ -1350,47 +1344,55 @@ public class Group : MonoBehaviour
                 if (topHeight > gm.safeEdgeTilesGained - 1)
                     gm.AddSafeTileToEdges();                
             }
-            else if (isTspin && (gm.previousTetromino == this.gameObject || gm.currentTetromino == this.gameObject)) // Detect if T-Sweep was achieved
+            /*else if (isTspin && (gm.previousTetromino == this.gameObject || gm.currentTetromino == this.gameObject)) // Detect if T-Sweep was achieved
             {
-                AddTspinsweep(getMultiplier);
+                AddTspinsweep(getMultiplier, isInstantSweep);
                 difficultSweepScored = true;
-            }
+            }*/
             // Clean up
             Destroy(this.gameObject);
         }
         // Count as a T-spinsweep if 
-        else if (childrenTiles.Count == 1)
+        if (childrenTiles.Count < 4)
         {
             if (isTspin && (gm.previousTetromino == this.gameObject || gm.currentTetromino == this.gameObject)) // Detect if T-Sweep was achieved
-            {
-                AddTspinsweep(getMultiplier);
-                difficultSweepScored = true;
-                gm.previousTetromino = null;
-                gm.currentTetromino = null;
+            {                
+                bool isTspinSweep = true;
+                int fullTileCoordY = -100;
+                foreach (Tile tile in childrenTiles)
+                {
+                    if (GameManager.isRowFull(tile.coordY))
+                    {
+                        isTspinSweep = false;
+                        fullTileCoordY = tile.coordY;
+                    }                        
+                }
+                if (isTspinSweep)
+                {
+                    AddTspinsweep(getMultiplier, isInstantSweep);
+                    difficultSweepScored = true;
+                    gm.previousTetromino = null;
+                    gm.currentTetromino = null;
+                }                
             }
         }
         return difficultSweepScored;
     }
 
-    void AddTspinsweep(bool getMultiplier = true)
+    void AddTspinsweep(bool getMultiplier, bool isInstantSweep)
     {
         gm.tSpinsweepsCleared += 1;
 
-        int actionScore = 595 + (200 * bottomHeight); 
+        float actionScore = 595 + (100 * bottomHeight); 
         if (gm.previousClearWasDifficultSweep)
-        {
-            //Debug.Log("previousClearWasDifficultSweep: " + gm.previousClearWasDifficultSweep + "; " + Mathf.RoundToInt(actionScore * 1.5f));
-            gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f)); 
-        }            
-        else
-        {
-            //Debug.Log("previousClearWasDifficultSweep: " + gm.previousClearWasDifficultSweep + "; " + actionScore);
-            gm.AddScore(actionScore); 
-        }
-            
+            actionScore = actionScore * 1.5f; 
+        if (isInstantSweep)
+            actionScore = actionScore * 1.5f;
+
+        gm.AddScore((int)actionScore); 
         
         if (getMultiplier)
-            gm.SetScoreMultiplier(topHeight * 10, 30);
+            gm.SetScoreMultiplier(25, 30);
 
         GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
