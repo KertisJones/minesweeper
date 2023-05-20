@@ -27,8 +27,7 @@ public class DisplayText : MonoBehaviour
         quit,
         level,
         tSpinSweeps,
-        TESTCurrentMinoLockDelay
-        ,
+        TESTCurrentMinoLockDelay,
         TESTCurrentMinoRotation
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down

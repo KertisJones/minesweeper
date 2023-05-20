@@ -31,7 +31,7 @@ public class PauseMenuMove : MonoBehaviour {
         }
         if (gm != null)
         {
-            if (!gm.isPaused && !gm.isGameOver)
+            if (!gm.isPaused && !gm.isGameOver && !gm.isTitleMenu)
             {
                 isActive = false;
             }

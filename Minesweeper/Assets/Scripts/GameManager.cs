@@ -12,11 +12,9 @@ public class GameManager : MonoBehaviour
     public enum GameModeType // your custom enumeration
     {
         standard,
+        endless,
         classic, // No levels, score doesn't decay, score reset timer
-        tetrisweepOnly,
-        zen,
-        sprint40Line,
-        throwback
+        sprint40Line
     };
     public GameModeType gameModeType = GameModeType.standard; 
 
@@ -59,8 +57,9 @@ public class GameManager : MonoBehaviour
     public GameObject previousTetromino = null;
 
     public bool isGameOver = false;
-    bool isEndless = false;
+    public bool isEndless = false;
     public bool isPaused = false;
+    public bool isTitleMenu = false;
     bool canPause = true;
     public bool hasQuit = false;
     public bool cheatGodMode = false;
@@ -910,7 +909,8 @@ public class GameManager : MonoBehaviour
         endtime = GetTime();
         isGameOver = true;
 
-        GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().SaveCurrentGame();
+        if (!isTitleMenu)
+            GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().SaveCurrentGame();
         
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
 
@@ -927,7 +927,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>().Stop();
+        if (!isTitleMenu)
+            GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>().Stop();
 
         GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0), 0.1f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
@@ -938,7 +939,8 @@ public class GameManager : MonoBehaviour
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(1f);
-        gameOverMenu.isActive = true;
+        if (!isTitleMenu)
+            gameOverMenu.isActive = true;
     }
     #endregion
     #region Scoring
@@ -1109,15 +1111,25 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    public void QuitToTitleMenu () 
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Title");
+    }
     public void Quit()
     {
         Application.Quit();
         hasQuit = true;    
     }
-    
-    public void Pause(bool pause, bool isMarathonOverPause = false) 
+    public void PauseFromButton(bool pause) 
+    {
+        Pause(pause, false, true);
+    }
+    public void Pause(bool pause, bool isMarathonOverPause = false, bool bypassTitlePause = false) 
     {
         if (isGameOver)
+            return;
+        if (isTitleMenu && !bypassTitlePause)
             return;
         if (pause && !canPause)
             return;
@@ -1134,7 +1146,8 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                pauseMenu.isActive = true;
+                if (!bypassTitlePause)
+                    pauseMenu.isActive = true;
             }
         }
         else
@@ -1145,7 +1158,8 @@ public class GameManager : MonoBehaviour
                 isPaused = false;       
                 pauseMenu.isActive = false;
                 marathonOverMenu.isActive = false;
-                settingsMenu.isActive = false;
+                if (!bypassTitlePause)
+                    settingsMenu.isActive = false;
                 StartCoroutine(ResetPause());
             }
         }        
