@@ -65,7 +65,10 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
 
     public void SaveCurrentGame() 
     {
-        SaveJsonData(this.GetComponent<ScoreKeeper>());
+        if (GetComponent<GameModifiers>().gameModeName == "Marathon")
+            SaveJsonData(this.GetComponent<ScoreKeeper>());
+        else
+            Debug.Log("Can't save game of type " + GetComponent<GameModifiers>().gameModeName);
     }
 
     public void SaveJsonData(ScoreKeeper a_ScoreKeeper) 

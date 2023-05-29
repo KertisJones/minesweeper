@@ -216,7 +216,8 @@ public class Tile : MonoBehaviour
 
             gm.currentFlags += 1;
 
-            //GameManager.deleteFullRows();            
+            if (gm.lineClearInstantly)
+                GameManager.deleteFullRows();            
             GameManager.CheckForPossiblePerfectClear();
         }
         else
@@ -293,7 +294,8 @@ public class Tile : MonoBehaviour
 
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
-            //GameManager.deleteFullRows();
+            if (gm.lineClearInstantly)
+                GameManager.deleteFullRows();
             GameManager.markSolvedRows();
             GameManager.CheckForPossiblePerfectClear();
         }

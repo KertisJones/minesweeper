@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     public bool isTitleMenu = false;
     bool canPause = true;
     public bool hasQuit = false;
+    public bool lineClearInstantly = false;
     public bool cheatGodMode = false;
     public bool cheatAutoFlagMode = false;
 
@@ -119,13 +120,19 @@ public class GameManager : MonoBehaviour
         inputManager = InputManager.Instance;
 
         GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().runs += 1;
-        /*blankTile = Instantiate(new GameObject(), new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;        
-        blankTile.AddComponent<Tile>();
-        blankTile.GetComponent<Tile>().isDisplay = true;
-        blankTile.name = "Blank Tile";*/
 
-        BuildGameBoard();
+        if (!isTitleMenu)   
+        {
+            GameModifiers gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
+            linesClearedTarget = gameMods.targetLines;
+
+            if (gameMods.lineClearTrigger == GameModifiers.LineClearTriggerType.clearInstantly)
+                lineClearInstantly = true;
+            else
+                lineClearInstantly = false;
+        }
         
+        BuildGameBoard();        
         startTime = Time.time;
         //PopulateMines();
     }
@@ -1118,7 +1125,8 @@ public class GameManager : MonoBehaviour
     }
     public void Quit()
     {
-        Application.Quit();
+        if (Application.platform != RuntimePlatform.WebGLPlayer)
+            Application.Quit();
         hasQuit = true;    
     }
     public void PauseFromButton(bool pause) 

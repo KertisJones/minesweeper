@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1594162120200497929}
   - component: {fileID: 1594162120200497934}
   m_Layer: 5
-  m_Name: Marathon Complete Menu
+  m_Name: Game Complete Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1594162120200497929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 1594162120211274112}
   - component: {fileID: 1594162120211274113}
   - component: {fileID: 1594162120211274118}
+  - component: {fileID: 2060744751638137280}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -360,6 +361,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineWidth: 0.3
   color: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &2060744751638137280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594162120211274116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44d06f710c655046a4b2e2cb381ff3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayType: 16
 --- !u!1 &1594162120379727811
 GameObject:
   m_ObjectHideFlags: 0

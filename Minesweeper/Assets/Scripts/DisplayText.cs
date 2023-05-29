@@ -8,10 +8,12 @@ public class DisplayText : MonoBehaviour
 {
     GameManager gm;
     ScoreKeeper sk;
+    GameModifiers gameMods;
     /*float timer = 0.0f;
     int colorIndex = 0;
     private Color startColor = Color.red;*/
     private Color startColor = Color.white;
+    private float startFontSize = 12;
     public enum TextType // your custom enumeration
     {
         score, 
@@ -28,7 +30,9 @@ public class DisplayText : MonoBehaviour
         level,
         tSpinSweeps,
         TESTCurrentMinoLockDelay,
-        TESTCurrentMinoRotation
+        TESTCurrentMinoRotation,
+        gameModeName,
+        gameModeNameComplete
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
@@ -37,7 +41,10 @@ public class DisplayText : MonoBehaviour
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         sk = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>();
+        gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
+
         startColor = this.GetComponent<TextMeshProUGUI>().color;
+        startFontSize = this.GetComponent<TextMeshProUGUI>().fontSize;
     }
 
     // Update is called once per frame
@@ -127,10 +134,18 @@ public class DisplayText : MonoBehaviour
         else if (displayType == TextType.time)
         {
             float time = gm.GetTime();
+            int milliseconds = (int)(time * 1000f) % 1000;
             int seconds = ((int)time % 60);
             int minutes = ((int) time / 60);
-
-            this.GetComponent<TextMeshProUGUI>().text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
+            
+            if (gameMods.detailedTimer)
+            {
+                this.GetComponent<TextMeshProUGUI>().text = "Time: " + string.Format("{0:00}:{1:00}.{2:000}", minutes, seconds, milliseconds);
+            }
+            else
+            {
+                this.GetComponent<TextMeshProUGUI>().text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
+            }            
         }
         else if (displayType == TextType.bestScore)
         {
@@ -175,9 +190,16 @@ public class DisplayText : MonoBehaviour
         else if (displayType == TextType.quit)
         {
             if (Application.platform == RuntimePlatform.WebGLPlayer && gm.hasQuit)
+            {
                 this.GetComponent<TextMeshProUGUI>().text = "Can't Quit in Browser";
+                this.GetComponent<TextMeshProUGUI>().fontSize = 8;
+            }                
             else
+            {
                 this.GetComponent<TextMeshProUGUI>().text = "Quit";
+                this.GetComponent<TextMeshProUGUI>().fontSize = startFontSize;                
+            }
+                
         }
         else if (displayType == TextType.level)
         {
@@ -247,6 +269,14 @@ public class DisplayText : MonoBehaviour
                         break;
                 }
             }
+        }
+        else if (displayType == TextType.gameModeName)
+        {
+            this.GetComponent<TextMeshProUGUI>().text = gameMods.gameModeName;
+        }
+        else if (displayType == TextType.gameModeNameComplete)
+        {
+            this.GetComponent<TextMeshProUGUI>().text = gameMods.gameModeName + " Complete!";
         }
     }
 }

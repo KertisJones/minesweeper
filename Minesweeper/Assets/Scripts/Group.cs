@@ -436,8 +436,8 @@ public class Group : MonoBehaviour
         // Basic Fall
         if (Time.time - lastFall >= fallSpeed)// || isSoftDrop || isHardDrop)
         {
-            Fall();//fallDistance, isHardDrop);
             canHardDrop = true;
+            Fall();//fallDistance, isHardDrop);            
         }
 
         // Lock Delay
@@ -507,7 +507,9 @@ public class Group : MonoBehaviour
             LockTetrominoDelay();
         }
 
-        lastFall = Time.time;
+        if (canHardDrop)
+            lastFall = Time.time;
+        
     }
 
     void DetectIfLanded(bool rumble = false)
