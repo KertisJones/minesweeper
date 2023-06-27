@@ -164,5 +164,8 @@ public class HoldTetromino : MonoBehaviour
         }
         
         gm.AddScore(250);
+
+        if (!CleanseIsPossible())
+            Tooltip.HideTooltip_Static();
     }
 }

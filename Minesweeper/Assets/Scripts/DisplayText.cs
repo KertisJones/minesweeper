@@ -36,6 +36,8 @@ public class DisplayText : MonoBehaviour
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
+    string tooltipString = "";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -185,6 +187,7 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TextMeshProUGUI>().text = "Tetrisweeps: " + gm.tetrisweepsCleared;
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                 this.GetComponent<VertexColorCyclerGradient>().enabled = true;
+                tooltipString = "Tetrisweep is when you clear all 4 lines in a 4-line tetris you just filled, before the next tetromino locks into place.";
             }
         }
         else if (displayType == TextType.quit)
@@ -214,6 +217,7 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TextMeshProUGUI>().text = "T-Spinsweeps: " + gm.tSpinsweepsCleared;
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                 this.GetComponent<VertexColorCyclerGradient>().enabled = true;
+                tooltipString = "T-Spinsweep is when you score a T-spin and clear every line that the T tetromino filled, before the next tetromino locks into place.";
             }            
         }
         else if (displayType == TextType.TESTCurrentMinoLockDelay)
@@ -279,4 +283,17 @@ public class DisplayText : MonoBehaviour
             this.GetComponent<TextMeshProUGUI>().text = gameMods.gameModeName + " Complete!";
         }
     }
+
+    public void MouseOverTextEnter()
+    {
+        if (tooltipString != "")
+            Tooltip.ShowTooltip_Static(tooltipString);
+    }
+
+    public void MouseOverTextExit()
+    {
+        if (tooltipString != "")
+            Tooltip.HideTooltip_Static();
+    }
+
 }

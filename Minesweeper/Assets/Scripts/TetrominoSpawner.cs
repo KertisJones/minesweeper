@@ -32,7 +32,7 @@ public class TetrominoSpawner : MonoBehaviour
         int i = Random.Range(0, groupStack.Count);
 
         // Spawn Group at current Position
-        nextTetromino = Instantiate((GameObject)groupStack[i], previewTarget.position, Quaternion.identity);
+        nextTetromino = Instantiate((GameObject)groupStack[i], previewTarget.position, Quaternion.identity, this.transform);
         nextTetromino.GetComponent<Group>().isHeld = true;
 
         groupStack.Remove(groupStack[i]);

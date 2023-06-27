@@ -13,7 +13,8 @@ public class Tooltip : MonoBehaviour
     bool isActive = false;
     bool isVisible = false;
     float timeDelay = 0;
-
+    float timePrev = 0;
+    public Vector2 positionOffset = new Vector2();
     string tooltipString = "";
     
     void Awake()
@@ -34,7 +35,7 @@ public class Tooltip : MonoBehaviour
         //backgroundRectTransform = transform.Fin .GetComponent<RectTransform>();
         //tooltipText = transform. Find ("text") .GetComponent<TMPro.TMP_Text>();
 
-        //ShowTooltip("This is a tooltip!");
+        //ShowTooltip_Static("This is a tooltip!");
     }
 
     private void ShowTooltip()
@@ -90,17 +91,19 @@ public class Tooltip : MonoBehaviour
                     showText += abc[Random.RandomRange(0, abc.Length)];
                 }
             }
-            ShowTooltip(showText);
+            ShowTooltip_Static(showText);
         }
-        timePrev += Time.deltaTime;      */  
+        timePrev += Time.deltaTime;   */   
     }
 
     private void UpdatePosition() 
-    {
+    { 
         Vector2 localPoint = new Vector2();
         RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), inputManager.GetMousePosition(), cam, out localPoint);
         RectTransform parentCanvasRect = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
-        localPoint += new Vector2(parentCanvasRect.position.x * parentCanvasRect.localScale.x, parentCanvasRect.position.y * parentCanvasRect.localScale.y);
+        localPoint *= parentCanvasRect.localScale;
+        localPoint += new Vector2(parentCanvasRect.position.x, parentCanvasRect.position.y);                
+        localPoint += positionOffset;
         transform.position = new Vector3(localPoint.x, localPoint.y, transform.position.z);
     }
 
