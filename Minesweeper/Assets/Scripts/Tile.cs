@@ -23,6 +23,7 @@ public class Tile : MonoBehaviour
     public bool isDestroyed = false;
     public bool isRowSolved = false;
     public bool is8Triggered = false;
+    public bool isFailedToChord = false;
     public Color solvedMarkColor;
 
     public AudioClip revealSound;
@@ -37,6 +38,7 @@ public class Tile : MonoBehaviour
     
     GameManager gm;
     Camera cam;
+    HoldTetromino holdTetromino;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,7 @@ public class Tile : MonoBehaviour
         text = GetComponentInChildren<TextMeshProUGUI>();
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        holdTetromino = GameObject.FindGameObjectWithTag("Hold").GetComponent<HoldTetromino>();
 
         Vector2 v = GameManager.roundVec2(transform.position);
         coordX = (int)v.x;
@@ -216,8 +219,18 @@ public class Tile : MonoBehaviour
 
             gm.currentFlags += 1;
 
+            if (isMine)
+            {
+                if (!isFailedToChord)
+                    holdTetromino.cleanseRechargeCounter++;
+            }                
+            else
+            {
+                holdTetromino.cleanseRechargeCounter = 0;
+            }
+
             if (gm.lineClearInstantly)
-                GameManager.deleteFullRows();            
+                GameManager.deleteFullRows();
             GameManager.CheckForPossiblePerfectClear();
         }
         else
@@ -226,6 +239,17 @@ public class Tile : MonoBehaviour
             AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
             gm.ResetScoreMultiplier();
+            holdTetromino.cleanseRechargeCounter = 0;
+
+            /*
+            +30K, -70K
+            +33k, -42k
+            +23k, -14k
+            +24k, -38k
+            ......
+            +70k, -32k
+            +16k, -10k
+            */
 
             gm.currentFlags -= 1;
         }
@@ -252,7 +276,7 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public void Reveal(bool isAutomatic = false)
+    public void Reveal(bool isAutomatic = false, bool isManual = false)
     {
         if (!isRevealed && !isFlagged && !isDisplay && (!GetComponentInParent<Group>().isHeld || isAutomatic))
         {
@@ -275,14 +299,25 @@ public class Tile : MonoBehaviour
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
+                if (isManual && !isFailedToChord)
+                    holdTetromino.cleanseRechargeCounter++;
+
                 // Scoring
                 if (!GetComponentInParent<Group>().isDisplay && !GetComponentInParent<Group>().isFalling && !GetComponentInParent<Group>().isHeld)
                 {
                     // If the mino is falling, don't give a huge bonus for being revealed in the air
                     if (GetComponentInParent<Group>().isFalling)
-                        gm.AddScore(nearbyMines * nearbyMines);
+                    {
+                        gm.AddScore(nearbyMines); // * nearbyMines
+                        holdTetromino.scoreMissingTest += Mathf.FloorToInt(((nearbyMines * nearbyMines) - nearbyMines) * gm.level * (1 + gm.GetScoreMultiplier()));
+                    }                        
                     else
-                        gm.AddScore(nearbyMines * nearbyMines * (coordY + 1));
+                    {
+                        gm.AddScore(nearbyMines * (coordY + 1)); // * nearbyMines
+                        holdTetromino.scoreMissingTest += Mathf.FloorToInt(((nearbyMines * nearbyMines * (coordY + 1)) - (nearbyMines * (coordY + 1))) * gm.level * (1 + gm.GetScoreMultiplier()));
+                    }
+                        
+                    
                     gm.SetScoreMultiplier(1, 1f, true);
                 }
             }
@@ -330,18 +365,95 @@ public class Tile : MonoBehaviour
     {
         DetectProximity();
 
+        if (GetComponentInParent<Group>() != null)
+            if (GetComponentInParent<Group>().isHeld)
+                return;
+
+
         //Debug.Log("Attempting Chord...");
-        if (isRevealed && nearbyFlags == nearbyMines && !isMine)
+        if (isRevealed && !isMine)
         {
-            //Debug.Log("Chording!");
-            foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
+            if (nearbyFlags == nearbyMines)
             {
-                if (!t.isFlagged)
-                    t.Reveal();
+                //Debug.Log("Chording!");
+                foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
+                {
+                    if (!t.isFlagged)
+                    {
+                        if (!t.isDisplay)    
+                        {
+                            t.Reveal(false, true);      
+                        }
+                    }                                        
+                }
             }
+            else
+            {
+                foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
+                {
+                    if (!t.isFlagged)
+                    {
+                        if (!t.isDisplay)
+                        {
+                            t.isFailedToChord = true;
+                        }
+                    }                                        
+                }
+            }
+            
         }
+
+        //ChordFlag();
         //else
             //Debug.Log("Chord Failed.");
+    }
+
+    public void ChordFlag()
+    {
+        DetectProximity();
+
+        if (GetComponentInParent<Group>() != null)
+            if (GetComponentInParent<Group>().isHeld)
+                return;
+
+        //Debug.Log("Attempting Flag Chord...");
+        if (isRevealed && !isMine)
+        {
+            ArrayList adjacentUnopenedTiles = new ArrayList();
+
+            foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
+            {
+                if (!t.isDisplay && !t.isRevealed)
+                {
+                    adjacentUnopenedTiles.Add(t);
+                }                                        
+            }
+
+            if (nearbyMines == adjacentUnopenedTiles.Count) // Flag Chord
+            {
+                //Debug.Log("Flag Chording!");
+                foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
+                {
+                    if (!t.isFlagged)
+                    {
+                        t.FlagToggle();
+                    }                                        
+                }
+            }
+            else
+            {
+                foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
+                {
+                    if (!t.isFlagged)
+                    {
+                        t.isFailedToChord = true;
+                    }                                        
+                }
+            }
+            
+        }
+        //else
+            //Debug.Log("Flag Chord Failed.");
     }
 
     void DetectProximity()

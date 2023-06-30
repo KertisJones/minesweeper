@@ -136,15 +136,6 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Chord Tile"",
-                    ""type"": ""Button"",
-                    ""id"": ""21efb4ff-75b6-4f57-9b07-4038c4be3829"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""MousePosition"",
                     ""type"": ""PassThrough"",
                     ""id"": ""dac188d0-0e54-41a1-98d8-ae28de452b08"",
@@ -602,17 +593,6 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6a78fa1e-4eb6-4d5a-b4d5-dff65feea682"",
-                    ""path"": ""<Mouse>/middleButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Chord Tile"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""93f9e214-627f-4ce7-9c14-88ed280707b1"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
@@ -676,17 +656,6 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                     ""action"": ""Cleanse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b06992ce-82a1-4b83-853e-73ac21437d7a"",
-                    ""path"": ""<Keyboard>/comma"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Chord Tile"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -713,7 +682,6 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
         m_TetrisweepMap_HardClear = m_TetrisweepMap.FindAction("Hard Clear", throwIfNotFound: true);
         m_TetrisweepMap_RevealTile = m_TetrisweepMap.FindAction("Reveal Tile", throwIfNotFound: true);
         m_TetrisweepMap_FlagTile = m_TetrisweepMap.FindAction("Flag Tile", throwIfNotFound: true);
-        m_TetrisweepMap_ChordTile = m_TetrisweepMap.FindAction("Chord Tile", throwIfNotFound: true);
         m_TetrisweepMap_MousePosition = m_TetrisweepMap.FindAction("MousePosition", throwIfNotFound: true);
         m_TetrisweepMap_InputScroll = m_TetrisweepMap.FindAction("InputScroll", throwIfNotFound: true);
         m_TetrisweepMap_AnyKey = m_TetrisweepMap.FindAction("AnyKey", throwIfNotFound: true);
@@ -791,7 +759,6 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_TetrisweepMap_HardClear;
     private readonly InputAction m_TetrisweepMap_RevealTile;
     private readonly InputAction m_TetrisweepMap_FlagTile;
-    private readonly InputAction m_TetrisweepMap_ChordTile;
     private readonly InputAction m_TetrisweepMap_MousePosition;
     private readonly InputAction m_TetrisweepMap_InputScroll;
     private readonly InputAction m_TetrisweepMap_AnyKey;
@@ -812,7 +779,6 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
         public InputAction @HardClear => m_Wrapper.m_TetrisweepMap_HardClear;
         public InputAction @RevealTile => m_Wrapper.m_TetrisweepMap_RevealTile;
         public InputAction @FlagTile => m_Wrapper.m_TetrisweepMap_FlagTile;
-        public InputAction @ChordTile => m_Wrapper.m_TetrisweepMap_ChordTile;
         public InputAction @MousePosition => m_Wrapper.m_TetrisweepMap_MousePosition;
         public InputAction @InputScroll => m_Wrapper.m_TetrisweepMap_InputScroll;
         public InputAction @AnyKey => m_Wrapper.m_TetrisweepMap_AnyKey;
@@ -862,9 +828,6 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                 @FlagTile.started -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnFlagTile;
                 @FlagTile.performed -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnFlagTile;
                 @FlagTile.canceled -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnFlagTile;
-                @ChordTile.started -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnChordTile;
-                @ChordTile.performed -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnChordTile;
-                @ChordTile.canceled -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnChordTile;
                 @MousePosition.started -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_TetrisweepMapActionsCallbackInterface.OnMousePosition;
@@ -917,9 +880,6 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
                 @FlagTile.started += instance.OnFlagTile;
                 @FlagTile.performed += instance.OnFlagTile;
                 @FlagTile.canceled += instance.OnFlagTile;
-                @ChordTile.started += instance.OnChordTile;
-                @ChordTile.performed += instance.OnChordTile;
-                @ChordTile.canceled += instance.OnChordTile;
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
@@ -975,7 +935,6 @@ public partial class @ControlInput : IInputActionCollection2, IDisposable
         void OnHardClear(InputAction.CallbackContext context);
         void OnRevealTile(InputAction.CallbackContext context);
         void OnFlagTile(InputAction.CallbackContext context);
-        void OnChordTile(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnInputScroll(InputAction.CallbackContext context);
         void OnAnyKey(InputAction.CallbackContext context);

@@ -177,6 +177,12 @@ public class DisplayText : MonoBehaviour
         else if (displayType == TextType.linesCleared)
         {
             this.GetComponent<TextMeshProUGUI>().text = "Lines: " + gm.linesCleared;
+            if (gm.linesCleared == 69)
+                tooltipString = "nice";
+            else if (gm.linesCleared == 420)
+                tooltipString = "Everyday?";
+            else
+                tooltipString = "";
         }
         else if (displayType == TextType.tetrisweepsCleard)
         {

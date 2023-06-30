@@ -520,7 +520,7 @@ public class GameManager : MonoBehaviour
         {
             // The active tetromino should not change position, unless it needs to fall in order for blocks above it to have a place to land
             activeTetrominoInRow.WallKickMove(0, 1); // Attempt to move the tetromino up. This will do nothing if the space is blocked
-            activeTetrominoInRow.Fall(); // Move the tetromino down. This will put it back in the same place if it was moved up, otherwise it will get the tetromino out of the way
+            activeTetrominoInRow.Fall(1, false, false); // Move the tetromino down. This will put it back in the same place if it was moved up, otherwise it will get the tetromino out of the way
         }
     }
 

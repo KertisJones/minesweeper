@@ -8,6 +8,7 @@ TagManager:
   - ScoreKeeper
   - FxTemporaire
   - Volume
+  - Hold
   layers:
   - Default
   - TransparentFX

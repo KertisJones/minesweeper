@@ -462,7 +462,7 @@ public class Group : MonoBehaviour
         Fall();
     }
 
-    public void Fall(int fallDistance = 1, bool isHardDrop = false)
+    public void Fall(int fallDistance = 1, bool isHardDrop = false, bool isManualFall = true)
     {
         // Modify position
         transform.position += new Vector3(0, fallDistance * -1, 0);
@@ -483,7 +483,8 @@ public class Group : MonoBehaviour
             else
             {
                 //int oldbottomHeight = bottomHeight;
-                LockDelayReset(true);
+                if (isManualFall)
+                    LockDelayReset(true);
                 // It's valid. Update grid.
                 UpdateGrid();
 

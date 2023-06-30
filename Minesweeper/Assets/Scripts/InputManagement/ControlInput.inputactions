@@ -114,15 +114,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Chord Tile",
-                    "type": "Button",
-                    "id": "21efb4ff-75b6-4f57-9b07-4038c4be3829",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "MousePosition",
                     "type": "PassThrough",
                     "id": "dac188d0-0e54-41a1-98d8-ae28de452b08",
@@ -580,17 +571,6 @@
                 },
                 {
                     "name": "",
-                    "id": "6a78fa1e-4eb6-4d5a-b4d5-dff65feea682",
-                    "path": "<Mouse>/middleButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Chord Tile",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "93f9e214-627f-4ce7-9c14-88ed280707b1",
                     "path": "<Mouse>/position",
                     "interactions": "",
@@ -652,17 +632,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Cleanse",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b06992ce-82a1-4b83-853e-73ac21437d7a",
-                    "path": "<Keyboard>/comma",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Chord Tile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

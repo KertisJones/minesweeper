@@ -32,7 +32,7 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         inputManager.revealTilePress.canceled += _ => ReleaseReveal();
         inputManager.flagTilePress.started += _ => PressFlag();
         inputManager.flagTilePress.canceled += _ => ReleaseFlag();
-        inputManager.chordTilePress.started += _ => PressChord();
+        //inputManager.chordTilePress.started += _ => PressChord();
     }
     void OnDisable()
     {
@@ -40,7 +40,7 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         inputManager.revealTilePress.canceled -= _ => ReleaseReveal();
         inputManager.flagTilePress.started -= _ => PressFlag();
         inputManager.flagTilePress.canceled -= _ => ReleaseFlag();
-        inputManager.chordTilePress.started -= _ => PressChord();
+        //inputManager.chordTilePress.started -= _ => PressChord();
     }
     void PressReveal()
     {
@@ -51,7 +51,11 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         
         if (hover)
         {
-            tile.Reveal();
+            if (tile.isRevealed)
+                tile.Chord();
+            else
+                tile.Reveal(false, true);
+            
             if (buttonFlagDown)
                 tile.Chord();
         }
@@ -70,7 +74,11 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             return;        
         if (hover)
         {
-            tile.FlagToggle();
+            if (tile.isRevealed)
+                tile.ChordFlag();
+            else
+                tile.FlagToggle();
+            
             if (buttonRevealDown)
                 tile.Chord();
         }
@@ -81,7 +89,7 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         buttonFlagDown = false;
     }
-    void PressChord()
+    /*void PressChord()
     {
         if (gm == null)
             return;
@@ -92,7 +100,7 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             //tile.FlagToggle();
             tile.Chord();
         }        
-    }
+    }*/
     #endregion
 
 

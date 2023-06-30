@@ -27,6 +27,7 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
     public InputAction revealTilePress;
     public InputAction flagTilePress;
     public InputAction chordTilePress;
+    public InputAction chordFlagTilePress;
     public InputAction anyKey; // Any key pressed
     public InputAction inputScroll; // Scroll input
     public InputAction cleansePress;
@@ -102,7 +103,8 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
         hardClearPress = controlInput.TetrisweepMap.HardClear;
         revealTilePress = controlInput.TetrisweepMap.RevealTile;
         flagTilePress = controlInput.TetrisweepMap.FlagTile;
-        chordTilePress = controlInput.TetrisweepMap.ChordTile;
+        //chordTilePress = controlInput.TetrisweepMap.ChordTile;
+        //chordFlagTilePress = controlInput.TetrisweepMap.ChordFlagTile;
         anyKey = controlInput.TetrisweepMap.AnyKey;
         inputScroll = controlInput.TetrisweepMap.InputScroll;
         cleansePress = controlInput.TetrisweepMap.Cleanse;

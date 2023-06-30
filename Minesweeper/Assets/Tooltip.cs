@@ -11,9 +11,9 @@ public class Tooltip : MonoBehaviour
     public RectTransform backgroundRectTransform;
     
     bool isActive = false;
-    bool isVisible = false;
+    //bool isVisible = false;
     float timeDelay = 0;
-    float timePrev = 0;
+    //float timePrev = 0;
     public Vector2 positionOffset = new Vector2();
     string tooltipString = "";
     
@@ -40,7 +40,7 @@ public class Tooltip : MonoBehaviour
 
     private void ShowTooltip()
     {
-        isVisible = true;
+        //isVisible = true;
         //gameObject.SetActive(true);
         tooltipText.gameObject.SetActive(true);
         backgroundRectTransform.gameObject.SetActive(true);
@@ -113,14 +113,14 @@ public class Tooltip : MonoBehaviour
         tooltipText.gameObject.SetActive(false);
         backgroundRectTransform.gameObject.SetActive(false);
         isActive = false;
-        isVisible = false;
+        //isVisible = false;
         timeDelay = 0;
     }
 
     public static void ShowTooltip_Static(string tooltipNewString)
     {
         Instance.isActive = true;     
-        Instance.isVisible = false;
+        //Instance.isVisible = false;
         Instance.timeDelay = 0;   
         Instance.tooltipString = tooltipNewString;
     }

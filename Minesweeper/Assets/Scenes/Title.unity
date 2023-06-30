@@ -10070,6 +10070,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  chordFlagTilePress:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   anyKey:
     m_Name: Any Key
     m_Type: 0
@@ -13267,7 +13276,7 @@ GameObject:
   - component: {fileID: 1253570318}
   m_Layer: 0
   m_Name: Hold Frame
-  m_TagString: Untagged
+  m_TagString: Hold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13290,6 +13299,10 @@ MonoBehaviour:
   heldTetrominoPrevious: {fileID: 0}
   swapPartner: {fileID: 0}
   cleanseButton: {fileID: 1054400592}
+  cleansePointText: {fileID: 0}
+  cleansePointRechargeText: {fileID: 0}
+  scoreMissingTest: 0
+  cleanseRechargeCounter: 0
 --- !u!4 &1253570319
 Transform:
   m_ObjectHideFlags: 0
@@ -13802,7 +13815,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Buy me a coffee!
+            m_StringArgument: Download the standalone version!
             m_BoolArgument: 0
           m_CallState: 2
   - eventID: 1
@@ -16805,7 +16818,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v1.8.0 Beta
+  m_text: v1.8.1 Beta
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
   m_sharedMaterial: {fileID: 4449517523809245107, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
