@@ -222,11 +222,24 @@ public class Tile : MonoBehaviour
             if (isMine)
             {
                 if (!isFailedToChord)
-                    holdTetromino.cleanseRechargeCounter++;
+                {
+                    if (coordY == 0)
+                    {
+                        holdTetromino.AddToManualSolveStreak(false, true);
+                    }                        
+                    else if ((coordX == 0 || coordX == 9) && (gm.safeEdgeTilesGained > coordY))
+                    {
+                        holdTetromino.AddToManualSolveStreak(false, true);
+                    }                        
+                    else
+                    {
+                        holdTetromino.AddToManualSolveStreak(true);//.manualTileSolveStreak++; 
+                    }
+                }
             }                
             else
             {
-                holdTetromino.cleanseRechargeCounter = 0;
+                holdTetromino.ResetManualSolvePerfectStreak();//.manualTileSolveStreak = 0;
             }
 
             if (gm.lineClearInstantly)
@@ -239,7 +252,7 @@ public class Tile : MonoBehaviour
             AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
             gm.ResetScoreMultiplier();
-            holdTetromino.cleanseRechargeCounter = 0;
+            holdTetromino.ResetManualSolveStreak();//.manualTileSolveStreak = 0;
 
             /*
             +30K, -70K
@@ -300,7 +313,21 @@ public class Tile : MonoBehaviour
                 AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
                 if (isManual && !isFailedToChord)
-                    holdTetromino.cleanseRechargeCounter++;
+                {
+                    if (coordY == 0)
+                    {
+                        holdTetromino.AddToManualSolveStreak(false, true);
+                    }                        
+                    else if ((coordX == 0 || coordX == 9) && (gm.safeEdgeTilesGained > coordY))
+                    {
+                        holdTetromino.AddToManualSolveStreak(false, true);
+                    }                        
+                    else
+                    {
+                        holdTetromino.AddToManualSolveStreak(true);//.manualTileSolveStreak++; 
+                    }                        
+                }
+                    
 
                 // Scoring
                 if (!GetComponentInParent<Group>().isDisplay && !GetComponentInParent<Group>().isFalling && !GetComponentInParent<Group>().isHeld)
@@ -396,6 +423,7 @@ public class Tile : MonoBehaviour
                         if (!t.isDisplay)
                         {
                             t.isFailedToChord = true;
+                            holdTetromino.ResetManualSolvePerfectStreak(); //holdTetromino.manualTileSolveStreak = 0;
                         }
                     }                                        
                 }
@@ -447,6 +475,7 @@ public class Tile : MonoBehaviour
                     if (!t.isFlagged)
                     {
                         t.isFailedToChord = true;
+                        holdTetromino.ResetManualSolvePerfectStreak();//.manualTileSolveStreak = 0;
                     }                                        
                 }
             }

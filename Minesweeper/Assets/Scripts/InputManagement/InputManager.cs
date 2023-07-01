@@ -103,8 +103,8 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
         hardClearPress = controlInput.TetrisweepMap.HardClear;
         revealTilePress = controlInput.TetrisweepMap.RevealTile;
         flagTilePress = controlInput.TetrisweepMap.FlagTile;
-        //chordTilePress = controlInput.TetrisweepMap.ChordTile;
-        //chordFlagTilePress = controlInput.TetrisweepMap.ChordFlagTile;
+        chordTilePress = controlInput.TetrisweepMap.ChordTile;
+        chordFlagTilePress = controlInput.TetrisweepMap.ChordFlagTile;
         anyKey = controlInput.TetrisweepMap.AnyKey;
         inputScroll = controlInput.TetrisweepMap.InputScroll;
         cleansePress = controlInput.TetrisweepMap.Cleanse;
@@ -191,7 +191,7 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
             actionToRebind.Enable();
             operation.Dispose();
 
-            if (!allowDuplicates)
+            if (!allowDuplicates || actionToRebind.name == "Chord Tile" || actionToRebind.name == "Chord Flag Tile")
             {
                 if (CheckDuplicateBindings(actionToRebind, bindingIndex, allCompositeParts))
                 {
@@ -251,6 +251,15 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
                 if ((binding.action == "Flag Tile" && newBinding.action == "Chord Tile") || (newBinding.action == "Flag Tile" && binding.action == "Chord Tile")
                     || (binding.action == "Reveal Tile" && newBinding.action == "Chord Tile") || (newBinding.action == "Reveal Tile" && binding.action == "Chord Tile"))
                 {
+                    continue;
+                }
+                else if (binding.action == "Chord Flag Tile" || newBinding.action == "Chord Tile" || newBinding.action == "Chord Flag Tile" || binding.action == "Chord Tile")
+                {
+                    if ((binding.action == "Chord Flag Tile" && newBinding.action == "Chord Tile") || (newBinding.action == "Chord Flag Tile" && binding.action == "Chord Tile"))
+                    {
+                        Debug.Log("Duplicate binding found: " + newBinding.effectivePath + " with " + binding.action);
+                        return true;
+                    }
                     continue;
                 }
                 else

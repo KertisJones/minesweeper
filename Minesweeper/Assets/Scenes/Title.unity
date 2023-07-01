@@ -13301,8 +13301,10 @@ MonoBehaviour:
   cleanseButton: {fileID: 1054400592}
   cleansePointText: {fileID: 0}
   cleansePointRechargeText: {fileID: 0}
+  manualTileSolvePerfectStreakIncludedWallsTEST: 0
+  manualTileSolvePerfectStreakIncludedWallsHighestScoreTEST: 0
   scoreMissingTest: 0
-  cleanseRechargeCounter: 0
+  manualTileSolvePerfectStreakIncludedWallsHighestTEST: 0
 --- !u!4 &1253570319
 Transform:
   m_ObjectHideFlags: 0
@@ -16818,7 +16820,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v1.8.1 Beta
+  m_text: v1.8.2 Beta
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
   m_sharedMaterial: {fileID: 4449517523809245107, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
@@ -20944,15 +20946,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5980658753320826131, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
       propertyPath: m_text
-      value: Hard Clear
+      value: Rotate Clockwise
       objectReference: {fileID: 0}
     - target: {fileID: 5980658753653558547, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
       propertyPath: m_text
-      value: Rotate Counter-Clockwise
+      value: Rotate Clockwise
       objectReference: {fileID: 0}
     - target: {fileID: 5980658754296809790, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
       propertyPath: m_text
-      value: Flag Tile
+      value: Rotate Clockwise
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
@@ -21563,6 +21565,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 7129975174766691700, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7129975174766691702, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: speed
       value: 0.8

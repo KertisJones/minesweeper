@@ -32,7 +32,8 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         inputManager.revealTilePress.canceled += _ => ReleaseReveal();
         inputManager.flagTilePress.started += _ => PressFlag();
         inputManager.flagTilePress.canceled += _ => ReleaseFlag();
-        //inputManager.chordTilePress.started += _ => PressChord();
+        inputManager.chordTilePress.started += _ => PressChord();
+        inputManager.chordFlagTilePress.started += _ => PressChordFlag();
     }
     void OnDisable()
     {
@@ -40,7 +41,8 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         inputManager.revealTilePress.canceled -= _ => ReleaseReveal();
         inputManager.flagTilePress.started -= _ => PressFlag();
         inputManager.flagTilePress.canceled -= _ => ReleaseFlag();
-        //inputManager.chordTilePress.started -= _ => PressChord();
+        inputManager.chordTilePress.started -= _ => PressChord();
+        inputManager.chordFlagTilePress.started -= _ => PressChordFlag();
     }
     void PressReveal()
     {
@@ -51,10 +53,7 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         
         if (hover)
         {
-            if (tile.isRevealed)
-                tile.Chord();
-            else
-                tile.Reveal(false, true);
+            tile.Reveal(false, true);
             
             if (buttonFlagDown)
                 tile.Chord();
@@ -73,11 +72,8 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (gm.isGameOver || gm.isPaused || tile == null)
             return;        
         if (hover)
-        {
-            if (tile.isRevealed)
-                tile.ChordFlag();
-            else
-                tile.FlagToggle();
+        {            
+            tile.FlagToggle();
             
             if (buttonRevealDown)
                 tile.Chord();
@@ -89,18 +85,30 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         buttonFlagDown = false;
     }
-    /*void PressChord()
+    void PressChord()
     {
         if (gm == null)
             return;
         if (gm.isGameOver || gm.isPaused || tile == null)
             return;
-        if (hover)
+        if (hover && tile.isRevealed)
         {
             //tile.FlagToggle();
             tile.Chord();
         }        
-    }*/
+    }
+    void PressChordFlag()
+    {
+        if (gm == null)
+            return;
+        if (gm.isGameOver || gm.isPaused || tile == null)
+            return;
+        if (hover && tile.isRevealed)
+        {
+            //tile.FlagToggle();
+            tile.ChordFlag();
+        }        
+    }
     #endregion
 
 

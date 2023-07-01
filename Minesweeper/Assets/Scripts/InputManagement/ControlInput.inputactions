@@ -105,9 +105,27 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Chord Tile",
+                    "type": "Button",
+                    "id": "373fb0e6-317c-4d13-8808-f5e52d8193ad",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Flag Tile",
                     "type": "Button",
                     "id": "11ffbcc9-dfe2-4ee7-897c-76d1c5959ecd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Chord Flag Tile",
+                    "type": "Button",
+                    "id": "9a1226aa-ba8e-4217-a020-e2b24d091f81",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press",
@@ -632,6 +650,61 @@
                     "processors": "",
                     "groups": "",
                     "action": "Cleanse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4508e877-31a0-4849-9a5d-00feafb7f437",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chord Tile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b8248a56-2797-49df-9ebe-115bd7a382a7",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chord Tile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b056f394-1062-489d-8364-858c712f1be3",
+                    "path": "<Keyboard>/comma",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chord Tile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "918f3ede-94ab-45ea-840d-cff8549278a8",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chord Flag Tile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4303112c-56e7-4e71-abee-e714d00a06e1",
+                    "path": "<Keyboard>/period",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chord Flag Tile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

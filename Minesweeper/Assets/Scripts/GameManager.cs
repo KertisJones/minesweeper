@@ -205,7 +205,7 @@ public class GameManager : MonoBehaviour
                     if (tempLevel > 30)
                         tempLevel = 30;
                     // Multiplier drain per tick will be half of the level
-                    int multiplierDrain = Mathf.CeilToInt(tempLevel / 2);
+                    int multiplierDrain = Mathf.CeilToInt(tempLevel / 4);
                     // If the level is a multiple of 5, increase it by 1 so that the display doesn't flash between .5 and no decimal; the true cap on marathon games is 16 at level 29.
                     if (multiplierDrain % 5 == 0)
                         multiplierDrain += 1;

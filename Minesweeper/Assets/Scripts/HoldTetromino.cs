@@ -15,10 +15,16 @@ public class HoldTetromino : MonoBehaviour
     public GameObject swapPartner;
     public GameObject cleanseButton;
     public TMPro.TMP_Text cleansePointText;
-    public TMPro.TMP_Text cleansePointRechargeText;
+    public TMPro.TMP_Text cleansePointRechargeText;    
+    int manualTileSolveStreak = 0;    
+    int manualTileSolvePerfectStreak = 0;    
+    public int manualTileSolvePerfectStreakIncludedWallsTEST = 0; 
+    public int manualTileSolvePerfectStreakIncludedWallsHighestScoreTEST = 0; 
     public int scoreMissingTest = 0;
-    int cleanseRechargeCounterHighestTest = 0;
-    public int cleanseRechargeCounter = 0;    
+    int cleanseScoreHighest = 0;
+    int manualTileSolveStreakHighest = 0;
+    int manualTileSolvePerfectStreakHighest = 0;
+    public int manualTileSolvePerfectStreakIncludedWallsHighestTEST = 0; 
     void Awake()
     {
         inputManager = InputManager.Instance;
@@ -39,12 +45,13 @@ public class HoldTetromino : MonoBehaviour
         {
             cleanseButton.SetActive(true);
             string exclamationSuffix = "";
-            for (int i = 0; i < Mathf.Min(5, (Mathf.FloorToInt(cleanseRechargeCounter / 100f))); i++)
+            for (int i = 0; i < Mathf.Min(5, (Mathf.FloorToInt(manualTileSolvePerfectStreak / 100f))); i++)
             {
                 exclamationSuffix += "!";
             }
-            cleanseRechargeCounterHighestTest = Math.Max(cleanseRechargeCounterHighestTest, Mathf.FloorToInt(cleanseRechargeCounter * 5 * gm.level * (1 + gm.GetScoreMultiplier()) * GetCleanseStreakMultiplier()));
-            cleansePointText.text = (cleanseRechargeCounter * 5 * gm.level * (1 + gm.GetScoreMultiplier()) * GetCleanseStreakMultiplier()).ToString("#,#") + " Points" + exclamationSuffix;
+            cleanseScoreHighest = Math.Max(cleanseScoreHighest, Mathf.FloorToInt(manualTileSolveStreak * 5 * gm.level * (1 + gm.GetScoreMultiplier()) * GetCleanseStreakMultiplier()));
+            manualTileSolvePerfectStreakIncludedWallsHighestScoreTEST = Math.Max(cleanseScoreHighest, Mathf.FloorToInt(manualTileSolvePerfectStreakIncludedWallsTEST * 5 * gm.level * (1 + gm.GetScoreMultiplier()) * GetCleanseStreakMultiplier()));
+            cleansePointText.text = (manualTileSolveStreak * 5 * gm.level * (1 + gm.GetScoreMultiplier()) * GetCleanseStreakMultiplier()).ToString("#,#") + " Points" + exclamationSuffix;
             if (GetCleanseStreakMultiplier() > 5)
             {
                 cleansePointText.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
@@ -59,7 +66,9 @@ public class HoldTetromino : MonoBehaviour
         else
             cleanseButton.SetActive(false);  
         if (cleansePointRechargeText != null)
-            cleansePointRechargeText.text = cleanseRechargeCounter + "\n+" + cleanseRechargeCounterHighestTest + "\n-" + scoreMissingTest;          
+            cleansePointRechargeText.text = manualTileSolveStreak + ", " + manualTileSolvePerfectStreak + ", " + manualTileSolvePerfectStreakIncludedWallsTEST + " (" + manualTileSolveStreakHighest + ", " + manualTileSolvePerfectStreakHighest + ", " + manualTileSolvePerfectStreakIncludedWallsHighestTEST + ")\n+" 
+            + cleanseScoreHighest + ", " + manualTileSolvePerfectStreakIncludedWallsHighestScoreTEST + "\n-" 
+            + scoreMissingTest;          
         /*if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.H) || Input.GetKeyDown(KeyCode.RightShift))
         {
             Hold();
@@ -147,7 +156,7 @@ public class HoldTetromino : MonoBehaviour
         // Don't allow Cleanse if player doesn't have enough edge tiles to spend
         //if (gm.safeEdgeTilesGained < 4)
             //return false;
-        if (cleanseRechargeCounter < 50)
+        if (manualTileSolveStreak < 50)
             return false;
 
         if (heldTetromino == null)
@@ -172,7 +181,7 @@ public class HoldTetromino : MonoBehaviour
         if (!CleanseIsPossible())
             return;
         
-        cleanseRechargeCounter = 0;
+        
         
         //gm.RemoveSafeTileFromEdges();
         //gm.RemoveSafeTileFromEdges();
@@ -194,13 +203,52 @@ public class HoldTetromino : MonoBehaviour
             tile.Reveal(true);
         }
         
-        gm.AddScore(cleanseRechargeCounter * 5 * GetCleanseStreakMultiplier());
+        gm.AddScore(manualTileSolveStreak * 5 * GetCleanseStreakMultiplier());
+        manualTileSolveStreak = 0;
 
         Tooltip.HideTooltip_Static();
     }
 
+    public void AddToManualSolveStreak(bool isPerfect, bool isEasyTile = false)
+    {
+        manualTileSolveStreak++; 
+
+        if (isPerfect)
+        {
+            manualTileSolvePerfectStreak++;
+            manualTileSolvePerfectStreakIncludedWallsTEST++;
+        }            
+        else if (isEasyTile)
+        {
+            manualTileSolvePerfectStreakIncludedWallsTEST++;
+        }
+        else
+        {
+            manualTileSolvePerfectStreak = 0;
+            manualTileSolvePerfectStreakIncludedWallsTEST = 0;
+        }
+            
+        
+        manualTileSolveStreakHighest = Mathf.Max(manualTileSolveStreak, manualTileSolveStreakHighest);
+        manualTileSolvePerfectStreakHighest = Mathf.Max(manualTileSolvePerfectStreak, manualTileSolvePerfectStreakHighest);
+
+        manualTileSolvePerfectStreakIncludedWallsHighestTEST = Mathf.Max(manualTileSolvePerfectStreakIncludedWallsTEST, manualTileSolvePerfectStreakIncludedWallsHighestTEST);
+    }
+
+    public void ResetManualSolveStreak()
+    {
+        manualTileSolveStreak = 0;
+        ResetManualSolvePerfectStreak();
+    }
+
+    public void ResetManualSolvePerfectStreak()
+    {
+        manualTileSolvePerfectStreak = 0;
+        manualTileSolvePerfectStreakIncludedWallsTEST = 0;
+    }
+
     int GetCleanseStreakMultiplier()
     {
-        return Mathf.Max(1, Mathf.FloorToInt(cleanseRechargeCounter / 100f));
+        return Mathf.Min(5, Mathf.Max(1, Mathf.FloorToInt(manualTileSolvePerfectStreak / 100f)));
     }
 }
