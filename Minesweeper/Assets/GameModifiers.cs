@@ -16,11 +16,14 @@ public class GameModifiers : MonoBehaviour
     
     public void SetGameToThisMode()
     {
-        GameModifiers gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
+        ScoreKeeper scoreKeeper = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>();
+        GameModifiers gameMods = scoreKeeper.GetComponent<GameModifiers>();
 
         gameMods.gameModeName = gameModeName;
         gameMods.lineClearTrigger = lineClearTrigger;
         gameMods.targetLines = targetLines;
         gameMods.detailedTimer = detailedTimer;
+
+        scoreKeeper.ResetScoreKeeper();
     }
 }

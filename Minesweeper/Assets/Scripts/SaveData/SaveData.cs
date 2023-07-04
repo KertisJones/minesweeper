@@ -7,9 +7,9 @@ public class SaveData
     [System.Serializable]
     public struct GameStatsData
     {
-        public GameManager.GameModeType gameModeType;
         public System.DateTime dateTime;
         public float m_score;
+        public bool m_isEndless;
         public float m_gameTime;
         public int m_level;
         public int m_linesCleared;
@@ -33,13 +33,15 @@ public class SaveData
         public int m_tSpinDouble;
         public int m_tSpinTriple;
     }
-    
     public float m_HiScore;
+    public float m_HiScoreEndless;
     public int m_linesClearedBest;
     public int m_tetrisweepsClearedBest;
     public int m_tSpinsweepsClearedBest;
+    public float m_gameTimeBest;
 
-    public float m_gameTimeTotal;
+    public int m_gamesPlayedTotal;
+    public float m_gameTimeTotal;    
     public int m_linesClearedTotal;
     public int m_piecesPlacedTotal;
     public int m_tetrisweepsClearedTotal;

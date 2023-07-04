@@ -135,44 +135,58 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.time)
         {
-            float time = gm.GetTime();
-            int milliseconds = (int)(time * 1000f) % 1000;
-            int seconds = ((int)time % 60);
-            int minutes = ((int) time / 60);
-            
-            if (gameMods.detailedTimer)
-            {
-                this.GetComponent<TextMeshProUGUI>().text = "Time: " + string.Format("{0:00}:{1:00}.{2:000}", minutes, seconds, milliseconds);
-            }
-            else
-            {
-                this.GetComponent<TextMeshProUGUI>().text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
-            }            
+            this.GetComponent<TextMeshProUGUI>().text = "Time: " + GetTimeString(gm.GetTime());
         }
         else if (displayType == TextType.bestScore)
         {
-            // Display Best Score Today while your current score is under Best Score Today, unless it's the first run of the game.
-            // Otherwise, display your total high score
+            if (!gm.gameMods.detailedTimer) // Normal score mode
+            {            
+                // Display Best Score Today while your current score is under Best Score Today, unless it's the first run of the game.
+                // Otherwise, display your total high score
 
-            if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
-                this.GetComponent<TextMeshProUGUI>().text = sk.bestScoreToday.ToString("#,#");
-            else if (sk.bestScore > 0) // Best Score Total
-                this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString("#,#"); 
-            else // Hi Score = 0 
-                this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString();
-            
-            if (sk.bestScore <= gm.GetScore() && sk.bestScore > 0)
-                this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
+                if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
+                    this.GetComponent<TextMeshProUGUI>().text = sk.bestScoreToday.ToString("#,#");
+                else if (sk.bestScore > 0) // Best Score Total
+                    this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString("#,#"); 
+                else // Hi Score = 0 
+                    this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString();
+                
+                if (sk.bestScore <= gm.GetScore() && sk.bestScore > 0)
+                    this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
+            }
+            else // 40L sprint mode
+            {
+                string bestTimeStr = GetTimeString(sk.bestTime);
+                string bestTimeTodayStr = GetTimeString(sk.bestTimeToday);
+                
+                //this.GetComponent<TextMeshProUGUI>().text = bestTimeStr + ", " + bestTimeTodayStr;
+
+                this.GetComponent<TextMeshProUGUI>().text = bestTimeStr;
+
+                if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTime < gm.GetTime()) // Best Score Today
+                    this.GetComponent<TextMeshProUGUI>().text = bestTimeTodayStr;
+                
+            }
         }
         else if (displayType == TextType.bestScoreTitle)
         {
-            if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
-                this.GetComponent<TextMeshProUGUI>().text = "Best Today:";
-            else if (sk.bestScore > 0) // Best Score Total
-                this.GetComponent<TextMeshProUGUI>().text = "High Score:"; 
-            
-            if (sk.bestScoreToday == sk.bestScore)
-                this.GetComponent<TextMeshProUGUI>().text = "High Score:"; 
+            if (!gm.gameMods.detailedTimer) // Normal score mode
+            {
+                if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
+                    this.GetComponent<TextMeshProUGUI>().text = "Best Today:";
+                else if (sk.bestScore > 0) // Best Score Total
+                    this.GetComponent<TextMeshProUGUI>().text = "High Score:"; 
+                
+                if (sk.bestScoreToday == sk.bestScore)
+                    this.GetComponent<TextMeshProUGUI>().text = "High Score:"; 
+            }
+            else // 40L sprint mode
+            {
+                this.GetComponent<TextMeshProUGUI>().text = "Best Time:";
+
+                if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTime < gm.GetTime()) // Best Score Today
+                    this.GetComponent<TextMeshProUGUI>().text = "Best Today:";
+            }            
         }
         else if (displayType == TextType.linesCleared)
         {
@@ -282,7 +296,11 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.gameModeName)
         {
+            string gameMode = gameMods.gameModeName;
             this.GetComponent<TextMeshProUGUI>().text = gameMods.gameModeName;
+            if (gm.isEndless && !gm.marathonOverMenu.isActive)
+                gameMode += " (Endless)";
+            this.GetComponent<TextMeshProUGUI>().text = gameMode;
         }
         else if (displayType == TextType.gameModeNameComplete)
         {
@@ -302,4 +320,22 @@ public class DisplayText : MonoBehaviour
             Tooltip.HideTooltip_Static();
     }
 
+    public string GetTimeString(float time)
+    {
+        if (time == Mathf.Infinity)
+            return "--";
+
+        int milliseconds = (int)(time * 1000f) % 1000;
+        int seconds = ((int)time % 60);
+        int minutes = ((int) time / 60);
+        
+        if (gameMods.detailedTimer)
+        {
+            return string.Format("{0:00}:{1:00}.{2:000}", minutes, seconds, milliseconds);
+        }
+        else
+        {
+            return string.Format("{0:00}:{1:00}", minutes, seconds);
+        }            
+    }
 }

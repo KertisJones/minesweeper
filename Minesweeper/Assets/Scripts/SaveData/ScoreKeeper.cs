@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Runtime.Intrinsics.X86;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,10 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
 {
     public float bestScore;
     public float bestScoreToday = 0;
+    public float bestScoreEndless;
+    public float bestScoreTodayEndless = 0;
+    public float bestTime;
+    public float bestTimeToday;
     public int runs;
     //public static float masterVolume  = 0.2f;
     GameManager gm;
@@ -24,11 +29,22 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
 
         //masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
 
-        LoadJsonData(this.GetComponent<ScoreKeeper>());
+        ResetScoreKeeper();
 
         DontDestroyOnLoad(this.gameObject);
     }
 
+    public void ResetScoreKeeper() 
+    {
+        bestScore = 0;
+        bestScoreToday = 0;
+        bestScoreEndless = 0;
+        bestScoreTodayEndless = 0;
+        bestTime = Mathf.Infinity;
+        bestTimeToday = Mathf.Infinity;
+        runs = 0;
+        LoadJsonData(this.GetComponent<ScoreKeeper>());
+    }
 
     // Update is called once per frame
     void Update()
@@ -40,14 +56,22 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
         if (cameraShake == null)
             cameraShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
         
-        if (gm.GetScore() > bestScore)
+        if ((gm.GetScore() > bestScore) && !(gm.isEndless && !gm.marathonOverMenu.isActive)) // Endless mode has not yet begun
         {
             bestScore = gm.GetScore();            
         }
-        if (gm.GetScore() > bestScoreToday)
+        if ((gm.GetScore() > bestScoreToday) && !(gm.isEndless && !gm.marathonOverMenu.isActive)) // Endless mode has not yet begun
         {
             bestScoreToday = gm.GetScore();            
         }
+        if (gm.GetScore() > bestScoreEndless)
+        {
+            bestScoreEndless = gm.GetScore();            
+        }
+        if (gm.GetScore() > bestScoreTodayEndless)
+        {
+            bestScoreTodayEndless = gm.GetScore();            
+        }        
             
         AudioListener.volume = PlayerPrefs.GetFloat("MasterVolume", 1f);
         if (musicSource != null)
@@ -65,17 +89,27 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
 
     public void SaveCurrentGame() 
     {
-        if (GetComponent<GameModifiers>().gameModeName == "Marathon")
+        if (GetComponent<GameModifiers>().gameModeName != "Custom")
             SaveJsonData(this.GetComponent<ScoreKeeper>());
         else
             Debug.Log("Can't save game of type " + GetComponent<GameModifiers>().gameModeName);
+        
+        // Time updates
+        if ((gm.GetTime() < bestTime) && (gm.isEndless && gm.marathonOverMenu.isActive)) // Endless mode has not yet begun
+        {
+            bestTime = gm.GetTime();            
+        }
+        if ((gm.GetTime() < bestTimeToday) && (gm.isEndless && gm.marathonOverMenu.isActive)) // Endless mode has not yet begun
+        {
+            bestTimeToday = gm.GetTime();            
+        }
     }
 
     public void SaveJsonData(ScoreKeeper a_ScoreKeeper) 
     {
         SaveData sd = new SaveData();
         // Get current save data, if it exists
-        if (FileManager.LoadFromFile("SaveData.dat", out var json))
+        if (FileManager.LoadFromFile(GetComponent<GameModifiers>().gameModeName + "SaveData.dat", out var json)) //"SaveData.dat"
         {
             sd.LoadFromJson(json);
             Debug.Log("Previous Save Found");
@@ -83,7 +117,7 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
 
         a_ScoreKeeper.PopulateSaveData(sd);
 
-        if (FileManager.WriteToFile("SaveData.dat", sd.ToJson()))
+        if (FileManager.WriteToFile(GetComponent<GameModifiers>().gameModeName + "SaveData.dat", sd.ToJson()))
         {
             Debug.Log("Save successful");
         }
@@ -91,7 +125,7 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
 
     public void LoadJsonData (ScoreKeeper a_ScoreKeeper) 
     {
-        if (FileManager.LoadFromFile("SaveData.dat", out var json))
+        if (FileManager.LoadFromFile(GetComponent<GameModifiers>().gameModeName + "SaveData.dat", out var json)) //"SaveData.dat"
         {
             SaveData sd = new SaveData();
             sd.LoadFromJson(json);
@@ -112,9 +146,15 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
         if (gm.tetrisweepsCleared > a_SaveData.m_tetrisweepsClearedBest)
             a_SaveData.m_tetrisweepsClearedBest = gm.tetrisweepsCleared;
         if (gm.tSpinsweepsCleared > a_SaveData.m_tSpinsweepsClearedBest)
-            a_SaveData.m_tSpinsweepsClearedBest = gm.tSpinsweepsCleared;
+            a_SaveData.m_tSpinsweepsClearedBest = gm.tSpinsweepsCleared;     
 
-        a_SaveData.m_gameTimeTotal++;
+        if (gm.GetTime() < a_SaveData.m_gameTimeBest && (gm.isEndless && gm.marathonOverMenu.isActive))
+            a_SaveData.m_gameTimeBest = gm.GetTime();
+        else if (a_SaveData.m_gameTimeBest == 0 && (gm.isEndless && gm.marathonOverMenu.isActive))
+            a_SaveData.m_gameTimeBest = gm.GetTime();
+
+        a_SaveData.m_gamesPlayedTotal++;
+        a_SaveData.m_gameTimeTotal += gm.GetTime();
         a_SaveData.m_linesClearedTotal += gm.linesCleared;
 
         a_SaveData.m_piecesPlacedTotal += gm.piecesPlaced;
@@ -137,16 +177,20 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
         a_SaveData.m_tSpinTripleTotal += gm.tSpinTriple;  
 
 
-        if (gm.GetScore() >= bestScore || gm.linesCleared >= a_SaveData.m_linesClearedBest || gm.tetrisweepsCleared >= a_SaveData.m_tetrisweepsClearedBest || gm.tSpinsweepsCleared >= a_SaveData.m_tSpinsweepsClearedBest)
+        if (gm.GetScore() >= bestScore 
+        || gm.linesCleared >= a_SaveData.m_linesClearedBest 
+        || gm.tetrisweepsCleared >= a_SaveData.m_tetrisweepsClearedBest 
+        || gm.tSpinsweepsCleared >= a_SaveData.m_tSpinsweepsClearedBest
+        || gm.GetTime() <= a_SaveData.m_gameTimeBest)
             a_SaveData.m_GameStatsData.Add(PopulateSaveDataHighScores());
     }
 
     public SaveData.GameStatsData PopulateSaveDataHighScores()
     {
         SaveData.GameStatsData gameStatsData = new SaveData.GameStatsData();
-        gameStatsData.gameModeType = gm.gameModeType;
         gameStatsData.dateTime = System.DateTime.Now;
         gameStatsData.m_score = gm.GetScore();
+        gameStatsData.m_isEndless = gm.isEndless && !gm.marathonOverMenu.isActive;
         gameStatsData.m_gameTime = gm.GetTime();
         gameStatsData.m_level = gm.level;
         gameStatsData.m_linesCleared = gm.linesCleared;
@@ -177,11 +221,16 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
     public void LoadFromSaveData (SaveData a_SaveData) 
     {
         float bestSavedScore = 0;
+        float bestSavedScoreEndless = 0;
         foreach (SaveData.GameStatsData gameStat in a_SaveData.m_GameStatsData)
         {
-            if (bestSavedScore < gameStat.m_score)
+            if (bestSavedScore < gameStat.m_score && !gameStat.m_isEndless)
                 bestSavedScore = gameStat.m_score;
+            if (bestSavedScoreEndless < gameStat.m_score)
+                bestSavedScoreEndless = gameStat.m_score;
         }
         bestScore = bestSavedScore;
+        bestScoreEndless = bestSavedScoreEndless;
+        bestTime = a_SaveData.m_gameTimeBest;
     }
 }

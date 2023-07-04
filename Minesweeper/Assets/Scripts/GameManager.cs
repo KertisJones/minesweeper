@@ -9,15 +9,7 @@ using UnityEngine.U2D;
 
 public class GameManager : MonoBehaviour
 {
-    public enum GameModeType // your custom enumeration
-    {
-        standard,
-        endless,
-        classic, // No levels, score doesn't decay, score reset timer
-        sprint40Line
-    };
-    public GameModeType gameModeType = GameModeType.standard; 
-
+    public GameModifiers gameMods;
     float startTime;
     float endtime;
     private float score = 0;
@@ -118,12 +110,12 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         inputManager = InputManager.Instance;
+        gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
 
         GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().runs += 1;
 
         if (!isTitleMenu)   
-        {
-            GameModifiers gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
+        {            
             linesClearedTarget = gameMods.targetLines;
 
             if (gameMods.lineClearTrigger == GameModifiers.LineClearTriggerType.clearInstantly)
@@ -1150,7 +1142,9 @@ public class GameManager : MonoBehaviour
             if (isMarathonOverPause)
             {
                 isEndless = true;
-                marathonOverMenu.isActive = true;                
+                marathonOverMenu.isActive = true;              
+                if (!isTitleMenu)
+                    GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().SaveCurrentGame();  
             }
             else
             {
