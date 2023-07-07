@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    //test
     Tile tile;
     private InputManager inputManager;
     GameManager gm;
