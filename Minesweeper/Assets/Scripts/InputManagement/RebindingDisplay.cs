@@ -49,6 +49,11 @@ Chord Tile: MMB | ,
 Hard Clear: T | F1, Backspace
 Cleanse: F | F2
 */
+    private void Start() 
+    {
+        UpdateUI();    
+    }
+    
     private void OnEnable()
     {
         rebindButton.onClick.AddListener(() => DoRebind());

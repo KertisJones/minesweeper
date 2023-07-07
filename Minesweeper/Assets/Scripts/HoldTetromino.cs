@@ -17,7 +17,7 @@ public class HoldTetromino : MonoBehaviour
     public TMPro.TMP_Text cleansePointText;
     public TMPro.TMP_Text cleansePointRechargeText;    
     int manualTileSolveStreak = 0;    
-    int manualTileSolvePerfectStreak = 0;    
+    public int manualTileSolvePerfectStreak = 0;    
     public int manualTileSolvePerfectStreakIncludedWallsTEST = 0; 
     public int manualTileSolvePerfectStreakIncludedWallsHighestScoreTEST = 0; 
     public int scoreMissingTest = 0;
@@ -25,6 +25,8 @@ public class HoldTetromino : MonoBehaviour
     int manualTileSolveStreakHighest = 0;
     int manualTileSolvePerfectStreakHighest = 0;
     public int manualTileSolvePerfectStreakIncludedWallsHighestTEST = 0; 
+    public int manualTileSolvePerfectStreakPoints = 0;
+    public int manualTileSolvePerfectSteakTotal = 0;
     void Awake()
     {
         inputManager = InputManager.Instance;
@@ -50,7 +52,7 @@ public class HoldTetromino : MonoBehaviour
                 exclamationSuffix += "!";
             }
             cleanseScoreHighest = Math.Max(cleanseScoreHighest, Mathf.FloorToInt(manualTileSolveStreak * 5 * gm.level * (1 + gm.GetScoreMultiplier()) * GetCleanseStreakMultiplier()));
-            manualTileSolvePerfectStreakIncludedWallsHighestScoreTEST = Math.Max(cleanseScoreHighest, Mathf.FloorToInt(manualTileSolvePerfectStreakIncludedWallsTEST * 5 * gm.level * (1 + gm.GetScoreMultiplier()) * GetCleanseStreakMultiplier()));
+            //manualTileSolvePerfectStreakIncludedWallsHighestScoreTEST = Math.Max(cleanseScoreHighest, Mathf.FloorToInt(manualTileSolvePerfectStreakIncludedWallsTEST * 5 * gm.level * (1 + gm.GetScoreMultiplier()) * GetCleanseStreakMultiplier()));
             cleansePointText.text = (manualTileSolveStreak * 5 * gm.level * (1 + gm.GetScoreMultiplier()) * GetCleanseStreakMultiplier()).ToString("#,#") + " Points" + exclamationSuffix;
             if (GetCleanseStreakMultiplier() > 5)
             {
@@ -67,7 +69,7 @@ public class HoldTetromino : MonoBehaviour
             cleanseButton.SetActive(false);  
         if (cleansePointRechargeText != null)
             cleansePointRechargeText.text = manualTileSolveStreak + ", " + manualTileSolvePerfectStreak + ", " + manualTileSolvePerfectStreakIncludedWallsTEST + " (" + manualTileSolveStreakHighest + ", " + manualTileSolvePerfectStreakHighest + ", " + manualTileSolvePerfectStreakIncludedWallsHighestTEST + ")\n+" 
-            + cleanseScoreHighest + ", " + manualTileSolvePerfectStreakIncludedWallsHighestScoreTEST + "\n-" 
+            + cleanseScoreHighest + " - " + manualTileSolvePerfectStreakPoints + ", " + manualTileSolvePerfectStreakIncludedWallsHighestScoreTEST + "(" + manualTileSolvePerfectSteakTotal +")\n-" 
             + scoreMissingTest;          
         /*if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.H) || Input.GetKeyDown(KeyCode.RightShift))
         {
@@ -217,17 +219,21 @@ public class HoldTetromino : MonoBehaviour
         {
             manualTileSolvePerfectStreak++;
             manualTileSolvePerfectStreakIncludedWallsTEST++;
+            if (manualTileSolvePerfectStreak >= 100)
+                manualTileSolvePerfectSteakTotal++;
+            manualTileSolvePerfectStreakPoints += Mathf.FloorToInt(50 * Mathf.FloorToInt(manualTileSolvePerfectStreak / 100) * gm.level * (1 + gm.GetScoreMultiplier()));;
+            manualTileSolvePerfectStreakIncludedWallsHighestScoreTEST += Mathf.FloorToInt(50 * Mathf.FloorToInt(manualTileSolvePerfectStreakIncludedWallsTEST / 100) * gm.level * (1 + gm.GetScoreMultiplier()));
         }            
         else if (isEasyTile)
         {
             manualTileSolvePerfectStreakIncludedWallsTEST++;
+            manualTileSolvePerfectStreakIncludedWallsHighestScoreTEST += Mathf.FloorToInt(50 * Mathf.FloorToInt(manualTileSolvePerfectStreakIncludedWallsTEST / 100) * gm.level * (1 + gm.GetScoreMultiplier()));;
         }
         else
         {
             manualTileSolvePerfectStreak = 0;
             manualTileSolvePerfectStreakIncludedWallsTEST = 0;
         }
-            
         
         manualTileSolveStreakHighest = Mathf.Max(manualTileSolveStreak, manualTileSolveStreakHighest);
         manualTileSolvePerfectStreakHighest = Mathf.Max(manualTileSolvePerfectStreak, manualTileSolvePerfectStreakHighest);

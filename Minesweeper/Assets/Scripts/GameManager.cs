@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameModifiers gameMods;
     float startTime;
     float endtime;
+    float timeLimit = Mathf.Infinity;
     private float score = 0;
     [SerializeField]
     public int scoreMultiplier = 0;
@@ -117,6 +118,7 @@ public class GameManager : MonoBehaviour
         if (!isTitleMenu)   
         {            
             linesClearedTarget = gameMods.targetLines;
+            timeLimit = gameMods.timeLimit;
 
             if (gameMods.lineClearTrigger == GameModifiers.LineClearTriggerType.clearInstantly)
                 lineClearInstantly = true;
@@ -210,12 +212,14 @@ public class GameManager : MonoBehaviour
             }
             scoreMultiplierTimer = 0;
         }
-        
-        
 
         // Fixed Marathon: 10 per level
         if (linesCleared >= level * 10)
             level += 1;
+
+        if (timeLimit < Mathf.Infinity)
+            if (GetTime() >= timeLimit)
+                Pause(true, true);
         
         /*if (cheatGodMode)
         {

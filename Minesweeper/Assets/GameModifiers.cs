@@ -13,6 +13,7 @@ public class GameModifiers : MonoBehaviour
     public LineClearTriggerType lineClearTrigger = LineClearTriggerType.clearOnLock;
     public int targetLines = 150;
     public bool detailedTimer = false;
+    public float timeLimit = Mathf.Infinity;
     
     public void SetGameToThisMode()
     {
@@ -23,6 +24,7 @@ public class GameModifiers : MonoBehaviour
         gameMods.lineClearTrigger = lineClearTrigger;
         gameMods.targetLines = targetLines;
         gameMods.detailedTimer = detailedTimer;
+        gameMods.timeLimit = timeLimit;
 
         scoreKeeper.ResetScoreKeeper();
     }

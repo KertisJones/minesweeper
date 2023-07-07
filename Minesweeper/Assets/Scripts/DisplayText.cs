@@ -135,7 +135,10 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.time)
         {
-            this.GetComponent<TextMeshProUGUI>().text = "Time: " + GetTimeString(gm.GetTime());
+            if (gm.gameMods.timeLimit < Mathf.Infinity)
+                this.GetComponent<TextMeshProUGUI>().text = "Time: " + GetTimeString(gm.gameMods.timeLimit - gm.GetTime());
+            else
+                this.GetComponent<TextMeshProUGUI>().text = "Time: " + GetTimeString(gm.GetTime());
         }
         else if (displayType == TextType.bestScore)
         {
@@ -170,7 +173,7 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.bestScoreTitle)
         {
-            if (!gm.gameMods.detailedTimer) // Normal score mode
+            if (!gm.gameMods.detailedTimer || gm.gameMods.timeLimit < Mathf.Infinity) // Normal score mode
             {
                 if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
                     this.GetComponent<TextMeshProUGUI>().text = "Best Today:";

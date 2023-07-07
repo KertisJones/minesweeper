@@ -1,3 +1,4 @@
+using System.IO.Enumeration;
 using System.Threading;
 using System;
 using System.Collections;
@@ -84,6 +85,76 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
         secondaryTouchContact.started += ctx => ZoomTouchStart();
         secondaryTouchContact.canceled += _ => ZoomTouchEnd();
         primaryTouchContact.canceled += _ => ZoomTouchEnd();*/
+
+        /*foreach (var binding in controlInput.asset.FindAction("Chord Tile").bindings) //controlInput.asset.FindAction(actionName);
+        {
+            Debug.Log("chordTilePress " + binding);
+        }
+
+        foreach (var binding in chordFlagTilePress.bindings)
+        {
+            Debug.Log("chordFlagTilePress " + binding);
+        }*/
+
+        //Debug.Log(chordTilePress.bindings);
+        //Debug.Log(chordFlagTilePress.bindings);
+        /*for (int b1 = 0; b1 < GetAction("Chord Tile").bindings.Count; b1++)
+        {
+            for (int b2 = 0; b2 < GetAction("Chord Flag Tile").bindings.Count; b2++)
+            {
+                Debug.Log(chordTilePress.bindings[b1].effectivePath + ", " + chordFlagTilePress.bindings[b2].effectivePath);
+                if (chordTilePress.bindings[b1].effectivePath == chordFlagTilePress.bindings[b2].effectivePath)
+                {
+                   Debug.Log("RESET CHORDS:  " + chordTilePress.bindings[b1].effectivePath + ", " + chordFlagTilePress.bindings[b2].effectivePath);
+
+                    ResetBinding("Chord Tile", b1);
+                    ResetBinding("Chord Flag Tile", b2);
+                    break;
+                }
+            }
+        }*/
+
+        /*foreach (InputBinding binding in action.actionMap.bindings)
+        {            
+            if (binding.action == newBinding.action)
+            {
+                continue;
+            }
+            else if (binding.effectivePath == newBinding.effectivePath)
+            {
+                if ((binding.action == "Flag Tile" && newBinding.action == "Chord Tile") || (newBinding.action == "Flag Tile" && binding.action == "Chord Tile")
+                    || (binding.action == "Reveal Tile" && newBinding.action == "Chord Tile") || (newBinding.action == "Reveal Tile" && binding.action == "Chord Tile"))
+                {
+                    continue;
+                }
+                else if (binding.action == "Chord Flag Tile" || newBinding.action == "Chord Tile" || newBinding.action == "Chord Flag Tile" || binding.action == "Chord Tile")
+                {
+                    if ((binding.action == "Chord Flag Tile" && newBinding.action == "Chord Tile") || (newBinding.action == "Chord Flag Tile" && binding.action == "Chord Tile"))
+                    {
+                        //Debug.Log("Duplicate binding found: " + newBinding.effectivePath + " with " + binding.action + " --- "+ binding.groups + ", " + UnityEngine.InputSystem.InputActionRebindingExtensions.GetBindingIndex(action, binding.groups, binding.effectivePath));
+                        if (UnityEngine.InputSystem.InputActionRebindingExtensions.GetBindingIndex(action, binding.groups, binding.effectivePath) != -1)
+                        {
+                            ResetBinding(binding.action, UnityEngine.InputSystem.InputActionRebindingExtensions.GetBindingIndex(action, binding.groups, binding.effectivePath));
+                            ResetBinding(newBinding.action, bindingIndex);
+                            return false;
+                        } //TODO
+                        return true;
+                    }
+                    continue;
+                }
+                else
+                {
+                    Debug.Log("Duplicate binding found: " + newBinding.effectivePath + " with " + binding.action);
+                    return true;
+                }                
+            }
+        }*/
+    }
+
+    public bool CheckForIncompatibleBindings()
+    {
+        
+        return false;
     }
 
     public void SetBindings()
@@ -257,8 +328,19 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
                 {
                     if ((binding.action == "Chord Flag Tile" && newBinding.action == "Chord Tile") || (newBinding.action == "Chord Flag Tile" && binding.action == "Chord Tile"))
                     {
-                        Debug.Log("Duplicate binding found: " + newBinding.effectivePath + " with " + binding.action);
-                        return true;
+                        Debug.Log("CHORD DUPLICATE FOUND: " + newBinding.effectivePath + " with " + binding.action + " --- "+ binding.groups);
+                        ResetBinding("Chord Tile", 0);
+                        ResetBinding("Chord Tile", 1);
+                        ResetBinding("Chord Tile", 2);
+                        ResetBinding("Chord Flag Tile", 0);
+                        ResetBinding("Chord Flag Tile", 1);
+                        /*if (UnityEngine.InputSystem.InputActionRebindingExtensions.GetBindingIndex(action, binding.groups, binding.effectivePath) != -1)
+                        {
+                            ResetBinding(binding.action, UnityEngine.InputSystem.InputActionRebindingExtensions.GetBindingIndex(action, binding.groups, binding.effectivePath));
+                            ResetBinding(newBinding.action, bindingIndex);
+                            return false;
+                        }*/ //TODO
+                        return false;
                     }
                     continue;
                 }
@@ -317,6 +399,7 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
             action.RemoveBindingOverride(bindingIndex);
 
         SaveBindingOverride(action);
+        rebindComplete?.Invoke();
     }
     #endregion
 
