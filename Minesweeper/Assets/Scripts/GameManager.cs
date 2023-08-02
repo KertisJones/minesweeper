@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     public GameModifiers gameMods;
     float startTime;
     float endtime;
-    float timeLimit = Mathf.Infinity;
+    [HideInInspector]
+    public float timeLimit = Mathf.Infinity;
     private float score = 0;
     [SerializeField]
     public int scoreMultiplier = 0;
@@ -950,8 +951,9 @@ public class GameManager : MonoBehaviour
     public void AddScore(int newScore, bool levelMultiplierActive = true, bool scoreMultiplierActive = true) 
     {
         float tempScore = newScore;
-        if (GetScoreMultiplier() > 0)
-            tempScore = tempScore * (1 + GetScoreMultiplier());
+        if (scoreMultiplierActive)
+            if (GetScoreMultiplier() > 0)
+                tempScore = tempScore * (1 + GetScoreMultiplier());
         if (levelMultiplierActive)
             tempScore = tempScore * level;        
         score += tempScore;

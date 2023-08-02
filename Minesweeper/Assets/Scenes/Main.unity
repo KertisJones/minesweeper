@@ -3921,7 +3921,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad782ec5250bafd42af3b3deea4dd698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameModeType: 0
+  gameMods: {fileID: 0}
+  timeLimit: Infinity
   scoreMultiplier: 0
   scoreMultiplierLimit: 4900
   scoreMultiplierDecayPerTick: 0.1
@@ -4092,6 +4093,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &782215509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1594162120379727811, guid: 7fcfdca23214e1e429a6ed6c70ab7f5a, type: 3}
+  m_PrefabInstance: {fileID: 1594162121159569053}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &784164334
 GameObject:
   m_ObjectHideFlags: 0
@@ -5547,9 +5553,8 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Clear all mines in hold, and award points based on
-              your current streak of manual tile solves. Requires a streak of a least
-              50 to refresh.
+            m_StringArgument: Clear all mines in hold, +500 Points. Refresh after
+              100 manual tile solves.
             m_BoolArgument: 0
           m_CallState: 2
   - eventID: 1
@@ -5847,7 +5852,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v1.8.2 Beta
+  m_text: v1.8.3 Beta
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
   m_sharedMaterial: {fileID: 4449517523809245107, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
@@ -7103,12 +7108,18 @@ MonoBehaviour:
   heldTetrominoPrevious: {fileID: 0}
   swapPartner: {fileID: 0}
   cleanseButton: {fileID: 1054400592}
-  cleansePointText: {fileID: 1944039355}
   cleansePointRechargeText: {fileID: 1315562650}
+  manualTileSolvePerfectStreak: 0
   manualTileSolvePerfectStreakIncludedWallsTEST: 0
-  manualTileSolvePerfectStreakIncludedWallsHighestScoreTEST: 0
   scoreMissingTest: 0
+  scoreRevealRemainingTest: 0
+  scoreRevealTest: 0
+  scoreRevealNoLevelTest: 0
   manualTileSolvePerfectStreakIncludedWallsHighestTEST: 0
+  manualTileSolvePerfectStreakPoints: 0
+  manualTileSolvePerfectStreakIncludedWallsPointsTEST: 0
+  manualTileSolvePerfectStreakPointsWithLevelTEST: 0
+  manualTileSolvePerfectStreakIncludedWallsPointsWithLevelTEST: 0
 --- !u!4 &1253570319
 Transform:
   m_ObjectHideFlags: 0
@@ -8304,7 +8315,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -8332,7 +8343,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 1, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -11717,7 +11728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1944039355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12941,9 +12952,25 @@ PrefabInstance:
       propertyPath: speed
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 1594162120200497934, guid: 7fcfdca23214e1e429a6ed6c70ab7f5a, type: 3}
+      propertyPath: objectToDisableOnTimeTrial
+      value: 
+      objectReference: {fileID: 782215509}
     - target: {fileID: 1594162120200497935, guid: 7fcfdca23214e1e429a6ed6c70ab7f5a, type: 3}
       propertyPath: m_Name
       value: Marathon Complete Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594162120200497935, guid: 7fcfdca23214e1e429a6ed6c70ab7f5a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594162120379727811, guid: 7fcfdca23214e1e429a6ed6c70ab7f5a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594162120379727869, guid: 7fcfdca23214e1e429a6ed6c70ab7f5a, type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1594162120379727869, guid: 7fcfdca23214e1e429a6ed6c70ab7f5a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

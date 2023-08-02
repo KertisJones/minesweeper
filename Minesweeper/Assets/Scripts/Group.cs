@@ -202,7 +202,7 @@ public class Group : MonoBehaviour
         {            
             if (maximumFallDistance > 0)
             {
-                gm.AddScore(maximumFallDistance * 2);
+                gm.AddScore(maximumFallDistance * 2, false);
                 gm.SetScoreMultiplier(2, 1f);
             }
             Fall(maximumFallDistance, true);
@@ -458,7 +458,7 @@ public class Group : MonoBehaviour
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
             return;
         if (!isLocking && bottomHeight <= bottomHeightLowest)
-            gm.AddScore(1);
+            gm.AddScore(1, false);
         Fall();
     }
 

@@ -10,9 +10,13 @@ public class PauseMenuMove : MonoBehaviour {
     public float speed = 6f;
     public bool isActive = false;
     GameManager gm;
+    public GameObject objectToDisableOnTimeTrial;
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        if (objectToDisableOnTimeTrial != null)
+            if (gm.timeLimit != Mathf.Infinity)
+                objectToDisableOnTimeTrial.SetActive(false);
     }
     public void SetActive(bool isActiveNew)
     {

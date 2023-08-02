@@ -252,6 +252,7 @@ public class Tile : MonoBehaviour
             AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
             gm.ResetScoreMultiplier();
+            isFailedToChord = true; // Don't double count this tile for points
             holdTetromino.ResetManualSolveStreak();//.manualTileSolveStreak = 0;
 
             /*
@@ -335,13 +336,19 @@ public class Tile : MonoBehaviour
                     // If the mino is falling, don't give a huge bonus for being revealed in the air
                     if (GetComponentInParent<Group>().isFalling)
                     {
-                        gm.AddScore(nearbyMines); // * nearbyMines
+                        gm.AddScore(nearbyMines, false); // * nearbyMines
                         holdTetromino.scoreMissingTest += Mathf.FloorToInt(((nearbyMines * nearbyMines) - nearbyMines) * gm.level * (1 + gm.GetScoreMultiplier()));
+                        holdTetromino.scoreRevealRemainingTest += Mathf.FloorToInt(nearbyMines * gm.level * (1 + gm.GetScoreMultiplier()));                        
+                        holdTetromino.scoreRevealTest += Mathf.FloorToInt(((nearbyMines * nearbyMines)) * gm.level * (1 + gm.GetScoreMultiplier()));
+                        holdTetromino.scoreRevealNoLevelTest += Mathf.FloorToInt(nearbyMines * (1 + gm.GetScoreMultiplier()));      
                     }                        
                     else
                     {
-                        gm.AddScore(nearbyMines * (coordY + 1)); // * nearbyMines
+                        gm.AddScore(nearbyMines * (coordY + 1), false); // * nearbyMines
                         holdTetromino.scoreMissingTest += Mathf.FloorToInt(((nearbyMines * nearbyMines * (coordY + 1)) - (nearbyMines * (coordY + 1))) * gm.level * (1 + gm.GetScoreMultiplier()));
+                        holdTetromino.scoreRevealRemainingTest += Mathf.FloorToInt((nearbyMines * (coordY + 1)) * gm.level * (1 + gm.GetScoreMultiplier()));
+                        holdTetromino.scoreRevealTest += Mathf.FloorToInt(((nearbyMines * nearbyMines * (coordY + 1))) * gm.level * (1 + gm.GetScoreMultiplier()));
+                        holdTetromino.scoreRevealNoLevelTest += Mathf.FloorToInt((nearbyMines * (coordY + 1)) * (1 + gm.GetScoreMultiplier()));
                     }
                         
                     
