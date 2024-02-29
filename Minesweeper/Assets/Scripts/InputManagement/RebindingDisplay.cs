@@ -119,7 +119,7 @@ Cleanse: F | F2
 
         if (rebindButton != null)
         {
-            if (InputManager.CheckDuplicateBindings(action, bindingIndex, action.bindings[bindingIndex].isComposite, true))
+            if (InputManager.CheckDuplicateBindings(action, bindingIndex, action.bindings[bindingIndex].isComposite, true, false))
             {
                 rebindButton.gameObject.GetComponent<Image>().color = Color.red;
                 rebindText.color = Color.white;

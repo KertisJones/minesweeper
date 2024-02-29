@@ -308,8 +308,8 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
         }
     }
 
-    public static bool CheckDuplicateBindings(InputAction action, int bindingIndex, bool allCompositeParts = false, bool duplicateBindingsForThisAction = false)
-    {
+    public static bool CheckDuplicateBindings(InputAction action, int bindingIndex, bool allCompositeParts = false, bool duplicateBindingsForThisAction = false, bool resetChordBindings = true)
+    {        
         InputBinding newBinding = action.bindings[bindingIndex];
         foreach (InputBinding binding in action.actionMap.bindings)
         {            
@@ -329,17 +329,21 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
                     if ((binding.action == "Chord Flag Tile" && newBinding.action == "Chord Tile") || (newBinding.action == "Chord Flag Tile" && binding.action == "Chord Tile"))
                     {
                         Debug.Log("CHORD DUPLICATE FOUND: " + newBinding.effectivePath + " with " + binding.action + " --- "+ binding.groups);
-                        ResetBinding("Chord Tile", 0);
-                        ResetBinding("Chord Tile", 1);
-                        ResetBinding("Chord Tile", 2);
-                        ResetBinding("Chord Flag Tile", 0);
-                        ResetBinding("Chord Flag Tile", 1);
-                        /*if (UnityEngine.InputSystem.InputActionRebindingExtensions.GetBindingIndex(action, binding.groups, binding.effectivePath) != -1)
+
+                        if (resetChordBindings)
                         {
-                            ResetBinding(binding.action, UnityEngine.InputSystem.InputActionRebindingExtensions.GetBindingIndex(action, binding.groups, binding.effectivePath));
-                            ResetBinding(newBinding.action, bindingIndex);
-                            return false;
-                        }*/ //TODO
+                            ResetBinding("Chord Tile", 0);
+                            ResetBinding("Chord Tile", 1);
+                            ResetBinding("Chord Tile", 2);
+                            ResetBinding("Chord Flag Tile", 0);
+                            ResetBinding("Chord Flag Tile", 1);
+                            /*if (UnityEngine.InputSystem.InputActionRebindingExtensions.GetBindingIndex(action, binding.groups, binding.effectivePath) != -1)
+                            {
+                                ResetBinding(binding.action, UnityEngine.InputSystem.InputActionRebindingExtensions.GetBindingIndex(action, binding.groups, binding.effectivePath));
+                                ResetBinding(newBinding.action, bindingIndex);
+                                return false;
+                            }*/ //TODO
+                        }                        
                         return false;
                     }
                     continue;
