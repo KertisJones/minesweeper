@@ -57,6 +57,7 @@ public class Tile : MonoBehaviour
         if (isDisplay)
         {
             GetComponentInChildren<Button>().interactable = false;
+            GetComponent<ButtonJiggle>().scaleMultiplierEnlarge = ((GetComponent<ButtonJiggle>().scaleMultiplierEnlarge - 1) * 0.25f) + 1;
             //Debug.Log ("Display " + gameObject.name);
             //tileBackground.color = new Color(215, 215, 215, 255);
         }
@@ -72,10 +73,12 @@ public class Tile : MonoBehaviour
             else
                 Reveal();
         }
-        this.transform.position = new Vector3(coordX, coordY, 0);
+        this.transform.position = new Vector3(coordX, coordY, this.transform.position.z);
         this.name = "Tile (" + coordX + ", " + coordY + ")";
         
         UpdateText();
+        UpdateButtonJiggle(); 
+
         if (!isMine)
         {
             //DetectProximity();
@@ -117,7 +120,6 @@ public class Tile : MonoBehaviour
             if (!isDisplay)
                 shimmerOverlay.gameObject.SetActive(false);
         }
-            
 
         /*fallClock -= Time.deltaTime;
         if (fallClock <= 0)
@@ -126,7 +128,6 @@ public class Tile : MonoBehaviour
             Fall();
         }*/
     }
-
 
     public void CountMine() {
         if (isMine && gm != null)
@@ -358,6 +359,7 @@ public class Tile : MonoBehaviour
 
             //DetectProximity();
             ZeroCascade();
+            GetComponent<ButtonJiggle>().scaleMultiplierEnlarge = ((GetComponent<ButtonJiggle>().scaleMultiplierEnlarge - 1) * 0.25f) + 1;
 
             GetComponentInChildren<Button>().interactable = false;
 
@@ -509,6 +511,37 @@ public class Tile : MonoBehaviour
             //ZeroCascade();
         
     }
+
+    private void UpdateButtonJiggle() 
+    {
+        bool shouldButtonJiggleBeActive = CheckButtonJiggle();
+        if (shouldButtonJiggleBeActive != GetComponent<ButtonJiggle>().jiggleIsEnabled)
+            GetComponent<ButtonJiggle>().jiggleIsEnabled = shouldButtonJiggleBeActive;
+    }
+    private bool CheckButtonJiggle()
+    {
+        if (!isRevealed)
+        {
+            // If the tile is held, jiggle is off
+            if (GetComponentInParent<Group>() != null)
+                if (GetComponentInParent<Group>().isHeld)
+                    return false;
+            // if the tile is not revealed, jiggle is on                        
+            return true;
+        }
+        else
+        {           
+            DetectProximity();
+            // If the tile is revealed, only jiggle if its
+            foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
+            {
+                if (!t.isRevealed && !t.isFlagged)
+                    return true;
+            }
+        }
+        return false;
+    }
+
 
     /*void Fall()
     {
