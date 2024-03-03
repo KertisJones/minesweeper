@@ -17,6 +17,7 @@ public class Tooltip : MonoBehaviour
     public Vector2 positionOffset = new Vector2();
     string tooltipString = "";
     
+    Vector2 mousePosOnScreen = new Vector2();
     void Awake()
     {
         // If there is an instance, and it's not me, delete myself.    
@@ -32,6 +33,8 @@ public class Tooltip : MonoBehaviour
         inputManager = InputManager.Instance;
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         HideTooltip();
+
+        mousePosOnScreen = inputManager.GetMousePosition();
         //backgroundRectTransform = transform.Fin .GetComponent<RectTransform>();
         //tooltipText = transform. Find ("text") .GetComponent<TMPro.TMP_Text>();
 
@@ -99,7 +102,8 @@ public class Tooltip : MonoBehaviour
     private void UpdatePosition() 
     { 
         Vector2 localPoint = new Vector2();
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), inputManager.GetMousePosition(), cam, out localPoint);
+        UpdateMousePosOnScreen();
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), mousePosOnScreen, cam, out localPoint);
         RectTransform parentCanvasRect = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
         localPoint *= parentCanvasRect.localScale;
         localPoint += new Vector2(parentCanvasRect.position.x, parentCanvasRect.position.y);                
@@ -128,6 +132,12 @@ public class Tooltip : MonoBehaviour
     public static void HideTooltip_Static()
     {
         Instance.HideTooltip();
+    }
+
+    void UpdateMousePosOnScreen()
+    {
+        if (inputManager.GetMousePosition() != Vector2.zero)
+            mousePosOnScreen = inputManager.GetMousePosition();
     }
 
 }
