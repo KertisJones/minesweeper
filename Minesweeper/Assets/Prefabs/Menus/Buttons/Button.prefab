@@ -372,6 +372,7 @@ MonoBehaviour:
   scaleMultiplierShrink: 0.95
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
+  jumpInPlaceHeight: 0
   jiggleIsEnabled: 1
   reorderToLastSibling: 1
 --- !u!114 &6356893951152940188

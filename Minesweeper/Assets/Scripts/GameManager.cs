@@ -107,6 +107,14 @@ public class GameManager : MonoBehaviour
     public AudioClip perfectClearSound;
     public AudioClip gameOverSound;
 
+    public delegate void LineClearEvent(int lines);
+    public static event LineClearEvent OnLineClearEvent;
+    public delegate void HardDropEvent();
+    public static event HardDropEvent OnHardDropEvent;
+    public delegate void GameOverEvent();
+    public static event GameOverEvent OnGameOverEvent;
+
+
     #region Game Setup
     // Start is called before the first frame update
     void Awake()
@@ -687,7 +695,6 @@ public class GameManager : MonoBehaviour
                     linesweepsCleared++;
                     gm.linesweepsCleared += 1;
                 }
-                    
             }
         }
 
@@ -722,6 +729,9 @@ public class GameManager : MonoBehaviour
             AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+
+            if (OnLineClearEvent != null)
+                OnLineClearEvent(rowsCleared);
         
             // Lines Cleared Points
             gm.AddScore(75 * (rowsCleared * rowsCleared));
@@ -916,6 +926,8 @@ public class GameManager : MonoBehaviour
         if (!isTitleMenu)
             GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().SaveCurrentGame();
         
+        if (OnGameOverEvent != null)
+            OnGameOverEvent();
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
 
         // Reveal all tiles!
@@ -1194,6 +1206,12 @@ public class GameManager : MonoBehaviour
     public static Vector2 roundVec2(Vector2 v)
     {
         return new Vector2(Mathf.Round(v.x), Mathf.Round(v.y));
+    }
+
+    public void TriggerOnHardDropEvent()
+    {
+        if (OnHardDropEvent != null)
+            OnHardDropEvent();
     }
     #endregion
 }

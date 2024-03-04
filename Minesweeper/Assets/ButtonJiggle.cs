@@ -13,10 +13,12 @@ public class ButtonJiggle : MonoBehaviour
     public float scaleMultiplierShrink = 0.9f;
     public float scaleTransitionTime = 0.15f;
     public float scalePositionOffset = 0f;
+    public float jumpInPlaceHeight = 0f;
 
     // Option to disable programmatically
     public bool jiggleIsEnabled = true;
     public bool reorderToLastSibling = false;
+    private bool isJumping = false;
     void Start()
     {
         //cache the scale of the object
@@ -36,27 +38,41 @@ public class ButtonJiggle : MonoBehaviour
 
     public void Enlarge () 
     {
-        if (!jiggleIsEnabled || transform == null)
+        if (!jiggleIsEnabled || transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
             return;
         if (reorderToLastSibling)
             this.transform.SetAsLastSibling();
 
         //animate on point hover
-        this.transform.DOScale(startScale * scaleMultiplierEnlarge, scaleTransitionTime).SetUpdate(true);;
-        this.transform.DOMoveZ(transform.position.z + scalePositionOffset, scaleTransitionTime).SetUpdate(true);;
+        this.transform.DOScale(startScale * scaleMultiplierEnlarge, scaleTransitionTime).SetUpdate(true);
+        this.transform.DOMoveZ(transform.position.z + scalePositionOffset, scaleTransitionTime).SetUpdate(true);
         
     }
 
     public void Shrink () 
     {
-        if (!jiggleIsEnabled || transform == null)
+        if (!jiggleIsEnabled || transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
             return;
         if (reorderToLastSibling)
             this.transform.SetAsLastSibling();
         
         //animate on point click
-        this.transform.DOScale(startScale * scaleMultiplierShrink, scaleTransitionTime).SetUpdate(true);;
-        this.transform.DOMoveZ(transform.position.z - scalePositionOffset, scaleTransitionTime).SetUpdate(true);;
+        this.transform.DOScale(startScale * scaleMultiplierShrink, scaleTransitionTime).SetUpdate(true);
+        this.transform.DOMoveZ(transform.position.z - scalePositionOffset, scaleTransitionTime).SetUpdate(true);
+    }
+
+    public void JumpInPlace()
+    {
+        if (!isJumping && jumpInPlaceHeight != 0)
+        {
+            isJumping = true;
+            this.transform.DOJump(this.transform.position, jumpInPlaceHeight, 1, 0.5f).OnKill(JumpInPlaceReset);
+        }        
+    }
+
+    private void JumpInPlaceReset()
+    {
+        isJumping = false;
     }
 
 
@@ -65,8 +81,8 @@ public class ButtonJiggle : MonoBehaviour
         if (transform == null)
             return;
         //animate on pointer exit
-        this.transform.DOScale(startScale, scaleTransitionTime).SetUpdate(true);;
-        this.transform.DOMoveZ(startZPos, scaleTransitionTime).SetUpdate(true);;
+        this.transform.DOScale(startScale, scaleTransitionTime).SetUpdate(true);
+        this.transform.DOMoveZ(startZPos, scaleTransitionTime).SetUpdate(true);
     }
 
     /*public void OnPointerEnter(PointerEventData eventData)

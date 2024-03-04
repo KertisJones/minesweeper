@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Tooltip : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Tooltip : MonoBehaviour
     public Vector2 positionOffset = new Vector2();
     string tooltipString = "";
     
+    public Vector3 startScale;
+
     Vector2 mousePosOnScreen = new Vector2();
     void Awake()
     {
@@ -32,9 +35,12 @@ public class Tooltip : MonoBehaviour
         
         inputManager = InputManager.Instance;
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        startScale = this.transform.localScale;
+
         HideTooltip();
 
         mousePosOnScreen = inputManager.GetMousePosition();
+        
         //backgroundRectTransform = transform.Fin .GetComponent<RectTransform>();
         //tooltipText = transform. Find ("text") .GetComponent<TMPro.TMP_Text>();
 
@@ -51,6 +57,8 @@ public class Tooltip : MonoBehaviour
 
         tooltipText.text = tooltipString;
         tooltipText.ForceMeshUpdate();
+
+        this.transform.DOScale(startScale, 0.15f);
 
         //float width = tooltipText.preferredWidth / tooltipText.textInfo.lineCount;
         //.textBounds.size.x;//.GetPreferredWidth()//GetPreferredValues(tooltipText.text, 10, 0).x;//.textBounds.extents.x;//.size.x;//.rendered.width.characterWidthAdjustment;//.renderedWidth;//.flexibleWidth.preferredWidth;
@@ -69,7 +77,7 @@ public class Tooltip : MonoBehaviour
         
         UpdatePosition();
 
-        if (timeDelay > 0.5f)
+        if (timeDelay > 0.75f)
         {
             ShowTooltip();
         }
@@ -113,9 +121,10 @@ public class Tooltip : MonoBehaviour
 
     private void HideTooltip()
     {
+        this.transform.DOScale(Vector3.zero, 0.15f);
         //gameObject.SetActive(false);
-        tooltipText.gameObject.SetActive(false);
-        backgroundRectTransform.gameObject.SetActive(false);
+        //tooltipText.gameObject.SetActive(false);
+        //backgroundRectTransform.gameObject.SetActive(false);
         isActive = false;
         //isVisible = false;
         timeDelay = 0;
