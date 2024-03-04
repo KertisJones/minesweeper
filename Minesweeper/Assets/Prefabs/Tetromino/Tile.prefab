@@ -1376,7 +1376,9 @@ MonoBehaviour:
   scaleMultiplierShrink: 0.9
   scaleTransitionTime: 0.15
   scalePositionOffset: -0.1
+  jumpInPlaceHeight: 0
   jiggleIsEnabled: 1
+  reorderToLastSibling: 0
 --- !u!1 &5975365835567261945
 GameObject:
   m_ObjectHideFlags: 0

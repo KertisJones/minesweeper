@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.U2D;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -109,8 +110,8 @@ public class GameManager : MonoBehaviour
 
     public delegate void LineClearEvent(int lines);
     public static event LineClearEvent OnLineClearEvent;
-    public delegate void HardDropEvent();
-    public static event HardDropEvent OnHardDropEvent;
+    /*public delegate void HardDropEvent();
+    public static event HardDropEvent OnHardDropEvent;*/
     public delegate void GameOverEvent();
     public static event GameOverEvent OnGameOverEvent;
 
@@ -152,6 +153,13 @@ public class GameManager : MonoBehaviour
         inputManager.escapePress.started -= _ => PressEscape();
         inputManager.restartPress.started -= _ => PressRestart();
         inputManager.hardClearPress.started -= _ => PressHardClear();
+    }
+
+    void OnDestroy()
+    {
+        OnLineClearEvent = null;
+        OnGameOverEvent = null;
+        transform.DOKill();
     }
     void PressEscape()
     {
@@ -1126,6 +1134,7 @@ public class GameManager : MonoBehaviour
     public void ReloadScene()
     {
         Time.timeScale = 1;
+        DOTween.Clear(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void QuitToTitleMenu () 
@@ -1208,10 +1217,10 @@ public class GameManager : MonoBehaviour
         return new Vector2(Mathf.Round(v.x), Mathf.Round(v.y));
     }
 
-    public void TriggerOnHardDropEvent()
+    /*public void TriggerOnHardDropEvent()
     {
         if (OnHardDropEvent != null)
             OnHardDropEvent();
-    }
+    }*/
     #endregion
 }

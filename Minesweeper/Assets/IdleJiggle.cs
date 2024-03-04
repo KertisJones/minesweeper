@@ -18,31 +18,44 @@ public class IdleJiggle : MonoBehaviour
     public bool jiggleIsEnabled = true;
     void OnEnable()
     {
-        GameManager.OnHardDropEvent += HardDrop;
+        //GameManager.OnHardDropEvent += HardDrop;
         GameManager.OnLineClearEvent += _ => LineClear(_);
         GameManager.OnGameOverEvent += GameOver;
     }
     void OnDisable()
     {
         //inputManager.hardDroptPress.started -= _ => PressHardDrop();
-        GameManager.OnHardDropEvent -= HardDrop;
+        //GameManager.OnHardDropEvent -= HardDrop;
         GameManager.OnLineClearEvent -= _ => LineClear(_);
         GameManager.OnGameOverEvent -= GameOver;
+        transform.DOKill();
+    }
+
+    void OnDestroy()
+    {
+        //GameManager.OnHardDropEvent -= HardDrop;
+        GameManager.OnLineClearEvent -= _ => LineClear(_);
+        GameManager.OnGameOverEvent -= GameOver;
+        transform.DOKill();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if (!jiggleIsEnabled || transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
+        if (transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
+            return;
+        if (!jiggleIsEnabled)
             return;
         
         if (idleMoveDistance != Vector3.zero && idleMoveDuration > 0)
         {
             this.transform.DOMove(transform.position + idleMoveDistance, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
         }
+
+        //transform.DOKill(); when destroyed
     }
 
-    void HardDrop()
+    /*void HardDrop()
     {
         if (!jiggleIsEnabled || transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
             return;
@@ -51,20 +64,38 @@ public class IdleJiggle : MonoBehaviour
         {
             this.transform.DOPunchPosition(new Vector3(0, punchWithControlsPower, 0), punchWIthControlsDuration, punchWIthControlsVibrato, punchWIthControlsElasticity);
         }
-    }
+    }*/
 
     void LineClear(int lines)
     {
-        //Debug.Log("LINE CLEAR in jiggle " + lines);
+        Debug.Log("LINE CLEAR in jiggle " + lines);
         /*if (!jiggleIsEnabled || this.transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
             return;*/
 
-        this.transform.DOShakeRotation(lines, new Vector3(0, 0, 20), 10, 90, true, ShakeRandomnessMode.Harmonic);
+        //this.transform.DOShakeRotation(lines, new Vector3(0, 0, 20), 10, 90, true, ShakeRandomnessMode.Harmonic);
+        int l = lines;
+        if (l > 5)
+            l = 5;
+        Shake(l, l * 0.1f);
     }
 
     void GameOver()
     {
-        this.transform.DOShakeRotation(4, new Vector3(0, 0, 20), 10, 90, true, ShakeRandomnessMode.Harmonic).SetUpdate(true);
+        Shake(2f, .5f);
+        //this.transform.DOShakeRotation(2, new Vector3(0, 0, 20), 10, 90, true, ShakeRandomnessMode.Harmonic).SetUpdate(true);
+    }
+
+    void Shake(float duration, float strength)
+    {
+        if (this.gameObject == null)
+            return;
+        if (transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
+            return;
+        if (!jiggleIsEnabled)
+            return;
+        this.transform.DOShakePosition(duration, new Vector3(strength, strength, 0));
+        this.transform.DOShakeRotation(duration, new Vector3(0, 0, strength * 40));
+        this.transform.DOShakeScale(duration, strength);
     }
 
 }

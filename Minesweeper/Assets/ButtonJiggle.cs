@@ -18,7 +18,7 @@ public class ButtonJiggle : MonoBehaviour
     // Option to disable programmatically
     public bool jiggleIsEnabled = true;
     public bool reorderToLastSibling = false;
-    private bool isJumping = false;
+    private Tween jumpInPlaceTween;
     void Start()
     {
         //cache the scale of the object
@@ -38,7 +38,9 @@ public class ButtonJiggle : MonoBehaviour
 
     public void Enlarge () 
     {
-        if (!jiggleIsEnabled || transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
+        if (transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
+            return;
+        if (!jiggleIsEnabled)
             return;
         if (reorderToLastSibling)
             this.transform.SetAsLastSibling();
@@ -51,7 +53,9 @@ public class ButtonJiggle : MonoBehaviour
 
     public void Shrink () 
     {
-        if (!jiggleIsEnabled || transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
+        if (transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
+            return;
+        if (!jiggleIsEnabled)
             return;
         if (reorderToLastSibling)
             this.transform.SetAsLastSibling();
@@ -63,18 +67,15 @@ public class ButtonJiggle : MonoBehaviour
 
     public void JumpInPlace()
     {
-        if (!isJumping && jumpInPlaceHeight != 0)
+        if (jumpInPlaceTween != null)
+            if (jumpInPlaceTween.IsPlaying())
+                return;
+        
+        if (jumpInPlaceHeight != 0)
         {
-            isJumping = true;
-            this.transform.DOJump(this.transform.position, jumpInPlaceHeight, 1, 0.5f).OnKill(JumpInPlaceReset);
+            jumpInPlaceTween = this.transform.DOJump(this.transform.position, jumpInPlaceHeight, 1, 0.5f);//.OnKill(JumpInPlaceReset);
         }        
     }
-
-    private void JumpInPlaceReset()
-    {
-        isJumping = false;
-    }
-
 
     public void Reset ()
     {

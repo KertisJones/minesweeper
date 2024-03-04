@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class LoadNewScene : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class LoadNewScene : MonoBehaviour
 
     public void OpenNewScene () 
     {
+        DOTween.Clear(true);
         SceneManager.LoadScene(newSceneName);
     }
 
     public void ReloadScene()
     {
         Time.timeScale = 1;
+        DOTween.Clear(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

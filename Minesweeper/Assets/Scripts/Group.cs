@@ -2,7 +2,6 @@ using System.Net.Mime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
 
 public class Group : MonoBehaviour
 {
@@ -79,8 +78,7 @@ public class Group : MonoBehaviour
     public AudioClip turnSound;
     public AudioClip landSound;
     public AudioClip tetrisweepSound;
-    public AudioClip tSpinSound;    
-
+    public AudioClip tSpinSound;
     void Awake()
     {
         inputManager = InputManager.Instance;
@@ -202,12 +200,6 @@ public class Group : MonoBehaviour
         
         if (canHardDrop) //((Input.GetKeyDown(KeyCode.Space)  || Input.GetKeyDown(KeyCode.Keypad8)) && lastFall > 0 || Input.GetKeyDown(KeyCode.Return)))
         {            
-            /*Analytics.CustomEvent("HardDrop", new Dictionary<string, object>{
-                { "object", this.gameObject }
-            });*/
-            
-            gm.TriggerOnHardDropEvent();
-            
             if (maximumFallDistance > 0)
             {
                 gm.AddScore(maximumFallDistance * 2, false);
