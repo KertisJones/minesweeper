@@ -210,7 +210,7 @@ public class Tile : MonoBehaviour
         {
             isQuestioned = false;
 
-            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(flagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
@@ -249,7 +249,7 @@ public class Tile : MonoBehaviour
         }
         else
         {
-            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
             gm.ResetScoreMultiplier();
@@ -281,12 +281,12 @@ public class Tile : MonoBehaviour
         {
             isFlagged = false;
 
-            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(flagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
         }
         else
         {
-            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
         }
     }
@@ -311,7 +311,7 @@ public class Tile : MonoBehaviour
             }
             else if (!gm.isGameOver)
             {
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
                 if (isManual && !isFailedToChord)
@@ -526,10 +526,13 @@ public class Tile : MonoBehaviour
             if (GetComponentInParent<Group>() != null)
                 if (GetComponentInParent<Group>().isHeld)
                     return false;
+            // If the tile is flagged, jiggle is off
+            if (isFlagged)
+                return false;
             // if the tile is not revealed, jiggle is on                        
             return true;
         }
-        else
+        /*else
         {           
             DetectProximity();
             // If the tile is revealed, only jiggle if its
@@ -538,7 +541,7 @@ public class Tile : MonoBehaviour
                 if (!t.isRevealed && !t.isFlagged)
                     return true;
             }
-        }
+        }*/
         return false;
     }
 

@@ -53,7 +53,6 @@ public class HoldTetromino : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        //cleanseButton.transform.localScale = Vector3.zero;
 
         //manualTileSolvePerfectStreakPoints += Mathf.FloorToInt(50 * Mathf.FloorToInt(manualTileSolvePerfectStreak / 100) * gm.level * (1 + gm.GetScoreMultiplier()));
     }
@@ -68,9 +67,12 @@ public class HoldTetromino : MonoBehaviour
             if (!cleanseReady) // Do when cleanse is ready, not every frame
             {
                 //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(cleanseReadySound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));                
-                cleanseButton.SetActive(true);
-                cleanseButton.GetComponent<ButtonJiggle>().Reset();
+                AudioSource.PlayClipAtPoint(cleanseReadySound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f)); 
+                if (cleanseButton != null)               
+                {
+                    cleanseButton.SetActive(true);
+                    cleanseButton.GetComponent<ButtonJiggle>().Reset();
+                }                
                 cleanseReady = true;
             }
             
@@ -92,9 +94,8 @@ public class HoldTetromino : MonoBehaviour
                 cleansePointText.GetComponent<TMPro.Examples.VertexJitter>().enabled = false;
                 //cleansePointText.GetComponent<VertexColorCyclerGradient>().enabled = false;
             }*/
-        }                    
-        //else
-            //cleanseButton.SetActive(false);  
+        }
+
         if (cleansePointRechargeText != null)
             cleansePointRechargeText.text = manualTileSolveStreak + ", " + manualTileSolvePerfectStreak + ", " + manualTileSolvePerfectStreakIncludedWallsTEST + " (m" + manualTileSolveStreakHighest + ", p" + manualTileSolvePerfectStreakHighest + ", w" + manualTileSolvePerfectStreakIncludedWallsHighestTEST + ")\n+c" 
             + cleanseScoreHighest + " ~ " + manualTileSolvePerfectStreakPoints + ", w" + manualTileSolvePerfectStreakIncludedWallsPointsTEST + " *L(" + manualTileSolvePerfectStreakPointsWithLevelTEST + ", w" + manualTileSolvePerfectStreakIncludedWallsPointsWithLevelTEST + ")\n-" 
@@ -299,6 +300,9 @@ public class HoldTetromino : MonoBehaviour
         //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(cleanseActivateSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
         cleanseReady = false;
+
+        if (cleanseButton != null)
+            cleanseButton.GetComponent<ButtonJiggle>().ShrinkToZero();
 
         Tooltip.HideTooltip_Static();
     }

@@ -16,6 +16,7 @@ public class ButtonJiggle : MonoBehaviour
     public float jumpInPlaceHeight = 0f;
     public float jumpInPlaceDuration = 0.3f;
     public float jumpInPlaceLoopDuration = -1;
+    public ButtonJiggle jumpInPlaceSequenceNextObject;
     //public float loopingAnimationDelay = 0f;
 
     // Option to disable programmatically
@@ -106,10 +107,10 @@ public class ButtonJiggle : MonoBehaviour
 
     public void JumpInPlace()
     {
-        JumpInPlace(1);
+        JumpInPlace(false);
     }
 
-    private void JumpInPlace(float multiplier)
+    private void JumpInPlace(bool autoJump = false)
     {
         if (jumpInPlaceTween != null)
             if (jumpInPlaceTween.IsPlaying())
@@ -117,9 +118,29 @@ public class ButtonJiggle : MonoBehaviour
         
         if (jumpInPlaceHeight != 0)
         {
-            jumpInPlaceTween = this.transform.DOJump(this.transform.position, multiplier * jumpInPlaceHeight, 1, jumpInPlaceDuration).OnKill(ResetPosition);//.OnKill(JumpInPlaceReset);
-            if (GetComponent<IdleJiggle>() != null)
+            if (autoJump)
+            {                       
+                if (this.transform.localScale.x != startScale.x)
+                    jumpInPlaceSequencerSend();
+                else
+                {
+                    jumpInPlaceTween = this.transform.DOJump(this.transform.position, 1.5f * jumpInPlaceHeight, 1, jumpInPlaceDuration).OnComplete(jumpInPlaceSequencerSend);
+                    
+                    //if (jumpInPlaceSequenceNextObject.GetComponent<IdleJiggle>() != null)
+                    if (GetComponent<IdleJiggle>() != null)
+                    {
+                        GetComponent<IdleJiggle>().ShakeScale(jumpInPlaceDuration, 0.15f);
+                        GetComponent<IdleJiggle>().ShakeRotation(jumpInPlaceDuration, 0.15f); 
+                    }
+                        
+                }                
+            }
+            else
+            {
+                jumpInPlaceTween = this.transform.DOJump(this.transform.position, jumpInPlaceHeight, 1, jumpInPlaceDuration).OnKill(ResetPosition);
+                if (GetComponent<IdleJiggle>() != null)
                     GetComponent<IdleJiggle>().ShakeRotation(jumpInPlaceDuration, 0.15f);           
+            }            
         }
     }
 
@@ -128,15 +149,23 @@ public class ButtonJiggle : MonoBehaviour
         if (jumpInPlaceLoopDuration >= 0)
         {
             yield return new WaitForSeconds(jumpInPlaceLoopDuration);
-            if (this.transform.localScale.x == startScale.x)
-            {
-                JumpInPlace(1.5f);
-                if (GetComponent<IdleJiggle>() != null)
-                    GetComponent<IdleJiggle>().ShakeScale(jumpInPlaceDuration, 0.15f);
-                    
-            }
+            jumpInPlaceSequencerReceive();
             StartCoroutine(JumpInPlaceLoop());
         }
+    }
+
+    private void jumpInPlaceSequencerReceive()
+    {
+        if (jumpInPlaceTween != null)
+            if (jumpInPlaceTween.IsPlaying())
+                jumpInPlaceSequencerSend();
+        JumpInPlace(true);
+    }
+    private void jumpInPlaceSequencerSend()
+    {
+        if (jumpInPlaceSequenceNextObject != null)
+            jumpInPlaceSequenceNextObject.jumpInPlaceSequencerReceive();
+        //ResetPosition();
     }
 
 

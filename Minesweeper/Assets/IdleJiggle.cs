@@ -20,6 +20,9 @@ public class IdleJiggle : MonoBehaviour
     public float punchWIthControlsElasticity = 1f;*/
 
     public bool jiggleIsEnabled = true;
+    public bool jiggleRotateIsEnabled = true;
+    public bool jiggleScaleIsEnabled = true;
+    public bool jiggleMoveIsEnabled = true;
     void OnEnable()
     {
         //GameManager.OnHardDropEvent += HardDrop;
@@ -110,7 +113,7 @@ public class IdleJiggle : MonoBehaviour
     {
         if (transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
             return;
-        if (!jiggleIsEnabled)
+        if (!jiggleIsEnabled || !jiggleMoveIsEnabled)
             return;
         if (shakePositionTween != null)
             if (shakePositionTween.IsPlaying())
@@ -124,7 +127,7 @@ public class IdleJiggle : MonoBehaviour
     {
         if (transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
             return;
-        if (!jiggleIsEnabled)
+        if (!jiggleIsEnabled || !jiggleRotateIsEnabled)
             return;
         if (shakeRotationTween != null)
             if (shakeRotationTween.IsPlaying())
@@ -138,7 +141,7 @@ public class IdleJiggle : MonoBehaviour
     {
         if (transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
             return;
-        if (!jiggleIsEnabled)
+        if (!jiggleIsEnabled || !jiggleScaleIsEnabled)
             return;
         if (shakeScaleTween != null)
             if (shakeScaleTween.IsPlaying())
