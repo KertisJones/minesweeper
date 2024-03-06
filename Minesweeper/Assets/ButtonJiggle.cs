@@ -14,17 +14,45 @@ public class ButtonJiggle : MonoBehaviour
     public float scaleTransitionTime = 0.15f;
     public float scalePositionOffset = 0f;
     public float jumpInPlaceHeight = 0f;
+    public float jumpInPlaceDuration = 0.3f;
+    public float jumpInPlaceLoopDuration = -1;
+    //public float loopingAnimationDelay = 0f;
 
     // Option to disable programmatically
     public bool jiggleIsEnabled = true;
     public bool reorderToLastSibling = false;
+    private Tween enlargeTween;
     private Tween jumpInPlaceTween;
+    private Tween shrinkToZeroTween;
+    public bool startAtScaleZero = false;
     void Start()
     {
         //cache the scale of the object
         startScale = this.transform.localScale;
         startZPos = this.transform.position.z;
+
+        if (startAtScaleZero)
+            this.transform.localScale = Vector3.zero;
+        
+        StartCoroutine(JumpInPlaceLoop());
     }
+
+    /*IEnumerator PlayLoopingAnimations()
+    {
+        yield return new WaitForSeconds(loopingAnimationDelay);
+        StartCoroutine(JumpInPlaceLoop());
+    }*/
+
+    void OnDestroy()
+    {
+        if(!this.gameObject.scene.isLoaded) 
+            return;
+        transform.DOKill();
+        enlargeTween = null;
+        jumpInPlaceTween = null;
+        shrinkToZeroTween = null;
+    }
+
 
     /*public void OnPointerClick(PointerEventData eventData)
     {
@@ -45,9 +73,20 @@ public class ButtonJiggle : MonoBehaviour
         if (reorderToLastSibling)
             this.transform.SetAsLastSibling();
 
+        if (GetComponent<AudioSource>() != null)
+        {
+            GetComponent<AudioSource>().volume = 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f);
+            if (enlargeTween == null)
+                GetComponent<AudioSource>().Play();
+            else if (!enlargeTween.IsPlaying())
+                GetComponent<AudioSource>().Play();
+        }
+
         //animate on point hover
-        this.transform.DOScale(startScale * scaleMultiplierEnlarge, scaleTransitionTime).SetUpdate(true);
-        this.transform.DOMoveZ(transform.position.z + scalePositionOffset, scaleTransitionTime).SetUpdate(true);
+        enlargeTween = this.transform.DOScale(startScale * scaleMultiplierEnlarge, scaleTransitionTime).SetUpdate(true);
+        this.transform.DOMoveZ(transform.position.z + scalePositionOffset, scaleTransitionTime).SetUpdate(true);   
+        if (GetComponent<IdleJiggle>() != null)
+            GetComponent<IdleJiggle>().ShakeRotation(jumpInPlaceDuration, 0.15f);     
         
     }
 
@@ -67,23 +106,74 @@ public class ButtonJiggle : MonoBehaviour
 
     public void JumpInPlace()
     {
+        JumpInPlace(1);
+    }
+
+    private void JumpInPlace(float multiplier)
+    {
         if (jumpInPlaceTween != null)
             if (jumpInPlaceTween.IsPlaying())
                 return;
         
         if (jumpInPlaceHeight != 0)
         {
-            jumpInPlaceTween = this.transform.DOJump(this.transform.position, jumpInPlaceHeight, 1, 0.5f);//.OnKill(JumpInPlaceReset);
-        }        
+            jumpInPlaceTween = this.transform.DOJump(this.transform.position, multiplier * jumpInPlaceHeight, 1, jumpInPlaceDuration).OnKill(ResetPosition);//.OnKill(JumpInPlaceReset);
+            if (GetComponent<IdleJiggle>() != null)
+                    GetComponent<IdleJiggle>().ShakeRotation(jumpInPlaceDuration, 0.15f);           
+        }
     }
 
-    public void Reset ()
+    IEnumerator JumpInPlaceLoop()
     {
-        if (transform == null)
-            return;
+        if (jumpInPlaceLoopDuration >= 0)
+        {
+            yield return new WaitForSeconds(jumpInPlaceLoopDuration);
+            if (this.transform.localScale.x == startScale.x)
+            {
+                JumpInPlace(1.5f);
+                if (GetComponent<IdleJiggle>() != null)
+                    GetComponent<IdleJiggle>().ShakeScale(jumpInPlaceDuration, 0.15f);
+                    
+            }
+            StartCoroutine(JumpInPlaceLoop());
+        }
+    }
+
+
+    public void ShrinkToZero(bool autoReset = false)
+    {        
+        if (autoReset)
+            this.transform.DOScale(Vector3.zero, scaleTransitionTime).SetUpdate(true).OnKill(ResetScale);
+        else
+            shrinkToZeroTween = this.transform.DOScale(Vector3.zero, scaleTransitionTime).SetUpdate(true);            
+    }
+
+    public void Reset()
+    {
+        //if (transform == null)
+            //return;
         //animate on pointer exit
-        this.transform.DOScale(startScale, scaleTransitionTime).SetUpdate(true);
+        
+        ResetPosition();
+        ResetScale();
+        
+    }
+
+    void ResetPosition()
+    {
         this.transform.DOMoveZ(startZPos, scaleTransitionTime).SetUpdate(true);
+    }
+    void ResetScale()
+    {
+        if (shrinkToZeroTween != null)
+        {
+            if (shrinkToZeroTween.IsPlaying())
+            {
+                Debug.Log("shrinkToZeroTween.IsPlaying");
+                return;
+            }
+        }
+        this.transform.DOScale(startScale, scaleTransitionTime).SetUpdate(true);
     }
 
     /*public void OnPointerEnter(PointerEventData eventData)

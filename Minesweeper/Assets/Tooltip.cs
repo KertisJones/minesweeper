@@ -37,7 +37,8 @@ public class Tooltip : MonoBehaviour
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         startScale = this.transform.localScale;
 
-        HideTooltip();
+        //HideTooltip();
+        this.transform.localScale = Vector3.zero;
 
         mousePosOnScreen = inputManager.GetMousePosition();
         
@@ -121,6 +122,9 @@ public class Tooltip : MonoBehaviour
 
     private void HideTooltip()
     {
+        if (this.transform == null)
+            return;
+        
         this.transform.DOScale(Vector3.zero, 0.15f);
         //gameObject.SetActive(false);
         //tooltipText.gameObject.SetActive(false);
@@ -140,7 +144,8 @@ public class Tooltip : MonoBehaviour
 
     public static void HideTooltip_Static()
     {
-        Instance.HideTooltip();
+        if (Instance != null)
+            Instance.HideTooltip();
     }
 
     void UpdateMousePosOnScreen()
@@ -148,5 +153,4 @@ public class Tooltip : MonoBehaviour
         if (inputManager.GetMousePosition() != Vector2.zero)
             mousePosOnScreen = inputManager.GetMousePosition();
     }
-
 }

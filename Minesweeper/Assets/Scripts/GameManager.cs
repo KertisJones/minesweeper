@@ -1135,6 +1135,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         DOTween.Clear(true);
+        //DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void QuitToTitleMenu () 

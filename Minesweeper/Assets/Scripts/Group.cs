@@ -1294,7 +1294,7 @@ public class Group : MonoBehaviour
             DetectIfLanded();
 
             GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
             lastSuccessfulMovementWasRotation = false;
         }

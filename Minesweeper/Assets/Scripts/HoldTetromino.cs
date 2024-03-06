@@ -16,7 +16,10 @@ public class HoldTetromino : MonoBehaviour
     public GameObject cleanseButton;
     //public TMPro.TMP_Text cleansePointText;
     public TMPro.TMP_Text cleansePointRechargeText;    
-    int cleanseRecharge = 0;
+    public AudioClip cleanseReadySound;
+    public AudioClip cleanseActivateSound;
+    private bool cleanseReady = false;
+    public int cleanseRecharge = 0;
     int manualTileSolveStreak = 0;    
     public int manualTileSolvePerfectStreak = 0;    
     public int manualTileSolvePerfectStreakIncludedWallsTEST = 0; 
@@ -35,6 +38,9 @@ public class HoldTetromino : MonoBehaviour
     public int manualTileSolvePerfectStreakPointsWithLevelTEST = 0;
     public int manualTileSolvePerfectStreakIncludedWallsPointsWithLevelTEST = 0; 
 
+    public AudioClip holdSwitchSound;
+    public AudioClip holdFailedSound;
+
     //public int manualTileSolvePerfectSteakPointsNOMISTAKESTEST = 0;
     //public int manualTileSolvePerfectSteakTotalNOMISTAKESTEST = 0;
     
@@ -47,6 +53,7 @@ public class HoldTetromino : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        //cleanseButton.transform.localScale = Vector3.zero;
 
         //manualTileSolvePerfectStreakPoints += Mathf.FloorToInt(50 * Mathf.FloorToInt(manualTileSolvePerfectStreak / 100) * gm.level * (1 + gm.GetScoreMultiplier()));
     }
@@ -58,7 +65,15 @@ public class HoldTetromino : MonoBehaviour
             return;
         if (CleanseIsPossible())
         {
-            cleanseButton.SetActive(true);
+            if (!cleanseReady) // Do when cleanse is ready, not every frame
+            {
+                //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(cleanseReadySound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));                
+                cleanseButton.SetActive(true);
+                cleanseButton.GetComponent<ButtonJiggle>().Reset();
+                cleanseReady = true;
+            }
+            
             string exclamationSuffix = "";
             for (int i = 0; i < Mathf.Min(5, (Mathf.FloorToInt(manualTileSolvePerfectStreak / 100f))); i++)
             {
@@ -78,8 +93,8 @@ public class HoldTetromino : MonoBehaviour
                 //cleansePointText.GetComponent<VertexColorCyclerGradient>().enabled = false;
             }*/
         }                    
-        else
-            cleanseButton.SetActive(false);  
+        //else
+            //cleanseButton.SetActive(false);  
         if (cleansePointRechargeText != null)
             cleansePointRechargeText.text = manualTileSolveStreak + ", " + manualTileSolvePerfectStreak + ", " + manualTileSolvePerfectStreakIncludedWallsTEST + " (m" + manualTileSolveStreakHighest + ", p" + manualTileSolvePerfectStreakHighest + ", w" + manualTileSolvePerfectStreakIncludedWallsHighestTEST + ")\n+c" 
             + cleanseScoreHighest + " ~ " + manualTileSolvePerfectStreakPoints + ", w" + manualTileSolvePerfectStreakIncludedWallsPointsTEST + " *L(" + manualTileSolvePerfectStreakPointsWithLevelTEST + ", w" + manualTileSolvePerfectStreakIncludedWallsPointsWithLevelTEST + ")\n-" 
@@ -160,10 +175,20 @@ public class HoldTetromino : MonoBehaviour
         
         GameObject currentTetromino = tetrominoSpawner.currentTetromino;
         if (currentTetromino == heldTetromino || currentTetromino == heldTetrominoPrevious)
+        {
+            //gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+            AudioSource.PlayClipAtPoint(holdFailedSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
             return;
+        }
         if (swapPartner != null)
+        {
             if (swapPartner.GetComponent<Group>().isFalling)
+            {
+                //gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                AudioSource.PlayClipAtPoint(holdFailedSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                 return;
+            }
+        }
         
         RemoveFromBoard(currentTetromino);
         AddToBoard(heldTetromino);
@@ -172,6 +197,9 @@ public class HoldTetromino : MonoBehaviour
 
         heldTetrominoPrevious = heldTetromino;
         heldTetromino = currentTetromino;
+
+        //gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+        AudioSource.PlayClipAtPoint(holdSwitchSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
         // Input DAS for next tetromino
         if (heldTetromino.GetComponent<Group>().buttonLeftHeld)
@@ -267,6 +295,10 @@ public class HoldTetromino : MonoBehaviour
         //gm.AddScore(manualTileSolveStreak * 5 * GetCleanseStreakMultiplier());
         gm.AddScore(250);
         cleanseRecharge = 0;
+
+        //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+        AudioSource.PlayClipAtPoint(cleanseActivateSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        cleanseReady = false;
 
         Tooltip.HideTooltip_Static();
     }
