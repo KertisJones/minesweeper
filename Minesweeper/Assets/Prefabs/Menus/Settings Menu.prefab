@@ -95,8 +95,13 @@ MonoBehaviour:
   scaleMultiplierShrink: 0.9
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   reorderToLastSibling: 0
+  startAtScaleZero: 0
 --- !u!114 &5385593786287256825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,8 +389,13 @@ MonoBehaviour:
   scaleMultiplierShrink: 0.9
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   reorderToLastSibling: 0
+  startAtScaleZero: 0
 --- !u!114 &456626729373708668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,8 +751,13 @@ MonoBehaviour:
   scaleMultiplierShrink: 0.9
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   reorderToLastSibling: 0
+  startAtScaleZero: 0
 --- !u!114 &8972077210630397501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2172,9 +2187,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 812338045
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: de2a52d3af901d94ea65a3a820579f4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2257,8 +2272,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 812338045
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &7129975174766691700
 MonoBehaviour:
@@ -2316,7 +2331,7 @@ MonoBehaviour:
   offsetY: 0
   targetRest: {x: 4.5, y: 30, z: -2}
   targetActive: {x: 4.5, y: 10, z: -2}
-  speed: 0.4
+  speed: 0.8
   isActive: 0
   objectToDisableOnTimeTrial: {fileID: 0}
 --- !u!114 &7129975174766691703
@@ -3253,8 +3268,13 @@ MonoBehaviour:
   scaleMultiplierShrink: 0.9
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   reorderToLastSibling: 0
+  startAtScaleZero: 0
 --- !u!114 &5004588545494048066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4229,8 +4249,13 @@ MonoBehaviour:
   scaleMultiplierShrink: 0.9
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   reorderToLastSibling: 0
+  startAtScaleZero: 0
 --- !u!114 &1474283000829754724
 MonoBehaviour:
   m_ObjectHideFlags: 0

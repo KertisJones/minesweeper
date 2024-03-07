@@ -300,7 +300,9 @@ public class DisplayText : MonoBehaviour
         else if (displayType == TextType.gameModeName)
         {
             string gameMode = gameMods.gameModeName;
-            this.GetComponent<TextMeshProUGUI>().text = gameMods.gameModeName;
+            if (gameMods.gameModeDisplayName != "")
+                gameMode = gameMods.gameModeDisplayName;
+            
             if (gm.isEndless && !gm.marathonOverMenu.isActive)
                 gameMode += " (Endless)";
             this.GetComponent<TextMeshProUGUI>().text = gameMode;

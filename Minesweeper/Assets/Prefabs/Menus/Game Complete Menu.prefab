@@ -148,8 +148,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 812338045
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &1594162120200497928
 MonoBehaviour:
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1594162120200497929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   offsetY: 0
   targetRest: {x: 4.5, y: 30, z: -2}
   targetActive: {x: 4.5, y: 10, z: -2}
-  speed: 0.4
+  speed: 0.8
   isActive: 0
   objectToDisableOnTimeTrial: {fileID: 0}
 --- !u!1 &1594162120211274116
@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 1594162120211274113}
   - component: {fileID: 1594162120211274118}
   - component: {fileID: 2060744751638137280}
+  - component: {fileID: 2176255749642899315}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -375,6 +376,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayType: 16
+--- !u!114 &2176255749642899315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594162120211274116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26651055de1a09548b2c97a6f5255fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleMoveDistance: {x: 0, y: 0.5, z: 0}
+  idleMoveDuration: 3
+  idleMoveEase: 4
+  jiggleIsEnabled: 1
+  jiggleRotateIsEnabled: 1
+  jiggleScaleIsEnabled: 1
+  jiggleMoveIsEnabled: 0
 --- !u!1 &1594162120708571039
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,6 +911,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Quit
       objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966832, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitToTitleMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1005,6 +1029,10 @@ PrefabInstance:
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 4190165879721365772}
+    - target: {fileID: 3964747064262966832, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
     - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

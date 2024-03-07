@@ -18,42 +18,52 @@ public class IdleJiggle : MonoBehaviour
     public float punchWIthControlsDuration = 0f;
     public int punchWIthControlsVibrato = 10;
     public float punchWIthControlsElasticity = 1f;*/
-
+    
     public bool jiggleIsEnabled = true;
     public bool jiggleRotateIsEnabled = true;
     public bool jiggleScaleIsEnabled = true;
     public bool jiggleMoveIsEnabled = true;
+    public bool jiggleOnActionIsEnabled = true;
     void OnEnable()
     {
-        //GameManager.OnHardDropEvent += HardDrop;
-        GameManager.OnLineClearEvent += _ => LineClear(_);
-        GameManager.OnGameOverEvent += GameOver;
+        if (jiggleOnActionIsEnabled)
+        {
+            //GameManager.OnHardDropEvent += HardDrop;
+            GameManager.OnLineClearEvent += _ => LineClear(_);
+            GameManager.OnGameOverEvent += GameOver;
+        }        
     }
     void OnDisable()
     {
-        //inputManager.hardDroptPress.started -= _ => PressHardDrop();
-        //GameManager.OnHardDropEvent -= HardDrop;
-        GameManager.OnLineClearEvent -= _ => LineClear(_);
-        GameManager.OnGameOverEvent -= GameOver;
-        if(!this.gameObject.scene.isLoaded) 
-            return;
-        transform.DOKill();
-        shakePositionTween = null;
-        shakeRotationTween = null;
-        shakeScaleTween = null;
+        if (jiggleOnActionIsEnabled)
+        {
+            //inputManager.hardDroptPress.started -= _ => PressHardDrop();
+            //GameManager.OnHardDropEvent -= HardDrop;
+            GameManager.OnLineClearEvent -= _ => LineClear(_);
+            GameManager.OnGameOverEvent -= GameOver;
+            if(!this.gameObject.scene.isLoaded) 
+                return;
+            transform.DOKill();
+            shakePositionTween = null;
+            shakeRotationTween = null;
+            shakeScaleTween = null;
+        }
     }
 
     void OnDestroy()
     {
-        //GameManager.OnHardDropEvent -= HardDrop;
-        GameManager.OnLineClearEvent -= _ => LineClear(_);
-        GameManager.OnGameOverEvent -= GameOver;
+        if (jiggleOnActionIsEnabled)
+        {
+            //GameManager.OnHardDropEvent -= HardDrop;
+            GameManager.OnLineClearEvent -= _ => LineClear(_);
+            GameManager.OnGameOverEvent -= GameOver;
+        }
         if(!this.gameObject.scene.isLoaded) 
             return;
         transform.DOKill();
         shakePositionTween = null;
         shakeRotationTween = null;
-        shakeScaleTween = null;
+        shakeScaleTween = null;        
     }
 
     // Start is called before the first frame update
@@ -68,8 +78,6 @@ public class IdleJiggle : MonoBehaviour
         {
             this.transform.DOMove(transform.position + idleMoveDistance, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
         }
-
-        //transform.DOKill(); when destroyed
     }
 
     /*void HardDrop()
@@ -85,21 +93,14 @@ public class IdleJiggle : MonoBehaviour
 
     void LineClear(int lines)
     {
-        //Debug.Log("LINE CLEAR in jiggle " + lines);
-        /*if (!jiggleIsEnabled || this.transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
-            return;*/
-
-        //this.transform.DOShakeRotation(lines, new Vector3(0, 0, 20), 10, 90, true, ShakeRandomnessMode.Harmonic);
-        /*int l = lines;
-        if (l > 8)
-            l = 8;*/
-        Shake(lines * 0.2f, 0.15f);
+        if (jiggleOnActionIsEnabled)
+            Shake(lines * 0.2f, 0.15f);
     }
 
     void GameOver()
     {
-        Shake(3f, .25f);
-        //this.transform.DOShakeRotation(2, new Vector3(0, 0, 20), 10, 90, true, ShakeRandomnessMode.Harmonic).SetUpdate(true);
+        if (jiggleOnActionIsEnabled)
+            Shake(3f, .25f);
     }
 
     public void Shake(float duration, float strength)

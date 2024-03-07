@@ -91,6 +91,11 @@ public class ButtonJiggle : MonoBehaviour
         
     }
 
+    public void Enlarge(bool overrideEnabled = false)
+    {
+        
+    }
+
     public void Shrink () 
     {
         if (transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))

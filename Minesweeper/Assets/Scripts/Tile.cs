@@ -39,6 +39,7 @@ public class Tile : MonoBehaviour
     GameManager gm;
     Camera cam;
     HoldTetromino holdTetromino;
+    GameModifiers gameMods;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,7 @@ public class Tile : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         holdTetromino = GameObject.FindGameObjectWithTag("Hold").GetComponent<HoldTetromino>();
+        gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
 
         Vector2 v = GameManager.roundVec2(transform.position);
         coordX = (int)v.x;
@@ -113,6 +115,12 @@ public class Tile : MonoBehaviour
         {
             tileBackground.color = solvedMarkColor;
             shimmerOverlay.gameObject.SetActive(true);
+            /*if (GetComponent<IdleJiggle>() != null)
+            {
+                GetComponent<IdleJiggle>().ShakeRotation(0.15f, 0.5f);
+                GetComponent<ButtonJiggle>().Enlarge(true);
+                //GetComponent<IdleJiggle>().ShakeScale(0.15f, 0.05f);
+            } */           
         }            
         else
         {
@@ -166,7 +174,7 @@ public class Tile : MonoBehaviour
                 myColor = new Color32(128, 128, 128, 255);
                 break;
             default:
-                myColor = new Color32(0, 0, 0, 255);
+                myColor = new Color32(255, 255, 255, 255);
                 break;
         }
         if (isQuestioned || isMine)
@@ -180,6 +188,8 @@ public class Tile : MonoBehaviour
                 myText = "";
             if (isMine)
                 myText = "*";
+            else if (gameMods.showCredits) // During Credits, hide numbers
+                myText = "";
                 
         }
         else
@@ -188,6 +198,8 @@ public class Tile : MonoBehaviour
                 myText = "<sprite=0>";
             else if (isQuestioned)
                 myText = "?";
+            if (!isDisplay)
+                myColor = Color.white;
         }
 
         if (gm.isPaused && !gm.marathonOverMenu.isActive)
@@ -197,6 +209,8 @@ public class Tile : MonoBehaviour
         {
             text.SetText(myText);
             text.color = myColor;
+            if (GetComponentInChildren<SetRandomSupporterName>() != null)
+                GetComponentInChildren<SetRandomSupporterName>().supportText.color = myColor;
         }        
     }
 

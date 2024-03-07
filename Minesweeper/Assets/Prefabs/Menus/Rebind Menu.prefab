@@ -915,7 +915,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 812338045
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &593537493044333186
 MonoBehaviour:
@@ -1706,8 +1706,13 @@ MonoBehaviour:
   scaleMultiplierShrink: 0.95
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   reorderToLastSibling: 1
+  startAtScaleZero: 0
 --- !u!114 &7546114993806737092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16012,7 +16017,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 812338045
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 6915ed55e7e8746419a199dcf4478b72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

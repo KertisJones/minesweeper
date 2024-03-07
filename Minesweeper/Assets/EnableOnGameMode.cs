@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnableOnGameMode : MonoBehaviour
+{
+    GameModifiers gameMods;
+    public bool inverseToDisableOnGameMode = false;
+    public bool onShowTitle = false;
+    public bool onShowCredits = false;
+    // Start is called before the first frame update
+    void Start()
+    {
+        gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
+
+        bool isEnabled = false;
+        if(onShowTitle && gameMods.showTitle)
+            isEnabled = true;
+        if(onShowCredits && gameMods.showCredits)
+            isEnabled = true;
+        
+        // INVERSE?
+        if (inverseToDisableOnGameMode)
+            isEnabled = !isEnabled;
+        
+        this.gameObject.SetActive(isEnabled);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}

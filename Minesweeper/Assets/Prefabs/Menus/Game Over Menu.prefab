@@ -1344,6 +1344,9 @@ MonoBehaviour:
   idleMoveDuration: 3
   idleMoveEase: 4
   jiggleIsEnabled: 1
+  jiggleRotateIsEnabled: 1
+  jiggleScaleIsEnabled: 1
+  jiggleMoveIsEnabled: 0
 --- !u!1 &2064147738150250255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,7 +1548,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 812338045
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &2064147738162804859
 MonoBehaviour:
@@ -1569,7 +1572,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2064147738162804858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1616,6 +1619,10 @@ PrefabInstance:
     - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_text
       value: Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966832, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitToTitleMenu
       objectReference: {fileID: 0}
     - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_Pivot.x

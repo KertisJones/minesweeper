@@ -7,28 +7,30 @@ using UnityEngine;
 public class SetRandomSupporterName : MonoBehaviour
 {
     List<string> supporters = new List<string> {
-        "Kertis Jones",
+        "Jesse Riggins",
         "Haruka",
         "Star Cubey",
         "Peridot",
         "Niv",
-        "JMax Chill",
+        "JMaxchill",
         "Kusane",
         "Icely Puzzles",
         "Random 595",
-        "Stickman Comic"
+        "Stickman comic"
     };
-    
-    bool showText = true;
     public TextMeshProUGUI supportText;
+    GameModifiers gameMods;
     // Start is called before the first frame update
     void Start()
     {
-        if (!showText)
+        gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
+
+        if(gameMods.showCredits)
+            this.gameObject.SetActive(true);
+        else
             this.gameObject.SetActive(false);
         
         if (supportText != null)
             supportText.text = supporters[UnityEngine.Random.Range(0, supporters.Count)];
-
     }
 }
