@@ -8,6 +8,7 @@ public class SetRandomSupporterName : MonoBehaviour
 {
     List<string> supporters = new List<string> {
         "Jesse Riggins",
+        "Poinl",
         "Haruka",
         "Star Cubey",
         "Peridot",

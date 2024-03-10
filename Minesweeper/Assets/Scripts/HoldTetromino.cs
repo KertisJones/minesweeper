@@ -14,6 +14,7 @@ public class HoldTetromino : MonoBehaviour
     public GameObject heldTetrominoPrevious;
     public GameObject swapPartner;
     public GameObject cleanseButton;
+    public ProgressBar cleanseProgressBar;
     //public TMPro.TMP_Text cleansePointText;
     public TMPro.TMP_Text cleansePointRechargeText;    
     public AudioClip cleanseReadySound;
@@ -94,6 +95,14 @@ public class HoldTetromino : MonoBehaviour
                 cleansePointText.GetComponent<TMPro.Examples.VertexJitter>().enabled = false;
                 //cleansePointText.GetComponent<VertexColorCyclerGradient>().enabled = false;
             }*/
+        }
+        else
+        {
+            if (cleanseReady)
+            {
+                cleanseButton.GetComponent<ButtonJiggle>().ShrinkToZero();
+                cleanseReady = false;
+            }
         }
 
         if (cleansePointRechargeText != null)
@@ -202,6 +211,8 @@ public class HoldTetromino : MonoBehaviour
         //gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(holdSwitchSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
+        cleanseProgressBar.color = heldTetromino.GetComponentInChildren<Button>().image.color;
+
         // Input DAS for next tetromino
         if (heldTetromino.GetComponent<Group>().buttonLeftHeld)
             gm.GetActiveTetromino().PressLeft();
@@ -296,6 +307,8 @@ public class HoldTetromino : MonoBehaviour
         //gm.AddScore(manualTileSolveStreak * 5 * GetCleanseStreakMultiplier());
         gm.AddScore(250);
         cleanseRecharge = 0;
+        cleanseProgressBar.current = 0;
+        cleanseProgressBar.currentTween = 0;
 
         //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(cleanseActivateSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
@@ -311,6 +324,7 @@ public class HoldTetromino : MonoBehaviour
     {
         manualTileSolveStreak++; 
         cleanseRecharge++;
+        cleanseProgressBar.current = cleanseRecharge;
 
         if (isPerfect)
         {

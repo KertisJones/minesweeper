@@ -203,7 +203,7 @@ public class ButtonJiggle : MonoBehaviour
         {
             if (shrinkToZeroTween.IsPlaying())
             {
-                Debug.Log("shrinkToZeroTween.IsPlaying");
+                //Debug.Log("shrinkToZeroTween.IsPlaying");
                 return;
             }
         }

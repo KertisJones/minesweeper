@@ -351,6 +351,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!114 &6238224 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 593537493044333184, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
@@ -720,6 +721,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!1001 &23267376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1333,6 +1335,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!4 &154075025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894320597419646559, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
@@ -1889,6 +1892,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!4 &268174867 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894320597419646559, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
@@ -3004,7 +3008,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2c2a791e8e8384699519b4608c3772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inverseToDisableOnGameMode: 0
   onShowTitle: 1
+  onShowCredits: 0
 --- !u!1 &550203338
 GameObject:
   m_ObjectHideFlags: 0
@@ -3870,6 +3876,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &756216148 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+  m_PrefabInstance: {fileID: 8799958344098279605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &756216151 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8799958343778337250, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+  m_PrefabInstance: {fileID: 8799958344098279605}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4f28178296b074191cb1d71aac0d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &762754064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4810221121193479904, guid: f8eb7923fbc59a044b7a9fd0d0742a68, type: 3}
@@ -4271,6 +4293,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!4 &786579536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4810221121193479904, guid: f8eb7923fbc59a044b7a9fd0d0742a68, type: 3}
@@ -4522,6 +4545,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!4 &827130271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894320597419646559, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
@@ -5197,6 +5221,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!1001 &955167853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5844,6 +5869,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!1 &1113461781
 GameObject:
   m_ObjectHideFlags: 0
@@ -6198,6 +6224,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!4 &1127222735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894320597419646559, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
@@ -6448,6 +6475,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!1 &1202959825
 GameObject:
   m_ObjectHideFlags: 0
@@ -6837,6 +6865,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!4 &1242170324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894320597419646559, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
@@ -7140,6 +7169,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!4 &1302804545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 658720671210819337, guid: 93999914ce74500468bda03794b16b52, type: 3}
@@ -7330,6 +7360,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!4 &1316709791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894320597419646559, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
@@ -7832,6 +7863,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!1 &1362518463
 GameObject:
   m_ObjectHideFlags: 0
@@ -8062,6 +8094,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!1001 &1376497280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8780,6 +8813,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!1001 &1505622389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8885,7 +8919,7 @@ RectTransform:
   - {fileID: 918781424}
   - {fileID: 580893967}
   m_Father: {fileID: 2081153732}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9392,6 +9426,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!1001 &1530535052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11173,7 +11208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 494727338738866252, guid: 710a08a527f8ebe4bb32954b20a2119c, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 494727338738866252, guid: 710a08a527f8ebe4bb32954b20a2119c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -11603,6 +11638,7 @@ RectTransform:
   - {fileID: 1180096040}
   - {fileID: 1315562648}
   - {fileID: 1093001950}
+  - {fileID: 756216148}
   - {fileID: 1314115563}
   - {fileID: 1509590033}
   - {fileID: 700007651}
@@ -11835,6 +11871,7 @@ MonoBehaviour:
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
 --- !u!1001 &593537493041134224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12246,6 +12283,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 126897450}
     - target: {fileID: 3455087921565693666, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+      propertyPath: cleanseProgressBar
+      value: 
+      objectReference: {fileID: 756216151}
+    - target: {fileID: 3455087921565693666, guid: c46df567a66810a4a86e9459765cae68, type: 3}
       propertyPath: cleansePointRechargeText
       value: 
       objectReference: {fileID: 1315562650}
@@ -12647,7 +12688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915030204311415905, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4915030204311415905, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -12725,5 +12766,118 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cleanse Button
       objectReference: {fileID: 0}
+    - target: {fileID: 4915030204311415910, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915030205086121190, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915030205086121190, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4281479730
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
+--- !u!1001 &8799958344098279605
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2081153732}
+    m_Modifications:
+    - target: {fileID: 4784536988761118865, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Solve to recharge...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 85.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -257
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 85.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337249, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799958343778337254, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
+      propertyPath: m_Name
+      value: Progress Bar
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0e72973634f7bd45b3a9f4ce73b75ce, type: 3}
