@@ -119,7 +119,8 @@ public class HoldTetromino : MonoBehaviour
         //gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(holdSwitchSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
-        cleanseProgressBar.color = heldTetromino.GetComponentInChildren<Button>().image.color;
+        if (cleanseProgressBar != null)
+            cleanseProgressBar.color = heldTetromino.GetComponentInChildren<Button>().image.color;
 
         // Input DAS for next tetromino
         if (heldTetromino.GetComponent<Group>().buttonLeftHeld)
@@ -205,8 +206,11 @@ public class HoldTetromino : MonoBehaviour
         
         gm.AddScore(250);
         cleanseRecharge = 0;
-        cleanseProgressBar.current = 0;
-        cleanseProgressBar.currentTween = 0;
+        if (cleanseProgressBar != null)
+        {
+            cleanseProgressBar.current = 0;
+            cleanseProgressBar.currentTween = 0;
+        }        
 
         //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(cleanseActivateSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
@@ -228,7 +232,8 @@ public class HoldTetromino : MonoBehaviour
         {
             if (cleanseRecharge < 50)
                 cleanseRecharge++;
-            cleanseProgressBar.current = cleanseRecharge;
+            if (cleanseProgressBar != null)
+                cleanseProgressBar.current = cleanseRecharge;
         }
     }
         /*if (isPerfect) // Not on edge or bottom row
@@ -263,6 +268,6 @@ public class HoldTetromino : MonoBehaviour
 
     public void ResetManualSolveStreak()
     {
-        manualTileSolveStreak = 0;
+        manualTileSolveStreak = 0;        
     }
 }

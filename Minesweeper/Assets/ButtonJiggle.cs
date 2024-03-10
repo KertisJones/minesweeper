@@ -17,12 +17,15 @@ public class ButtonJiggle : MonoBehaviour
     public float jumpInPlaceDuration = 0.3f;
     public float jumpInPlaceLoopDuration = -1;
     public ButtonJiggle jumpInPlaceSequenceNextObject;
+    public AudioClip enlargeSound;
+    public AudioClip shrinkSound;
     //public float loopingAnimationDelay = 0f;
 
     // Option to disable programmatically
     public bool jiggleIsEnabled = true;
     public bool reorderToLastSibling = false;
     private Tween enlargeTween;
+    private Tween shrinkTween;
     private Tween jumpInPlaceTween;
     private Tween shrinkToZeroTween;
     public bool startAtScaleZero = false;
@@ -50,6 +53,7 @@ public class ButtonJiggle : MonoBehaviour
             return;
         transform.DOKill();
         enlargeTween = null;
+        shrinkTween = null;
         jumpInPlaceTween = null;
         shrinkToZeroTween = null;
     }
@@ -74,8 +78,9 @@ public class ButtonJiggle : MonoBehaviour
         if (reorderToLastSibling)
             this.transform.SetAsLastSibling();
 
-        if (GetComponent<AudioSource>() != null)
+        if (GetComponent<AudioSource>() != null && enlargeSound != null)
         {
+            GetComponent<AudioSource>().clip = enlargeSound;
             GetComponent<AudioSource>().volume = 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f);
             if (enlargeTween == null)
                 GetComponent<AudioSource>().Play();
@@ -91,10 +96,10 @@ public class ButtonJiggle : MonoBehaviour
         
     }
 
-    public void Enlarge(bool overrideEnabled = false)
+    /*public void Enlarge(bool overrideEnabled = false)
     {
         
-    }
+    }*/
 
     public void Shrink () 
     {
@@ -105,8 +110,18 @@ public class ButtonJiggle : MonoBehaviour
         if (reorderToLastSibling)
             this.transform.SetAsLastSibling();
         
+        if (GetComponent<AudioSource>() != null && shrinkSound != null)
+        {
+            GetComponent<AudioSource>().clip = shrinkSound;
+            GetComponent<AudioSource>().volume = 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f);
+            if (shrinkTween == null)
+                GetComponent<AudioSource>().Play();
+            else if (!shrinkTween.IsPlaying())
+                GetComponent<AudioSource>().Play();
+        }
+        
         //animate on point click
-        this.transform.DOScale(startScale * scaleMultiplierShrink, scaleTransitionTime).SetUpdate(true);
+        shrinkTween = this.transform.DOScale(startScale * scaleMultiplierShrink, scaleTransitionTime).SetUpdate(true);
         this.transform.DOMoveZ(transform.position.z - scalePositionOffset, scaleTransitionTime).SetUpdate(true);
     }
 

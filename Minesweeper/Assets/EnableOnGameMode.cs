@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnableOnGameMode : MonoBehaviour
 {
     GameModifiers gameMods;
+    GameManager gm;
     public bool inverseToDisableOnGameMode = false;
     public bool onShowTitle = false;
     public bool onShowCredits = false;
@@ -12,6 +13,7 @@ public class EnableOnGameMode : MonoBehaviour
     void Start()
     {
         gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
         bool isEnabled = false;
         if(onShowTitle && gameMods.showTitle)
@@ -29,6 +31,9 @@ public class EnableOnGameMode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (onShowTitle && gm.isGameOver)
+        {
+            GetComponentInChildren<SpringJoint2D>().breakForce = 0;
+        }
     }
 }

@@ -376,6 +376,9 @@ MonoBehaviour:
   jumpInPlaceHeight: 0
   jumpInPlaceDuration: 0.3
   jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
+  enlargeSound: {fileID: 8300000, guid: a7536db2e635b4f4ca9394d157654ca1, type: 3}
+  shrinkSound: {fileID: 8300000, guid: e0e8ed38e929d9d41ab768d63d4f976f, type: 3}
   jiggleIsEnabled: 1
   reorderToLastSibling: 1
   startAtScaleZero: 0

@@ -12,7 +12,7 @@ public class Tile : MonoBehaviour
 
     public bool isMine = false;
     public bool isFlagged = false;
-    public bool isQuestioned = false;
+    //public bool isQuestioned = false;
     public bool isRevealed = false;
     public bool isDisplay = false;
     public int nearbyMines = 0;
@@ -24,11 +24,15 @@ public class Tile : MonoBehaviour
     public bool isRowSolved = false;
     public bool is8Triggered = false;
     public bool isFailedToChord = false;
+    private bool revealedThisFrame = false;
     public Color solvedMarkColor;
 
     public AudioClip revealSound;
     public AudioClip flagSound;
     public AudioClip unflagSound;
+    public AudioClip chordSound;
+    public AudioClip chordFlagSound;
+    public AudioClip chordFailSound;
 
     public SpriteRenderer tileBackground;
     public SpriteRenderer explodedMineBackground;
@@ -129,6 +133,8 @@ public class Tile : MonoBehaviour
                 shimmerOverlay.gameObject.SetActive(false);
         }
 
+        revealedThisFrame = false;
+
         /*fallClock -= Time.deltaTime;
         if (fallClock <= 0)
         {
@@ -177,7 +183,7 @@ public class Tile : MonoBehaviour
                 myColor = new Color32(255, 255, 255, 255);
                 break;
         }
-        if (isQuestioned || isMine)
+        if (isMine)
             myColor = Color.black;
 
         if (isRevealed)
@@ -196,8 +202,8 @@ public class Tile : MonoBehaviour
         {
             if (isFlagged)
                 myText = "<sprite=0>";
-            else if (isQuestioned)
-                myText = "?";
+            //else if (isQuestioned)
+                //myText = "?";
             if (!isDisplay)
                 myColor = Color.white;
         }
@@ -222,10 +228,11 @@ public class Tile : MonoBehaviour
         isFlagged = !isFlagged;
         if (isFlagged)
         {
-            isQuestioned = false;
+            //isQuestioned = false;
 
             //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(flagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            gm.soundManager.PlayTileRevealSound();
+            //AudioSource.PlayClipAtPoint(flagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
             float sm = gm.GetScoreMultiplier();
@@ -243,7 +250,7 @@ public class Tile : MonoBehaviour
             }                
             else
             {
-                holdTetromino.ResetManualSolveStreak();//.manualTileSolveStreak = 0;
+                holdTetromino.ResetManualSolveStreak();
             }
 
             if (gm.lineClearInstantly)
@@ -257,7 +264,7 @@ public class Tile : MonoBehaviour
 
             gm.ResetScoreMultiplier();
             isFailedToChord = true; // Don't double count this tile for points
-            holdTetromino.ResetManualSolveStreak();//.manualTileSolveStreak = 0;
+            holdTetromino.ResetManualSolveStreak();
 
             /*
             +30K, -70K
@@ -274,7 +281,7 @@ public class Tile : MonoBehaviour
         GameManager.markSolvedRows();
     }
 
-    public void QuestionToggle()
+    /*public void QuestionToggle()
     {
         if (gm.isGameOver || isRevealed)
             return;
@@ -292,14 +299,16 @@ public class Tile : MonoBehaviour
             //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
         }
-    }
+    }*/
 
     public void Reveal(bool isAutomatic = false, bool isManual = false)
     {
         if (!isRevealed && !isFlagged && !isDisplay && (!GetComponentInParent<Group>().isHeld || isAutomatic))
         {
             isRevealed = true;
-            isQuestioned = false;
+            //isQuestioned = false;
+
+            revealedThisFrame = true;
             //gm.RevealTile(coordX, coordY, nearbyMines, isMine);
 
             if (isMine)
@@ -315,7 +324,8 @@ public class Tile : MonoBehaviour
             else if (!gm.isGameOver)
             {
                 //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                gm.soundManager.PlayTileRevealSound();
+                //AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
                 if (isManual && !isFailedToChord)
                 {
@@ -401,9 +411,10 @@ public class Tile : MonoBehaviour
         //Debug.Log("Attempting Chord...");
         if (isRevealed && !isMine)
         {
-            if (nearbyFlags == nearbyMines)
+            if (nearbyFlags == nearbyMines) // Chord
             {
-                //Debug.Log("Chording!");
+                //AudioSource.PlayClipAtPoint(chordSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+
                 foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
                 {
                     if (!t.isFlagged)
@@ -415,8 +426,12 @@ public class Tile : MonoBehaviour
                     }                                        
                 }
             }
-            else
-            {
+            else if (!revealedThisFrame) // Failed Chord
+            {                
+                bool realFail = false;
+                AudioSource.PlayClipAtPoint(chordFailSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                gm.soundManager.ResetTileRevealPitch();
+
                 foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
                 {
                     if (!t.isFlagged)
@@ -424,9 +439,13 @@ public class Tile : MonoBehaviour
                         if (!t.isDisplay)
                         {
                             t.isFailedToChord = true;
-                            holdTetromino.ResetManualSolveStreak(); //holdTetromino.manualTileSolveStreak = 0;
+                            realFail = true;                            
                         }
                     }                                        
+                }
+                if (realFail)
+                {                    
+                    holdTetromino.ResetManualSolveStreak();
                 }
             }
             
@@ -460,7 +479,8 @@ public class Tile : MonoBehaviour
 
             if (nearbyMines == adjacentUnopenedTiles.Count) // Flag Chord
             {
-                //Debug.Log("Flag Chording!");
+                //AudioSource.PlayClipAtPoint(chordFlagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+
                 foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
                 {
                     if (!t.isFlagged)
@@ -469,15 +489,23 @@ public class Tile : MonoBehaviour
                     }                                        
                 }
             }
-            else
+            else // Failed Chord
             {
+                bool realFail = false;                
+                AudioSource.PlayClipAtPoint(chordFailSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                gm.soundManager.ResetTileRevealPitch();
+
                 foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
                 {
                     if (!t.isFlagged)
                     {
                         t.isFailedToChord = true;
-                        holdTetromino.ResetManualSolveStreak();//.manualTileSolveStreak = 0;
+                        realFail = true;                        
                     }                                        
+                }
+                if (realFail)
+                {                    
+                    holdTetromino.ResetManualSolveStreak();
                 }
             }
             

@@ -465,6 +465,8 @@ MonoBehaviour:
   jumpInPlaceDuration: 0.3
   jumpInPlaceLoopDuration: -1
   jumpInPlaceSequenceNextObject: {fileID: 0}
+  enlargeSound: {fileID: 0}
+  shrinkSound: {fileID: 0}
   jiggleIsEnabled: 1
   reorderToLastSibling: 0
   startAtScaleZero: 0
@@ -1416,7 +1418,6 @@ MonoBehaviour:
   coordY: 0
   isMine: 0
   isFlagged: 0
-  isQuestioned: 0
   isRevealed: 0
   isDisplay: 0
   nearbyMines: 0
@@ -1428,9 +1429,12 @@ MonoBehaviour:
   is8Triggered: 0
   isFailedToChord: 0
   solvedMarkColor: {r: 0.88235295, g: 0.88235295, b: 0.88235295, a: 1}
-  revealSound: {fileID: 8300000, guid: e1d070787e3eb164999bddf10246c1fe, type: 3}
-  flagSound: {fileID: 8300000, guid: 51432cb738fdea545bc1a128c05bc50c, type: 3}
+  revealSound: {fileID: 8300000, guid: 7c431c7673dc1ca48b4e4b672083d456, type: 3}
+  flagSound: {fileID: 8300000, guid: 2cb4731b5bdfa91409cb7aaa9d1ace0a, type: 3}
   unflagSound: {fileID: 8300000, guid: bdfdd4aa660ced24fad70a11e34d4139, type: 3}
+  chordSound: {fileID: 8300000, guid: 7c431c7673dc1ca48b4e4b672083d456, type: 3}
+  chordFlagSound: {fileID: 8300000, guid: 2cb4731b5bdfa91409cb7aaa9d1ace0a, type: 3}
+  chordFailSound: {fileID: 8300000, guid: 4d4fbae0c387e5242b2e90db5e195b21, type: 3}
   tileBackground: {fileID: 768701328770524795}
   explodedMineBackground: {fileID: 4100585407620534530}
   shimmerOverlay: {fileID: 8437181942086923925}
@@ -1576,6 +1580,8 @@ MonoBehaviour:
   jumpInPlaceDuration: 0.3
   jumpInPlaceLoopDuration: -1
   jumpInPlaceSequenceNextObject: {fileID: 0}
+  enlargeSound: {fileID: 8300000, guid: 10199842e38ec3b4aadb1ac50fd79a85, type: 3}
+  shrinkSound: {fileID: 0}
   jiggleIsEnabled: 1
   reorderToLastSibling: 0
   startAtScaleZero: 0

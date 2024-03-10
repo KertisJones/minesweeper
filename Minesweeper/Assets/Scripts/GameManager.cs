@@ -11,6 +11,8 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
     public GameModifiers gameMods;
+    [HideInInspector]
+    public SoundManager soundManager;
     float startTime;
     float endtime;
     [HideInInspector]
@@ -121,6 +123,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         inputManager = InputManager.Instance;
+        soundManager = GetComponent<SoundManager>();
         gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
 
         GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().runs += 1;
