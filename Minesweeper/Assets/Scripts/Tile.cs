@@ -238,23 +238,12 @@ public class Tile : MonoBehaviour
             {
                 if (!isFailedToChord)
                 {
-                    if (coordY == 0)
-                    {
-                        holdTetromino.AddToManualSolveStreak(false, true);
-                    }                        
-                    else if ((coordX == 0 || coordX == 9) && (gm.safeEdgeTilesGained > coordY))
-                    {
-                        holdTetromino.AddToManualSolveStreak(false, true);
-                    }                        
-                    else
-                    {
-                        holdTetromino.AddToManualSolveStreak(true);//.manualTileSolveStreak++; 
-                    }
+                    holdTetromino.AddToManualSolveStreak(true);
                 }
             }                
             else
             {
-                holdTetromino.ResetManualSolvePerfectStreak();//.manualTileSolveStreak = 0;
+                holdTetromino.ResetManualSolveStreak();//.manualTileSolveStreak = 0;
             }
 
             if (gm.lineClearInstantly)
@@ -330,18 +319,7 @@ public class Tile : MonoBehaviour
 
                 if (isManual && !isFailedToChord)
                 {
-                    if (coordY == 0)
-                    {
-                        holdTetromino.AddToManualSolveStreak(false, true);
-                    }                        
-                    else if ((coordX == 0 || coordX == 9) && (gm.safeEdgeTilesGained > coordY))
-                    {
-                        holdTetromino.AddToManualSolveStreak(false, true);
-                    }                        
-                    else
-                    {
-                        holdTetromino.AddToManualSolveStreak(true);//.manualTileSolveStreak++; 
-                    }                        
+                    holdTetromino.AddToManualSolveStreak(false);
                 }
                     
 
@@ -352,18 +330,18 @@ public class Tile : MonoBehaviour
                     if (GetComponentInParent<Group>().isFalling)
                     {
                         gm.AddScore(nearbyMines, false); // * nearbyMines
-                        holdTetromino.scoreMissingTest += Mathf.FloorToInt(((nearbyMines * nearbyMines) - nearbyMines) * gm.level * (1 + gm.GetScoreMultiplier()));
+                        /*holdTetromino.scoreMissingTest += Mathf.FloorToInt(((nearbyMines * nearbyMines) - nearbyMines) * gm.level * (1 + gm.GetScoreMultiplier()));
                         holdTetromino.scoreRevealRemainingTest += Mathf.FloorToInt(nearbyMines * gm.level * (1 + gm.GetScoreMultiplier()));                        
                         holdTetromino.scoreRevealTest += Mathf.FloorToInt(((nearbyMines * nearbyMines)) * gm.level * (1 + gm.GetScoreMultiplier()));
-                        holdTetromino.scoreRevealNoLevelTest += Mathf.FloorToInt(nearbyMines * (1 + gm.GetScoreMultiplier()));      
+                        holdTetromino.scoreRevealNoLevelTest += Mathf.FloorToInt(nearbyMines * (1 + gm.GetScoreMultiplier()));*/
                     }                        
                     else
                     {
                         gm.AddScore(nearbyMines * (coordY + 1), false); // * nearbyMines
-                        holdTetromino.scoreMissingTest += Mathf.FloorToInt(((nearbyMines * nearbyMines * (coordY + 1)) - (nearbyMines * (coordY + 1))) * gm.level * (1 + gm.GetScoreMultiplier()));
+                        /*holdTetromino.scoreMissingTest += Mathf.FloorToInt(((nearbyMines * nearbyMines * (coordY + 1)) - (nearbyMines * (coordY + 1))) * gm.level * (1 + gm.GetScoreMultiplier()));
                         holdTetromino.scoreRevealRemainingTest += Mathf.FloorToInt((nearbyMines * (coordY + 1)) * gm.level * (1 + gm.GetScoreMultiplier()));
                         holdTetromino.scoreRevealTest += Mathf.FloorToInt(((nearbyMines * nearbyMines * (coordY + 1))) * gm.level * (1 + gm.GetScoreMultiplier()));
-                        holdTetromino.scoreRevealNoLevelTest += Mathf.FloorToInt((nearbyMines * (coordY + 1)) * (1 + gm.GetScoreMultiplier()));
+                        holdTetromino.scoreRevealNoLevelTest += Mathf.FloorToInt((nearbyMines * (coordY + 1)) * (1 + gm.GetScoreMultiplier()));*/
                     }
                         
                     
@@ -446,7 +424,7 @@ public class Tile : MonoBehaviour
                         if (!t.isDisplay)
                         {
                             t.isFailedToChord = true;
-                            holdTetromino.ResetManualSolvePerfectStreak(); //holdTetromino.manualTileSolveStreak = 0;
+                            holdTetromino.ResetManualSolveStreak(); //holdTetromino.manualTileSolveStreak = 0;
                         }
                     }                                        
                 }
@@ -498,7 +476,7 @@ public class Tile : MonoBehaviour
                     if (!t.isFlagged)
                     {
                         t.isFailedToChord = true;
-                        holdTetromino.ResetManualSolvePerfectStreak();//.manualTileSolveStreak = 0;
+                        holdTetromino.ResetManualSolveStreak();//.manualTileSolveStreak = 0;
                     }                                        
                 }
             }
