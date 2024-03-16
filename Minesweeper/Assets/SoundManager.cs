@@ -6,6 +6,8 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     private AudioSource musicSource;
+    [SerializeField]
+    private AudioSource multiplierDrainSource;
     private GameManager gm;
     public AudioClip tileRevealSound1;
     public AudioClip tileRevealSound2;
@@ -20,13 +22,18 @@ public class SoundManager : MonoBehaviour
     public AudioClip tileRevealSound11;
     public AudioClip tileRevealSound12;
     public AudioClip tileRevealSound13;
-    public AudioClip tileRevealSound14;
-    public AudioClip tileRevealSound15;
-    public AudioClip tileRevealSound16;
+    public AudioClip multiplierDrainStartSound;
     private bool tileRevealedThisFrame = false;
     private int tilesRevealedPitch = 0;
     private float tilesRevealedCooldownTimer = 0f;
     private int currentLevel = 1;
+
+    private Tween multiplierDrainTween;
+
+    void OnDestroy()
+    {
+        multiplierDrainTween = null;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -127,5 +134,23 @@ public class SoundManager : MonoBehaviour
             currentPitch = 1 + maxPitchIncrease;
 
         musicSource.DOPitch(currentPitch, 1);
+    }
+
+    public void PlayMultiplierDrain()
+    {        
+        if (multiplierDrainTween != null)
+            if (multiplierDrainTween.IsPlaying())
+                return;        
+        if (multiplierDrainSource.volume > 0)
+            return;
+        
+        multiplierDrainTween = multiplierDrainSource.DOFade(PlayerPrefs.GetFloat("SoundVolume", 0.5f), 1f);
+    }
+
+    public void StopMultiplierDrain() 
+    { 
+        if (multiplierDrainTween != null)       
+            multiplierDrainTween.Kill();
+        multiplierDrainSource.DOFade(0, 0.5f).SetUpdate(true);//.OnKill(multiplierDrainSource.Stop);
     }
 }

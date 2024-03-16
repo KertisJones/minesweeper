@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public int scoreMultiplierLimit = 5000;
     public float scoreMultiplierDecayPerTick= 0.1f;
     public float scoreMultiplierTimer = 0f;
+    private int scoreMultiplierTimerCountdown = -1;
     private float lastMultiplierTick = 0;
     public int comboLinesFilled = -1; // C=-1; +1 when mino locks & line filled; C= when mino locks & line not filled
     public bool lastFillWasDifficult = false; // Difficult fills are Tetrises or T-Spins
@@ -109,6 +110,8 @@ public class GameManager : MonoBehaviour
     public AudioClip lineFullSound4;
     public AudioClip perfectClearSound;
     public AudioClip gameOverSound;
+    public AudioClip multiplierCountdownSound;
+    public AudioClip multiplierCountdownSoundFinal;
 
     public delegate void LineClearEvent(int lines);
     public static event LineClearEvent OnLineClearEvent;
@@ -186,8 +189,27 @@ public class GameManager : MonoBehaviour
         //Debug.Log((Mathf.Floor(0.04f * 100) / 100) + 0.01f);
         if (scoreMultiplierTimer > 0 && !isGameOver)
             scoreMultiplierTimer -= Time.deltaTime;
-        if (scoreMultiplierTimer <= 0)
+        if (scoreMultiplierTimer > -1 && GetScoreMultiplier() > 0)
         {
+            if (scoreMultiplierTimer <= (float)scoreMultiplierTimerCountdown) 
+            {
+                //Debug.Log(scoreMultiplierTimerCountdown);
+                switch (scoreMultiplierTimerCountdown)
+                {
+                    case 0:
+                        AudioSource.PlayClipAtPoint(multiplierCountdownSoundFinal, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        break;
+                    default:
+                        AudioSource.PlayClipAtPoint(multiplierCountdownSound, new Vector3(0, 0, 0), 1f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        break;                    
+                }
+                scoreMultiplierTimerCountdown--;
+            }
+        }
+        if (scoreMultiplierTimer <= 0 && GetScoreMultiplier() > 0)
+        {
+            soundManager.PlayMultiplierDrain();
+
             float tickTime = 0.04f; // x0.25 / sec
             if (scoreMultiplier > scoreMultiplierLimit * 0.1f)
                 tickTime = 0.03f; // x0.33 / sec
@@ -227,8 +249,12 @@ public class GameManager : MonoBehaviour
                     SetScoreMultiplier(-1 * multiplierDrain, 0);
                     // If the multiplier is gone, turn off the background animation.
                     if (GetScoreMultiplier() <= 0)
+                    {
                         backgroundAnimated.SetActive(false);
-                }            
+                        soundManager.StopMultiplierDrain();
+                    }
+                        
+                }
             }
             scoreMultiplierTimer = 0;
         }
@@ -958,7 +984,7 @@ public class GameManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>().Stop();
 
         GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-        AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0), 0.1f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0), 0.35f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
         StartCoroutine(GameOver());        
     }
@@ -1004,6 +1030,10 @@ public class GameManager : MonoBehaviour
                 scoreMultiplierTimer = addDuration;
             if (scoreMultiplierTimer > 16)
                 scoreMultiplierTimer = 16;
+            
+            if (Mathf.FloorToInt(scoreMultiplierTimer) > scoreMultiplierTimerCountdown && Mathf.FloorToInt(scoreMultiplierTimer) >= 1)
+                scoreMultiplierTimerCountdown = Mathf.Min(Mathf.FloorToInt(scoreMultiplierTimer), 3);
+            soundManager.StopMultiplierDrain();
         }
 
         if (GetScoreMultiplier() > 0)
@@ -1016,7 +1046,9 @@ public class GameManager : MonoBehaviour
     public void ResetScoreMultiplier()
     {
         //scoreMultiplier = 0;
-        scoreMultiplierTimer = 0;        
+        scoreMultiplierTimer = 0;      
+        if (scoreMultiplierTimerCountdown > 0) 
+            scoreMultiplierTimerCountdown = 0; 
     }
 
     public float GetScoreMultiplier()

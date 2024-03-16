@@ -261,6 +261,7 @@ public class Tile : MonoBehaviour
         {
             //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            gm.soundManager.ResetTileRevealPitch();
 
             gm.ResetScoreMultiplier();
             isFailedToChord = true; // Don't double count this tile for points

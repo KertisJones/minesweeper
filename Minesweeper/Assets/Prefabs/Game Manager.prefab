@@ -108,6 +108,8 @@ MonoBehaviour:
   lineFullSound4: {fileID: 8300000, guid: 4840e3cd2e1b5bd4592308066bd6c587, type: 3}
   perfectClearSound: {fileID: 8300000, guid: 5874bc7528f45de4ebaf002fe0273e11, type: 3}
   gameOverSound: {fileID: 8300000, guid: a994636b57e1d714b8b09e4270e1b2a3, type: 3}
+  multiplierCountdownSound: {fileID: 8300000, guid: 10199842e38ec3b4aadb1ac50fd79a85, type: 3}
+  multiplierCountdownSoundFinal: {fileID: 8300000, guid: f96700b5304576543b0ce2d10c9d03a7, type: 3}
 --- !u!82 &9133358887212656289
 AudioSource:
   m_ObjectHideFlags: 0
@@ -118,11 +120,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 22d1e163ce36afc45b5e4a6c1d65c706, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -216,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b499b0e7c1c3d34c99759380e881508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  multiplierDrainSource: {fileID: 9133358887212656289}
   tileRevealSound1: {fileID: 8300000, guid: ffccde34244e6d64398290f3937d5d3f, type: 3}
   tileRevealSound2: {fileID: 8300000, guid: 7cd39cc279019314c9f1c17794279a17, type: 3}
   tileRevealSound3: {fileID: 8300000, guid: a01b357bc8cb6e34fb03f3998a029c78, type: 3}
@@ -229,6 +232,4 @@ MonoBehaviour:
   tileRevealSound11: {fileID: 8300000, guid: 266ecf633e08fb740961bc753f8cc439, type: 3}
   tileRevealSound12: {fileID: 8300000, guid: ad5472a9b7f2e8542a9f889a3c98e6e1, type: 3}
   tileRevealSound13: {fileID: 8300000, guid: 10c2b5ee39a6ca04f845c800ee2835b4, type: 3}
-  tileRevealSound14: {fileID: 0}
-  tileRevealSound15: {fileID: 0}
-  tileRevealSound16: {fileID: 0}
+  multiplierDrainStartSound: {fileID: 8300000, guid: a3cae5b34428fce41989341d3fd6cfb5, type: 3}
