@@ -39,7 +39,7 @@ public class SettingsMenu : MonoBehaviour
         musicVolumeSlider.onValueChanged.AddListener(delegate { MusicVolumeSlider(); });
         soundVolumeSlider.value = soundVolume;
         soundVolumeSlider.onValueChanged.AddListener(delegate { SoundVolumeSlider(); });
-        screenShakeToggle.isOn = screenShakeEnabled;
+        screenShakeToggle.isOn = !screenShakeEnabled;
         screenShakeToggle.onValueChanged.AddListener(delegate  { ScreenShakeToggle(); });
         lockDelayDisplayToggle.isOn = lockDelayDisplayEnabled;
         lockDelayDisplayToggle.onValueChanged.AddListener(delegate  { LockDelayDisplayToggle(); });
@@ -74,7 +74,7 @@ public class SettingsMenu : MonoBehaviour
         }
         if (screenShakeToggle != null)
         {
-            screenShakeToggle.isOn = screenShakeEnabled;
+            screenShakeToggle.isOn = !screenShakeEnabled;
             if (pauseMenuMove.isActive)
                 screenShakeToggle.interactable = true;
             else
@@ -108,7 +108,7 @@ public class SettingsMenu : MonoBehaviour
     }
     public void ScreenShakeToggle() // Sets the Screen Shake from PlayerPrefs
     {
-        screenShakeEnabled = screenShakeToggle.isOn;
+        screenShakeEnabled = !screenShakeToggle.isOn;
         PlayerPrefs.SetInt("ScreenShakeEnabled", (screenShakeEnabled ? 1 : 0));
     }
     public void LockDelayDisplayToggle() // Sets the Lock Delay Display from PlayerPrefs

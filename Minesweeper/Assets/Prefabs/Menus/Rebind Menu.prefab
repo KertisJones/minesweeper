@@ -1710,6 +1710,8 @@ MonoBehaviour:
   jumpInPlaceDuration: 0.3
   jumpInPlaceLoopDuration: -1
   jumpInPlaceSequenceNextObject: {fileID: 0}
+  enlargeSound: {fileID: 0}
+  shrinkSound: {fileID: 0}
   jiggleIsEnabled: 1
   reorderToLastSibling: 1
   startAtScaleZero: 0

@@ -5374,7 +5374,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camTransform: {fileID: 519420032}
-  isActive: 1
   durationModifier: 1
   shakeModifier: 1
   shakeParticles: {fileID: 0}
@@ -23465,10 +23464,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 593537493044333187, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 593537493044333187, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
       propertyPath: m_SortingLayerID
       value: 812338045

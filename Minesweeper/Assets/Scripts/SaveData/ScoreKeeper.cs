@@ -15,7 +15,7 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
     //public static float masterVolume  = 0.2f;
     GameManager gm;
     AudioSource musicSource;
-    CameraShake cameraShake;
+    //CameraShake cameraShake;
     // Start is called before the first frame update
     void Awake()
     {
@@ -52,8 +52,8 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
             gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (musicSource == null)
             musicSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
-        if (cameraShake == null)
-            cameraShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
+        /*if (cameraShake == null)
+            cameraShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();*/
         
         if ((gm.GetScore() > bestScore) && !(gm.isEndless && !gm.marathonOverMenu.isActive)) // Endless mode has not yet begun
         {
@@ -76,10 +76,10 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
         if (musicSource != null)
             musicSource.volume = PlayerPrefs.GetFloat("MusicVolume", 0.25f);
 
-        if (cameraShake != null)
+        /*if (cameraShake != null)
         {
             cameraShake.isActive = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
-        }
+        }*/
             //(PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0)
         
         /*if (GameObject.FindGameObjectWithTag("Volume") != null)

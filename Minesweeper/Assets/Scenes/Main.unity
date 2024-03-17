@@ -2771,7 +2771,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camTransform: {fileID: 519420032}
-  isActive: 1
   durationModifier: 1
   shakeModifier: 1
   shakeParticles: {fileID: 0}
@@ -12173,6 +12172,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 6238224}
+    - target: {fileID: 5591921777318929736, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 11.500008
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591921777318929736, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000025749207
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726619994825781286, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 11.500008
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726619994825781286, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000025749207
+      objectReference: {fileID: 0}
     - target: {fileID: 6283528520868863019, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 

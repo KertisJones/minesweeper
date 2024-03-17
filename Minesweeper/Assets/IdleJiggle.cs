@@ -112,44 +112,43 @@ public class IdleJiggle : MonoBehaviour
 
     public void ShakePosition(float duration, float strength)
     {
-        if (transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
-            return;
-        if (!jiggleIsEnabled || !jiggleMoveIsEnabled)
-            return;
-        if (shakePositionTween != null)
-            if (shakePositionTween.IsPlaying())
-                return;
-        if (this.transform.localScale == Vector3.zero)
+        if (!IsShakeValid(jiggleMoveIsEnabled, shakePositionTween))
             return;
         shakePositionTween = this.transform.DOShakePosition(duration, new Vector3(strength, strength, 0));
     }
 
     public void ShakeRotation(float duration, float strength)
     {
-        if (transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
-            return;
-        if (!jiggleIsEnabled || !jiggleRotateIsEnabled)
-            return;
-        if (shakeRotationTween != null)
-            if (shakeRotationTween.IsPlaying())
-                return;
-        if (this.transform.localScale == Vector3.zero)
+        if (!IsShakeValid(jiggleRotateIsEnabled, shakeRotationTween))
             return;
         shakeRotationTween = this.transform.DOShakeRotation(duration, new Vector3(0, 0, strength * 40));
     }
 
     public void ShakeScale(float duration, float strength)
     {
-        if (transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
-            return;
-        if (!jiggleIsEnabled || !jiggleScaleIsEnabled)
-            return;
-        if (shakeScaleTween != null)
-            if (shakeScaleTween.IsPlaying())
-                return;
-        if (this.transform.localScale == Vector3.zero)
+        if (!IsShakeValid(jiggleScaleIsEnabled, shakeScaleTween))
             return;
         shakeScaleTween = this.transform.DOShakeScale(duration, strength);
+    }
+
+    private bool IsShakeValid(bool isJiggleTypeIsEnabled, Tween tweenToCheckIfPlaying = null)
+    {
+        if (transform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
+            return false;        
+        if (!jiggleIsEnabled || !isJiggleTypeIsEnabled)
+            return false;
+        if (this.transform.localScale == Vector3.zero)
+            return false;
+
+        if (tweenToCheckIfPlaying != null)
+            if (tweenToCheckIfPlaying.IsPlaying())
+                return false;
+
+        bool screenShake = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
+        if (!screenShake)
+            return false;
+
+        return true;
     }
 
 }
