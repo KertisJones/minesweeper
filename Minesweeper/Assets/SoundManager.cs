@@ -136,6 +136,22 @@ public class SoundManager : MonoBehaviour
         musicSource.DOPitch(currentPitch, 1);
     }
 
+    public void EnablePauseFilter()
+    {
+        if (musicSource.GetComponent<AudioReverbFilter>() != null)
+            musicSource.GetComponent<AudioReverbFilter>().enabled = true;
+        if (musicSource.GetComponent<AudioHighPassFilter>() != null)
+            musicSource.GetComponent<AudioHighPassFilter>().enabled = true;
+    }
+
+    public void DisablePauseFilter()
+    {
+        if (musicSource.GetComponent<AudioReverbFilter>() != null)
+            musicSource.GetComponent<AudioReverbFilter>().enabled = false;
+        if (musicSource.GetComponent<AudioHighPassFilter>() != null)
+            musicSource.GetComponent<AudioHighPassFilter>().enabled = false;
+    }
+
     public void PlayMultiplierDrain()
     {        
         if (multiplierDrainTween != null)

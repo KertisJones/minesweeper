@@ -975,9 +975,9 @@ public class GameManager : MonoBehaviour
         if (!isTitleMenu)
             GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().SaveCurrentGame();
         
+        soundManager.DisablePauseFilter();
         if (OnGameOverEvent != null)
             OnGameOverEvent();
-        //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
 
         // Reveal all tiles!
         for (int i = -1; i <= sizeX; i++)
@@ -1224,7 +1224,10 @@ public class GameManager : MonoBehaviour
             else
             {
                 if (!bypassTitlePause)
+                {
                     pauseMenu.isActive = true;
+                    soundManager.EnablePauseFilter();
+                }                    
             }
         }
         else
@@ -1234,6 +1237,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1;
                 isPaused = false;       
                 pauseMenu.isActive = false;
+                soundManager.DisablePauseFilter();
                 marathonOverMenu.isActive = false;
                 if (!bypassTitlePause)
                     settingsMenu.isActive = false;

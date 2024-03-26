@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
+    GameManager gm;
     public PauseMenuMove pauseMenuMove;
     public Slider masterVolumeSlider;
     public Slider musicVolumeSlider;
@@ -31,6 +32,8 @@ public class SettingsMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
         //if (ScoreKeeper.masterVolume != null)
             //masterVolume = ScoreKeeper.masterVolume;
         masterVolumeSlider.value = masterVolume;
@@ -115,5 +118,16 @@ public class SettingsMenu : MonoBehaviour
     {
         lockDelayDisplayEnabled = lockDelayDisplayToggle.isOn;
         PlayerPrefs.SetInt("LockDelayDisplayEnabled", (lockDelayDisplayEnabled ? 1 : 0));
+    }
+
+    public void HoverMusicEnter()
+    {
+        
+        gm.soundManager.EnablePauseFilter();
+    }
+
+    public void HoverMusicExit()
+    {
+        gm.soundManager.DisablePauseFilter();
     }
 }
