@@ -139,8 +139,9 @@ public class SoundManager : MonoBehaviour
     public void PlayMultiplierDrain()
     {        
         if (multiplierDrainTween != null)
-            if (multiplierDrainTween.IsPlaying())
-                return;        
+            if (multiplierDrainTween.IsActive())
+                if (multiplierDrainTween.IsPlaying())
+                    return;        
         if (multiplierDrainSource.volume > 0)
             return;
         

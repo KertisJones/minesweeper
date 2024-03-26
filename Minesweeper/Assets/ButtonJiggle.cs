@@ -13,10 +13,6 @@ public class ButtonJiggle : MonoBehaviour
     public float scaleMultiplierShrink = 0.9f;
     public float scaleTransitionTime = 0.15f;
     public float scalePositionOffset = 0f;
-    public float jumpInPlaceHeight = 0f;
-    public float jumpInPlaceDuration = 0.3f;
-    public float jumpInPlaceLoopDuration = -1;
-    public ButtonJiggle jumpInPlaceSequenceNextObject;
     public AudioClip enlargeSound;
     public AudioClip shrinkSound;
     //public float loopingAnimationDelay = 0f;
@@ -26,7 +22,7 @@ public class ButtonJiggle : MonoBehaviour
     public bool reorderToLastSibling = false;
     private Tween enlargeTween;
     private Tween shrinkTween;
-    private Tween jumpInPlaceTween;
+    //private Tween jumpInPlaceTween;
     private Tween shrinkToZeroTween;
     public bool startAtScaleZero = false;
     void Start()
@@ -36,9 +32,7 @@ public class ButtonJiggle : MonoBehaviour
         startZPos = this.transform.position.z;
 
         if (startAtScaleZero)
-            this.transform.localScale = Vector3.zero;
-        
-        StartCoroutine(JumpInPlaceLoop());
+            this.transform.localScale = Vector3.zero;        
     }
 
     /*IEnumerator PlayLoopingAnimations()
@@ -54,7 +48,7 @@ public class ButtonJiggle : MonoBehaviour
         transform.DOKill();
         enlargeTween = null;
         shrinkTween = null;
-        jumpInPlaceTween = null;
+        //jumpInPlaceTween = null;
         shrinkToZeroTween = null;
     }
 
@@ -84,6 +78,8 @@ public class ButtonJiggle : MonoBehaviour
             GetComponent<AudioSource>().volume = 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f);
             if (enlargeTween == null)
                 GetComponent<AudioSource>().Play();
+            else if (!enlargeTween.IsActive())
+                GetComponent<AudioSource>().Play();
             else if (!enlargeTween.IsPlaying())
                 GetComponent<AudioSource>().Play();
         }
@@ -92,8 +88,14 @@ public class ButtonJiggle : MonoBehaviour
         enlargeTween = this.transform.DOScale(startScale * scaleMultiplierEnlarge, scaleTransitionTime).SetUpdate(true);
         this.transform.DOMoveZ(transform.position.z + scalePositionOffset, scaleTransitionTime).SetUpdate(true);   
         if (GetComponent<IdleJiggle>() != null)
-            GetComponent<IdleJiggle>().ShakeRotation(jumpInPlaceDuration, 0.15f);     
+            GetComponent<IdleJiggle>().ShakeRotation(GetComponent<IdleJiggle>().jumpInPlaceDuration, 0.15f);     
         
+    }
+
+    public void JumpInPlace()
+    {
+        if (GetComponent<IdleJiggle>() != null)
+            GetComponent<IdleJiggle>().JumpInPlace();
     }
 
     /*public void Enlarge(bool overrideEnabled = false)
@@ -116,6 +118,8 @@ public class ButtonJiggle : MonoBehaviour
             GetComponent<AudioSource>().volume = 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f);
             if (shrinkTween == null)
                 GetComponent<AudioSource>().Play();
+            else if (!shrinkTween.IsActive())
+                GetComponent<AudioSource>().Play();
             else if (!shrinkTween.IsPlaying())
                 GetComponent<AudioSource>().Play();
         }
@@ -125,68 +129,6 @@ public class ButtonJiggle : MonoBehaviour
         this.transform.DOMoveZ(transform.position.z - scalePositionOffset, scaleTransitionTime).SetUpdate(true);
     }
 
-    public void JumpInPlace()
-    {
-        JumpInPlace(false);
-    }
-
-    private void JumpInPlace(bool autoJump = false)
-    {
-        if (jumpInPlaceTween != null)
-            if (jumpInPlaceTween.IsPlaying())
-                return;
-        
-        if (jumpInPlaceHeight != 0)
-        {
-            if (autoJump)
-            {                       
-                if (this.transform.localScale.x != startScale.x)
-                    jumpInPlaceSequencerSend();
-                else
-                {
-                    jumpInPlaceTween = this.transform.DOJump(this.transform.position, 1.5f * jumpInPlaceHeight, 1, jumpInPlaceDuration).OnComplete(jumpInPlaceSequencerSend);
-                    
-                    //if (jumpInPlaceSequenceNextObject.GetComponent<IdleJiggle>() != null)
-                    if (GetComponent<IdleJiggle>() != null)
-                    {
-                        GetComponent<IdleJiggle>().ShakeScale(jumpInPlaceDuration, 0.15f);
-                        GetComponent<IdleJiggle>().ShakeRotation(jumpInPlaceDuration, 0.15f); 
-                    }
-                        
-                }                
-            }
-            else
-            {
-                jumpInPlaceTween = this.transform.DOJump(this.transform.position, jumpInPlaceHeight, 1, jumpInPlaceDuration).OnKill(ResetPosition);
-                if (GetComponent<IdleJiggle>() != null)
-                    GetComponent<IdleJiggle>().ShakeRotation(jumpInPlaceDuration, 0.15f);           
-            }            
-        }
-    }
-
-    IEnumerator JumpInPlaceLoop()
-    {
-        if (jumpInPlaceLoopDuration >= 0)
-        {
-            yield return new WaitForSeconds(jumpInPlaceLoopDuration);
-            jumpInPlaceSequencerReceive();
-            StartCoroutine(JumpInPlaceLoop());
-        }
-    }
-
-    private void jumpInPlaceSequencerReceive()
-    {
-        if (jumpInPlaceTween != null)
-            if (jumpInPlaceTween.IsPlaying())
-                jumpInPlaceSequencerSend();
-        JumpInPlace(true);
-    }
-    private void jumpInPlaceSequencerSend()
-    {
-        if (jumpInPlaceSequenceNextObject != null)
-            jumpInPlaceSequenceNextObject.jumpInPlaceSequencerReceive();
-        //ResetPosition();
-    }
 
 
     public void ShrinkToZero(bool autoReset = false)
@@ -215,15 +157,24 @@ public class ButtonJiggle : MonoBehaviour
     void ResetScale()
     {
         if (shrinkToZeroTween != null)
-        {
-            if (shrinkToZeroTween.IsPlaying())
-            {
-                //Debug.Log("shrinkToZeroTween.IsPlaying");
-                return;
-            }
-        }
+            if (shrinkToZeroTween.IsActive())
+                if (shrinkToZeroTween.IsPlaying())
+                    return;
         this.transform.DOScale(startScale, scaleTransitionTime).SetUpdate(true);
     }
+
+
+    /*public Sequence DOJumpY(float jumpPower, float duration)
+    {
+        float startPosY = this.transform.position.y;
+
+        Sequence s = DOTween.Sequence();
+
+        s.Append(this.transform.DOMoveY(startPosY + jumpPower, duration / 2).SetEase(Ease.OutQuad));
+        s.Append(this.transform.DOMoveY(startPosY, duration / 2).SetEase(Ease.OutQuad));
+
+        return s;
+    }*/
 
     /*public void OnPointerEnter(PointerEventData eventData)
     {

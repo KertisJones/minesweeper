@@ -5284,6 +5284,7 @@ GameObject:
   - component: {fileID: 519420033}
   - component: {fileID: 519420029}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5368,7 +5369,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d622d722f7cfbe3479530336f9454090, type: 3}
   m_Name: 
@@ -5384,7 +5385,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 234705ed340b8034d916f2334ba9d114, type: 3}
   m_Name: 
@@ -5419,6 +5420,33 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26651055de1a09548b2c97a6f5255fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleMoveDistance: {x: 0, y: 0, z: 0}
+  idleMoveDuration: 0
+  idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
+  jiggleIsEnabled: 1
+  jiggleRotateIsEnabled: 1
+  jiggleScaleIsEnabled: 1
+  jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 1
 --- !u!4 &521533711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894320597419646559, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
@@ -6065,11 +6093,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 0.2
+  leanDuration: 1
+  jumpInPlaceHeight: 0.3
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 1
 --- !u!82 &534921704
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9050,11 +9085,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 0.2
+  leanDuration: 1
+  jumpInPlaceHeight: 0.3
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: 10
+  jumpInPlaceSequenceNextObject: {fileID: 1067259805}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 1
 --- !u!82 &832063253
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9855,11 +9897,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 0.2
+  leanDuration: 1
+  jumpInPlaceHeight: 0.3
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 534921703}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 1
 --- !u!82 &887336382
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12223,11 +12272,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 0.2
+  leanDuration: 1
+  jumpInPlaceHeight: 0.3
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 1316807198}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 1
 --- !u!82 &1067259806
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15090,11 +15146,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 0.2
+  leanDuration: 1
+  jumpInPlaceHeight: 0.3
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 887336381}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 1
 --- !u!82 &1316807199
 AudioSource:
   m_ObjectHideFlags: 0
@@ -24088,6 +24151,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2107795395058567594, guid: 8b1d3b115b4c94d4a92c9365821fc072, type: 3}
+      propertyPath: leanDuration
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2107795396953283180, guid: 8b1d3b115b4c94d4a92c9365821fc072, type: 3}
       propertyPath: m_Name
       value: Bouncy Logo

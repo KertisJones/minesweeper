@@ -48,11 +48,14 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 2, z: 0}
   idleMoveDuration: 5
   idleMoveEase: 4
+  leanDistance: 2.5
+  leanDuration: 300
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 1
 --- !u!50 &2107795395058567593
 Rigidbody2D:
   serializedVersion: 4
@@ -705,11 +708,14 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 0
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!82 &4182324091568320463
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1511,11 +1517,14 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 0
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!114 &2107795395741288079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2278,11 +2287,14 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 0
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!82 &4452432290400052326
 AudioSource:
   m_ObjectHideFlags: 0

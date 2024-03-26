@@ -347,11 +347,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!114 &6238224 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 593537493044333184, guid: cd6e7955d4e875744aff21696f12657d, type: 3}
@@ -717,11 +724,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!1001 &23267376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1331,11 +1345,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!4 &154075025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894320597419646559, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
@@ -1888,11 +1909,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!4 &268174867 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894320597419646559, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
@@ -4097,11 +4125,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!4 &786579536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4810221121193479904, guid: f8eb7923fbc59a044b7a9fd0d0742a68, type: 3}
@@ -4349,11 +4384,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!4 &827130271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894320597419646559, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
@@ -5025,11 +5067,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!1001 &955167853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5673,11 +5722,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!1 &1113461781
 GameObject:
   m_ObjectHideFlags: 0
@@ -6028,11 +6084,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!4 &1127222735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894320597419646559, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
@@ -6279,11 +6342,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!1 &1202959825
 GameObject:
   m_ObjectHideFlags: 0
@@ -6669,11 +6739,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!4 &1242170324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894320597419646559, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
@@ -6973,11 +7050,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!4 &1302804545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 658720671210819337, guid: 93999914ce74500468bda03794b16b52, type: 3}
@@ -7491,11 +7575,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!1 &1362518463
 GameObject:
   m_ObjectHideFlags: 0
@@ -7722,11 +7813,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!1001 &1376497280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8441,11 +8539,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!1001 &1505622389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9054,11 +9159,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!1001 &1530535052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11498,11 +11610,18 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!1001 &593537493041134224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12329,18 +12448,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2081153732}
     m_Modifications:
-    - target: {fileID: 2128890556050887268, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 18d995c62d65dab459537e3a177c601e, type: 3}
     - target: {fileID: 3100751169596323532, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1253570318}
-    - target: {fileID: 3100751169596323532, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Clear all mines in hold, +250 Points
-      objectReference: {fileID: 0}
     - target: {fileID: 4915030204311415905, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12429,22 +12540,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cleanse Button
       objectReference: {fileID: 0}
-    - target: {fileID: 4915030204311415910, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915030205086121190, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
-      propertyPath: m_fontColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915030205086121190, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4281479730
-      objectReference: {fileID: 0}
-    - target: {fileID: 6528703284716487732, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
-      propertyPath: enlargeSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 18d995c62d65dab459537e3a177c601e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58aaab0004a2812439dcb9e6d6c70cf6, type: 3}
 --- !u!1001 &8799958344098279605

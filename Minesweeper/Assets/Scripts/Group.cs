@@ -204,6 +204,7 @@ public class Group : MonoBehaviour
             {
                 gm.AddScore(maximumFallDistance * 2, false);
                 gm.SetScoreMultiplier(2, 1f);
+                gm.TriggerOnHardDropEvent();
             }
             Fall(maximumFallDistance, true);
         }
@@ -669,13 +670,13 @@ public class Group : MonoBehaviour
                 {
                     if (isWallKickThisTick) // T-Spin Mini no lines	
                     {
-                        Debug.Log("T-Spin Mini (No Lines)");
+                        //Debug.Log("T-Spin Mini (No Lines)");
                         gm.tSpinMiniNoLines++;
                         gm.AddScore(100);
                     }
                     else // T-Spin no lines
                     {
-                        Debug.Log("T-Spin (No Lines)");
+                        //Debug.Log("T-Spin (No Lines)");
                         gm.tSpinNoLines++;
                         gm.AddScore(400);                        
                     }
@@ -686,13 +687,13 @@ public class Group : MonoBehaviour
                     int actionScore = 800;
                     if (isWallKickThisTick)
                     {
-                        Debug.Log("T-Spin Mini Single");
+                        //Debug.Log("T-Spin Mini Single");
                         gm.tSpinMiniSingle++;
                         actionScore = 200;
                     }
                     else
                     {
-                        Debug.Log("T-Spin Single");
+                        //Debug.Log("T-Spin Single");
                         gm.tSpinSingle++;
                     }
                     
@@ -713,13 +714,13 @@ public class Group : MonoBehaviour
                     int actionScore = 1200;
                     if (isWallKickThisTick)
                     {
-                        Debug.Log("T-Spin Mini Double");
+                        //Debug.Log("T-Spin Mini Double");
                         gm.tSpinMiniDouble++;
                         actionScore = 400;
                     }
                     else
                     {
-                        Debug.Log("T-Spin Double");
+                        //Debug.Log("T-Spin Double");
                         gm.tSpinDouble++;
                     }
 
@@ -737,7 +738,7 @@ public class Group : MonoBehaviour
                 }
                 else if (rowsFilled == 3) // T-Spin Triple
                 {
-                    Debug.Log("T-Spin Triple");
+                    //Debug.Log("T-Spin Triple");
                     gm.tSpinTriple++;
                     int actionScore = 1600;
                     if (gm.lastFillWasDifficult)
@@ -819,7 +820,6 @@ public class Group : MonoBehaviour
             // Update the fall distance for the new mino so ghost blocks don't get out of sync
             FindObjectOfType<TetrominoSpawner>().currentTetromino.GetComponent<Group>().SetMaximumFallDistance();
         }
-        
     }
 
     void CascadeTetromino()
@@ -831,7 +831,7 @@ public class Group : MonoBehaviour
         //Debug.Log("Row Position before UpdateGrid(): " + transform.position.y + ", maximumFallDistance: " + maximumFallDistance);
         //UpdateGrid();
         SetMaximumFallDistance();
-        Debug.Log("Row Position after UpdateGrid(): " + transform.position.y + ", maximumFallDistance: " + maximumFallDistance);
+        //Debug.Log("Row Position after UpdateGrid(): " + transform.position.y + ", maximumFallDistance: " + maximumFallDistance);
         if (maximumFallDistance > 0)
         {
             //List<Vector2> childrenPositions = new List<Vector2>();
