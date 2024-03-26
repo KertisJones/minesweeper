@@ -18,8 +18,8 @@ public class Tile : MonoBehaviour
     public int nearbyMines = 0;
     public int nearbyFlags = 0;
 
-    public float screenShakeDuration = 0.1f;
-    public float screenShakeStrength = 0.1f;
+    /*public float screenShakeDuration = 0.1f;
+    public float screenShakeStrength = 0.1f;*/
     public bool isDestroyed = false;
     public bool isRowSolved = false;
     public bool is8Triggered = false;
@@ -233,7 +233,8 @@ public class Tile : MonoBehaviour
             //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             gm.soundManager.PlayTileRevealSound();
             //AudioSource.PlayClipAtPoint(flagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+            //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+            gm.TriggerOnTileSolveOrLandEvent();
 
             float sm = gm.GetScoreMultiplier();
             gm.SetScoreMultiplier(1, 1f, true);
@@ -366,7 +367,8 @@ public class Tile : MonoBehaviour
 
             GetComponentInChildren<Button>().interactable = false;
 
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+            //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+            gm.TriggerOnTileSolveOrLandEvent();
 
             if (gm.lineClearInstantly)
                 GameManager.deleteFullRows();

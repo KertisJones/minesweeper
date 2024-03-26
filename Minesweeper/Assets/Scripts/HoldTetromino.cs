@@ -50,6 +50,7 @@ public class HoldTetromino : MonoBehaviour
                 {
                     cleanseButton.SetActive(true);
                     cleanseButton.GetComponent<ButtonJiggle>().Reset();
+                    cleanseProgressBar.GetComponent<IdleJiggle>().jumpInPlaceHeight = 0;
                 }                
                 cleanseReady = true;
             }
@@ -59,6 +60,7 @@ public class HoldTetromino : MonoBehaviour
             if (cleanseReady)
             {
                 cleanseButton.GetComponent<ButtonJiggle>().ShrinkToZero();
+                cleanseProgressBar.GetComponent<IdleJiggle>().jumpInPlaceHeight = cleanseButton.GetComponent<IdleJiggle>().jumpInPlaceHeight;
                 cleanseReady = false;
             }
         }

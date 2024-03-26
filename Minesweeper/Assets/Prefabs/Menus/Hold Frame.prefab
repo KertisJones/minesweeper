@@ -339,21 +339,10 @@ MonoBehaviour:
   heldTetrominoPrevious: {fileID: 0}
   swapPartner: {fileID: 0}
   cleanseButton: {fileID: 0}
-  cleansePointRechargeText: {fileID: 0}
+  cleanseProgressBar: {fileID: 0}
   cleanseReadySound: {fileID: 8300000, guid: ffb63cd94d267bf45988d953e42e65db, type: 3}
   cleanseActivateSound: {fileID: 8300000, guid: 0ecf8453579db1b43a4e95ae2a8d7921, type: 3}
   cleanseRecharge: 0
-  manualTileSolvePerfectStreak: 0
-  manualTileSolvePerfectStreakIncludedWallsTEST: 0
-  scoreMissingTest: 0
-  scoreRevealRemainingTest: 0
-  scoreRevealTest: 0
-  scoreRevealNoLevelTest: 0
-  manualTileSolvePerfectStreakIncludedWallsHighestTEST: 0
-  manualTileSolvePerfectStreakPoints: 0
-  manualTileSolvePerfectStreakIncludedWallsPointsTEST: 0
-  manualTileSolvePerfectStreakPointsWithLevelTEST: 0
-  manualTileSolvePerfectStreakIncludedWallsPointsWithLevelTEST: 0
   holdSwitchSound: {fileID: 8300000, guid: 389b54e419cff7f488aac118f3a42acf, type: 3}
   holdFailedSound: {fileID: 8300000, guid: af1e14b3dc91d8b459c6487e2c842cf1, type: 3}
 --- !u!1 &3455087921946097719

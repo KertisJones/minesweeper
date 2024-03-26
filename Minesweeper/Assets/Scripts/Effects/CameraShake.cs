@@ -66,7 +66,7 @@ public class CameraShake : MonoBehaviour
         }
 	}
 
-    public void Shake(float duration = 0.25f, float strength = 1)
+    /*public void Shake(float duration = 0.25f, float strength = 1)
     {
         bool isActive = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
         if (!isActive)
@@ -80,5 +80,5 @@ public class CameraShake : MonoBehaviour
             shakeStrength = strength * shakeModifier;
             originalPos = camTransform.localPosition;
         }        
-    }
+    }*/
 }

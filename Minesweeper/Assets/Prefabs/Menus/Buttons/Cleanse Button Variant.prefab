@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3964747064262966838, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_Name
-      value: Cleanse Button
+      value: Cleanse Button Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6356893951152940188, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -301,8 +301,8 @@ MonoBehaviour:
   idleMoveDistance: {x: 0, y: 0, z: 0}
   idleMoveDuration: 0
   idleMoveEase: 4
-  leanDistance: 1
-  leanDuration: 1
+  leanDistance: 0.1
+  leanDuration: 0.5
   jumpInPlaceHeight: 0.25
   jumpInPlaceDuration: 0.3
   jumpInPlaceLoopDuration: 3
@@ -312,7 +312,7 @@ MonoBehaviour:
   jiggleScaleIsEnabled: 1
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
-  jiggleLeanIsEnabled: 0
+  jiggleLeanIsEnabled: 1
 --- !u!114 &6528703284716487732 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3002406238019737188, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}

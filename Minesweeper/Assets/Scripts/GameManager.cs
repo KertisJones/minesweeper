@@ -119,7 +119,14 @@ public class GameManager : MonoBehaviour
     public static event HardDropEvent OnHardDropEvent;
     public delegate void GameOverEvent();
     public static event GameOverEvent OnGameOverEvent;
-
+    public delegate void LeftStuckEvent();
+    public static event LeftStuckEvent OnLeftStuckEvent;
+    public delegate void RightStuckEvent();
+    public static event RightStuckEvent OnRightStuckEvent;
+    public delegate void MinoLockEvent();
+    public static event MinoLockEvent OnMinoLockEvent;
+    public delegate void TileSolveEvent();
+    public static event TileSolveEvent OnTileSolveOrLandEvent;
 
     #region Game Setup
     // Start is called before the first frame update
@@ -166,6 +173,10 @@ public class GameManager : MonoBehaviour
         OnLineClearEvent = null;
         OnHardDropEvent = null;
         OnGameOverEvent = null;
+        OnLeftStuckEvent = null;
+        OnRightStuckEvent = null;
+        OnMinoLockEvent = null;
+        OnTileSolveOrLandEvent = null;
         transform.DOKill();
     }
     void PressEscape()
@@ -766,7 +777,7 @@ public class GameManager : MonoBehaviour
             gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+            //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
             if (OnLineClearEvent != null)
                 OnLineClearEvent(rowsCleared);
@@ -966,7 +977,7 @@ public class GameManager : MonoBehaviour
         
         if (OnGameOverEvent != null)
             OnGameOverEvent();
-        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
+        //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(1, 1);
 
         // Reveal all tiles!
         for (int i = -1; i <= sizeX; i++)
@@ -1158,7 +1169,7 @@ public class GameManager : MonoBehaviour
             gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(clipToPlay, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+            //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
 
             //Debug.Log("Tetris rows full: " + fullRows);
             
@@ -1258,6 +1269,30 @@ public class GameManager : MonoBehaviour
     {
         if (OnHardDropEvent != null)
             OnHardDropEvent();
+    }
+
+    public void TriggerOnLeftStuckEvent()
+    {
+        if (OnLeftStuckEvent != null)
+            OnLeftStuckEvent();
+    }
+
+    public void TriggerOnRightStuckEvent()
+    {
+        if (OnRightStuckEvent != null)
+            OnRightStuckEvent();
+    }
+
+    public void TriggerOnMinoLockEvent()
+    {
+        if (OnMinoLockEvent != null)
+            OnMinoLockEvent();
+    }
+
+    public void TriggerOnTileSolveOrLandEvent()
+    {
+        if (OnTileSolveOrLandEvent != null)
+            OnTileSolveOrLandEvent();
     }
     #endregion
 }

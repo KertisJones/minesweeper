@@ -33,8 +33,8 @@ public class Group : MonoBehaviour
 
     public float minePercent = 10;
 
-    float screenShakeDuration = 0.1f;
-    float screenShakeStrength = 0.4f;
+    /*float screenShakeDuration = 0.1f;
+    float screenShakeStrength = 0.4f;*/
 
     public bool isDisplay = false;
     public bool isBonus = false;
@@ -528,7 +528,8 @@ public class Group : MonoBehaviour
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+                //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
+                gm.TriggerOnTileSolveOrLandEvent();
             }
         }
         transform.position += new Vector3(0, 1, 0);
@@ -790,7 +791,9 @@ public class Group : MonoBehaviour
             gm.perfectClearThisRound = false;
 
             // Clear filled horizontal lines
-            ClearRows();            
+            ClearRows();      
+
+            gm.TriggerOnMinoLockEvent();      
 
             // Set this as the previous tetromino
             gm.previousTetromino = this.gameObject;
@@ -1302,6 +1305,11 @@ public class Group : MonoBehaviour
         {
             // It's not valid. revert.
             transform.position += new Vector3(dir * -1, 0, 0);
+
+            if (dir < 0)
+                gm.TriggerOnLeftStuckEvent();
+            else
+                gm.TriggerOnRightStuckEvent();
         }
         lastMove = Time.time;
     }

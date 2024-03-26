@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG;
 using DG.Tweening;
+using Unity.Mathematics;
 
 public class IdleJiggle : MonoBehaviour
 {
@@ -22,8 +23,9 @@ public class IdleJiggle : MonoBehaviour
     private Tween leanTweenX;
     private Tween leanTweenY;
     private Tween jumpInYTween;
-    private Vector3 startPosition;
-    private Vector3 startScale;    
+    private Vector3 startPositionLocal;
+    private Vector3 startScale;   
+    private Vector3 startRotation; 
     public bool jiggleIsEnabled = true;
     public bool jiggleRotateIsEnabled = true;
     public bool jiggleScaleIsEnabled = true;
@@ -45,9 +47,14 @@ public class IdleJiggle : MonoBehaviour
             GameManager.OnLineClearEvent += _ => LineClear(_);
             GameManager.OnGameOverEvent += GameOver;
             GameManager.OnHardDropEvent += PunchDown;
-            InputManager.Instance.leftPress.started += _ => PressLeft();
+            GameManager.OnTileSolveOrLandEvent += MinorShake;
+
+            GameManager.OnLeftStuckEvent += PressLeft;
+            GameManager.OnRightStuckEvent += PressRight;
+            GameManager.OnMinoLockEvent += ResetLean;
+            //InputManager.Instance.leftPress.started += _ => PressLeft();
             InputManager.Instance.leftPress.canceled += _ => ReleaseLeft();
-            InputManager.Instance.rightPress.started += _ => PressRight();
+            //InputManager.Instance.rightPress.started += _ => PressRight();
             InputManager.Instance.rightPress.canceled += _ => ReleaseRight();
         }        
     }
@@ -69,9 +76,14 @@ public class IdleJiggle : MonoBehaviour
             GameManager.OnLineClearEvent -= _ => LineClear(_);
             GameManager.OnGameOverEvent -= GameOver;
             GameManager.OnHardDropEvent -= PunchDown;
-            InputManager.Instance.leftPress.started -= _ => PressLeft();
+            GameManager.OnTileSolveOrLandEvent -= MinorShake;
+
+            GameManager.OnLeftStuckEvent -= PressLeft;
+            GameManager.OnRightStuckEvent -= PressRight;
+            GameManager.OnMinoLockEvent -= ResetLean;
+            //InputManager.Instance.leftPress.started -= _ => PressLeft();
             InputManager.Instance.leftPress.canceled -= _ => ReleaseLeft();
-            InputManager.Instance.rightPress.started -= _ => PressRight();
+            //InputManager.Instance.rightPress.started -= _ => PressRight();
             InputManager.Instance.rightPress.canceled -= _ => ReleaseRight();
         }
         if(!this.gameObject.scene.isLoaded) 
@@ -94,8 +106,9 @@ public class IdleJiggle : MonoBehaviour
         if (!jiggleIsEnabled)
             return;
 
-        startPosition = this.transform.position;
+        startPositionLocal = this.transform.localPosition;
         startScale = this.transform.localScale;
+        startRotation = new Vector3(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z);
         
         if (idleMoveDistance != Vector3.zero && idleMoveDuration > 0)
         {
@@ -113,32 +126,60 @@ public class IdleJiggle : MonoBehaviour
     void LineClear(int lines)
     {
         if (jiggleOnActionIsEnabled)
-            Shake(lines * 0.2f, 0.15f);
+            Shake(lines * 0.2f, 0.15f, false);
     }
 
     void GameOver()
     {
+        transform.DOKill();
         if (jiggleOnActionIsEnabled)
-            Shake(3f, .25f);
+            Shake(3f, 0.25f, true);
     }
 
     void PunchDown()
     {
-        if (!IsShakeValid(jiggleOnActionIsEnabled, null))//jumpInYTween))
+        if (!IsShakeValid(jiggleLeanIsEnabled, null))
+            return;
+        if (jumpInPlaceHeight == 0)
             return;
         
-        if (jumpInYTween != null)
-            if (jumpInYTween.IsActive())
-                if (jumpInYTween.IsPlaying())
-                    jumpInYTween.Kill();
+                    
+        Sequence s = DOTween.Sequence();
         
-        if (jiggleOnActionIsEnabled)
-            this.transform.DOMoveY(startPosition.y, 0.05f).SetUpdate(true).OnKill(() => DOJumpY(leanDistance * -1, jumpInPlaceDuration).OnKill(ResetPosition));
+        if (jumpInPlaceLoopDuration > 0)
+        {
+            if (jumpInYTween != null)
+                if (jumpInYTween.IsActive())
+                    if (jumpInYTween.IsPlaying())
+                        return;
+
+            s.Append(DOJumpY(jumpInPlaceHeight + .3f, jumpInPlaceDuration * 1.5f).OnPlay(() => ShakeRotation(jumpInPlaceDuration * 1.5f, .15f, true, true)).OnComplete(JumpInPlaceSequencerSend));
+        }
+        else
+        {
+            /*if (jumpInYTween != null)
+                if (jumpInYTween.IsActive())
+                    if (jumpInYTween.IsPlaying())
+                    {
+                        jumpInYTween.Kill();
+                        jumpInYTween = null;
+                    }*/
+
+            s.Append(DOJumpY(jumpInPlaceHeight * -1, jumpInPlaceHeight));
+        }
+        s.Append(this.transform.DOMoveY(GetStartPositionLocalToWorldSpace().y, 0.05f));
     }
 
+    void MinorShake()
+    {
+        Shake(0.1f, 0.05f);
+    }
 
     public void PressLeft()
     {
+        if (buttonLeftHeld || buttonLeftHeldSecondary)
+            return;
+
         if (!buttonRightHeld)
             buttonLeftHeld = true;
         buttonLeftHeldSecondary = true;
@@ -160,6 +201,9 @@ public class IdleJiggle : MonoBehaviour
     }
     public void PressRight()
     {
+        if (buttonRightHeld || buttonRightHeldSecondary)
+            return;
+
         if (!buttonLeftHeld)
             buttonRightHeld = true;
         buttonRightHeldSecondary = true;
@@ -179,34 +223,57 @@ public class IdleJiggle : MonoBehaviour
         else
             LeanX(-1);
     }
+    void ResetLean()
+    {
+        buttonLeftHeld = false;
+        buttonRightHeld = false;
+        buttonLeftHeldSecondary = false;
+        buttonRightHeldSecondary = false;
+        LeanX(0);
+    }
     #endregion
 
-    public void Shake(float duration, float strength)
+    public void Shake(float duration, float strength, bool autoReset = false)
     {        
-        ShakePosition(duration, strength);
-        ShakeRotation(duration, strength);
-        ShakeScale(duration, strength);
+        ShakePosition(duration, strength, autoReset);
+        ShakeRotation(duration, strength, autoReset);
+        ShakeScale(duration, strength, autoReset);
     }
 
-    public void ShakePosition(float duration, float strength)
+    public void ShakePosition(float duration, float strength, bool autoReset = false)
     {
         if (!IsShakeValid(jiggleMoveIsEnabled, shakePositionTween))
             return;
-        shakePositionTween = this.transform.DOShakePosition(duration, new Vector3(strength, strength, 0)).OnKill(ResetPosition);
+        shakePositionTween = this.transform.DOShakePosition(duration, new Vector3(strength, strength, 0));
+        if (autoReset)
+            shakePositionTween.OnKill(ResetPosition);
     }
 
-    public void ShakeRotation(float duration, float strength)
+    public void ShakeRotation(float duration, float strength, bool autoReset = false, bool overrideTween = false)
     {
+        if (overrideTween)
+            if (shakeRotationTween != null)
+                if (shakeRotationTween.IsActive())
+                    if (shakeRotationTween.IsPlaying())
+                        {
+                            shakeRotationTween.Kill();
+                            shakeRotationTween = null;
+                        }
+        
         if (!IsShakeValid(jiggleRotateIsEnabled, shakeRotationTween))
             return;
         shakeRotationTween = this.transform.DOShakeRotation(duration, new Vector3(0, 0, strength * 40));
+        if (autoReset)
+            shakeRotationTween.OnKill(ResetRotation);
     }
 
-    public void ShakeScale(float duration, float strength)
+    public void ShakeScale(float duration, float strength, bool autoReset = false)
     {
         if (!IsShakeValid(jiggleScaleIsEnabled, shakeScaleTween))
             return;
         shakeScaleTween = this.transform.DOShakeScale(duration, strength);
+        if (autoReset)
+            shakeScaleTween.OnKill(ResetScale);
     }
 
     private bool IsShakeValid(bool isJiggleTypeIsEnabled, Tween tweenToCheckIfPlaying = null)
@@ -242,7 +309,7 @@ public class IdleJiggle : MonoBehaviour
                 if (leanTweenX.IsPlaying())
                     leanTweenX.Kill();
 
-        leanTweenX = this.transform.DOMoveX(startPosition.x + leanDistance * dir, leanDuration).SetEase(idleMoveEase);
+        leanTweenX = this.transform.DOMoveX(GetStartPositionLocalToWorldSpace().x + leanDistance * dir, leanDuration).SetEase(idleMoveEase);
     }
 
     public void LeanY(int dir)
@@ -255,7 +322,7 @@ public class IdleJiggle : MonoBehaviour
                 if (leanTweenY.IsPlaying())
                     leanTweenY.Kill();
 
-        leanTweenY = this.transform.DOMoveY(startPosition.y + leanDistance * dir, leanDuration).SetEase(idleMoveEase);
+        leanTweenY = this.transform.DOMoveY(GetStartPositionLocalToWorldSpace().y + leanDistance * dir, leanDuration).SetEase(idleMoveEase);
     }
 
     #region Jumping
@@ -281,14 +348,14 @@ public class IdleJiggle : MonoBehaviour
                 {
                     DOJumpY(1.5f * jumpInPlaceHeight, jumpInPlaceDuration).OnKill(JumpInPlaceSequencerSend);//this.transform.DOJump(this.transform.position, 1.5f * jumpInPlaceHeight, 1, jumpInPlaceDuration).OnComplete(JumpInPlaceSequencerSend);
                     
-                    ShakeScale(jumpInPlaceDuration, 0.15f);
-                    ShakeRotation(jumpInPlaceDuration, 0.15f);                         
+                    ShakeScale(jumpInPlaceDuration, 0.15f, false);
+                    ShakeRotation(jumpInPlaceDuration, 0.15f, false);                         
                 }                
             }
             else
             {
-                DOJumpY(jumpInPlaceHeight, jumpInPlaceDuration).OnKill(ResetPosition);// this.transform.DOJump(this.transform.position, jumpInPlaceHeight, 1, jumpInPlaceDuration).OnKill(ResetPosition);
-                ShakeRotation(jumpInPlaceDuration, 0.15f);           
+                DOJumpY(jumpInPlaceHeight, jumpInPlaceDuration).OnKill(ResetPositionY);// this.transform.DOJump(this.transform.position, jumpInPlaceHeight, 1, jumpInPlaceDuration).OnKill(ResetPosition);
+                ShakeRotation(jumpInPlaceDuration, 0.15f, false);           
             }            
         }
     }
@@ -313,7 +380,7 @@ public class IdleJiggle : MonoBehaviour
     }
     private void JumpInPlaceSequencerSend()
     {
-        ResetPosition();
+        ResetPositionY();
         if (jumpInPlaceSequenceNextObject != null)
             jumpInPlaceSequenceNextObject.JumpInPlaceSequencerReceive();
         //ResetPosition();
@@ -321,17 +388,44 @@ public class IdleJiggle : MonoBehaviour
 
     void ResetPosition()
     {
-        this.transform.DOMove(startPosition, 0.15f).SetUpdate(true);
+        ResetPositionX();
+        ResetPositionY();
+        this.transform.DOMoveZ(GetStartPositionLocalToWorldSpace().z, 0.15f).SetUpdate(true);
+    }
+    void ResetPositionX()
+    {
+        this.transform.DOMoveX(GetStartPositionLocalToWorldSpace().x, 0.15f).SetUpdate(true);
+    }
+    void ResetPositionY()
+    {
+        this.transform.DOMoveY(GetStartPositionLocalToWorldSpace().y, 0.15f).SetUpdate(true);
+    }
+    void ResetScale()
+    {
+        this.transform.DOScale(startScale, 0.15f).SetUpdate(true);        
+    }
+    void ResetRotation()
+    {
+        this.transform.DORotate(startRotation, 0.15f).SetUpdate(true);
     }
 
-    public Sequence DOJumpY(float jumpPower, float duration)
+    public Sequence DOJumpY(float jumpPower, float duration, bool overrideTween = false)
     {
+        if (overrideTween)
+            if (jumpInYTween != null)
+                if (jumpInYTween.IsActive())
+                    if (jumpInYTween.IsPlaying())
+                        {
+                            jumpInYTween.Kill();
+                            jumpInYTween = null;
+                        }                        
+            
         Sequence s = DOTween.Sequence();
 
         if (!IsShakeValid(true, jumpInYTween))
             return s;
         
-        float startPosY = this.transform.position.y;        
+        float startPosY = GetStartPositionLocalToWorldSpace().y;        
 
         s.Append(this.transform.DOMoveY(startPosY + jumpPower, duration / 2).SetEase(Ease.OutQuad));
         s.Append(this.transform.DOMoveY(startPosY, duration / 2).SetEase(Ease.OutQuad));
@@ -341,4 +435,13 @@ public class IdleJiggle : MonoBehaviour
         return s;
     }
     #endregion
+
+    Vector3 GetStartPositionLocalToWorldSpace()
+    {
+        if (this.transform.parent == null)
+            return startPositionLocal;
+        return new Vector3(startPositionLocal.x * this.transform.parent.localScale.x,
+        startPositionLocal.y * this.transform.parent.localScale.y,
+        startPositionLocal.z * this.transform.parent.localScale.z) + this.transform.parent.position;
+    }
 }
