@@ -26,7 +26,7 @@ public class SetRandomSupporterName : MonoBehaviour
     {
         gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
 
-        if(gameMods.showCredits)
+        if(gameMods.showCredits && !GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().isTitleMenu)
             this.gameObject.SetActive(true);
         else
             this.gameObject.SetActive(false);

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.U2D;
+using TMPro.Examples;
 
 public class Tile : MonoBehaviour
 {
@@ -114,11 +115,17 @@ public class Tile : MonoBehaviour
                 }
             }            
         }
+        TextMeshProUGUI supportText = text;
+        if (GetComponentInChildren<SetRandomSupporterName>() != null)
+            supportText = GetComponentInChildren<SetRandomSupporterName>().supportText;
         
         if (isRowSolved)
         {
             tileBackground.color = solvedMarkColor;
             shimmerOverlay.gameObject.SetActive(true);
+            text.GetComponent<VertexJitter>().enabled = true;
+            supportText.GetComponent<VertexJitter>().enabled = true;            
+
             /*if (GetComponent<IdleJiggle>() != null)
             {
                 GetComponent<IdleJiggle>().ShakeRotation(0.15f, 0.5f);
@@ -131,6 +138,11 @@ public class Tile : MonoBehaviour
             tileBackground.color = Color.white;
             if (!isDisplay)
                 shimmerOverlay.gameObject.SetActive(false);
+            
+            text.GetComponent<VertexJitter>().enabled = false;
+            text.SetText(text.text);
+            supportText.GetComponent<VertexJitter>().enabled = false;
+            supportText.SetText(supportText.text);
         }
 
         revealedThisFrame = false;
@@ -194,7 +206,7 @@ public class Tile : MonoBehaviour
                 myText = "";
             if (isMine)
                 myText = "*";
-            else if (gameMods.showCredits) // During Credits, hide numbers
+            else if (gameMods.showCredits && !gm.isTitleMenu) // During Credits, hide numbers
                 myText = "";
                 
         }
@@ -213,7 +225,8 @@ public class Tile : MonoBehaviour
 
         if (text != null)
         {
-            text.SetText(myText);
+            if (text.text != myText)
+                text.SetText(myText);
             text.color = myColor;
             if (GetComponentInChildren<SetRandomSupporterName>() != null)
                 GetComponentInChildren<SetRandomSupporterName>().supportText.color = myColor;
@@ -312,6 +325,8 @@ public class Tile : MonoBehaviour
 
             revealedThisFrame = true;
             //gm.RevealTile(coordX, coordY, nearbyMines, isMine);
+
+            UpdateText();
 
             if (isMine)
             {

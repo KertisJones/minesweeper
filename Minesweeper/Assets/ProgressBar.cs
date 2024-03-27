@@ -56,7 +56,7 @@ public class ProgressBar : MonoBehaviour
         if (currentOffset > maximumOffset)
             currentOffset = maximumOffset;
         mask.fillAmount = fillAmount;
-        hoverText.text = currentOffset + "/" + maximumOffset;
+        hoverText.text = (current - minimum) + "/" + maximumOffset;
     }
 
     void TweenProgress()
