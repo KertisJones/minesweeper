@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class HoldTetromino : MonoBehaviour
 {
@@ -122,7 +123,7 @@ public class HoldTetromino : MonoBehaviour
         AudioSource.PlayClipAtPoint(holdSwitchSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
         if (cleanseProgressBar != null)
-            cleanseProgressBar.color = heldTetromino.GetComponentInChildren<Button>().image.color;
+            cleanseProgressBar.ChangeColor(heldTetromino.GetComponentInChildren<Button>().image.color);
 
         // Input DAS for next tetromino
         if (heldTetromino.GetComponent<Group>().buttonLeftHeld)

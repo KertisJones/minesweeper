@@ -123,8 +123,13 @@ public class Tile : MonoBehaviour
         {
             tileBackground.color = solvedMarkColor;
             shimmerOverlay.gameObject.SetActive(true);
-            text.GetComponent<VertexJitter>().enabled = true;
-            supportText.GetComponent<VertexJitter>().enabled = true;            
+            if (true || !isDisplay)
+            {
+                text.GetComponent<VertexJitter>().enabled = true;
+                supportText.GetComponent<VertexJitter>().enabled = true;      
+            }
+            
+                  
 
             /*if (GetComponent<IdleJiggle>() != null)
             {

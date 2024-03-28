@@ -26,7 +26,8 @@ public class ProgressBar : MonoBehaviour
     private float tweenAmount = 0.01f;
     public Image mask;
     public Image fill;
-    public Color color;
+    [SerializeField]
+    private Color color;
     public TMPro.TMP_Text hoverText;
     public SpriteRenderer hoverTextSprite;
     private Color textColor;
@@ -34,14 +35,14 @@ public class ProgressBar : MonoBehaviour
     void Start()
     {
         currentTween = current;
+        fill.color = color;
         textColor = hoverTextSprite.color;
         hoverTextSprite.color = Color.clear;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        fill.color = color;
+    {        
         hoverText.color = hoverTextSprite.color;
         
         TweenProgress();
@@ -75,6 +76,11 @@ public class ProgressBar : MonoBehaviour
         {
             currentTween -= tweenAmount;
         }
+    }
+
+    public void ChangeColor(Color newColor)
+    {
+        fill.DOColor(newColor, 0.5f);
     }
 
     public void ShowText()

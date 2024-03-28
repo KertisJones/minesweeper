@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class TetrominoSpawner : MonoBehaviour
 {
+    public Camera mainCamera;
     public Transform previewTarget;
     public GameObject[] groups;
 
@@ -17,6 +19,7 @@ public class TetrominoSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         spawnPreview();
         spawnNext();
     }
@@ -34,6 +37,7 @@ public class TetrominoSpawner : MonoBehaviour
         // Spawn Group at current Position
         nextTetromino = Instantiate((GameObject)groupStack[i], previewTarget.position, Quaternion.identity, this.transform);
         nextTetromino.GetComponent<Group>().isHeld = true;
+        //mainCamera.DOColor(nextTetromino.GetComponentInChildren<UnityEngine.UI.Button>().image.color * new Color(0.725f, 0.725f, 0.725f), 0.5f);
 
         groupStack.Remove(groupStack[i]);
     }
