@@ -23994,6 +23994,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2107795395058567594, guid: 8b1d3b115b4c94d4a92c9365821fc072, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107795395058567594, guid: 8b1d3b115b4c94d4a92c9365821fc072, type: 3}
       propertyPath: leanDuration
       value: 10
       objectReference: {fileID: 0}

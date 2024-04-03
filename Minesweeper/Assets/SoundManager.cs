@@ -169,7 +169,7 @@ public class SoundManager : MonoBehaviour
             if (multiplierDrainTween.IsActive())
                 if (multiplierDrainTween.IsPlaying())
                     return;        
-        if (multiplierDrainSource.volume > 0)
+        if (multiplierDrainSource.volume > 0 || gm.isGameOver)
             return;
         
         multiplierDrainTween = multiplierDrainSource.DOFade(PlayerPrefs.GetFloat("SoundVolume", 0.5f), 1f);

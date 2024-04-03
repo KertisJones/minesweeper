@@ -976,6 +976,8 @@ public class GameManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().SaveCurrentGame();
         
         soundManager.DisablePauseFilter();
+        soundManager.StopMultiplierDrain();
+        
         if (OnGameOverEvent != null)
             OnGameOverEvent();
 
