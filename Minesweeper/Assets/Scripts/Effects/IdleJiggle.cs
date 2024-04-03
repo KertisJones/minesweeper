@@ -233,47 +233,53 @@ public class IdleJiggle : MonoBehaviour
     }
     #endregion
 
-    public void Shake(float duration, float strength, bool autoReset = false)
+    public void Shake(float duration, float strength, bool autoReset = false, bool overrideTween = false, bool loopTween = false)
     {        
-        ShakePosition(duration, strength, autoReset);
-        ShakeRotation(duration, strength, autoReset);
-        ShakeScale(duration, strength, autoReset);
+        ShakePosition(duration, strength, autoReset, overrideTween, loopTween);
+        ShakeRotation(duration, strength, autoReset, overrideTween, loopTween);
+        ShakeScale(duration, strength, autoReset, overrideTween, loopTween);
     }
 
-    public void ShakePosition(float duration, float strength, bool autoReset = false)
-    {
-        if (!IsShakeValid(jiggleMoveIsEnabled, shakePositionTween))
-            return;
-        shakePositionTween = this.transform.DOShakePosition(duration, new Vector3(strength, strength, 0));
-        if (autoReset)
-            shakePositionTween.OnKill(ResetPosition);
-    }
-
-    public void ShakeRotation(float duration, float strength, bool autoReset = false, bool overrideTween = false)
+    public void ShakePosition(float duration, float strength, bool autoReset = false, bool overrideTween = false, bool loopTween = false)
     {
         if (overrideTween)
-            if (shakeRotationTween != null)
-                if (shakeRotationTween.IsActive())
-                    if (shakeRotationTween.IsPlaying())
-                        {
-                            shakeRotationTween.Kill();
-                            shakeRotationTween = null;
-                        }
+            ShakePositionKill();
+        
+        if (!IsShakeValid(jiggleMoveIsEnabled, shakePositionTween))
+            return;
+        shakePositionTween = this.transform.DOShakePosition(duration, new Vector3(strength, strength, 0), 10, 90, false, !loopTween);
+        if (autoReset)
+            shakePositionTween.OnKill(ResetPosition);
+        if (loopTween)
+            shakePositionTween.SetLoops(-1);
+    }
+
+    public void ShakeRotation(float duration, float strength, bool autoReset = false, bool overrideTween = false, bool loopTween = false)
+    {
+        if (overrideTween)
+            ShakeRotationKill();
         
         if (!IsShakeValid(jiggleRotateIsEnabled, shakeRotationTween))
             return;
-        shakeRotationTween = this.transform.DOShakeRotation(duration, new Vector3(0, 0, strength * 40));
+        shakeRotationTween = this.transform.DOShakeRotation(duration, new Vector3(0, 0, strength * 40), 10, 90, !loopTween);
         if (autoReset)
             shakeRotationTween.OnKill(ResetRotation);
+        if (loopTween)
+            shakeRotationTween.SetLoops(-1);
     }
 
-    public void ShakeScale(float duration, float strength, bool autoReset = false)
+    public void ShakeScale(float duration, float strength, bool autoReset = false, bool overrideTween = false, bool loopTween = false)
     {
+        if (overrideTween)
+            ShakeScaleKill();
+        
         if (!IsShakeValid(jiggleScaleIsEnabled, shakeScaleTween))
             return;
-        shakeScaleTween = this.transform.DOShakeScale(duration, strength);
+        shakeScaleTween = this.transform.DOShakeScale(duration, strength, 10, 90, !loopTween);
         if (autoReset)
             shakeScaleTween.OnKill(ResetScale);
+        if (loopTween)
+            shakeScaleTween.SetLoops(-1);
     }
 
     private bool IsShakeValid(bool isJiggleTypeIsEnabled, Tween tweenToCheckIfPlaying = null)
@@ -297,6 +303,44 @@ public class IdleJiggle : MonoBehaviour
             return false;
 
         return true;
+    }
+    public void ShakeKill()
+    {
+        ShakePositionKill();
+        ShakeRotationKill();
+        ShakeScaleKill();
+    }
+    private void ShakePositionKill() 
+    {
+        if (shakePositionTween != null)
+            if (shakePositionTween.IsActive())
+                if (shakePositionTween.IsPlaying())
+                    {
+                        shakePositionTween.Kill();
+                        shakePositionTween = null;
+                    }
+    }
+
+    private void ShakeRotationKill()
+    {
+        if (shakeRotationTween != null)
+            if (shakeRotationTween.IsActive())
+                if (shakeRotationTween.IsPlaying())
+                    {
+                        shakeRotationTween.Kill();
+                        shakeRotationTween = null;
+                    }
+    }
+
+    private void ShakeScaleKill() 
+    {
+        if (shakeScaleTween != null)
+            if (shakeScaleTween.IsActive())
+                if (shakeScaleTween.IsPlaying())
+                    {
+                        shakeScaleTween.Kill();
+                        shakeScaleTween = null;
+                    }
     }
 
     public void LeanX(int dir)

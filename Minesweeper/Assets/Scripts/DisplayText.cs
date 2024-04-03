@@ -32,7 +32,8 @@ public class DisplayText : MonoBehaviour
         TESTCurrentMinoLockDelay,
         TESTCurrentMinoRotation,
         gameModeName,
-        gameModeNameComplete
+        gameModeNameComplete,
+        versionNumber
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
@@ -47,6 +48,16 @@ public class DisplayText : MonoBehaviour
 
         startColor = this.GetComponent<TextMeshProUGUI>().color;
         startFontSize = this.GetComponent<TextMeshProUGUI>().fontSize;
+
+        if (displayType == TextType.versionNumber)
+        {
+            if (ScoreKeeper.versionType == ScoreKeeper.VersionType.standard)
+                this.GetComponent<TextMeshProUGUI>().text = Application.version;
+            else if (ScoreKeeper.versionType == ScoreKeeper.VersionType.beta)
+                this.GetComponent<TextMeshProUGUI>().text = Application.version + " Beta";
+            else if (ScoreKeeper.versionType == ScoreKeeper.VersionType.demo)
+                this.GetComponent<TextMeshProUGUI>().text = Application.version + " Demo";
+        }
     }
 
     // Update is called once per frame

@@ -219,6 +219,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplierDrainSource: {fileID: 9133358887212656289}
+  tileRevealSounds:
+  - {fileID: 8300000, guid: ffccde34244e6d64398290f3937d5d3f, type: 3}
+  - {fileID: 8300000, guid: 7cd39cc279019314c9f1c17794279a17, type: 3}
+  - {fileID: 8300000, guid: a01b357bc8cb6e34fb03f3998a029c78, type: 3}
+  - {fileID: 8300000, guid: 2a23e1e6c19c4ac428db5bd9ef0024fb, type: 3}
+  - {fileID: 8300000, guid: 8f6e7f8a604b2c04e92959070c9606f7, type: 3}
+  - {fileID: 8300000, guid: af094cc662ec14947b7673f8e2798faa, type: 3}
+  - {fileID: 8300000, guid: 9e60fbb4756f5ed4ba2c4d294e068ada, type: 3}
+  - {fileID: 8300000, guid: 857ca281b8898fc408bd9109ac009aa7, type: 3}
+  - {fileID: 8300000, guid: 7772820ea7280f04dbf16f94c63ed9fd, type: 3}
+  - {fileID: 8300000, guid: 7e261fe5b98b0af4a9b4a1d9ea8448bb, type: 3}
+  - {fileID: 8300000, guid: 266ecf633e08fb740961bc753f8cc439, type: 3}
+  - {fileID: 8300000, guid: ad5472a9b7f2e8542a9f889a3c98e6e1, type: 3}
+  - {fileID: 8300000, guid: 10c2b5ee39a6ca04f845c800ee2835b4, type: 3}
   tileRevealSound1: {fileID: 8300000, guid: ffccde34244e6d64398290f3937d5d3f, type: 3}
   tileRevealSound2: {fileID: 8300000, guid: 7cd39cc279019314c9f1c17794279a17, type: 3}
   tileRevealSound3: {fileID: 8300000, guid: a01b357bc8cb6e34fb03f3998a029c78, type: 3}

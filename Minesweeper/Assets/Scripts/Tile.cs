@@ -121,13 +121,20 @@ public class Tile : MonoBehaviour
         
         if (isRowSolved)
         {
+            if (tileBackground.color != solvedMarkColor)
+            {
+                text.GetComponent<IdleJiggle>().Shake(30, 0.1f, true, true, true);
+                supportText.GetComponent<IdleJiggle>().Shake(30, 0.1f, true, true, true);
+            }
+
             tileBackground.color = solvedMarkColor;
             shimmerOverlay.gameObject.SetActive(true);
-            if (true || !isDisplay)
+            
+            /*if (true || !isDisplay)
             {
                 text.GetComponent<VertexJitter>().enabled = true;
                 supportText.GetComponent<VertexJitter>().enabled = true;      
-            }
+            }*/
             
                   
 
@@ -140,14 +147,21 @@ public class Tile : MonoBehaviour
         }            
         else
         {
+            if (tileBackground.color == solvedMarkColor)
+            {
+                text.GetComponent<IdleJiggle>().ShakeKill();
+                supportText.GetComponent<IdleJiggle>().ShakeKill();
+            }
+
             tileBackground.color = Color.white;
             if (!isDisplay)
                 shimmerOverlay.gameObject.SetActive(false);
             
-            text.GetComponent<VertexJitter>().enabled = false;
+            
+            /*text.GetComponent<VertexJitter>().enabled = false;
             text.SetText(text.text);
             supportText.GetComponent<VertexJitter>().enabled = false;
-            supportText.SetText(supportText.text);
+            supportText.SetText(supportText.text);*/
         }
 
         revealedThisFrame = false;

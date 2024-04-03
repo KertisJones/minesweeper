@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 1868556186484150532}
   - component: {fileID: 2345404399508519919}
   - component: {fileID: 2115685909155936385}
-  - component: {fileID: 4113141391292629732}
+  - component: {fileID: 999801844879855414}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -294,21 +294,33 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4113141391292629732
+--- !u!114 &999801844879855414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474330313125699534}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ed57967c52645d390a89dcf8f61ba73, type: 3}
+  m_Script: {fileID: 11500000, guid: 26651055de1a09548b2c97a6f5255fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AngleMultiplier: 0.5
-  SpeedMultiplier: 1
-  CurveScale: 0.2
+  idleMoveDistance: {x: 0, y: 0, z: 0}
+  idleMoveDuration: 0
+  idleMoveEase: 4
+  leanDistance: 1
+  leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
+  jiggleIsEnabled: 1
+  jiggleRotateIsEnabled: 1
+  jiggleScaleIsEnabled: 1
+  jiggleMoveIsEnabled: 1
+  jiggleOnActionIsEnabled: 1
+  jiggleLeanIsEnabled: 0
 --- !u!1 &1573842653532498126
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +335,6 @@ GameObject:
   - component: {fileID: 298214329990713438}
   - component: {fileID: 7374917079697838492}
   - component: {fileID: 2370020835508928947}
-  - component: {fileID: 5465086668259549178}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -510,21 +521,6 @@ MonoBehaviour:
   jiggleMoveIsEnabled: 0
   jiggleOnActionIsEnabled: 1
   jiggleLeanIsEnabled: 0
---- !u!114 &5465086668259549178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1573842653532498126}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ed57967c52645d390a89dcf8f61ba73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AngleMultiplier: 1
-  SpeedMultiplier: 1
-  CurveScale: 1
 --- !u!1 &1809547958692683718
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +736,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2295365666826786631}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ed57967c52645d390a89dcf8f61ba73, type: 3}
   m_Name: 

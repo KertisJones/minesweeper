@@ -15,6 +15,14 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
     //public static float masterVolume  = 0.2f;
     GameManager gm;
     AudioSource musicSource;
+
+    public enum VersionType
+    {
+        standard,
+        beta,
+        demo
+    }
+    public static VersionType versionType = VersionType.standard;
     //CameraShake cameraShake;
     // Start is called before the first frame update
     void Awake()

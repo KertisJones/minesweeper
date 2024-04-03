@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioSource multiplierDrainSource;
     private GameManager gm;
+    public AudioClip[] tileRevealSounds;
     public AudioClip tileRevealSound1;
     public AudioClip tileRevealSound2;
     public AudioClip tileRevealSound3;
@@ -55,53 +56,64 @@ public class SoundManager : MonoBehaviour
         if (tileRevealedThisFrame)
         {
             tileRevealedThisFrame = false;
-            if (tilesRevealedPitch > 13)
-                tilesRevealedPitch = 7;
-            switch (tilesRevealedPitch)
+
+            int n1 = tilesRevealedPitch % ((tileRevealSounds.Length - 1) * 2);
+            int n2 = n1;
+            
+            if (n1 >= tileRevealSounds.Length)
+                n2 = (tileRevealSounds.Length - 2) - (n1 % tileRevealSounds.Length);
+            
+            Debug.Log("n1:" + n1 + ", n2:" + n2 + ", len:" + tileRevealSounds.Length);
+            
+            AudioSource.PlayClipAtPoint(tileRevealSounds[n2], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            tilesRevealedPitch++;
+
+            /*switch (tilesRevealedPitch)
             {
-                case 1:
+                case 0:
                     AudioSource.PlayClipAtPoint(tileRevealSound1, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;
-                case 2:
+                case 1:
                     AudioSource.PlayClipAtPoint(tileRevealSound2, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;
-                case 3:
+                case 2:
                     AudioSource.PlayClipAtPoint(tileRevealSound3, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;
-                case 4:
+                case 3:
                     AudioSource.PlayClipAtPoint(tileRevealSound4, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;
-                case 5:
+                case 4:
                     AudioSource.PlayClipAtPoint(tileRevealSound5, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;
-                case 6:
+                case 5:
                     AudioSource.PlayClipAtPoint(tileRevealSound6, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;
-                case 7:
+                case 6:
                     AudioSource.PlayClipAtPoint(tileRevealSound7, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;
-                case 8:
+                case 7:
                     AudioSource.PlayClipAtPoint(tileRevealSound8, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;
-                case 9:
+                case 8:
                     AudioSource.PlayClipAtPoint(tileRevealSound9, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;
-                case 10:
+                case 9:
                     AudioSource.PlayClipAtPoint(tileRevealSound10, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;
-                case 11:
+                case 10:
                     AudioSource.PlayClipAtPoint(tileRevealSound11, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;
-                case 12:
+                case 11:
                     AudioSource.PlayClipAtPoint(tileRevealSound12, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;
-                case 13:
+                case 12:
                     AudioSource.PlayClipAtPoint(tileRevealSound13, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;
                 default:
                     AudioSource.PlayClipAtPoint(tileRevealSound13, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                     break;                
-            }            
+            }*/
+            
         }
         tilesRevealedCooldownTimer -= Time.deltaTime;
         if (tilesRevealedCooldownTimer < 0)
@@ -113,7 +125,6 @@ public class SoundManager : MonoBehaviour
     {
         if (!tileRevealedThisFrame)
         {
-            tilesRevealedPitch++;
             tileRevealedThisFrame = true;        
             tilesRevealedCooldownTimer = 1f;
         }
