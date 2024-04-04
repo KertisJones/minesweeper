@@ -63,7 +63,7 @@ public class SoundManager : MonoBehaviour
             if (n1 >= tileRevealSounds.Length)
                 n2 = (tileRevealSounds.Length - 2) - (n1 % tileRevealSounds.Length);
             
-            Debug.Log("n1:" + n1 + ", n2:" + n2 + ", len:" + tileRevealSounds.Length);
+            //Debug.Log("n1:" + n1 + ", n2:" + n2 + ", len:" + tileRevealSounds.Length);
             
             AudioSource.PlayClipAtPoint(tileRevealSounds[n2], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
             tilesRevealedPitch++;
