@@ -1258,9 +1258,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 952127466758144
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6356893951152940188, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Click to view in your browser
+      value: Scoring
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
@@ -1487,14 +1495,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2817332947296180974, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Get the highest score possible in three minutes!
+      value: Ultra
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062949866295212772, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 697420861136896
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_text
-      value: 'Ultra:       Time Trial'
+      value: 'Ultra:
+
+        Time Trial'
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_fontSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_fontSizeMax
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
@@ -1503,11 +1521,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667269, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667269, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198429743233667270, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743538602050, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -5689,8 +5711,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Do you want to buy me a coffee? Thank you for your
-              support!
+            m_StringArgument: BuyMeACoffee
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 534921702}
@@ -6774,6 +6795,14 @@ PrefabInstance:
     - target: {fileID: 3964747064262966838, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_Name
       value: Settings Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 925742983536640
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
@@ -8803,7 +8832,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Join the official Tetrisweeper Community Discord!
+            m_StringArgument: Discord
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 832063251}
@@ -9611,7 +9640,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Check out our community playlist!
+            m_StringArgument: YouTube
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 887336380}
@@ -11062,7 +11091,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2817332947296180974, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Clear 40 lines as fast as possible!
+      value: 40-Line Sprint
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062949866295212772, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 697414372548608
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_text
@@ -11073,16 +11106,28 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_fontSizeBase
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667269, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667269, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198429743233667270, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743538602050, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -11999,7 +12044,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Share your high scores with #Tetrisweeper
+            m_StringArgument: Twitter
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 1067259804}
@@ -14303,7 +14348,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2817332947296180974, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: 'Get the highest score possible in three minutes, using Flash rules! '
+      value: Flash Ultra
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062949866295212772, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 697421989404672
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_text
@@ -14311,7 +14360,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_fontSize
-      value: 7.75
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_fontSizeBase
@@ -14319,11 +14372,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667269, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667269, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198429743233667270, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743538602050, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -14886,7 +14943,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Download the standalone version
+            m_StringArgument: Itch
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 1316807197}
@@ -17313,6 +17370,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Credits Button
       objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 697429551734784
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356893951152940188, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Credits
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
 --- !u!1 &1529653567
@@ -19203,7 +19272,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2817332947296180974, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Coming soon....
+      value: ComingSoon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062949866295212772, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 951608887205888
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538284107483537854, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 951658765869056
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_text
@@ -19380,6 +19457,7 @@ GameObject:
   - component: {fileID: 1710155847}
   - component: {fileID: 1710155846}
   - component: {fileID: 1710155845}
+  - component: {fileID: 1710155848}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -19518,6 +19596,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710155843}
   m_CullTransparentMesh: 0
+--- !u!114 &1710155848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710155843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+    m_TableEntryReference:
+      m_KeyId: 951849149521920
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1710155846}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &1710229582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20509,11 +20627,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_fontSize
-      value: 7.5
+      value: 8.25
       objectReference: {fileID: 0}
     - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_fontSizeBase
       value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3964747064262966832, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -20627,9 +20749,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Leaderboard Button
       objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 952161780359168
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6356893951152940188, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Join our Community Discord to get your name on the official leaderboard!
+      value: Leaderboard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
@@ -20913,7 +21043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3024768390377626175, guid: 5252eda699d1dcd4aa7c4a67d9618831, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 24.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3024768390377626175, guid: 5252eda699d1dcd4aa7c4a67d9618831, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21695,7 +21825,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2817332947296180974, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: 'The easier, faster-paced version of Marathon where lines clear instantly! '
+      value: Flash Marathon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062949866295212772, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 697412782907392
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_text
@@ -21703,7 +21837,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_fontSize
-      value: 7.75
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667268, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_fontSizeBase
@@ -21711,11 +21849,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667269, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743233667269, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198429743233667270, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743538602050, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -23647,7 +23789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2817332947296180974, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Survive up to 150 lines, and try to get the highest score possible!
+      value: Marathon
       objectReference: {fileID: 0}
     - target: {fileID: 5198429743538602050, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode

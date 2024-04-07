@@ -252,7 +252,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494279170637}
   rebindButton: {fileID: 593537494060633307}
   rebindText: {fileID: 593537493204118541}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537492911460935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494279170637}
   rebindButton: {fileID: 593537493225183792}
   rebindText: {fileID: 593537493205405990}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537492911460934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494279170637}
   rebindButton: {fileID: 593537494905206527}
   rebindText: {fileID: 593537494883540571}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537492911460933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,7 +339,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494279170637}
   rebindButton: {fileID: 593537494252539739}
   rebindText: {fileID: 593537495014316448}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537492911460932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +368,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494279170637}
   rebindButton: {fileID: 593537494086031626}
   rebindText: {fileID: 593537493645126357}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537492911460931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +397,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494279170637}
   rebindButton: {fileID: 593537493298601135}
   rebindText: {fileID: 593537492927502375}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537492911460930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,7 +426,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494279170637}
   rebindButton: {fileID: 593537493250940672}
   rebindText: {fileID: 593537493533781174}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!1 &593537492927502373
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,7 +879,7 @@ RectTransform:
   - {fileID: 593537494523378677}
   - {fileID: 593537492949117394}
   - {fileID: 593537494757361823}
-  - {fileID: 593537493116107789}
+  - {fileID: 2158486615438045803}
   - {fileID: 593537492937419959}
   - {fileID: 593537492911460929}
   - {fileID: 593537494446662879}
@@ -1566,252 +1566,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &593537493116107788
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 593537493116107789}
-  - component: {fileID: 593537493116107824}
-  - component: {fileID: 593537493116107791}
-  - component: {fileID: 593537493116107790}
-  - component: {fileID: 3143566293959629814}
-  - component: {fileID: 7546114993806737092}
-  m_Layer: 5
-  m_Name: Restore Defaults
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &593537493116107789
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593537493116107788}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 593537494905169985}
-  m_Father: {fileID: 593537493044333188}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -8}
-  m_SizeDelta: {x: 80, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &593537493116107824
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593537493116107788}
-  m_CullTransparentMesh: 0
---- !u!114 &593537493116107791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593537493116107788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: da6698704a61ef3499f807640a8438d0, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 4.7
---- !u!114 &593537493116107790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593537493116107788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 593537493116107791}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &3143566293959629814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593537493116107788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ebf89b859a146f47b89a7c2c749a6d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scaleMultiplierEnlarge: 1.05
-  scaleMultiplierShrink: 0.95
-  scaleTransitionTime: 0.15
-  scalePositionOffset: 0
-  enlargeSound: {fileID: 0}
-  shrinkSound: {fileID: 0}
-  jiggleIsEnabled: 1
-  reorderToLastSibling: 1
-  startAtScaleZero: 0
---- !u!114 &7546114993806737092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593537493116107788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5227073461454622972, guid: 710a08a527f8ebe4bb32954b20a2119c, type: 3}
-          m_TargetAssemblyTypeName: Tooltip, Assembly-CSharp
-          m_MethodName: ShowTooltip_Static
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 3143566293959629814}
-          m_TargetAssemblyTypeName: ButtonJiggle, Assembly-CSharp
-          m_MethodName: Enlarge
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5227073461454622972, guid: 710a08a527f8ebe4bb32954b20a2119c, type: 3}
-          m_TargetAssemblyTypeName: Tooltip, Assembly-CSharp
-          m_MethodName: HideTooltip_Static
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 3143566293959629814}
-          m_TargetAssemblyTypeName: ButtonJiggle, Assembly-CSharp
-          m_MethodName: Reset
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3143566293959629814}
-          m_TargetAssemblyTypeName: ButtonJiggle, Assembly-CSharp
-          m_MethodName: Shrink
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3143566293959629814}
-          m_TargetAssemblyTypeName: ButtonJiggle, Assembly-CSharp
-          m_MethodName: Reset
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &593537493128656917
 GameObject:
   m_ObjectHideFlags: 0
@@ -2261,7 +2015,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494401213105}
   rebindButton: {fileID: 593537494033587045}
   rebindText: {fileID: 593537493407371688}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493178077644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2290,7 +2044,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494401213105}
   rebindButton: {fileID: 593537494405801048}
   rebindText: {fileID: 593537493457057020}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493178077643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2319,7 +2073,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494401213105}
   rebindButton: {fileID: 593537493460691532}
   rebindText: {fileID: 593537494965922473}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493178077642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2348,7 +2102,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494401213105}
   rebindButton: {fileID: 593537493554205557}
   rebindText: {fileID: 593537494401536675}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493178077641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2377,7 +2131,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494401213105}
   rebindButton: {fileID: 593537494767852239}
   rebindText: {fileID: 593537493624260217}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493178077640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2406,7 +2160,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494401213105}
   rebindButton: {fileID: 593537493977066015}
   rebindText: {fileID: 593537494839808351}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493178077639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2435,7 +2189,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494401213105}
   rebindButton: {fileID: 593537494769929423}
   rebindText: {fileID: 593537493216371671}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!1 &593537493191694490
 GameObject:
   m_ObjectHideFlags: 0
@@ -5791,7 +5545,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493428268137}
   rebindButton: {fileID: 593537494671229136}
   rebindText: {fileID: 593537493269499814}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493444437544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5820,7 +5574,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493428268137}
   rebindButton: {fileID: 593537494636365494}
   rebindText: {fileID: 593537493330693521}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493444437543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5849,7 +5603,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493428268137}
   rebindButton: {fileID: 593537493152509452}
   rebindText: {fileID: 593537493524920582}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493444437542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5878,7 +5632,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493428268137}
   rebindButton: {fileID: 593537493353848737}
   rebindText: {fileID: 593537495013535772}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493444437541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5907,7 +5661,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493428268137}
   rebindButton: {fileID: 593537493889433733}
   rebindText: {fileID: 593537494805352968}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493444437540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5936,7 +5690,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493428268137}
   rebindButton: {fileID: 593537493789058021}
   rebindText: {fileID: 593537493128656919}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493444437539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5965,7 +5719,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493428268137}
   rebindButton: {fileID: 593537493104519549}
   rebindText: {fileID: 593537493057360757}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!1 &593537493457057018
 GameObject:
   m_ObjectHideFlags: 0
@@ -8458,7 +8212,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494731041956}
   rebindButton: {fileID: 593537495011175871}
   rebindText: {fileID: 593537494940842389}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493808559625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8487,7 +8241,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494731041956}
   rebindButton: {fileID: 593537494771627166}
   rebindText: {fileID: 593537493436264199}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493808559624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8516,7 +8270,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494731041956}
   rebindButton: {fileID: 593537494546008897}
   rebindText: {fileID: 593537493211917390}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493808559623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8545,7 +8299,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494731041956}
   rebindButton: {fileID: 593537494564220234}
   rebindText: {fileID: 593537494198722326}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493808559622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8574,7 +8328,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494731041956}
   rebindButton: {fileID: 593537494242472404}
   rebindText: {fileID: 593537494317974646}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493808559621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8603,7 +8357,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494731041956}
   rebindButton: {fileID: 593537493327971789}
   rebindText: {fileID: 593537493779074399}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537493808559620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8632,7 +8386,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494731041956}
   rebindButton: {fileID: 593537493362901066}
   rebindText: {fileID: 593537493348654151}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!1 &593537493852353596
 GameObject:
   m_ObjectHideFlags: 0
@@ -9761,6 +9515,7 @@ GameObject:
   - component: {fileID: 593537493997165174}
   - component: {fileID: 593537493997165176}
   - component: {fileID: 593537493997165175}
+  - component: {fileID: 2857764299281447756}
   m_Layer: 5
   m_Name: Minesweeper Header
   m_TagString: Untagged
@@ -9885,6 +9640,46 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2857764299281447756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593537493997165173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+    m_TableEntryReference:
+      m_KeyId: 934315432075264
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 593537493997165175}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &593537494008334962
 GameObject:
   m_ObjectHideFlags: 0
@@ -11228,6 +11023,7 @@ GameObject:
   - component: {fileID: 593537494267899853}
   - component: {fileID: 593537494267899855}
   - component: {fileID: 593537494267899854}
+  - component: {fileID: 4654517251505119274}
   m_Layer: 5
   m_Name: Tetris Header
   m_TagString: Untagged
@@ -11352,6 +11148,46 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4654517251505119274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593537494267899852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+    m_TableEntryReference:
+      m_KeyId: 934286541709312
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 593537494267899854}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &593537494279170635
 GameObject:
   m_ObjectHideFlags: 0
@@ -12471,6 +12307,7 @@ GameObject:
   - component: {fileID: 593537494436485731}
   - component: {fileID: 593537494436485733}
   - component: {fileID: 593537494436485732}
+  - component: {fileID: 4189353239620518135}
   m_Layer: 5
   m_Name: Text - Controls
   m_TagString: Untagged
@@ -12595,6 +12432,46 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4189353239620518135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593537494436485730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+    m_TableEntryReference:
+      m_KeyId: 926408846073856
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 593537494436485732}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &593537494437829206
 GameObject:
   m_ObjectHideFlags: 0
@@ -12930,7 +12807,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494181323348}
   rebindButton: {fileID: 593537493758863794}
   rebindText: {fileID: 593537494519691012}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537494446662853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12959,7 +12836,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494181323348}
   rebindButton: {fileID: 593537494778183604}
   rebindText: {fileID: 593537493588289624}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537494446662852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12988,7 +12865,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494181323348}
   rebindButton: {fileID: 593537493923265368}
   rebindText: {fileID: 593537493444377979}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537494446662851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13017,7 +12894,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494181323348}
   rebindButton: {fileID: 593537493571786382}
   rebindText: {fileID: 593537494652894251}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537494446662850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13046,7 +12923,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494181323348}
   rebindButton: {fileID: 593537494687423760}
   rebindText: {fileID: 593537494511496449}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537494446662849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13075,7 +12952,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494181323348}
   rebindButton: {fileID: 593537493437691159}
   rebindText: {fileID: 593537493852353598}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537494446662848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13104,7 +12981,7 @@ MonoBehaviour:
   actionText: {fileID: 593537494181323348}
   rebindButton: {fileID: 593537494930726482}
   rebindText: {fileID: 593537494884056661}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!1 &593537494511496479
 GameObject:
   m_ObjectHideFlags: 0
@@ -15692,7 +15569,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493289496089}
   rebindButton: {fileID: 593537493336349061}
   rebindText: {fileID: 593537493057072062}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537494786033979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15721,7 +15598,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493289496089}
   rebindButton: {fileID: 593537493777512700}
   rebindText: {fileID: 593537493777482284}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537494786033978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15750,7 +15627,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493289496089}
   rebindButton: {fileID: 593537493236063175}
   rebindText: {fileID: 593537494563022867}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537494786033977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15779,7 +15656,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493289496089}
   rebindButton: {fileID: 593537494599489330}
   rebindText: {fileID: 593537492909731230}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537494786033976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15808,7 +15685,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493289496089}
   rebindButton: {fileID: 593537493047547405}
   rebindText: {fileID: 593537494245242205}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537494786033975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15837,7 +15714,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493289496089}
   rebindButton: {fileID: 593537493205782164}
   rebindText: {fileID: 593537493909905924}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!114 &593537494786033974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15866,7 +15743,7 @@ MonoBehaviour:
   actionText: {fileID: 593537493289496089}
   rebindButton: {fileID: 593537494671220702}
   rebindText: {fileID: 593537494441882634}
-  resetButton: {fileID: 593537493116107790}
+  resetButton: {fileID: 0}
 --- !u!1 &593537494787308359
 GameObject:
   m_ObjectHideFlags: 0
@@ -16938,141 +16815,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &593537494905169984
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 593537494905169985}
-  - component: {fileID: 593537494905169987}
-  - component: {fileID: 593537494905169986}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &593537494905169985
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593537494905169984}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 593537493116107789}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &593537494905169987
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593537494905169984}
-  m_CullTransparentMesh: 0
---- !u!114 &593537494905169986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593537494905169984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Restore Defaults
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
-  m_sharedMaterial: {fileID: 7539457901175315547, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 9
-  m_fontSizeBase: 9
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &593537494905206525
 GameObject:
   m_ObjectHideFlags: 0
@@ -18028,6 +17770,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537495001812985}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928909536256000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135162648458262, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_fontColor.b
       value: 0.1960784
@@ -18123,7 +17873,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -18131,7 +17881,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -18139,7 +17889,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -18147,7 +17897,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -18155,11 +17905,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 1
@@ -18183,7 +17933,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 0
@@ -18306,6 +18056,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537495001812985}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928722587738112
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135162648458262, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
       value: LMB
@@ -18508,7 +18266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Chord Tile
+      value: Chord
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -18537,7 +18295,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: inputBinding.m_Id
       value: 4508e877-31a0-4849-9a5d-00feafb7f437
@@ -18561,7 +18319,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: inputActionReference
       value: 
@@ -18573,7 +18331,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: inputActionReference
       value: 
@@ -18585,7 +18343,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: inputActionReference
       value: 
@@ -18597,7 +18355,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: inputActionReference
       value: 
@@ -18605,7 +18363,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 2
@@ -18629,7 +18387,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 1
@@ -18756,6 +18514,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537492882681518}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928656833634304
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135162648458262, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_fontColor.b
       value: 0.1960784
@@ -18819,7 +18585,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -18827,11 +18593,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 2
@@ -18859,7 +18625,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -18867,11 +18633,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 1
@@ -18895,7 +18661,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 0
@@ -19018,6 +18784,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537492882681518}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928642711412736
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135162648458262, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_fontColor.b
       value: 0.1960784
@@ -19109,7 +18883,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -19117,11 +18891,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 2
@@ -19145,7 +18919,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 1
@@ -19173,11 +18947,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 3
@@ -19201,7 +18975,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 0
@@ -19324,6 +19098,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537492882681518}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928580065288192
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135162648458262, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_fontColor.b
       value: 0.1960784
@@ -19351,31 +19133,31 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529694, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Name
       value: Rotate Clockwise Control Rebind
@@ -19478,6 +19260,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537492882681518}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928630334021632
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135162648458262, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_fontColor.b
       value: 0.1960784
@@ -19545,7 +19335,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -19553,11 +19343,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 2
@@ -19585,7 +19375,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -19593,7 +19383,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 3
@@ -19609,7 +19399,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 0
@@ -19633,7 +19423,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 1
@@ -19756,6 +19546,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537495001812985}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928735476834304
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135162648458262, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
       value: RMB
@@ -19891,7 +19689,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 0
@@ -19919,7 +19717,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -19927,7 +19725,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -19935,7 +19733,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -19943,11 +19741,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 2
@@ -19971,7 +19769,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 1
@@ -20094,6 +19892,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537492882681518}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928615494574080
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135162648458262, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
       value: Left Control
@@ -20161,7 +19967,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 0
@@ -20189,11 +19995,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 4
@@ -20217,7 +20023,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 3
@@ -20245,11 +20051,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 2
@@ -20273,7 +20079,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 1
@@ -20396,6 +20202,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537492882681518}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928546846400512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135163320903221, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -20443,7 +20257,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -20451,11 +20265,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 2
@@ -20483,7 +20297,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -20491,11 +20305,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 0
@@ -20519,7 +20333,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 1
@@ -20642,6 +20456,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537495001812985}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928694787891200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135162648458262, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
       value: T
@@ -20729,7 +20551,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 1
@@ -20757,7 +20579,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -20765,7 +20587,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -20773,7 +20595,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -20781,11 +20603,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 0
@@ -20809,7 +20631,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 2
@@ -20932,6 +20754,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537495001812985}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928708620705792
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135162648458262, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_fontColor.b
       value: 0.1960784
@@ -21051,7 +20881,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -21059,7 +20889,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -21067,7 +20897,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -21075,7 +20905,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -21083,11 +20913,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 1
@@ -21111,7 +20941,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 0
@@ -21370,12 +21200,165 @@ PrefabInstance:
       propertyPath: m_Name
       value: Back Button
       objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 926506682408960
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
 --- !u!224 &1410672487538129936 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
   m_PrefabInstance: {fileID: 2636342278755107361}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3094501057883278426
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 593537493044333188}
+    m_Modifications:
+    - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_text
+      value: Restore Defaults
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_fontSize
+      value: 8.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
+    - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7539457901175315547, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
+    - target: {fileID: 3964747064262966832, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966838, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_Name
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 933890872041472
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+--- !u!114 &2158486615438045802 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3964747064262966832, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+  m_PrefabInstance: {fileID: 3094501057883278426}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &2158486615438045803 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3964747064262966833, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+  m_PrefabInstance: {fileID: 3094501057883278426}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3264430254787259132
 PrefabInstance:
@@ -21384,6 +21367,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537492882681518}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928682272088064
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135162648458262, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_fontColor.b
       value: 0.1960784
@@ -21446,7 +21437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530779, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Name
-      value: Hold
+      value: Restart
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -21479,7 +21470,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -21487,7 +21478,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -21495,7 +21486,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 2
@@ -21523,7 +21514,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -21531,11 +21522,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 0
@@ -21563,7 +21554,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 0
@@ -21686,6 +21677,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537495001812985}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928788438310912
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135162648458262, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
       value: RMB
@@ -21880,11 +21879,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530779, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Name
-      value: Chord
+      value: Chord Flag
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Chord Flag Tile
+      value: Flag Chord
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -21913,7 +21912,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: inputBinding.m_Id
       value: 918f3ede-94ab-45ea-840d-cff8549278a8
@@ -21937,7 +21936,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: inputActionReference
       value: 
@@ -21949,7 +21948,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: inputActionReference
       value: 
@@ -21961,7 +21960,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: inputActionReference
       value: 
@@ -21973,7 +21972,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: inputActionReference
       value: 
@@ -21981,7 +21980,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 1
@@ -22005,7 +22004,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 0
@@ -22132,6 +22131,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537492882681518}
     m_Modifications:
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 927883198455808
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628269605797393252, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135162697163748, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -22203,7 +22210,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -22211,11 +22218,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 2
@@ -22243,7 +22250,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -22251,11 +22258,11 @@ PrefabInstance:
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 0
@@ -22279,7 +22286,7 @@ PrefabInstance:
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 2158486615438045802}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: selectedBinding
       value: 1
@@ -22405,31 +22412,31 @@ PrefabInstance:
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135164687529665, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135164687529666, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135164687529667, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135164687529668, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135164687529669, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135164687529670, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 593537493116107790}
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135164687529694, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_Name
       value: Rotate Clockwise

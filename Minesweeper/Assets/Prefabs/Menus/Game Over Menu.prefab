@@ -1189,6 +1189,7 @@ GameObject:
   - component: {fileID: 2064147738095466810}
   - component: {fileID: 2064147738095466808}
   - component: {fileID: 2794999894866652101}
+  - component: {fileID: 4612792541654549168}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1355,6 +1356,46 @@ MonoBehaviour:
   jiggleMoveIsEnabled: 0
   jiggleOnActionIsEnabled: 1
   jiggleLeanIsEnabled: 0
+--- !u!114 &4612792541654549168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064147738095466812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+    m_TableEntryReference:
+      m_KeyId: 963558551576576
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2064147738095466810}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &2064147738150250255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,6 +1765,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 693625464807424
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
 --- !u!224 &6508991041118130469 stripped
@@ -1837,6 +1886,14 @@ PrefabInstance:
     - target: {fileID: 3964747064262966838, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928682272088064
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}

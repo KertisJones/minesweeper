@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.U2D;
 using TMPro.Examples;
+using DG.Tweening;
 
 public class Tile : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class Tile : MonoBehaviour
     public SpriteRenderer tileBackground;
     public SpriteRenderer explodedMineBackground;
     public SpriteShapeRenderer shimmerOverlay;
+    public Image fadeOverlay;
+    private Tween fadeTween;
     
     TextMeshProUGUI text;    
     
@@ -239,7 +242,7 @@ public class Tile : MonoBehaviour
                 myColor = Color.white;
         }
 
-        if (gm.isPaused && !gm.marathonOverMenu.isActive)
+        if (gm.isPaused && !gm.isGameOver)
             myText = "";
 
         if (text != null)
@@ -413,6 +416,7 @@ public class Tile : MonoBehaviour
         {
             isRevealed = true;
             explodedMineBackground.enabled = true;
+            UpdateText();
 
             ZeroCascade();
             GetComponentInChildren<Button>().interactable = false;
@@ -601,6 +605,24 @@ public class Tile : MonoBehaviour
         }*/
         return false;
     }
+/*
+    public void DoFade(float fadeTime)
+    {
+        if (fadeTween != null)
+            if (fadeTween.IsActive())
+                if (fadeTween.IsPlaying())
+                    {
+                        fadeTween.Kill();
+                        fadeTween = null;
+                    }
+
+        fadeTween = fadeOverlay.DOColor(new Color(0,0,0, 0.5f), fadeTime);
+    }
+
+    public void EndFade()
+    {
+
+    }*/
 
 
     /*void Fall()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Localization.Settings;
 
 public class Tooltip : MonoBehaviour
 {
@@ -59,7 +60,7 @@ public class Tooltip : MonoBehaviour
         tooltipText.text = tooltipString;
         tooltipText.ForceMeshUpdate();
 
-        this.transform.DOScale(startScale, 0.15f);
+        this.transform.DOScale(startScale, 0.15f).SetUpdate(true);
 
         //float width = tooltipText.preferredWidth / tooltipText.textInfo.lineCount;
         //.textBounds.size.x;//.GetPreferredWidth()//GetPreferredValues(tooltipText.text, 10, 0).x;//.textBounds.extents.x;//.size.x;//.rendered.width.characterWidthAdjustment;//.renderedWidth;//.flexibleWidth.preferredWidth;
@@ -83,7 +84,7 @@ public class Tooltip : MonoBehaviour
             ShowTooltip();
         }
 
-        timeDelay += Time.deltaTime;    
+        timeDelay += Time.unscaledDeltaTime;    
         
         /*if (timePrev > 1)
         {
@@ -125,7 +126,7 @@ public class Tooltip : MonoBehaviour
         if (this.transform == null)
             return;
         
-        this.transform.DOScale(Vector3.zero, 0.15f);
+        this.transform.DOScale(Vector3.zero, 0.15f).SetUpdate(true);
         //gameObject.SetActive(false);
         //tooltipText.gameObject.SetActive(false);
         //backgroundRectTransform.gameObject.SetActive(false);
@@ -136,10 +137,15 @@ public class Tooltip : MonoBehaviour
 
     public static void ShowTooltip_Static(string tooltipNewString)
     {
+        if (tooltipNewString == "")
+            return;
+        
         Instance.isActive = true;     
         //Instance.isVisible = false;
         Instance.timeDelay = 0;   
-        Instance.tooltipString = tooltipNewString;
+
+        string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Tooltip " + tooltipNewString); // Returns translation of tooltip
+        Instance.tooltipString = localizedText;
     }
 
     public static void HideTooltip_Static()

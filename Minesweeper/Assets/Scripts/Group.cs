@@ -444,10 +444,40 @@ public class Group : MonoBehaviour
         // Lock Delay
         if (isLocking)
         {            
-            if (lockDelayTimer <= 0)
+            float lockPercentage = Mathf.Min(1f, Mathf.Max(0, lockDelayTimer / lockDelayActive));
+
+            
+
+            if (CheckIfLockIsValid())
             {
-                CheckIfLockIsValid();
+                if (lockDelayTimer <= 0)
+                {
+                    LockTetromino();
+                }
+                else
+                {
+                    foreach (Tile tile in GetChildTiles())
+                    {
+                        if (lockResets >= 14)
+                            tile.fadeOverlay.color = new Color(1, 1, 1, Mathf.Max(0, 0.5f - (lockPercentage * 0.5f)));
+                        else
+                            tile.fadeOverlay.color = new Color(0, 0, 0, Mathf.Max(0, 0.3f - (lockPercentage * 0.3f)));
+                    }
+                }
             }
+            else
+            {
+                /*if (lockDelayTimer <= 0)
+                {
+                    
+                }*/
+                isLocking = false;
+                foreach (Tile tile in GetChildTiles())
+                {
+                    tile.fadeOverlay.color = new Color(0, 0, 0, 0);
+                }
+            }
+
             lockDelayTimer -= Time.deltaTime;
         }
     }
@@ -577,6 +607,10 @@ public class Group : MonoBehaviour
                     //Debug.Log("Bottom Height: " + bottomHeight + ", lowest Row: " + bottomHeightLowest);
                     lockResets = 0;
                     isLocking = false;
+                    foreach (Tile tile in GetChildTiles())
+                    {
+                        tile.fadeOverlay.color = new Color(0, 0, 0, 0);
+                    }
                 }
                     
             }
@@ -591,7 +625,8 @@ public class Group : MonoBehaviour
         }
     }
 
-    public void CheckIfLockIsValid()
+    
+    public bool CheckIfLockIsValid()
     {
         // Detect if next step will lock
         bool willLock = false;
@@ -602,13 +637,7 @@ public class Group : MonoBehaviour
         }
         transform.position += new Vector3(0, 1, 0);
 
-        // If it's at the bottom, lock it
-        if (willLock)
-            LockTetromino();
-        else
-        {
-            isLocking = false;
-        }
+        return willLock;
     }
 
     public void LockTetromino()
@@ -618,6 +647,12 @@ public class Group : MonoBehaviour
         
         // Allow the tetromino to be scored
         isFalling = false;
+        isLocking = false;
+        
+        foreach (Tile tile in GetChildTiles())
+        {
+            tile.fadeOverlay.color = new Color(0, 0, 0, 0);
+        }
 
         // Score filled horizontal lines
         rowsFilled = GameManager.scoreFullRows(this.transform);

@@ -175,6 +175,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cleanse Button Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 928909536256000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 6356893951152940188, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -257,7 +265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6356893951152940188, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Clear all mines in hold, +250 Points
+      value: Cleanse
       objectReference: {fileID: 0}
     - target: {fileID: 6356893951152940188, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName

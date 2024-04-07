@@ -1,0 +1,341 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UIText_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 0dd1e0fbba483424bbb601167d9eb8a1, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 1684021998389821470
+  m_TableData:
+  - m_Id: 15111020544
+    m_Localized: Puntaje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934315432075264
+    m_Localized: Controles de Buscaminas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3884008333312
+    m_Localized: "Pr\xF3ximo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 688583756210176
+    m_Localized: Minas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 690552633810944
+    m_Localized: Tiempo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692866870403072
+    m_Localized: Tetrisweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694324101636096
+    m_Localized: T-Spinsweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691682109546496
+    m_Localized: Mejor Puntaje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691701722112000
+    m_Localized: Mejor Hoy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691795221536768
+    m_Localized: Mejor Tiempo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692206200414208
+    m_Localized: "L\xEDneas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693625464807424
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693945486008320
+    m_Localized: No puedo salir en el navegador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694159798165504
+    m_Localized: Nivel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694970670374912
+    m_Localized: Sin Fin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696069942927360
+    m_Localized: Completo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697409771397120
+    m_Localized: "Marat\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697412782907392
+    m_Localized: "Marat\xF3n Rel\xE1mpago"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697414372548608
+    m_Localized: "40-L\xEDneas Sprint"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697420861136896
+    m_Localized: 'Ultra:
+
+      Contrarreloj'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697421989404672
+    m_Localized: "Ultra Rel\xE1mpago"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697429551734784
+    m_Localized: "Cr\xE9ditos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697599509127168
+    m_Localized: "Marat\xF3n Oscurecido"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928656833634304
+    m_Localized: Sostener
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925355878637568
+    m_Localized: Jugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925670325608448
+    m_Localized: En Pausa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925714365800448
+    m_Localized: Continuar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925742983536640
+    m_Localized: Ajustes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926408846073856
+    m_Localized: Controlar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926506682408960
+    m_Localized: Devolver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926602874576896
+    m_Localized: Volumen Principal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926629294497792
+    m_Localized: "M\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926659917111296
+    m_Localized: Efectos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926682805428224
+    m_Localized: Reducir Animaciones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926709879660544
+    m_Localized: Mostrar Retraso de Bloqueo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 927883198455808
+    m_Localized: Izquierdo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928546846400512
+    m_Localized: Derecho
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928580065288192
+    m_Localized: Girar Sentido Horario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928615494574080
+    m_Localized: Girar Antihorario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928630334021632
+    m_Localized: "Ca\xEDda Suave"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928642711412736
+    m_Localized: "Ca\xEDda Dura"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928682272088064
+    m_Localized: Reanudar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928694787891200
+    m_Localized: Duro Limpio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928708620705792
+    m_Localized: Revelar Mosaico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928722587738112
+    m_Localized: Cuerda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928735476834304
+    m_Localized: Marcarlo Mosaico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928788438310912
+    m_Localized: Mosaico Cuerda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928909536256000
+    m_Localized: Limpiar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933890872041472
+    m_Localized: Restaurar los Valores Predeterminados
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934286541709312
+    m_Localized: "Controles de Ca\xEDda de Bloques"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951608887205888
+    m_Localized: Editar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951658765869056
+    m_Localized: Personalizar Juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951849149521920
+    m_Localized: "Pr\xF3ximo Pronto"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952161780359168
+    m_Localized: "Tabla de Clasificaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952127466758144
+    m_Localized: Reglas de Puntaje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963399100915712
+    m_Localized: Modo Sin Fin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963558551576576
+    m_Localized: Juego Terminado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990658520145920
+    m_Localized: :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988652401319936
+    m_Localized: "\xA1Sobrevive hasta 150 l\xEDneas e intenta obtener la puntuaci\xF3n
+      m\xE1s alta posible!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988835440746496
+    m_Localized: "\xA1Borra 40 l\xEDneas lo m\xE1s r\xE1pido posible!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989111895711744
+    m_Localized: "\xA1La versi\xF3n m\xE1s f\xE1cil y r\xE1pida de Marathon donde
+      las l\xEDneas se aclaran al instante!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989231202689024
+    m_Localized: "Pr\xF3ximo pronto..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989810910027776
+    m_Localized: "\xA1Consigue la puntuaci\xF3n m\xE1s alta posible en tres minutos!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989813380472832
+    m_Localized: "\xA1Obt\xE9n la puntuaci\xF3n m\xE1s alta posible en tres minutos,
+      usando reglas Rel\xE1mpago!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990195708059648
+    m_Localized: Haga clic para ver en su navegador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990308941684736
+    m_Localized: "\xA1\xDAnete a nuestra Comunidad Discord para incluir tu nombre
+      en la clasificaci\xF3n oficial!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990401673551872
+    m_Localized: "\xA1Gracias por jugar!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990813138968576
+    m_Localized: "\xA1\xDAnete a la comunidad oficial de Discord de Tetrisweeper!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990814418231296
+    m_Localized: "Comparte tus puntuaciones m\xE1s altas con #Tetrisweeper"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990815487778816
+    m_Localized: "Descargue la versi\xF3n independiente"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990816574103552
+    m_Localized: "\xA1Mira nuestra lista de reproducci\xF3n comunitaria!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990817517821952
+    m_Localized: "\xBFQuieres invitarme a un caf\xE9? \xA1Gracias por tu apoyo!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 991654902226944
+    m_Localized: Limpia todas las minas retenidas, +250 puntos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992047333892096
+    m_Localized: "Tetrisweep es cuando borras las 4 l\xEDneas en un tetris de 4 l\xEDneas
+      que acabas de llenar, antes de que el siguiente tetromino encaje en su lugar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992048869007360
+    m_Localized: "T-Spinsweep es cuando obtienes un T-spin y borras cada l\xEDnea
+      que llen\xF3 el tetromino T, antes de que el siguiente tetromino encaje en
+      su lugar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 995317649498112
+    m_Localized: Resuelve para recargar...
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 1684021998389821470
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e0afc3216b0200

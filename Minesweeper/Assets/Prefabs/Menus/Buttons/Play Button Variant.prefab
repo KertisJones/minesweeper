@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2339012787185500319}
   - component: {fileID: 7146687617965506205}
   - component: {fileID: 2000376302573495673}
+  - component: {fileID: 4538284107483537854}
   m_Layer: 5
   m_Name: Text (TMP) - Marathon
   m_TagString: Untagged
@@ -36,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -10}
-  m_SizeDelta: {x: 0, y: -20.000002}
+  m_SizeDelta: {x: -10, y: -26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7146687617965506205
 CanvasRenderer:
@@ -96,9 +97,9 @@ MonoBehaviour:
   m_fontSize: 8
   m_fontSizeBase: 8
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 4
+  m_fontSizeMax: 8
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -135,6 +136,46 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4538284107483537854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7816498045746236450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+    m_TableEntryReference:
+      m_KeyId: 697409771397120
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2000376302573495673}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &7689403571294708224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160,11 +201,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4058370467152388191, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4058370467152388191, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -310.00003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4058370467152388191, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -231,12 +272,20 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_fontSizeBase
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3964747063960252087, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -10
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 3964747063960252087, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -388,7 +437,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3964747064262966838, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_Name
-      value: Play Button
+      value: Play Button Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 925355878637568
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
@@ -414,4 +471,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88cf48caaceeec941ac28942df0cf0b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newSceneName: Main
+  blackScreen: {fileID: 0}

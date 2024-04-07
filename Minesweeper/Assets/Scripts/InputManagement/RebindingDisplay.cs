@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
 
 public class RebindingDisplay : MonoBehaviour
 {
@@ -101,7 +102,8 @@ Cleanse: F | F2
     {
         InputAction action = InputManager.GetAction(actionName);
         if (actionText != null)
-            actionText.text = actionName;
+            actionText.text = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Binding " + actionName); // Returns translation of binding name, ex. "Rotate Clockwise"
+            //actionText.text = actionName;
 
         if(rebindText != null)
         {

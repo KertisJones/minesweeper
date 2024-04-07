@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
+using TMPro;
 
 public class SettingsMenu : MonoBehaviour
 {
@@ -12,11 +14,13 @@ public class SettingsMenu : MonoBehaviour
     public Slider soundVolumeSlider;
     public Toggle screenShakeToggle;
     public Toggle lockDelayDisplayToggle;
+    public TMP_Dropdown languageDropdown;
     float masterVolume = 0.4f; //Max 0.8
     float musicVolume = 0.25f; //Max 0.5
     float soundVolume = 0.5f; //Max 1
     bool screenShakeEnabled = true;
     bool lockDelayDisplayEnabled = true;
+    int languageIndex = 0;
 
     private void Awake()
     {
@@ -25,6 +29,7 @@ public class SettingsMenu : MonoBehaviour
         soundVolume = PlayerPrefs.GetFloat("SoundVolume", soundVolume);
         screenShakeEnabled = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
         lockDelayDisplayEnabled = (PlayerPrefs.GetInt("LockDelayDisplayEnabled", 0) != 0);
+        languageIndex = PlayerPrefs.GetInt("LanguageIndex", 0);
         //controlScheme = PlayerPrefs.GetInt("ControlScheme", 0);
         //abTest = PlayerPrefs.GetInt("ABTest", 0);
     }
@@ -46,6 +51,9 @@ public class SettingsMenu : MonoBehaviour
         screenShakeToggle.onValueChanged.AddListener(delegate  { ScreenShakeToggle(); });
         lockDelayDisplayToggle.isOn = lockDelayDisplayEnabled;
         lockDelayDisplayToggle.onValueChanged.AddListener(delegate  { LockDelayDisplayToggle(); });
+        languageDropdown.value = languageIndex;
+        languageDropdown.onValueChanged.AddListener(delegate { LanguageSelectDropdown(); });
+        StartCoroutine(SetLocale(languageIndex));
     }
 
     // Update is called once per frame
@@ -91,6 +99,14 @@ public class SettingsMenu : MonoBehaviour
             else
                 lockDelayDisplayToggle.interactable = false;
         }
+        if (languageDropdown != null)
+        {
+            languageDropdown.value = languageIndex;
+            if (pauseMenuMove.isActive)
+                languageDropdown.interactable = true;
+            else
+                languageDropdown.interactable = false;
+        }
     }
 
     public void MasterVolumeSlider() // Sets the Master Volume Slider from PlayerPrefs
@@ -119,10 +135,22 @@ public class SettingsMenu : MonoBehaviour
         lockDelayDisplayEnabled = lockDelayDisplayToggle.isOn;
         PlayerPrefs.SetInt("LockDelayDisplayEnabled", (lockDelayDisplayEnabled ? 1 : 0));
     }
+    public void LanguageSelectDropdown()
+    {
+        languageIndex = languageDropdown.value;
+        PlayerPrefs.SetInt("LanguageIndex", languageIndex);
+        StartCoroutine(SetLocale(languageIndex));
+    }
+
+    IEnumerator SetLocale(int _localeID)
+    {
+        Debug.Log("_localeID " + _localeID);
+        yield return LocalizationSettings.InitializationOperation;
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_localeID];
+    }
 
     public void HoverMusicEnter()
     {
-        
         gm.soundManager.EnablePauseFilter();
     }
 

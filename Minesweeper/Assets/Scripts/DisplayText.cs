@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Localization.Settings;
+using UnityEditor;
 
 public class DisplayText : MonoBehaviour
 {
@@ -36,8 +38,6 @@ public class DisplayText : MonoBehaviour
         versionNumber
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
-
-    string tooltipString = "";
 
     // Start is called before the first frame update
     void Start()
@@ -134,22 +134,25 @@ public class DisplayText : MonoBehaviour
             string suffix = " *";
             if (unknownMines < 0)
                 suffix = "? *";
-            this.GetComponent<TextMeshProUGUI>().text = "Mines: " + unknownMines + suffix;
+            
+            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Mines"); // "Mines"
+            this.GetComponent<TextMeshProUGUI>().text = localizedText+ ": " + unknownMines + suffix;
         }
         else if (displayType == TextType.minesTotal)
         {
-            this.GetComponent<TextMeshProUGUI>().text = "Mines Total: " + gm.currentMines;
+            /*this.GetComponent<TextMeshProUGUI>().text = "Mines Total: " + gm.currentMines;*/
         }
         else if (displayType == TextType.flagsTotal)
         {
-            this.GetComponent<TextMeshProUGUI>().text = "Flags Total: " + gm.currentFlags;
+            /*this.GetComponent<TextMeshProUGUI>().text = "Flags Total: " + gm.currentFlags;*/
         }
         else if (displayType == TextType.time)
         {
+            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Time"); // "Time"
             if (gm.gameMods.timeLimit < Mathf.Infinity)
-                this.GetComponent<TextMeshProUGUI>().text = "Time: " + GetTimeString(gm.gameMods.timeLimit - gm.GetTime());
+                this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + GetTimeString(gm.gameMods.timeLimit - gm.GetTime());
             else
-                this.GetComponent<TextMeshProUGUI>().text = "Time: " + GetTimeString(gm.GetTime());
+                this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + GetTimeString(gm.GetTime());
         }
         else if (displayType == TextType.bestScore)
         {
@@ -184,63 +187,61 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.bestScoreTitle)
         {
+            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI HighScore"); // "High Score"
             if (!gm.gameMods.detailedTimer || gm.gameMods.timeLimit < Mathf.Infinity) // Normal score mode
             {
                 if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
-                    this.GetComponent<TextMeshProUGUI>().text = "Best Today:";
-                else if (sk.bestScore > 0) // Best Score Total
-                    this.GetComponent<TextMeshProUGUI>().text = "High Score:"; 
+                    localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI HighScoreBestToday"); // "Best Today"
                 
                 if (sk.bestScoreToday == sk.bestScore)
-                    this.GetComponent<TextMeshProUGUI>().text = "High Score:"; 
+                    localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI HighScore"); // "High Score"
             }
             else // 40L sprint mode
             {
-                this.GetComponent<TextMeshProUGUI>().text = "Best Time:";
+                localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI HighScoreBestTime"); // "Best Time"
 
                 if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTime < gm.GetTime()) // Best Score Today
-                    this.GetComponent<TextMeshProUGUI>().text = "Best Today:";
+                    localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI HighScoreBestToday"); // "Best Today"
             }            
+            this.GetComponent<TextMeshProUGUI>().text = localizedText + ":"; 
         }
         else if (displayType == TextType.linesCleared)
         {
-            this.GetComponent<TextMeshProUGUI>().text = "Lines: " + gm.linesCleared;
-            if (gm.linesCleared == 69)
-                tooltipString = "nice";
-            else if (gm.linesCleared == 420)
-                tooltipString = "Everyday?";
-            else
-                tooltipString = "";
+            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Lines"); // "Lines"
+            this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + gm.linesCleared;
         }
         else if (displayType == TextType.tetrisweepsCleard)
         {
+            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Tetrisweeeps"); // "Tetrisweeps"
             if (gm.tetrisweepsCleared == 0)
                 this.GetComponent<TextMeshProUGUI>().text = "";
             else
             {
-                this.GetComponent<TextMeshProUGUI>().text = "Tetrisweeps: " + gm.tetrisweepsCleared;
+                this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + gm.tetrisweepsCleared;
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                 this.GetComponent<VertexColorCyclerGradient>().enabled = true;
-                tooltipString = "Tetrisweep is when you clear all 4 lines in a 4-line tetris you just filled, before the next tetromino locks into place.";
             }
         }
         else if (displayType == TextType.quit)
         {
+            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Menu Quit"); // "Quit"
             if (Application.platform == RuntimePlatform.WebGLPlayer && gm.hasQuit)
             {
-                this.GetComponent<TextMeshProUGUI>().text = "Can't Quit in Browser";
+                localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Menu QuitCancel"); // "Can't Quit in Browser"
+                this.GetComponent<TextMeshProUGUI>().text = localizedText;
                 this.GetComponent<TextMeshProUGUI>().fontSize = 8;
             }                
             else
-            {
-                this.GetComponent<TextMeshProUGUI>().text = "Quit";
+            {                
+                this.GetComponent<TextMeshProUGUI>().text = localizedText;
                 this.GetComponent<TextMeshProUGUI>().fontSize = startFontSize;                
             }
                 
         }
         else if (displayType == TextType.level)
         {
-            this.GetComponent<TextMeshProUGUI>().text = "Level: " + gm.level;
+            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Level"); // "Level"
+            this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + gm.level;
         }
         else if (displayType == TextType.tSpinSweeps)
         {
@@ -248,10 +249,10 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TextMeshProUGUI>().text = "";
             else
             {
-                this.GetComponent<TextMeshProUGUI>().text = "T-Spinsweeps: " + gm.tSpinsweepsCleared;
+                string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Tspinsweeps"); // "T-Spinsweeps"
+                this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + gm.tSpinsweepsCleared;
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                 this.GetComponent<VertexColorCyclerGradient>().enabled = true;
-                tooltipString = "T-Spinsweep is when you score a T-spin and clear every line that the T tetromino filled, before the next tetromino locks into place.";
             }            
         }
         else if (displayType == TextType.TESTCurrentMinoLockDelay)
@@ -274,7 +275,7 @@ public class DisplayText : MonoBehaviour
                     //resets = 0;
 
                 if (activeTetromino.lockDelayTimer > 0 && activeTetromino.isLocking)
-                    this.GetComponent<TextMeshProUGUI>().text = "Lock: " + activeTetromino.lockDelayTimer.ToString("#,#.#") + ", Resets: " + resets;
+                    this.GetComponent<TextMeshProUGUI>().text = "Lock: " + activeTetromino.lockDelayTimer.ToString("#,#.#") + ", Resets: " + resets; // TODO I'm gonna remove this maybe?
                 else
                     this.GetComponent<TextMeshProUGUI>().text = "Lock: 0.5" + ", Resets: " + resets;
             }
@@ -314,27 +315,42 @@ public class DisplayText : MonoBehaviour
             if (gameMods.gameModeDisplayName != "")
                 gameMode = gameMods.gameModeDisplayName;
             
+            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GameMode " + gameMode); // Returns translation of game mode name, ex. "Marathon"
+
             if (gm.isEndless && !gm.marathonOverMenu.isActive)
-                gameMode += " (Endless)";
-            this.GetComponent<TextMeshProUGUI>().text = gameMode;
+                localizedText += " (" + LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GameMode Endless") + ")"; // " (Endless)"
+            this.GetComponent<TextMeshProUGUI>().text = localizedText;
         }
         else if (displayType == TextType.gameModeNameComplete)
         {
-            this.GetComponent<TextMeshProUGUI>().text = gameMods.gameModeName + " Complete!";
+            string gameMode = gameMods.gameModeName;
+            if (gameMods.gameModeDisplayName != "")
+                gameMode = gameMods.gameModeDisplayName;
+            
+            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GameMode " + gameMode); // Returns translation of game mode name, ex. "Marathon"
+            
+            this.GetComponent<TextMeshProUGUI>().text = localizedText + " " + LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GameMode Complete") + "!";
         }
     }
 
     public void MouseOverTextEnter()
     {
-        if (tooltipString != "")
-            Tooltip.ShowTooltip_Static(tooltipString);
+        if (displayType == TextType.gameModeName)
+        {
+            string gameMode = gameMods.gameModeName;
+            if (gameMods.gameModeDisplayName != "")
+                gameMode = gameMods.gameModeDisplayName;
+            
+            //string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Tooltip " + gameMode); // Returns translation of game mode description, ex. "Marathon"
+            Tooltip.ShowTooltip_Static(gameMode);
+        }
     }
 
-    public void MouseOverTextExit()
+    /*public void MouseOverTextExit()
     {
-        if (tooltipString != "")
+        if (displayType == TextType.gameModeName)
             Tooltip.HideTooltip_Static();
-    }
+    }*/
 
     public string GetTimeString(float time)
     {

@@ -1,0 +1,340 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UIText_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 0dd1e0fbba483424bbb601167d9eb8a1, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 1684021998389821469
+  m_TableData:
+  - m_Id: 15111020544
+    m_Localized: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933890872041472
+    m_Localized: "R\xE9initialiser"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3884008333312
+    m_Localized: Suivant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 688583756210176
+    m_Localized: Mines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 690552633810944
+    m_Localized: Temps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691682109546496
+    m_Localized: "Score \xC9lev\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691701722112000
+    m_Localized: Meilleur aujourd'hui
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691795221536768
+    m_Localized: Meilleur temps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692206200414208
+    m_Localized: Lignes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692866870403072
+    m_Localized: Tetrisweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694324101636096
+    m_Localized: T-Spinsweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693625464807424
+    m_Localized: Quitter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693945486008320
+    m_Localized: Impossible de quitter le navigateur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694159798165504
+    m_Localized: Niveau
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694970670374912
+    m_Localized: Sans Fin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696069942927360
+    m_Localized: Complet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697409771397120
+    m_Localized: Marathon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697412782907392
+    m_Localized: "Marathon \xC9clair"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697414372548608
+    m_Localized: 40-Ligne Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697420861136896
+    m_Localized: "Ultra:\nContre la Montre\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697421989404672
+    m_Localized: "Ultra \xC9clair"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697429551734784
+    m_Localized: "Cr\xE9dits"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697599509127168
+    m_Localized: Marathon Obscur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928656833634304
+    m_Localized: Prise
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925355878637568
+    m_Localized: Jouer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925670325608448
+    m_Localized: "Paus\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925714365800448
+    m_Localized: Reprendre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928682272088064
+    m_Localized: "Red\xE9marrage"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925742983536640
+    m_Localized: "Param\xE8tres"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926408846073856
+    m_Localized: "Contr\xF4les"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926506682408960
+    m_Localized: Retour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926602874576896
+    m_Localized: Volume Principal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926629294497792
+    m_Localized: Musique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926659917111296
+    m_Localized: Effets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926682805428224
+    m_Localized: "R\xE9duire les Animations"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926709879660544
+    m_Localized: "Afficher le D\xE9lai de Verrouillage"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 927883198455808
+    m_Localized: Gauche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928546846400512
+    m_Localized: Droit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928580065288192
+    m_Localized: Tourner Horaire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928615494574080
+    m_Localized: Tourner Anti-Horaire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928630334021632
+    m_Localized: Chute Douce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928642711412736
+    m_Localized: Chute Dure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928694787891200
+    m_Localized: Effacer Dure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928708620705792
+    m_Localized: "R\xE9v\xE9ler Tuile"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928722587738112
+    m_Localized: Corde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928735476834304
+    m_Localized: Signaler Tuile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928788438310912
+    m_Localized: Corde Signaler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928909536256000
+    m_Localized: Purifier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934286541709312
+    m_Localized: "Contr\xF4les de Chute de Bloc\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934315432075264
+    m_Localized: "D\xE9mineur Contr\xF4les"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951608887205888
+    m_Localized: Modifier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951658765869056
+    m_Localized: Personnaliser le Jeu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951849149521920
+    m_Localized: "\xC0 Venir"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952127466758144
+    m_Localized: "R\xE8gles de Score"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952161780359168
+    m_Localized: Classement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963399100915712
+    m_Localized: Mode Sans Fin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963558551576576
+    m_Localized: "Jeu Termin\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990658520145920
+    m_Localized: :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989231202689024
+    m_Localized: "\xC0 venir..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988652401319936
+    m_Localized: "Survivez jusqu'\xE0 150 lignes et essayez d'obtenir le meilleur
+      score possible !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988835440746496
+    m_Localized: "Effacez 40 lignes le plus rapidement possible\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989111895711744
+    m_Localized: "La version plus simple et plus rapide de Marathon o\xF9 les lignes
+      s'effacent instantan\xE9ment\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989810910027776
+    m_Localized: "Obtenez le meilleur score possible en trois minutes\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989813380472832
+    m_Localized: "Obtenez le meilleur score possible en trois minutes, en utilisant
+      les r\xE8gles \xC9clair\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990195708059648
+    m_Localized: Cliquez pour voir dans votre navigateur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990308941684736
+    m_Localized: "Rejoignez notre Discord communautaire pour inscrire votre nom dans
+      le classement officiel\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990401673551872
+    m_Localized: "Merci d'avoir jou\xE9 !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990813138968576
+    m_Localized: "Rejoignez le Discord officiel de la communaut\xE9 Tetrisweeper\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990814418231296
+    m_Localized: Partagez vos meilleurs scores avec #Tetrisweeper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990815487778816
+    m_Localized: "T\xE9l\xE9chargez la version autonome"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990816574103552
+    m_Localized: "D\xE9couvrez notre playlist communautaire !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990817517821952
+    m_Localized: "Tu veux m'offrir un caf\xE9 ? Merci pour votre soutien!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 991654902226944
+    m_Localized: "D\xE9minez toutes les mines en soute, +250 points"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992047333892096
+    m_Localized: "Tetrisweep, c'est lorsque vous effacez les 4 lignes d'un tetris
+      \xE0 4 lignes que vous venez de remplir, avant que le prochain t\xE9tromino
+      ne se verrouille en place."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992048869007360
+    m_Localized: "T-Spinsweep, c'est lorsque vous marquez un T-spin et effacez chaque
+      ligne remplie par le T t\xE9tromino, avant que le prochain t\xE9tromino ne
+      se verrouille en place."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 995317649498112
+    m_Localized: "R\xE9solvez pour recharger..."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 1684021998389821469
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e0afc3216b0200

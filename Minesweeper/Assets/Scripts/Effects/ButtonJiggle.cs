@@ -75,7 +75,7 @@ public class ButtonJiggle : MonoBehaviour
         if (GetComponent<AudioSource>() != null && enlargeSound != null)
         {
             GetComponent<AudioSource>().clip = enlargeSound;
-            GetComponent<AudioSource>().volume = 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f);
+            GetComponent<AudioSource>().volume = 0.6f * PlayerPrefs.GetFloat("SoundVolume", 0.5f);
             if (enlargeTween == null)
                 GetComponent<AudioSource>().Play();
             else if (!enlargeTween.IsActive())
