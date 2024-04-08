@@ -228,8 +228,14 @@ public class Tile : MonoBehaviour
                 myText = "";
             if (isMine)
                 myText = "*";
-            else if (gameMods.showCredits && !gm.isTitleMenu) // During Credits, hide numbers
-                myText = "";
+            else if (!gm.isTitleMenu) // During Credits, hide numbers
+            {
+                if (gameMods.minesweeperTextType == GameModifiers.MinesweeperTextType.credits)
+                    myText = "";
+                else if (gameMods.minesweeperTextType == GameModifiers.MinesweeperTextType.dots)
+                    myText = "©";
+            }
+                
                 
         }
         else
@@ -242,7 +248,7 @@ public class Tile : MonoBehaviour
                 myColor = Color.white;
         }
 
-        if (gm.isPaused && !gm.isGameOver)
+        if (gm.isPaused && !gm.isGameOver && !gm.marathonOverMenu.isActive)
             myText = "";
 
         if (text != null)

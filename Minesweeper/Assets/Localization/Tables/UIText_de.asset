@@ -1,0 +1,352 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UIText_de
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 0dd1e0fbba483424bbb601167d9eb8a1, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 951608887205888
+    m_Localized: Bearbeiten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951658765869056
+    m_Localized: Spiel Anpassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951849149521920
+    m_Localized: "Demn\xE4chst"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952127466758144
+    m_Localized: Wertung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952161780359168
+    m_Localized: Bestenliste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963399100915712
+    m_Localized: Endlosmodus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963558551576576
+    m_Localized: Spiel Vorbei
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988652401319936
+    m_Localized: "\xDCberlebe bis zu 150 Zeilen und versuche, die h\xF6chstm\xF6gliche
+      Punktzahl zu erreichen!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988835440746496
+    m_Localized: "L\xF6schen Sie 40 Zeilen so schnell wie m\xF6glich!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989111895711744
+    m_Localized: Die einfachere, schnellere Version von Marathon, bei der die Linien
+      sofort klar werden!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989231202689024
+    m_Localized: "Demn\xE4chst..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989810910027776
+    m_Localized: "Erziele in drei Minuten die h\xF6chstm\xF6gliche Punktzahl!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989813380472832
+    m_Localized: "Erreichen Sie mithilfe der Flash-Regeln innerhalb von drei Minuten
+      die h\xF6chstm\xF6gliche Punktzahl!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990195708059648
+    m_Localized: Klicken Sie, um es in Ihrem Browser anzuzeigen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990308941684736
+    m_Localized: Treten Sie unserem Community-Discord bei, um Ihren Namen in die
+      offizielle Bestenliste aufzunehmen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990401673551872
+    m_Localized: "Danke f\xFCr das Spiel!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990658520145920
+    m_Localized: :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990813138968576
+    m_Localized: Treten Sie dem offiziellen Tetrisweeper Community Discord bei!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990814418231296
+    m_Localized: Teilen Sie Ihre Highscores mit #Tetrisweeper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990815487778816
+    m_Localized: Laden Sie die Standalone-Version herunter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990816574103552
+    m_Localized: Schauen Sie sich unsere Community-Playlist an!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990817517821952
+    m_Localized: "Willst du mir einen Kaffee spendieren? Danke f\xFCr Ihre Unterst\xFCtzung!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 991654902226944
+    m_Localized: "R\xE4umen Sie alle Minen in der Warteschleife ab, +250 Punkte"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992047333892096
+    m_Localized: "Beim Tetrisweep l\xF6scht man alle 4 Zeilen eines gerade ausgef\xFCllten
+      4-Zeilen-Tetris, bevor das n\xE4chste Tetromino einrastet."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992048869007360
+    m_Localized: "Beim T-Spinsweep erzielen Sie einen T-Spin und l\xF6schen jede
+      Linie, die das T-Tetromino gef\xFCllt hat, bevor das n\xE4chste Tetromino einrastet."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 995317649498112
+    m_Localized: "Zum Aufladen l\xF6sen..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15111020544
+    m_Localized: Punktzahl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3884008333312
+    m_Localized: "N\xE4chste"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 688583756210176
+    m_Localized: Sprengen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 690552633810944
+    m_Localized: Zeit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691682109546496
+    m_Localized: Bestes Punktzahl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691701722112000
+    m_Localized: Am Besten Heute
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691795221536768
+    m_Localized: Beste Zeit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692206200414208
+    m_Localized: Linien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692866870403072
+    m_Localized: Tetrisweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693625464807424
+    m_Localized: "Aufh\xF6ren"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693945486008320
+    m_Localized: Kann im Browser nicht beendet werden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694159798165504
+    m_Localized: Ebene
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694324101636096
+    m_Localized: T-Spinsweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694970670374912
+    m_Localized: Endlos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696069942927360
+    m_Localized: "Vollst\xE4ndig"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697409771397120
+    m_Localized: Marathon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697412782907392
+    m_Localized: Bltz Marathon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697414372548608
+    m_Localized: 40-Linien-Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697420861136896
+    m_Localized: 'Ultra:
+
+      Zeitfahren'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697421989404672
+    m_Localized: Blitz Ultra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697429551734784
+    m_Localized: Kredit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925355878637568
+    m_Localized: Spielen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697599509127168
+    m_Localized: Verdeckter Marathon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925670325608448
+    m_Localized: Angehalten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925714365800448
+    m_Localized: Wieder Aufnehmen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925742983536640
+    m_Localized: Einstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926408846073856
+    m_Localized: Kontrollen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926506682408960
+    m_Localized: "Zur\xFCck"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926602874576896
+    m_Localized: Meister Volumen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926629294497792
+    m_Localized: Musik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926659917111296
+    m_Localized: Auswirkungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926682805428224
+    m_Localized: Animationen Reduzieren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926709879660544
+    m_Localized: "Sperrverz\xF6gerung anzeigen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 927883198455808
+    m_Localized: Links
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928546846400512
+    m_Localized: Rechts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928580065288192
+    m_Localized: Im Uhrzeiger sinn drehen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928615494574080
+    m_Localized: Gegen den Uhrzeigersinn drehen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928630334021632
+    m_Localized: Sanfter Tropfen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928642711412736
+    m_Localized: Harter Tropfen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928656833634304
+    m_Localized: Halten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928682272088064
+    m_Localized: Neu Starten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928694787891200
+    m_Localized: Hart klar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928708620705792
+    m_Localized: Kachel Aufdecken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928722587738112
+    m_Localized: Die Sehne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928735476834304
+    m_Localized: Flaggenkachel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928788438310912
+    m_Localized: Flag-Akkord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928909536256000
+    m_Localized: Reinigen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933890872041472
+    m_Localized: Standardeinstellungen wiederherstellen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934286541709312
+    m_Localized: "Controles de Ca\xEDda de Bloques"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934315432075264
+    m_Localized: Controles de Buscaminas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427307444035584
+    m_Localized: Punkte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427339857616896
+    m_Localized: Modus Marathon, aber die Anzahl der Tuiles wurde durch Punkte ersetzt!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647393605935104
+    m_Localized: "W\xE4nde"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647422219476992
+    m_Localized: "Anstatt w\xE4hrend des Spiels sichere Spielsteine \u200B\u200Bfreizuschalten,
+      sind die W\xE4nde des Spielbretts jetzt spielbare Spielsteine."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

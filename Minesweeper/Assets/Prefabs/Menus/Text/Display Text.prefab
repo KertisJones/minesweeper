@@ -255,8 +255,8 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1144233882930900047}
           m_TargetAssemblyTypeName: ButtonJiggle, Assembly-CSharp
-          m_MethodName: ShrinkToZero
-          m_Mode: 6
+          m_MethodName: Shrink
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -271,15 +271,15 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1144233882930900047}
           m_TargetAssemblyTypeName: ButtonJiggle, Assembly-CSharp
-          m_MethodName: Reset
-          m_Mode: 1
+          m_MethodName: ShrinkToZero
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
 --- !u!114 &-6609134875944939838
 MonoBehaviour:
@@ -352,7 +352,7 @@ MonoBehaviour:
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
   enlargeSound: {fileID: 8300000, guid: 10199842e38ec3b4aadb1ac50fd79a85, type: 3}
-  shrinkSound: {fileID: 0}
+  shrinkSound: {fileID: 8300000, guid: e0e8ed38e929d9d41ab768d63d4f976f, type: 3}
   jiggleIsEnabled: 1
   reorderToLastSibling: 0
   startAtScaleZero: 0

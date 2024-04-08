@@ -18,7 +18,7 @@ public class EnableOnGameMode : MonoBehaviour
         bool isEnabled = false;
         if(onShowTitle && gameMods.showTitle)
             isEnabled = true;
-        if(onShowCredits && gameMods.showCredits)
+        if(onShowCredits && gameMods.minesweeperTextType == GameModifiers.MinesweeperTextType.credits)
             isEnabled = true;
         
         // INVERSE?

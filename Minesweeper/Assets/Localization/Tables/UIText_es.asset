@@ -332,6 +332,24 @@ MonoBehaviour:
     m_Localized: Resuelve para recargar...
     m_Metadata:
       m_Items: []
+  - m_Id: 1427307444035584
+    m_Localized: Puntos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427339857616896
+    m_Localized: "Modo marat\xF3n, \xA1pero los n\xFAmeros de los mosaicos se reemplazan
+      por puntos!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647393605935104
+    m_Localized: Paredes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647422219476992
+    m_Localized: En lugar de desbloquear fichas seguras mientras juegas, las paredes
+      del tablero de juego ahora son fichas jugables.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -64,8 +64,6 @@ public class GameManager : MonoBehaviour
     public bool cheatGodMode = false;
     public bool cheatAutoFlagMode = false;
 
-    public bool wallTilesPlayableActive = false;
-
     // Statistics
     public int piecesPlaced;
     public int holds;
@@ -323,7 +321,7 @@ public class GameManager : MonoBehaviour
         // Left and Right Tiles
         leftBorderTiles = new List<GameObject>();
         rightBorderTiles = new List<GameObject>();
-        if (wallTilesPlayableActive)
+        if (gameMods.wallType == GameModifiers.WallType.playable)
         {
             for (int i = 0; i < sizeY; i++)
             {
@@ -732,7 +730,6 @@ public class GameManager : MonoBehaviour
                 if (!getMultiplier)
                 {
                     gm.ResetScoreMultiplier();
-                    gm.RemoveSafeTileFromEdges();
                 }
 
                 bool isLinesweep = scoreSolvedRow(y, getMultiplier);
@@ -863,89 +860,40 @@ public class GameManager : MonoBehaviour
         return isSolved;
     }
 
-    public void AddSafeTileToEdges() {
-
-        // Place display tiles at bottom
-        GameObject newTile = Instantiate(tile, new Vector3(-1, leftBorderTiles.Count, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-        newTile.name = "Tile (" + -1 + ", " + leftBorderTiles.Count + ")";
-        newTile.GetComponent<Tile>().coordX = -1;
-        newTile.GetComponent<Tile>().coordY = leftBorderTiles.Count;
-        newTile.GetComponent<Tile>().isRevealed = true;
-        newTile.GetComponent<Tile>().isDisplay = true;
-        newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
-        leftBorderTiles.Add(newTile); 
-
-        newTile = Instantiate(tile, new Vector3(10, rightBorderTiles.Count, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-        newTile.name = "Tile (" + 10 + ", " + rightBorderTiles.Count + ")";
-        newTile.GetComponent<Tile>().coordX = 10;
-        newTile.GetComponent<Tile>().coordY = rightBorderTiles.Count;
-        newTile.GetComponent<Tile>().isRevealed = true;
-        newTile.GetComponent<Tile>().isDisplay = true;
-        newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
-        rightBorderTiles.Add(newTile); 
-
-        // Left and Right Tiles
-        /*
-        //GameObject topLeftTile = leftBorderTiles[leftBorderTiles.Count - 1];
-        //GameObject topRightTile = rightBorderTiles[rightBorderTiles.Count - 1];
-        int posY = leftBorderTiles[0].GetComponentInChildren<Tile>().coordY;
-        leftBorderTiles.RemoveAt(leftBorderTiles.Count - 1);
-        rightBorderTiles.RemoveAt(rightBorderTiles.Count - 1);
-        //Destroy(topLeftTile);
-        //Destroy(topRightTile);
-        for (int i = 0; i < leftBorderTiles.Count; i++)
+    public void AddSafeTileToEdges() 
+    {
+        if (gameMods.wallType == GameModifiers.WallType.unlock)
         {
-            leftBorderTiles[i].GetComponentInChildren<Tile>().coordY += 1;
-            rightBorderTiles[i].GetComponentInChildren<Tile>().coordY += 1;
+            // Place display tiles at bottom
+            GameObject newTile = Instantiate(tile, new Vector3(-1, leftBorderTiles.Count, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+            newTile.name = "Tile (" + -1 + ", " + leftBorderTiles.Count + ")";
+            newTile.GetComponent<Tile>().coordX = -1;
+            newTile.GetComponent<Tile>().coordY = leftBorderTiles.Count;
+            newTile.GetComponent<Tile>().isRevealed = true;
+            newTile.GetComponent<Tile>().isDisplay = true;
+            newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
+            leftBorderTiles.Add(newTile); 
 
-            if (leftBorderTiles[i].GetComponentInChildren<Tile>().coordY >= sizeY - 4)
+            newTile = Instantiate(tile, new Vector3(10, rightBorderTiles.Count, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+            newTile.name = "Tile (" + 10 + ", " + rightBorderTiles.Count + ")";
+            newTile.GetComponent<Tile>().coordX = 10;
+            newTile.GetComponent<Tile>().coordY = rightBorderTiles.Count;
+            newTile.GetComponent<Tile>().isRevealed = true;
+            newTile.GetComponent<Tile>().isDisplay = true;
+            newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
+            rightBorderTiles.Add(newTile); 
+
+            if (safeEdgeTilesGained == 0)
             {
-                if (leftBorderTiles[i].GetComponentInChildren<Tile>().isMine)
-                {
-                    currentMines--;
-                    leftBorderTiles[i].GetComponentInChildren<Tile>().isMine = false;
-                }
-                if (leftBorderTiles[i].GetComponentInChildren<Tile>().isFlagged)
-                {
-                    currentFlags--;
-                    leftBorderTiles[i].GetComponentInChildren<Tile>().isFlagged = false;
-                }
-                
+                GameObject.Find("Tile (-1, -1)").GetComponent<Tile>().shimmerOverlay.gameObject.SetActive(true);
+                GameObject.Find("Tile (10, -1)").GetComponent<Tile>().shimmerOverlay.gameObject.SetActive(true);
             }
-            if (rightBorderTiles[i].GetComponentInChildren<Tile>().coordY >= sizeY - 4)
-            {
-                if (rightBorderTiles[i].GetComponentInChildren<Tile>().isMine)
-                {
-                    currentMines--;
-                    rightBorderTiles[i].GetComponentInChildren<Tile>().isMine = false;
-                }
-                if (rightBorderTiles[i].GetComponentInChildren<Tile>().isFlagged)
-                {
-                    currentFlags--;
-                    rightBorderTiles[i].GetComponentInChildren<Tile>().isFlagged = false;
-                }
-            }
-        }
-        topLeftTile.GetComponentInChildren<Tile>().coordY = posY;
-        topRightTile.GetComponentInChildren<Tile>().coordY = posY;
-        topLeftTile.GetComponentInChildren<Tile>().Reveal();
-        topRightTile.GetComponentInChildren<Tile>().Reveal();
-        topLeftTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
-        topRightTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
-        leftBorderTiles.Insert(0, topLeftTile); 
-        rightBorderTiles.Insert(0, topRightTile); 
-        */
-
-        if (safeEdgeTilesGained == 0)
-        {
-            GameObject.Find("Tile (-1, -1)").GetComponent<Tile>().shimmerOverlay.gameObject.SetActive(true);
-            GameObject.Find("Tile (10, -1)").GetComponent<Tile>().shimmerOverlay.gameObject.SetActive(true);
-        }
-
-        safeEdgeTilesGained++;
+            
+            safeEdgeTilesGained++;
+        }        
     }
 
-    public void RemoveSafeTileFromEdges() 
+    /*public void RemoveSafeTileFromEdges() 
     {
         if (safeEdgeTilesGained == 0)
             return;
@@ -959,7 +907,7 @@ public class GameManager : MonoBehaviour
         Destroy(rightTile);
 
         safeEdgeTilesGained--;
-    }
+    }*/
     #endregion
     #region Gamestate Logic
     public void EndGame()
@@ -977,7 +925,7 @@ public class GameManager : MonoBehaviour
         
         soundManager.DisablePauseFilter();
         soundManager.StopMultiplierDrain();
-        
+
         if (OnGameOverEvent != null)
             OnGameOverEvent();
 

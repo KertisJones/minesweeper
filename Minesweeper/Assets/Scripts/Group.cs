@@ -458,7 +458,7 @@ public class Group : MonoBehaviour
                 {
                     foreach (Tile tile in GetChildTiles())
                     {
-                        if (lockResets >= 14)
+                        if (lockResets >= 15)
                             tile.fadeOverlay.color = new Color(1, 1, 1, Mathf.Max(0, 0.5f - (lockPercentage * 0.5f)));
                         else
                             tile.fadeOverlay.color = new Color(0, 0, 0, Mathf.Max(0, 0.3f - (lockPercentage * 0.3f)));

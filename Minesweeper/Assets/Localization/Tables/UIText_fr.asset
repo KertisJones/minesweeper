@@ -331,6 +331,24 @@ MonoBehaviour:
     m_Localized: "R\xE9solvez pour recharger..."
     m_Metadata:
       m_Items: []
+  - m_Id: 1427339857616896
+    m_Localized: "Mode Marathon, mais les num\xE9ros de tuiles sont remplac\xE9s
+      par des points !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427307444035584
+    m_Localized: Points
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647422219476992
+    m_Localized: "Au lieu de d\xE9bloquer des tuiles s\xE9curis\xE9es pendant que
+      vous jouez, les murs du plateau de jeu sont d\xE9sormais des tuiles jouables."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647393605935104
+    m_Localized: Des Murs
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

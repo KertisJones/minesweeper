@@ -327,6 +327,23 @@ MonoBehaviour:
     m_Localized: Solve to recharge...
     m_Metadata:
       m_Items: []
+  - m_Id: 1427307444035584
+    m_Localized: Dots
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427339857616896
+    m_Localized: Marathon mode, but tile numbers are replaced with dots!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647393605935104
+    m_Localized: Walls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647422219476992
+    m_Localized: Instead of unlocking safe tiles as you play, the walls of the game
+      board are now playable tiles.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

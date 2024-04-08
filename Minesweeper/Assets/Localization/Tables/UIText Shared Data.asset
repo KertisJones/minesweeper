@@ -319,6 +319,22 @@ MonoBehaviour:
     m_Key: Tooltip CleanseProgressBar
     m_Metadata:
       m_Items: []
+  - m_Id: 1427307444035584
+    m_Key: GameMode Dots
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427339857616896
+    m_Key: Tooltip Dots
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647393605935104
+    m_Key: GameMode Walls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647422219476992
+    m_Key: Tooltip Walls
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
