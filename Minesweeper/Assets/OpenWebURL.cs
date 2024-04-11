@@ -8,6 +8,7 @@ public class OpenWebURL : MonoBehaviour
 
     public void OpenLink () 
     {
+        Tooltip.HideTooltip_Static();
         Application.OpenURL(url);
     }
 }

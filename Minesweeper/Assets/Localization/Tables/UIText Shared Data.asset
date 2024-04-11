@@ -335,6 +335,26 @@ MonoBehaviour:
     m_Key: Tooltip Walls
     m_Metadata:
       m_Items: []
+  - m_Id: 2474781692649472
+    m_Key: Menu Wishlist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781847838720
+    m_Key: Menu OnSteam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474861069852672
+    m_Key: Menu SteamCallToActionUnclicked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2475075038076928
+    m_Key: Menu SteamCallToActionClicked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2512304913506304
+    m_Key: Menu Locked
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -20,9 +20,10 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
     {
         standard,
         beta,
-        demo
+        demoOnline,
+        demoSteam
     }
-    public static VersionType versionType = VersionType.standard;
+    public static VersionType versionType = VersionType.demoOnline;
     //CameraShake cameraShake;
     // Start is called before the first frame update
     void Awake()

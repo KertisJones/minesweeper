@@ -349,6 +349,26 @@ MonoBehaviour:
     m_Localized: Des Murs
     m_Metadata:
       m_Items: []
+  - m_Id: 2474781692649472
+    m_Localized: Liste de souhaits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781847838720
+    m_Localized: Sur Steam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474861069852672
+    m_Localized: "D\xE9bloquez des modes de jeu bonus\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2475075038076928
+    m_Localized: Tetrisweep comme jamais auparavant !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2512304913506304
+    m_Localized: "Ferm\xE9 \xE0 cl\xE9!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

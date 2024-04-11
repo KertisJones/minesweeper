@@ -52,11 +52,13 @@ public class DisplayText : MonoBehaviour
         if (displayType == TextType.versionNumber)
         {
             if (ScoreKeeper.versionType == ScoreKeeper.VersionType.standard)
-                this.GetComponent<TextMeshProUGUI>().text = Application.version;
+                this.GetComponent<TextMeshProUGUI>().text = "v" + Application.version;
             else if (ScoreKeeper.versionType == ScoreKeeper.VersionType.beta)
-                this.GetComponent<TextMeshProUGUI>().text = Application.version + " Beta";
-            else if (ScoreKeeper.versionType == ScoreKeeper.VersionType.demo)
-                this.GetComponent<TextMeshProUGUI>().text = Application.version + " Demo";
+                this.GetComponent<TextMeshProUGUI>().text = "v" + Application.version + " Beta";
+            else if (ScoreKeeper.versionType == ScoreKeeper.VersionType.demoOnline)
+                this.GetComponent<TextMeshProUGUI>().text = "v" + Application.version + " Demo-B";
+            else if (ScoreKeeper.versionType == ScoreKeeper.VersionType.demoSteam)
+                this.GetComponent<TextMeshProUGUI>().text = "v" + Application.version + " Demo-A";
         }
     }
 

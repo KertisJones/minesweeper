@@ -85,11 +85,11 @@ public class ProgressBar : MonoBehaviour
 
     public void ShowText()
     {
-        hoverTextSprite.DOColor(textColor, 0.15f);        
+        hoverTextSprite.DOColor(textColor, 0.15f).SetUpdate(true);        
     }
 
     public void HideText()
     {
-        hoverTextSprite.DOColor(Color.clear, 0.15f);    
+        hoverTextSprite.DOColor(Color.clear, 0.15f).SetUpdate(true);    
     }
 }

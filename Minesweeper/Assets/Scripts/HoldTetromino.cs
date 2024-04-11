@@ -52,6 +52,7 @@ public class HoldTetromino : MonoBehaviour
                     cleanseButton.SetActive(true);
                     cleanseButton.GetComponent<ButtonJiggle>().Reset();
                     cleanseProgressBar.GetComponent<IdleJiggle>().jumpInPlaceHeight = 0;
+                    cleanseProgressBar.GetComponent<ButtonJiggle>().Reset();
                 }                
                 cleanseReady = true;
             }
@@ -59,9 +60,7 @@ public class HoldTetromino : MonoBehaviour
         else
         {
             if (cleanseReady)
-            {
-                cleanseButton.GetComponent<ButtonJiggle>().ShrinkToZero();
-                cleanseProgressBar.GetComponent<IdleJiggle>().jumpInPlaceHeight = cleanseButton.GetComponent<IdleJiggle>().jumpInPlaceHeight;
+            {                
                 cleanseReady = false;
             }
         }
@@ -214,6 +213,9 @@ public class HoldTetromino : MonoBehaviour
             cleanseProgressBar.current = 0;
             cleanseProgressBar.currentTween = 0;
         }        
+
+        cleanseButton.GetComponent<ButtonJiggle>().ShrinkToZero();
+        cleanseProgressBar.GetComponent<IdleJiggle>().jumpInPlaceHeight = cleanseButton.GetComponent<IdleJiggle>().jumpInPlaceHeight;
 
         //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(cleanseActivateSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));

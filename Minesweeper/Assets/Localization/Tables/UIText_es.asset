@@ -350,6 +350,26 @@ MonoBehaviour:
       del tablero de juego ahora son fichas jugables.
     m_Metadata:
       m_Items: []
+  - m_Id: 2474781847838720
+    m_Localized: En Steam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474861069852672
+    m_Localized: "\xA1Desbloquea modos de juego extra!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2475075038076928
+    m_Localized: "\xA1Tetrisweep como nunca antes!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781692649472
+    m_Localized: Lista de Deseos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2512304913506304
+    m_Localized: "\xA1Bloqueado!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

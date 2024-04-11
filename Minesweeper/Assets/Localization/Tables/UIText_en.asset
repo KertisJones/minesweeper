@@ -344,6 +344,26 @@ MonoBehaviour:
       board are now playable tiles.
     m_Metadata:
       m_Items: []
+  - m_Id: 2474781692649472
+    m_Localized: Wishlist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781847838720
+    m_Localized: On Steam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474861069852672
+    m_Localized: Unlock bonus game modes!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2475075038076928
+    m_Localized: Tetrisweep like never before!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2512304913506304
+    m_Localized: Locked!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

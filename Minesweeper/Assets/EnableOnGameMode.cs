@@ -33,7 +33,8 @@ public class EnableOnGameMode : MonoBehaviour
     {
         if (onShowTitle && gm.isGameOver)
         {
-            GetComponentInChildren<SpringJoint2D>().breakForce = 0;
+            if (GetComponentInChildren<SpringJoint2D>() != null)
+                GetComponentInChildren<SpringJoint2D>().breakForce = 0;
         }
     }
 }

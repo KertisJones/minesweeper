@@ -347,6 +347,26 @@ MonoBehaviour:
       sind die W\xE4nde des Spielbretts jetzt spielbare Spielsteine."
     m_Metadata:
       m_Items: []
+  - m_Id: 2474781692649472
+    m_Localized: Wunschzettel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781847838720
+    m_Localized: Auf Steam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474861069852672
+    m_Localized: Schalte Bonusspielmodi frei!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2475075038076928
+    m_Localized: Tetrisweep wie nie zuvor!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2512304913506304
+    m_Localized: Gesperrt!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

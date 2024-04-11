@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8130327923279866521, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 24.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8130327923279866521, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
       propertyPath: m_LocalScale.x
@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8130327923279866522, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
       propertyPath: m_Name
-      value: VERSION Corner
+      value: VERSION Corner Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
