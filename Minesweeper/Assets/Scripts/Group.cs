@@ -202,7 +202,7 @@ public class Group : MonoBehaviour
         {            
             if (maximumFallDistance > 0)
             {
-                gm.AddScore(maximumFallDistance * 2, false);
+                gm.AddScore(maximumFallDistance * 2, 3, false);
                 gm.SetScoreMultiplier(2, 1f);
                 gm.TriggerOnHardDropEvent();
             }
@@ -489,7 +489,7 @@ public class Group : MonoBehaviour
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
             return;
         if (!isLocking && bottomHeight <= bottomHeightLowest)
-            gm.AddScore(1, false);
+            gm.AddScore(1, 3, false);
         Fall();
     }
 
@@ -708,13 +708,13 @@ public class Group : MonoBehaviour
                     {
                         //Debug.Log("T-Spin Mini (No Lines)");
                         gm.tSpinMiniNoLines++;
-                        gm.AddScore(100);
+                        gm.AddScore(100, 0);
                     }
                     else // T-Spin no lines
                     {
                         //Debug.Log("T-Spin (No Lines)");
                         gm.tSpinNoLines++;
-                        gm.AddScore(400);                        
+                        gm.AddScore(400, 0);                        
                     }
                     gm.SetScoreMultiplier(1, 5);
                 }
@@ -735,12 +735,12 @@ public class Group : MonoBehaviour
                     
                     if (gm.lastFillWasDifficult)
                     {
-                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
+                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f), 0);
                         gm.SetScoreMultiplier(10, 10);
                     }                        
                     else
                     {
-                        gm.AddScore(actionScore);
+                        gm.AddScore(actionScore, 0);
                         gm.SetScoreMultiplier(5, 10);
                     }                                          
                     fillWasDifficult = true;
@@ -762,12 +762,12 @@ public class Group : MonoBehaviour
 
                     if (gm.lastFillWasDifficult)
                     {
-                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
+                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f), 0);
                         gm.SetScoreMultiplier(20, 10);
                     }                        
                     else
                     {
-                        gm.AddScore(actionScore);
+                        gm.AddScore(actionScore, 0);
                         gm.SetScoreMultiplier(10, 10);
                     }                    
                     fillWasDifficult = true;
@@ -779,12 +779,12 @@ public class Group : MonoBehaviour
                     int actionScore = 1600;
                     if (gm.lastFillWasDifficult)
                     {
-                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
+                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f), 0);
                         gm.SetScoreMultiplier(40, 10);
                     }                        
                     else
                     {
-                        gm.AddScore(actionScore);
+                        gm.AddScore(actionScore, 0);
                         gm.SetScoreMultiplier(20, 10);
                     }
                     fillWasDifficult = true;
@@ -1379,7 +1379,7 @@ public class Group : MonoBehaviour
                     actionScore = actionScore * 1.5f; 
                 if (isInstantSweep)
                     actionScore = actionScore * 1.5f;
-                gm.AddScore((int)actionScore);        
+                gm.AddScore((int)actionScore, 4);        
 
                 if (getMultiplier)
                     gm.SetScoreMultiplier(25, 30);
@@ -1435,7 +1435,7 @@ public class Group : MonoBehaviour
         if (isInstantSweep)
             actionScore = actionScore * 1.5f;
 
-        gm.AddScore((int)actionScore); 
+        gm.AddScore((int)actionScore, 4); 
         
         if (getMultiplier)
             gm.SetScoreMultiplier(25, 30);

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public float timeLimit = Mathf.Infinity;
     private float score = 0;
+    private float[] scoreByPointSourceType = new float[5];
     [SerializeField]
     public int scoreMultiplier = 0;
     public int scoreMultiplierLimit = 5000;
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour
     public PauseMenuMove settingsMenu;
     public PauseMenuMove marathonOverMenu;
     public PauseMenuMove gameOverMenu;
+    public PieChart pieChart;
 
     public AudioClip lineClearSound;
     public AudioClip lineFullSound1;
@@ -146,7 +148,7 @@ public class GameManager : MonoBehaviour
             else
                 lineClearInstantly = false;
         }
-        
+
         BuildGameBoard();        
         startTime = Time.time;
         //PopulateMines();
@@ -691,7 +693,7 @@ public class GameManager : MonoBehaviour
             pcScore = pcScore * 1.5f;
         }
 
-        AddScore(((int)pcScore));
+        AddScore(((int)pcScore), 3);
 
         /*if (previousTetromino.GetComponent<Group>().rowsFilled == 4) // Tetrisweep Perfect Clear!
         {
@@ -761,9 +763,9 @@ public class GameManager : MonoBehaviour
             int linesweepScore = 75 * (linesweepsCleared * linesweepsCleared);
             
             if (isTriggeredByLock) // Instant Sweep multiplier
-                gm.AddScore((int)(linesweepScore * 1.5f));
+                gm.AddScore((int)(linesweepScore * 1.5f), 4);
             else
-                gm.AddScore(linesweepScore);
+                gm.AddScore(linesweepScore, 4);
 
             if (getMultiplier)
                 gm.SetScoreMultiplier(10 * linesweepsCleared, 10f);
@@ -780,7 +782,7 @@ public class GameManager : MonoBehaviour
                 OnLineClearEvent(rowsCleared);
         
             // Lines Cleared Points
-            gm.AddScore(75 * (rowsCleared * rowsCleared));
+            gm.AddScore(75 * (rowsCleared * rowsCleared), 1);
             //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
             if (getMultiplier)
                 gm.SetScoreMultiplier(rowsCleared * 5, rowsCleared * 2);
@@ -874,9 +876,9 @@ public class GameManager : MonoBehaviour
             newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
             leftBorderTiles.Add(newTile); 
 
-            newTile = Instantiate(tile, new Vector3(10, rightBorderTiles.Count, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-            newTile.name = "Tile (" + 10 + ", " + rightBorderTiles.Count + ")";
-            newTile.GetComponent<Tile>().coordX = 10;
+            newTile = Instantiate(tile, new Vector3(sizeX, rightBorderTiles.Count, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+            newTile.name = "Tile (" + sizeX + ", " + rightBorderTiles.Count + ")";
+            newTile.GetComponent<Tile>().coordX = sizeX;
             newTile.GetComponent<Tile>().coordY = rightBorderTiles.Count;
             newTile.GetComponent<Tile>().isRevealed = true;
             newTile.GetComponent<Tile>().isDisplay = true;
@@ -886,9 +888,9 @@ public class GameManager : MonoBehaviour
             if (safeEdgeTilesGained == 0)
             {
                 GameObject.Find("Tile (-1, -1)").GetComponent<Tile>().shimmerOverlay.gameObject.SetActive(true);
-                GameObject.Find("Tile (10, -1)").GetComponent<Tile>().shimmerOverlay.gameObject.SetActive(true);
+                GameObject.Find("Tile (" + sizeX + ", -1)").GetComponent<Tile>().shimmerOverlay.gameObject.SetActive(true);
             }
-            
+
             safeEdgeTilesGained++;
         }        
     }
@@ -959,14 +961,19 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Scoring
-    public void AddScore(int newScore, bool levelMultiplierActive = true, bool scoreMultiplierActive = true) 
+    public void AddScore(int newScore, int scoreSourceType, bool levelMultiplierActive = true, bool scoreMultiplierActive = true) 
     {
         float tempScore = newScore;
         if (scoreMultiplierActive)
             if (GetScoreMultiplier() > 0)
                 tempScore = tempScore * (1 + GetScoreMultiplier());
         if (levelMultiplierActive)
-            tempScore = tempScore * level;        
+            tempScore = tempScore * level;      
+
+        scoreByPointSourceType[scoreSourceType] += tempScore; // 0=Block Placing, 1=Line Clearing, 2=Minesweeping, 3=Misc.
+        if (pieChart != null)
+            pieChart.SetValues(scoreByPointSourceType);
+        
         score += tempScore;
     }
 
@@ -1084,17 +1091,17 @@ public class GameManager : MonoBehaviour
             switch (fullRows) {
                 case 1:
                     clipToPlay = gm.lineFullSound1;
-                    gm.AddScore(100);
+                    gm.AddScore(100, 0);
                     gm.SetScoreMultiplier(3, 5f);
                     break;
                 case 2:
                     clipToPlay = gm.lineFullSound2;
-                    gm.AddScore(300);
+                    gm.AddScore(300, 0);
                     gm.SetScoreMultiplier(5, 5f);
                     break;
                 case 3:
                     clipToPlay = gm.lineFullSound3;
-                    gm.AddScore(500);
+                    gm.AddScore(500, 0);
                     gm.SetScoreMultiplier(8, 5f);
                     break;
                 default:
@@ -1102,19 +1109,19 @@ public class GameManager : MonoBehaviour
                     int actionScore = 800;
                     if (gm.lastFillWasDifficult)
                     {
-                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f));
+                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f), 0);
                         gm.SetScoreMultiplier(20, 5f);
                     }                        
                     else
                     {
-                        gm.AddScore(actionScore);
+                        gm.AddScore(actionScore, 0);
                         gm.SetScoreMultiplier(10, 5f);
                     }
                     break;
             }
             // C-c-c-Combo!
             if (gm.comboLinesFilled > 0)
-                gm.AddScore(50 * gm.comboLinesFilled);
+                gm.AddScore(50 * gm.comboLinesFilled, 0);
 
             gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(clipToPlay, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));

@@ -206,7 +206,7 @@ public class HoldTetromino : MonoBehaviour
             tile.Reveal(true);
         }
         
-        gm.AddScore(250);
+        gm.AddScore(250, 3);
         cleanseRecharge = 0;
         if (cleanseProgressBar != null)
         {
@@ -231,7 +231,7 @@ public class HoldTetromino : MonoBehaviour
     {
         if (manualTileSolveStreak < 100)
             manualTileSolveStreak++; 
-        gm.AddScore(manualTileSolveStreak, false);
+        gm.AddScore(manualTileSolveStreak, 2, false);
 
         if (!isFlag)
         {

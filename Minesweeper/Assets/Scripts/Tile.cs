@@ -110,7 +110,7 @@ public class Tile : MonoBehaviour
                 }
                 if (neighborsAreLocked)
                 {
-                    gm.AddScore(8888);
+                    gm.AddScore(8888, 3);
                     gm.SetScoreMultiplier(8, 1f, true);
                     if (gm.safeEdgeTilesGained < 8)
                         gm.AddSafeTileToEdges();
@@ -384,7 +384,7 @@ public class Tile : MonoBehaviour
                     // If the mino is falling, don't give a huge bonus for being revealed in the air
                     if (GetComponentInParent<Group>().isFalling)
                     {
-                        gm.AddScore(nearbyMines, false); // * nearbyMines
+                        gm.AddScore(nearbyMines, 2, false); // * nearbyMines
                         /*holdTetromino.scoreMissingTest += Mathf.FloorToInt(((nearbyMines * nearbyMines) - nearbyMines) * gm.level * (1 + gm.GetScoreMultiplier()));
                         holdTetromino.scoreRevealRemainingTest += Mathf.FloorToInt(nearbyMines * gm.level * (1 + gm.GetScoreMultiplier()));                        
                         holdTetromino.scoreRevealTest += Mathf.FloorToInt(((nearbyMines * nearbyMines)) * gm.level * (1 + gm.GetScoreMultiplier()));
@@ -392,7 +392,7 @@ public class Tile : MonoBehaviour
                     }                        
                     else
                     {
-                        gm.AddScore(nearbyMines * (coordY + 1), false); // * nearbyMines
+                        gm.AddScore(nearbyMines * (coordY + 1), 2, false); // * nearbyMines
                         /*holdTetromino.scoreMissingTest += Mathf.FloorToInt(((nearbyMines * nearbyMines * (coordY + 1)) - (nearbyMines * (coordY + 1))) * gm.level * (1 + gm.GetScoreMultiplier()));
                         holdTetromino.scoreRevealRemainingTest += Mathf.FloorToInt((nearbyMines * (coordY + 1)) * gm.level * (1 + gm.GetScoreMultiplier()));
                         holdTetromino.scoreRevealTest += Mathf.FloorToInt(((nearbyMines * nearbyMines * (coordY + 1))) * gm.level * (1 + gm.GetScoreMultiplier()));
