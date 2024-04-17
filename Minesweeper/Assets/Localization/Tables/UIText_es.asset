@@ -314,7 +314,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 991654902226944
-    m_Localized: Limpia todas las minas retenidas, +250 puntos
+    m_Localized: 'Limpiar: Limpia todas las minas retenidas, +250 puntos'
     m_Metadata:
       m_Items: []
   - m_Id: 992047333892096
@@ -326,10 +326,6 @@ MonoBehaviour:
     m_Localized: "T-Spinsweep es cuando obtienes un T-spin y borras cada l\xEDnea
       que llen\xF3 el tetromino T, antes de que el siguiente tetromino encaje en
       su lugar."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 995317649498112
-    m_Localized: Resuelve para recargar...
     m_Metadata:
       m_Items: []
   - m_Id: 1427307444035584

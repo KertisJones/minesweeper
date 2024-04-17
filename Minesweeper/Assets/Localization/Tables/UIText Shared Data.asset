@@ -315,10 +315,6 @@ MonoBehaviour:
     m_Key: Tooltip T-Spinsweep
     m_Metadata:
       m_Items: []
-  - m_Id: 995317649498112
-    m_Key: Tooltip CleanseProgressBar
-    m_Metadata:
-      m_Items: []
   - m_Id: 1427307444035584
     m_Key: GameMode Dots
     m_Metadata:

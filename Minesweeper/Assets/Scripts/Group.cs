@@ -202,7 +202,7 @@ public class Group : MonoBehaviour
         {            
             if (maximumFallDistance > 0)
             {
-                gm.AddScore(maximumFallDistance * 2, 3, false);
+                gm.AddScore(maximumFallDistance * 2, 0, false);
                 gm.SetScoreMultiplier(2, 1f);
                 gm.TriggerOnHardDropEvent();
             }
@@ -489,7 +489,7 @@ public class Group : MonoBehaviour
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
             return;
         if (!isLocking && bottomHeight <= bottomHeightLowest)
-            gm.AddScore(1, 3, false);
+            gm.AddScore(1, 0, false);
         Fall();
     }
 
@@ -1349,7 +1349,7 @@ public class Group : MonoBehaviour
         lastMove = Time.time;
     }
 
-    public bool CheckForTetrisweeps(bool getMultiplier = true, bool isInstantSweep = false)
+    public bool CheckForTetrisweeps(bool getMultiplier = true, bool isInstantSweep = false, int highestRowSolved = -1)
     {
         if (difficultSweepScored)
             return false;
@@ -1374,12 +1374,13 @@ public class Group : MonoBehaviour
                 difficultSweepScored = true;
 
                 // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
-                float actionScore = 595 + (100 * bottomHeight); 
+                float actionScore = 595; 
                 if (gm.previousClearWasDifficultSweep)
                     actionScore = actionScore * 1.5f; 
                 if (isInstantSweep)
                     actionScore = actionScore * 1.5f;
-                gm.AddScore((int)actionScore, 4);        
+                actionScore *= gm.GetRowHeightPointModifier(topHeight);
+                gm.AddScore((int)actionScore, 1);        
 
                 if (getMultiplier)
                     gm.SetScoreMultiplier(25, 30);
@@ -1429,13 +1430,14 @@ public class Group : MonoBehaviour
     {
         gm.tSpinsweepsCleared += 1;
 
-        float actionScore = 595 + (100 * bottomHeight); 
+        float actionScore = 595; 
         if (gm.previousClearWasDifficultSweep)
             actionScore = actionScore * 1.5f; 
         if (isInstantSweep)
             actionScore = actionScore * 1.5f;
+        actionScore *= gm.GetRowHeightPointModifier(topHeight);
 
-        gm.AddScore((int)actionScore, 4); 
+        gm.AddScore((int)actionScore, 1); 
         
         if (getMultiplier)
             gm.SetScoreMultiplier(25, 30);

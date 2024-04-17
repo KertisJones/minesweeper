@@ -111,7 +111,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 991654902226944
-    m_Localized: "R\xE4umen Sie alle Minen in der Warteschleife ab, +250 Punkte"
+    m_Localized: "Reinigen: R\xE4umen Sie alle Minen in der Warteschleife ab, +250
+      Punkte"
     m_Metadata:
       m_Items: []
   - m_Id: 992047333892096
@@ -122,10 +123,6 @@ MonoBehaviour:
   - m_Id: 992048869007360
     m_Localized: "Beim T-Spinsweep erzielen Sie einen T-Spin und l\xF6schen jede
       Linie, die das T-Tetromino gef\xFCllt hat, bevor das n\xE4chste Tetromino einrastet."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 995317649498112
-    m_Localized: "Zum Aufladen l\xF6sen..."
     m_Metadata:
       m_Items: []
   - m_Id: 15111020544

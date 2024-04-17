@@ -61,6 +61,8 @@ MonoBehaviour:
   linesCleared: 0
   tetrisweepsCleared: 0
   tSpinsweepsCleared: 0
+  revealCombo: 0
+  revealStreakManual: 0
   previousClearWasDifficultSweep: 0
   level: 1
   currentMines: 0
@@ -76,7 +78,6 @@ MonoBehaviour:
   lineClearInstantly: 0
   cheatGodMode: 0
   cheatAutoFlagMode: 0
-  wallTilesPlayableActive: 0
   piecesPlaced: 0
   holds: 0
   linesweepsCleared: 0
@@ -101,6 +102,8 @@ MonoBehaviour:
   settingsMenu: {fileID: 0}
   marathonOverMenu: {fileID: 0}
   gameOverMenu: {fileID: 0}
+  pieChart: {fileID: 0}
+  revealStreakManualProgressBar: {fileID: 0}
   lineClearSound: {fileID: 8300000, guid: cad7ca4f9e0fa3e4494e767134f5b835, type: 3}
   lineFullSound1: {fileID: 8300000, guid: a7bde30d6b46a494a89e75341386d6b8, type: 3}
   lineFullSound2: {fileID: 8300000, guid: 0d9fa3c551940cb4db5e834b505cbf76, type: 3}
@@ -110,6 +113,7 @@ MonoBehaviour:
   gameOverSound: {fileID: 8300000, guid: a994636b57e1d714b8b09e4270e1b2a3, type: 3}
   multiplierCountdownSound: {fileID: 8300000, guid: 10199842e38ec3b4aadb1ac50fd79a85, type: 3}
   multiplierCountdownSoundFinal: {fileID: 8300000, guid: f96700b5304576543b0ce2d10c9d03a7, type: 3}
+  revealStreakManual100Sound: {fileID: 8300000, guid: ffb63cd94d267bf45988d953e42e65db, type: 3}
 --- !u!82 &9133358887212656289
 AudioSource:
   m_ObjectHideFlags: 0
@@ -246,4 +250,5 @@ MonoBehaviour:
   tileRevealSound11: {fileID: 8300000, guid: 266ecf633e08fb740961bc753f8cc439, type: 3}
   tileRevealSound12: {fileID: 8300000, guid: ad5472a9b7f2e8542a9f889a3c98e6e1, type: 3}
   tileRevealSound13: {fileID: 8300000, guid: 10c2b5ee39a6ca04f845c800ee2835b4, type: 3}
+  tileRevealComboResetSound: {fileID: 8300000, guid: 6baf2b1b4f8b21545b26ead88e5e8b62, type: 3}
   multiplierDrainStartSound: {fileID: 8300000, guid: a3cae5b34428fce41989341d3fd6cfb5, type: 3}

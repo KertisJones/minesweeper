@@ -4588,7 +4588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae568b29755347e49b0ca7c6c8621fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: https://kertisjones.itch.io/tetrisweeper/purchase
+  url: https://store.steampowered.com/app/2918460/Tetrisweeper/
 --- !u!1 &1113461781
 GameObject:
   m_ObjectHideFlags: 0

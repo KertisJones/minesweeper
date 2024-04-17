@@ -28,6 +28,7 @@ public class ProgressBar : MonoBehaviour
     public Image fill;
     [SerializeField]
     private Color color;
+    public int minToShowHoverText = 0;
     public TMPro.TMP_Text hoverText;
     public SpriteRenderer hoverTextSprite;
     private Color textColor;
@@ -38,6 +39,7 @@ public class ProgressBar : MonoBehaviour
         fill.color = color;
         textColor = hoverTextSprite.color;
         hoverTextSprite.color = Color.clear;
+        tweenAmount = maximum * 0.0015f;
     }
 
     // Update is called once per frame
@@ -85,7 +87,8 @@ public class ProgressBar : MonoBehaviour
 
     public void ShowText()
     {
-        hoverTextSprite.DOColor(textColor, 0.15f).SetUpdate(true);        
+        if (current >= minToShowHoverText)
+            hoverTextSprite.DOColor(textColor, 0.15f).SetUpdate(true);        
     }
 
     public void HideText()

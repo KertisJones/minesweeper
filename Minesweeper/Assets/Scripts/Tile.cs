@@ -110,7 +110,7 @@ public class Tile : MonoBehaviour
                 }
                 if (neighborsAreLocked)
                 {
-                    gm.AddScore(8888, 3);
+                    gm.AddScore(8888, 2);
                     gm.SetScoreMultiplier(8, 1f, true);
                     if (gm.safeEdgeTilesGained < 8)
                         gm.AddSafeTileToEdges();
@@ -272,7 +272,7 @@ public class Tile : MonoBehaviour
             //isQuestioned = false;
 
             //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            gm.soundManager.PlayTileRevealSound();
+            gm.soundManager.PlayTileRevealSound(true);
             //AudioSource.PlayClipAtPoint(flagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
             //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
             gm.TriggerOnTileSolveOrLandEvent();
@@ -283,7 +283,7 @@ public class Tile : MonoBehaviour
 
             gm.currentFlags += 1;
 
-            if (isMine)
+            /*if (isMine)
             {
                 if (!isFailedToChord)
                 {
@@ -293,7 +293,7 @@ public class Tile : MonoBehaviour
             else
             {
                 holdTetromino.ResetManualSolveStreak();
-            }
+            }*/
 
             if (gm.lineClearInstantly)
                 GameManager.deleteFullRows();
@@ -307,7 +307,8 @@ public class Tile : MonoBehaviour
 
             gm.ResetScoreMultiplier();
             isFailedToChord = true; // Don't double count this tile for points
-            holdTetromino.ResetManualSolveStreak();
+            //holdTetromino.ResetManualSolveStreak();
+            gm.ResetRevealStreakManual();
 
             /*
             +30K, -70K
@@ -344,9 +345,9 @@ public class Tile : MonoBehaviour
         }
     }*/
 
-    public void Reveal(bool isAutomatic = false, bool isManual = false)
+    public void Reveal(bool isForcedReveal = false, bool isManual = false)
     {
-        if (!isRevealed && !isFlagged && !isDisplay && (!GetComponentInParent<Group>().isHeld || isAutomatic))
+        if (!isRevealed && !isFlagged && !isDisplay && (!GetComponentInParent<Group>().isHeld || isForcedReveal))
         {
             isRevealed = true;
             //isQuestioned = false;
@@ -369,38 +370,44 @@ public class Tile : MonoBehaviour
             else if (!gm.isGameOver)
             {
                 //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                gm.soundManager.PlayTileRevealSound();
+                gm.soundManager.PlayTileRevealSound(isManual);
+                
                 //AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
-                if (isManual && !isFailedToChord)
+                if (!isFailedToChord)
                 {
-                    holdTetromino.AddToManualSolveStreak(false);
+                    holdTetromino.AddToCleanseRecharge();//.AddToManualSolveStreak();
+                    if (isManual)
+                        gm.AddRevealStreakManual();
                 }
                     
 
                 // Scoring
-                if (!GetComponentInParent<Group>().isDisplay && !GetComponentInParent<Group>().isFalling && !GetComponentInParent<Group>().isHeld)
+                if (!GetComponentInParent<Group>().isDisplay && !GetComponentInParent<Group>().isHeld)
                 {
+                    gm.AddRevealCombo(!isManual, isFailedToChord, coordY);
+                    gm.SetScoreMultiplier(1, 1f, true);
+
                     // If the mino is falling, don't give a huge bonus for being revealed in the air
-                    if (GetComponentInParent<Group>().isFalling)
-                    {
-                        gm.AddScore(nearbyMines, 2, false); // * nearbyMines
+                    //if (GetComponentInParent<Group>().isFalling)
+                    //{
+                        //gm.AddScore(nearbyMines, 2, false); // * nearbyMines
                         /*holdTetromino.scoreMissingTest += Mathf.FloorToInt(((nearbyMines * nearbyMines) - nearbyMines) * gm.level * (1 + gm.GetScoreMultiplier()));
                         holdTetromino.scoreRevealRemainingTest += Mathf.FloorToInt(nearbyMines * gm.level * (1 + gm.GetScoreMultiplier()));                        
                         holdTetromino.scoreRevealTest += Mathf.FloorToInt(((nearbyMines * nearbyMines)) * gm.level * (1 + gm.GetScoreMultiplier()));
                         holdTetromino.scoreRevealNoLevelTest += Mathf.FloorToInt(nearbyMines * (1 + gm.GetScoreMultiplier()));*/
-                    }                        
-                    else
-                    {
-                        gm.AddScore(nearbyMines * (coordY + 1), 2, false); // * nearbyMines
+                    //}                        
+                    //else
+                    //{
+                        //gm.AddScore(nearbyMines * (coordY + 1), 2, false); // * nearbyMines
                         /*holdTetromino.scoreMissingTest += Mathf.FloorToInt(((nearbyMines * nearbyMines * (coordY + 1)) - (nearbyMines * (coordY + 1))) * gm.level * (1 + gm.GetScoreMultiplier()));
                         holdTetromino.scoreRevealRemainingTest += Mathf.FloorToInt((nearbyMines * (coordY + 1)) * gm.level * (1 + gm.GetScoreMultiplier()));
                         holdTetromino.scoreRevealTest += Mathf.FloorToInt(((nearbyMines * nearbyMines * (coordY + 1))) * gm.level * (1 + gm.GetScoreMultiplier()));
                         holdTetromino.scoreRevealNoLevelTest += Mathf.FloorToInt((nearbyMines * (coordY + 1)) * (1 + gm.GetScoreMultiplier()));*/
-                    }
+                    //}
                         
                     
-                    gm.SetScoreMultiplier(1, 1f, true);
+                    
                 }
             }
 
@@ -492,7 +499,8 @@ public class Tile : MonoBehaviour
                 }
                 if (realFail)
                 {                    
-                    holdTetromino.ResetManualSolveStreak();
+                    //holdTetromino.ResetManualSolveStreak();
+                    gm.ResetRevealStreakManual();
                 }
             }
             
@@ -552,7 +560,8 @@ public class Tile : MonoBehaviour
                 }
                 if (realFail)
                 {                    
-                    holdTetromino.ResetManualSolveStreak();
+                    //holdTetromino.ResetManualSolveStreak();
+                    gm.ResetRevealStreakManual();
                 }
             }
             

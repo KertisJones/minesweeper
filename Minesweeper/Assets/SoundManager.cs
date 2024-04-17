@@ -23,9 +23,12 @@ public class SoundManager : MonoBehaviour
     public AudioClip tileRevealSound11;
     public AudioClip tileRevealSound12;
     public AudioClip tileRevealSound13;
+    public AudioClip tileRevealComboResetSound;
     public AudioClip multiplierDrainStartSound;
     private bool tileRevealedThisFrame = false;
+    private bool tileRevealComboIsActive = false;
     private int tilesRevealedPitch = 0;
+    private int tilesRevealedManually = 0;
     private float tilesRevealedCooldownTimer = 0f;
     private int currentLevel = 1;
 
@@ -115,24 +118,37 @@ public class SoundManager : MonoBehaviour
             }*/
             
         }
-        tilesRevealedCooldownTimer -= Time.deltaTime;
-        if (tilesRevealedCooldownTimer < 0)
-            ResetTileRevealPitch();
-            
+        
+        if (tileRevealComboIsActive)
+        {
+            tilesRevealedCooldownTimer -= Time.deltaTime;
+            if (tilesRevealedCooldownTimer <= 0)
+                ResetTileRevealPitch(true);
+        }            
     }
 
-    public void PlayTileRevealSound()
+    public void PlayTileRevealSound(bool isManual = false)
     {
         if (!tileRevealedThisFrame)
         {
             tileRevealedThisFrame = true;        
-            tilesRevealedCooldownTimer = 1f;
+            tileRevealComboIsActive = true;
+            tilesRevealedCooldownTimer = 1.5f;
+            if (isManual)
+                tilesRevealedManually++;
         }
     }
 
-    public void ResetTileRevealPitch()
+    public void ResetTileRevealPitch(bool playSoundEffect = false)
     {
         tilesRevealedPitch = 0;
+        tileRevealComboIsActive = false;
+
+        if (playSoundEffect && tilesRevealedManually > 4)
+            AudioSource.PlayClipAtPoint(tileRevealComboResetSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));        
+        tilesRevealedManually = 0;
+
+        gm.ResetRevealCombo();
     }
 
     public void SetMusicPitchToLevel(int level)
@@ -173,6 +189,7 @@ public class SoundManager : MonoBehaviour
             return;
         
         multiplierDrainTween = multiplierDrainSource.DOFade(PlayerPrefs.GetFloat("SoundVolume", 0.5f), 1f);
+        ResetTileRevealPitch();
     }
 
     public void StopMultiplierDrain() 

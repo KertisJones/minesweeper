@@ -21,7 +21,7 @@ public class HoldTetromino : MonoBehaviour
     public AudioClip cleanseActivateSound;
     private bool cleanseReady = false;
     public int cleanseRecharge = 0;
-    int manualTileSolveStreak = 0;
+    //int manualTileSolveStreak = 0;
     public AudioClip holdSwitchSound;
     public AudioClip holdFailedSound;
     
@@ -43,27 +43,43 @@ public class HoldTetromino : MonoBehaviour
             return;
         if (CleanseIsPossible())
         {
-            if (!cleanseReady) // Do when cleanse is ready, not every frame
+            Cleanse();
+            /*if (!cleanseReady) // Do when cleanse is ready, not every frame
             {
                 //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(cleanseReadySound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f)); 
-                if (cleanseButton != null)               
+                //AudioSource.PlayClipAtPoint(cleanseReadySound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f)); 
+                /*if (cleanseButton != null)               
                 {
                     cleanseButton.SetActive(true);
                     cleanseButton.GetComponent<ButtonJiggle>().Reset();
                     cleanseProgressBar.GetComponent<IdleJiggle>().jumpInPlaceHeight = 0;
                     cleanseProgressBar.GetComponent<ButtonJiggle>().Reset();
-                }                
+                }           
                 cleanseReady = true;
+            }*/
+        }
+
+        if (cleanseProgressBar != null)
+        {
+            if (IsHeldTetrominoCleansed())
+            {
+                cleanseProgressBar.GetComponent<ButtonJiggle>().ShrinkToZero();
+                cleanseProgressBar.GetComponent<ButtonJiggle>().jiggleIsEnabled = false;
+            }
+            else
+            {
+                cleanseProgressBar.GetComponent<ButtonJiggle>().jiggleIsEnabled = true;
+                cleanseProgressBar.GetComponent<ButtonJiggle>().Reset();
             }
         }
-        else
+        
+        /*else
         {
             if (cleanseReady)
             {                
                 cleanseReady = false;
             }
-        }
+        }*/
 
         /*if (cleansePointRechargeText != null)
             cleansePointRechargeText.text = manualTileSolveStreak + ", " + manualTileSolvePerfectStreak + ", " + manualTileSolvePerfectStreakIncludedWallsTEST + " (m" + manualTileSolveStreakHighest + ", p" + manualTileSolvePerfectStreakHighest + ", w" + manualTileSolvePerfectStreakIncludedWallsHighestTEST + ")\n+c" 
@@ -166,22 +182,34 @@ public class HoldTetromino : MonoBehaviour
     bool CleanseIsPossible()
     {
         // Don't allow Cleanse if player doesn't have enough edge tiles to spend
-        if (cleanseRecharge < 50)
+        if (cleanseRecharge < 100)
             return false;
 
         if (heldTetromino == null)
             return false;
         
+        if (IsHeldTetrominoCleansed())
+            return false;
+
+        return true;
+    }
+
+    bool IsHeldTetrominoCleansed()
+    {
+        if (heldTetromino == null)
+            return false;
+        
+        bool isCleansed = true;
         // Don't allow Cleanse if the held mino doesn't have any unrevealed tiles
         foreach (Tile tile in heldTetromino.GetComponent<Group>().GetChildTiles())
         {
             if (!tile.isRevealed)
             {
-                return true;
+                isCleansed = false;
             }
         }
 
-        return false;
+        return isCleansed;
     }
 
     public void Cleanse()
@@ -206,7 +234,7 @@ public class HoldTetromino : MonoBehaviour
             tile.Reveal(true);
         }
         
-        gm.AddScore(250, 3);
+        gm.AddScore(250, 2);
         cleanseRecharge = 0;
         if (cleanseProgressBar != null)
         {
@@ -227,19 +255,22 @@ public class HoldTetromino : MonoBehaviour
         Tooltip.HideTooltip_Static();
     }
 
-    public void AddToManualSolveStreak(bool isFlag)//bool isPerfect, bool isEasyTile = false)
+    public void AddToCleanseRecharge()//bool isPerfect, bool isEasyTile = false)
     {
-        if (manualTileSolveStreak < 100)
+        // Scoring
+        /*if (manualTileSolveStreak < 100)
             manualTileSolveStreak++; 
-        gm.AddScore(manualTileSolveStreak, 2, false);
+        gm.AddScore(manualTileSolveStreak, 2, false);*/
 
-        if (!isFlag)
+        if (!IsHeldTetrominoCleansed())
         {
-            if (cleanseRecharge < 50)
+            // Cleanse Recharge
+            if (cleanseRecharge < 100)
                 cleanseRecharge++;
             if (cleanseProgressBar != null)
                 cleanseProgressBar.current = cleanseRecharge;
         }
+        
     }
         /*if (isPerfect) // Not on edge or bottom row
         {
@@ -271,8 +302,8 @@ public class HoldTetromino : MonoBehaviour
         manualTileSolvePerfectStreakIncludedWallsHighestTEST = Mathf.Max(manualTileSolvePerfectStreakIncludedWallsTEST, manualTileSolvePerfectStreakIncludedWallsHighestTEST);*/
     
 
-    public void ResetManualSolveStreak()
+    /*public void ResetManualSolveStreak()
     {
         manualTileSolveStreak = 0;        
-    }
+    }*/
 }

@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
     public int linesCleared = 0;
     public int tetrisweepsCleared = 0;
     public int tSpinsweepsCleared = 0;
+    public int revealCombo = 0;
+    public int revealStreakManual = 0;
+    //[HideInInspector]
+    //public Tween revealComboDrainTween;
     public bool previousClearWasDifficultSweep = false;
     public int level = 1;
     public int currentMines = 0;
@@ -102,6 +106,7 @@ public class GameManager : MonoBehaviour
     public PauseMenuMove marathonOverMenu;
     public PauseMenuMove gameOverMenu;
     public PieChart pieChart;
+    public ProgressBar revealStreakManualProgressBar;
 
     public AudioClip lineClearSound;
     public AudioClip lineFullSound1;
@@ -112,6 +117,7 @@ public class GameManager : MonoBehaviour
     public AudioClip gameOverSound;
     public AudioClip multiplierCountdownSound;
     public AudioClip multiplierCountdownSoundFinal;
+    public AudioClip revealStreakManual100Sound;
 
     public delegate void LineClearEvent(int lines);
     public static event LineClearEvent OnLineClearEvent;
@@ -693,7 +699,7 @@ public class GameManager : MonoBehaviour
             pcScore = pcScore * 1.5f;
         }
 
-        AddScore(((int)pcScore), 3);
+        AddScore(((int)pcScore), 0);
 
         /*if (previousTetromino.GetComponent<Group>().rowsFilled == 4) // Tetrisweep Perfect Clear!
         {
@@ -723,12 +729,15 @@ public class GameManager : MonoBehaviour
         
         int rowsCleared = 0;
         int linesweepsCleared = 0;
+        int highestRowSolved = -1;
         
         // Score all of the solved rows
         for (int y = 0; y < sizeY; ++y)
         {
             if (isRowSolved(y))
             {
+                highestRowSolved = y;
+
                 if (!getMultiplier)
                 {
                     gm.ResetScoreMultiplier();
@@ -760,12 +769,14 @@ public class GameManager : MonoBehaviour
         // Linesweep: Row was solved before the next tetromino was placed
         if (linesweepsCleared > 0)
         {
-            int linesweepScore = 75 * (linesweepsCleared * linesweepsCleared);
+            float linesweepScore = 100 * (linesweepsCleared * linesweepsCleared);
+
+            linesweepScore *= gm.GetRowHeightPointModifier(highestRowSolved);
             
             if (isTriggeredByLock) // Instant Sweep multiplier
-                gm.AddScore((int)(linesweepScore * 1.5f), 4);
-            else
-                gm.AddScore(linesweepScore, 4);
+                linesweepScore *= 1.5f;
+
+                gm.AddScore(Mathf.FloorToInt(linesweepScore), 1);
 
             if (getMultiplier)
                 gm.SetScoreMultiplier(10 * linesweepsCleared, 10f);
@@ -782,10 +793,14 @@ public class GameManager : MonoBehaviour
                 OnLineClearEvent(rowsCleared);
         
             // Lines Cleared Points
-            gm.AddScore(75 * (rowsCleared * rowsCleared), 1);
+            float lineClearScore = 100 * rowsCleared;
+            lineClearScore *= gm.GetRowHeightPointModifier(highestRowSolved);
+            gm.AddScore((int)lineClearScore, 1);
+            
+            //gm.AddScore(75 * (rowsCleared * rowsCleared), 1);
             //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
             if (getMultiplier)
-                gm.SetScoreMultiplier(rowsCleared * 5, rowsCleared * 2);
+                gm.SetScoreMultiplier(rowsCleared * rowsCleared, rowsCleared * 2);
             
             if (rowsCleared > gm.safeEdgeTilesGained)
                 gm.AddSafeTileToEdges();
@@ -1133,6 +1148,67 @@ public class GameManager : MonoBehaviour
         }        
         return fullRows;
     }
+
+    public void AddRevealCombo(bool isAutomatic, bool isFailedChord, int rowHeight)
+    {
+        //ResetRevealComboDrain();
+        
+        revealCombo++;
+        float revealScore = revealCombo;
+        if (isAutomatic)
+            revealScore *= 0.1f;
+        if (isFailedChord)
+            revealScore *= 0.1f;
+        
+        revealScore *= GetRowHeightPointModifier(rowHeight);
+        
+        AddScore(Mathf.FloorToInt(10 * revealScore), 2);
+    }
+
+    public void ResetRevealCombo()
+    {
+        /*if (revealComboDrainTween != null)
+            if (revealComboDrainTween.IsActive())
+                if (revealComboDrainTween.IsPlaying())
+                    return;                      
+        revealComboDrainTween = DOTween.To(()=>revealCombo, x=> revealCombo = x, 0, 31f);*/
+        revealCombo = 0;
+    }
+
+    public void AddRevealStreakManual()
+    {
+        revealStreakManual++;
+
+        if (revealStreakManual >= 50)
+        {
+            AddScore(2500, 2);
+            SetScoreMultiplier(10, 10, true);
+
+            AudioSource.PlayClipAtPoint(revealStreakManual100Sound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f)); 
+            
+            ResetRevealStreakManual();
+        }
+        if (revealStreakManualProgressBar != null)
+            revealStreakManualProgressBar.current = revealStreakManual;
+    }
+
+    public void ResetRevealStreakManual()
+    {
+        revealStreakManual = 0;
+        if (revealStreakManualProgressBar != null)
+            revealStreakManualProgressBar.current = 0;
+    }
+
+    /*public void ResetRevealComboDrain()
+    {
+        if (revealComboDrainTween != null)
+            if (revealComboDrainTween.IsActive())
+                if (revealComboDrainTween.IsPlaying())
+                    {
+                        revealComboDrainTween.Kill();
+                        revealComboDrainTween = null;
+                    }
+    }*/
     #endregion
     #region Helper Functions
     public void ReloadScene()
@@ -1254,6 +1330,18 @@ public class GameManager : MonoBehaviour
     {
         if (OnTileSolveOrLandEvent != null)
             OnTileSolveOrLandEvent();
+    }
+
+    public float GetRowHeightPointModifier(int rowHeight)
+    {
+        if (rowHeight > 16)
+            return 1.75f;
+        else if (rowHeight > 11)
+            return 1.5f;
+        else if (rowHeight > 6)
+            return 1.25f;
+        
+        return 1;
     }
     #endregion
 }

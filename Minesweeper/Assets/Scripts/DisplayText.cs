@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Localization.Settings;
 using UnityEditor;
+using DG.Tweening;
 
 public class DisplayText : MonoBehaviour
 {
@@ -35,7 +36,8 @@ public class DisplayText : MonoBehaviour
         TESTCurrentMinoRotation,
         gameModeName,
         gameModeNameComplete,
-        versionNumber
+        versionNumber,
+        revealCombo
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
@@ -332,6 +334,16 @@ public class DisplayText : MonoBehaviour
             string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GameMode " + gameMode); // Returns translation of game mode name, ex. "Marathon"
             
             this.GetComponent<TextMeshProUGUI>().text = localizedText + " " + LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GameMode Complete") + "!";
+        }
+        else if (displayType == TextType.revealCombo)
+        {
+            this.GetComponent<TextMeshProUGUI>().text = gm.revealCombo.ToString("#,#.#");
+
+            /*this.GetComponent<TextMeshProUGUI>().color = startColor;
+            if (gm.revealComboDrainTween != null)
+                if (gm.revealComboDrainTween.IsActive())
+                    if (gm.revealComboDrainTween.IsPlaying())
+                        this.GetComponent<TextMeshProUGUI>().color = Color.red;*/                           
         }
     }
 

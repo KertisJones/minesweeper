@@ -645,8 +645,8 @@ MonoBehaviour:
   scaleMultiplierShrink: 1.8
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
-  enlargeSound: {fileID: 0}
-  shrinkSound: {fileID: 0}
+  enlargeSound: {fileID: 8300000, guid: 10199842e38ec3b4aadb1ac50fd79a85, type: 3}
+  shrinkSound: {fileID: 8300000, guid: e0e8ed38e929d9d41ab768d63d4f976f, type: 3}
   jiggleIsEnabled: 1
   reorderToLastSibling: 1
   startAtScaleZero: 0
@@ -963,8 +963,8 @@ MonoBehaviour:
   scaleMultiplierShrink: 1.8
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
-  enlargeSound: {fileID: 0}
-  shrinkSound: {fileID: 0}
+  enlargeSound: {fileID: 8300000, guid: 10199842e38ec3b4aadb1ac50fd79a85, type: 3}
+  shrinkSound: {fileID: 8300000, guid: e0e8ed38e929d9d41ab768d63d4f976f, type: 3}
   jiggleIsEnabled: 1
   reorderToLastSibling: 1
   startAtScaleZero: 0
@@ -1572,8 +1572,8 @@ MonoBehaviour:
   scaleMultiplierShrink: 1.8
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
-  enlargeSound: {fileID: 0}
-  shrinkSound: {fileID: 0}
+  enlargeSound: {fileID: 8300000, guid: 10199842e38ec3b4aadb1ac50fd79a85, type: 3}
+  shrinkSound: {fileID: 8300000, guid: e0e8ed38e929d9d41ab768d63d4f976f, type: 3}
   jiggleIsEnabled: 1
   reorderToLastSibling: 1
   startAtScaleZero: 0
@@ -2826,8 +2826,8 @@ MonoBehaviour:
   scaleMultiplierShrink: 1.8
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
-  enlargeSound: {fileID: 0}
-  shrinkSound: {fileID: 0}
+  enlargeSound: {fileID: 8300000, guid: 10199842e38ec3b4aadb1ac50fd79a85, type: 3}
+  shrinkSound: {fileID: 8300000, guid: e0e8ed38e929d9d41ab768d63d4f976f, type: 3}
   jiggleIsEnabled: 1
   reorderToLastSibling: 1
   startAtScaleZero: 0
@@ -3435,8 +3435,8 @@ MonoBehaviour:
   scaleMultiplierShrink: 1.8
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
-  enlargeSound: {fileID: 0}
-  shrinkSound: {fileID: 0}
+  enlargeSound: {fileID: 8300000, guid: 10199842e38ec3b4aadb1ac50fd79a85, type: 3}
+  shrinkSound: {fileID: 8300000, guid: e0e8ed38e929d9d41ab768d63d4f976f, type: 3}
   jiggleIsEnabled: 1
   reorderToLastSibling: 1
   startAtScaleZero: 0
@@ -3968,8 +3968,8 @@ MonoBehaviour:
   scaleMultiplierShrink: 1.8
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
-  enlargeSound: {fileID: 0}
-  shrinkSound: {fileID: 0}
+  enlargeSound: {fileID: 8300000, guid: 10199842e38ec3b4aadb1ac50fd79a85, type: 3}
+  shrinkSound: {fileID: 8300000, guid: e0e8ed38e929d9d41ab768d63d4f976f, type: 3}
   jiggleIsEnabled: 1
   reorderToLastSibling: 1
   startAtScaleZero: 0
@@ -4286,8 +4286,8 @@ MonoBehaviour:
   scaleMultiplierShrink: 1.8
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
-  enlargeSound: {fileID: 0}
-  shrinkSound: {fileID: 0}
+  enlargeSound: {fileID: 8300000, guid: 10199842e38ec3b4aadb1ac50fd79a85, type: 3}
+  shrinkSound: {fileID: 8300000, guid: e0e8ed38e929d9d41ab768d63d4f976f, type: 3}
   jiggleIsEnabled: 1
   reorderToLastSibling: 1
   startAtScaleZero: 0

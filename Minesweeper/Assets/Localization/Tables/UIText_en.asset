@@ -310,7 +310,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 991654902226944
-    m_Localized: Clear all mines in hold, +250 Points
+    m_Localized: 'Cleanse: Clear all mines in hold, +250 points'
     m_Metadata:
       m_Items: []
   - m_Id: 992047333892096
@@ -321,10 +321,6 @@ MonoBehaviour:
   - m_Id: 992048869007360
     m_Localized: T-Spinsweep is when you score a T-spin and clear every line that
       the T tetromino filled, before the next tetromino locks into place.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 995317649498112
-    m_Localized: Solve to recharge...
     m_Metadata:
       m_Items: []
   - m_Id: 1427307444035584
