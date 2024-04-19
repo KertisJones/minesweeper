@@ -165,18 +165,24 @@ public class SoundManager : MonoBehaviour
 
     public void EnablePauseFilter()
     {
-        if (musicSource.GetComponent<AudioReverbFilter>() != null)
-            musicSource.GetComponent<AudioReverbFilter>().enabled = true;
-        if (musicSource.GetComponent<AudioHighPassFilter>() != null)
-            musicSource.GetComponent<AudioHighPassFilter>().enabled = true;
+        if (Application.platform != RuntimePlatform.WebGLPlayer || true)
+        {
+            if (musicSource.GetComponent<AudioReverbFilter>() != null)
+                musicSource.GetComponent<AudioReverbFilter>().enabled = true;
+            if (musicSource.GetComponent<AudioHighPassFilter>() != null)
+                musicSource.GetComponent<AudioHighPassFilter>().enabled = true;
+        }        
     }
 
     public void DisablePauseFilter()
     {
-        if (musicSource.GetComponent<AudioReverbFilter>() != null)
-            musicSource.GetComponent<AudioReverbFilter>().enabled = false;
-        if (musicSource.GetComponent<AudioHighPassFilter>() != null)
-            musicSource.GetComponent<AudioHighPassFilter>().enabled = false;
+        if (Application.platform != RuntimePlatform.WebGLPlayer || true)
+        {
+            if (musicSource.GetComponent<AudioReverbFilter>() != null)
+                musicSource.GetComponent<AudioReverbFilter>().enabled = false;
+            if (musicSource.GetComponent<AudioHighPassFilter>() != null)
+                musicSource.GetComponent<AudioHighPassFilter>().enabled = false;
+        }
     }
 
     public void PlayMultiplierDrain()
@@ -188,7 +194,10 @@ public class SoundManager : MonoBehaviour
         if (multiplierDrainSource.volume > 0 || gm.isGameOver)
             return;
         
-        multiplierDrainTween = multiplierDrainSource.DOFade(PlayerPrefs.GetFloat("SoundVolume", 0.5f), 1f);
+        if (Application.platform != RuntimePlatform.WebGLPlayer)
+            multiplierDrainTween = multiplierDrainSource.DOFade(PlayerPrefs.GetFloat("SoundVolume", 0.5f), 1f);
+        else
+            multiplierDrainSource.volume = PlayerPrefs.GetFloat("SoundVolume", 0.5f);
         ResetTileRevealPitch();
     }
 
@@ -196,6 +205,11 @@ public class SoundManager : MonoBehaviour
     { 
         if (multiplierDrainTween != null)       
             multiplierDrainTween.Kill();
+
         multiplierDrainSource.DOFade(0, 0.5f).SetUpdate(true);//.OnKill(multiplierDrainSource.Stop);
+        /*if (Application.platform != RuntimePlatform.WebGLPlayer)
+            multiplierDrainSource.DOFade(0, 0.5f).SetUpdate(true);//.OnKill(multiplierDrainSource.Stop);
+        else
+            multiplierDrainSource.volume = 0;*/
     }
 }

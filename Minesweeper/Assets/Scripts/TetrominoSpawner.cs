@@ -5,7 +5,8 @@ using DG.Tweening;
 
 public class TetrominoSpawner : MonoBehaviour
 {
-    public Camera mainCamera;
+    private Camera mainCamera;
+    private GameManager gm;
     public Transform previewTarget;
     public GameObject[] groups;
 
@@ -20,6 +21,10 @@ public class TetrominoSpawner : MonoBehaviour
     void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
+
+        this.transform.position = new Vector3(Mathf.Ceil((gm.sizeX / 2f) - 1), gm.sizeY - 3, 0); // Default is 4,20
         spawnPreview();
         spawnNext();
     }

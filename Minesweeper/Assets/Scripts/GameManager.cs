@@ -10,6 +10,7 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
+    private Camera mainCamera;
     public GameModifiers gameMods;
     [HideInInspector]
     public SoundManager soundManager;
@@ -43,12 +44,9 @@ public class GameManager : MonoBehaviour
     public int currentMines = 0;
     public int currentFlags = 0;
     public int safeEdgeTilesGained = 0;
-    public static int sizeX = 10;
-    public static int sizeY = 24;
+    public int sizeX = 10;
+    public int sizeY = 24;
     public static int numMines = 5;
-
-    static float screenShakeDuration = 0.2f;
-    static float screenShakeStrength = 1f;
 
     //private bool minesPlaced = false;
 
@@ -107,6 +105,10 @@ public class GameManager : MonoBehaviour
     public PauseMenuMove gameOverMenu;
     public PieChart pieChart;
     public ProgressBar revealStreakManualProgressBar;
+    public GameObject backgroundWallLeft;
+    public GameObject backgroundWallRight;
+    public GameObject backgroundFloor;
+    public GameObject guiCanvas;
 
     public AudioClip lineClearSound;
     public AudioClip lineFullSound1;
@@ -138,6 +140,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         inputManager = InputManager.Instance;
         soundManager = GetComponent<SoundManager>();
         gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
@@ -153,6 +156,9 @@ public class GameManager : MonoBehaviour
                 lineClearInstantly = true;
             else
                 lineClearInstantly = false;
+
+            sizeX = Mathf.Max((int)gameMods.boardSize.x, 4);
+            sizeY = Mathf.Max((int)gameMods.boardSize.y + 4, 8);
         }
 
         BuildGameBoard();        
@@ -371,6 +377,38 @@ public class GameManager : MonoBehaviour
                         rightBorderTiles[i].GetComponentInChildren<Tile>().isMine = true;
             }
         }
+
+        // Position background elements;
+        if (!isTitleMenu)
+        {
+            float cameraSizeYprefer = ((sizeY - 4) / 2f) + 0.5f; //10.5f; Y Bounds
+            float cameraSizeXprefer = (sizeX + 28) * 0.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth); //10f; X Bounds
+
+            float cameraSize = Mathf.Max(cameraSizeXprefer, cameraSizeYprefer);
+            float cameraX = (sizeX / 2f) - 0.5f; //4.5f;
+            float cameraY = ((sizeY - 4) / 2f) - 1f;//cameraSize - 1.5f; //9
+
+            mainCamera.transform.position = new Vector3(cameraX, cameraY, -10);
+            mainCamera.orthographicSize = cameraSize;
+
+            float canvasHeight = (450 / 10.5f) * cameraSize;
+            if (guiCanvas != null)
+            {
+                guiCanvas.transform.position = new Vector3(cameraX, cameraY, 0);
+                guiCanvas.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(canvasHeight * ((float)mainCamera.pixelWidth / mainCamera.pixelHeight), canvasHeight);
+            }
+            
+            float backgroundHeight = sizeY + 1;
+            if (cameraSizeYprefer < cameraSizeXprefer)
+                backgroundHeight = sizeY - 3;
+
+            backgroundWallRight.transform.position = new Vector3(sizeX - 0.5f, -1.5f, 1);     
+            
+            backgroundWallLeft.GetComponent<SpriteRenderer>().size = new Vector2(1, backgroundHeight);
+            backgroundWallRight.GetComponent<SpriteRenderer>().size = new Vector2(1, backgroundHeight);
+            backgroundFloor.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, 1);
+            backgroundAnimated.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, backgroundHeight - 1);
+        }
     }
 
     /*void BuildMinesweeperBoard()
@@ -536,16 +574,19 @@ public class GameManager : MonoBehaviour
 
     public static bool insideBorder(Vector2 pos)
     {
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
         return ((int)pos.x >= 0 &&
-                (int)pos.x < sizeX &&
+                (int)pos.x < gm.sizeX &&
                 (int)pos.y >= 0 &&
-                (int)pos.y < sizeY);
+                (int)pos.y < gm.sizeY);
     }
     #endregion
     #region Tetris Logic
     public static void deleteRow(int y)
     {
-        for (int x = 0; x < sizeX; ++x)
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        for (int x = 0; x < gm.sizeX; ++x)
         {
             gameBoard[x][y].gameObject.GetComponent<Tile>().isDestroyed = true;
             Destroy(gameBoard[x][y].gameObject);
@@ -555,8 +596,9 @@ public class GameManager : MonoBehaviour
 
     public static void decreaseRow(int y)
     {
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         Group activeTetrominoInRow = null;
-        for (int x = 0; x < sizeX; ++x)
+        for (int x = 0; x < gm.sizeX; ++x)
         {
             if (gameBoard[x][y] != null)
             {
@@ -604,13 +646,16 @@ public class GameManager : MonoBehaviour
 
     public static void decreaseRowsAbove(int y)
     {
-        for (int i = y; i < sizeY; ++i)
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
+        for (int i = y; i < gm.sizeY; ++i)
             decreaseRow(i);
     }
 
     public static bool isRowFull(int y)
     {
-        for (int x = 0; x < sizeX; ++x)
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        for (int x = 0; x < gm.sizeX; ++x)
             if (gameBoard[x][y] == null)
                 return false;
             else if (gameBoard[x][y].GetComponentInParent<Group>().isFalling)
@@ -620,7 +665,8 @@ public class GameManager : MonoBehaviour
 
     public static bool isRowEmpty(int y)
     {
-        for (int x = 0; x < sizeX; ++x)
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        for (int x = 0; x < gm.sizeX; ++x)
             if (gameBoard[x][y] != null)
                 if (!gameBoard[x][y].GetComponentInParent<Group>().isFalling)
                     return false;
@@ -630,7 +676,8 @@ public class GameManager : MonoBehaviour
     // Checks whether a perfect clear is possible if all currently solved lines were cleared, then clears those lines if it would create a PC.
     public static void CheckForPossiblePerfectClear()
     {        
-        for (int y = 0; y < sizeY; ++y)
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        for (int y = 0; y < gm.sizeY; ++y)
         {
             if (!isRowEmpty(y))
                 if (!isRowSolved(y))
@@ -732,7 +779,7 @@ public class GameManager : MonoBehaviour
         int highestRowSolved = -1;
         
         // Score all of the solved rows
-        for (int y = 0; y < sizeY; ++y)
+        for (int y = 0; y < gm.sizeY; ++y)
         {
             if (isRowSolved(y))
             {
@@ -756,7 +803,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Delete the finished Rows
-        for (int y = 0; y < sizeY; ++y)
+        for (int y = 0; y < gm.sizeY; ++y)
         {
             if (isRowSolved(y))
             {
@@ -787,8 +834,6 @@ public class GameManager : MonoBehaviour
             gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
-            //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
-
             if (OnLineClearEvent != null)
                 OnLineClearEvent(rowsCleared);
         
@@ -807,10 +852,10 @@ public class GameManager : MonoBehaviour
             
             bool isDifficultSweep = false;
             if (gm.previousTetromino != null)
-                if (gm.previousTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier))
+                if (gm.previousTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, false, highestRowSolved))
                     isDifficultSweep = true;
             if (gm.currentTetromino != null)
-                if (gm.currentTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, isTriggeredByLock))
+                if (gm.currentTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, isTriggeredByLock, highestRowSolved))
                     isDifficultSweep = true;
 
             gm.previousClearWasDifficultSweep = isDifficultSweep;
@@ -829,22 +874,22 @@ public class GameManager : MonoBehaviour
         if (gm.isGameOver)
             return;
         
-        for (int y = 0; y < sizeY; ++y)
+        for (int y = 0; y < gm.sizeY; ++y)
         {
             if (isRowSolved(y))
             {
-                for (int x = 0; x < sizeX; ++x)
+                for (int x = 0; x < gm.sizeX; ++x)
                 {
                     gm.GetGameTile(x, y).isRowSolved = true;
                 }
                 if (gm.GetGameTile(-1, y) != null)
                     gm.GetGameTile(-1, y).isRowSolved = true;
-                if (gm.GetGameTile(sizeX, y) != null)
-                    gm.GetGameTile(sizeX, y).isRowSolved = true;
+                if (gm.GetGameTile(gm.sizeX, y) != null)
+                    gm.GetGameTile(gm.sizeX, y).isRowSolved = true;
             }
             else
             {
-                for (int x = 0; x < sizeX; ++x)
+                for (int x = 0; x < gm.sizeX; ++x)
                 {
                     if (gm.GetGameTile(x, y) != null)
                     {
@@ -853,8 +898,8 @@ public class GameManager : MonoBehaviour
                 }
                 if (gm.GetGameTile(-1, y) != null)
                     gm.GetGameTile(-1, y).isRowSolved = false;
-                if (gm.GetGameTile(sizeX, y) != null)
-                    gm.GetGameTile(sizeX, y).isRowSolved = false;
+                if (gm.GetGameTile(gm.sizeX, y) != null)
+                    gm.GetGameTile(gm.sizeX, y).isRowSolved = false;
             }
         }
     }
@@ -864,8 +909,10 @@ public class GameManager : MonoBehaviour
         if (!isRowFull(y))
             return false;
         
+        GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
         bool isSolved = true;
-        for (int x = 0; x < sizeX; ++x)
+        for (int x = 0; x < gm.sizeX; ++x)
         {
             if (gameBoard[x][y] != null)
             {
@@ -1048,7 +1095,7 @@ public class GameManager : MonoBehaviour
         //int rowScore = 0;
         int minesFlagged = 0;
         bool containsPreviousTetromino = false;
-        for (int x = 0; x < sizeX; ++x)
+        for (int x = 0; x < gm.sizeX; ++x)
         {
             if (gameBoard[x][y] != null)
             {
@@ -1139,12 +1186,7 @@ public class GameManager : MonoBehaviour
                 gm.AddScore(50 * gm.comboLinesFilled, 0);
 
             gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(clipToPlay, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-
-            //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
-
-            //Debug.Log("Tetris rows full: " + fullRows);
-            
+            AudioSource.PlayClipAtPoint(clipToPlay, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));            
         }        
         return fullRows;
     }

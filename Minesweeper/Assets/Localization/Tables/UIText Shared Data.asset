@@ -351,6 +351,18 @@ MonoBehaviour:
     m_Key: Menu Locked
     m_Metadata:
       m_Items: []
+  - m_Id: 5052179397636096
+    m_Key: GUI BlockPlacing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052349606686720
+    m_Key: GUI Minesweeping
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052351666089984
+    m_Key: GUI Tetrisweeping
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

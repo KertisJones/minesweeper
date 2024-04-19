@@ -324,6 +324,8 @@ public class Group : MonoBehaviour
 
     public void UpdateGrid()
     {
+        if (gm == null)
+            gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         UpdateGridRemove();
         UpdateGridAdd();
         SetMaximumFallDistance();
@@ -332,8 +334,8 @@ public class Group : MonoBehaviour
     public void UpdateGridRemove()
     {
         // Remove old children from grid
-        for (int y = 0; y < GameManager.sizeY; ++y)
-            for (int x = 0; x < GameManager.sizeX; ++x)
+        for (int y = 0; y < gm.sizeY; ++y)
+            for (int x = 0; x < gm.sizeX; ++x)
                 if (GameManager.gameBoard[x][y] != null)
                     if (GameManager.gameBoard[x][y].transform.parent == transform)
                         GameManager.gameBoard[x][y] = null;
@@ -912,7 +914,7 @@ public class Group : MonoBehaviour
         bool tetrominoIsOffScreen = true;
         foreach (Transform child in transform)
         {
-            if (child.position.y < 20)
+            if (child.position.y < gm.sizeY - 4)
             {
                 tetrominoIsOffScreen = false;
             }

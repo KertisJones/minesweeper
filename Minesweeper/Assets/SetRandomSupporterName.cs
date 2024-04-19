@@ -17,7 +17,9 @@ public class SetRandomSupporterName : MonoBehaviour
         "Kusane",
         "Icely Puzzles",
         "Random 595",
-        "Stickman comic"
+        "Stickman comic",
+        "The Foun",
+        "Alexuty"
     };
     public TextMeshProUGUI supportText;
     GameModifiers gameMods;

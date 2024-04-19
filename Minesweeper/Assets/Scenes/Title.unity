@@ -944,7 +944,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2504c2c70d3522d41b96483aa1eb247c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
   previewTarget: {fileID: 1894750205}
   groups:
   - {fileID: 4171321229741126624, guid: f8eb7923fbc59a044b7a9fd0d0742a68, type: 3}

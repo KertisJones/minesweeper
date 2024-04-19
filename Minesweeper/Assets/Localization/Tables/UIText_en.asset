@@ -360,6 +360,18 @@ MonoBehaviour:
     m_Localized: Locked!
     m_Metadata:
       m_Items: []
+  - m_Id: 5052179397636096
+    m_Localized: Block Placing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052349606686720
+    m_Localized: Minesweeping
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052351666089984
+    m_Localized: Tetrisweeping
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

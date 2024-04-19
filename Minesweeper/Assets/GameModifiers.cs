@@ -19,6 +19,7 @@ public class GameModifiers : MonoBehaviour
     public float timeLimit = Mathf.Infinity;
 
     // Game Board Setup
+    public Vector2 boardSize = new Vector2 (10, 20);
     public enum WallType // your custom enumeration
     {
         unlock,
@@ -50,6 +51,7 @@ public class GameModifiers : MonoBehaviour
         gameMods.timeLimit = timeLimit;
 
         //Game Board Setup
+        gameMods.boardSize = boardSize;
         gameMods.wallType = wallType;
 
         // Distractions

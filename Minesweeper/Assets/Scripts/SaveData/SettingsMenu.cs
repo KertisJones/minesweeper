@@ -144,7 +144,7 @@ public class SettingsMenu : MonoBehaviour
 
     IEnumerator SetLocale(int _localeID)
     {
-        Debug.Log("_localeID " + _localeID);
+        //Debug.Log("_localeID " + _localeID);
         yield return LocalizationSettings.InitializationOperation;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_localeID];
     }
