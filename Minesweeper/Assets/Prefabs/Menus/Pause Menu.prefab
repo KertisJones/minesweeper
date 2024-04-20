@@ -2983,15 +2983,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
+  m_fontSize: 0.85
   m_fontSizeBase: 1
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0.5
+  m_fontSizeMax: 1
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3827,7 +3827,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7095111356794976451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3882,6 +3882,7 @@ MonoBehaviour:
   soundVolumeSlider: {fileID: 7095111354946729402}
   screenShakeToggle: {fileID: 0}
   lockDelayDisplayToggle: {fileID: 0}
+  languageDropdown: {fileID: 0}
 --- !u!1001 &492018933551397446
 PrefabInstance:
   m_ObjectHideFlags: 0

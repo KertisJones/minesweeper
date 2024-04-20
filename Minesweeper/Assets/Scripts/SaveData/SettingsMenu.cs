@@ -29,7 +29,7 @@ public class SettingsMenu : MonoBehaviour
         soundVolume = PlayerPrefs.GetFloat("SoundVolume", soundVolume);
         screenShakeEnabled = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
         lockDelayDisplayEnabled = (PlayerPrefs.GetInt("LockDelayDisplayEnabled", 0) != 0);
-        languageIndex = PlayerPrefs.GetInt("LanguageIndex", 0);
+        languageIndex = PlayerPrefs.GetInt("LanguageIndex", 1);
         //controlScheme = PlayerPrefs.GetInt("ControlScheme", 0);
         //abTest = PlayerPrefs.GetInt("ABTest", 0);
     }

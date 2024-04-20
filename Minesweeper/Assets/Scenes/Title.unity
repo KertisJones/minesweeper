@@ -10123,6 +10123,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Title Menu Buttons
       objectReference: {fileID: 0}
+    - target: {fileID: 2363924618644718947, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 2512304913506304
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363924618644718947, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 3217051341863401061, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -10153,11 +10161,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4644016377873977558, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 95
       objectReference: {fileID: 0}
     - target: {fileID: 4644016377873977558, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4648743458719350065, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
