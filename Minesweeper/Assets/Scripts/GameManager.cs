@@ -386,12 +386,14 @@ public class GameManager : MonoBehaviour
         }
 
         // Position background elements;
-        if (!isTitleMenu && (sizeX != 10 || sizeY != 24))
+        if (!isTitleMenu)
         {
             float cameraSizeYprefer = ((sizeY - 4) / 2f) + 0.5f; //10.5f; Y Bounds
             float cameraSizeXprefer = (sizeX + 28) * 0.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth); //10f; X Bounds
 
             float cameraSize = Mathf.Max(cameraSizeXprefer, cameraSizeYprefer);
+            if (sizeX == 10 && sizeY == 24)
+                cameraSize = cameraSizeYprefer;
             float cameraX = (sizeX / 2f) - 0.5f; //4.5f;
             float cameraY = ((sizeY - 4) / 2f) - 1f;//cameraSize - 1.5f; //9
 
@@ -406,7 +408,7 @@ public class GameManager : MonoBehaviour
             }
             
             float backgroundHeight = sizeY + 1;
-            if (cameraSizeYprefer < cameraSizeXprefer)
+            if (cameraSize > cameraSizeYprefer)
                 backgroundHeight = sizeY - 3;
 
             backgroundWallRight.transform.position = new Vector3(sizeX - 0.5f, -1.5f, 1);     
