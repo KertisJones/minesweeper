@@ -50,6 +50,10 @@ MonoBehaviour:
   idleMoveEase: 4
   leanDistance: 2.5
   leanDuration: 300
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
@@ -545,10 +549,6 @@ MonoBehaviour:
   scaleMultiplierShrink: 0.8
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
-  jumpInPlaceHeight: 0
-  jumpInPlaceDuration: 0.3
-  jumpInPlaceLoopDuration: -1
-  jumpInPlaceSequenceNextObject: {fileID: 0}
   enlargeSound: {fileID: 8300000, guid: 2e03a0fec3dc6d84786199384149f7d0, type: 3}
   shrinkSound: {fileID: 8300000, guid: 0f66df22c330cfe45a44fde3e7521e99, type: 3}
   jiggleIsEnabled: 1
@@ -710,6 +710,10 @@ MonoBehaviour:
   idleMoveEase: 4
   leanDistance: 1
   leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
@@ -1354,10 +1358,6 @@ MonoBehaviour:
   scaleMultiplierShrink: 0.8
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
-  jumpInPlaceHeight: 0
-  jumpInPlaceDuration: 0.3
-  jumpInPlaceLoopDuration: -1
-  jumpInPlaceSequenceNextObject: {fileID: 0}
   enlargeSound: {fileID: 8300000, guid: 2e03a0fec3dc6d84786199384149f7d0, type: 3}
   shrinkSound: {fileID: 8300000, guid: 0f66df22c330cfe45a44fde3e7521e99, type: 3}
   jiggleIsEnabled: 1
@@ -1519,6 +1519,10 @@ MonoBehaviour:
   idleMoveEase: 4
   leanDistance: 1
   leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
@@ -1706,7 +1710,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 812338045
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d6a310752039ea142b4d1e5b020f9458, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
@@ -2136,10 +2140,6 @@ MonoBehaviour:
   scaleMultiplierShrink: 0.8
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
-  jumpInPlaceHeight: 0
-  jumpInPlaceDuration: 0.3
-  jumpInPlaceLoopDuration: -1
-  jumpInPlaceSequenceNextObject: {fileID: 0}
   enlargeSound: {fileID: 8300000, guid: 4e7184d8933d5194394dbc6ae6ec31d1, type: 3}
   shrinkSound: {fileID: 8300000, guid: d6563a724d7117e48a3b0f6fa66dec25, type: 3}
   jiggleIsEnabled: 1
@@ -2289,6 +2289,10 @@ MonoBehaviour:
   idleMoveEase: 4
   leanDistance: 1
   leanDuration: 1
+  jumpInPlaceHeight: 0
+  jumpInPlaceDuration: 0.3
+  jumpInPlaceLoopDuration: -1
+  jumpInPlaceSequenceNextObject: {fileID: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
@@ -2537,7 +2541,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 812338045
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d6a310752039ea142b4d1e5b020f9458, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
@@ -2621,7 +2625,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 812338045
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d6a310752039ea142b4d1e5b020f9458, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0

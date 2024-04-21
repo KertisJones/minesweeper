@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: detailedTimer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3529772816800564802, guid: 9fb154b3e248e0241b7d229346ced406, type: 3}
+      propertyPath: endlessIsEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5730828839929765927, guid: 9fb154b3e248e0241b7d229346ced406, type: 3}
       propertyPath: m_Name
       value: 40L Sprint Mode

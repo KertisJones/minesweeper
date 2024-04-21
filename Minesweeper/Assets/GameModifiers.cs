@@ -17,6 +17,7 @@ public class GameModifiers : MonoBehaviour
     public int targetLines = 150;
     public bool detailedTimer = false;
     public float timeLimit = Mathf.Infinity;
+    public bool endlessIsEnabled = true;
 
     // Game Board Setup
     public Vector2 boardSize = new Vector2 (10, 20);
@@ -49,6 +50,7 @@ public class GameModifiers : MonoBehaviour
         gameMods.targetLines = targetLines;
         gameMods.detailedTimer = detailedTimer;
         gameMods.timeLimit = timeLimit;
+        gameMods.endlessIsEnabled = endlessIsEnabled;
 
         //Game Board Setup
         gameMods.boardSize = boardSize;

@@ -20,6 +20,7 @@ public class LoadNewScene : MonoBehaviour
     {
         Time.timeScale = 1;
         DOTween.Clear(true);
+        DOTween.KillAll();
         SceneManager.LoadScene(newScene);
     }
 
@@ -27,6 +28,7 @@ public class LoadNewScene : MonoBehaviour
     {
         Time.timeScale = 1;
         DOTween.Clear(true);
+        DOTween.KillAll();
         //DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

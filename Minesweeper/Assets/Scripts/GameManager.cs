@@ -140,6 +140,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        DOTween.KillAll();
+        
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         inputManager = InputManager.Instance;
         soundManager = GetComponent<SoundManager>();

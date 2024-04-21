@@ -9,6 +9,7 @@ public class EnableOnGameMode : MonoBehaviour
     public bool inverseToDisableOnGameMode = false;
     public bool onShowTitle = false;
     public bool onShowCredits = false;
+    public bool onEndlessIsEnabled = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +17,11 @@ public class EnableOnGameMode : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
         bool isEnabled = false;
-        if(onShowTitle && gameMods.showTitle)
+        if (onShowTitle && gameMods.showTitle)
             isEnabled = true;
-        if(onShowCredits && gameMods.minesweeperTextType == GameModifiers.MinesweeperTextType.credits)
+        if (onShowCredits && gameMods.minesweeperTextType == GameModifiers.MinesweeperTextType.credits)
+            isEnabled = true;
+        if (onEndlessIsEnabled && gameMods.endlessIsEnabled)
             isEnabled = true;
         
         // INVERSE?

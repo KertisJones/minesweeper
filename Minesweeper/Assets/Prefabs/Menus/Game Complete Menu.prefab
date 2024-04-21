@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d6a310752039ea142b4d1e5b020f9458, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.92156863}
   m_FlipX: 0
@@ -1457,12 +1457,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+--- !u!1 &4190165879721365769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3964747064262966838, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+  m_PrefabInstance: {fileID: 946857461395730239}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8641353556128725349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4190165879721365769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2c2a791e8e8384699519b4608c3772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inverseToDisableOnGameMode: 0
+  onShowTitle: 0
+  onShowCredits: 0
+  onEndlessIsEnabled: 1
 --- !u!114 &4190165879721365772 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3964747064262966835, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
   m_PrefabInstance: {fileID: 946857461395730239}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4190165879721365769}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}

@@ -60,6 +60,10 @@ PrefabInstance:
       value: Flash Ultra
       objectReference: {fileID: 0}
     - target: {fileID: 7540688294235473410, guid: 403909d7ffae79a4ca1fcd4737fcb982, type: 3}
+      propertyPath: endlessIsEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7540688294235473410, guid: 403909d7ffae79a4ca1fcd4737fcb982, type: 3}
       propertyPath: lineClearTrigger
       value: 1
       objectReference: {fileID: 0}
