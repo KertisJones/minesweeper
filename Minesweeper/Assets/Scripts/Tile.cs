@@ -118,53 +118,27 @@ public class Tile : MonoBehaviour
                 }
             }            
         }
-        TextMeshProUGUI supportText = text;
-        if (GetComponentInChildren<SetRandomSupporterName>() != null)
-            supportText = GetComponentInChildren<SetRandomSupporterName>().supportText;
         
-        if (isRowSolved)
+        // Triggered the frame after the row is solved
+        if (isRowSolved && tileBackground.color != solvedMarkColor)
         {
-            if (tileBackground.color != solvedMarkColor)
-            {
-                text.GetComponent<IdleJiggle>().Shake(30, 0.1f, true, true, true);
-                supportText.GetComponent<IdleJiggle>().Shake(30, 0.1f, true, true, true);
-            }
+            text.GetComponent<IdleJiggle>().Shake(30, 0.1f, true, true, true);
+            if (GetComponentInChildren<SetRandomSupporterName>() != null)
+                GetComponentInChildren<SetRandomSupporterName>().supportText.GetComponent<IdleJiggle>().Shake(30, 0.1f, true, true, true);;
 
             tileBackground.color = solvedMarkColor;
             shimmerOverlay.gameObject.SetActive(true);
-            
-            /*if (true || !isDisplay)
-            {
-                text.GetComponent<VertexJitter>().enabled = true;
-                supportText.GetComponent<VertexJitter>().enabled = true;      
-            }*/
-            
-                  
-
-            /*if (GetComponent<IdleJiggle>() != null)
-            {
-                GetComponent<IdleJiggle>().ShakeRotation(0.15f, 0.5f);
-                GetComponent<ButtonJiggle>().Enlarge(true);
-                //GetComponent<IdleJiggle>().ShakeScale(0.15f, 0.05f);
-            } */           
         }            
-        else
+        // Triggered the frame after the row is no longer solved
+        else if (!isRowSolved && tileBackground.color == solvedMarkColor)
         {
-            if (tileBackground.color == solvedMarkColor)
-            {
-                text.GetComponent<IdleJiggle>().ShakeKill();
-                supportText.GetComponent<IdleJiggle>().ShakeKill();
-            }
-
+            text.GetComponent<IdleJiggle>().ShakeKill();
+            if (GetComponentInChildren<SetRandomSupporterName>() != null)
+                GetComponentInChildren<SetRandomSupporterName>().supportText.GetComponent<IdleJiggle>().ShakeKill();
             tileBackground.color = Color.white;
+            
             if (!isDisplay)
                 shimmerOverlay.gameObject.SetActive(false);
-            
-            
-            /*text.GetComponent<VertexJitter>().enabled = false;
-            text.SetText(text.text);
-            supportText.GetComponent<VertexJitter>().enabled = false;
-            supportText.SetText(supportText.text);*/
         }
 
         revealedThisFrame = false;

@@ -136,12 +136,17 @@ public class GameManager : MonoBehaviour
     public delegate void TileSolveEvent();
     public static event TileSolveEvent OnTileSolveOrLandEvent;
 
+    private void OnApplicationQuit() 
+    {
+        DOTween.KillAll();
+    }
+
     #region Game Setup
     // Start is called before the first frame update
     void Awake()
     {
         DOTween.KillAll();
-        
+
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         inputManager = InputManager.Instance;
         soundManager = GetComponent<SoundManager>();
@@ -381,7 +386,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Position background elements;
-        if (!isTitleMenu)
+        if (!isTitleMenu && (sizeX != 10 || sizeY != 24))
         {
             float cameraSizeYprefer = ((sizeY - 4) / 2f) + 0.5f; //10.5f; Y Bounds
             float cameraSizeXprefer = (sizeX + 28) * 0.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth); //10f; X Bounds

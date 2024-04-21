@@ -63,10 +63,10 @@ public class IdleJiggle : MonoBehaviour
         DisableEverything();
     }
 
-    /*void OnDestroy()
+    void OnDestroy()
     {
         DisableEverything();
-    }*/
+    }
 
     void DisableEverything()
     {
@@ -104,6 +104,8 @@ public class IdleJiggle : MonoBehaviour
         if (myTransform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
             return;
         if (!jiggleIsEnabled)
+            return;
+        if (!this.gameObject.activeInHierarchy)
             return;
 
         startPositionLocal = this.transform.localPosition;

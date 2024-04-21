@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +30,7 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
     void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("ScoreKeeper");
+        DOTween.SetTweensCapacity(2000, 100);
 
         if (objs.Length > 1)
         {

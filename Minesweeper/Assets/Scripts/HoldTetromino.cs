@@ -58,20 +58,6 @@ public class HoldTetromino : MonoBehaviour
                 cleanseReady = true;
             }*/
         }
-
-        if (cleanseProgressBar != null)
-        {
-            if (IsHeldTetrominoCleansed())
-            {
-                cleanseProgressBar.GetComponent<ButtonJiggle>().ShrinkToZero();
-                cleanseProgressBar.GetComponent<ButtonJiggle>().jiggleIsEnabled = false;
-            }
-            else
-            {
-                cleanseProgressBar.GetComponent<ButtonJiggle>().jiggleIsEnabled = true;
-                cleanseProgressBar.GetComponent<ButtonJiggle>().Reset();
-            }
-        }
         
         /*else
         {
@@ -86,6 +72,25 @@ public class HoldTetromino : MonoBehaviour
             + cleanseScoreHighest + " ~ " + manualTileSolvePerfectStreakPoints + ", w" + manualTileSolvePerfectStreakIncludedWallsPointsTEST + " *L(" + manualTileSolvePerfectStreakPointsWithLevelTEST + ", w" + manualTileSolvePerfectStreakIncludedWallsPointsWithLevelTEST + ")\n-" 
             + scoreMissingTest + " + " + scoreRevealRemainingTest + " = " + scoreRevealTest + " (-" + scoreRevealNoLevelTest + "=" + (scoreRevealTest - scoreRevealNoLevelTest) + ")";*/
     }
+
+    void UpdateProgressBar()
+    {
+        if (cleanseProgressBar != null)
+        {
+            if (IsHeldTetrominoCleansed())
+            {
+                cleanseProgressBar.GetComponent<ButtonJiggle>().ShrinkToZero();
+                cleanseProgressBar.GetComponent<ButtonJiggle>().jiggleIsEnabled = false;
+            }
+            else
+            {
+                cleanseProgressBar.GetComponent<ButtonJiggle>().jiggleIsEnabled = true;
+                cleanseProgressBar.GetComponent<ButtonJiggle>().Reset();
+            }
+        }
+    }
+
+
 
     #region Input
     void OnEnable()
@@ -133,6 +138,8 @@ public class HoldTetromino : MonoBehaviour
 
         heldTetrominoPrevious = heldTetromino;
         heldTetromino = currentTetromino;
+
+        UpdateProgressBar();
 
         //gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(holdSwitchSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
@@ -253,6 +260,8 @@ public class HoldTetromino : MonoBehaviour
             cleanseButton.GetComponent<ButtonJiggle>().ShrinkToZero();
 
         Tooltip.HideTooltip_Static();
+
+        UpdateProgressBar();
     }
 
     public void AddToCleanseRecharge()//bool isPerfect, bool isEasyTile = false)
