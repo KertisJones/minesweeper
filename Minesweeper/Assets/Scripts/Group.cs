@@ -469,29 +469,27 @@ public class Group : MonoBehaviour
                 }
                 else
                 {
-                    foreach (Tile tile in GetChildTiles())
-                    {
-                        if (lockResets >= lockResetMax)
-                            tile.fadeOverlay.color = new Color(1, 1, 1, Mathf.Max(0, 0.5f - (lockPercentage * 0.5f)));
-                        else
-                            tile.fadeOverlay.color = new Color(0, 0, 0, Mathf.Max(0, 0.3f - (lockPercentage * 0.3f)));
-                    }
+                    if (lockResets >= lockResetMax)
+                        SetTileOverlayColor(new Color(1, 1, 1, Mathf.Max(0, 0.5f - (lockPercentage * 0.5f))));
+                    else
+                        SetTileOverlayColor(new Color(0, 0, 0, Mathf.Max(0, 0.3f - (lockPercentage * 0.3f))));
                 }
             }
             else
             {
-                /*if (lockDelayTimer <= 0)
-                {
-                    
-                }*/
                 isLocking = false;
-                foreach (Tile tile in GetChildTiles())
-                {
-                    tile.fadeOverlay.color = new Color(0, 0, 0, 0);
-                }
+                SetTileOverlayColor(new Color(0, 0, 0, 0));
             }
 
             lockDelayTimer -= Time.deltaTime;
+        }
+    }
+
+    public void SetTileOverlayColor(Color color)
+    {
+        foreach (Tile tile in GetChildTiles())
+        {
+            tile.fadeOverlay.color = color;
         }
     }
 
@@ -620,10 +618,7 @@ public class Group : MonoBehaviour
                     //Debug.Log("Bottom Height: " + bottomHeight + ", lowest Row: " + bottomHeightLowest);
                     lockResets = 0;
                     isLocking = false;
-                    foreach (Tile tile in GetChildTiles())
-                    {
-                        tile.fadeOverlay.color = new Color(0, 0, 0, 0);
-                    }
+                    SetTileOverlayColor(new Color(0, 0, 0, 0));
                 }
                     
             }
@@ -662,10 +657,7 @@ public class Group : MonoBehaviour
         isFalling = false;
         isLocking = false;
         
-        foreach (Tile tile in GetChildTiles())
-        {
-            tile.fadeOverlay.color = new Color(0, 0, 0, 0);
-        }
+        SetTileOverlayColor(new Color(0, 0, 0, 0));
 
         // Score filled horizontal lines
         rowsFilled = GameManager.scoreFullRows(this.transform);
@@ -857,23 +849,28 @@ public class Group : MonoBehaviour
             gm.currentTetromino = FindObjectOfType<TetrominoSpawner>().currentTetromino;
 
             // Input DAS for next tetromino
-            if (buttonLeftHeld)
-            {
-                gm.GetActiveTetromino().PressLeft();
-                gm.GetActiveTetromino().lastLeftButtonDown = lastLeftButtonDown;
-            }                
-            if (buttonRightHeld)
-            {
-                gm.GetActiveTetromino().PressRight();
-                gm.GetActiveTetromino().lastRightButtonDown = lastRightButtonDown;
-                //lastRightButtonDown
-            }
-            if (buttonSoftDropHeld)
-            {
-                gm.GetActiveTetromino().buttonSoftDropHeld = buttonSoftDropHeld;
-                gm.GetActiveTetromino().lastSoftDropDown = lastSoftDropDown;
-            }
-                
+            TransferDASToNewTetromino();                
+        }
+    }
+
+    public void TransferDASToNewTetromino()
+    {
+        // Input DAS for next tetromino
+        if (buttonLeftHeld)
+        {
+            gm.GetActiveTetromino().PressLeft();
+            gm.GetActiveTetromino().lastLeftButtonDown = lastLeftButtonDown;
+        }                
+        if (buttonRightHeld)
+        {
+            gm.GetActiveTetromino().PressRight();
+            gm.GetActiveTetromino().lastRightButtonDown = lastRightButtonDown;
+            //lastRightButtonDown
+        }
+        if (buttonSoftDropHeld)
+        {
+            gm.GetActiveTetromino().buttonSoftDropHeld = buttonSoftDropHeld;
+            gm.GetActiveTetromino().lastSoftDropDown = lastSoftDropDown;
         }
     }
 

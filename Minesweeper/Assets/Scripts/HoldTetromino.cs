@@ -97,11 +97,13 @@ public class HoldTetromino : MonoBehaviour
     {
         inputManager.holdPress.started += _ => PressHold();
         inputManager.cleansePress.started += _ => Cleanse();
+        GameManager.OnMinoLockEvent += ResetHeldColor;
     }
     void OnDisable()
     {
         inputManager.holdPress.started -= _ => PressHold();
         inputManager.cleansePress.started -= _ => Cleanse();
+        GameManager.OnMinoLockEvent -= ResetHeldColor;
     }
     void PressHold()
     {
@@ -115,20 +117,10 @@ public class HoldTetromino : MonoBehaviour
             return;
         
         GameObject currentTetromino = tetrominoSpawner.currentTetromino;
-        if (currentTetromino == heldTetromino || currentTetromino == heldTetrominoPrevious)
+        if (!isHoldPossible())
         {
-            //gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(holdFailedSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
             return;
-        }
-        if (swapPartner != null)
-        {
-            if (swapPartner.GetComponent<Group>().isFalling)
-            {
-                //gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(holdFailedSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-                return;
-            }
         }
         
         RemoveFromBoard(currentTetromino);
@@ -141,18 +133,41 @@ public class HoldTetromino : MonoBehaviour
 
         UpdateProgressBar();
 
-        //gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(holdSwitchSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
         if (cleanseProgressBar != null)
             cleanseProgressBar.ChangeColor(heldTetromino.GetComponentInChildren<Button>().image.color);
 
         // Input DAS for next tetromino
-        if (heldTetromino.GetComponent<Group>().buttonLeftHeld)
-            gm.GetActiveTetromino().PressLeft();
-        if (heldTetromino.GetComponent<Group>().buttonRightHeld)
-            gm.GetActiveTetromino().PressRight();
+        heldTetromino.GetComponent<Group>().TransferDASToNewTetromino();
         heldTetromino.GetComponent<Group>().currentRotation = 0;
+
+        heldTetromino.GetComponent<Group>().SetTileOverlayColor(new Color(0, 0, 0, 0.5f));
+        if (heldTetrominoPrevious != null)
+            heldTetrominoPrevious.GetComponent<Group>().SetTileOverlayColor(new Color(0, 0, 0, 0));
+    }
+
+    void ResetHeldColor()
+    {
+        if (heldTetromino != null)
+            heldTetromino.GetComponent<Group>().SetTileOverlayColor(new Color(0, 0, 0, 0));
+    }
+
+    bool isHoldPossible()
+    {
+        GameObject currentTetromino = tetrominoSpawner.currentTetromino;
+        if (currentTetromino == heldTetromino || currentTetromino == heldTetrominoPrevious)
+        {
+            return false;
+        }
+        if (swapPartner != null)
+        {
+            if (swapPartner.GetComponent<Group>().isFalling)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     void RemoveFromBoard(GameObject tetromino)
