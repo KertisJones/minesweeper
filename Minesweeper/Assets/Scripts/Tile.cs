@@ -40,9 +40,7 @@ public class Tile : MonoBehaviour
     public SpriteRenderer explodedMineBackground;
     public SpriteRenderer wrongFlagBackground;
     public SpriteShapeRenderer shimmerOverlay;
-    public Image fadeOverlay;
-    private Tween fadeTween;
-    
+    public Image fadeOverlay;    
     TextMeshProUGUI text;    
     
     GameManager gm;
@@ -333,6 +331,8 @@ public class Tile : MonoBehaviour
             revealedThisFrame = true;
             //gm.RevealTile(coordX, coordY, nearbyMines, isMine);
 
+            fadeOverlay.color =  new Color(0, 0, 0, 0);
+
             UpdateText();
 
             if (isMine)
@@ -599,25 +599,6 @@ public class Tile : MonoBehaviour
         }*/
         return false;
     }
-/*
-    public void DoFade(float fadeTime)
-    {
-        if (fadeTween != null)
-            if (fadeTween.IsActive())
-                if (fadeTween.IsPlaying())
-                    {
-                        fadeTween.Kill();
-                        fadeTween = null;
-                    }
-
-        fadeTween = fadeOverlay.DOColor(new Color(0,0,0, 0.5f), fadeTime);
-    }
-
-    public void EndFade()
-    {
-
-    }*/
-
 
     /*void Fall()
     {

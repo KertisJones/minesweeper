@@ -489,7 +489,10 @@ public class Group : MonoBehaviour
     {
         foreach (Tile tile in GetChildTiles())
         {
-            tile.fadeOverlay.color = color;
+            if (!tile.isRevealed)
+                tile.fadeOverlay.color = color;
+            else
+                tile.fadeOverlay.color =  new Color(0, 0, 0, 0);
         }
     }
 
@@ -657,7 +660,7 @@ public class Group : MonoBehaviour
         isFalling = false;
         isLocking = false;
         
-        SetTileOverlayColor(new Color(0, 0, 0, 0));
+        SetTileOverlayColor(new Color(0.1f, 0.1f, 0.1f, 0.1f));
 
         // Score filled horizontal lines
         rowsFilled = GameManager.scoreFullRows(this.transform);
