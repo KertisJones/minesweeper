@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 151f264a1915c654ba3275bcbc748333
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - MINE-SWEEPER
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 89f317a0aff5ce948849c69f82a473be, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

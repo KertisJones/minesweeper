@@ -8774,6 +8774,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2081153732}
     m_Modifications:
+    - target: {fileID: 3024768390377626168, guid: 5252eda699d1dcd4aa7c4a67d9618831, type: 3}
+      propertyPath: jiggleRotateIsEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3024768390377626172, guid: 5252eda699d1dcd4aa7c4a67d9618831, type: 3}
       propertyPath: m_Name
       value: VERSION Corner Variant
