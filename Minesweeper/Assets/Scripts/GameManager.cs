@@ -1003,7 +1003,7 @@ public class GameManager : MonoBehaviour
             OnGameOverEvent();
 
         // Reveal all tiles!
-        for (int i = -1; i <= sizeX; i++)
+        /*for (int i = -1; i <= sizeX; i++)
         {
             for (int j = -1; j < sizeY + 4; j++)
             {
@@ -1013,7 +1013,7 @@ public class GameManager : MonoBehaviour
                     GetGameTile(i, j).Reveal(true);
                 }
             }
-        }
+        }*/
 
         if (!isTitleMenu)
             GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>().Stop();

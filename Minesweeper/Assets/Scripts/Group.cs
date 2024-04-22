@@ -235,7 +235,13 @@ public class Group : MonoBehaviour
         // Default position not valid? Then it's game over
         if (!isValidGridPos() && !isDisplay)
         {
-            gm.EndGame();
+            // Uh oh, the game's over. Check if the player could be saved by hard clearing solved rows.
+            ClearRows(false);
+
+            if (!isValidGridPos() && !isDisplay)
+            {
+                gm.EndGame();
+            }
             //Debug.Log("GAME OVER");
             //Destroy(gameObject);
         }
@@ -838,9 +844,17 @@ public class Group : MonoBehaviour
 
             // Input DAS for next tetromino
             if (buttonLeftHeld)
+            {
                 gm.GetActiveTetromino().PressLeft();
+                gm.GetActiveTetromino().lastLeftButtonDown = lastLeftButtonDown;
+            }                
             if (buttonRightHeld)
+            {
                 gm.GetActiveTetromino().PressRight();
+                gm.GetActiveTetromino().lastRightButtonDown = lastRightButtonDown;
+                //lastRightButtonDown
+            }
+                
         }
     }
 

@@ -38,6 +38,7 @@ public class Tile : MonoBehaviour
 
     public SpriteRenderer tileBackground;
     public SpriteRenderer explodedMineBackground;
+    public SpriteRenderer wrongFlagBackground;
     public SpriteShapeRenderer shimmerOverlay;
     public Image fadeOverlay;
     private Tween fadeTween;
@@ -142,6 +143,9 @@ public class Tile : MonoBehaviour
         }
 
         revealedThisFrame = false;
+
+        if (gm.isGameOver && isFlagged && !isMine)
+            Reveal(true);
 
         /*fallClock -= Time.deltaTime;
         if (fallClock <= 0)
@@ -402,7 +406,8 @@ public class Tile : MonoBehaviour
         else if (isFlagged && gm.isGameOver && !isMine)
         {
             isRevealed = true;
-            explodedMineBackground.enabled = true;
+            //explodedMineBackground.enabled = true;
+            wrongFlagBackground.enabled = true;
             UpdateText();
 
             ZeroCascade();
