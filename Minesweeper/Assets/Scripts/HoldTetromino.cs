@@ -249,15 +249,15 @@ public class HoldTetromino : MonoBehaviour
             cleanseProgressBar.currentTween = 0;
         }        
 
-        cleanseButton.GetComponent<ButtonJiggle>().ShrinkToZero();
+        //cleanseButton.GetComponent<ButtonJiggle>().ShrinkToZero();
         cleanseProgressBar.GetComponent<IdleJiggle>().jumpInPlaceHeight = cleanseButton.GetComponent<IdleJiggle>().jumpInPlaceHeight;
 
         //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(cleanseActivateSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
         cleanseReady = false;
 
-        if (cleanseButton != null)
-            cleanseButton.GetComponent<ButtonJiggle>().ShrinkToZero();
+        /*if (cleanseButton != null)
+            cleanseButton.GetComponent<ButtonJiggle>().ShrinkToZero();*/
 
         Tooltip.HideTooltip_Static();
 

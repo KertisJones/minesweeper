@@ -841,7 +841,7 @@ public class GameManager : MonoBehaviour
         if (rowsCleared > 0)
         {
             gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
             if (OnLineClearEvent != null)
                 OnLineClearEvent(rowsCleared);
