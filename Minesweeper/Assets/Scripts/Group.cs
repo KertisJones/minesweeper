@@ -174,7 +174,7 @@ public class Group : MonoBehaviour
 
         Rotate(1);
     }
-    void PressSoftDrop()
+    public void PressSoftDrop()
     {
         // Don't go any further if this shouldn't be moved 
         if (gm == null)
@@ -867,6 +867,11 @@ public class Group : MonoBehaviour
                 gm.GetActiveTetromino().PressRight();
                 gm.GetActiveTetromino().lastRightButtonDown = lastRightButtonDown;
                 //lastRightButtonDown
+            }
+            if (buttonSoftDropHeld)
+            {
+                gm.GetActiveTetromino().buttonSoftDropHeld = buttonSoftDropHeld;
+                gm.GetActiveTetromino().lastSoftDropDown = lastSoftDropDown;
             }
                 
         }
