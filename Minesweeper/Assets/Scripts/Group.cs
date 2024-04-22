@@ -29,6 +29,7 @@ public class Group : MonoBehaviour
     // Locking
     public bool isLocking = false;
     public int lockResets = 0;
+    public int lockResetMax = 15;
     public float lockDelayTimer = 0;
 
     public float minePercent = 10;
@@ -77,8 +78,12 @@ public class Group : MonoBehaviour
     public AudioClip downSound;
     public AudioClip turnSound;
     public AudioClip landSound;
+    public AudioClip lockSound;
+    public AudioClip lockFinalSound;
     public AudioClip tetrisweepSound;
     public AudioClip tSpinSound;
+    public AudioClip placedAboveBoardWarningSound;
+
     void Awake()
     {
         inputManager = InputManager.Instance;
@@ -466,7 +471,7 @@ public class Group : MonoBehaviour
                 {
                     foreach (Tile tile in GetChildTiles())
                     {
-                        if (lockResets >= 15)
+                        if (lockResets >= lockResetMax)
                             tile.fadeOverlay.color = new Color(1, 1, 1, Mathf.Max(0, 0.5f - (lockPercentage * 0.5f)));
                         else
                             tile.fadeOverlay.color = new Color(0, 0, 0, Mathf.Max(0, 0.3f - (lockPercentage * 0.3f)));
@@ -517,7 +522,7 @@ public class Group : MonoBehaviour
             if (isHardDrop)
             {
                 UpdateGrid();
-                LockTetromino();
+                LockTetromino(true);
             }
             else
             {
@@ -577,7 +582,7 @@ public class Group : MonoBehaviour
     {
         if (!isFalling)
             return;
-        if (lockResets >= 15)
+        if (lockResets >= lockResetMax)
             LockTetromino();
         if (isLocking)
             return;
@@ -624,7 +629,7 @@ public class Group : MonoBehaviour
             }
             else
             {
-                if (lockResets < 15)
+                if (lockResets < lockResetMax)
                 {
                     lockDelayTimer = lockDelayActive;
                     lockResets++;
@@ -648,7 +653,7 @@ public class Group : MonoBehaviour
         return willLock;
     }
 
-    public void LockTetromino()
+    public void LockTetromino(bool isHardDrop = false)
     {
         if (!isFalling)
             return;
@@ -806,16 +811,25 @@ public class Group : MonoBehaviour
             }            
         }
 
+        int isTetrominoOffScreen = CheckIfTetrominoIsOffScreen();
         // End Game if block is completely off screen
-        if (CheckIfTetrominoIsOffScreen())
+        if (isTetrominoOffScreen == 2)
         {
             // Uh oh, the game's over. Check if the player could be saved by hard clearing solved rows.
             ClearRows(false);            
 
+            isTetrominoOffScreen = CheckIfTetrominoIsOffScreen();
             // Check if the tetromino is still off screen. If so, the game is over.
-            if (CheckIfTetrominoIsOffScreen())
+            if (isTetrominoOffScreen == 2)
                 gm.EndGame();
         }
+        
+        if (isTetrominoOffScreen == 0 && lockResets >= lockResetMax)
+            AudioSource.PlayClipAtPoint(lockFinalSound, new Vector3(0, 0, 0), 0.3f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        if (isTetrominoOffScreen == 0 && !isHardDrop)
+            AudioSource.PlayClipAtPoint(lockSound, new Vector3(0, 0, 0), 0.3f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        else if (isTetrominoOffScreen == 1)
+            AudioSource.PlayClipAtPoint(placedAboveBoardWarningSound, new Vector3(0, 0, 0), 0.6f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
             
         //GameManager.deleteFullRows();
         if (!gm.isGameOver)
@@ -923,17 +937,26 @@ public class Group : MonoBehaviour
     }
 
     // Failsafe in case block is completely off screen
-    bool CheckIfTetrominoIsOffScreen()
+    int CheckIfTetrominoIsOffScreen() // 0=On Screen, 1=Partially off screen, 2=Offscreen
     {
         bool tetrominoIsOffScreen = true;
+        bool tetrominoIsPartiallyOnScreen = false;
         foreach (Transform child in transform)
         {
             if (child.position.y < gm.sizeY - 4)
             {
                 tetrominoIsOffScreen = false;
             }
+            else
+            {
+                tetrominoIsPartiallyOnScreen = true;
+            }
         }
-        return tetrominoIsOffScreen;
+        if (tetrominoIsOffScreen)
+            return 2;
+        if (tetrominoIsPartiallyOnScreen)
+            return 1;
+        return 0;
     }
     public void SetMaximumFallDistance()
     {

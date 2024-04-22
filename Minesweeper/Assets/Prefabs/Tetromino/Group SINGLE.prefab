@@ -51,6 +51,7 @@ MonoBehaviour:
   isSetupTetromino: 0
   isLocking: 0
   lockResets: 0
+  lockResetMax: 15
   lockDelayTimer: 0
   minePercent: 20
   isDisplay: 0
@@ -70,8 +71,11 @@ MonoBehaviour:
   downSound: {fileID: 8300000, guid: 1ccfa3070b4c9b14d8f41342cd280e8b, type: 3}
   turnSound: {fileID: 8300000, guid: 1c11e6a77d1043f4494b2a13df581d1a, type: 3}
   landSound: {fileID: 8300000, guid: febe9af54fc0468439e36219c816b204, type: 3}
+  lockSound: {fileID: 8300000, guid: 2cb4731b5bdfa91409cb7aaa9d1ace0a, type: 3}
+  lockFinalSound: {fileID: 8300000, guid: c6404713483533840a0e16ebf2b4f9df, type: 3}
   tetrisweepSound: {fileID: 8300000, guid: 22d3ef7d8d14c3c489edbc8fe1c9b648, type: 3}
   tSpinSound: {fileID: 8300000, guid: 644c8ba5bc6fbf740b2ea940adc82164, type: 3}
+  placedAboveBoardWarningSound: {fileID: 8300000, guid: 10071632180fcbe40a5d55f4db76459c, type: 3}
 --- !u!82 &7484555242575450078
 AudioSource:
   m_ObjectHideFlags: 0
