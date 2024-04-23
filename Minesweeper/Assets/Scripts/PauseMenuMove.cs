@@ -10,14 +10,11 @@ public class PauseMenuMove : MonoBehaviour {
     public float speed = 6f;
     public bool isActive = false;
     GameManager gm;
-    public GameObject objectToDisableOnTimeTrial;
+    public GameObject[] objectsToDisableWhileActive;
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        if (objectToDisableOnTimeTrial != null)
-            if (gm.timeLimit != Mathf.Infinity)
-                objectToDisableOnTimeTrial.SetActive(false);
         
         targetActive = mainCamera.ScreenToWorldPoint(new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2, 10));
 
@@ -31,6 +28,11 @@ public class PauseMenuMove : MonoBehaviour {
     public void SetActive(bool isActiveNew)
     {
         isActive = isActiveNew;
+
+        foreach (GameObject obj in objectsToDisableWhileActive)
+        {
+            obj.SetActive(!isActiveNew);
+        }
     }
 
     void Update()
