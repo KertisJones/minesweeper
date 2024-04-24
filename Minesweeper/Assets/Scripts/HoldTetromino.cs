@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public class HoldTetromino : MonoBehaviour
 {
@@ -124,7 +125,7 @@ public class HoldTetromino : MonoBehaviour
         }
         
         RemoveFromBoard(currentTetromino);
-        AddToBoard(heldTetromino);
+        AddToBoard(heldTetromino);        
 
         gm.holds += 1;
 
@@ -139,6 +140,9 @@ public class HoldTetromino : MonoBehaviour
             cleanseProgressBar.ChangeColor(heldTetromino.GetComponentInChildren<Button>().image.color);
 
         // Input DAS for next tetromino
+        if (heldTetrominoPrevious != null)
+            heldTetrominoPrevious.GetComponent<Group>().UpdateInputValues();
+        heldTetromino.GetComponent<Group>().UpdateInputValues();
         heldTetromino.GetComponent<Group>().TransferDASToNewTetromino();
         heldTetromino.GetComponent<Group>().currentRotation = 0;
 
@@ -265,7 +269,7 @@ public class HoldTetromino : MonoBehaviour
         }        
 
         //cleanseButton.GetComponent<ButtonJiggle>().ShrinkToZero();
-        cleanseProgressBar.GetComponent<IdleJiggle>().jumpInPlaceHeight = cleanseButton.GetComponent<IdleJiggle>().jumpInPlaceHeight;
+        //cleanseProgressBar.GetComponent<IdleJiggle>().jumpInPlaceHeight = cleanseButton.GetComponent<IdleJiggle>().jumpInPlaceHeight;
 
         //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(cleanseActivateSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));

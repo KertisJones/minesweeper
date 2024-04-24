@@ -56,6 +56,8 @@ public class Group : MonoBehaviour
     // Input
     public float dasDelay = 0.25f;
     public float autoRepeatRate = 0.05f;
+    public float dasCutDelay = 0.017f;
+    public float softDropFactor = 12;
     [HideInInspector]
     public bool buttonLeftHeld = false;
     bool buttonLeftHeldSecondary = false;
@@ -66,6 +68,7 @@ public class Group : MonoBehaviour
     float lastRightButtonDown = 0;
     bool buttonSoftDropHeld = false;
     float lastSoftDropDown = 0;
+    float lastDASCutDelay = 0;
 
     public int currentRotation = 0; // 0 = spawn state, 1 = counter-clockwise rotation from spawn, 2 = 2 successive rotations from spawn, 3 = clockwise rotation from spawn
     bool lastSuccessfulMovementWasRotation = false;
@@ -214,6 +217,21 @@ public class Group : MonoBehaviour
             Fall(maximumFallDistance, true);
         }
     }
+
+    public void UpdateInputValues()
+    {
+        //Official Guidline Gravity Curve: Time = (0.8-((Level-1)*0.007))(Level-1)
+        fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), (gm.level - 1));
+
+        autoRepeatRate = PlayerPrefs.GetFloat("AutoRepeatRate", autoRepeatRate * 1000) / 1000;
+        dasDelay = PlayerPrefs.GetFloat("DelayedAutoShift", dasDelay * 1000) / 1000;
+        dasCutDelay = PlayerPrefs.GetFloat("DASCutDelay", dasCutDelay * 1000) / 1000;
+        softDropFactor = PlayerPrefs.GetFloat("SoftDropFactor", softDropFactor);
+
+        lastDASCutDelay = Time.time;
+
+        //Debug.Log("ARR:" + autoRepeatRate + ", DAS:" + dasDelay + ", DCD:" + dasCutDelay + ", SDF:" + softDropFactor);
+    }
     #endregion
 
     // Start is called before the first frame update
@@ -221,8 +239,7 @@ public class Group : MonoBehaviour
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
-        //Official Guidline Gravity Curve: Time = (0.8-((Level-1)*0.007))(Level-1)
-        fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), (gm.level - 1));
+        UpdateInputValues();        
 
         //if (gameMode.dynamicTime) // TODO
         //  lockDelayActive = 0.1f + (fallSpeed / 2);
@@ -399,10 +416,10 @@ public class Group : MonoBehaviour
             
         // DAS Move
         // Move Left
-        if (buttonLeftHeld && Time.time - lastLeftButtonDown >= dasDelay && Time.time - lastMove >= autoRepeatRate)
+        if (buttonLeftHeld && Time.time - lastLeftButtonDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastMove >= autoRepeatRate)
             Move(-1);
         // Move Right
-        if (buttonRightHeld && Time.time - lastRightButtonDown >= dasDelay && Time.time - lastMove >= autoRepeatRate)
+        if (buttonRightHeld && Time.time - lastRightButtonDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastMove >= autoRepeatRate)
             Move(1);
         /*// Move Left
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Keypad4) || (Input.GetAxis("Horizontal") == -1 && Time.time - lastMove >= lockDelayActive / 10))
@@ -423,7 +440,7 @@ public class Group : MonoBehaviour
         // Move Downwards and Fall
         //int fallDistance = 1;
         // Soft Drop
-        if (buttonSoftDropHeld && Time.time - lastSoftDropDown >= dasDelay && Time.time - lastFall >= autoRepeatRate)
+        if (buttonSoftDropHeld && Time.time - lastSoftDropDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastFall >= fallSpeed / softDropFactor)
             SoftDrop();
         //bool isSoftDrop = false;// ((Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Keypad2));
         // Hard Drop
@@ -831,7 +848,7 @@ public class Group : MonoBehaviour
         {
             // Spawn next Group; if playere scored a Tetris, spawn a fully revealed Tetronimo
             // Spawn the next mino *before* deleting rows, or else it will soft lock
-            FindObjectOfType<TetrominoSpawner>().spawnNext(fillWasDifficult);
+            gm.tetrominoSpawner.spawnNext(fillWasDifficult);
 
             // Combo Checks!
             if (rowsFilled > 0)
@@ -849,7 +866,7 @@ public class Group : MonoBehaviour
 
             // Set this as the previous tetromino
             gm.previousTetromino = this.gameObject;
-            gm.currentTetromino = FindObjectOfType<TetrominoSpawner>().currentTetromino;
+            gm.currentTetromino = gm.tetrominoSpawner.currentTetromino;
 
             // Input DAS for next tetromino
             TransferDASToNewTetromino();                
@@ -891,7 +908,7 @@ public class Group : MonoBehaviour
             GameManager.markSolvedRows();
 
             // Update the fall distance for the new mino so ghost blocks don't get out of sync
-            FindObjectOfType<TetrominoSpawner>().currentTetromino.GetComponent<Group>().SetMaximumFallDistance();
+            gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().SetMaximumFallDistance();
         }
     }
 
@@ -1017,6 +1034,8 @@ public class Group : MonoBehaviour
         
         bool lastSuccessfulMovementWasRotationTemp = lastSuccessfulMovementWasRotation;
         lastSuccessfulMovementWasRotation = true;
+
+        lastDASCutDelay = Time.time;
 
         // See if valid
         if (isValidGridPos())

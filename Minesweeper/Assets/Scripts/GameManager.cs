@@ -11,9 +11,12 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
     private Camera mainCamera;
+    [HideInInspector]
     public GameModifiers gameMods;
     [HideInInspector]
     public SoundManager soundManager;
+    [HideInInspector]
+    public TetrominoSpawner tetrominoSpawner;
     float startTime;
     float endtime;
     [HideInInspector]
@@ -151,6 +154,7 @@ public class GameManager : MonoBehaviour
         inputManager = InputManager.Instance;
         soundManager = GetComponent<SoundManager>();
         gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
+        tetrominoSpawner = GameObject.FindObjectOfType<TetrominoSpawner>();
 
         GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().runs += 1;
 
@@ -1028,7 +1032,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         if (!isTitleMenu)
-            gameOverMenu.isActive = true;
+            gameOverMenu.SetActive(true);
     }
     #endregion
     #region Scoring
@@ -1301,7 +1305,7 @@ public class GameManager : MonoBehaviour
             if (isMarathonOverPause)
             {
                 isEndless = true;
-                marathonOverMenu.isActive = true;              
+                marathonOverMenu.SetActive(true);              
                 if (!isTitleMenu)
                     GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().SaveCurrentGame();  
             }
@@ -1309,7 +1313,7 @@ public class GameManager : MonoBehaviour
             {
                 if (!bypassTitlePause)
                 {
-                    pauseMenu.isActive = true;
+                    pauseMenu.SetActive(true);
                     soundManager.EnablePauseFilter();
                 }                    
             }
@@ -1320,11 +1324,11 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 1;
                 isPaused = false;       
-                pauseMenu.isActive = false;
+                pauseMenu.SetActive(false);
                 soundManager.DisablePauseFilter();
-                marathonOverMenu.isActive = false;
+                marathonOverMenu.SetActive(false);
                 if (!bypassTitlePause)
-                    settingsMenu.isActive = false;
+                    settingsMenu.SetActive(false);
                 StartCoroutine(ResetPause());
             }
         }        

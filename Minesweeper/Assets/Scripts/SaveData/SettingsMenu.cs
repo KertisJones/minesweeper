@@ -15,12 +15,20 @@ public class SettingsMenu : MonoBehaviour
     public Toggle screenShakeToggle;
     public Toggle lockDelayDisplayToggle;
     public TMP_Dropdown languageDropdown;
-    float masterVolume = 0.4f; //Max 0.8
+    public LinearRangeSlider autoRepeatRateSlider;
+    public LinearRangeSlider delayedAutoShiftSlider;
+    public LinearRangeSlider dasCutDelaySlider;
+    public LinearRangeSlider softDropFactorSlider;
+    float masterVolume = 0.5f; //Max 0.5
     float musicVolume = 0.25f; //Max 0.5
     float soundVolume = 0.5f; //Max 1
     bool screenShakeEnabled = true;
     bool lockDelayDisplayEnabled = true;
     int languageIndex = 0;
+    float autoRepeatRate = 50;
+    float delayedAutoShift = 250;
+    float dasCutDelay = 17;
+    float softDropFactor = 12;
 
     private void Awake()
     {
@@ -32,6 +40,11 @@ public class SettingsMenu : MonoBehaviour
         languageIndex = PlayerPrefs.GetInt("LanguageIndex", 1);
         //controlScheme = PlayerPrefs.GetInt("ControlScheme", 0);
         //abTest = PlayerPrefs.GetInt("ABTest", 0);
+
+        autoRepeatRate = PlayerPrefs.GetFloat("AutoRepeatRate", autoRepeatRate);
+        delayedAutoShift = PlayerPrefs.GetFloat("DelayedAutoShift", delayedAutoShift);
+        dasCutDelay = PlayerPrefs.GetFloat("DASCutDelay", dasCutDelay);
+        softDropFactor = PlayerPrefs.GetFloat("SoftDropFactor", softDropFactor);
     }
 
     // Start is called before the first frame update
@@ -54,15 +67,27 @@ public class SettingsMenu : MonoBehaviour
         languageDropdown.value = languageIndex;
         languageDropdown.onValueChanged.AddListener(delegate { LanguageSelectDropdown(); });
         StartCoroutine(SetLocale(languageIndex));
+
+        autoRepeatRateSlider.SetAdjustedValue(autoRepeatRate);
+        autoRepeatRateSlider.slider.onValueChanged.AddListener(delegate { AutoRepeatRateSlider(); });
+
+        delayedAutoShiftSlider.SetAdjustedValue(delayedAutoShift);
+        delayedAutoShiftSlider.slider.onValueChanged.AddListener(delegate { DelayedAutoShiftSlider(); });
+
+        dasCutDelaySlider.SetAdjustedValue(dasCutDelay);
+        dasCutDelaySlider.slider.onValueChanged.AddListener(delegate { DASCutDelaySlider(); });
+
+        softDropFactorSlider.slider.value = softDropFactor;
+        softDropFactorSlider.slider.onValueChanged.AddListener(delegate { SoftDropFactorSlider(); });
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    /*void Update()
+    {        
         if (masterVolumeSlider != null)
         {
             masterVolumeSlider.value = masterVolume;
-            if (pauseMenuMove.isActive)
+            if (pauseMenuMove.GetIsActive())
                 masterVolumeSlider.interactable = true;
             else
                 masterVolumeSlider.interactable = false;
@@ -70,7 +95,7 @@ public class SettingsMenu : MonoBehaviour
         if (musicVolumeSlider != null)
         {
             musicVolumeSlider.value = musicVolume;
-            if (pauseMenuMove.isActive)
+            if (pauseMenuMove.GetIsActive())
                 musicVolumeSlider.interactable = true;
             else
                 musicVolumeSlider.interactable = false;
@@ -78,7 +103,7 @@ public class SettingsMenu : MonoBehaviour
         if (soundVolumeSlider != null)
         {
             soundVolumeSlider.value = soundVolume;
-            if (pauseMenuMove.isActive)
+            if (pauseMenuMove.GetIsActive())
                 soundVolumeSlider.interactable = true;
             else
                 soundVolumeSlider.interactable = false;
@@ -86,7 +111,7 @@ public class SettingsMenu : MonoBehaviour
         if (screenShakeToggle != null)
         {
             screenShakeToggle.isOn = !screenShakeEnabled;
-            if (pauseMenuMove.isActive)
+            if (pauseMenuMove.GetIsActive())
                 screenShakeToggle.interactable = true;
             else
                 screenShakeToggle.interactable = false;
@@ -94,7 +119,7 @@ public class SettingsMenu : MonoBehaviour
         if (lockDelayDisplayToggle != null)
         {
             lockDelayDisplayToggle.isOn = lockDelayDisplayEnabled;
-            if (pauseMenuMove.isActive)
+            if (pauseMenuMove.GetIsActive())
                 lockDelayDisplayToggle.interactable = true;
             else
                 lockDelayDisplayToggle.interactable = false;
@@ -102,12 +127,12 @@ public class SettingsMenu : MonoBehaviour
         if (languageDropdown != null)
         {
             languageDropdown.value = languageIndex;
-            if (pauseMenuMove.isActive)
+            if (pauseMenuMove.GetIsActive())
                 languageDropdown.interactable = true;
             else
                 languageDropdown.interactable = false;
         }
-    }
+    }*/
 
     public void MasterVolumeSlider() // Sets the Master Volume Slider from PlayerPrefs
     {
@@ -157,5 +182,31 @@ public class SettingsMenu : MonoBehaviour
     public void HoverMusicExit()
     {
         gm.soundManager.DisablePauseFilter();
+    }
+
+    public void AutoRepeatRateSlider()
+    {
+        autoRepeatRate = autoRepeatRateSlider.GetAdjustedValue();        
+        PlayerPrefs.SetFloat("AutoRepeatRate", autoRepeatRate);
+        gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().UpdateInputValues();
+    }
+    public void DelayedAutoShiftSlider()
+    {
+        delayedAutoShift = delayedAutoShiftSlider.GetAdjustedValue();
+        PlayerPrefs.SetFloat("DelayedAutoShift", delayedAutoShift);
+        gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().UpdateInputValues();
+    }
+    public void DASCutDelaySlider()
+    {
+        dasCutDelay = dasCutDelaySlider.GetAdjustedValue();
+        PlayerPrefs.SetFloat("DASCutDelay", dasCutDelay);
+        gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().UpdateInputValues();
+    }
+
+    public void SoftDropFactorSlider()
+    {
+        softDropFactor = softDropFactorSlider.GetAdjustedValue();
+        PlayerPrefs.SetFloat("SoftDropFactor", softDropFactor);
+        gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().UpdateInputValues();
     }
 }

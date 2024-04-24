@@ -65,6 +65,7 @@ public class TetrominoSpawner : MonoBehaviour
         }
 
         currentTetromino.GetComponent<Group>().LayMines();
+        currentTetromino.GetComponent<Group>().UpdateInputValues();
 
         spawnPreview();
     }

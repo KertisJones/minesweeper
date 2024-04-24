@@ -224,7 +224,7 @@ public class Tile : MonoBehaviour
                 myColor = Color.white;
         }
 
-        if (gm.isPaused && !gm.isGameOver && !gm.marathonOverMenu.isActive)
+        if (gm.isPaused && !gm.isGameOver && !gm.marathonOverMenu.GetIsActive())
             myText = "";
 
         if (text != null)

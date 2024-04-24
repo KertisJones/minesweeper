@@ -8,13 +8,15 @@ public class PauseMenuMove : MonoBehaviour {
     public Vector3 targetRest;
     public Vector3 targetActive;
     public float speed = 6f;
-    public bool isActive = false;
+    private bool isActive = false;
     GameManager gm;
+    TabSelection tabs;
     public GameObject[] objectsToDisableWhileActive;
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        tabs = GetComponent<TabSelection>();
         
         targetActive = mainCamera.ScreenToWorldPoint(new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2, 10));
 
@@ -25,13 +27,25 @@ public class PauseMenuMove : MonoBehaviour {
         this.transform.localScale = new Vector3(scaleModifier, scaleModifier, scaleModifier);
         this.transform.position = targetRest;
     }
+    public bool GetIsActive()
+    {
+        return isActive;
+    }
     public void SetActive(bool isActiveNew)
     {
         isActive = isActiveNew;
 
-        foreach (GameObject obj in objectsToDisableWhileActive)
+        for (int i = 0; i < objectsToDisableWhileActive.Length; i++)
         {
-            obj.SetActive(!isActiveNew);
+            objectsToDisableWhileActive[i].SetActive(!isActiveNew);
+        }
+
+        if (tabs != null)
+        {
+            if (isActive)
+                tabs.RefreshTabs();
+            else
+                tabs.HideTabs();
         }
     }
 

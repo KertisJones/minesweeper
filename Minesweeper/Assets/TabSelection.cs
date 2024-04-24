@@ -28,8 +28,8 @@ public class TabSelection : MonoBehaviour
             currentTab = TabMenus.Length - 1;
         RefreshTabs();
     }
-
-    void RefreshTabs()
+    
+    public void RefreshTabs()
     {
         if (TabMenus.Length == 0)
             return;
@@ -43,7 +43,19 @@ public class TabSelection : MonoBehaviour
             }            
         }
 
-        TabMenus[currentTab].SetActive(true);
-        TabButtons[currentTab].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+        if (currentTab >= 0)
+        {
+            TabMenus[currentTab].SetActive(true);
+            TabButtons[currentTab].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+        }        
+    }
+
+    public void HideTabs()
+    {
+        for (int i = 0; i < TabMenus.Length; i++)
+        {
+            TabMenus[i].SetActive(false);
+            TabButtons[i].GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);          
+        }
     }
 }

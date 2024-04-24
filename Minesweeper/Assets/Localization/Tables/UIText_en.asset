@@ -372,6 +372,30 @@ MonoBehaviour:
     m_Localized: Tetrisweeping
     m_Metadata:
       m_Items: []
+  - m_Id: 7178027099217920
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178044815958016
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178065133166592
+    m_Localized: Handling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178359053213696
+    m_Localized: Video Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178438203924480
+    m_Localized: Audio Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178483062005760
+    m_Localized: Handling Settings
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

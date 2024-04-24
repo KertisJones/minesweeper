@@ -66,11 +66,11 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
         /*if (cameraShake == null)
             cameraShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();*/
         
-        if ((gm.GetScore() > bestScore) && !(gm.isEndless && !gm.marathonOverMenu.isActive)) // Endless mode has not yet begun
+        if ((gm.GetScore() > bestScore) && !(gm.isEndless && !gm.marathonOverMenu.GetIsActive())) // Endless mode has not yet begun
         {
             bestScore = gm.GetScore();            
         }
-        if ((gm.GetScore() > bestScoreToday) && !(gm.isEndless && !gm.marathonOverMenu.isActive)) // Endless mode has not yet begun
+        if ((gm.GetScore() > bestScoreToday) && !(gm.isEndless && !gm.marathonOverMenu.GetIsActive())) // Endless mode has not yet begun
         {
             bestScoreToday = gm.GetScore();            
         }
@@ -105,11 +105,11 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
             Debug.Log("Can't save game of type " + GetComponent<GameModifiers>().gameModeName);
         
         // Time updates
-        if ((gm.GetTime() < bestTime) && (gm.isEndless && gm.marathonOverMenu.isActive)) // Endless mode has not yet begun
+        if ((gm.GetTime() < bestTime) && (gm.isEndless && gm.marathonOverMenu.GetIsActive())) // Endless mode has not yet begun
         {
             bestTime = gm.GetTime();            
         }
-        if ((gm.GetTime() < bestTimeToday) && (gm.isEndless && gm.marathonOverMenu.isActive)) // Endless mode has not yet begun
+        if ((gm.GetTime() < bestTimeToday) && (gm.isEndless && gm.marathonOverMenu.GetIsActive())) // Endless mode has not yet begun
         {
             bestTimeToday = gm.GetTime();            
         }
@@ -158,9 +158,9 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
         if (gm.tSpinsweepsCleared > a_SaveData.m_tSpinsweepsClearedBest)
             a_SaveData.m_tSpinsweepsClearedBest = gm.tSpinsweepsCleared;     
 
-        if (gm.GetTime() < a_SaveData.m_gameTimeBest && (gm.isEndless && gm.marathonOverMenu.isActive))
+        if (gm.GetTime() < a_SaveData.m_gameTimeBest && (gm.isEndless && gm.marathonOverMenu.GetIsActive()))
             a_SaveData.m_gameTimeBest = gm.GetTime();
-        else if (a_SaveData.m_gameTimeBest == 0 && (gm.isEndless && gm.marathonOverMenu.isActive))
+        else if (a_SaveData.m_gameTimeBest == 0 && (gm.isEndless && gm.marathonOverMenu.GetIsActive()))
             a_SaveData.m_gameTimeBest = gm.GetTime();
 
         a_SaveData.m_gamesPlayedTotal++;
@@ -200,7 +200,7 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
         SaveData.GameStatsData gameStatsData = new SaveData.GameStatsData();
         gameStatsData.dateTime = System.DateTime.Now;
         gameStatsData.m_score = gm.GetScore();
-        gameStatsData.m_isEndless = gm.isEndless && !gm.marathonOverMenu.isActive;
+        gameStatsData.m_isEndless = gm.isEndless && !gm.marathonOverMenu.GetIsActive();
         gameStatsData.m_gameTime = gm.GetTime();
         gameStatsData.m_level = gm.level;
         gameStatsData.m_linesCleared = gm.linesCleared;

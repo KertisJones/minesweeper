@@ -363,6 +363,30 @@ MonoBehaviour:
     m_Key: GUI Tetrisweeping
     m_Metadata:
       m_Items: []
+  - m_Id: 7178027099217920
+    m_Key: Menu Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178044815958016
+    m_Key: Menu Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178065133166592
+    m_Key: Menu Handling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178359053213696
+    m_Key: Menu VideoSettings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178438203924480
+    m_Key: Menu AudioSettings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178483062005760
+    m_Key: Menu HandlingSettings
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

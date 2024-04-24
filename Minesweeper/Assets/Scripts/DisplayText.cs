@@ -321,7 +321,7 @@ public class DisplayText : MonoBehaviour
             
             string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GameMode " + gameMode); // Returns translation of game mode name, ex. "Marathon"
 
-            if (gm.isEndless && !gm.marathonOverMenu.isActive)
+            if (gm.isEndless && !gm.marathonOverMenu.GetIsActive())
                 localizedText += " (" + LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GameMode Endless") + ")"; // " (Endless)"
             this.GetComponent<TextMeshProUGUI>().text = localizedText;
         }
