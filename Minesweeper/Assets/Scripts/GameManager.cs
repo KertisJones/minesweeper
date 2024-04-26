@@ -391,7 +391,7 @@ public class GameManager : MonoBehaviour
         else if (gameMods.wallType == GameModifiers.WallType.unlock)
         {
             safeEdgeTilesGained = -1;
-            //AddSafeTileToEdges();            
+            AddSafeTileToEdges();            
         }
 
         // Position background elements;

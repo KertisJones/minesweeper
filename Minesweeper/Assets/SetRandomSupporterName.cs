@@ -41,7 +41,9 @@ public class SetRandomSupporterName : MonoBehaviour
         "Sam Figg",
         "Lazuli Quetzal",
         "Maura",
-        "Bio Hammer"
+        "Bio Hammer",
+        "Draconis Eltanin",
+        "Camellias"
 
     };
     public TextMeshProUGUI supportText;

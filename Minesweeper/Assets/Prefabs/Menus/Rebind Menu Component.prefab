@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 6540135162697163747}
   - component: {fileID: 7690341280132723977}
   - component: {fileID: 7180114954788683639}
+  - component: {fileID: 7285507787366495955}
   m_Layer: 5
   m_Name: 3
   m_TagString: Untagged
@@ -559,6 +560,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &7285507787366495955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540135162697163745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfa95859c1433c47af0850a148044c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollView: {fileID: 0}
 --- !u!1 &6540135163320903221
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +587,7 @@ GameObject:
   - component: {fileID: 6540135163320903223}
   - component: {fileID: 7741182956189144235}
   - component: {fileID: 6173469340208485760}
+  - component: {fileID: 2038886056410380691}
   m_Layer: 5
   m_Name: 4
   m_TagString: Untagged
@@ -805,6 +820,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &2038886056410380691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540135163320903221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfa95859c1433c47af0850a148044c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollView: {fileID: 0}
 --- !u!1 &6540135163367846500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,6 +1117,7 @@ GameObject:
   - component: {fileID: 6540135163399852710}
   - component: {fileID: 4447780268540959145}
   - component: {fileID: 1579753006839959641}
+  - component: {fileID: 8797242388237501989}
   m_Layer: 5
   m_Name: 1
   m_TagString: Untagged
@@ -1321,6 +1350,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &8797242388237501989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540135163399852708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfa95859c1433c47af0850a148044c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollView: {fileID: 0}
 --- !u!1 &6540135163418062814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,6 +1377,7 @@ GameObject:
   - component: {fileID: 6540135163418062784}
   - component: {fileID: 8272239743533688922}
   - component: {fileID: 5341304523176735646}
+  - component: {fileID: 7378979317749543017}
   m_Layer: 5
   m_Name: 5
   m_TagString: Untagged
@@ -1567,6 +1610,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &7378979317749543017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540135163418062814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfa95859c1433c47af0850a148044c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollView: {fileID: 0}
 --- !u!1 &6540135163918186561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,6 +1637,7 @@ GameObject:
   - component: {fileID: 6540135163918186563}
   - component: {fileID: 8216342179370805886}
   - component: {fileID: 1289536484004191552}
+  - component: {fileID: 2030923439743522492}
   m_Layer: 5
   m_Name: 2
   m_TagString: Untagged
@@ -1813,6 +1870,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &2030923439743522492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540135163918186561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfa95859c1433c47af0850a148044c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollView: {fileID: 0}
 --- !u!1 &6540135163946911580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,6 +1897,7 @@ GameObject:
   - component: {fileID: 6540135163946911582}
   - component: {fileID: 7521675321919605105}
   - component: {fileID: 2608148521615235088}
+  - component: {fileID: 5747031280540810250}
   m_Layer: 5
   m_Name: 6
   m_TagString: Untagged
@@ -2059,6 +2130,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &5747031280540810250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540135163946911580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfa95859c1433c47af0850a148044c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollView: {fileID: 0}
 --- !u!1 &6540135164069632790
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,6 +2292,7 @@ GameObject:
   - component: {fileID: 6540135164413251177}
   - component: {fileID: 1963494408283464583}
   - component: {fileID: 4844826739957890490}
+  - component: {fileID: 8664799800329913300}
   m_Layer: 5
   m_Name: 7
   m_TagString: Untagged
@@ -2440,6 +2525,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &8664799800329913300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540135164413251175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfa95859c1433c47af0850a148044c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollView: {fileID: 0}
 --- !u!1 &6540135164486348141
 GameObject:
   m_ObjectHideFlags: 0
@@ -2642,7 +2740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rotate Clockwise
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
   m_sharedMaterial: {fileID: 7539457901175315547, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
