@@ -331,7 +331,7 @@ public class GameManager : MonoBehaviour
 
         // Bottom Display Tiles
         floorTiles = new List<GameObject>();
-        for (int i = -1; i <= sizeX; i++)
+        for (int i = 0; i < sizeX; i++)
         {
             //place display tiles at bottom
             GameObject newTile = Instantiate(tile, new Vector3(i, -1, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
@@ -348,7 +348,7 @@ public class GameManager : MonoBehaviour
         rightBorderTiles = new List<GameObject>();
         if (gameMods.wallType == GameModifiers.WallType.playable)
         {
-            for (int i = 0; i < sizeY; i++)
+            for (int i = -1; i < sizeY; i++)
             {
                 //place display tile on left side
                 GameObject newTile = Instantiate(tileGroup, new Vector3(-1, i, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
@@ -387,6 +387,11 @@ public class GameManager : MonoBehaviour
                     if (!rightBorderTiles[i-1].GetComponentInChildren<Tile>().isMine || !rightBorderTiles[i-2].GetComponentInChildren<Tile>().isMine)
                         rightBorderTiles[i].GetComponentInChildren<Tile>().isMine = true;
             }
+        }
+        else if (gameMods.wallType == GameModifiers.WallType.unlock)
+        {
+            safeEdgeTilesGained = -1;
+            //AddSafeTileToEdges();            
         }
 
         // Position background elements;
@@ -569,17 +574,17 @@ public class GameManager : MonoBehaviour
             else
                 return null;
         }
-        else if (x == -1 && y >= 0 && y < leftBorderTiles.Count)
+        else if (x == -1 && y >= -1 && y < leftBorderTiles.Count-1)
         {
-            return leftBorderTiles[y].GetComponentInChildren<Tile>();
+            return leftBorderTiles[y+1].GetComponentInChildren<Tile>();
         }
-        else if (x == sizeX && y >= 0 && y < rightBorderTiles.Count)
+        else if (x == sizeX && y >= -1 && y < rightBorderTiles.Count-1)
         {
-            return rightBorderTiles[y].GetComponentInChildren<Tile>();
+            return rightBorderTiles[y+1].GetComponentInChildren<Tile>();
         }
-        else if (x >= -1 && x <= sizeX && y == -1)
+        else if (x >= 0 && x < sizeX && y == -1)
         {
-            return floorTiles[x+1].GetComponent<Tile>();
+            return floorTiles[x].GetComponent<Tile>();
         }
         //Debug.Log("Failed to find tile " + x + ", " + y);
         return null;
@@ -945,29 +950,29 @@ public class GameManager : MonoBehaviour
         if (gameMods.wallType == GameModifiers.WallType.unlock)
         {
             // Place display tiles at bottom
-            GameObject newTile = Instantiate(tile, new Vector3(-1, leftBorderTiles.Count, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-            newTile.name = "Tile (" + -1 + ", " + leftBorderTiles.Count + ")";
+            GameObject newTile = Instantiate(tile, new Vector3(-1, leftBorderTiles.Count-1, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+            newTile.name = "Tile (" + -1 + ", " + (leftBorderTiles.Count-1) + ")";
             newTile.GetComponent<Tile>().coordX = -1;
-            newTile.GetComponent<Tile>().coordY = leftBorderTiles.Count;
+            newTile.GetComponent<Tile>().coordY = leftBorderTiles.Count - 1;
             newTile.GetComponent<Tile>().isRevealed = true;
             newTile.GetComponent<Tile>().isDisplay = true;
             newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
             leftBorderTiles.Add(newTile); 
 
-            newTile = Instantiate(tile, new Vector3(sizeX, rightBorderTiles.Count, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
-            newTile.name = "Tile (" + sizeX + ", " + rightBorderTiles.Count + ")";
+            newTile = Instantiate(tile, new Vector3(sizeX, rightBorderTiles.Count-1, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
+            newTile.name = "Tile (" + sizeX + ", " + (rightBorderTiles.Count-1) + ")";
             newTile.GetComponent<Tile>().coordX = sizeX;
-            newTile.GetComponent<Tile>().coordY = rightBorderTiles.Count;
+            newTile.GetComponent<Tile>().coordY = rightBorderTiles.Count - 1;
             newTile.GetComponent<Tile>().isRevealed = true;
             newTile.GetComponent<Tile>().isDisplay = true;
             newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
             rightBorderTiles.Add(newTile); 
 
-            if (safeEdgeTilesGained == 0)
+            /*if (safeEdgeTilesGained == 0)
             {
                 GameObject.Find("Tile (-1, -1)").GetComponent<Tile>().shimmerOverlay.gameObject.SetActive(true);
                 GameObject.Find("Tile (" + sizeX + ", -1)").GetComponent<Tile>().shimmerOverlay.gameObject.SetActive(true);
-            }
+            }*/
 
             safeEdgeTilesGained++;
         }        
