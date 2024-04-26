@@ -824,23 +824,7 @@ public class GameManager : MonoBehaviour
                 decreaseRowsAbove(y + 1);
                 --y;
             }
-        }
-
-        // Linesweep: Row was solved before the next tetromino was placed
-        if (linesweepsCleared > 0)
-        {
-            float linesweepScore = 100 * (linesweepsCleared * linesweepsCleared);
-
-            linesweepScore *= gm.GetRowHeightPointModifier(highestRowSolved);
-            
-            if (isTriggeredByLock) // Instant Sweep multiplier
-                linesweepScore *= 1.5f;
-
-                gm.AddScore(Mathf.FloorToInt(linesweepScore), 1);
-
-            if (getMultiplier)
-                gm.SetScoreMultiplier(10 * linesweepsCleared, 10f);
-        } 
+        }        
 
         if (rowsCleared > 0)
         {
@@ -870,6 +854,25 @@ public class GameManager : MonoBehaviour
             if (gm.currentTetromino != null)
                 if (gm.currentTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, isTriggeredByLock, highestRowSolved))
                     isDifficultSweep = true;
+
+            // Linesweep: Row was solved before the next tetromino was placed
+            if (linesweepsCleared > 0)
+            {
+                float linesweepScore = 100 * (linesweepsCleared * linesweepsCleared);
+
+                linesweepScore *= gm.GetRowHeightPointModifier(highestRowSolved);
+                
+                if (isTriggeredByLock) // Instant Sweep multiplier
+                    linesweepScore *= 1.5f;
+                
+                if (isDifficultSweep && gm.previousClearWasDifficultSweep)
+                    linesweepScore *= 1.5f;
+
+                gm.AddScore(Mathf.FloorToInt(linesweepScore), 1);
+
+                if (getMultiplier)
+                    gm.SetScoreMultiplier(10 * linesweepsCleared, 10f);
+            } 
 
             gm.previousClearWasDifficultSweep = isDifficultSweep;
             //currentTetromino = null;

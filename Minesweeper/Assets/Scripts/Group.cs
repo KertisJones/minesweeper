@@ -286,14 +286,13 @@ public class Group : MonoBehaviour
 
     public void LayMines()
     {
-        if (isDisplay && transform.position.y >= 20)
+        if (isDisplay && transform.position.y >= gm.sizeY - 4)
             return;
         
         List<Tile> childTiles = GetChildTiles();
         
         if (!isBonus)
         {
-            
             // Populate random mines in children
             int numberOfMines = 0;
             foreach (Tile child in childTiles)
@@ -323,7 +322,6 @@ public class Group : MonoBehaviour
             foreach (Tile child in childTiles) 
             {
                 child.Reveal();//.isRevealed = true;
-                //child.isDisplay = true;
             }
         }
     }
@@ -1437,16 +1435,16 @@ public class Group : MonoBehaviour
                 difficultSweepScored = true;
 
                 // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
-                float actionScore = 595; 
+                /*float actionScore = 595; 
                 if (gm.previousClearWasDifficultSweep)
                     actionScore = actionScore * 1.5f; 
                 if (isInstantSweep)
                     actionScore = actionScore * 1.5f;
                 actionScore *= gm.GetRowHeightPointModifier(topHeight);
-                gm.AddScore((int)actionScore, 1);        
+                gm.AddScore((int)actionScore, 1);   */     
 
                 if (getMultiplier)
-                    gm.SetScoreMultiplier(25, 30);
+                    gm.SetScoreMultiplier(20, 30);
 
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));

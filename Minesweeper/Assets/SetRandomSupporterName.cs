@@ -7,19 +7,42 @@ using UnityEngine;
 public class SetRandomSupporterName : MonoBehaviour
 {
     List<string> supporters = new List<string> {
+        // Development Help
         "Jesse Riggins",
-        "Poinl",
-        "Haruka",
+        "Poinl", // Music
+        "The Foun", // Czech translation
+        "Alexuty", // Screenshot design
+        "Stickman comic", // Playtesting maniac
+
+        // Moderators
         "Star Cubey",
         "Peridot",
         "Niv",
         "JMaxchill",
         "Kusane",
+
+        // Influencers
         "Icely Puzzles",
         "Random 595",
-        "Stickman comic",
-        "The Foun",
-        "Alexuty"
+        
+        // Buy Me a Coffee Supporters:
+        "Haruka",
+        // Itch Supporters:
+        "Gueszst",
+        "Toaran",
+        "Realiste",
+        "Emily Whetstine",
+        "Seraphina Nix",
+        "Lewmas Fain",
+        "Dfirebug",
+        "Dyst!",
+        "Circadian Izzy",
+        "Ænthroppe",
+        "Sam Figg",
+        "Lazuli Quetzal",
+        "Maura",
+        "Bio Hammer"
+
     };
     public TextMeshProUGUI supportText;
     GameModifiers gameMods;

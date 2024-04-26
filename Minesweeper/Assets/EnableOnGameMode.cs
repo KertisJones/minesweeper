@@ -34,7 +34,7 @@ public class EnableOnGameMode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (onShowTitle && gm.isGameOver)
+        if (onShowTitle && (gm.isGameOver || gm.linesCleared > 0))
         {
             if (GetComponentInChildren<SpringJoint2D>() != null)
                 GetComponentInChildren<SpringJoint2D>().breakForce = 0;
