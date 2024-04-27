@@ -138,6 +138,8 @@ public class GameManager : MonoBehaviour
     public static event MinoLockEvent OnMinoLockEvent;
     public delegate void TileSolveEvent();
     public static event TileSolveEvent OnTileSolveOrLandEvent;
+    public delegate void TSpinEvent(int dir);
+    public static event TSpinEvent OnTSpinEvent;
 
     private void OnApplicationQuit() 
     {
@@ -200,6 +202,7 @@ public class GameManager : MonoBehaviour
         OnRightStuckEvent = null;
         OnMinoLockEvent = null;
         OnTileSolveOrLandEvent = null;
+        OnTSpinEvent = null;
         transform.DOKill();
     }
     void PressEscape()
@@ -1393,6 +1396,12 @@ public class GameManager : MonoBehaviour
     {
         if (OnTileSolveOrLandEvent != null)
             OnTileSolveOrLandEvent();
+    }
+
+    public void TriggerOnTSpinEvent(int dir)
+    {        
+        if (OnTSpinEvent != null)
+            OnTSpinEvent(dir);
     }
 
     public float GetRowHeightPointModifier(int rowHeight)

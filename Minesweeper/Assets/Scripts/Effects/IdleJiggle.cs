@@ -48,6 +48,7 @@ public class IdleJiggle : MonoBehaviour
             GameManager.OnGameOverEvent += GameOver;
             GameManager.OnHardDropEvent += PunchDown;
             GameManager.OnTileSolveOrLandEvent += MinorShake;
+            GameManager.OnTSpinEvent += dir => PunchRotate(dir);
 
             GameManager.OnLeftStuckEvent += PressLeft;
             GameManager.OnRightStuckEvent += PressRight;
@@ -77,6 +78,7 @@ public class IdleJiggle : MonoBehaviour
             GameManager.OnGameOverEvent -= GameOver;
             GameManager.OnHardDropEvent -= PunchDown;
             GameManager.OnTileSolveOrLandEvent -= MinorShake;
+            GameManager.OnTSpinEvent -= dir => PunchRotate(dir);
 
             GameManager.OnLeftStuckEvent -= PressLeft;
             GameManager.OnRightStuckEvent -= PressRight;
@@ -369,6 +371,14 @@ public class IdleJiggle : MonoBehaviour
                     leanTweenY.Kill();
 
         leanTweenY = this.transform.DOMoveY(GetStartPositionLocalToWorldSpace().y + leanDistance * dir, leanDuration).SetEase(idleMoveEase);
+    }
+
+    public void PunchRotate(int dir)
+    {
+        if (!IsShakeValid(true))
+            return;
+        
+        this.transform.DOPunchRotation(new Vector3(0, 0, -1 * dir), leanDuration).SetUpdate(true).OnKill(ResetRotation);
     }
 
     #region Jumping

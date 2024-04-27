@@ -72,6 +72,7 @@ public class Group : MonoBehaviour
 
     public int currentRotation = 0; // 0 = spawn state, 1 = counter-clockwise rotation from spawn, 2 = 2 successive rotations from spawn, 3 = clockwise rotation from spawn
     bool lastSuccessfulMovementWasRotation = false;
+    int lastRotationDir = 0;
 
     public Transform pivot;
     public Vector3 pivotStaticBackup = new Vector3();
@@ -813,9 +814,11 @@ public class Group : MonoBehaviour
                     fillWasDifficult = true;
                 }
 
+                gm.TriggerOnTSpinEvent(lastRotationDir * (rowsFilled + 1));
+
                 if (rowsFilled > 0)
                 {
-                    GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                    //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                     AudioSource.PlayClipAtPoint(tSpinSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                 }
             }            
@@ -1032,6 +1035,10 @@ public class Group : MonoBehaviour
         
         bool lastSuccessfulMovementWasRotationTemp = lastSuccessfulMovementWasRotation;
         lastSuccessfulMovementWasRotation = true;
+
+        int lastRotationDirTemp = lastRotationDir;
+        lastRotationDir = dir;
+        
 
         lastDASCutDelay = Time.time;
 
@@ -1338,6 +1345,7 @@ public class Group : MonoBehaviour
             transform.RotateAround(transform.TransformPoint(localPivot), new Vector3(0, 0, 1), 90 * dir * -1);
             currentRotation = previousRotation;
             lastSuccessfulMovementWasRotation = lastSuccessfulMovementWasRotationTemp;
+            lastRotationDir = lastRotationDirTemp;
             //Debug.Log("Rotation Wall Kicks failed");
         }
     }

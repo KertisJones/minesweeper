@@ -412,6 +412,18 @@ MonoBehaviour:
     m_Localized: 'SDF: Soft Drop Factor'
     m_Metadata:
       m_Items: []
+  - m_Id: 8261547250933760
+    m_Localized: Translation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261772770271232
+    m_Localized: Created by
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261872057835520
+    m_Localized: Special thanks to...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
