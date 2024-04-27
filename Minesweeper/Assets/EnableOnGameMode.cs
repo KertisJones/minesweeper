@@ -10,6 +10,26 @@ public class EnableOnGameMode : MonoBehaviour
     public bool onShowTitle = false;
     public bool onShowCredits = false;
     public bool onEndlessIsEnabled = false;
+
+    void OnEnable()
+    {
+        if (onShowTitle)
+        {
+            GameManager.OnLineClearEvent += _ => DropTitle();
+            GameManager.OnGameOverEvent += DropTitle;
+            GameManager.OnHardDropEvent += DropTitle;
+        }        
+    }
+    void OnDisable()
+    {
+        if (onShowTitle)
+        {
+            GameManager.OnLineClearEvent -= _ => DropTitle();
+            GameManager.OnGameOverEvent -= DropTitle;
+            GameManager.OnHardDropEvent -= DropTitle;
+        }        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,13 +51,9 @@ public class EnableOnGameMode : MonoBehaviour
         this.gameObject.SetActive(isEnabled);
     }
 
-    // Update is called once per frame
-    void Update()
+    void DropTitle()
     {
-        if (onShowTitle && (gm.isGameOver || gm.linesCleared > 0))
-        {
-            if (GetComponentInChildren<SpringJoint2D>() != null)
-                GetComponentInChildren<SpringJoint2D>().breakForce = 0;
-        }
+        if (GetComponentInChildren<SpringJoint2D>() != null)
+            GetComponentInChildren<SpringJoint2D>().breakForce = 0;
     }
 }
