@@ -11,8 +11,10 @@ public class SetRandomSupporterName : MonoBehaviour
         "Jesse Riggins",
         "Poinl", // Music
         "The Foun", // Czech translation
+        "H3NZ PLAYZ", // Spanish (Spain) translation
         "Alexuty", // Screenshot design
         "Stickman comic", // Playtesting maniac
+        //"Carlos Hugo García Maldonado", //H3NZ
 
         // Moderators
         "Star Cubey",
