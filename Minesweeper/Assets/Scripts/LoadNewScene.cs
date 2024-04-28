@@ -13,7 +13,7 @@ public class LoadNewScene : MonoBehaviour
     public void Start()
     {
         blackScreen.gameObject.SetActive(true);
-        blackScreen.DOFade(0, 1f).SetUpdate(true);
+        blackScreen.DOFade(0, 3f).SetUpdate(true);
     }
 
     public void OpenNewScene(string newScene) 

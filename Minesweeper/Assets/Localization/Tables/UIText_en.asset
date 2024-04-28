@@ -413,7 +413,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8261547250933760
-    m_Localized: Translation
+    m_Localized: Localization
     m_Metadata:
       m_Items: []
   - m_Id: 8261772770271232
@@ -421,7 +421,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8261872057835520
-    m_Localized: Special thanks to...
+    m_Localized: Special thanks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8635273809223680
+    m_Localized: Additional Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8641451649916928
+    m_Localized: Press any key to continue...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8664569943060480
+    m_Localized: Tetrisweeper Supporters
     m_Metadata:
       m_Items: []
   references:

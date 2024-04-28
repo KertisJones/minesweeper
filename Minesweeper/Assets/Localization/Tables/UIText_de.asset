@@ -380,6 +380,66 @@ MonoBehaviour:
     m_Localized: Video
     m_Metadata:
       m_Items: []
+  - m_Id: 7178044815958016
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178065133166592
+    m_Localized: Handhabung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178359053213696
+    m_Localized: Video-Einstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178438203924480
+    m_Localized: Audio Einstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178483062005760
+    m_Localized: Handhabungseinstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7288987847745536
+    m_Localized: 'ARR: Automatische Wiederholungsrate'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289007573557248
+    m_Localized: "DAS: Verz\xF6gerte automatische Schaltung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289023503523840
+    m_Localized: "DCD: DAS Schnittverz\xF6gerung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289036057075712
+    m_Localized: 'SDF: Sanfter-Tropfen-Faktor'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261547250933760
+    m_Localized: "\xDCbersetzung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261772770271232
+    m_Localized: Erstellt von
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261872057835520
+    m_Localized: Besonderer Dank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8635273809223680
+    m_Localized: "Zus\xE4tzliche Credits\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8641451649916928
+    m_Localized: "Dr\xFCcken Sie eine beliebige Taste, um fortzufahren...\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8664569943060480
+    m_Localized: "Tetrisweeper-Unterst\xFCtzer"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

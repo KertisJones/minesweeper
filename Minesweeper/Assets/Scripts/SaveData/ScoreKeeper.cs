@@ -60,7 +60,8 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
     void Update()
     {
         if (gm == null)
-            gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+            if (GameObject.FindGameObjectWithTag("GameController") != null)
+                gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (musicSource == null)
             musicSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
         /*if (cameraShake == null)

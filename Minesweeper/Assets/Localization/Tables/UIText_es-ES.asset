@@ -10,25 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: UIText_es
+  m_Name: UIText_es-ES
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: es
+    m_Code: es-ES
   m_SharedData: {fileID: 11400000, guid: 0dd1e0fbba483424bbb601167d9eb8a1, type: 2}
   m_Metadata:
-    m_Items:
-    - rid: 1684021998389821470
+    m_Items: []
   m_TableData:
   - m_Id: 15111020544
-    m_Localized: Puntaje
-    m_Metadata:
-      m_Items: []
-  - m_Id: 934315432075264
-    m_Localized: Controles de Buscaminas
+    m_Localized: "Puntuaci\xF3n"
     m_Metadata:
       m_Items: []
   - m_Id: 3884008333312
-    m_Localized: "Pr\xF3ximo"
+    m_Localized: Siguiente
     m_Metadata:
       m_Items: []
   - m_Id: 688583756210176
@@ -39,16 +34,8 @@ MonoBehaviour:
     m_Localized: Tiempo
     m_Metadata:
       m_Items: []
-  - m_Id: 692866870403072
-    m_Localized: Tetrisweeps
-    m_Metadata:
-      m_Items: []
-  - m_Id: 694324101636096
-    m_Localized: T-Spinsweeps
-    m_Metadata:
-      m_Items: []
   - m_Id: 691682109546496
-    m_Localized: Mejor Puntaje
+    m_Localized: "Puntuaci\xF3n m\xE1s alta"
     m_Metadata:
       m_Items: []
   - m_Id: 691701722112000
@@ -61,6 +48,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 692206200414208
     m_Localized: "L\xEDneas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692866870403072
+    m_Localized: Tetrisweeps
     m_Metadata:
       m_Items: []
   - m_Id: 693625464807424
@@ -79,8 +70,12 @@ MonoBehaviour:
     m_Localized: Infinito
     m_Metadata:
       m_Items: []
+  - m_Id: 694324101636096
+    m_Localized: T-Spinsweeps
+    m_Metadata:
+      m_Items: []
   - m_Id: 696069942927360
-    m_Localized: Completo
+    m_Localized: Completado
     m_Metadata:
       m_Items: []
   - m_Id: 697409771397120
@@ -88,11 +83,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 697412782907392
-    m_Localized: "Marat\xF3n Rel\xE1mpago"
+    m_Localized: "Marat\xF3n Flash"
     m_Metadata:
       m_Items: []
   - m_Id: 697414372548608
-    m_Localized: "40-L\xEDneas Sprint"
+    m_Localized: "Sprint de 40 L\xEDneas"
     m_Metadata:
       m_Items: []
   - m_Id: 697420861136896
@@ -102,7 +97,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 697421989404672
-    m_Localized: "Ultra Rel\xE1mpago"
+    m_Localized: Ultra Flash
     m_Metadata:
       m_Items: []
   - m_Id: 697429551734784
@@ -113,16 +108,12 @@ MonoBehaviour:
     m_Localized: "Marat\xF3n Oscurecido"
     m_Metadata:
       m_Items: []
-  - m_Id: 928656833634304
-    m_Localized: Sostener
-    m_Metadata:
-      m_Items: []
   - m_Id: 925355878637568
     m_Localized: Jugar
     m_Metadata:
       m_Items: []
   - m_Id: 925670325608448
-    m_Localized: En Pausa
+    m_Localized: Pausado
     m_Metadata:
       m_Items: []
   - m_Id: 925714365800448
@@ -142,7 +133,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 926602874576896
-    m_Localized: Volumen Principal
+    m_Localized: Volumen General
     m_Metadata:
       m_Items: []
   - m_Id: 926629294497792
@@ -162,7 +153,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 927883198455808
-    m_Localized: Izquierdo
+    m_Localized: Izquierda
     m_Metadata:
       m_Items: []
   - m_Id: 928546846400512
@@ -183,6 +174,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 928642711412736
     m_Localized: "Ca\xEDda R\xE1pida"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928656833634304
+    m_Localized: Mantener
     m_Metadata:
       m_Items: []
   - m_Id: 928682272088064
@@ -221,24 +216,28 @@ MonoBehaviour:
     m_Localized: "Controles de Ca\xEDda de Bloques"
     m_Metadata:
       m_Items: []
+  - m_Id: 934315432075264
+    m_Localized: Controles de Buscaminas
+    m_Metadata:
+      m_Items: []
   - m_Id: 951608887205888
     m_Localized: Editar
     m_Metadata:
       m_Items: []
   - m_Id: 951658765869056
-    m_Localized: Personalizar Juego
+    m_Localized: Personalizar juego
     m_Metadata:
       m_Items: []
   - m_Id: 951849149521920
-    m_Localized: "Pr\xF3ximo Pronto"
+    m_Localized: Pronto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952127466758144
+    m_Localized: "Puntuaci\xF3n"
     m_Metadata:
       m_Items: []
   - m_Id: 952161780359168
     m_Localized: "Tabla de Clasificaci\xF3n"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 952127466758144
-    m_Localized: Reglas de Puntaje
     m_Metadata:
       m_Items: []
   - m_Id: 963399100915712
@@ -246,16 +245,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 963558551576576
-    m_Localized: Juego Terminado
-    m_Metadata:
-      m_Items: []
-  - m_Id: 990658520145920
-    m_Localized: :(
+    m_Localized: Perdiste
     m_Metadata:
       m_Items: []
   - m_Id: 988652401319936
-    m_Localized: "\xA1Sobrevive hasta 150 l\xEDneas e intenta obtener la puntuaci\xF3n
-      m\xE1s alta posible!"
+    m_Localized: "\xA1Sobrevive hasta 150 l\xEDneas e intenta obtener la mayor puntuaci\xF3n
+      posible!"
     m_Metadata:
       m_Items: []
   - m_Id: 988835440746496
@@ -268,7 +263,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 989231202689024
-    m_Localized: "Pr\xF3ximo pronto..."
+    m_Localized: Pronto...
     m_Metadata:
       m_Items: []
   - m_Id: 989810910027776
@@ -276,12 +271,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 989813380472832
-    m_Localized: "\xA1Obt\xE9n la puntuaci\xF3n m\xE1s alta posible en tres minutos,
-      usando reglas Rel\xE1mpago!"
+    m_Localized: "\xA1Obt\xE9n la mayor puntuaci\xF3n posible en tres minutos usando
+      las reglas del modificador Flash!"
     m_Metadata:
       m_Items: []
   - m_Id: 990195708059648
-    m_Localized: Haga clic para ver en su navegador
+    m_Localized: Haz clic para ver en tu navegador
     m_Metadata:
       m_Items: []
   - m_Id: 990308941684736
@@ -291,6 +286,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 990401673551872
     m_Localized: "\xA1Gracias por jugar!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990658520145920
+    m_Localized: :(
     m_Metadata:
       m_Items: []
   - m_Id: 990813138968576
@@ -307,7 +306,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 990816574103552
-    m_Localized: "\xA1Mira nuestra lista de reproducci\xF3n comunitaria!"
+    m_Localized: "\xA1Echa un vistazo a nuestra lista de reproducci\xF3n de la comunidad!"
     m_Metadata:
       m_Items: []
   - m_Id: 990817517821952
@@ -315,18 +314,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 991654902226944
-    m_Localized: 'Limpiar: Limpia todas las minas retenidas, +250 puntos'
+    m_Localized: 'Limpieza: Elimina todas las minas retenidas, +250 puntos'
     m_Metadata:
       m_Items: []
   - m_Id: 992047333892096
-    m_Localized: "Tetrisweep es cuando borras las 4 l\xEDneas en un tetris de 4 l\xEDneas
-      que acabas de llenar, antes de que el siguiente tetromino encaje en su lugar."
+    m_Localized: "Tetrisweep es cuando despejas las 4 l\xEDneas de un tetris de 4
+      l\xEDneas que acabas de llenar, antes de que el siguiente tetromin\xF3s se
+      bloquee en su lugar."
     m_Metadata:
       m_Items: []
   - m_Id: 992048869007360
-    m_Localized: "T-Spinsweep es cuando obtienes un T-spin y borras cada l\xEDnea
-      que llen\xF3 el tetromino T, antes de que el siguiente tetromino encaje en
-      su lugar."
+    m_Localized: "T-Spinsweep es cuando logras un T-spin y haces todas las l\xEDneas
+      que el tetromin\xF3 en forma de T llen\xF3, antes de que el siguiente tetromino
+      se bloquee en su lugar"
     m_Metadata:
       m_Items: []
   - m_Id: 1427307444035584
@@ -334,17 +334,21 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1427339857616896
-    m_Localized: "Modo marat\xF3n, \xA1pero los n\xFAmeros de los mosaicos se reemplazan
+    m_Localized: "\xA1Modo marat\xF3n, pero los n\xFAmeros de las casillas se sustituyen
       por puntos!"
     m_Metadata:
       m_Items: []
   - m_Id: 1647393605935104
-    m_Localized: Paredes
+    m_Localized: Muros
     m_Metadata:
       m_Items: []
   - m_Id: 1647422219476992
-    m_Localized: En lugar de desbloquear fichas seguras mientras juegas, las paredes
-      del tablero de juego ahora son fichas jugables.
+    m_Localized: En lugar de desbloquear casillas seguras mientras juegas, las paredes
+      del tablero de juego ahora son casillas jugables.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781692649472
+    m_Localized: Lista de deseados
     m_Metadata:
       m_Items: []
   - m_Id: 2474781847838720
@@ -352,31 +356,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2474861069852672
-    m_Localized: "\xA1Desbloquea modos de juego extra!"
+    m_Localized: Desbloquea modos de juegos extra!
     m_Metadata:
       m_Items: []
   - m_Id: 2475075038076928
     m_Localized: "\xA1Tetrisweep como nunca antes!"
     m_Metadata:
       m_Items: []
-  - m_Id: 2474781692649472
-    m_Localized: Lista de Deseos
-    m_Metadata:
-      m_Items: []
   - m_Id: 2512304913506304
     m_Localized: "\xA1Bloqueado!"
     m_Metadata:
       m_Items: []
-  - m_Id: 8261872057835520
-    m_Localized: Agradecimientos especiales
-    m_Metadata:
-      m_Items: []
   - m_Id: 5052179397636096
-    m_Localized: "Colocaci\xF3n de bloques"
+    m_Localized: "Colocaci\xF3n de Bloques"
     m_Metadata:
       m_Items: []
   - m_Id: 5052349606686720
-    m_Localized: Barrido de Minas
+    m_Localized: Buscando de Minas
     m_Metadata:
       m_Items: []
   - m_Id: 5052351666089984
@@ -431,12 +427,16 @@ MonoBehaviour:
     m_Localized: Creado por
     m_Metadata:
       m_Items: []
+  - m_Id: 8261872057835520
+    m_Localized: Agradecimientos especiales
+    m_Metadata:
+      m_Items: []
   - m_Id: 8635273809223680
     m_Localized: "Cr\xE9ditos Adicionales"
     m_Metadata:
       m_Items: []
   - m_Id: 8641451649916928
-    m_Localized: Presiona cualquier tecla para continuar...
+    m_Localized: "Pulsa cualquier tecla para continuar...\r"
     m_Metadata:
       m_Items: []
   - m_Id: 8664569943060480
@@ -445,8 +445,4 @@ MonoBehaviour:
       m_Items: []
   references:
     version: 2
-    RefIds:
-    - rid: 1684021998389821470
-      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_Entries: 00e0afc3216b0200
+    RefIds: []

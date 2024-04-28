@@ -365,6 +365,82 @@ MonoBehaviour:
     m_Localized: "Ferm\xE9 \xE0 cl\xE9!"
     m_Metadata:
       m_Items: []
+  - m_Id: 5052179397636096
+    m_Localized: Placement des Blocs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052349606686720
+    m_Localized: "D\xE9minage"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052351666089984
+    m_Localized: Tetrisweeping
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178027099217920
+    m_Localized: "Vid\xE9o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178044815958016
+    m_Localized: l'audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178065133166592
+    m_Localized: Manutention
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178359053213696
+    m_Localized: "Param\xE8tres Vid\xE9o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178438203924480
+    m_Localized: "Param\xE8tres l'audio"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178483062005760
+    m_Localized: "Param\xE8tres Manutention"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7288987847745536
+    m_Localized: "ARR\_:\_Taux de R\xE9p\xE9tition Automatique"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289007573557248
+    m_Localized: "DAS\_: Changement de Vitesse Automatique Retard\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289023503523840
+    m_Localized: "DCD\_: D\xE9lai de Coupure DAS"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289036057075712
+    m_Localized: "SDF\_: Facteur de Chute Douce"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261547250933760
+    m_Localized: Traduction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261772770271232
+    m_Localized: "Cr\xE9\xE9 par"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261872057835520
+    m_Localized: "Remerciement sp\xE9cial"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8635273809223680
+    m_Localized: "Cr\xE9dits Suppl\xE9mentaires"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8641451649916928
+    m_Localized: "Appuyez sur n'importe quelle touche pour continuer...\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8664569943060480
+    m_Localized: Supporters de Tetrisweeper
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
