@@ -39,7 +39,7 @@ public class Tile : MonoBehaviour
     public SpriteRenderer tileBackground;
     public SpriteRenderer explodedMineBackground;
     public SpriteRenderer wrongFlagBackground;
-    public SpriteShapeRenderer shimmerOverlay;
+    public SpriteMask shimmerOverlay;
     public Image fadeOverlay;    
     TextMeshProUGUI text;    
     

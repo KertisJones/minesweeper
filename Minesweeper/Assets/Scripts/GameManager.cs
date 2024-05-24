@@ -404,8 +404,10 @@ public class GameManager : MonoBehaviour
             float cameraSizeXprefer = (sizeX + 28) * 0.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth); //10f; X Bounds
 
             float cameraSize = Mathf.Max(cameraSizeXprefer, cameraSizeYprefer);
-            if (sizeX == 10 && sizeY == 24)
+            if (sizeX == 10 && sizeY == 24 && (Mathf.Floor(((float)mainCamera.pixelWidth / mainCamera.pixelHeight) * 100) / 100) == Mathf.Floor((16f/9f) * 100) /100)
                 cameraSize = cameraSizeYprefer;
+            Debug.Log(((float)mainCamera.pixelWidth / mainCamera.pixelHeight) + ", " + (16f/9f));
+
             float cameraX = (sizeX / 2f) - 0.5f; //4.5f;
             float cameraY = ((sizeY - 4) / 2f) - 1f;//cameraSize - 1.5f; //9
 
@@ -959,7 +961,8 @@ public class GameManager : MonoBehaviour
             newTile.GetComponent<Tile>().coordY = leftBorderTiles.Count - 1;
             newTile.GetComponent<Tile>().isRevealed = true;
             newTile.GetComponent<Tile>().isDisplay = true;
-            newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
+            if (safeEdgeTilesGained != -1)
+                newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
             leftBorderTiles.Add(newTile); 
 
             newTile = Instantiate(tile, new Vector3(sizeX, rightBorderTiles.Count-1, 0), new Quaternion(0, 0, 0, 0), this.gameObject.transform) as GameObject;
@@ -968,14 +971,15 @@ public class GameManager : MonoBehaviour
             newTile.GetComponent<Tile>().coordY = rightBorderTiles.Count - 1;
             newTile.GetComponent<Tile>().isRevealed = true;
             newTile.GetComponent<Tile>().isDisplay = true;
-            newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
+            if (safeEdgeTilesGained != -1)
+                newTile.GetComponentInChildren<Tile>().shimmerOverlay.gameObject.SetActive(true);
             rightBorderTiles.Add(newTile); 
 
-            /*if (safeEdgeTilesGained == 0)
+            if (safeEdgeTilesGained == 0)
             {
                 GameObject.Find("Tile (-1, -1)").GetComponent<Tile>().shimmerOverlay.gameObject.SetActive(true);
                 GameObject.Find("Tile (" + sizeX + ", -1)").GetComponent<Tile>().shimmerOverlay.gameObject.SetActive(true);
-            }*/
+            }
 
             safeEdgeTilesGained++;
         }        
