@@ -25,6 +25,12 @@ public class SettingsMenu : MonoBehaviour
     bool screenShakeEnabled = true;
     bool lockDelayDisplayEnabled = true;
     int languageIndex = 0;
+
+    //Handling
+    float autoRepeatRateDefault = 50;
+    float delayedAutoShiftDefault = 250;
+    float dasCutDelayDefault = 17;
+    float softDropFactorDefault = 12;
     float autoRepeatRate = 50;
     float delayedAutoShift = 250;
     float dasCutDelay = 17;
@@ -41,10 +47,10 @@ public class SettingsMenu : MonoBehaviour
         //controlScheme = PlayerPrefs.GetInt("ControlScheme", 0);
         //abTest = PlayerPrefs.GetInt("ABTest", 0);
 
-        autoRepeatRate = PlayerPrefs.GetFloat("AutoRepeatRate", autoRepeatRate);
-        delayedAutoShift = PlayerPrefs.GetFloat("DelayedAutoShift", delayedAutoShift);
-        dasCutDelay = PlayerPrefs.GetFloat("DASCutDelay", dasCutDelay);
-        softDropFactor = PlayerPrefs.GetFloat("SoftDropFactor", softDropFactor);
+        autoRepeatRate = PlayerPrefs.GetFloat("AutoRepeatRate", autoRepeatRateDefault);
+        delayedAutoShift = PlayerPrefs.GetFloat("DelayedAutoShift", delayedAutoShiftDefault);
+        dasCutDelay = PlayerPrefs.GetFloat("DASCutDelay", dasCutDelayDefault);
+        softDropFactor = PlayerPrefs.GetFloat("SoftDropFactor", softDropFactorDefault);
     }
 
     // Start is called before the first frame update
@@ -208,5 +214,23 @@ public class SettingsMenu : MonoBehaviour
         softDropFactor = softDropFactorSlider.GetAdjustedValue();
         PlayerPrefs.SetFloat("SoftDropFactor", softDropFactor);
         gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().UpdateInputValues();
+    }
+
+    public void ResetDefaultsHandling()
+    {
+        /*float autoRepeatRate = 50;
+        float delayedAutoShift = 250;
+        float dasCutDelay = 17;
+        float softDropFactor = 12;*/
+
+        autoRepeatRate = autoRepeatRateDefault;
+        delayedAutoShift = delayedAutoShiftDefault;
+        dasCutDelay = dasCutDelayDefault;
+        softDropFactor = softDropFactorDefault;
+
+        autoRepeatRateSlider.SetAdjustedValue(autoRepeatRateDefault);
+        delayedAutoShiftSlider.SetAdjustedValue(delayedAutoShiftDefault);
+        dasCutDelaySlider.SetAdjustedValue(dasCutDelayDefault);
+        softDropFactorSlider.slider.value = softDropFactorDefault;
     }
 }
