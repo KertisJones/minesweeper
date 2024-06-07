@@ -356,6 +356,12 @@ public class Group : MonoBehaviour
         UpdateGridRemove();
         UpdateGridAdd();
         SetMaximumFallDistance();
+
+        SetRandomSupporterName[] supporterTexts = GetComponentsInChildren<SetRandomSupporterName>();
+        foreach (SetRandomSupporterName supporterText in supporterTexts)
+        {
+            supporterText.transform.rotation = Quaternion.identity;
+        }        
     }
 
     public void UpdateGridRemove()

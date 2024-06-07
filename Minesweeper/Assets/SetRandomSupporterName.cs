@@ -48,7 +48,8 @@ public class SetRandomSupporterName : MonoBehaviour
         "Draconis Eltanin",
         "Camellias",
         "Silver_Hawk",
-        "Cantras"
+        "Cantras",
+        "Alien Sauce_"
     };
     public TextMeshProUGUI supportText;
     GameModifiers gameMods;
@@ -63,6 +64,6 @@ public class SetRandomSupporterName : MonoBehaviour
             this.gameObject.SetActive(false);
         
         if (supportText != null)
-            supportText.text = supporters[UnityEngine.Random.Range(0, supporters.Count)];
+            supportText.text = supporters[UnityEngine.Random.Range(0, supporters.Count)];        
     }
 }

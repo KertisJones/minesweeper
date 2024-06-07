@@ -110,9 +110,7 @@ public class IdleJiggle : MonoBehaviour
         if (!this.gameObject.activeInHierarchy)
             return;
 
-        startPositionLocal = this.transform.localPosition;
-        startScale = this.transform.localScale;
-        startRotation = new Vector3(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z);
+        SetNewStartingValues();
         
         if (idleMoveDistance != Vector3.zero && idleMoveDuration > 0)
         {
@@ -267,7 +265,10 @@ public class IdleJiggle : MonoBehaviour
             return;
         shakeRotationTween = this.transform.DOShakeRotation(duration, new Vector3(0, 0, strength * 40), 10, 90, !loopTween);
         if (autoReset)
+        {
+            //startRotation = this.transform.rotation.eulerAngles;// new Vector3(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z);
             shakeRotationTween.OnKill(ResetRotation);
+        }            
         if (loopTween)
             shakeRotationTween.SetLoops(-1);
     }
@@ -496,7 +497,8 @@ public class IdleJiggle : MonoBehaviour
     {
         startPositionLocal = this.transform.localPosition;
         startScale = this.transform.localScale;
-        startRotation = new Vector3(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z);
+        startRotation = this.transform.rotation.eulerAngles;
+        //startRotation = new Vector3(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z);
     }
     Vector3 GetStartPositionLocalToWorldSpace()
     {
