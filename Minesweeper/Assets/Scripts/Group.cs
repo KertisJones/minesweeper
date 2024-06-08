@@ -128,9 +128,11 @@ public class Group : MonoBehaviour
             return;
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
             return;
-        if (!buttonRightHeld)
-            buttonLeftHeld = true;
+        /*if (!buttonRightHeld) // Default to the first held down
+            buttonLeftHeld = true;*/
+        buttonLeftHeld = true;
         buttonLeftHeldSecondary = true;
+        buttonRightHeld = false;
         lastLeftButtonDown = Time.time;
         Move(-1);
     }
@@ -148,9 +150,11 @@ public class Group : MonoBehaviour
             return;
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
             return;
-        if (!buttonLeftHeld)
-            buttonRightHeld = true;
+        /*if (!buttonLeftHeld) // Default to the first held down
+            buttonRightHeld = true;*/
+        buttonRightHeld = true;
         buttonRightHeldSecondary = true;
+        buttonLeftHeld = false;
         lastRightButtonDown = Time.time;
         Move(1);
     }
