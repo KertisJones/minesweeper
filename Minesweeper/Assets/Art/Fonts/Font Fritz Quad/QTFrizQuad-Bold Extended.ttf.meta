@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 24378de5e6ef3c44695bc2537267746a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - QTFrizQuad
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 490d729eb9f68a54db4cfae4126a1810, type: 3}
+  - {fileID: 12800000, guid: 640554a1ce2ba7d45ae392293cbc9afc, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

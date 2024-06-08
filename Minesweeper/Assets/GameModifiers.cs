@@ -15,9 +15,10 @@ public class GameModifiers : MonoBehaviour
     };
     public LineClearTriggerType lineClearTrigger = LineClearTriggerType.clearOnLock;
     public int targetLines = 150;
+    public int basicFallDistance = 1;
     public bool detailedTimer = false;
     public float timeLimit = Mathf.Infinity;
-    public bool endlessIsEnabled = true;
+    public bool endlessIsEnabled = true;    
 
     // Game Board Setup
     public Vector2 boardSize = new Vector2 (10, 20);
@@ -48,6 +49,7 @@ public class GameModifiers : MonoBehaviour
         gameMods.gameModeDisplayName = gameModeDisplayName;
         gameMods.lineClearTrigger = lineClearTrigger;
         gameMods.targetLines = targetLines;
+        gameMods.basicFallDistance = basicFallDistance;
         gameMods.detailedTimer = detailedTimer;
         gameMods.timeLimit = timeLimit;
         gameMods.endlessIsEnabled = endlessIsEnabled;

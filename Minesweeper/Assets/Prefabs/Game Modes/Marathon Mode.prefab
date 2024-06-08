@@ -45,6 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameModeName: Marathon
+  gameModeDisplayName: 
   lineClearTrigger: 0
   targetLines: 150
+  basicFallDistance: 1
   detailedTimer: 0
+  timeLimit: Infinity
+  endlessIsEnabled: 1
+  boardSize: {x: 10, y: 20}
+  wallType: 0
+  minesweeperTextType: 0
+  showTitle: 0

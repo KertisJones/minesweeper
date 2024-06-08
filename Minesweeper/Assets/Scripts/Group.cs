@@ -23,7 +23,8 @@ public class Group : MonoBehaviour
     public bool isSetupTetromino = false;
 
     float fallSpeed = 0.8f;
-    float lockDelayActive = 0.5f;
+    int basicFallDistance = 1;
+    float lockDelay = 0.5f;
     float lastFall = 0;
     float lastMove = 0;
     // Locking
@@ -105,6 +106,7 @@ public class Group : MonoBehaviour
         inputManager.softDropPress.started += _ => PressSoftDrop();
         inputManager.softDropPress.canceled += _ => ReleaseSoftDrop();
         inputManager.hardDroptPress.started += _ => PressHardDrop();
+        GameManager.OnLineClearEvent += _ => OnLineClear();
     }
     void OnDisable()
     {
@@ -117,6 +119,7 @@ public class Group : MonoBehaviour
         inputManager.softDropPress.started -= _ => PressSoftDrop();
         inputManager.softDropPress.canceled -= _ => ReleaseSoftDrop();
         inputManager.hardDroptPress.started -= _ => PressHardDrop();
+        GameManager.OnLineClearEvent -= _ => OnLineClear();
     }
     public void PressLeft()
     {
@@ -228,6 +231,10 @@ public class Group : MonoBehaviour
         dasDelay = PlayerPrefs.GetFloat("DelayedAutoShift", dasDelay * 1000) / 1000;
         dasCutDelay = PlayerPrefs.GetFloat("DASCutDelay", dasCutDelay * 1000) / 1000;
         softDropFactor = PlayerPrefs.GetFloat("SoftDropFactor", softDropFactor);
+        if (softDropFactor == 41)
+            softDropFactor = Mathf.Infinity;
+
+        basicFallDistance = gm.gameMods.basicFallDistance;
 
         lastDASCutDelay = Time.time;
 
@@ -243,11 +250,11 @@ public class Group : MonoBehaviour
         UpdateInputValues();        
 
         //if (gameMode.dynamicTime) // TODO
-        //  lockDelayActive = 0.1f + (fallSpeed / 2);
+        //  lockDelay = 0.1f + (fallSpeed / 2);
         /*if (lockDelayBase < fallSpeed)
-            lockDelayActive = fallSpeed;
+            lockDelay = fallSpeed;
         else
-            lockDelayActive = lockDelayBase;*/
+            lockDelay = lockDelayBase;*/
 
         if (isSetupTetromino)
         {
@@ -265,8 +272,6 @@ public class Group : MonoBehaviour
             {
                 gm.EndGame();
             }
-            //Debug.Log("GAME OVER");
-            //Destroy(gameObject);
         }
         
         if (!isHeld)
@@ -387,6 +392,15 @@ public class Group : MonoBehaviour
         }    
     }
 
+    void OnLineClear()
+    {
+        if (gm == null)
+            return;
+        
+        // Update Speed if level has changed
+        fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -410,78 +424,48 @@ public class Group : MonoBehaviour
         }            
         if (!isFalling)
             return;
-        
-        //SetMaximumFallDistance();
-        //if (FindObjectOfType<TetrominoSpawner>().currentTetromino != this.gameObject)
-            //return;        
-
-        // Update Speed if level has changed
-        fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), gm.level);
-        //lockDelayActive = 0.1f + (fallSpeed / 2);
-            
+                    
         // DAS Move
         // Move Left
-        if (buttonLeftHeld && Time.time - lastLeftButtonDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastMove >= autoRepeatRate)
-            Move(-1);
+        if (buttonLeftHeld)
+        {
+            if (Time.time - lastLeftButtonDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastMove >= autoRepeatRate)
+            {
+                Move(-1);            
+                // ARR 0 moves to maximum distance instead of by framerate
+                if (autoRepeatRate == 0)
+                    while (WallKickMove(-1, 0, true, false)) {}
+            }            
+        }
+            
         // Move Right
-        if (buttonRightHeld && Time.time - lastRightButtonDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastMove >= autoRepeatRate)
-            Move(1);
-        /*// Move Left
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Keypad4) || (Input.GetAxis("Horizontal") == -1 && Time.time - lastMove >= lockDelayActive / 10))
-            Move(-1);
-        // Move Right
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Keypad6) || (Input.GetAxis("Horizontal") == 1 && Time.time - lastMove >= lockDelayActive / 10))
-            Move(1);*/
-
-        /*// Rotate
-        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Keypad9)) // Rotate Clockwise
-            Rotate(-1);
-        else if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Keypad7)) // Rotate Counterclockwise
-            Rotate(1);*/
-        
-        //if (gm.isPaused)
-            //return;
+        if (buttonRightHeld)
+        {
+            if (Time.time - lastRightButtonDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastMove >= autoRepeatRate)
+            {
+                Move(1);
+                // ARR 0 moves to maximum distance instead of by framerate
+                if (autoRepeatRate == 0)
+                    while (WallKickMove(1, 0, true, false)) {}
+            }
+        }
 
         // Move Downwards and Fall
-        //int fallDistance = 1;
         // Soft Drop
         if (buttonSoftDropHeld && Time.time - lastSoftDropDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastFall >= fallSpeed / softDropFactor)
             SoftDrop();
-        //bool isSoftDrop = false;// ((Input.GetAxis("Vertical") == -1 && Time.time - lastFall >= fallSpeed / 10) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Keypad2));
-        // Hard Drop
-        //bool isHardDrop = false;
-        /*if (canHardDrop && false) //((Input.GetKeyDown(KeyCode.Space)  || Input.GetKeyDown(KeyCode.Keypad8)) && lastFall > 0 || Input.GetKeyDown(KeyCode.Return)))
-        {
-            fallDistance = maximumFallDistance;
-            isHardDrop = true;
-            
-            if (maximumFallDistance > 0)
-            {
-                gm.AddScore(maximumFallDistance * 2);
-                gm.SetScoreMultiplier(0.2f, 1f);
-            }
-        }*/
-        // Soft Drop
-        
-        /*if (isSoftDrop)
-        {
-            if (isFalling && !isHeld && !isLocking)
-                if (bottomHeight <= bottomHeightLowest)
-                    gm.AddScore(1);
-        }*/
+
         // Basic Fall
         if (Time.time - lastFall >= fallSpeed)// || isSoftDrop || isHardDrop)
         {
             canHardDrop = true;
-            Fall();//fallDistance, isHardDrop);            
+            Fall(basicFallDistance);    
         }
 
         // Lock Delay
         if (isLocking)
         {            
-            float lockPercentage = Mathf.Min(1f, Mathf.Max(0, lockDelayTimer / lockDelayActive));
-
-            
+            float lockPercentage = Mathf.Min(1f, Mathf.Max(0, lockDelayTimer / lockDelay));            
 
             if (CheckIfLockIsValid())
             {
@@ -524,13 +508,23 @@ public class Group : MonoBehaviour
             return;
         if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
             return;
+
+        int distToFall = basicFallDistance;
+        if (softDropFactor == Mathf.Infinity)
+            distToFall = maximumFallDistance;
+        
         if (!isLocking && bottomHeight <= bottomHeightLowest)
-            gm.AddScore(1, 0, false);
-        Fall();
+            gm.AddScore(distToFall, 0, false);
+        Fall(distToFall);
     }
 
-    public void Fall(int fallDistance = 1, bool isHardDrop = false, bool isManualFall = true)
+    public void Fall(int fallDistance, bool isHardDrop = false, bool isManualFall = true)
     {
+        if (fallDistance > maximumFallDistance)
+            fallDistance = maximumFallDistance;
+        if (fallDistance == 0)
+            return;
+        
         // Modify position
         transform.position += new Vector3(0, fallDistance * -1, 0);
         //Debug.Log(fallDistance + ", Maximum " + maximumFallDistance);
@@ -610,10 +604,10 @@ public class Group : MonoBehaviour
         if (isLocking)
             return;
         
-        lockDelayTimer = lockDelayActive;
+        lockDelayTimer = lockDelay;
         isLocking = true;
         
-        /*yield return new WaitForSeconds(lockDelayActive);
+        /*yield return new WaitForSeconds(lockDelay);
         // Detect if next step will lock
         bool willLock = false;
         transform.position += new Vector3(0, -1, 0);
@@ -635,7 +629,7 @@ public class Group : MonoBehaviour
             if (resetWithoutLimit) 
             {
                 // This has fallen, so reset the timer without a limit
-                lockDelayTimer = lockDelayActive;
+                lockDelayTimer = lockDelay;
                 // If this is the farthest it has fallen, fully reset locking.
                 //Debug.Log("Bottom Height: " + bottomHeight + ", lowest Row: " + bottomHeightLowest);
                 if (bottomHeight <= bottomHeightLowest)
@@ -651,7 +645,7 @@ public class Group : MonoBehaviour
             {
                 if (lockResets < lockResetMax)
                 {
-                    lockDelayTimer = lockDelayActive;
+                    lockDelayTimer = lockDelay;
                     lockResets++;
                 }
             }
@@ -708,7 +702,7 @@ public class Group : MonoBehaviour
         bool fillWasDifficult = (rowsFilled == 4);
 
         // Detect if an in-place spin has occured
-        if (!WallKickMove(1, 0, false) && !WallKickMove(-1, 0, false) && !WallKickMove(0, 1, false))
+        if (!WallKickMove(1, 0, false, false) && !WallKickMove(-1, 0, false, false) && !WallKickMove(0, 1, false, false))
         {
             //Debug.Log("In-Place spin locked! Rows filled: " + rowsFilled);
             gm.SetScoreMultiplier(5, 5);
@@ -1356,7 +1350,7 @@ public class Group : MonoBehaviour
         }
     }
 
-    public bool WallKickMove(float dirH, float dirV = 0, bool setPos = true) // -1 is Left, 1 is Right
+    public bool WallKickMove(float dirH, float dirV = 0, bool setPos = true, bool playSound = true) // -1 is Left, 1 is Right
     {
         transform.position += new Vector3(dirH, dirV, 0);
         if (isValidGridPos())
@@ -1372,8 +1366,11 @@ public class Group : MonoBehaviour
                 
                 isWallKickThisTick = true;
 
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                if (playSound)
+                {
+                    GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+                    AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                }                
             }
             else
             {
@@ -1426,8 +1423,8 @@ public class Group : MonoBehaviour
 
     public bool CheckForTetrisweeps(bool getMultiplier = true, bool isInstantSweep = false, int highestRowSolved = -1)
     {
-        if (difficultSweepScored)
-            return false;
+        if (isFalling || difficultSweepScored)
+            return false;            
         // The child object isn't destroyed until the next Update loop, so you should check for its destroyed tag.
         List<Tile> childrenTiles = GetChildTiles();
         /*List<Tile> childrenTilesNotDestroyed = new List<Tile>();

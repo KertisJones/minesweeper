@@ -9,6 +9,7 @@ public class LinearRangeSlider : MonoBehaviour
     public TMPro.TextMeshProUGUI valueText;
     public bool autoUpdatePercentage = true;
     public bool invertPercentage = false;
+    public bool maxIsInfinity = false;
     public float percentMultiplier = 100f;
     public string suffix = "%";
     // Start is called before the first frame update
@@ -26,12 +27,6 @@ public class LinearRangeSlider : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void UpdateTextPercentage()
     {
         float decimalPercent = (slider.minValue + slider.value) / (slider.maxValue - slider.minValue);
@@ -47,7 +42,11 @@ public class LinearRangeSlider : MonoBehaviour
         if (invertPercentage)
             value = slider.maxValue - value;
         
-        valueText.text = value + suffix;
+        string valueStr = value + suffix;
+        if (maxIsInfinity && value == slider.maxValue)
+            valueStr = "∞" + suffix;
+
+        valueText.text = valueStr;
     }
 
     public void SetAdjustedValue(float newValue)

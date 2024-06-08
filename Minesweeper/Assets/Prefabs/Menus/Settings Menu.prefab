@@ -3883,6 +3883,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Rotate Clockwise
       objectReference: {fileID: 0}
+    - target: {fileID: 2450028317646061081, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
+      propertyPath: m_text
+      value: Rotate Clockwise
+      objectReference: {fileID: 0}
     - target: {fileID: 2547200451147902467, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
       value: Rotate Clockwise
@@ -3910,6 +3914,10 @@ PrefabInstance:
     - target: {fileID: 5603070513650156389, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735428543936608911, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
+      propertyPath: m_text
+      value: Chord
       objectReference: {fileID: 0}
     - target: {fileID: 5927857351700717444, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
@@ -4135,6 +4143,10 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7734176181436736636, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
+      propertyPath: m_text
+      value: Rotate Clockwise
+      objectReference: {fileID: 0}
     - target: {fileID: 7734176181533124822, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_fontColor.b
       value: 0.1960784
@@ -4154,6 +4166,10 @@ PrefabInstance:
     - target: {fileID: 7766333287689538042, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
       value: Rotate Clockwise
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776939525465708376, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
+      propertyPath: m_text
+      value: Flag Chord
       objectReference: {fileID: 0}
     - target: {fileID: 8475879005825423797, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
@@ -4200,7 +4216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5500574339850117533, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
       propertyPath: m_MaxValue
-      value: 40
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 5500574339850117533, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
       propertyPath: m_WholeNumbers
@@ -4208,7 +4224,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5857382238634225243, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
       propertyPath: suffix
-      value: X
+      value: x
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857382238634225243, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
+      propertyPath: maxIsInfinity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5857382238634225243, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
       propertyPath: autoUpdatePercentage
@@ -4222,6 +4242,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6884378656934846343, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
+      propertyPath: m_text
+      value: "\u221Ex"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884378656934846343, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 1407f1f515796764d99dcb20a793fdc0, type: 2}
+    - target: {fileID: 6884378656934846343, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8311543118869171364, guid: 1407f1f515796764d99dcb20a793fdc0, type: 2}
     - target: {fileID: 7809230764026823109, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
       propertyPath: m_Name
       value: SDF Slider
