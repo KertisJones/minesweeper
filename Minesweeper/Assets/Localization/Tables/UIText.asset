@@ -19,6 +19,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4e192eb4280cb4441934fc98d5671894, type: 2}
   - {fileID: 11400000, guid: 1b8253858c770ff448a261bdbf114f9a, type: 2}
   - {fileID: 11400000, guid: 5fa25691371ab3142a8ce736f7398c50, type: 2}
+  - {fileID: 11400000, guid: fd0ee6f243e114147b17836ef87d955b, type: 2}
+  - {fileID: 11400000, guid: 2fa26c6390f94c148b8ca4fa30fa772d, type: 2}
+  - {fileID: 11400000, guid: ca9ecee091f00c847a8451a088dd2018, type: 2}
+  - {fileID: 11400000, guid: e2c8d44983c544a47a181ef6f78987f5, type: 2}
   m_Extensions: []
   m_Group: String Table
   references:

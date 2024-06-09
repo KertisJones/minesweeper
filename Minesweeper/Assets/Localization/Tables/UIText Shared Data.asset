@@ -427,6 +427,162 @@ MonoBehaviour:
     m_Key: Menu TetrisweeperSupporters
     m_Metadata:
       m_Items: []
+  - m_Id: 23899711646720000
+    m_Key: Scoring Line-Fill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899852948627456
+    m_Key: Scoring Double-Fill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900050827501568
+    m_Key: Scoring Triple-Fill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900053100814336
+    m_Key: Scoring Tetri-Fill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900055583842304
+    m_Key: Scoring In-place Lock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900056825356288
+    m_Key: Scoring T-Spin Mini no lines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900058133979136
+    m_Key: Scoring T-Spin no lines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900060650561536
+    m_Key: Scoring T-Spin Mini Single
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900062789656576
+    m_Key: Scoring T-Spin Single
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900064362520576
+    m_Key: Scoring T-Spin Mini Double
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900065469816832
+    m_Key: Scoring T-Spin Double
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900066350620672
+    m_Key: Scoring T-Spin Triple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900067399196672
+    m_Key: Scoring Back-to-back Difficult Fill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900068477132800
+    m_Key: 'Scoring Combo: Line Filled'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900069341159424
+    m_Key: Scoring Perfect clear 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070171631616
+    m_Key: Scoring Perfect clear 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070930800640
+    m_Key: Scoring Perfect clear 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900071694163968
+    m_Key: Scoring Perfect clear 4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900072453332992
+    m_Key: Scoring Back-to-Back Tetri-Fill Perfect Clear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900073984253952
+    m_Key: Scoring Instant Perfect Clear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900074789560320
+    m_Key: Scoring Lines Cleared
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900075540340736
+    m_Key: Scoring Linesweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900076320481280
+    m_Key: Scoring Duosweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077041901568
+    m_Key: Scoring Triosweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077788487680
+    m_Key: Scoring Tetrisweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900078597988352
+    m_Key: Scoring T-Spinsweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900079352963072
+    m_Key: Scoring Back-to-back Difficult Sweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080103743488
+    m_Key: Scoring Instant Sweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080942604288
+    m_Key: Scoring High Clear 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900081680801792
+    m_Key: Scoring High Clear 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900082452553728
+    m_Key: Scoring High Clear 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900083224305664
+    m_Key: 'Scoring Combo: Tile Revealed'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084004446208
+    m_Key: Scoring Automatic Reveal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084797169664
+    m_Key: Scoring Failed Chord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900085510201344
+    m_Key: Scoring High Reveal 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900086307119104
+    m_Key: Scoring High Reveal 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087116619776
+    m_Key: Scoring High Reveal 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087833845760
+    m_Key: Scoring Manual Reveal Streak (50 tiles)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900088626569216
+    m_Key: Scoring 8
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

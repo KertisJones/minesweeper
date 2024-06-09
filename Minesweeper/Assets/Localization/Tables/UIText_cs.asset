@@ -10,279 +10,281 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: UIText_en
+  m_Name: UIText_cs
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: en
+    m_Code: cs
   m_SharedData: {fileID: 11400000, guid: 0dd1e0fbba483424bbb601167d9eb8a1, type: 2}
   m_Metadata:
-    m_Items:
-    - rid: 1684021998389821468
+    m_Items: []
   m_TableData:
   - m_Id: 15111020544
-    m_Localized: Score
+    m_Localized: "Sk\xF3re"
     m_Metadata:
       m_Items: []
   - m_Id: 3884008333312
-    m_Localized: Next
-    m_Metadata:
-      m_Items: []
-  - m_Id: 691795221536768
-    m_Localized: Best Time
+    m_Localized: "N\xE1sleduj\xEDc\xED"
     m_Metadata:
       m_Items: []
   - m_Id: 688583756210176
-    m_Localized: Mines
-    m_Metadata:
-      m_Items: []
-  - m_Id: 691701722112000
-    m_Localized: Best Today
-    m_Metadata:
-      m_Items: []
-  - m_Id: 691682109546496
-    m_Localized: High Score
+    m_Localized: Miny
     m_Metadata:
       m_Items: []
   - m_Id: 690552633810944
-    m_Localized: Time
+    m_Localized: "\u010Cas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691682109546496
+    m_Localized: Rekord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691701722112000
+    m_Localized: "Dne\u0161n\xED rekord"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691795221536768
+    m_Localized: "Nejlep\u0161\xED \u010Das"
     m_Metadata:
       m_Items: []
   - m_Id: 692206200414208
-    m_Localized: Lines
+    m_Localized: "\u0158\xE1dky"
     m_Metadata:
       m_Items: []
   - m_Id: 692866870403072
-    m_Localized: Tetrisweeps
+    m_Localized: Tetrisweepy
     m_Metadata:
       m_Items: []
   - m_Id: 693625464807424
-    m_Localized: Quit
+    m_Localized: "Odej\xEDt"
     m_Metadata:
       m_Items: []
   - m_Id: 693945486008320
-    m_Localized: Can't Quit in Browser
+    m_Localized: "V prohl\xED\u017Ee\u010Di nelze odej\xEDt"
     m_Metadata:
       m_Items: []
   - m_Id: 694159798165504
-    m_Localized: Level
+    m_Localized: "\xDArove\u0148"
     m_Metadata:
       m_Items: []
   - m_Id: 694324101636096
-    m_Localized: T-Spinsweeps
+    m_Localized: T-Spinsweepy
     m_Metadata:
       m_Items: []
   - m_Id: 694970670374912
-    m_Localized: Endless
+    m_Localized: "Nekone\u010Dn\xE1 hra"
     m_Metadata:
       m_Items: []
   - m_Id: 696069942927360
-    m_Localized: Complete
+    m_Localized: "V\xFDhra!"
     m_Metadata:
       m_Items: []
   - m_Id: 697409771397120
-    m_Localized: Marathon
+    m_Localized: Maraton
     m_Metadata:
       m_Items: []
   - m_Id: 697412782907392
-    m_Localized: Flash Marathon
+    m_Localized: "Bleskov\xFD maraton"
     m_Metadata:
       m_Items: []
   - m_Id: 697414372548608
-    m_Localized: 40-Line Sprint
+    m_Localized: "40 \u0159\xE1dkov\xFD sprint"
     m_Metadata:
       m_Items: []
   - m_Id: 697420861136896
-    m_Localized: 'Ultra:
-
-      Time Trial'
+    m_Localized: "Ultra:\nna \u010Das"
     m_Metadata:
       m_Items: []
   - m_Id: 697421989404672
-    m_Localized: Flash Ultra
+    m_Localized: Ultra bleskovka
     m_Metadata:
       m_Items: []
   - m_Id: 697429551734784
-    m_Localized: Credits
+    m_Localized: Titulky
     m_Metadata:
       m_Items: []
   - m_Id: 697599509127168
-    m_Localized: Obscured Marathon
+    m_Localized: "Mlhov\xFD maraton"
     m_Metadata:
       m_Items: []
   - m_Id: 925355878637568
-    m_Localized: Play
+    m_Localized: "Hr\xE1t"
     m_Metadata:
       m_Items: []
   - m_Id: 925670325608448
-    m_Localized: Paused
+    m_Localized: Pozastaveno
     m_Metadata:
       m_Items: []
   - m_Id: 925714365800448
-    m_Localized: Resume
-    m_Metadata:
-      m_Items: []
-  - m_Id: 933890872041472
-    m_Localized: Restore Defaults
+    m_Localized: "Pokra\u010Dovat"
     m_Metadata:
       m_Items: []
   - m_Id: 925742983536640
-    m_Localized: Settings
+    m_Localized: "Nastaven\xED"
     m_Metadata:
       m_Items: []
   - m_Id: 926408846073856
-    m_Localized: Controls
+    m_Localized: "Ovl\xE1d\xE1n\xED"
     m_Metadata:
       m_Items: []
   - m_Id: 926506682408960
-    m_Localized: Back
+    m_Localized: "Zp\u011Bt"
     m_Metadata:
       m_Items: []
   - m_Id: 926602874576896
-    m_Localized: Master Volume
+    m_Localized: "Celkov\xE1 hlasitost"
     m_Metadata:
       m_Items: []
   - m_Id: 926629294497792
-    m_Localized: Music
+    m_Localized: Hudba
     m_Metadata:
       m_Items: []
   - m_Id: 926659917111296
-    m_Localized: Effects
+    m_Localized: "Zvukov\xE9 efekty"
     m_Metadata:
       m_Items: []
   - m_Id: 926682805428224
-    m_Localized: Reduce Animations
+    m_Localized: Redukovat animace
     m_Metadata:
       m_Items: []
   - m_Id: 926709879660544
-    m_Localized: Show Lock Delay
+    m_Localized: "Uk\xE1zat zpo\u017Ed\u011Bn\xED uzam\u010Den\xED"
     m_Metadata:
       m_Items: []
-  - m_Id: 928909536256000
-    m_Localized: Cleanse
+  - m_Id: 927883198455808
+    m_Localized: Doleva
     m_Metadata:
       m_Items: []
-  - m_Id: 928788438310912
-    m_Localized: Flag Chord
+  - m_Id: 928546846400512
+    m_Localized: Doprava
     m_Metadata:
       m_Items: []
-  - m_Id: 928735476834304
-    m_Localized: Flag Tile
+  - m_Id: 928580065288192
+    m_Localized: "Oto\u010Dit po sm\u011Bru"
     m_Metadata:
       m_Items: []
-  - m_Id: 928722587738112
-    m_Localized: Chord
+  - m_Id: 928615494574080
+    m_Localized: "Oto\u010Dit proti sm\u011Bru"
     m_Metadata:
       m_Items: []
-  - m_Id: 928708620705792
-    m_Localized: Reveal Tile
+  - m_Id: 928630334021632
+    m_Localized: "Rychl\xFD p\xE1d"
     m_Metadata:
       m_Items: []
-  - m_Id: 928694787891200
-    m_Localized: Hard Clear
+  - m_Id: 928642711412736
+    m_Localized: "Instantn\xED p\xE1d"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928656833634304
+    m_Localized: Uschovat
     m_Metadata:
       m_Items: []
   - m_Id: 928682272088064
     m_Localized: Restart
     m_Metadata:
       m_Items: []
+  - m_Id: 928694787891200
+    m_Localized: "Instantn\xED vy\u010Di\u0161t\u011Bn\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928708620705792
+    m_Localized: "Odhalit pol\xED\u010Dko"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928722587738112
+    m_Localized: Akordovat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928735476834304
+    m_Localized: "Ozna\u010Dit vlajkou"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928788438310912
+    m_Localized: Akordovat vlajky
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928909536256000
+    m_Localized: "Vy\u010Distit blok"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933890872041472
+    m_Localized: "Obnovit nastaven\xED"
+    m_Metadata:
+      m_Items: []
   - m_Id: 934286541709312
-    m_Localized: Block Falling Controls
-    m_Metadata:
-      m_Items: []
-  - m_Id: 928656833634304
-    m_Localized: Hold
-    m_Metadata:
-      m_Items: []
-  - m_Id: 928642711412736
-    m_Localized: Hard Drop
-    m_Metadata:
-      m_Items: []
-  - m_Id: 928630334021632
-    m_Localized: Soft Drop
-    m_Metadata:
-      m_Items: []
-  - m_Id: 928615494574080
-    m_Localized: Rotate Counter-Clockwise
-    m_Metadata:
-      m_Items: []
-  - m_Id: 928580065288192
-    m_Localized: Rotate Clockwise
-    m_Metadata:
-      m_Items: []
-  - m_Id: 928546846400512
-    m_Localized: Right
-    m_Metadata:
-      m_Items: []
-  - m_Id: 927883198455808
-    m_Localized: Left
+    m_Localized: "Ovl\xE1d\xE1n\xED blok\u016F"
     m_Metadata:
       m_Items: []
   - m_Id: 934315432075264
-    m_Localized: Minesweeper Controls
-    m_Metadata:
-      m_Items: []
-  - m_Id: 951658765869056
-    m_Localized: Customize Game
+    m_Localized: "Ovl\xE1d\xE1n\xED hled\xE1n\xED min"
     m_Metadata:
       m_Items: []
   - m_Id: 951608887205888
-    m_Localized: Edit
+    m_Localized: Upravit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951658765869056
+    m_Localized: Upravit hru
     m_Metadata:
       m_Items: []
   - m_Id: 951849149521920
-    m_Localized: Coming Soon
+    m_Localized: "Ji\u017E brzy"
     m_Metadata:
       m_Items: []
   - m_Id: 952127466758144
-    m_Localized: Scoring
+    m_Localized: "Sk\xF3rov\xE1n\xED"
     m_Metadata:
       m_Items: []
   - m_Id: 952161780359168
-    m_Localized: Leaderboard
+    m_Localized: "\u017Deb\u0159\xED\u010Dek sk\xF3re"
     m_Metadata:
       m_Items: []
   - m_Id: 963399100915712
-    m_Localized: Endless Mode
+    m_Localized: "Nekone\u010Dn\xFD re\u017Eim"
     m_Metadata:
       m_Items: []
   - m_Id: 963558551576576
-    m_Localized: Game Over
+    m_Localized: Konec hry
     m_Metadata:
       m_Items: []
   - m_Id: 988652401319936
-    m_Localized: Survive up to 150 lines, and try to get the highest score possible!
+    m_Localized: "P\u0159e\u017Eij 150 \u0159\xE1dk\u016F, a zkus z\xEDskat co nejvy\u0161\u0161\xED
+      sk\xF3re!"
     m_Metadata:
       m_Items: []
   - m_Id: 988835440746496
-    m_Localized: Clear 40 lines as fast as possible!
+    m_Localized: "Vyma\u017E 40 \u0159\xE1dku jak nejrychleji to um\xED\u0161!"
     m_Metadata:
       m_Items: []
   - m_Id: 989111895711744
-    m_Localized: The easier, faster-paced version of Marathon where lines clear instantly!
+    m_Localized: "Jednodu\u0161\u0161\xED a svi\u017En\u011Bj\u0161\xED verze maratonu,
+      kde \u0159\xE1dky miz\xED instantn\u011B!"
     m_Metadata:
       m_Items: []
   - m_Id: 989231202689024
-    m_Localized: Coming soon...
+    m_Localized: "Ji\u017E brzy..."
     m_Metadata:
       m_Items: []
   - m_Id: 989810910027776
-    m_Localized: Get the highest score possible in three minutes!
+    m_Localized: "Z\xEDskej nejvy\u0161\u0161\xED mo\u017En\xE9 sk\xF3re za t\u0159i
+      minuty!"
     m_Metadata:
       m_Items: []
   - m_Id: 989813380472832
-    m_Localized: 'Get the highest score possible in three minutes, using Flash rules! '
+    m_Localized: "Z\xEDskej nejvy\u0161\u0161\xED mo\u017En\xE9 sk\xF3re za t\u0159i
+      minuty s pravidly bleskovky!"
     m_Metadata:
       m_Items: []
   - m_Id: 990195708059648
-    m_Localized: Click to view in your browser
+    m_Localized: "Klikni pro otev\u0159en\xED v prohl\xED\u017Ee\u010Di"
     m_Metadata:
       m_Items: []
   - m_Id: 990308941684736
-    m_Localized: Join our Community Discord to get your name on the official leaderboard!
+    m_Localized: "P\u0159idej se k na\u0161emu komunitn\xEDmu Discord serveru a nech
+      se p\u0159idat do ofici\xE1ln\xEDho \u017Eeb\u0159\xED\u010Dku!"
     m_Metadata:
       m_Items: []
   - m_Id: 990401673551872
-    m_Localized: Thank you for playing!
+    m_Localized: "D\u011Bkujeme za hran\xED!"
     m_Metadata:
       m_Items: []
   - m_Id: 990658520145920
@@ -290,82 +292,87 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 990813138968576
-    m_Localized: Join the official Tetrisweeper Community Discord!
+    m_Localized: "P\u0159idej se k ofici\xE1ln\xEDmu komunitn\xEDmu Discord serveru
+      Tetrisweeperu!"
     m_Metadata:
       m_Items: []
   - m_Id: 990814418231296
-    m_Localized: Share your high scores with #Tetrisweeper
-    m_Metadata:
-      m_Items: []
-  - m_Id: 990815487778816
-    m_Localized: Download the standalone version
+    m_Localized: "Sd\xEDlej svoje sk\xF3re s tagem #Tetrisweeper"
     m_Metadata:
       m_Items: []
   - m_Id: 990816574103552
-    m_Localized: Check out our community playlist!
+    m_Localized: "Pod\xEDvej se na n\xE1\u0161 komunitn\xED playlist!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990815487778816
+    m_Localized: "St\xE1hni si samostatnou verzi"
     m_Metadata:
       m_Items: []
   - m_Id: 990817517821952
-    m_Localized: Do you want to buy me a coffee? Thank you for your support!
+    m_Localized: "Chce\u0161 mi koupit k\xE1vu? D\xEDky za podporu!"
     m_Metadata:
       m_Items: []
   - m_Id: 991654902226944
-    m_Localized: 'Cleanse: Clear all mines in hold, +250 points'
+    m_Localized: "Vy\u010Di\u0161ten\xED bloku: Vy\u010Dist\xED v\u0161echny miny
+      v dr\u017Een\xE9m tetrominu, +250 bod\u016F"
     m_Metadata:
       m_Items: []
   - m_Id: 992047333892096
-    m_Localized: Tetrisweep is when you clear all 4 lines in a 4-line tetris you
-      just filled, before the next tetromino locks into place.
+    m_Localized: "Tetrisweep znamen\xE1, \u017Ee jsi vymazal v\u0161echny \u010Dty\u0159i
+      \u0159\xE1dky, kter\xE9 byly pr\xE1v\u011B vypln\u011Bny vertik\xE1ln\xEDm
+      tetrominem, p\u0159ed dopadnut\xEDm dal\u0161\xEDho bloku."
     m_Metadata:
       m_Items: []
   - m_Id: 992048869007360
-    m_Localized: T-Spinsweep is when you score a T-spin and clear every line that
-      the T tetromino filled, before the next tetromino locks into place.
+    m_Localized: "T-Spinsweep znamen\xE1, \u017Ee jsi ud\u011Blal T-spin a vymazal
+      jsi v\u0161echny \u0159\xE1dky, kter\xE9 T tetromino vyplnilo p\u0159ed dopadnut\xEDm
+      dal\u0161\xEDho bloku."
     m_Metadata:
       m_Items: []
   - m_Id: 1427307444035584
-    m_Localized: Dots
+    m_Localized: "Te\u010Dky"
     m_Metadata:
       m_Items: []
   - m_Id: 1427339857616896
-    m_Localized: Marathon mode, but tile numbers are replaced with dots!
+    m_Localized: "Maraton, ale \u010D\xEDsla na pol\xED\u010Dk\xE1ch jsou nahrazena
+      barevn\xFDmi te\u010Dkami."
     m_Metadata:
       m_Items: []
   - m_Id: 1647393605935104
-    m_Localized: Walls
+    m_Localized: "St\u011Bny"
     m_Metadata:
       m_Items: []
   - m_Id: 1647422219476992
-    m_Localized: Instead of unlocking safe tiles as you play, the walls of the game
-      board are now playable tiles.
+    m_Localized: "St\u011Bny ji\u017E neslou\u017E\xED jako odemykateln\xE9 bezpe\u010Dn\xE9
+      pole, te\u010F slou\u017E\xED jako hern\xED pole."
     m_Metadata:
       m_Items: []
   - m_Id: 2474781692649472
-    m_Localized: Wishlist
+    m_Localized: "P\u0159idat do seznemu p\u0159\xE1n\xED"
     m_Metadata:
       m_Items: []
   - m_Id: 2474781847838720
-    m_Localized: On Steam
+    m_Localized: Na steamu
     m_Metadata:
       m_Items: []
   - m_Id: 2474861069852672
-    m_Localized: Unlock bonus game modes!
+    m_Localized: "Odem\u010Di v\xEDce hern\xEDch m\xF3du!"
     m_Metadata:
       m_Items: []
   - m_Id: 2475075038076928
-    m_Localized: Tetrisweep like never before!
+    m_Localized: "Tetrisweepuj jako nikdy p\u0159edt\xEDm!"
     m_Metadata:
       m_Items: []
   - m_Id: 2512304913506304
-    m_Localized: Locked!
+    m_Localized: "Uzam\u010Deno!"
     m_Metadata:
       m_Items: []
   - m_Id: 5052179397636096
-    m_Localized: Block Placing
+    m_Localized: "Pokl\xE1d\xE1n\xED blok\u016F"
     m_Metadata:
       m_Items: []
   - m_Id: 5052349606686720
-    m_Localized: Minesweeping
+    m_Localized: "Hled\xE1n\xED min"
     m_Metadata:
       m_Items: []
   - m_Id: 5052351666089984
@@ -381,159 +388,160 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7178065133166592
-    m_Localized: Handling
+    m_Localized: Manipulace
     m_Metadata:
       m_Items: []
   - m_Id: 7178359053213696
-    m_Localized: Video Settings
+    m_Localized: "Nastaven\xED videa"
     m_Metadata:
       m_Items: []
   - m_Id: 7178438203924480
-    m_Localized: Audio Settings
+    m_Localized: "Nastaven\xED zvuku"
     m_Metadata:
       m_Items: []
   - m_Id: 7178483062005760
-    m_Localized: Handling Settings
+    m_Localized: "Nastaven\xED manipulace"
     m_Metadata:
       m_Items: []
   - m_Id: 7288987847745536
-    m_Localized: 'ARR: Auto Repeat Rate'
+    m_Localized: "ARR: Frekvence automatick\xE9ho opakov\xE1n\xED"
     m_Metadata:
       m_Items: []
   - m_Id: 7289007573557248
-    m_Localized: 'DAS: Delayed Auto Shift'
+    m_Localized: "DAS: Opo\u017Ed\u011Bn\xED automatick\xE9ho posunu"
     m_Metadata:
       m_Items: []
   - m_Id: 7289023503523840
-    m_Localized: 'DCD: DAS Cut Delay'
+    m_Localized: "DCD: Opo\u017Ed\u011Bn\xED po p\u0159eru\u0161en\xED DAS"
     m_Metadata:
       m_Items: []
   - m_Id: 7289036057075712
-    m_Localized: 'SDF: Soft Drop Factor'
+    m_Localized: "SDF: Faktor rychl\xE9ho p\xE1du"
     m_Metadata:
       m_Items: []
   - m_Id: 8261547250933760
-    m_Localized: Localization
+    m_Localized: "P\u0159eklad"
     m_Metadata:
       m_Items: []
   - m_Id: 8261772770271232
-    m_Localized: Created by
+    m_Localized: "Vytvo\u0159il"
     m_Metadata:
       m_Items: []
   - m_Id: 8261872057835520
-    m_Localized: Special thanks
+    m_Localized: "Speci\xE1ln\xED pod\u011Bkov\xE1n\xED..."
     m_Metadata:
       m_Items: []
   - m_Id: 8635273809223680
-    m_Localized: Additional Credits
+    m_Localized: "Dal\u0161\xED titulky"
     m_Metadata:
       m_Items: []
   - m_Id: 8641451649916928
-    m_Localized: Press any key to continue...
+    m_Localized: "Pro pokra\u010Dov\xE1n\xED zm\xE1\u010Dkn\xED kl\xE1vesu..."
     m_Metadata:
       m_Items: []
   - m_Id: 8664569943060480
-    m_Localized: Tetrisweeper Supporters
+    m_Localized: "Podporovatel\xE9 tetrisweeperu"
     m_Metadata:
       m_Items: []
   - m_Id: 23899711646720000
-    m_Localized: Line-Fill
+    m_Localized: "Zapln\u011Bn\xED \u0159\xE1dku"
     m_Metadata:
       m_Items: []
   - m_Id: 23899852948627456
-    m_Localized: Double-Fill
+    m_Localized: "Dvojzapln\u011Bn\xED"
     m_Metadata:
       m_Items: []
   - m_Id: 23900050827501568
-    m_Localized: Triple-Fill
+    m_Localized: "Trojzapln\u011Bn\xED"
     m_Metadata:
       m_Items: []
   - m_Id: 23900053100814336
-    m_Localized: Tetri-Fill
+    m_Localized: "\u010Cty\u0159zapln\u011Bn\xED"
     m_Metadata:
       m_Items: []
   - m_Id: 23900055583842304
-    m_Localized: In-place Lock
+    m_Localized: "Uzam\u010Den\xED na m\xEDst\u011B"
     m_Metadata:
       m_Items: []
   - m_Id: 23900056825356288
-    m_Localized: T-Spin Mini no lines
+    m_Localized: "T-Spin mini bez \u0159\xE1dk\u016F"
     m_Metadata:
       m_Items: []
   - m_Id: 23900058133979136
-    m_Localized: T-Spin no lines
+    m_Localized: "T-Spin bez \u0159\xE1dk\u016F"
     m_Metadata:
       m_Items: []
   - m_Id: 23900060650561536
-    m_Localized: T-Spin Mini Single
+    m_Localized: "Jednoduch\xFD T-Spin mini "
     m_Metadata:
       m_Items: []
   - m_Id: 23900062789656576
-    m_Localized: T-Spin Single
+    m_Localized: "Jednoduch\xFD T-Spin"
     m_Metadata:
       m_Items: []
   - m_Id: 23900064362520576
-    m_Localized: T-Spin Mini Double
+    m_Localized: "Dvojit\xFD T-Spin mini"
     m_Metadata:
       m_Items: []
   - m_Id: 23900065469816832
-    m_Localized: T-Spin Double
+    m_Localized: "Dvojit\xFD T-Spin"
     m_Metadata:
       m_Items: []
   - m_Id: 23900066350620672
-    m_Localized: T-Spin Triple
+    m_Localized: "Trojit\xFD T-Spin"
     m_Metadata:
       m_Items: []
   - m_Id: 23900067399196672
-    m_Localized: Back-to-back Difficult Fill
+    m_Localized: "Back-to-back t\u011B\u017Ek\xE9 zapln\u011Bn\xED"
     m_Metadata:
       m_Items: []
   - m_Id: 23900068477132800
-    m_Localized: 'Combo: Line Filled'
+    m_Localized: "Kombo: Zaplnen\xED \u0159\xE1dku"
     m_Metadata:
       m_Items: []
   - m_Id: 23900069341159424
-    m_Localized: Perfect clear (Single-line)
+    m_Localized: "Perfektn\xED vy\u010Di\u0161t\u011Bn\xED (jeden \u0159\xE1dek)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900070171631616
-    m_Localized: Perfect clear (Double-line)
+    m_Localized: "Perfektn\xED vy\u010Di\u0161t\u011Bn\xED (dvou\u0159\xE1dkov\xE9)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900070930800640
-    m_Localized: Perfect clear (Triple-line)
+    m_Localized: "Perfektn\xED vy\u010Di\u0161t\u011Bn\xED (troj\u0159\xE1dkov\xE9)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900071694163968
-    m_Localized: Perfect clear (Tetri-Fill)
+    m_Localized: "Perfektn\xED vy\u010Di\u0161t\u011Bn\xED (\u010Dty\u0159\u0159\xE1dkov\xFD)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900072453332992
-    m_Localized: Back-to-Back Tetri-Fill Perfect Clear
+    m_Localized: "Back-to-Back: Perfektn\xED vy\u010Di\u0161t\u011Bn\xED \u010Dty\u0159\u0159\xE1dkov\xFDm
+      vypln\u011Bn\xEDm"
     m_Metadata:
       m_Items: []
   - m_Id: 23900073984253952
-    m_Localized: Instant Perfect Clear
+    m_Localized: "Instantn\xED perfektn\xED vy\u010Di\u0161t\u011Bn\xED"
     m_Metadata:
       m_Items: []
   - m_Id: 23900074789560320
-    m_Localized: Lines Cleared
+    m_Localized: "Vy\u010Di\u0161t\u011Bn\xE9 \u0159\xE1dky"
     m_Metadata:
       m_Items: []
   - m_Id: 23900075540340736
-    m_Localized: Linesweep
+    m_Localized: Sweep
     m_Metadata:
       m_Items: []
   - m_Id: 23900076320481280
-    m_Localized: Duosweep
+    m_Localized: Dvojsweep
     m_Metadata:
       m_Items: []
   - m_Id: 23900077041901568
-    m_Localized: Triosweep
+    m_Localized: Trojsweep
     m_Metadata:
       m_Items: []
   - m_Id: 23900077788487680
-    m_Localized: Tetrisweep
+    m_Localized: "\u010Cty\u0159sweep"
     m_Metadata:
       m_Items: []
   - m_Id: 23900078597988352
@@ -541,61 +549,57 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23900079352963072
-    m_Localized: Back-to-back Difficult Sweep
+    m_Localized: "Back-to-Back t\u011B\u017Ek\xFD sweep"
     m_Metadata:
       m_Items: []
   - m_Id: 23900080103743488
-    m_Localized: Instant Sweep
+    m_Localized: "Instantn\xED sweep"
     m_Metadata:
       m_Items: []
   - m_Id: 23900080942604288
-    m_Localized: High Clear (Row 6 or higher)
+    m_Localized: "Vysok\xE9 vy\u010Di\u0161t\u011Bn\xED (\u0158\xE1dek 6+)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900081680801792
-    m_Localized: High Clear (Row 11 or higher)
+    m_Localized: "Vysok\xE9 vy\u010Di\u0161t\u011Bn\xED (\u0158\xE1dek 11+)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900082452553728
-    m_Localized: High Clear (Row 16 or higher)
+    m_Localized: "Vysok\xE9 vy\u010Di\u0161t\u011Bn\xED (\u0158\xE1dek 16+)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900083224305664
-    m_Localized: 'Combo: Tile Revealed'
+    m_Localized: "Kombo: Odhalen\xED pole"
     m_Metadata:
       m_Items: []
   - m_Id: 23900084004446208
-    m_Localized: Automatic Reveal
+    m_Localized: "Automatick\xE9 odhalen\xED"
     m_Metadata:
       m_Items: []
   - m_Id: 23900084797169664
-    m_Localized: Failed Chord
+    m_Localized: "Ne\xFAsp\u011B\u0161n\xFD akord"
     m_Metadata:
       m_Items: []
   - m_Id: 23900085510201344
-    m_Localized: High Reveal (Row 6 or higher)
+    m_Localized: "Vysok\xE9 odhalen\xED (\u0158\xE1dek 6+)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900086307119104
-    m_Localized: High Reveal (Row 11 or higher)
+    m_Localized: "Vysok\xE9 odhalen\xED (\u0158\xE1dek 11+)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900087116619776
-    m_Localized: High Reveal (Row 16 or higher)
+    m_Localized: "Vysok\xE9 odhalen\xED (\u0158\xE1dek 16+)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900087833845760
-    m_Localized: Manual Reveal Streak (50 tiles)
+    m_Localized: "S\xE9rie manu\xE1ln\xEDch odhalen\xED (50 pol\xED)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900088626569216
-    m_Localized: 8 Tile Revealed or Created
+    m_Localized: "8 pol\xED odhaleno nebo vytvo\u0159eno"
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds:
-    - rid: 1684021998389821468
-      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_Entries: 00e0afc3216b0200
+    RefIds: []

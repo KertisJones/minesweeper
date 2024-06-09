@@ -10,554 +10,533 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: UIText_fr
+  m_Name: UIText_pl
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: fr
+    m_Code: pl
   m_SharedData: {fileID: 11400000, guid: 0dd1e0fbba483424bbb601167d9eb8a1, type: 2}
   m_Metadata:
-    m_Items:
-    - rid: 1684021998389821469
+    m_Items: []
   m_TableData:
   - m_Id: 15111020544
-    m_Localized: Points
-    m_Metadata:
-      m_Items: []
-  - m_Id: 933890872041472
-    m_Localized: "Restaurer les r\xE9glages"
+    m_Localized: Wynik
     m_Metadata:
       m_Items: []
   - m_Id: 3884008333312
-    m_Localized: Prochain
+    m_Localized: "Nast\u0119pny"
     m_Metadata:
       m_Items: []
   - m_Id: 688583756210176
-    m_Localized: Mines
+    m_Localized: Miny
     m_Metadata:
       m_Items: []
   - m_Id: 690552633810944
-    m_Localized: Temps
+    m_Localized: Czas
     m_Metadata:
       m_Items: []
   - m_Id: 691682109546496
-    m_Localized: Meilleur Score
+    m_Localized: Rekord
     m_Metadata:
       m_Items: []
   - m_Id: 691701722112000
-    m_Localized: Meilleur d'aujoud'hui
+    m_Localized: Dzisiejszy rekord
     m_Metadata:
       m_Items: []
   - m_Id: 691795221536768
-    m_Localized: Meilleur Temps
+    m_Localized: Najlepszy czas
     m_Metadata:
       m_Items: []
   - m_Id: 692206200414208
-    m_Localized: Lignes
+    m_Localized: Linie
     m_Metadata:
       m_Items: []
   - m_Id: 692866870403072
-    m_Localized: Tetrisweeps
-    m_Metadata:
-      m_Items: []
-  - m_Id: 694324101636096
-    m_Localized: T-Spinsweeps
+    m_Localized: Tetrisweepy
     m_Metadata:
       m_Items: []
   - m_Id: 693625464807424
-    m_Localized: Quitter
+    m_Localized: "Wyjd\u017A"
     m_Metadata:
       m_Items: []
   - m_Id: 693945486008320
-    m_Localized: Impossible de quitter dans le navigateur
+    m_Localized: "Nie mo\u017Cesz wyj\u015B\u0107 w przegl\u0105darce"
     m_Metadata:
       m_Items: []
   - m_Id: 694159798165504
-    m_Localized: Niveau
+    m_Localized: Lewel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694324101636096
+    m_Localized: T-Spinsweepy
     m_Metadata:
       m_Items: []
   - m_Id: 694970670374912
-    m_Localized: Infini
+    m_Localized: "Niesko\u0144czony"
     m_Metadata:
       m_Items: []
   - m_Id: 696069942927360
-    m_Localized: Complet
+    m_Localized: "Sko\u0144czony!"
     m_Metadata:
       m_Items: []
   - m_Id: 697409771397120
-    m_Localized: Marathon
+    m_Localized: Maraton
     m_Metadata:
       m_Items: []
   - m_Id: 697412782907392
-    m_Localized: Marathon Flash
+    m_Localized: Szybki Maraton
     m_Metadata:
       m_Items: []
   - m_Id: 697414372548608
-    m_Localized: Sprint de 40 lignes
+    m_Localized: Sprint 40 linii
     m_Metadata:
       m_Items: []
   - m_Id: 697420861136896
-    m_Localized: 'Ultra:
-
-      Contre-la-montre'
+    m_Localized: "Ultra: Pr\xF3ba czasi"
     m_Metadata:
       m_Items: []
   - m_Id: 697421989404672
-    m_Localized: Ultra Flash
+    m_Localized: Ultra szybki
     m_Metadata:
       m_Items: []
   - m_Id: 697429551734784
-    m_Localized: "Cr\xE9dits"
+    m_Localized: "Tw\xF3rcy"
     m_Metadata:
       m_Items: []
   - m_Id: 697599509127168
-    m_Localized: Marathon Obscurci
-    m_Metadata:
-      m_Items: []
-  - m_Id: 928656833634304
-    m_Localized: Retenu
+    m_Localized: Obskurny Maraton
     m_Metadata:
       m_Items: []
   - m_Id: 925355878637568
-    m_Localized: Jouer
+    m_Localized: Graj
     m_Metadata:
       m_Items: []
   - m_Id: 925670325608448
-    m_Localized: "Paus\xE9"
+    m_Localized: Pauza
     m_Metadata:
       m_Items: []
   - m_Id: 925714365800448
-    m_Localized: Reprendre
-    m_Metadata:
-      m_Items: []
-  - m_Id: 928682272088064
-    m_Localized: Relancer
+    m_Localized: "Wzn\xF3w"
     m_Metadata:
       m_Items: []
   - m_Id: 925742983536640
-    m_Localized: "R\xE9glages"
+    m_Localized: Ustawienia
     m_Metadata:
       m_Items: []
   - m_Id: 926408846073856
-    m_Localized: "Contr\xF4les"
+    m_Localized: Sterowanie
     m_Metadata:
       m_Items: []
   - m_Id: 926506682408960
-    m_Localized: Retour
+    m_Localized: "Wr\xF3\u0107"
     m_Metadata:
       m_Items: []
   - m_Id: 926602874576896
-    m_Localized: Volume Principal
+    m_Localized: "G\u0142o\u015Bno\u015B\u0107"
     m_Metadata:
       m_Items: []
   - m_Id: 926629294497792
-    m_Localized: Musique
+    m_Localized: Muzyka
     m_Metadata:
       m_Items: []
   - m_Id: 926659917111296
-    m_Localized: Effets
+    m_Localized: Efekty
     m_Metadata:
       m_Items: []
   - m_Id: 926682805428224
-    m_Localized: "R\xE9duire les Animations"
+    m_Localized: Ogranicz animacje
     m_Metadata:
       m_Items: []
   - m_Id: 926709879660544
-    m_Localized: Montrer le temps de verrouillage
+    m_Localized: "Poka\u017C op\xF3\u017Anienie blokowania"
     m_Metadata:
       m_Items: []
   - m_Id: 927883198455808
-    m_Localized: Gauche
+    m_Localized: Lewo
     m_Metadata:
       m_Items: []
   - m_Id: 928546846400512
-    m_Localized: Droite
+    m_Localized: Prawo
     m_Metadata:
       m_Items: []
   - m_Id: 928580065288192
-    m_Localized: Tourner dans le sens horaire
+    m_Localized: "Obracaj wed\u0142ug ruchu wskaz\xF3wek zegara"
     m_Metadata:
       m_Items: []
   - m_Id: 928615494574080
-    m_Localized: Tourner dans le sens anti-horaire
+    m_Localized: "Obracaj przeciwnmie do ruchu wskaz\xF3wek zegara"
     m_Metadata:
       m_Items: []
   - m_Id: 928630334021632
-    m_Localized: Descente douce
+    m_Localized: Powolny upadek
     m_Metadata:
       m_Items: []
   - m_Id: 928642711412736
-    m_Localized: Descente forte
+    m_Localized: Natychmiastowy upadek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928656833634304
+    m_Localized: Przytrzymaj
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928682272088064
+    m_Localized: "Pon\xF3w"
     m_Metadata:
       m_Items: []
   - m_Id: 928694787891200
-    m_Localized: Effacer Dure
+    m_Localized: Natychmiastowe odkrywanie
     m_Metadata:
       m_Items: []
   - m_Id: 928708620705792
-    m_Localized: "R\xE9v\xE9ler une case"
+    m_Localized: Odkryj pole
     m_Metadata:
       m_Items: []
   - m_Id: 928722587738112
-    m_Localized: Accord
+    m_Localized: Akord
     m_Metadata:
       m_Items: []
   - m_Id: 928735476834304
-    m_Localized: Marquer une case
+    m_Localized: Zaznazcz pole
     m_Metadata:
       m_Items: []
   - m_Id: 928788438310912
-    m_Localized: Corde Marquer
+    m_Localized: Zaznacz akord
     m_Metadata:
       m_Items: []
   - m_Id: 928909536256000
-    m_Localized: Nettoyer
+    m_Localized: "Oczy\u015B\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933890872041472
+    m_Localized: "Przywr\xF3\u0107 domy\u015Blne"
     m_Metadata:
       m_Items: []
   - m_Id: 934286541709312
-    m_Localized: "Contr\xF4les de Chute de Bloc\r"
+    m_Localized: "Ustawienia spadania blok\xF3w"
     m_Metadata:
       m_Items: []
   - m_Id: 934315432075264
-    m_Localized: "Contr\xF4les de D\xE9mineur"
+    m_Localized: Ustawienia Sapera
     m_Metadata:
       m_Items: []
   - m_Id: 951608887205888
-    m_Localized: Modifier
+    m_Localized: Edytuj
     m_Metadata:
       m_Items: []
   - m_Id: 951658765869056
-    m_Localized: Personnaliser le Jeu
+    m_Localized: "Dostosuj gr\u0119"
     m_Metadata:
       m_Items: []
   - m_Id: 951849149521920
-    m_Localized: "\xC0 Venir"
+    m_Localized: "Wkr\xF3tce"
     m_Metadata:
       m_Items: []
   - m_Id: 952127466758144
-    m_Localized: "R\xE8gles de Score"
+    m_Localized: Punktacja
     m_Metadata:
       m_Items: []
   - m_Id: 952161780359168
-    m_Localized: Classement
+    m_Localized: "Tablica wynik\xF3w"
     m_Metadata:
       m_Items: []
   - m_Id: 963399100915712
-    m_Localized: Mode Sans Fin
+    m_Localized: "Tryb niesko\u0144czony"
     m_Metadata:
       m_Items: []
   - m_Id: 963558551576576
-    m_Localized: "Jeu Termin\xE9"
+    m_Localized: Koniec gry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988652401319936
+    m_Localized: "Prze\u017Cyj do 150 linii i postaraj si\u0119 o najlepszy wynik!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988835440746496
+    m_Localized: "Zdob\u0105d\u017A 40 linii jak najszybciej"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989111895711744
+    m_Localized: "\u0141atwiejszy, szybsza wersja Maratonu w kt\xF3rej linie znikaj\u0105
+      natychmiast!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989231202689024
+    m_Localized: "Wkr\xF3tce..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989810910027776
+    m_Localized: "Zdob\u0105d\u017A najwy\u017Cszy wynik w trzy minuty, u\u017Cywaj\u0105c
+      zasad z Flasha!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989813380472832
+    m_Localized: "Zdob\u0105d\u017A najwy\u017Cszy wynik w trzy minuty"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990195708059648
+    m_Localized: "Naci\u015Bnij by wy\u015Bwietli\u0107 w przegl\u0105darce"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990308941684736
+    m_Localized: "\"Do\u0142\u0105cz do naszej spo\u0142eczno\u015Bci Discord aby
+      wpisa\u0107 si\u0119 w oficjaln\u0105 tablic\u0119 wynik\xF3w!\r\n\""
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990401673551872
+    m_Localized: "Dzi\u0119ki za gr\u0119!"
     m_Metadata:
       m_Items: []
   - m_Id: 990658520145920
     m_Localized: :(
     m_Metadata:
       m_Items: []
-  - m_Id: 989231202689024
-    m_Localized: "Bient\xF4t..."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 988652401319936
-    m_Localized: Survivez pendant 150 lignes, et tentez d'avoir le plus haut score
-      !
-    m_Metadata:
-      m_Items: []
-  - m_Id: 988835440746496
-    m_Localized: "Compl\xE9tez 40 lignes le plus vite possible !"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 989111895711744
-    m_Localized: "La version plus facile et rapide du Marathon o\xF9 les lignes se
-      d\xE9gagent instantan\xE9ment !"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 989810910027776
-    m_Localized: "Obtenez le score le plus \xE9lev\xE9 possible en trois minutes
-      !"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 989813380472832
-    m_Localized: "Obtenez le score le plus \xE9lev\xE9 possible en trois minutes,
-      en utilisant les r\xE8gles Flash !"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 990195708059648
-    m_Localized: Cliquez pour voir dans votre navigateur
-    m_Metadata:
-      m_Items: []
-  - m_Id: 990308941684736
-    m_Localized: Rejoignez notre Discord Communautaire pour voir votre nom dans le
-      classement officiel !
-    m_Metadata:
-      m_Items: []
-  - m_Id: 990401673551872
-    m_Localized: "Merci d'avoir jou\xE9 !"
-    m_Metadata:
-      m_Items: []
   - m_Id: 990813138968576
-    m_Localized: Rejoignez le Discord Communautaire officiel de Tetrisweeper !
+    m_Localized: "Do\u0142\u0105cz do oficjalnego serwera Discord!"
     m_Metadata:
       m_Items: []
   - m_Id: 990814418231296
-    m_Localized: Partagez vos meilleurs scores avec #Tetrisweeper
+    m_Localized: "Podziel si\u0119 swoim wynikiem na #Tetrisweeper"
     m_Metadata:
       m_Items: []
   - m_Id: 990815487778816
-    m_Localized: "T\xE9l\xE9chargez la version autonome"
+    m_Localized: Pobierz Tetrisweeper
     m_Metadata:
       m_Items: []
   - m_Id: 990816574103552
-    m_Localized: "D\xE9couvrez notre playlist communautaire !"
+    m_Localized: "Sprawd\u017A playlist\u0119 naszej spo\u0142eczno\u015Bci!"
     m_Metadata:
       m_Items: []
   - m_Id: 990817517821952
-    m_Localized: "Voulez-vous m'acheter un caf\xE9 ? Merci pour votre soutien !"
+    m_Localized: "Chcesz mnie wesprze\u0107? Dzi\u0119ki!"
     m_Metadata:
       m_Items: []
   - m_Id: 991654902226944
-    m_Localized: "Nettoyer : \xC9liminez toutes les mines en attente, +250 points"
+    m_Localized: "Wymiatacz: Zaznacz wszystkie miny w zatrzymanej tetrominie, +250
+      punkt\xF3w"
     m_Metadata:
       m_Items: []
   - m_Id: 992047333892096
-    m_Localized: Le Tetrisweep est lorsque vous effacez les 4 lignes d'un tetris
-      de 4 lignes que vous venez de remplir, avant que le prochain tetromino ne se
-      verrouille.
+    m_Localized: "Tetrisweep jest wtedy gdy odkryjesz cztery linie w cztero liniowym
+      tetrisie kt\xF3ry w\u0142a\u015Bnie wype\u0142ni\u0142e\u015B, zanim nast\u0119pne
+      tetrimino spadnie na plansz\u0119."
     m_Metadata:
       m_Items: []
   - m_Id: 992048869007360
-    m_Localized: Le T-Spinsweep est lorsque vous marquez un T-spin et effacez toutes
-      les lignes remplies par le T tetromino, avant que le prochain tetromino ne
-      se verrouille.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1427339857616896
-    m_Localized: "Mode Marathon, mais les num\xE9ros de tuiles sont remplac\xE9s
-      par des points !"
+    m_Localized: "T-Spinsweep jest wyedy gdy otrzymasz T-spin i odkryjesz wszystkie
+      linie kt\xF3re wype\u0142ni\u0142o tetrimino T, zanim nast\u0119pne tetrimino
+      spadnie na plansz\u0119.\r"
     m_Metadata:
       m_Items: []
   - m_Id: 1427307444035584
-    m_Localized: Points
+    m_Localized: Kropki
     m_Metadata:
       m_Items: []
-  - m_Id: 1647422219476992
-    m_Localized: "Au lieu de d\xE9bloquer des tuiles s\xFBres en jouant, les murs
-      du plateau de jeu deviennent des tuiles jouables."
+  - m_Id: 1427339857616896
+    m_Localized: "Tryb Maratonu, ale cyfry na polach s\u0105 zamienione z kropkami!"
     m_Metadata:
       m_Items: []
   - m_Id: 1647393605935104
-    m_Localized: Murs
+    m_Localized: "\u015Aciany"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647422219476992
+    m_Localized: "Zamiast odblokowywania bezpiecznych p\xF3l podczas gdy, \u015Bciany
+      planszy s\u0105 teraz grywalnymi polami\r"
     m_Metadata:
       m_Items: []
   - m_Id: 2474781692649472
-    m_Localized: Liste de Souhaits
+    m_Localized: "Lista \u017Cycze\u0144"
     m_Metadata:
       m_Items: []
   - m_Id: 2474781847838720
-    m_Localized: Sur Steam
+    m_Localized: Na Steam
     m_Metadata:
       m_Items: []
   - m_Id: 2474861069852672
-    m_Localized: "D\xE9bloquez des modes de jeu bonus !"
+    m_Localized: Odblokuj bonusowe modele!
     m_Metadata:
       m_Items: []
   - m_Id: 2475075038076928
-    m_Localized: Tetrisweep comme jamais auparavant !
+    m_Localized: "Tetrisweepuj jak nigdy dot\u0105d!"
     m_Metadata:
       m_Items: []
   - m_Id: 2512304913506304
-    m_Localized: "Verrouill\xE9 !"
+    m_Localized: Zablokowane!
     m_Metadata:
       m_Items: []
   - m_Id: 5052179397636096
-    m_Localized: Placement des Blocs
+    m_Localized: "Stawianie blok\xF3w!"
     m_Metadata:
       m_Items: []
   - m_Id: 5052349606686720
-    m_Localized: "D\xE9mineur"
+    m_Localized: Granie w sapera
     m_Metadata:
       m_Items: []
   - m_Id: 5052351666089984
-    m_Localized: Tetrisweeping
+    m_Localized: Granie w Tetrisweeper
     m_Metadata:
       m_Items: []
   - m_Id: 7178027099217920
-    m_Localized: "Vid\xE9o"
+    m_Localized: "Wideo\r"
     m_Metadata:
       m_Items: []
   - m_Id: 7178044815958016
-    m_Localized: l'audio
+    m_Localized: Audio
     m_Metadata:
       m_Items: []
   - m_Id: 7178065133166592
-    m_Localized: Manipulation
+    m_Localized: "Obs\u0142uga"
     m_Metadata:
       m_Items: []
   - m_Id: 7178359053213696
-    m_Localized: "Param\xE8tres Vid\xE9o"
+    m_Localized: Ustawienia wideo
     m_Metadata:
       m_Items: []
   - m_Id: 7178438203924480
-    m_Localized: "Param\xE8tres l'audio"
+    m_Localized: Ustawienia audio
     m_Metadata:
       m_Items: []
   - m_Id: 7178483062005760
-    m_Localized: "Param\xE8tres de Manipulation"
+    m_Localized: "Ustawienia obs\u0142ugi"
     m_Metadata:
       m_Items: []
   - m_Id: 7288987847745536
-    m_Localized: "ARR : Taux de R\xE9p\xE9tition Automatique"
+    m_Localized: "ARR: Cz\u0119stotliwo\u015B\u0107 automatycznego powtarzania"
     m_Metadata:
       m_Items: []
   - m_Id: 7289007573557248
-    m_Localized: "DAS : D\xE9placement Automatique Retard\xE9"
+    m_Localized: "DAS: Op\xF3\u017Aniony automatyczny shift"
     m_Metadata:
       m_Items: []
   - m_Id: 7289023503523840
-    m_Localized: "DCD : D\xE9lai de Coupure du DAS"
+    m_Localized: "DCD: Op\xF3\u017Anienie przerywania DAS"
     m_Metadata:
       m_Items: []
   - m_Id: 7289036057075712
-    m_Localized: 'SDF: Facteur de Chute Douce'
+    m_Localized: "DSF: Wsp\xF3\u0142czynnik mi\u0119kkiego opadania"
     m_Metadata:
       m_Items: []
   - m_Id: 8261547250933760
-    m_Localized: Traduction
+    m_Localized: "T\u0142umaczenie"
     m_Metadata:
       m_Items: []
   - m_Id: 8261772770271232
-    m_Localized: "Cr\xE9\xE9 par"
+    m_Localized: Stworzone przez
     m_Metadata:
       m_Items: []
   - m_Id: 8261872057835520
-    m_Localized: "Remerciements sp\xE9ciaux \xE0..."
+    m_Localized: "Specjalne podzi\u0119kowania dla..."
     m_Metadata:
       m_Items: []
   - m_Id: 8635273809223680
-    m_Localized: "Cr\xE9dits suppl\xE9mentaires"
+    m_Localized: "Dodatkowe zas\u0142ugi\r"
     m_Metadata:
       m_Items: []
   - m_Id: 8641451649916928
-    m_Localized: Appuyez sur n'importe quelle touche pour continuer...
+    m_Localized: "Naci\u015Bnij dowolny przycisk aby kontynuowa\u0107..."
     m_Metadata:
       m_Items: []
   - m_Id: 8664569943060480
-    m_Localized: Supporters de Tetrisweeper
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900074789560320
-    m_Localized: "Lignes Effac\xE9es"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900075540340736
-    m_Localized: Sweep
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900076320481280
-    m_Localized: Doublesweep
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900077041901568
-    m_Localized: Triplesweep
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900077788487680
-    m_Localized: Tetrisweep
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900083224305664
-    m_Localized: "Combo : Tuile R\xE9v\xE9l\xE9e"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900084004446208
-    m_Localized: "R\xE9v\xE9lation Automatique"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900087833845760
-    m_Localized: "S\xE9rie de R\xE9v\xE9lations manuelles (50 tuiles)"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900088626569216
-    m_Localized: "8 Tuiles R\xE9v\xE9l\xE9es ou Cr\xE9\xE9es"
+    m_Localized: "Entuzja\u015Bci Tetrisweepera"
     m_Metadata:
       m_Items: []
   - m_Id: 23899711646720000
-    m_Localized: Remplissage de Ligne
+    m_Localized: "Wype\u0142nienie linii"
     m_Metadata:
       m_Items: []
   - m_Id: 23899852948627456
-    m_Localized: Double Remplissage
+    m_Localized: "Podw\xF3jne wype\u0142nienie"
     m_Metadata:
       m_Items: []
   - m_Id: 23900050827501568
-    m_Localized: Triple Remplissage
+    m_Localized: "Potr\xF3jne wype\u0142nienie"
     m_Metadata:
       m_Items: []
   - m_Id: 23900053100814336
-    m_Localized: Remplissage Tetri
+    m_Localized: "Poczw\xF3rne wype\u0142nienie"
     m_Metadata:
       m_Items: []
   - m_Id: 23900055583842304
-    m_Localized: Verrouillage en Place
+    m_Localized: Zatrzymanie w miejscu
     m_Metadata:
       m_Items: []
   - m_Id: 23900056825356288
-    m_Localized: T-Spin Mini sans lignes
+    m_Localized: T-Spin mini bez linii
     m_Metadata:
       m_Items: []
   - m_Id: 23900058133979136
-    m_Localized: T-Spin sans lignes
+    m_Localized: T-Spin bez linii
     m_Metadata:
       m_Items: []
   - m_Id: 23900060650561536
-    m_Localized: T-Spin Mini Simple
+    m_Localized: T-Spin mini pojedynczy
     m_Metadata:
       m_Items: []
   - m_Id: 23900062789656576
-    m_Localized: T-Spin Simple
+    m_Localized: T-Spin pojedynczy
     m_Metadata:
       m_Items: []
   - m_Id: 23900064362520576
-    m_Localized: T-Spin Mini Double
+    m_Localized: "T-Spin mini podw\xF3jny"
     m_Metadata:
       m_Items: []
   - m_Id: 23900065469816832
-    m_Localized: T-Spin Double
+    m_Localized: "T-Spin podw\xF3jny"
     m_Metadata:
       m_Items: []
   - m_Id: 23900066350620672
-    m_Localized: T-Spin Triple
+    m_Localized: "T-Spin potr\xF3jny\r"
     m_Metadata:
       m_Items: []
   - m_Id: 23900067399196672
-    m_Localized: "Remplissage Difficile Cons\xE9cutif"
+    m_Localized: "Trudne wype\u0142nienie"
     m_Metadata:
       m_Items: []
   - m_Id: 23900068477132800
-    m_Localized: 'Combo : Ligne Remplie'
+    m_Localized: "Combo: Wype\u0142nienie linii"
     m_Metadata:
       m_Items: []
   - m_Id: 23900069341159424
-    m_Localized: Effacement parfait (Ligne unique)
+    m_Localized: Perfekcyjne (pojedynczy)
     m_Metadata:
       m_Items: []
   - m_Id: 23900070171631616
-    m_Localized: Effacement parfait (Double ligne)
+    m_Localized: "Perfekcyjne (podw\xF3jny)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900070930800640
-    m_Localized: Effacement parfait (Triple ligne)
+    m_Localized: "Perfekcyjne (potr\xF3jny)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900071694163968
-    m_Localized: Effacement parfait (Tetri Remplissage)
+    m_Localized: "Perfekcyjne (poczw\xF3rny)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900072453332992
-    m_Localized: "Effacement parfait Tetri Remplissage Cons\xE9cutif"
+    m_Localized: "Perfekcyjne Back-to-back poczw\xF3rny "
     m_Metadata:
       m_Items: []
   - m_Id: 23900073984253952
-    m_Localized: "Effacement parfait instantan\xE9\n"
+    m_Localized: Natychmiastowy Perfekcyjny
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900074789560320
+    m_Localized: Linie odkryte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900075540340736
+    m_Localized: Linia odminowana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900076320481280
+    m_Localized: Dwie linie dominowane
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077041901568
+    m_Localized: Trzy linie odminowane
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077788487680
+    m_Localized: Cztery linie odminowane
     m_Metadata:
       m_Items: []
   - m_Id: 23900078597988352
@@ -565,45 +544,57 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23900079352963072
-    m_Localized: "Balayage Difficile Cons\xE9cutif"
+    m_Localized: Trudne odminowanie
     m_Metadata:
       m_Items: []
   - m_Id: 23900080103743488
-    m_Localized: "Balayage Instantan\xE9"
+    m_Localized: Natychmiastowe odminowanie
     m_Metadata:
       m_Items: []
   - m_Id: 23900080942604288
-    m_Localized: "Effacement \xC9lev\xE9 (Rang\xE9e 6 ou plus)\n"
+    m_Localized: "Najwy\u017Csze odminowanie (6 rz\u0119d\xF3w lub wi\u0119cej)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900081680801792
-    m_Localized: "Effacement \xC9lev\xE9 (Rang\xE9e 11 ou plus)"
+    m_Localized: "Najwy\u017Csze odminowanie (11 rz\u0119d\xF3w lub wi\u0119cej)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900082452553728
-    m_Localized: "Effacement \xC9lev\xE9 (Rang\xE9e 16 ou plus)"
+    m_Localized: "Najwy\u017Csze odminowanie (16 rz\u0119d\xF3w lub wi\u0119cej)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900083224305664
+    m_Localized: "Combo: Pole odkryte\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084004446208
+    m_Localized: Automatyczne odkrycie
     m_Metadata:
       m_Items: []
   - m_Id: 23900084797169664
-    m_Localized: "Accord \xC9chou\xE9"
+    m_Localized: Nieudany akord
     m_Metadata:
       m_Items: []
   - m_Id: 23900085510201344
-    m_Localized: "R\xE9v\xE9lation \xC9lev\xE9e (Rang\xE9e 6 ou plus)"
+    m_Localized: "Najwy\u017Csze odkrycie (6 rz\u0119d\xF3w lub wi\u0119cej)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900086307119104
-    m_Localized: "R\xE9v\xE9lation \xC9lev\xE9e (Rang\xE9e 11 ou plus)"
+    m_Localized: "Najwy\u017Csze odkrycie (11 rz\u0119d\xF3w lub wi\u0119cej)"
     m_Metadata:
       m_Items: []
   - m_Id: 23900087116619776
-    m_Localized: "R\xE9v\xE9lation \xC9lev\xE9e (Rang\xE9e 16 ou plus)"
+    m_Localized: "Najwy\u017Csze odkrycie (16 rz\u0119d\xF3w lub wi\u0119cej)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087833845760
+    m_Localized: "Manualna ci\u0105g\u0142o\u015B\u0107 odkrywania (50 linii)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900088626569216
+    m_Localized: "8 p\xF3l odkrytych lub stworzonych"
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds:
-    - rid: 1684021998389821469
-      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_Entries: 00e0afc3216b0200
+    RefIds: []

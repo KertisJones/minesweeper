@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-Toki pona (toki)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-String-Tables-Toki pona (toki)
+  m_Data:
+    m_SerializedData: []
+  m_GUID: e757bd3e3d023364b8c5e568370ccc71
+  m_SerializeEntries:
+  - m_GUID: e2c8d44983c544a47a181ef6f78987f5
+    m_Address: UIText_toki
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-toki
+    - Preload
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 5b0d5480aa345ad4985e0663f8cb1279, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a261e2c814aa90a4eacf9f6d1a57bd25, type: 2}
+    - {fileID: 11400000, guid: aaf6aed4e9727f64596064a092f12c66, type: 2}

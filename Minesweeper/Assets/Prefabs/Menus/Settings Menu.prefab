@@ -2816,7 +2816,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1970496157093280813, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_text
-      value: English
+      value: Deutsch
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Value
@@ -2824,27 +2824,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.size
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[0].m_Text
-      value: Deutsch
+      value: "\u010Ce\u0161tina"
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[1].m_Text
-      value: English
+      value: Deutsch
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[2].m_Text
-      value: "Espa\xF1ol (Am\xE9rica Latina)"
+      value: English
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[3].m_Text
-      value: "Espa\xF1ol (Espa\xF1a)"
+      value: "Espa\xF1ol (Am\xE9rica Latina)"
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[4].m_Text
+      value: "Espa\xF1ol (Espa\xF1a)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[5].m_Text
       value: "Fran\xE7ais"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[6].m_Text
+      value: Italiano
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[7].m_Text
+      value: Polski
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[8].m_Text
+      value: Toki Pona
       objectReference: {fileID: 0}
     - target: {fileID: 5964181043013156599, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Name
@@ -3712,7 +3728,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3093840047599528306, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
       propertyPath: m_text
-      value: 'DCD: DAS Cut Delay'
+      value: "DCD: Opo\u017Ed\u011Bn\xED po p\u0159eru\u0161en\xED DAS"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093840047599528306, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
+      propertyPath: m_fontSize
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 5500574339850117533, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
       propertyPath: m_Value

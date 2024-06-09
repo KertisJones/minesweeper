@@ -23,15 +23,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 951658765869056
-    m_Localized: Spiel Anpassen
+    m_Localized: Spiel Modifizieren
     m_Metadata:
       m_Items: []
   - m_Id: 951849149521920
-    m_Localized: "Demn\xE4chst"
+    m_Localized: "demn\xE4chst Verf\xFCgbar"
     m_Metadata:
       m_Items: []
   - m_Id: 952127466758144
-    m_Localized: Wertung
+    m_Localized: Punktevergabe
     m_Metadata:
       m_Items: []
   - m_Id: 952161780359168
@@ -43,47 +43,47 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 963558551576576
-    m_Localized: Spiel Vorbei
+    m_Localized: Game over
     m_Metadata:
       m_Items: []
   - m_Id: 988652401319936
-    m_Localized: "\xDCberlebe bis zu 150 Zeilen und versuche, die h\xF6chstm\xF6gliche
+    m_Localized: "\xDCberlebe bis zu 150 Linien und versuche, die h\xF6chstm\xF6gliche
       Punktzahl zu erreichen!"
     m_Metadata:
       m_Items: []
   - m_Id: 988835440746496
-    m_Localized: "L\xF6schen Sie 40 Zeilen so schnell wie m\xF6glich!"
+    m_Localized: "L\xF6se 40 Linien so schnell wie m\xF6glich!"
     m_Metadata:
       m_Items: []
   - m_Id: 989111895711744
-    m_Localized: Die einfachere, schnellere Version von Marathon, bei der die Linien
-      sofort klar werden!
+    m_Localized: "Die einfachere, schnellere Version von Marathon, bei der Linien
+      sofort gel\xF6scht werden!"
     m_Metadata:
       m_Items: []
   - m_Id: 989231202689024
-    m_Localized: "Demn\xE4chst..."
+    m_Localized: Kommt bald...
     m_Metadata:
       m_Items: []
   - m_Id: 989810910027776
-    m_Localized: "Erziele in drei Minuten die h\xF6chstm\xF6gliche Punktzahl!"
+    m_Localized: "Erzielen Sie die h\xF6chstm\xF6gliche Punktzahl in drei Minuten!"
     m_Metadata:
       m_Items: []
   - m_Id: 989813380472832
-    m_Localized: "Erreichen Sie mithilfe der Flash-Regeln innerhalb von drei Minuten
-      die h\xF6chstm\xF6gliche Punktzahl!"
+    m_Localized: "Erzielen Sie die h\xF6chstm\xF6gliche Punktzahl in drei Minuten,
+      nach Flash-Regeln!"
     m_Metadata:
       m_Items: []
   - m_Id: 990195708059648
-    m_Localized: Klicken Sie, um es in Ihrem Browser anzuzeigen
+    m_Localized: Klicken Sie hier, um es in Ihrem Browser anzusehen
     m_Metadata:
       m_Items: []
   - m_Id: 990308941684736
-    m_Localized: Treten Sie unserem Community-Discord bei, um Ihren Namen in die
-      offizielle Bestenliste aufzunehmen!
+    m_Localized: Treten Sie unserem Community-Discord bei, um Ihren Namen auf der
+      offiziellen Rangliste zu sehen!
     m_Metadata:
       m_Items: []
   - m_Id: 990401673551872
-    m_Localized: "Danke f\xFCr das Spiel!"
+    m_Localized: "Danke f\xFCrs Spielen!"
     m_Metadata:
       m_Items: []
   - m_Id: 990658520145920
@@ -91,15 +91,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 990813138968576
-    m_Localized: Treten Sie dem offiziellen Tetrisweeper Community Discord bei!
+    m_Localized: Tritt der offiziellen Tetrissweeper Discordcommunity bei!
     m_Metadata:
       m_Items: []
   - m_Id: 990814418231296
-    m_Localized: Teilen Sie Ihre Highscores mit #Tetrisweeper
+    m_Localized: "Teilen Sie Ihre H\xF6chstpunkte mit #Tetrisweeper"
     m_Metadata:
       m_Items: []
   - m_Id: 990815487778816
-    m_Localized: Laden Sie die Standalone-Version herunter
+    m_Localized: "Laden Sie die eigenst\xE4ndige Version herunter"
     m_Metadata:
       m_Items: []
   - m_Id: 990816574103552
@@ -107,22 +107,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 990817517821952
-    m_Localized: "Willst du mir einen Kaffee spendieren? Danke f\xFCr Ihre Unterst\xFCtzung!"
+    m_Localized: "Du m\xF6chtest mir einen Kaffee kaufen? Danke f\xFCr die Unterst\xFCtzung!"
     m_Metadata:
       m_Items: []
   - m_Id: 991654902226944
-    m_Localized: "Reinigen: R\xE4umen Sie alle Minen in der Warteschleife ab, +250
-      Punkte"
+    m_Localized: "Reinigen: Alle Minen in Halte l\xF6schen, +250 Punkte"
     m_Metadata:
       m_Items: []
   - m_Id: 992047333892096
-    m_Localized: "Beim Tetrisweep l\xF6scht man alle 4 Zeilen eines gerade ausgef\xFCllten
-      4-Zeilen-Tetris, bevor das n\xE4chste Tetromino einrastet."
+    m_Localized: "Ein Tetris-R\xE4um ist, wenn Sie alle 4 Linien in einem 4-Linien-Tetris,
+      das Sie gerade gef\xFCllt haben, l\xF6schen, bevor das n\xE4chste Tetromino
+      einrastet."
     m_Metadata:
       m_Items: []
   - m_Id: 992048869007360
-    m_Localized: "Beim T-Spinsweep erzielen Sie einen T-Spin und l\xF6schen jede
-      Linie, die das T-Tetromino gef\xFCllt hat, bevor das n\xE4chste Tetromino einrastet."
+    m_Localized: "Ein T-Spin-R\xE4um ist, wenn Sie einen T-Spin erzielen und jede
+      Linie l\xF6schen, die das T-Tetromino gef\xFCllt hat, bevor das n\xE4chste
+      Tetromino einrastet."
     m_Metadata:
       m_Items: []
   - m_Id: 15111020544
@@ -134,7 +135,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 688583756210176
-    m_Localized: Sprengen
+    m_Localized: Mienen
     m_Metadata:
       m_Items: []
   - m_Id: 690552633810944
@@ -142,15 +143,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 691682109546496
-    m_Localized: Bestes Punktzahl
+    m_Localized: Rekordpunktzahl
     m_Metadata:
       m_Items: []
   - m_Id: 691701722112000
-    m_Localized: Am Besten Heute
+    m_Localized: Rekordpunktzahl Heute
     m_Metadata:
       m_Items: []
   - m_Id: 691795221536768
-    m_Localized: Beste Zeit
+    m_Localized: Rekordpunktzahl Zeit
     m_Metadata:
       m_Items: []
   - m_Id: 692206200414208
@@ -162,15 +163,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 693625464807424
-    m_Localized: "Aufh\xF6ren"
+    m_Localized: Verlassen
     m_Metadata:
       m_Items: []
   - m_Id: 693945486008320
-    m_Localized: Kann im Browser nicht beendet werden
+    m_Localized: "Verlassen ist im Browser nicht m\xF6glich"
     m_Metadata:
       m_Items: []
   - m_Id: 694159798165504
-    m_Localized: Ebene
+    m_Localized: Level
     m_Metadata:
       m_Items: []
   - m_Id: 694324101636096
@@ -182,7 +183,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 696069942927360
-    m_Localized: "Vollst\xE4ndig"
+    m_Localized: Abgeschlossen!
     m_Metadata:
       m_Items: []
   - m_Id: 697409771397120
@@ -190,11 +191,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 697412782907392
-    m_Localized: Bltz Marathon
+    m_Localized: Flashmarathon
     m_Metadata:
       m_Items: []
   - m_Id: 697414372548608
-    m_Localized: 40-Linien-Sprint
+    m_Localized: 40-Liniensprint
     m_Metadata:
       m_Items: []
   - m_Id: 697420861136896
@@ -204,11 +205,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 697421989404672
-    m_Localized: Blitz Ultra
+    m_Localized: Ultra-Flash
     m_Metadata:
       m_Items: []
   - m_Id: 697429551734784
-    m_Localized: Kredit
+    m_Localized: Danksagungen
     m_Metadata:
       m_Items: []
   - m_Id: 925355878637568
@@ -216,15 +217,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 697599509127168
-    m_Localized: Verdeckter Marathon
+    m_Localized: Unklarer Marathon
     m_Metadata:
       m_Items: []
   - m_Id: 925670325608448
-    m_Localized: Angehalten
+    m_Localized: Pausiert
     m_Metadata:
       m_Items: []
   - m_Id: 925714365800448
-    m_Localized: Wieder Aufnehmen
+    m_Localized: Weiterspielen
     m_Metadata:
       m_Items: []
   - m_Id: 925742983536640
@@ -232,7 +233,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 926408846073856
-    m_Localized: Kontrollen
+    m_Localized: Steuerung
     m_Metadata:
       m_Items: []
   - m_Id: 926506682408960
@@ -240,7 +241,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 926602874576896
-    m_Localized: Meister Volumen
+    m_Localized: "Hauptlautst\xE4rke"
     m_Metadata:
       m_Items: []
   - m_Id: 926629294497792
@@ -248,7 +249,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 926659917111296
-    m_Localized: Auswirkungen
+    m_Localized: Effekte
     m_Metadata:
       m_Items: []
   - m_Id: 926682805428224
@@ -268,63 +269,63 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 928580065288192
-    m_Localized: Im Uhrzeiger sinn drehen
+    m_Localized: Im Urzeigersinn drehen
     m_Metadata:
       m_Items: []
   - m_Id: 928615494574080
-    m_Localized: Gegen den Uhrzeigersinn drehen
+    m_Localized: Gegen den Urzeigersinn drehen
     m_Metadata:
       m_Items: []
   - m_Id: 928630334021632
-    m_Localized: Sanfter Tropfen
+    m_Localized: Weicher Fall
     m_Metadata:
       m_Items: []
   - m_Id: 928642711412736
-    m_Localized: Harter Tropfen
+    m_Localized: Harter Fall
     m_Metadata:
       m_Items: []
   - m_Id: 928656833634304
-    m_Localized: Halten
+    m_Localized: "Gedr\xFCckt halten"
     m_Metadata:
       m_Items: []
   - m_Id: 928682272088064
-    m_Localized: Neu Starten
+    m_Localized: Neustarten
     m_Metadata:
       m_Items: []
   - m_Id: 928694787891200
-    m_Localized: Hart klar
+    m_Localized: "Hartes L\xF6schen"
     m_Metadata:
       m_Items: []
   - m_Id: 928708620705792
-    m_Localized: Kachel Aufdecken
+    m_Localized: Feld aufdecken
     m_Metadata:
       m_Items: []
   - m_Id: 928722587738112
-    m_Localized: Die Sehne
+    m_Localized: Akkord
     m_Metadata:
       m_Items: []
   - m_Id: 928735476834304
-    m_Localized: Flaggenkachel
+    m_Localized: Flagenfeld
     m_Metadata:
       m_Items: []
   - m_Id: 928788438310912
-    m_Localized: Flag-Akkord
+    m_Localized: Flaggenakkord
     m_Metadata:
       m_Items: []
   - m_Id: 928909536256000
-    m_Localized: Reinigen
+    m_Localized: Bereinigen
     m_Metadata:
       m_Items: []
   - m_Id: 933890872041472
-    m_Localized: Standardeinstellungen wiederherstellen
+    m_Localized: Standardsteuerung wiederherstellen
     m_Metadata:
       m_Items: []
   - m_Id: 934286541709312
-    m_Localized: "Controles de Ca\xEDda de Bloques"
+    m_Localized: Blockfall-Steuerung
     m_Metadata:
       m_Items: []
   - m_Id: 934315432075264
-    m_Localized: Controles de Buscaminas
+    m_Localized: Minesweeper-Steuerung
     m_Metadata:
       m_Items: []
   - m_Id: 1427307444035584
@@ -332,7 +333,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1427339857616896
-    m_Localized: Modus Marathon, aber die Anzahl der Tuiles wurde durch Punkte ersetzt!
+    m_Localized: Marathon-Modus, aber die Kachelzahlen werden durch Punkte ersetzt!
     m_Metadata:
       m_Items: []
   - m_Id: 1647393605935104
@@ -340,12 +341,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1647422219476992
-    m_Localized: "Anstatt w\xE4hrend des Spiels sichere Spielsteine \u200B\u200Bfreizuschalten,
-      sind die W\xE4nde des Spielbretts jetzt spielbare Spielsteine."
+    m_Localized: "Anstatt beim Spielen sichere Kacheln freizuschalten, sind die W\xE4nde
+      des Spielbretts jetzt spielbare Kacheln."
     m_Metadata:
       m_Items: []
   - m_Id: 2474781692649472
-    m_Localized: Wunschzettel
+    m_Localized: Wunschliste
     m_Metadata:
       m_Items: []
   - m_Id: 2474781847838720
@@ -353,7 +354,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2474861069852672
-    m_Localized: Schalte Bonusspielmodi frei!
+    m_Localized: Schalte Bonus-Spielmodi frei!
     m_Metadata:
       m_Items: []
   - m_Id: 2475075038076928
@@ -389,11 +390,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7178359053213696
-    m_Localized: Video-Einstellungen
+    m_Localized: Videoeinstellungen
     m_Metadata:
       m_Items: []
   - m_Id: 7178438203924480
-    m_Localized: Audio Einstellungen
+    m_Localized: Audioeinstellungen
     m_Metadata:
       m_Items: []
   - m_Id: 7178483062005760
@@ -401,11 +402,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7288987847745536
-    m_Localized: 'ARR: Automatische Wiederholungsrate'
+    m_Localized: 'ARR: Automatische Wiederholrate'
     m_Metadata:
       m_Items: []
   - m_Id: 7289007573557248
-    m_Localized: "DAS: Verz\xF6gerte automatische Schaltung"
+    m_Localized: "DAS: Verz\xF6gerter automatischer Schub"
     m_Metadata:
       m_Items: []
   - m_Id: 7289023503523840
@@ -413,7 +414,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7289036057075712
-    m_Localized: 'SDF: Sanfter-Tropfen-Faktor'
+    m_Localized: 'SDF: Sanftabwurffaktor'
     m_Metadata:
       m_Items: []
   - m_Id: 8261547250933760
@@ -425,19 +426,175 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8261872057835520
-    m_Localized: Besonderer Dank
+    m_Localized: Besonderer Dank an...
     m_Metadata:
       m_Items: []
   - m_Id: 8635273809223680
-    m_Localized: "Zus\xE4tzliche Credits\r"
+    m_Localized: Weitere Danksagungen
     m_Metadata:
       m_Items: []
   - m_Id: 8641451649916928
-    m_Localized: "Dr\xFCcken Sie eine beliebige Taste, um fortzufahren...\r"
+    m_Localized: "Dr\xFCcken Sie eine beliebige Taste, um fortzufahren..."
     m_Metadata:
       m_Items: []
   - m_Id: 8664569943060480
     m_Localized: "Tetrisweeper-Unterst\xFCtzer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900074789560320
+    m_Localized: "Gel\xF6ste Linien"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900075540340736
+    m_Localized: Liniensweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900076320481280
+    m_Localized: Duosweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077041901568
+    m_Localized: Triosweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077788487680
+    m_Localized: Tetrisweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900078597988352
+    m_Localized: T-Spinsweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899711646720000
+    m_Localized: "Linienf\xFCllung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899852948627456
+    m_Localized: "Doppelf\xFCllung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900050827501568
+    m_Localized: "Dreifachf\xFCllung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900053100814336
+    m_Localized: "Tetra-F\xFCllung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900055583842304
+    m_Localized: Vor-Ort-Sperre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900056825356288
+    m_Localized: T-Spin Mini keine Linien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900058133979136
+    m_Localized: T-Spin keine Linien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900060650561536
+    m_Localized: T-Spin Mini Einzel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900062789656576
+    m_Localized: T-Spin Einzel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900064362520576
+    m_Localized: T-Spin Mini Doppel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900065469816832
+    m_Localized: T-Spin Doppel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900066350620672
+    m_Localized: T-Spin Dreifach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900067399196672
+    m_Localized: "Schwierige R\xFCck-zu-R\xFCck-F\xFCllung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900068477132800
+    m_Localized: "Kombo: Linie gef\xFCllt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900069341159424
+    m_Localized: "Perfektes L\xF6schen (Einzelne Linie)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070171631616
+    m_Localized: "Perfektes L\xF6schen (Doppelte Linie)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070930800640
+    m_Localized: "Perfektes L\xF6schen (Dreifache Linie)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900071694163968
+    m_Localized: "Perfektes L\xF6schen (Tetra-F\xFCllung)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900072453332992
+    m_Localized: "R\xFCck-zu-R\xFCck Tetra-F\xFCllung Perfektes L\xF6schen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900073984253952
+    m_Localized: "Sofortiges perfektes L\xF6schen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900079352963072
+    m_Localized: "Schwierige R\xFCck-zu-R\xFCck-R\xE4umung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080103743488
+    m_Localized: "Sofortige R\xE4umung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080942604288
+    m_Localized: "Hohe L\xF6schung (Reihe 6 oder h\xF6her)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900081680801792
+    m_Localized: "Hohe L\xF6schung (Reihe 11 oder h\xF6her)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900082452553728
+    m_Localized: "Hohe L\xF6schung (Reihe 16 oder h\xF6her)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900083224305664
+    m_Localized: 'Kombo: Kachel aufgedeckt'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084004446208
+    m_Localized: Automatisches Aufdecken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084797169664
+    m_Localized: Fehlgeschlagenes Akkord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900085510201344
+    m_Localized: "Hohe Aufdeckung (Reihe 6 oder h\xF6her)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900086307119104
+    m_Localized: "Hohe Aufdeckung (Reihe 11 oder h\xF6her)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087116619776
+    m_Localized: "Hohe Aufdeckung (Reihe 16 oder h\xF6her)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087833845760
+    m_Localized: Manuelle Aufdeckserie (50 Kacheln)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900088626569216
+    m_Localized: 8 Kacheln aufgedeckt oder erstellt
     m_Metadata:
       m_Items: []
   references:
