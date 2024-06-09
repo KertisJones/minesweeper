@@ -9,11 +9,17 @@ public class SetRandomSupporterName : MonoBehaviour
     List<string> supporters = new List<string> {
         // Development
         "Jesse Riggins",
+        "Kertis Jones", // I get two
 
-        "The Foun", // Czech translation        
+        "The Foun", // Czech translation
+        "Paincake", // Helped Foun translate
+        "Emily DieHenne", // German Translation
         "Carlos Hugo García Maldonado", //H3NZ //"H3NZ PLAYZ", // Spanish (Spain) translation
+        "Eleanor silly", // French // omerien
+        "Draconis Eltanin", // Italian
         "Alexuty", // Screenshot design
         "Poinl", // Music
+        "Star Cubey",
 
         //Special Thanks
         // Influencers
@@ -25,7 +31,7 @@ public class SetRandomSupporterName : MonoBehaviour
         "Kusane",
         "Niv",
         "Peridot",
-        "Star Cubey",
+        //"Star Cubey",
         
         
         // Buy Me a Coffee Supporters:
@@ -45,7 +51,7 @@ public class SetRandomSupporterName : MonoBehaviour
         "Lazuli Quetzal",
         "Maura",
         "Bio Hammer",
-        "Draconis Eltanin",
+        //"Draconis Eltanin",
         "Camellias",
         "Silver_Hawk",
         "Cantras",
