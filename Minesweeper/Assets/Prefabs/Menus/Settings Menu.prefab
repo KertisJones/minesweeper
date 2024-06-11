@@ -1858,7 +1858,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7129975174766691701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3925,7 +3925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4446949520791961467, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_Value
-      value: 0.9999998
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5603070513650156389, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4275,13 +4275,9 @@ PrefabInstance:
       value: "\u221Ex"
       objectReference: {fileID: 0}
     - target: {fileID: 6884378656934846343, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 1407f1f515796764d99dcb20a793fdc0, type: 2}
-    - target: {fileID: 6884378656934846343, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -8311543118869171364, guid: 1407f1f515796764d99dcb20a793fdc0, type: 2}
+      objectReference: {fileID: 7539457901175315547, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
     - target: {fileID: 7809230764026823109, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
       propertyPath: m_Name
       value: SDF Slider
