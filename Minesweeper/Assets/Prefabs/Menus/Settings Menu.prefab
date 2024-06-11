@@ -1858,7 +1858,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7129975174766691701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3925,7 +3925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4446949520791961467, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0.9999998
       objectReference: {fileID: 0}
     - target: {fileID: 5603070513650156389, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4154,6 +4154,14 @@ PrefabInstance:
     - target: {fileID: 7610419187626406918, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687307830791710065, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
+      propertyPath: m_Size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687307830791710065, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7734176179531048773, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_Color.b

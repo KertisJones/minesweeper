@@ -1145,7 +1145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3024768390377626174, guid: 5252eda699d1dcd4aa7c4a67d9618831, type: 3}
       propertyPath: m_fontSize
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3024768390377626175, guid: 5252eda699d1dcd4aa7c4a67d9618831, type: 3}
       propertyPath: m_Pivot.x
@@ -2298,7 +2298,7 @@ PrefabInstance:
     - target: {fileID: 8130327923279866520, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: e6b94cf914d0ce9419b533234ffa157c, type: 2}
+      objectReference: {fileID: -714256761814342737, guid: 957b6625eff5bb24eacdf3db815ac343, type: 2}
     - target: {fileID: 8130327923279866520, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4282449919

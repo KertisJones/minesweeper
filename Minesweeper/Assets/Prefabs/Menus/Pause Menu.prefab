@@ -2958,8 +2958,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Paused
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
-  m_sharedMaterial: {fileID: 4449517523809245107, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 957b6625eff5bb24eacdf3db815ac343, type: 2}
+  m_sharedMaterial: {fileID: -714256761814342737, guid: 957b6625eff5bb24eacdf3db815ac343, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3827,7 +3827,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7095111356794976451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3862,8 +3862,7 @@ MonoBehaviour:
   targetRest: {x: 4.5, y: 30, z: -2}
   targetActive: {x: 4.5, y: 10, z: -2}
   speed: 0.8
-  isActive: 0
-  objectToDisableOnTimeTrial: {fileID: 0}
+  objectsToDisableWhileActive: []
 --- !u!114 &7095111356794976455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3883,6 +3882,10 @@ MonoBehaviour:
   screenShakeToggle: {fileID: 0}
   lockDelayDisplayToggle: {fileID: 0}
   languageDropdown: {fileID: 0}
+  autoRepeatRateSlider: {fileID: 0}
+  delayedAutoShiftSlider: {fileID: 0}
+  dasCutDelaySlider: {fileID: 0}
+  softDropFactorSlider: {fileID: 0}
 --- !u!1001 &492018933551397446
 PrefabInstance:
   m_ObjectHideFlags: 0

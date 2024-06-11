@@ -939,7 +939,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &593537493044333185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,7 +974,6 @@ MonoBehaviour:
   targetRest: {x: 4.5, y: 30, z: -2}
   targetActive: {x: 4.5, y: 9, z: -2}
   speed: 0.8
-  isActive: 0
   objectsToDisableWhileActive: []
 --- !u!1 &593537493047547403
 GameObject:
@@ -12365,8 +12364,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Controls
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
-  m_sharedMaterial: {fileID: 4449517523809245107, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 957b6625eff5bb24eacdf3db815ac343, type: 2}
+  m_sharedMaterial: {fileID: -714256761814342737, guid: 957b6625eff5bb24eacdf3db815ac343, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

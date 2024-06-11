@@ -1251,8 +1251,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Game Over
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1e7d64a898e1b49488273ba5a171b532, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: e6b94cf914d0ce9419b533234ffa157c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 957b6625eff5bb24eacdf3db815ac343, type: 2}
+  m_sharedMaterial: {fileID: -714256761814342737, guid: 957b6625eff5bb24eacdf3db815ac343, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1830,7 +1830,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2064147738162804858
 MonoBehaviour:
   m_ObjectHideFlags: 0
