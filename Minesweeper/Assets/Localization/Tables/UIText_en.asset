@@ -592,6 +592,42 @@ MonoBehaviour:
     m_Localized: 8 Tile Revealed or Created
     m_Metadata:
       m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: How quickly the tetromino moves left or right while holding down
+      the movement keys. The delay between each step is measured in milliseconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: The delay between holding down a movement key and the tetromino
+      automatically moving, measured in milliseconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: The amount of time that DAS will pause when dropping or rotating
+      the tetromino, measured in milliseconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: How many times faster the tetromino will fall when holding down
+      the soft drop key.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: Tetrominoes fall instantly, and lock delay decreases with your level!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: Tiny
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: Pack pieces tight in this tiny 4x4 board.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

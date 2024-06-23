@@ -583,6 +583,38 @@ MonoBehaviour:
     m_Key: Scoring 8
     m_Metadata:
       m_Items: []
+  - m_Id: 25670915286097920
+    m_Key: Tooltip ARR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Key: Tooltip DAS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Key: Tooltip DCD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Key: Tooltip SDF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Key: GameMode 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Key: Tooltip 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Key: GameMode Tiny
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Key: Tooltip Tiny
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

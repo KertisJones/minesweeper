@@ -526,7 +526,7 @@ public class Group : MonoBehaviour
     {
         if (fallDistance > maximumFallDistance)
             fallDistance = maximumFallDistance;
-        if (fallDistance == 0)
+        if (fallDistance == 0 && !isHardDrop)
             return;
         
         // Modify position

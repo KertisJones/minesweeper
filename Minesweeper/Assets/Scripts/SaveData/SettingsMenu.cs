@@ -43,7 +43,8 @@ public class SettingsMenu : MonoBehaviour
         soundVolume = PlayerPrefs.GetFloat("SoundVolume", soundVolume);
         screenShakeEnabled = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
         lockDelayDisplayEnabled = (PlayerPrefs.GetInt("LockDelayDisplayEnabled", 0) != 0);
-        languageIndex = PlayerPrefs.GetInt("LanguageIndex", 1);
+        //languageIndex = PlayerPrefs.GetInt("LanguageIndex", 1);
+        languageIndex = LocalizationSettings.AvailableLocales.Locales.IndexOf(LocalizationSettings.SelectedLocale);
         //controlScheme = PlayerPrefs.GetInt("ControlScheme", 0);
         //abTest = PlayerPrefs.GetInt("ABTest", 0);
 
@@ -72,7 +73,7 @@ public class SettingsMenu : MonoBehaviour
         lockDelayDisplayToggle.onValueChanged.AddListener(delegate  { LockDelayDisplayToggle(); });
         languageDropdown.value = languageIndex;
         languageDropdown.onValueChanged.AddListener(delegate { LanguageSelectDropdown(); });
-        StartCoroutine(SetLocale(languageIndex));
+        //StartCoroutine(SetLocale(languageIndex));
 
         autoRepeatRateSlider.SetAdjustedValue(autoRepeatRate);
         autoRepeatRateSlider.slider.onValueChanged.AddListener(delegate { AutoRepeatRateSlider(); });
@@ -169,7 +170,7 @@ public class SettingsMenu : MonoBehaviour
     public void LanguageSelectDropdown()
     {
         languageIndex = languageDropdown.value;
-        PlayerPrefs.SetInt("LanguageIndex", languageIndex);
+        //PlayerPrefs.SetInt("LanguageIndex", languageIndex);
         StartCoroutine(SetLocale(languageIndex));
     }
 

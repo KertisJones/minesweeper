@@ -406,7 +406,7 @@ public class GameManager : MonoBehaviour
             float cameraSize = Mathf.Max(cameraSizeXprefer, cameraSizeYprefer);
             if (sizeX == 10 && sizeY == 24 && (Mathf.Floor(((float)mainCamera.pixelWidth / mainCamera.pixelHeight) * 100) / 100) == Mathf.Floor((16f/9f) * 100) /100)
                 cameraSize = cameraSizeYprefer;
-            Debug.Log(((float)mainCamera.pixelWidth / mainCamera.pixelHeight) + ", " + (16f/9f));
+            //Debug.Log(((float)mainCamera.pixelWidth / mainCamera.pixelHeight) + ", " + (16f/9f));
 
             float cameraX = (sizeX / 2f) - 0.5f; //4.5f;
             float cameraY = ((sizeY - 4) / 2f) - 1f;//cameraSize - 1.5f; //9
