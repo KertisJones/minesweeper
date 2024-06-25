@@ -43,6 +43,7 @@ public class Tile : MonoBehaviour
 
     public AuraType aura = AuraType.normal;
     public Material[] auraMaterials;
+    public AudioClip[] burningPutOutSteamHiss;
     float burnTime = 15f;
     float auraClock = 0;
 
@@ -650,6 +651,13 @@ public class Tile : MonoBehaviour
     #region Auras
     public void SetAura(AuraType newAura)
     {
+        // Transition Sound Effects!
+        if (aura == AuraType.burning && newAura != AuraType.burning)
+        {
+            AudioSource.PlayClipAtPoint(burningPutOutSteamHiss[Random.Range(0, burningPutOutSteamHiss.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        }
+
+        // Change Aura
         aura = newAura;
         auraClock = 0;
 
@@ -675,6 +683,7 @@ public class Tile : MonoBehaviour
             light.intensity = 0f;
         }
 
+        
 
         Material auraMaterialLocal = new Material(auraMaterials[(int)aura]);
         unrevealedButtonImage.material = auraMaterialLocal;

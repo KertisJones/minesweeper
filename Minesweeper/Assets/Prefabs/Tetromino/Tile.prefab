@@ -1658,6 +1658,12 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 755ab6cf6ce1a5d4eb3b15181790960c, type: 2}
   - {fileID: 2100000, guid: 28a9edba0d4fa3445a34d9c2dfe56ea5, type: 2}
   - {fileID: 2100000, guid: 28a9edba0d4fa3445a34d9c2dfe56ea5, type: 2}
+  burningPutOutSteamHiss:
+  - {fileID: 8300000, guid: deb0fab5a08553849bbab8f51a85a2b4, type: 3}
+  - {fileID: 8300000, guid: be7fd57839de70e4d8728c443f011941, type: 3}
+  - {fileID: 8300000, guid: b342dda0bd0fe904884f030dcf5ce200, type: 3}
+  - {fileID: 8300000, guid: 8e8b740dec0304a429f69cfb491d8d8e, type: 3}
+  - {fileID: 8300000, guid: 0166d3daa49a0e74bbe84a2a10673e66, type: 3}
   solvedMarkColor: {r: 0.88235295, g: 0.88235295, b: 0.88235295, a: 1}
   revealSound: {fileID: 8300000, guid: 7c431c7673dc1ca48b4e4b672083d456, type: 3}
   flagSound: {fileID: 8300000, guid: 2cb4731b5bdfa91409cb7aaa9d1ace0a, type: 3}

@@ -278,7 +278,7 @@ public class Group : MonoBehaviour
             }
         }
 
-        if (Random.Range(0, 3) >= 0)
+        if (Random.Range(0, 3) == 0)
         {
             foreach (Tile child in GetChildTiles())
             {
@@ -495,8 +495,7 @@ public class Group : MonoBehaviour
             }
             else
             {
-                isLocking = false;
-                SetTileOverlayColor(new Color(0, 0, 0, 0));
+                LockDelayReset(true);
             }
 
             lockDelayTimer -= Time.deltaTime;
@@ -651,7 +650,7 @@ public class Group : MonoBehaviour
                     isLocking = false;
                     SetTileOverlayColor(new Color(0, 0, 0, 0));
                 }
-                    
+                SetMaximumFallDistance();
             }
             else
             {

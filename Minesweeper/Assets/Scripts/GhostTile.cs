@@ -44,15 +44,19 @@ public class GhostTile : MonoBehaviour
 
         Color color = tiles[0].GetComponentInChildren<TileButton>().gameObject.GetComponent<Image>().color;
         color.a = 0.5f;
+
         ghostTile1.GetComponent<SpriteRenderer>().color = color;
         ghostTile2.GetComponent<SpriteRenderer>().color = color;
         ghostTile3.GetComponent<SpriteRenderer>().color = color;
         ghostTile4.GetComponent<SpriteRenderer>().color = color;
 
-        ghostTile1.GetComponent<SpriteRenderer>().material = tiles[0].GetComponent<Tile>().unrevealedButtonImage.material;
-        ghostTile2.GetComponent<SpriteRenderer>().material = tiles[1].GetComponent<Tile>().unrevealedButtonImage.material;
-        ghostTile3.GetComponent<SpriteRenderer>().material = tiles[2].GetComponent<Tile>().unrevealedButtonImage.material;
-        ghostTile4.GetComponent<SpriteRenderer>().material = tiles[3].GetComponent<Tile>().unrevealedButtonImage.material;
+        if (tiles[0].GetComponent<Tile>().unrevealedButtonImage != null)
+        {
+            ghostTile1.GetComponent<SpriteRenderer>().material = tiles[0].GetComponent<Tile>().unrevealedButtonImage.material;
+            ghostTile2.GetComponent<SpriteRenderer>().material = tiles[1].GetComponent<Tile>().unrevealedButtonImage.material;
+            ghostTile3.GetComponent<SpriteRenderer>().material = tiles[2].GetComponent<Tile>().unrevealedButtonImage.material;
+            ghostTile4.GetComponent<SpriteRenderer>().material = tiles[3].GetComponent<Tile>().unrevealedButtonImage.material;
+        }
 
         //if (group == null)
         //return;
