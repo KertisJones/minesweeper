@@ -277,7 +277,15 @@ public class Group : MonoBehaviour
                 gm.EndGame();
             }
         }
-        
+
+        if (Random.Range(0, 3) >= 0)
+        {
+            foreach (Tile child in GetChildTiles())
+            {
+                child.aura = Tile.AuraType.burning;
+            }
+        }
+
         if (!isHeld)
             LayMines();                 
     }
@@ -298,7 +306,7 @@ public class Group : MonoBehaviour
     {
         if (isDisplay && transform.position.y >= gm.sizeY - 4)
             return;
-        
+
         List<Tile> childTiles = GetChildTiles();
         
         if (!isBonus)

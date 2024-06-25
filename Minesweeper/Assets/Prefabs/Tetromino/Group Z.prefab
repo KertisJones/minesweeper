@@ -65,6 +65,8 @@ MonoBehaviour:
   maximumFallDistance: 0
   dasDelay: 0.25
   autoRepeatRate: 0.05
+  dasCutDelay: 0.017
+  softDropFactor: 12
   buttonLeftHeld: 0
   buttonRightHeld: 0
   currentRotation: 0

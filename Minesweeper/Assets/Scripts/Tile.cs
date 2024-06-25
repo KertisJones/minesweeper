@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine.U2D;
 using TMPro.Examples;
 using DG.Tweening;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
+using UnityEngine.Rendering.Universal;
 
 public class Tile : MonoBehaviour
 {
@@ -27,6 +29,26 @@ public class Tile : MonoBehaviour
     public bool is8Triggered = false;
     public bool isFailedToChord = false;
     private bool revealedThisFrame = false;
+
+    private bool hideMineCount = false;
+
+    // Auras
+    public enum AuraType
+    {
+        normal,
+        burning,
+        frozen,
+        wet
+    }
+
+    public AuraType aura = AuraType.normal;
+    public Material[] auraMaterials;
+    float burnTime = 15f;
+    float auraClock = 0;
+
+    Tile tileToBurn;
+
+    // Assets
     public Color solvedMarkColor;
 
     public AudioClip revealSound;
@@ -40,13 +62,16 @@ public class Tile : MonoBehaviour
     public SpriteRenderer explodedMineBackground;
     public SpriteRenderer wrongFlagBackground;
     public SpriteMask shimmerOverlay;
-    public Image fadeOverlay;    
-    TextMeshProUGUI text;    
+    public Image fadeOverlay;
+    public Image unrevealedButtonImage;
+    TextMeshProUGUI text;
+    Light2D light;
     
     GameManager gm;
     Camera cam;
     HoldTetromino holdTetromino;
     GameModifiers gameMods;
+    Group group;
 
     // Start is called before the first frame update
     void Start()
@@ -56,17 +81,23 @@ public class Tile : MonoBehaviour
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         holdTetromino = GameObject.FindGameObjectWithTag("Hold").GetComponent<HoldTetromino>();
         gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
+                
+        group = GetComponentInParent<Group>();
+        unrevealedButtonImage = GetComponentInChildren<TileButton>().GetComponent<Image>();
+        light = GetComponentInChildren<Light2D>();
 
         Vector2 v = GameManager.roundVec2(transform.position);
         coordX = (int)v.x;
         coordY = (int)v.y;
         
         CountMine();
-        
+        SetAura(aura);
+
         if (isDisplay)
         {
             GetComponentInChildren<Button>().interactable = false;
             GetComponent<ButtonJiggle>().scaleMultiplierEnlarge = ((GetComponent<ButtonJiggle>().scaleMultiplierEnlarge - 1) * 0.25f) + 1;
+            tileBackground.enabled = true;
             //Debug.Log ("Display " + gameObject.name);
             //tileBackground.color = new Color(215, 215, 215, 255);
         }
@@ -75,6 +106,12 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gm.isGameOver && isFlagged && !isMine)
+            Reveal(true);
+
+        if (gm.isGameOver)
+            return;
+
         if (gm.cheatAutoFlagMode)
         {
             if (isMine)
@@ -84,7 +121,8 @@ public class Tile : MonoBehaviour
         }
         this.transform.position = new Vector3(coordX, coordY, this.transform.position.z);
         this.name = "Tile (" + coordX + ", " + coordY + ")";
-        
+
+        UpdateAura();
         UpdateText();
         UpdateButtonJiggle(); 
 
@@ -142,8 +180,7 @@ public class Tile : MonoBehaviour
 
         revealedThisFrame = false;
 
-        if (gm.isGameOver && isFlagged && !isMine)
-            Reveal(true);
+        
 
         /*fallClock -= Time.deltaTime;
         if (fallClock <= 0)
@@ -224,7 +261,7 @@ public class Tile : MonoBehaviour
                 myColor = Color.white;
         }
 
-        if (gm.isPaused && !gm.isGameOver && !gm.marathonOverMenu.GetIsActive())
+        if ((gm.isPaused && !gm.isGameOver && !gm.marathonOverMenu.GetIsActive()) || hideMineCount)
             myText = "";
 
         if (text != null)
@@ -326,6 +363,7 @@ public class Tile : MonoBehaviour
         if (!isRevealed && !isFlagged && !isDisplay && (!GetComponentInParent<Group>().isHeld || isForcedReveal))
         {
             isRevealed = true;
+            tileBackground.enabled = true;
             //isQuestioned = false;
 
             revealedThisFrame = true;
@@ -608,4 +646,194 @@ public class Tile : MonoBehaviour
             gm.MoveTile(this.gameObject, coordX, coordY - 1);
         }
     }*/
+
+    #region Auras
+    public void SetAura(AuraType newAura)
+    {
+        aura = newAura;
+        auraClock = 0;
+
+        // Has Outline
+        if (aura == AuraType.burning)
+            this.transform.position += new Vector3(this.transform.position.x, this.transform.position.y, -0.05f);
+        else
+            this.transform.position += new Vector3(this.transform.position.x, this.transform.position.y, 0f);
+
+        // Text needs outline
+        if (aura != AuraType.normal)
+            text.GetComponent<TextOutline>().EnableOutline();
+        else
+            text.GetComponent<TextOutline>().DisableOutline();
+
+        // Tile Emits Light
+        if (aura == AuraType.burning)
+        {
+            light.intensity = .5f;
+        }
+        else
+        {
+            light.intensity = 0f;
+        }
+
+
+        Material auraMaterialLocal = new Material(auraMaterials[(int)aura]);
+        unrevealedButtonImage.material = auraMaterialLocal;
+        tileBackground.material = auraMaterialLocal;
+    }
+    private void UpdateAura()
+    {
+        if (aura == AuraType.normal)
+            return;
+        else if (aura == AuraType.burning)
+            UpdateAuraBurning();
+    }
+
+    private void UpdateAuraBurning()
+    {
+        if (!group.isFalling)
+        {
+            if (tileToBurn == null)
+            {
+                tileToBurn = gm.GetGameTile(coordX, coordY - 1);
+                if (tileToBurn != null)
+                {
+                    auraClock = 0;
+
+                    if (!tileToBurn.CanBeBurned())
+                        tileToBurn = null;
+                }
+                else
+                {
+                    auraClock += Time.deltaTime;
+                    if (auraClock >= burnTime / 3)
+                    {
+                        auraClock = 0;
+                        BurnFall();
+                    }
+                }
+            }
+            else
+            {
+                if (tileToBurn == gm.GetGameTile(coordX, coordY - 1))
+                {                    
+                    if (auraClock >= burnTime)
+                    {
+                        auraClock = 0;
+                        BurnFall();
+                    }
+                    auraClock += Time.deltaTime;
+                    SetBurnoutAnimation(auraClock);
+                    //tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", auraClock / burnTime);
+                    //tileToBurn.unrevealedButtonImage.GetComponent<Animator>().SetBool("Burning", true);
+                    //tileToBurn.tileBackground.GetComponent<Animator>().SetBool("Burning", true);
+                }
+                else 
+                {
+                    SetBurnoutAnimation(0);
+                    tileToBurn.hideMineCount = false;
+                    tileToBurn = null;
+                    //tileToBurn.unrevealedButtonImage.GetComponent<Animator>().SetBool("Burning", false);
+                    //tileToBurn.tileBackground.GetComponent<Animator>().SetBool("Burning", false);
+                }
+            }
+        }        
+    }
+
+    void SetBurnoutAnimation(float timer)
+    {
+        if (timer <= 1) 
+        {
+            float t = timer / 1;
+            tileToBurn.unrevealedButtonImage.material.SetFloat("_DistortionAmount", Mathf.Lerp(0, 0.0075f, t)); // Distortion
+            tileToBurn.tileBackground.material.SetFloat("_DistortionAmount", Mathf.Lerp(0, 0.0075f, t)); // Distortion
+
+            tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", Mathf.Lerp(0, 0.2f, t)); // Fade
+            tileToBurn.tileBackground.material.SetFloat("_FadeAmount", Mathf.Lerp(0, 0.2f, t)); // Fade
+
+            tileToBurn.unrevealedButtonImage.material.SetFloat("_Glow", Mathf.Lerp(0, 0.03f, t)); // Glow
+            tileToBurn.tileBackground.material.SetFloat("_Glow", Mathf.Lerp(0, 0.03f, t)); // Glow
+        }
+        else if (timer <= 5)
+        {
+            float t = (timer - 1) / (5 - 1);
+            tileToBurn.unrevealedButtonImage.material.SetFloat("_DistortionAmount", Mathf.Lerp(0.0075f, 0.1f, t)); // Distortion
+            tileToBurn.tileBackground.material.SetFloat("_DistortionAmount", Mathf.Lerp(0.0075f, 0.1f, t)); // Distortion
+
+            tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", Mathf.Lerp(0.2f, 0.25f, t)); // Fade
+            tileToBurn.tileBackground.material.SetFloat("_FadeAmount", Mathf.Lerp(0.2f, 0.25f, t)); // Fade
+
+            tileToBurn.unrevealedButtonImage.material.SetFloat("_Glow", Mathf.Lerp(0.03f, 0.5f, t)); // Glow
+            tileToBurn.tileBackground.material.SetFloat("_Glow", Mathf.Lerp(0.03f, 0.5f, t)); // Glow
+        }
+        else if (timer <= 14.5f)
+        {
+            float t = (timer - 5) / (14.5f - 5);
+            tileToBurn.unrevealedButtonImage.material.SetFloat("_DistortionAmount", Mathf.Lerp(0.1f, 0.25f, t)); // Distortion
+            tileToBurn.tileBackground.material.SetFloat("_DistortionAmount", Mathf.Lerp(0.1f, 0.25f, t)); // Distortion
+
+            tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", Mathf.Lerp(0.25f, 0.4f, t)); // Fade
+            tileToBurn.tileBackground.material.SetFloat("_FadeAmount", Mathf.Lerp(0.25f, 0.4f, t)); // Fade
+
+            tileToBurn.unrevealedButtonImage.material.SetFloat("_Glow", Mathf.Lerp(0.5f, 5, t)); // Glow
+            tileToBurn.tileBackground.material.SetFloat("_Glow", Mathf.Lerp(0.5f, 5, t)); // Glow
+        }
+        else if (timer <= 15)
+        {
+            float t = (timer - 14.5f) / (15 - 14.5f);
+            //0.25f // Distortion
+            //Mathf.Lerp(0.4f, 1, t); // Fade
+            tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", Mathf.Lerp(0.4f, 1, t)); // Fade
+            tileToBurn.tileBackground.material.SetFloat("_FadeAmount", Mathf.Lerp(0.4f, 1, t)); // Fade
+
+            tileToBurn.hideMineCount = true;
+            //10; // Glow
+        }
+    }
+
+    public bool CanBeBurned()
+    {
+        if (group == null) 
+            return false;
+        if (aura == AuraType.burning || aura == AuraType.frozen || aura == AuraType.wet)
+            return false;
+        if (group.isFalling || group.isDisplay || group.isHeld)
+            return false;
+
+        return true;
+    }
+
+    public void BurnFall()
+    {
+        if (aura != AuraType.burning || group.isFalling)
+            return;
+
+        // Burn baby burn
+        if (tileToBurn != null)
+        {
+            if (tileToBurn == gm.GetGameTile(coordX, coordY - 1) && tileToBurn.CanBeBurned())
+            {
+                // Lose x100% multiplier (x1 out of x50) when a tile is burnt
+                gm.SetScoreMultiplier(-100, 0);
+
+                tileToBurn.isDestroyed = true;
+                Destroy(tileToBurn.gameObject);
+                GameManager.gameBoard[coordX][coordY - 1] = null;
+            }
+        }
+
+        // Fall into the burnt tile's space, and bring any burning tiles above you along the way
+        Tile tileAbove = gm.GetGameTile(coordX, coordY + 1);
+
+        // Move one towards bottom
+        GameManager.gameBoard[coordX][coordY - 1] = GameManager.gameBoard[coordX][coordY];
+        GameManager.gameBoard[coordX][coordY] = null;
+
+        // Update Block position
+        coordY -= 1;
+
+        if (tileAbove != null)
+            tileAbove.BurnFall();
+
+    }
+    #endregion
 }

@@ -49,9 +49,14 @@ public class GhostTile : MonoBehaviour
         ghostTile3.GetComponent<SpriteRenderer>().color = color;
         ghostTile4.GetComponent<SpriteRenderer>().color = color;
 
+        ghostTile1.GetComponent<SpriteRenderer>().material = tiles[0].GetComponent<Tile>().unrevealedButtonImage.material;
+        ghostTile2.GetComponent<SpriteRenderer>().material = tiles[1].GetComponent<Tile>().unrevealedButtonImage.material;
+        ghostTile3.GetComponent<SpriteRenderer>().material = tiles[2].GetComponent<Tile>().unrevealedButtonImage.material;
+        ghostTile4.GetComponent<SpriteRenderer>().material = tiles[3].GetComponent<Tile>().unrevealedButtonImage.material;
+
         //if (group == null)
-            //return;
-        
+        //return;
+
         /*if (group == null)
             return;
         if (!group.isFalling)
@@ -64,8 +69,8 @@ public class GhostTile : MonoBehaviour
             else
                 Destroy(this.gameObject);
         }*/
-            
-        
+
+
         //int offsetDistance = group.GetMaximumFallDistance();
         //Debug.Log(offsetDistance);
         /*

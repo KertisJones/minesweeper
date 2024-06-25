@@ -17,12 +17,13 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         inputManager = InputManager.Instance;
     }
-    private void Start() {
+    private void Start()
+    {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        tile = GetComponentInParent<Tile>();
     }
     void Update()
     {
-        tile = GetComponentInParent<Tile>();
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
