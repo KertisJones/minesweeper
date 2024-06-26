@@ -278,7 +278,7 @@ public class Group : MonoBehaviour
             }
         }
 
-        if (Random.Range(0, 3) == -1)
+        if (Random.Range(0, 3) == 0)
         {
             foreach (Tile child in GetChildTiles())
             {
@@ -534,8 +534,8 @@ public class Group : MonoBehaviour
         if (fallDistance > maximumFallDistance)
             fallDistance = maximumFallDistance;
         if (fallDistance == 0 && !isHardDrop)
-            return;
-        
+            LockTetrominoDelay();
+
         // Modify position
         transform.position += new Vector3(0, fallDistance * -1, 0);
         //Debug.Log(fallDistance + ", Maximum " + maximumFallDistance);

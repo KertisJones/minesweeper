@@ -89,6 +89,8 @@ public class GameManager : MonoBehaviour
     public int tSpinDouble;
     public int tSpinTriple;
 
+    public int numBurningTiles = 0;
+
     // Options
     /*public enum WallType // your custom enumeration
     {

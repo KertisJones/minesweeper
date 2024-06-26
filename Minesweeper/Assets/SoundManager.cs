@@ -8,6 +8,8 @@ public class SoundManager : MonoBehaviour
     private AudioSource musicSource;
     [SerializeField]
     private AudioSource multiplierDrainSource;
+    [SerializeField]
+    private AudioSource fireSource;
     private GameManager gm;
     public AudioClip[] tileRevealSounds;
     public AudioClip tileRevealSound1;
@@ -31,6 +33,7 @@ public class SoundManager : MonoBehaviour
     private int tilesRevealedManually = 0;
     private float tilesRevealedCooldownTimer = 0f;
     private int currentLevel = 1;
+    private int currentBurningTiles = 0;
 
     private Tween multiplierDrainTween;
 
@@ -52,6 +55,11 @@ public class SoundManager : MonoBehaviour
     {
         if (currentLevel != gm.level)
             SetMusicPitchToLevel(gm.level);
+        
+        currentBurningTiles = gm.numBurningTiles;
+        float tilesNeededForMaxVolume = 40;
+        float tilesAdjusted = Mathf.Min(currentBurningTiles, tilesNeededForMaxVolume);
+        fireSource.volume = (tilesAdjusted / tilesNeededForMaxVolume) * PlayerPrefs.GetFloat("SoundVolume", 0.5f);
     }
 
     void LateUpdate()

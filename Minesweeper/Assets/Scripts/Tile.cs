@@ -42,10 +42,13 @@ public class Tile : MonoBehaviour
     }
 
     public AuraType aura = AuraType.normal;
-    public Material[] auraMaterials;
-    public AudioClip[] burningPutOutSteamHiss;
     float burnTime = 15f;
     float auraClock = 0;
+    public Material[] auraMaterials;
+    public AudioClip[] burningPutOutSteamHiss;
+    public AudioClip[] burningBurnOutFlame;
+
+
 
     Tile tileToBurn;
 
@@ -74,6 +77,14 @@ public class Tile : MonoBehaviour
     GameModifiers gameMods;
     Group group;
 
+    void OnDestroy()
+    {
+        if (aura == AuraType.burning)
+        {
+            gm.numBurningTiles -= 1;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,7 +103,7 @@ public class Tile : MonoBehaviour
         coordY = (int)v.y;
         
         CountMine();
-        SetAura(aura);
+        SetAura(aura, true);
 
         if (isDisplay)
         {
@@ -241,7 +252,11 @@ public class Tile : MonoBehaviour
             if (nearbyMines == 0)
                 myText = "";
             if (isMine)
+            {
                 myText = "*";
+                text.GetComponent<TextOutline>().DisableOutline();
+            }
+                
             else if (!gm.isTitleMenu) // During Credits, hide numbers
             {
                 if (gameMods.minesweeperTextType == GameModifiers.MinesweeperTextType.credits)
@@ -364,7 +379,7 @@ public class Tile : MonoBehaviour
         if (!isRevealed && !isFlagged && !isDisplay && (!GetComponentInParent<Group>().isHeld || isForcedReveal))
         {
             isRevealed = true;
-            tileBackground.enabled = true;
+            
             //isQuestioned = false;
 
             revealedThisFrame = true;
@@ -386,6 +401,8 @@ public class Tile : MonoBehaviour
             }
             else if (!gm.isGameOver)
             {
+                tileBackground.enabled = true;
+
                 //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 gm.soundManager.PlayTileRevealSound(isManual);
                 
@@ -649,12 +666,17 @@ public class Tile : MonoBehaviour
     }*/
 
     #region Auras
-    public void SetAura(AuraType newAura)
+    public void SetAura(AuraType newAura, bool isStartup = false)
     {
         // Transition Sound Effects!
         if (aura == AuraType.burning && newAura != AuraType.burning)
         {
+            gm.numBurningTiles -= 1;
             AudioSource.PlayClipAtPoint(burningPutOutSteamHiss[Random.Range(0, burningPutOutSteamHiss.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        }
+        else if ((aura != AuraType.burning && newAura == AuraType.burning) || (isStartup && aura == AuraType.burning))
+        {
+            gm.numBurningTiles += 1;
         }
 
         // Change Aura
@@ -710,6 +732,8 @@ public class Tile : MonoBehaviour
 
                     if (!tileToBurn.CanBeBurned())
                         tileToBurn = null;
+                    else
+                        AudioSource.PlayClipAtPoint(burningPutOutSteamHiss[Random.Range(0, burningPutOutSteamHiss.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                 }
                 else
                 {
@@ -789,13 +813,15 @@ public class Tile : MonoBehaviour
         else if (timer <= 15)
         {
             float t = (timer - 14.5f) / (15 - 14.5f);
-            //0.25f // Distortion
-            //Mathf.Lerp(0.4f, 1, t); // Fade
+
             tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", Mathf.Lerp(0.4f, 1, t)); // Fade
             tileToBurn.tileBackground.material.SetFloat("_FadeAmount", Mathf.Lerp(0.4f, 1, t)); // Fade
 
-            tileToBurn.hideMineCount = true;
-            //10; // Glow
+            if (!tileToBurn.hideMineCount)
+            {
+                AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                tileToBurn.hideMineCount = true;
+            }
         }
     }
 
@@ -823,6 +849,8 @@ public class Tile : MonoBehaviour
             {
                 // Lose x100% multiplier (x1 out of x50) when a tile is burnt
                 gm.SetScoreMultiplier(-100, 0);
+
+                
 
                 tileToBurn.isDestroyed = true;
                 Destroy(tileToBurn.gameObject);

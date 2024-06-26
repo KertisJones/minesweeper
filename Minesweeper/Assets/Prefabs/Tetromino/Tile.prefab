@@ -1664,6 +1664,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b342dda0bd0fe904884f030dcf5ce200, type: 3}
   - {fileID: 8300000, guid: 8e8b740dec0304a429f69cfb491d8d8e, type: 3}
   - {fileID: 8300000, guid: 0166d3daa49a0e74bbe84a2a10673e66, type: 3}
+  burningBurnOutFlame:
+  - {fileID: 8300000, guid: edcced96bb07a6e42bf505f766965b87, type: 3}
+  - {fileID: 8300000, guid: 2817b00820111d44a8aad293c8a2e79d, type: 3}
   solvedMarkColor: {r: 0.88235295, g: 0.88235295, b: 0.88235295, a: 1}
   revealSound: {fileID: 8300000, guid: 7c431c7673dc1ca48b4e4b672083d456, type: 3}
   flagSound: {fileID: 8300000, guid: 2cb4731b5bdfa91409cb7aaa9d1ace0a, type: 3}
