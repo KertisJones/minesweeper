@@ -278,7 +278,7 @@ public class Group : MonoBehaviour
             }
         }
 
-        if (Random.Range(0, 3) == 0)
+        if (Random.Range(0, 3) == -1)
         {
             foreach (Tile child in GetChildTiles())
             {
@@ -1388,7 +1388,7 @@ public class Group : MonoBehaviour
                 // Reset position, but return true
                 transform.position += new Vector3(dirH * -1, dirV * -1, 0);
             }
-
+            SetMaximumFallDistance();
             //Debug.Log("Rotation Wall Kick (" + dirH + ", " + dirV + ")");
             return true;
         }
@@ -1396,6 +1396,7 @@ public class Group : MonoBehaviour
         {
             // It's not valid. Revert back to center and revert rotation.
             transform.position += new Vector3(dirH * -1, dirV * -1, 0);
+            SetMaximumFallDistance();
             return false;
         }
     }
