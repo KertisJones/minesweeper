@@ -65,6 +65,8 @@ MonoBehaviour:
   maximumFallDistance: 0
   dasDelay: 0.25
   autoRepeatRate: 0.05
+  dasCutDelay: 0.017
+  softDropFactor: 12
   buttonLeftHeld: 0
   buttonRightHeld: 0
   currentRotation: 0
@@ -79,6 +81,20 @@ MonoBehaviour:
   tetrisweepSound: {fileID: 8300000, guid: 22d3ef7d8d14c3c489edbc8fe1c9b648, type: 3}
   tSpinSound: {fileID: 8300000, guid: 644c8ba5bc6fbf740b2ea940adc82164, type: 3}
   placedAboveBoardWarningSound: {fileID: 8300000, guid: 10071632180fcbe40a5d55f4db76459c, type: 3}
+  burningIgnitionSounds:
+  - {fileID: 8300000, guid: 9176dad6609fc064db7d95a19c5e6969, type: 3}
+  - {fileID: 8300000, guid: 54ff1255307d2634684e95e82960b9b6, type: 3}
+  - {fileID: 8300000, guid: 511f36cfb318a34449ea69e39fbf4ac9, type: 3}
+  - {fileID: 8300000, guid: ed19cba1c74cb4f4d89fd610713ded91, type: 3}
+  - {fileID: 8300000, guid: c26682254195838488193ab6fd857b80, type: 3}
+  - {fileID: 8300000, guid: 5bccd8a4c6c08714da792d1e63496536, type: 3}
+  - {fileID: 8300000, guid: dbae7f8513c44f24da4d85e715045510, type: 3}
+  - {fileID: 8300000, guid: 1d1d6ddacb51fbd478102bd68b2d2372, type: 3}
+  - {fileID: 8300000, guid: 7a1b13798f0477740bec7f765a1c95c0, type: 3}
+  - {fileID: 8300000, guid: 71217b8f26558d6418a7f7409512a9fb, type: 3}
+  - {fileID: 8300000, guid: dd192ddad74781d4aa9d889b890032fa, type: 3}
+  - {fileID: 8300000, guid: a8788867911bcaf4d9e1008fd724d4aa, type: 3}
+  - {fileID: 8300000, guid: 9d51bf9e7093633488112aef7b1f307b, type: 3}
 --- !u!82 &982824414662888951
 AudioSource:
   m_ObjectHideFlags: 0

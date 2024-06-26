@@ -148,7 +148,10 @@ public class HoldTetromino : MonoBehaviour
 
         heldTetromino.GetComponent<Group>().SetTileOverlayColor(new Color(0, 0, 0, 0.5f));
         if (heldTetrominoPrevious != null)
+        {
             heldTetrominoPrevious.GetComponent<Group>().SetTileOverlayColor(new Color(0, 0, 0, 0));
+            heldTetrominoPrevious.GetComponent<Group>().PlaySpawnSound(false);
+        }            
     }
 
     void ResetHeldColor()

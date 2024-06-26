@@ -55,6 +55,11 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         
         if (hover)
         {
+            if (tile.aura == Tile.AuraType.burning)
+            {
+                gm.EndGame();
+            }
+
             tile.Reveal(false, true);
             
             if (buttonFlagDown)
@@ -74,7 +79,12 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (gm.isGameOver || gm.isPaused || tile == null)
             return;        
         if (hover)
-        {            
+        {
+            if (tile.aura == Tile.AuraType.burning)
+            {
+                gm.EndGame();
+            }
+
             tile.FlagToggle();
             
             if (buttonRevealDown)
@@ -95,6 +105,11 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             return;
         if (hover && tile.isRevealed)
         {
+            if (tile.aura == Tile.AuraType.burning)
+            {
+                gm.EndGame();
+            }
+
             //tile.FlagToggle();
             tile.Chord();
         }        
@@ -107,6 +122,11 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             return;
         if (hover && tile.isRevealed)
         {
+            if (tile.aura == Tile.AuraType.burning)
+            {
+                gm.EndGame();
+            }
+
             //tile.FlagToggle();
             tile.ChordFlag();
         }        

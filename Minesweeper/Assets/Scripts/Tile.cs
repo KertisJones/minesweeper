@@ -44,7 +44,7 @@ public class Tile : MonoBehaviour
     public AuraType aura = AuraType.normal;
     float burnTime = 15f;
     float auraClock = 0;
-    public Material[] auraMaterials;
+    public Material[] auraMaterials;    
     public AudioClip[] burningPutOutSteamHiss;
     public AudioClip[] burningBurnOutFlame;
 
@@ -103,7 +103,7 @@ public class Tile : MonoBehaviour
         coordY = (int)v.y;
         
         CountMine();
-        SetAura(aura, true);
+        SetAura(aura);
 
         if (isDisplay)
         {
@@ -666,7 +666,7 @@ public class Tile : MonoBehaviour
     }*/
 
     #region Auras
-    public void SetAura(AuraType newAura, bool isStartup = false)
+    public void SetAura(AuraType newAura)
     {
         // Transition Sound Effects!
         if (aura == AuraType.burning && newAura != AuraType.burning)
@@ -674,7 +674,7 @@ public class Tile : MonoBehaviour
             gm.numBurningTiles -= 1;
             AudioSource.PlayClipAtPoint(burningPutOutSteamHiss[Random.Range(0, burningPutOutSteamHiss.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
         }
-        else if ((aura != AuraType.burning && newAura == AuraType.burning) || (isStartup && aura == AuraType.burning))
+        else if (aura != AuraType.burning && newAura == AuraType.burning)
         {
             gm.numBurningTiles += 1;
         }

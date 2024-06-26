@@ -88,6 +88,7 @@ public class Group : MonoBehaviour
     public AudioClip tetrisweepSound;
     public AudioClip tSpinSound;
     public AudioClip placedAboveBoardWarningSound;
+    public AudioClip[] burningIgnitionSounds;
 
     void Awake()
     {
@@ -300,6 +301,26 @@ public class Group : MonoBehaviour
                     childTiles.Add(child.GetComponent<Tile>());
         }
         return childTiles;
+    }
+
+    public void PlaySpawnSound(bool firstSpawn)
+    {
+        int burningTiles = 0;
+
+        List<Tile> childTiles = GetChildTiles();
+        foreach (Tile child in childTiles)
+        {
+            if (child.aura == Tile.AuraType.burning)
+                burningTiles++;
+        }
+
+        if(burningTiles > 0)
+            AudioSource.PlayClipAtPoint(burningIgnitionSounds[Random.Range(0, burningIgnitionSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+
+        if (firstSpawn)
+        {
+            gm.numBurningTiles += burningTiles;
+        }
     }
 
     public void LayMines()

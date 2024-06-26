@@ -1074,7 +1074,10 @@ public class GameManager : MonoBehaviour
         float sm = GetScoreMultiplier();
         scoreMultiplier += mult;
         if (scoreMultiplier < 0)
+        {
             scoreMultiplier = 0;
+            soundManager.StopMultiplierDrain();
+        }            
         if (scoreMultiplier > scoreMultiplierLimit)
             scoreMultiplier = scoreMultiplierLimit;
         //Debug.Log(gameObject.name + ": " + sm + " + " + mult + " = " + scoreMultiplier + " -> " + GetScoreMultiplier());

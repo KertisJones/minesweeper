@@ -1332,6 +1332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineWidth: 0.3
   color: {r: 0, g: 0, b: 0, a: 1}
+  startEnabled: 1
 --- !u!114 &2794999894866652101
 MonoBehaviour:
   m_ObjectHideFlags: 0
