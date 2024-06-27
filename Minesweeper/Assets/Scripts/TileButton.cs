@@ -48,17 +48,18 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     void PressReveal()
     {
-        if (gm == null)
-            return;
-        if (gm.isGameOver || gm.isPaused || tile == null)
-            return;
+        if (gm == null || tile == null)
+            return;        
         
         if (hover)
         {
             if (tile.aura == Tile.AuraType.burning)
             {
-                gm.EndGame();
+                AudioSource.PlayClipAtPoint(tile.burningPutOutSteamHiss[Random.Range(0, tile.burningPutOutSteamHiss.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
             }
+
+            if (gm.isGameOver || gm.isPaused)
+                return;
 
             tile.Reveal(false, true);
             
@@ -74,16 +75,18 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     void PressFlag()
     {
-        if (gm == null)
+        if (gm == null || tile == null)
             return;
-        if (gm.isGameOver || gm.isPaused || tile == null)
-            return;        
+                
         if (hover)
         {
             if (tile.aura == Tile.AuraType.burning)
             {
-                gm.EndGame();
+                AudioSource.PlayClipAtPoint(tile.burningPutOutSteamHiss[Random.Range(0, tile.burningPutOutSteamHiss.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
             }
+
+            if (gm.isGameOver || gm.isPaused)
+                return;
 
             tile.FlagToggle();
             
@@ -99,16 +102,18 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     void PressChord()
     {
-        if (gm == null)
+        if (gm == null || tile == null)
             return;
-        if (gm.isGameOver || gm.isPaused || tile == null)
-            return;
+        
         if (hover && tile.isRevealed)
         {
             if (tile.aura == Tile.AuraType.burning)
             {
-                gm.EndGame();
+                AudioSource.PlayClipAtPoint(tile.burningPutOutSteamHiss[Random.Range(0, tile.burningPutOutSteamHiss.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
             }
+
+            if (gm.isGameOver || gm.isPaused)
+                return;
 
             //tile.FlagToggle();
             tile.Chord();
@@ -116,16 +121,18 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     void PressChordFlag()
     {
-        if (gm == null)
+        if (gm == null || tile == null)
             return;
-        if (gm.isGameOver || gm.isPaused || tile == null)
-            return;
+        
         if (hover && tile.isRevealed)
         {
             if (tile.aura == Tile.AuraType.burning)
             {
-                gm.EndGame();
+                AudioSource.PlayClipAtPoint(tile.burningPutOutSteamHiss[Random.Range(0, tile.burningPutOutSteamHiss.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
             }
+
+            if (gm.isGameOver || gm.isPaused)
+                return;
 
             //tile.FlagToggle();
             tile.ChordFlag();

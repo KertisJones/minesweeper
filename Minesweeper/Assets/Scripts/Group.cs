@@ -75,6 +75,9 @@ public class Group : MonoBehaviour
     bool lastSuccessfulMovementWasRotation = false;
     int lastRotationDir = 0;
 
+    // Aura
+    int burningTiles = 0;
+
     public Transform pivot;
     public Vector3 pivotStaticBackup = new Vector3();
 
@@ -231,6 +234,8 @@ public class Group : MonoBehaviour
     {
         //Official Guidline Gravity Curve: Time = (0.8-((Level-1)*0.007))(Level-1)
         fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), (gm.level - 1));
+        if (burningTiles > 0)
+            fallSpeed *= 0.5f;
 
         autoRepeatRate = PlayerPrefs.GetFloat("AutoRepeatRate", autoRepeatRate * 1000) / 1000;
         dasDelay = PlayerPrefs.GetFloat("DelayedAutoShift", dasDelay * 1000) / 1000;
@@ -303,24 +308,24 @@ public class Group : MonoBehaviour
         return childTiles;
     }
 
-    public void PlaySpawnSound(bool firstSpawn)
+    public void SpawnTetrominoOnBoard(bool firstSpawn)
     {
-        int burningTiles = 0;
-
-        List<Tile> childTiles = GetChildTiles();
-        foreach (Tile child in childTiles)
-        {
-            if (child.aura == Tile.AuraType.burning)
-                burningTiles++;
-        }
-
-        if(burningTiles > 0)
-            AudioSource.PlayClipAtPoint(burningIgnitionSounds[Random.Range(0, burningIgnitionSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-
         if (firstSpawn)
         {
+            List<Tile> childTiles = GetChildTiles();
+            foreach (Tile child in childTiles)
+            {
+                if (child.aura == Tile.AuraType.burning)
+                    burningTiles++;
+            }
+
             gm.numBurningTiles += burningTiles;
+
+            UpdateInputValues();
         }
+
+        if (burningTiles > 0)
+            AudioSource.PlayClipAtPoint(burningIgnitionSounds[Random.Range(0, burningIgnitionSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
     }
 
     public void LayMines()
@@ -553,9 +558,9 @@ public class Group : MonoBehaviour
     public void Fall(int fallDistance, bool isHardDrop = false, bool isManualFall = true)
     {
         if (fallDistance > maximumFallDistance)
-            fallDistance = maximumFallDistance;
-        if (fallDistance == 0 && !isHardDrop)
-            LockTetrominoDelay();
+            fallDistance = Mathf.Max(maximumFallDistance, 1);
+        //if (fallDistance == 0 && !isHardDrop)
+            //LockTetrominoDelay();
 
         // Modify position
         transform.position += new Vector3(0, fallDistance * -1, 0);

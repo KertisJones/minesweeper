@@ -277,7 +277,7 @@ public class Tile : MonoBehaviour
                 myColor = Color.white;
         }
 
-        if ((gm.isPaused && !gm.isGameOver && !gm.marathonOverMenu.GetIsActive()) || hideMineCount)
+        if ((gm.isPaused && !gm.isGameOver && !gm.marathonOverMenu.GetIsActive()) || (hideMineCount && !isMine))
             myText = "";
 
         if (text != null)
@@ -298,6 +298,13 @@ public class Tile : MonoBehaviour
         isFlagged = !isFlagged;
         if (isFlagged)
         {
+            if (!isMine && aura == Tile.AuraType.burning)
+            {
+                AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                gm.EndGame();
+                return;
+            }
+
             //isQuestioned = false;
 
             //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
@@ -326,7 +333,7 @@ public class Tile : MonoBehaviour
 
             if (gm.lineClearInstantly)
                 GameManager.deleteFullRows();
-            GameManager.CheckForPossiblePerfectClear();
+            GameManager.CheckForPossiblePerfectClear();            
         }
         else
         {
@@ -389,10 +396,14 @@ public class Tile : MonoBehaviour
 
             UpdateText();
 
+            
+
             if (isMine)
             {
                 if (!gm.isGameOver)
+                {
                     explodedMineBackground.enabled = true;
+                }
                 gm.EndGame();
             }
             else if (gm == null) // Error catching, can sometimes happen when the scene loads
@@ -401,11 +412,11 @@ public class Tile : MonoBehaviour
             }
             else if (!gm.isGameOver)
             {
-                tileBackground.enabled = true;
-
                 //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 gm.soundManager.PlayTileRevealSound(isManual);
-                
+
+                tileBackground.enabled = true;
+
                 //AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
                 if (!isFailedToChord)
@@ -439,9 +450,6 @@ public class Tile : MonoBehaviour
                         holdTetromino.scoreRevealTest += Mathf.FloorToInt(((nearbyMines * nearbyMines * (coordY + 1))) * gm.level * (1 + gm.GetScoreMultiplier()));
                         holdTetromino.scoreRevealNoLevelTest += Mathf.FloorToInt((nearbyMines * (coordY + 1)) * (1 + gm.GetScoreMultiplier()));*/
                     //}
-                        
-                    
-                    
                 }
             }
 
@@ -464,6 +472,7 @@ public class Tile : MonoBehaviour
             isRevealed = true;
             //explodedMineBackground.enabled = true;
             wrongFlagBackground.enabled = true;
+            tileBackground.enabled = true;
             UpdateText();
 
             ZeroCascade();
@@ -536,6 +545,12 @@ public class Tile : MonoBehaviour
                 {                    
                     //holdTetromino.ResetManualSolveStreak();
                     gm.ResetRevealStreakManual();
+
+                    if (aura == Tile.AuraType.burning)
+                    {
+                        AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        gm.EndGame();
+                    }
                 }
             }
             
@@ -597,6 +612,12 @@ public class Tile : MonoBehaviour
                 {                    
                     //holdTetromino.ResetManualSolveStreak();
                     gm.ResetRevealStreakManual();
+
+                    if (aura == Tile.AuraType.burning)
+                    {
+                        AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        gm.EndGame();
+                    }
                 }
             }
             
@@ -847,10 +868,8 @@ public class Tile : MonoBehaviour
         {
             if (tileToBurn == gm.GetGameTile(coordX, coordY - 1) && tileToBurn.CanBeBurned())
             {
-                // Lose x100% multiplier (x1 out of x50) when a tile is burnt
-                gm.SetScoreMultiplier(-100, 0);
-
-                
+                // Lose x25% multiplier (x0.25 out of x50) when a tile is burnt
+                gm.SetScoreMultiplier(-25, 0);
 
                 tileToBurn.isDestroyed = true;
                 Destroy(tileToBurn.gameObject);
