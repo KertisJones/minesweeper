@@ -28,9 +28,7 @@ public class Tile : MonoBehaviour
     public bool isRowSolved = false;
     public bool is8Triggered = false;
     public bool isFailedToChord = false;
-    private bool revealedThisFrame = false;
-
-    private bool hideMineCount = false;
+    private bool revealedThisFrame = false;    
 
     // Auras
     public enum AuraType
@@ -43,6 +41,7 @@ public class Tile : MonoBehaviour
 
     public AuraType aura = AuraType.normal;
     float burnTime = 15f;
+    private bool burnoutInvisible = false;
     float auraClock = 0;
     public Material[] auraMaterials;    
     public AudioClip[] burningPutOutSteamHiss;
@@ -278,7 +277,7 @@ public class Tile : MonoBehaviour
                 myColor = Color.white;
         }
 
-        if ((gm.isPaused && !gm.isGameOver && !gm.marathonOverMenu.GetIsActive()) || (hideMineCount && !isMine))
+        if ((gm.isPaused && !gm.isGameOver && !gm.marathonOverMenu.GetIsActive()) || (burnoutInvisible && !isMine))
             myText = "";
 
         if (text != null)
@@ -293,7 +292,7 @@ public class Tile : MonoBehaviour
 
     public void FlagToggle()
     {
-        if (gm.isGameOver || isRevealed || GetComponentInParent<Group>().isHeld)
+        if (gm.isGameOver || isRevealed || GetComponentInParent<Group>().isHeld || burnoutInvisible)
             return;
 
         isFlagged = !isFlagged;
@@ -385,6 +384,9 @@ public class Tile : MonoBehaviour
 
     public void Reveal(bool isForcedReveal = false, bool isManual = false)
     {
+        if (burnoutInvisible)
+            return;   
+        
         if (!isRevealed && !isFlagged && !isDisplay && (!GetComponentInParent<Group>().isHeld || isForcedReveal))
         {
             isRevealed = true;
@@ -789,7 +791,7 @@ public class Tile : MonoBehaviour
                 else 
                 {
                     SetBurnoutAnimation(0);
-                    tileToBurn.hideMineCount = false;
+                    tileToBurn.burnoutInvisible = false;
                     tileToBurn = null;
                     //tileToBurn.unrevealedButtonImage.GetComponent<Animator>().SetBool("Burning", false);
                     //tileToBurn.tileBackground.GetComponent<Animator>().SetBool("Burning", false);
@@ -843,10 +845,10 @@ public class Tile : MonoBehaviour
             tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", Mathf.Lerp(0.4f, 1, t)); // Fade
             tileToBurn.tileBackground.material.SetFloat("_FadeAmount", Mathf.Lerp(0.4f, 1, t)); // Fade
 
-            if (!tileToBurn.hideMineCount)
+            if (!tileToBurn.burnoutInvisible)
             {
                 AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-                tileToBurn.hideMineCount = true;
+                tileToBurn.burnoutInvisible = true;
             }
         }
     }
