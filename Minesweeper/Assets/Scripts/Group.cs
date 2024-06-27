@@ -400,11 +400,11 @@ public class Group : MonoBehaviour
         UpdateGridAdd();
         SetMaximumFallDistance();
 
-        SetRandomSupporterName[] supporterTexts = GetComponentsInChildren<SetRandomSupporterName>();
+        /*SetRandomSupporterName[] supporterTexts = GetComponentsInChildren<SetRandomSupporterName>();
         foreach (SetRandomSupporterName supporterText in supporterTexts)
         {
             supporterText.transform.rotation = Quaternion.identity;
-        }        
+        }     */   
     }
 
     public void UpdateGridRemove()
@@ -427,6 +427,7 @@ public class Group : MonoBehaviour
             child.coordY = (int)v.y;
             if (!isHeld)
                 GameManager.gameBoard[(int)v.x][(int)v.y] = child.gameObject;
+            child.transform.rotation = Quaternion.identity;
         }    
     }
 
@@ -1459,20 +1460,12 @@ public class Group : MonoBehaviour
         lastMove = Time.time;
     }
 
-    public bool CheckForTetrisweeps(bool getMultiplier = true, bool isInstantSweep = false, int highestRowSolved = -1)
+    public bool CheckForTetrisweeps(bool getMultiplier = true, float sweepMultiplier = 1) //bool isInstantSweep = false, int highestRowSolved = -1)
     {
         if (isFalling || difficultSweepScored)
             return false;            
         // The child object isn't destroyed until the next Update loop, so you should check for its destroyed tag.
         List<Tile> childrenTiles = GetChildTiles();
-        /*List<Tile> childrenTilesNotDestroyed = new List<Tile>();
-        foreach (Tile childTile in childrenTiles)
-        {
-            if (!childTile.isDestroyed)
-                childrenTilesNotDestroyed.Add(childTile);
-        }*/
-
-        //Debug.Log ("CheckForTetrisweeps. " + (gm.previousTetromino == this.gameObject) + ", Type: " + tetrominoType + ", Children: " + childrenTilesNotDestroyed.Count + ", Rows: " + rowsFilled);
 
         // This tetromino has been fully cleared. Score points and delete this object.
         if (childrenTiles.Count == 0)
@@ -1484,13 +1477,6 @@ public class Group : MonoBehaviour
                 difficultSweepScored = true;
 
                 // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
-                /*float actionScore = 595; 
-                if (gm.previousClearWasDifficultSweep)
-                    actionScore = actionScore * 1.5f; 
-                if (isInstantSweep)
-                    actionScore = actionScore * 1.5f;
-                actionScore *= gm.GetRowHeightPointModifier(topHeight);
-                gm.AddScore((int)actionScore, 1);   */     
 
                 if (getMultiplier)
                     gm.SetScoreMultiplier(20, 30);
@@ -1501,11 +1487,6 @@ public class Group : MonoBehaviour
                 if (topHeight > gm.safeEdgeTilesGained - 1)
                     gm.AddSafeTileToEdges();                
             }
-            /*else if (isTspin && (gm.previousTetromino == this.gameObject || gm.currentTetromino == this.gameObject)) // Detect if T-Sweep was achieved
-            {
-                AddTspinsweep(getMultiplier, isInstantSweep);
-                difficultSweepScored = true;
-            }*/
             // Clean up
             Destroy(this.gameObject);
         }
@@ -1526,7 +1507,7 @@ public class Group : MonoBehaviour
                 }
                 if (isTspinSweep)
                 {
-                    AddTspinsweep(getMultiplier, isInstantSweep);
+                    AddTspinsweep(getMultiplier, sweepMultiplier);
                     difficultSweepScored = true;
                     gm.previousTetromino = null;
                     gm.currentTetromino = null;
@@ -1536,16 +1517,14 @@ public class Group : MonoBehaviour
         return difficultSweepScored;
     }
 
-    void AddTspinsweep(bool getMultiplier, bool isInstantSweep)
+    void AddTspinsweep(bool getMultiplier, float sweepMultiplier = 1) //, bool isInstantSweep)
     {
         gm.tSpinsweepsCleared += 1;
 
-        float actionScore = 595; 
+        float actionScore = 595;
+        actionScore *= sweepMultiplier;
         if (gm.previousClearWasDifficultSweep)
-            actionScore = actionScore * 1.5f; 
-        if (isInstantSweep)
-            actionScore = actionScore * 1.5f;
-        actionScore *= gm.GetRowHeightPointModifier(topHeight);
+            actionScore *= 1.5f; 
 
         gm.AddScore((int)actionScore, 1); 
         

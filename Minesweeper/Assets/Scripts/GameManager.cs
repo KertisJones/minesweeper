@@ -801,8 +801,11 @@ public class GameManager : MonoBehaviour
         
         int rowsCleared = 0;
         int linesweepsCleared = 0;
-        int highestRowSolved = -1;
-        
+        int highestRowSolved = -1;        
+
+        float burningMultiplier = 1;
+        bool containsFrozenTile = false;
+
         // Score all of the solved rows
         for (int y = 0; y < gm.sizeY; ++y)
         {
@@ -815,8 +818,8 @@ public class GameManager : MonoBehaviour
                     gm.ResetScoreMultiplier();
                 }
 
-                bool isLinesweep = scoreSolvedRow(y, getMultiplier);
-                
+                (bool isLinesweep, float lineBurningMultiplier, bool lineContainsFrozenTile) = scoreSolvedRow(y, getMultiplier);
+
                 gm.linesCleared++;
                 rowsCleared++;
                 if (isLinesweep)
@@ -824,6 +827,8 @@ public class GameManager : MonoBehaviour
                     linesweepsCleared++;
                     gm.linesweepsCleared += 1;
                 }
+                burningMultiplier += lineBurningMultiplier;
+                containsFrozenTile = containsFrozenTile || lineContainsFrozenTile;
             }
         }
 
@@ -845,10 +850,38 @@ public class GameManager : MonoBehaviour
 
             if (OnLineClearEvent != null)
                 OnLineClearEvent(rowsCleared);
-        
+
+            // Calculate Multipliers
+            float clearMultiplier = 1;
+
+            clearMultiplier *= gm.GetRowHeightPointModifier(highestRowSolved);
+            clearMultiplier *= burningMultiplier;
+            if (containsFrozenTile)
+                clearMultiplier *= 0.5f;
+
+            float sweepMultiplier = clearMultiplier;
+            if (isTriggeredByLock) // Instant Sweep multiplier
+                sweepMultiplier *= 1.5f;
+
+            // Check for difficult sweeps, to find back-to-back. The below back-to-back bonus will also need to be applied inside the Tspinsweep separately.
+            bool isDifficultSweep = false;
+            if (gm.previousTetromino != null)
+                if (gm.previousTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, sweepMultiplier))// false, highestRowSolved))
+                    isDifficultSweep = true;
+            if (gm.currentTetromino != null)
+                if (gm.currentTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, sweepMultiplier))//, isTriggeredByLock, highestRowSolved))
+                    isDifficultSweep = true;
+
+            if (isDifficultSweep && gm.previousClearWasDifficultSweep)
+                sweepMultiplier *= 1.5f;
+
+
+
             // Lines Cleared Points
             float lineClearScore = 100 * rowsCleared;
-            lineClearScore *= gm.GetRowHeightPointModifier(highestRowSolved);
+            lineClearScore *= clearMultiplier;
+            //lineClearScore *= gm.GetRowHeightPointModifier(highestRowSolved);
+
             gm.AddScore((int)lineClearScore, 1);
             
             //gm.AddScore(75 * (rowsCleared * rowsCleared), 1);
@@ -859,26 +892,13 @@ public class GameManager : MonoBehaviour
             if (rowsCleared > gm.safeEdgeTilesGained)
                 gm.AddSafeTileToEdges();
             
-            bool isDifficultSweep = false;
-            if (gm.previousTetromino != null)
-                if (gm.previousTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, false, highestRowSolved))
-                    isDifficultSweep = true;
-            if (gm.currentTetromino != null)
-                if (gm.currentTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, isTriggeredByLock, highestRowSolved))
-                    isDifficultSweep = true;
+            
 
             // Linesweep: Row was solved before the next tetromino was placed
             if (linesweepsCleared > 0)
             {
                 float linesweepScore = 100 * (linesweepsCleared * linesweepsCleared);
-
-                linesweepScore *= gm.GetRowHeightPointModifier(highestRowSolved);
-                
-                if (isTriggeredByLock) // Instant Sweep multiplier
-                    linesweepScore *= 1.5f;
-                
-                if (isDifficultSweep && gm.previousClearWasDifficultSweep)
-                    linesweepScore *= 1.5f;
+                linesweepScore *= sweepMultiplier;
 
                 gm.AddScore(Mathf.FloorToInt(linesweepScore), 1);
 
@@ -1122,12 +1142,14 @@ public class GameManager : MonoBehaviour
     }
 
     // Returns true if this row was a linesweep
-    public static bool scoreSolvedRow(int y, bool getMultiplier = true)
+    public static (bool, float, bool) scoreSolvedRow(int y, bool getMultiplier = true)
     {
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         //int rowScore = 0;
         int minesFlagged = 0;
         bool containsPreviousTetromino = false;
+        float burningMultiplier = 0f;
+        bool containsFrozenTile = false;
         for (int x = 0; x < gm.sizeX; ++x)
         {
             if (gameBoard[x][y] != null)
@@ -1141,6 +1163,11 @@ public class GameManager : MonoBehaviour
                 {
                     rowScore += gameBoard[x][y].GetComponent<Tile>().nearbyMines;
                 }*/
+                if (gameBoard[x][y].GetComponent<Tile>().aura == Tile.AuraType.burning)
+                    burningMultiplier += 0.25f;
+                if (gameBoard[x][y].GetComponent<Tile>().aura == Tile.AuraType.frozen)
+                    containsFrozenTile = true;
+
                 if (gameBoard[x][y].GetComponentInParent<Group>().gameObject == gm.previousTetromino)
                     containsPreviousTetromino = true;
             }
@@ -1153,7 +1180,7 @@ public class GameManager : MonoBehaviour
         gm.currentMines -= minesFlagged;
         gm.currentFlags -= minesFlagged;
         gm.minesSweeped += minesFlagged;
-        return containsPreviousTetromino;
+        return (containsPreviousTetromino, burningMultiplier, containsFrozenTile);
     }
 
     public static int scoreFullRows(Transform tetronimo)

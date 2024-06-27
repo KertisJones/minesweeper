@@ -68,6 +68,7 @@ public class Tile : MonoBehaviour
     public SpriteMask shimmerOverlay;
     public Image fadeOverlay;
     public Image unrevealedButtonImage;
+    public SpriteRenderer burnGameOverImage;
     TextMeshProUGUI text;
     Light2D light;
     
@@ -301,6 +302,7 @@ public class Tile : MonoBehaviour
             if (!isMine && aura == Tile.AuraType.burning)
             {
                 AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                burnGameOverImage.enabled = true;
                 gm.EndGame();
                 return;
             }
@@ -549,6 +551,7 @@ public class Tile : MonoBehaviour
                     if (aura == Tile.AuraType.burning)
                     {
                         AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        burnGameOverImage.enabled = true;
                         gm.EndGame();
                     }
                 }
@@ -616,6 +619,7 @@ public class Tile : MonoBehaviour
                     if (aura == Tile.AuraType.burning)
                     {
                         AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        burnGameOverImage.enabled = true;
                         gm.EndGame();
                     }
                 }
@@ -731,6 +735,7 @@ public class Tile : MonoBehaviour
         Material auraMaterialLocal = new Material(auraMaterials[(int)aura]);
         unrevealedButtonImage.material = auraMaterialLocal;
         tileBackground.material = auraMaterialLocal;
+        explodedMineBackground.material = auraMaterialLocal;
     }
     private void UpdateAura()
     {
