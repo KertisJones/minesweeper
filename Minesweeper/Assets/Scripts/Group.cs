@@ -284,11 +284,33 @@ public class Group : MonoBehaviour
             }
         }
 
-        if (Random.Range(0, 3) == 0)
+        if (gm.gameMods.freezerburnDemo)
+        {
+            int r = Random.Range(0, 6);
+
+            switch (r)
+            {
+                case 0:
+                    foreach (Tile child in GetChildTiles())
+                    {
+                        child.aura = Tile.AuraType.burning;
+                    }
+                    break;
+                case 1:
+                    foreach (Tile child in GetChildTiles())
+                    {
+                        child.aura = Tile.AuraType.frozen;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }        
+        else if (gm.gameMods.invernoDemo)
         {
             foreach (Tile child in GetChildTiles())
             {
-                child.aura = Tile.AuraType.burning;
+                child.aura = Tile.AuraType.frozen;
             }
         }
 

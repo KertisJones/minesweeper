@@ -39,6 +39,8 @@ public class GameModifiers : MonoBehaviour
     };
     public MinesweeperTextType minesweeperTextType = MinesweeperTextType.numbers;
     public bool showTitle = false;
+    public bool freezerburnDemo = false;
+    public bool invernoDemo = false;
     
     public void SetGameToThisMode()
     {
@@ -61,6 +63,8 @@ public class GameModifiers : MonoBehaviour
         // Distractions
         gameMods.minesweeperTextType = minesweeperTextType;
         gameMods.showTitle = showTitle;
+        gameMods.freezerburnDemo = freezerburnDemo;
+        gameMods.invernoDemo = invernoDemo;
 
         scoreKeeper.ResetScoreKeeper();
     }

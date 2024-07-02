@@ -7,25 +7,18 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TileBurning
+  m_Name: TileWet
   m_Shader: {fileID: 4800000, guid: 79ee6cefbc672a44e97359d4d14ea301, type: 3}
   m_ValidKeywords:
-  - ALPHAOUTLINE_ON
-  - COLORRAMP_ON
+  - BLUR_ON
+  - COLORSWAP_ON
+  - CONTRAST_ON
   - DISTORT_ON
-  - FADE_ON
-  - FISHEYE_ON
   - GLOWLIGHT_ON
-  - GLOWTEX_ON
-  - GLOW_ON
-  - HSV_ON
-  - OUTBASE8DIR_ON
-  - OUTBASE_ON
-  - OUTDIST_ON
-  - OUTTEX_ON
   - OVERLAYMULT_ON
   - OVERLAY_ON
-  - RECTSIZE_ON
+  - ROUNDWAVEUV_ON
+  - WARP_ON
   - WAVEUV_ON
   m_InvalidKeywords:
   - _GLOWAFFECTLIGHT_ON
@@ -47,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ColorSwapTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 7aad8c583ef292e48b06af0d1f2fab97, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DistortTex:
@@ -63,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlowTex:
-        m_Texture: {fileID: 2800000, guid: b3197a449cadb274eb045036c5ccc959, type: 3}
+        m_Texture: {fileID: 2800000, guid: bd3249e8aae01e748aaca0c062e2c19c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -75,7 +68,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: cac1ba879afa8664d9093abfd7ae6e93, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineDistortTex:
@@ -83,11 +76,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineTex:
-        m_Texture: {fileID: 2800000, guid: 677cca399782dea41aedc1d292ecb67d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 74087f6d03f233e4a8a142fa01f9e5cf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OverlayTex:
-        m_Texture: {fileID: 2800000, guid: 677cca399782dea41aedc1d292ecb67d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7a6b91fbe1dad3247b0b289e01d4d722, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShineMask:
@@ -99,14 +92,14 @@ Material:
     - _Alpha: 1
     - _AlphaCutoffValue: 0.25
     - _AlphaOutlineBlend: 1
-    - _AlphaOutlineGlow: 1.5
+    - _AlphaOutlineGlow: 5
     - _AlphaOutlineMinAlpha: 0
     - _AlphaOutlinePower: 1
     - _AlphaRoundThreshold: 0.5
     - _BillboardY: 0
     - _BlurHD: 0
-    - _BlurIntensity: 10
-    - _Brightness: 0
+    - _BlurIntensity: 1
+    - _Brightness: 0.22
     - _ChromAberrAlpha: 0.4
     - _ChromAberrAmount: 1
     - _ClipUvDown: 0
@@ -117,33 +110,33 @@ Material:
     - _ColorChangeTolerance: 0.25
     - _ColorChangeTolerance2: 0.25
     - _ColorChangeTolerance3: 0.25
-    - _ColorRampBlend: 0.211
+    - _ColorRampBlend: 0
     - _ColorRampLuminosity: 0
     - _ColorRampOutline: 0
-    - _ColorSwapBlend: 1
+    - _ColorSwapBlend: 0
     - _ColorSwapBlueLuminosity: 0.5
     - _ColorSwapGreenLuminosity: 0.5
     - _ColorSwapRedLuminosity: 0.5
-    - _Contrast: 1
+    - _Contrast: 1.53
     - _CullingOption: 0
-    - _DistortAmount: 0.15
-    - _DistortTexXSpeed: 5
-    - _DistortTexYSpeed: 5
-    - _EditorDrawers: 14
+    - _DistortAmount: 0.1
+    - _DistortTexXSpeed: 0.1
+    - _DistortTexYSpeed: 0.1
+    - _EditorDrawers: 6
     - _FadeAmount: -0.1
-    - _FadeBurnGlow: 8
-    - _FadeBurnTransition: 0.01
-    - _FadeBurnWidth: 0.104
-    - _FishEyeUvAmount: 0.034
+    - _FadeBurnGlow: 2
+    - _FadeBurnTransition: 0.075
+    - _FadeBurnWidth: 0.025
+    - _FishEyeUvAmount: 0
     - _FlickerAlpha: 0
     - _FlickerFreq: 0.2
     - _FlickerPercent: 0.05
-    - _GhostBlend: 1
-    - _GhostColorBoost: 1
+    - _GhostBlend: 0.138
+    - _GhostColorBoost: 3.28
     - _GhostTransparency: 0
     - _GlitchAmount: 3
     - _GlitchSize: 1
-    - _Glow: 1.5
+    - _Glow: 0.6
     - _GlowAffectLight: 1
     - _GlowGlobal: 1
     - _GradBlend: 1
@@ -168,8 +161,8 @@ Material:
     - _HologramStripesAmount: 0.1
     - _HologramStripesSpeed: 4.5
     - _HologramUnmodAmount: 0
-    - _HsvBright: 0.9
-    - _HsvSaturation: 0.9
+    - _HsvBright: 1.59
+    - _HsvSaturation: 0.49
     - _HsvShift: 0
     - _InnerOutlineAlpha: 1
     - _InnerOutlineGlow: 4
@@ -189,21 +182,21 @@ Material:
     - _OffsetUvY: 0
     - _OnlyInnerOutline: 0
     - _OnlyOutline: 0
-    - _OutlineAlpha: 0.8
-    - _OutlineDistortAmount: 2
+    - _OutlineAlpha: 1
+    - _OutlineDistortAmount: 0.5
     - _OutlineDistortTexXSpeed: 5
     - _OutlineDistortTexYSpeed: 5
-    - _OutlineGlow: 11.1
+    - _OutlineGlow: 1.5
     - _OutlinePixelWidth: 1
-    - _OutlineTexXSpeed: 5
-    - _OutlineTexYSpeed: 5
-    - _OutlineWidth: 0.025
+    - _OutlineTexXSpeed: 10
+    - _OutlineTexYSpeed: 0
+    - _OutlineWidth: 0.004
     - _OverlayBlend: 0.5
-    - _OverlayGlow: 1.5
-    - _OverlayTextureScrollXSpeed: 0.25
-    - _OverlayTextureScrollYSpeed: 0.25
+    - _OverlayGlow: 1
+    - _OverlayTextureScrollXSpeed: 0.05
+    - _OverlayTextureScrollYSpeed: 0.05
     - _PinchUvAmount: 0.35
-    - _PixelateSize: 32
+    - _PixelateSize: 102
     - _PosterizeGamma: 0.75
     - _PosterizeNumColors: 8
     - _PosterizeOutline: 0
@@ -212,13 +205,13 @@ Material:
     - _RadialStartAngle: 90
     - _RandomSeed: 0
     - _RectSize: 1
-    - _RotateUvAmount: 0.83
-    - _RoundWaveSpeed: 2
-    - _RoundWaveStrength: 0.7
+    - _RotateUvAmount: 0
+    - _RoundWaveSpeed: 0.61
+    - _RoundWaveStrength: 0.066
     - _ShadowAlpha: 0.5
     - _ShadowX: 0.1
     - _ShadowY: -0.05
-    - _ShakeUvSpeed: 0
+    - _ShakeUvSpeed: 2.5
     - _ShakeUvX: 1.5
     - _ShakeUvY: 1
     - _ShineGlow: 1
@@ -231,19 +224,19 @@ Material:
     - _TwistUvPosX: 0.5
     - _TwistUvPosY: 0.5
     - _TwistUvRadius: 0.75
-    - _WarpScale: 0.5
-    - _WarpSpeed: 8
-    - _WarpStrength: 0.0085
-    - _WaveAmount: 7
-    - _WaveSpeed: 10
-    - _WaveStrength: 1
+    - _WarpScale: 0.12
+    - _WarpSpeed: 2.3
+    - _WarpStrength: 0.009
+    - _WaveAmount: 2.3
+    - _WaveSpeed: 1.5
+    - _WaveStrength: 4.6
     - _WaveX: 0
     - _WaveY: 0.5
     - _ZTestMode: 4
     - _ZWrite: 0
     - _ZoomUvAmount: 0.5
     m_Colors:
-    - _AlphaOutlineColor: {r: 0.8627451, g: 0.21960784, b: 0.13725491, a: 1}
+    - _AlphaOutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorChangeNewCol: {r: 1, g: 1, b: 0, a: 1}
     - _ColorChangeNewCol2: {r: 1, g: 1, b: 0, a: 1}
@@ -254,8 +247,8 @@ Material:
     - _ColorSwapBlue: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
-    - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 0.70980394}
-    - _GlowColor: {r: 0.63529414, g: 0.16078432, b: 0.10196079, a: 1}
+    - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
+    - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
     - _GradBotRightCol: {r: 0, g: 1, b: 0, a: 1}
     - _GradTopLeftCol: {r: 1, g: 0, b: 0, a: 1}
@@ -264,55 +257,8 @@ Material:
     - _HitEffectColor: {r: 1, g: 1, b: 1, a: 1}
     - _HologramStripeColor: {r: 0, g: 1, b: 1, a: 1}
     - _InnerOutlineColor: {r: 1, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0.86274517, g: 0.21960786, b: 0.13725491, a: 1}
-    - _OverlayColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OverlayColor: {r: 0.46274513, g: 0.63529414, b: 0.7490196, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
---- !u!28 &8359652730594581525
-Texture2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: z_ColorRampTexGradientTex
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 2
-  m_Width: 64
-  m_Height: 1
-  m_CompleteImageSize: 256
-  m_MipsStripped: 0
-  m_TextureFormat: 4
-  m_MipCount: 1
-  m_IsReadable: 1
-  m_IsPreProcessed: 0
-  m_IgnoreMasterTextureLimit: 0
-  m_StreamingMipmaps: 0
-  m_StreamingMipmapsPriority: 0
-  m_VTOnly: 0
-  m_AlphaIsTransparency: 0
-  m_ImageCount: 1
-  m_TextureDimension: 2
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_LightmapFormat: 0
-  m_ColorSpace: 0
-  m_PlatformBlob: 
-  image data: 256
-  _typelessdata: cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 

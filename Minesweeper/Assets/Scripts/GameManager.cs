@@ -503,67 +503,30 @@ public class GameManager : MonoBehaviour
     //}
     #endregion
     #region Minesweeper Logic
-    public ArrayList GetNeighborTiles(int x, int y)
+    public ArrayList GetNeighborTiles(int x, int y, bool getDiagonals = true)
     {
         ArrayList neighbors = new ArrayList();
 
         if (GetGameTile(x - 1, y) != null)
-            neighbors.Add(GetGameTile(x - 1, y));
-        if (GetGameTile(x - 1, y - 1) != null)
-            neighbors.Add(GetGameTile(x - 1, y - 1));
-        if (GetGameTile(x - 1, y + 1) != null)
-            neighbors.Add(GetGameTile(x - 1, y + 1));
+            neighbors.Add(GetGameTile(x - 1, y));        
         if (GetGameTile(x + 1, y) != null)
-            neighbors.Add(GetGameTile(x + 1, y));
-        if (GetGameTile(x + 1, y - 1) != null)
-            neighbors.Add(GetGameTile(x + 1, y - 1));
-        if (GetGameTile(x + 1, y + 1) != null)
-            neighbors.Add(GetGameTile(x + 1, y + 1));
+            neighbors.Add(GetGameTile(x + 1, y));        
         if (GetGameTile(x, y - 1) != null)
             neighbors.Add(GetGameTile(x, y - 1));
         if (GetGameTile(x, y + 1) != null)
             neighbors.Add(GetGameTile(x, y + 1));
 
-        
-        /*if (x > 0)
+        if (getDiagonals)
         {
-            if (y >= 0)
-                if (GetGameTile(x - 1, y) != null)
-                    neighbors.Add(GetGameTile(x - 1, y));
-
-            if (y > 0)
-                if (GetGameTile(x - 1, y - 1) != null)
-                    neighbors.Add(GetGameTile(x - 1, y - 1));
-
-            if (y < sizeY - 1)
-                if (y >= -1)
-                    if (GetGameTile(x - 1, y + 1) != null)
-                        neighbors.Add(GetGameTile(x - 1, y + 1));
+            if (GetGameTile(x - 1, y - 1) != null)
+                neighbors.Add(GetGameTile(x - 1, y - 1));
+            if (GetGameTile(x - 1, y + 1) != null)
+                neighbors.Add(GetGameTile(x - 1, y + 1));
+            if (GetGameTile(x + 1, y - 1) != null)
+                neighbors.Add(GetGameTile(x + 1, y - 1));
+            if (GetGameTile(x + 1, y + 1) != null)
+                neighbors.Add(GetGameTile(x + 1, y + 1));
         }
-        if (x < sizeX - 1)
-        {
-            if (y >= 0)
-                if (GetGameTile(x + 1, y) != null)
-                    neighbors.Add(GetGameTile(x + 1, y));
-            
-            if (y > 0)
-                if (GetGameTile(x + 1, y - 1) != null)
-                    neighbors.Add(GetGameTile(x + 1, y - 1));
-            
-            if (y < sizeY - 1)
-                if (y >= -1)
-                    if (GetGameTile(x + 1, y + 1) != null)
-                        neighbors.Add(GetGameTile(x + 1, y + 1));
-        }
-        if (y > 0)
-            if (GetGameTile(x, y - 1) != null)
-                neighbors.Add(GetGameTile(x, y - 1));
-
-        if (y < sizeY - 1)
-            if (y >= -1)
-                if (GetGameTile(x, y + 1) != null)
-                    neighbors.Add(GetGameTile(x, y + 1));*/
-
         return neighbors;
     }
 
@@ -964,9 +927,16 @@ public class GameManager : MonoBehaviour
         {
             if (gameBoard[x][y] != null)
             {
-                if (!(gameBoard[x][y].GetComponent<Tile>().isRevealed && !gameBoard[x][y].GetComponent<Tile>().isMine)
-                    && !(!gameBoard[x][y].GetComponent<Tile>().isRevealed && gameBoard[x][y].GetComponent<Tile>().isMine && gameBoard[x][y].GetComponent<Tile>().isFlagged))
-                    isSolved = false;
+                Tile tile = gameBoard[x][y].GetComponent<Tile>();
+                if (!(tile.isRevealed && !tile.isMine)
+                    && !(!tile.isRevealed && tile.isMine && tile.isFlagged))
+                {
+                    if (tile.aura == Tile.AuraType.frozen)
+                        tile.SetAura(Tile.AuraType.wet);                    
+                    else
+                        isSolved = false;
+                }
+                    
             }
         }
         return isSolved;

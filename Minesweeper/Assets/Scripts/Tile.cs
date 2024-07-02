@@ -41,8 +41,12 @@ public class Tile : MonoBehaviour
 
     public AuraType aura = AuraType.normal;
     float burnTime = 15f;
+    float meltTime = 15f;
+    float putOutTime = 5f;
+    float auraDecayClock = 0;
     private bool burnoutInvisible = false;
     float auraClock = 0;
+    List<AuraType>  previousAuras = new List<AuraType>();
     public Material[] auraMaterials;    
     public AudioClip[] burningPutOutSteamHiss;
     public AudioClip[] burningBurnOutFlame;
@@ -68,6 +72,8 @@ public class Tile : MonoBehaviour
     public Image fadeOverlay;
     public Image unrevealedButtonImage;
     public SpriteRenderer burnGameOverImage;
+    public Image auraOverlayImage;
+    public SpriteRenderer auraBackgroundOverlayImage;
     TextMeshProUGUI text;
     Light2D light;
     
@@ -97,6 +103,8 @@ public class Tile : MonoBehaviour
         group = GetComponentInParent<Group>();
         unrevealedButtonImage = GetComponentInChildren<TileButton>().GetComponent<Image>();
         light = GetComponentInChildren<Light2D>();
+
+        auraOverlayImage.color = unrevealedButtonImage.color;
 
         Vector2 v = GameManager.roundVec2(transform.position);
         coordX = (int)v.x;
@@ -292,7 +300,7 @@ public class Tile : MonoBehaviour
 
     public void FlagToggle()
     {
-        if (gm.isGameOver || isRevealed || GetComponentInParent<Group>().isHeld || burnoutInvisible)
+        if (gm.isGameOver || isRevealed || GetComponentInParent<Group>().isHeld || burnoutInvisible || aura == AuraType.frozen)
             return;
 
         isFlagged = !isFlagged;
@@ -384,7 +392,7 @@ public class Tile : MonoBehaviour
 
     public void Reveal(bool isForcedReveal = false, bool isManual = false)
     {
-        if (burnoutInvisible)
+        if (burnoutInvisible || aura == AuraType.frozen)
             return;   
         
         if (!isRevealed && !isFlagged && !isDisplay && (!GetComponentInParent<Group>().isHeld || isForcedReveal))
@@ -406,6 +414,8 @@ public class Tile : MonoBehaviour
             {
                 if (!gm.isGameOver)
                 {
+                    auraOverlayImage.enabled = false;
+                    auraBackgroundOverlayImage.enabled = false;
                     explodedMineBackground.enabled = true;
                 }
                 gm.EndGame();
@@ -420,6 +430,13 @@ public class Tile : MonoBehaviour
                 gm.soundManager.PlayTileRevealSound(isManual);
 
                 tileBackground.enabled = true;
+
+                if (aura == AuraType.burning)
+                {
+                    auraOverlayImage.enabled = false;
+                    auraBackgroundOverlayImage.enabled = true;
+
+                }
 
                 //AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
@@ -709,15 +726,16 @@ public class Tile : MonoBehaviour
         // Change Aura
         aura = newAura;
         auraClock = 0;
+        auraDecayClock = 0;
 
         // Has Outline
-        if (aura == AuraType.burning)
+        if (aura == AuraType.burning || aura == AuraType.frozen)
             this.transform.position += new Vector3(this.transform.position.x, this.transform.position.y, -0.05f);
         else
             this.transform.position += new Vector3(this.transform.position.x, this.transform.position.y, 0f);
 
         // Text needs outline
-        if (aura != AuraType.normal)
+        if (aura == AuraType.burning)
             text.GetComponent<TextOutline>().EnableOutline();
         else
             text.GetComponent<TextOutline>().DisableOutline();
@@ -725,7 +743,7 @@ public class Tile : MonoBehaviour
         // Tile Emits Light
         if (aura == AuraType.burning)
         {
-            light.intensity = .5f;
+            light.intensity = .25f;
         }
         else
         {
@@ -738,6 +756,36 @@ public class Tile : MonoBehaviour
         unrevealedButtonImage.material = auraMaterialLocal;
         tileBackground.material = auraMaterialLocal;
         explodedMineBackground.material = auraMaterialLocal;
+        auraOverlayImage.material = auraMaterialLocal;
+        auraBackgroundOverlayImage.material = auraMaterialLocal;
+
+        if (aura == AuraType.frozen)
+        {
+            auraOverlayImage.enabled = true;
+            unrevealedButtonImage.material = new Material(auraMaterials[(int)AuraType.wet]);
+            unrevealedButtonImage.material.SetFloat("_OverlayTextureScrollXSpeed", 0);
+            unrevealedButtonImage.material.SetFloat("_OverlayTextureScrollYSpeed", 0);
+            unrevealedButtonImage.material.SetFloat("_ColorSwapBlend", 0.5f);
+        }
+        else if (aura == AuraType.burning)
+        {
+            
+            unrevealedButtonImage.material = new Material(auraMaterials[(int)AuraType.normal]);
+            tileBackground.material = new Material(auraMaterials[(int)AuraType.normal]);
+            /*unrevealedButtonImage.material.SetFloat("_OverlayTextureScrollXSpeed", 0);
+            unrevealedButtonImage.material.SetFloat("_OverlayTextureScrollYSpeed", 0);
+            unrevealedButtonImage.material.SetFloat("_ColorSwapBlend", 0.5f);*/
+            if (!isRevealed)
+                auraOverlayImage.enabled = true;
+            else
+                auraBackgroundOverlayImage.enabled = true;
+
+        }
+        else
+        {
+            auraOverlayImage.enabled = false;
+            auraBackgroundOverlayImage.enabled = false;
+        }
     }
     private void UpdateAura()
     {
@@ -745,10 +793,33 @@ public class Tile : MonoBehaviour
             return;
         else if (aura == AuraType.burning)
             UpdateAuraBurning();
+        else if (aura == AuraType.frozen)
+            UpdateAuraFrozen();
     }
 
     private void UpdateAuraBurning()
     {
+        foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
+        {
+            if (t.aura == AuraType.wet)
+            {
+                //SetAura(AuraType.normal);
+                //t.SetAura(AuraType.normal);
+                auraDecayClock += Time.deltaTime;
+            }
+        }
+
+        if (auraDecayClock > 0)
+        {
+            //(float fade, float distortion, float glow) = GetAuraBurnoutLerp(auraDecayClock, putOutTime);
+            auraOverlayImage.material.SetFloat("_FadeAmount", GetAuraOverlayFadeoutLerp(auraDecayClock, putOutTime));
+            //auraOverlayImage.material.SetFloat("_FadeAmount", fade); // Fade
+        }
+
+        if (auraDecayClock >= putOutTime)
+            SetAura(AuraType.normal);
+
+
         if (!group.isFalling)
         {
             if (tileToBurn == null)
@@ -783,74 +854,124 @@ public class Tile : MonoBehaviour
                         BurnFall();
                     }
                     auraClock += Time.deltaTime;
-                    SetBurnoutAnimation(auraClock);
-                    //tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", auraClock / burnTime);
-                    //tileToBurn.unrevealedButtonImage.GetComponent<Animator>().SetBool("Burning", true);
-                    //tileToBurn.tileBackground.GetComponent<Animator>().SetBool("Burning", true);
+
+                    (float fade, float distortion, float glow) = GetAuraBurnoutLerp(auraClock, burnTime);
+
+                    tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", fade); // Fade
+                    tileToBurn.tileBackground.material.SetFloat("_FadeAmount", fade); // Fade
+
+                    tileToBurn.unrevealedButtonImage.material.SetFloat("_DistortionAmount", distortion); // distortion
+                    tileToBurn.tileBackground.material.SetFloat("_DistortionAmount", distortion); // distortion
+
+                    tileToBurn.unrevealedButtonImage.material.SetFloat("_Glow", glow); // glow
+                    tileToBurn.tileBackground.material.SetFloat("_Glow", glow); // glow
+
+
+                    if (auraClock > 14.5 && !tileToBurn.burnoutInvisible)
+                    {
+                        AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        tileToBurn.burnoutInvisible = true;
+                    }
                 }
                 else 
                 {
-                    SetBurnoutAnimation(0);
+                    tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", 0); // Fade
+                    tileToBurn.tileBackground.material.SetFloat("_FadeAmount", 0); // Fade
+
+                    tileToBurn.unrevealedButtonImage.material.SetFloat("_DistortionAmount", 0); // distortion
+                    tileToBurn.tileBackground.material.SetFloat("_DistortionAmount", 0); // distortion
+
+                    tileToBurn.unrevealedButtonImage.material.SetFloat("_Glow", 0); // glow
+                    tileToBurn.tileBackground.material.SetFloat("_Glow", 0); // glow
+
                     tileToBurn.burnoutInvisible = false;
                     tileToBurn = null;
-                    //tileToBurn.unrevealedButtonImage.GetComponent<Animator>().SetBool("Burning", false);
-                    //tileToBurn.tileBackground.GetComponent<Animator>().SetBool("Burning", false);
                 }
             }
         }        
     }
-
-    void SetBurnoutAnimation(float timer)
+    private void UpdateAuraFrozen()
     {
-        if (timer <= 1) 
+        List<AuraType> newAuras = new List<AuraType>();
+        foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
         {
-            float t = timer / 1;
-            tileToBurn.unrevealedButtonImage.material.SetFloat("_DistortionAmount", Mathf.Lerp(0, 0.0075f, t)); // Distortion
-            tileToBurn.tileBackground.material.SetFloat("_DistortionAmount", Mathf.Lerp(0, 0.0075f, t)); // Distortion
+            newAuras.Add(t.aura);
 
-            tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", Mathf.Lerp(0, 0.2f, t)); // Fade
-            tileToBurn.tileBackground.material.SetFloat("_FadeAmount", Mathf.Lerp(0, 0.2f, t)); // Fade
-
-            tileToBurn.unrevealedButtonImage.material.SetFloat("_Glow", Mathf.Lerp(0, 0.03f, t)); // Glow
-            tileToBurn.tileBackground.material.SetFloat("_Glow", Mathf.Lerp(0, 0.03f, t)); // Glow
-        }
-        else if (timer <= 5)
-        {
-            float t = (timer - 1) / (5 - 1);
-            tileToBurn.unrevealedButtonImage.material.SetFloat("_DistortionAmount", Mathf.Lerp(0.0075f, 0.1f, t)); // Distortion
-            tileToBurn.tileBackground.material.SetFloat("_DistortionAmount", Mathf.Lerp(0.0075f, 0.1f, t)); // Distortion
-
-            tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", Mathf.Lerp(0.2f, 0.25f, t)); // Fade
-            tileToBurn.tileBackground.material.SetFloat("_FadeAmount", Mathf.Lerp(0.2f, 0.25f, t)); // Fade
-
-            tileToBurn.unrevealedButtonImage.material.SetFloat("_Glow", Mathf.Lerp(0.03f, 0.5f, t)); // Glow
-            tileToBurn.tileBackground.material.SetFloat("_Glow", Mathf.Lerp(0.03f, 0.5f, t)); // Glow
-        }
-        else if (timer <= 14.5f)
-        {
-            float t = (timer - 5) / (14.5f - 5);
-            tileToBurn.unrevealedButtonImage.material.SetFloat("_DistortionAmount", Mathf.Lerp(0.1f, 0.25f, t)); // Distortion
-            tileToBurn.tileBackground.material.SetFloat("_DistortionAmount", Mathf.Lerp(0.1f, 0.25f, t)); // Distortion
-
-            tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", Mathf.Lerp(0.25f, 0.4f, t)); // Fade
-            tileToBurn.tileBackground.material.SetFloat("_FadeAmount", Mathf.Lerp(0.25f, 0.4f, t)); // Fade
-
-            tileToBurn.unrevealedButtonImage.material.SetFloat("_Glow", Mathf.Lerp(0.5f, 5, t)); // Glow
-            tileToBurn.tileBackground.material.SetFloat("_Glow", Mathf.Lerp(0.5f, 5, t)); // Glow
-        }
-        else if (timer <= 15)
-        {
-            float t = (timer - 14.5f) / (15 - 14.5f);
-
-            tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", Mathf.Lerp(0.4f, 1, t)); // Fade
-            tileToBurn.tileBackground.material.SetFloat("_FadeAmount", Mathf.Lerp(0.4f, 1, t)); // Fade
-
-            if (!tileToBurn.burnoutInvisible)
+            if (t.aura == AuraType.burning)
             {
-                AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-                tileToBurn.burnoutInvisible = true;
+                auraDecayClock += Time.deltaTime;
             }
         }
+
+        if (newAuras.Contains(AuraType.burning) && !previousAuras.Contains(AuraType.burning))
+        {
+            AudioSource.PlayClipAtPoint(burningPutOutSteamHiss[Random.Range(0, burningPutOutSteamHiss.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        }
+
+        if (!newAuras.Contains(AuraType.burning) && auraDecayClock > 0)
+            auraDecayClock -= Time.deltaTime;
+
+        previousAuras = newAuras;
+
+
+        if (auraDecayClock > 0)
+        {
+            //(float fade, float distortion, float glow) = GetAuraBurnoutLerp(auraClock, meltTime);
+            auraOverlayImage.material.SetFloat("_FadeAmount", auraDecayClock / meltTime); // Fade
+        }
+        else if (auraOverlayImage.material.GetFloat("_FadeAmount") > 0)
+            auraOverlayImage.material.SetFloat("_FadeAmount", 0); // Reset Fade
+
+
+        if (auraDecayClock >= meltTime)
+            SetAura(AuraType.wet);
+    }
+    float GetAuraOverlayFadeoutLerp(float timer, float maxTime)
+    {
+        float normalizedTime = timer / maxTime;
+        float normalizedOutput = Mathf.Lerp(0, 0.65f, normalizedTime);
+        return normalizedOutput;
+    }
+    (float fade, float distortion, float glow) GetAuraBurnoutLerp(float timer, float maxTime)
+    {
+        float timeStage1 = 1 * (maxTime / 15);
+        float timeStage2 = 5 * (maxTime / 15);
+        float timeStage3 = 14.5f * (maxTime / 15);
+
+        if (timer <= timeStage1) 
+        {
+            float t = timer / timeStage1;
+
+            return (Mathf.Lerp(0, 0.2f, t), // Fade
+                Mathf.Lerp(0, 0.0075f, t), // Distortion
+                Mathf.Lerp(0, 0.03f, t)); // Glow
+        }
+        else if (timer <= timeStage2)
+        {
+            float t = (timer - timeStage1) / (timeStage2 - timeStage1);
+
+            return (Mathf.Lerp(0.2f, 0.25f, t), // Fade
+                Mathf.Lerp(0.0075f, 0.1f, t), // Distortion
+                Mathf.Lerp(0.03f, 0.5f, t)); // Glow
+        }
+        else if (timer <= timeStage3)
+        {
+            float t = (timer - timeStage2) / (timeStage3 - timeStage2);
+
+            return (Mathf.Lerp(0.25f, 0.5f, t), // Fade
+                Mathf.Lerp(0.1f, 0.25f, t), // Distortion
+                Mathf.Lerp(0.5f, 5, t)); // Glow
+        }
+        else if (timer <= maxTime)
+        {
+            float t = (timer - timeStage3) / (maxTime - timeStage3);
+
+            return (Mathf.Lerp(0.5f, 1, t), // Fade
+                0.25f, // Distortion
+                0.5f); // Glow            
+        }
+
+        return (0, 0, 0);
     }
 
     public bool CanBeBurned()
