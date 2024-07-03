@@ -94,7 +94,6 @@ public class Group : MonoBehaviour
     public AudioClip placedAboveBoardWarningSound;
     public AudioClip[] burningIgnitionSounds;
     public AudioClip[] frozenWindSounds;
-    public AudioClip[] FrozenLandSounds;
 
     void Awake()
     {
@@ -660,7 +659,7 @@ public class Group : MonoBehaviour
                 if (burningTiles > 0)
                     GetChildTiles()[0].PlaySoundSteamHiss();
                 else if (frozenTiles > 0)
-                    AudioSource.PlayClipAtPoint(FrozenLandSounds[Random.Range(0, FrozenLandSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                    GetChildTiles()[0].PlaySoundSnow();
                 else
                     AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 

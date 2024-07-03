@@ -60,7 +60,7 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             }
             else if (tile.aura == AuraType.frozen)
             {
-                AudioSource.PlayClipAtPoint(tile.hardHitSounds[Random.Range(0, tile.hardHitSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                tile.PlaySoundFrozenHit();
             }
 
             if (gm.isGameOver || gm.isPaused)
@@ -91,7 +91,7 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             }
             else if (tile.aura == AuraType.frozen)
             {
-                AudioSource.PlayClipAtPoint(tile.hardHitSounds[Random.Range(0, tile.hardHitSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                tile.PlaySoundFrozenHit();
             }
 
             if (gm.isGameOver || gm.isPaused)

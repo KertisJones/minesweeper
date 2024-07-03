@@ -1810,6 +1810,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 82783dfdd873b4c419231d3b97f656a2, type: 3}
   - {fileID: 8300000, guid: f9387be1218c1e547876c1a45c2ddf98, type: 3}
   - {fileID: 8300000, guid: cfadebb46fa094c4f923ab257183fe53, type: 3}
+  snowSounds:
+  - {fileID: 8300000, guid: df10186efcbc12b49b894dd8e3958f35, type: 3}
+  - {fileID: 8300000, guid: e34e5a793f8647d42984c248e884744c, type: 3}
+  - {fileID: 8300000, guid: 1486bdb7086a0564b93c0fcb83ed7f37, type: 3}
+  - {fileID: 8300000, guid: acd32f1d5232bf34ca6a0b6bb95e4483, type: 3}
+  - {fileID: 8300000, guid: 484fe9c58b181bb4d9224c0d91afc8f4, type: 3}
   meltSound: {fileID: 8300000, guid: 446862698979aea4fa42854626c2b5df, type: 3}
   boilSoftSound: {fileID: 8300000, guid: 4a7159796d323a6429b8c8dce2f02801, type: 3}
   fireSizzleSound: {fileID: 8300000, guid: 308258a151716164f89fb8e6d5ca20fd, type: 3}
@@ -1830,6 +1836,7 @@ MonoBehaviour:
   burnGameOverImage: {fileID: 1758011909571544434}
   auraOverlayImage: {fileID: 9025758252648782262}
   auraBackgroundOverlayImage: {fileID: 1119563470503757537}
+  group: {fileID: 0}
 --- !u!61 &2392166828705645681
 BoxCollider2D:
   m_ObjectHideFlags: 0

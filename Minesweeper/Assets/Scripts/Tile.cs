@@ -54,6 +54,7 @@ public class Tile : MonoBehaviour
     public AudioClip[] burningPutOutSteamHiss;
     public AudioClip[] burningBurnOutFlame;
     public AudioClip[] hardHitSounds;
+    public AudioClip[] snowSounds;
     public AudioClip meltSound;
     public AudioClip boilSoftSound;
     public AudioClip fireSizzleSound;
@@ -87,7 +88,8 @@ public class Tile : MonoBehaviour
     Camera cam;
     HoldTetromino holdTetromino;
     GameModifiers gameMods;
-    Group group;
+    [HideInInspector]
+    public Group group;
 
     void OnDestroy()
     {
@@ -587,7 +589,10 @@ public class Tile : MonoBehaviour
                     }                                        
                 }
                 if (frozenChord && nearbyMines > 0)
-                    AudioSource.PlayClipAtPoint(hardHitSounds[Random.Range(0, hardHitSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                {
+                    PlaySoundFrozenHit();
+                }
+                    
             }
             else if (!revealedThisFrame) // Failed Chord
             {                
@@ -663,7 +668,9 @@ public class Tile : MonoBehaviour
                     }                                        
                 }
                 if (frozenChord && nearbyMines > 0)
-                    AudioSource.PlayClipAtPoint(hardHitSounds[Random.Range(0, hardHitSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                {
+                    PlaySoundFrozenHit();
+                }
             }
             else // Failed Chord
             {
@@ -1144,6 +1151,17 @@ public class Tile : MonoBehaviour
     public void PlaySoundSteamHiss()
     {
         AudioSource.PlayClipAtPoint(burningPutOutSteamHiss[Random.Range(0, burningPutOutSteamHiss.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+    }
+
+    public void PlaySoundFrozenHit()
+    {        
+        AudioSource.PlayClipAtPoint(hardHitSounds[Random.Range(0, hardHitSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        PlaySoundSnow();
+    }
+
+    public void PlaySoundSnow()
+    {
+        AudioSource.PlayClipAtPoint(snowSounds[Random.Range(0, snowSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
     }
     #endregion
 }
