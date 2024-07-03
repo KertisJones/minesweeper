@@ -77,6 +77,7 @@ public class Group : MonoBehaviour
 
     // Aura
     int burningTiles = 0;
+    int frozenTiles = 0;
 
     public Transform pivot;
     public Vector3 pivotStaticBackup = new Vector3();
@@ -92,6 +93,8 @@ public class Group : MonoBehaviour
     public AudioClip tSpinSound;
     public AudioClip placedAboveBoardWarningSound;
     public AudioClip[] burningIgnitionSounds;
+    public AudioClip[] frozenWindSounds;
+    public AudioClip[] FrozenLandSounds;
 
     void Awake()
     {
@@ -236,6 +239,8 @@ public class Group : MonoBehaviour
         fallSpeed = Mathf.Pow(0.8f - ((gm.level - 1) * 0.007f), (gm.level - 1));
         if (burningTiles > 0)
             fallSpeed *= 0.5f;
+        if (frozenTiles > 0)
+            fallSpeed *= 1.5f;
 
         autoRepeatRate = PlayerPrefs.GetFloat("AutoRepeatRate", autoRepeatRate * 1000) / 1000;
         dasDelay = PlayerPrefs.GetFloat("DelayedAutoShift", dasDelay * 1000) / 1000;
@@ -339,15 +344,20 @@ public class Group : MonoBehaviour
             {
                 if (child.aura == Tile.AuraType.burning)
                     burningTiles++;
+                if (child.aura == Tile.AuraType.frozen)
+                    frozenTiles++;
             }
 
             gm.numBurningTiles += burningTiles;
+            gm.numFrozenTiles += frozenTiles;
 
             UpdateInputValues();
         }
 
         if (burningTiles > 0)
             AudioSource.PlayClipAtPoint(burningIgnitionSounds[Random.Range(0, burningIgnitionSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        if (frozenTiles > 0)
+            AudioSource.PlayClipAtPoint(frozenWindSounds[Random.Range(0, frozenWindSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
     }
 
     public void LayMines()
@@ -646,7 +656,13 @@ public class Group : MonoBehaviour
             if (rumble)
             {
                 GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                
+                if (burningTiles > 0)
+                    GetChildTiles()[0].PlaySoundSteamHiss();
+                else if (frozenTiles > 0)
+                    AudioSource.PlayClipAtPoint(FrozenLandSounds[Random.Range(0, FrozenLandSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                else
+                    AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
                 //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
                 gm.TriggerOnTileSolveOrLandEvent();
