@@ -1212,7 +1212,7 @@ public class Tile : MonoBehaviour
     }
     public void PlaySoundSplash()
     {
-        AudioSource.PlayClipAtPoint(splashSounds[Random.Range(0, splashSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        AudioSource.PlayClipAtPoint(splashSounds[Random.Range(0, splashSounds.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
     }
     public void PlaySoundSwim()
     {

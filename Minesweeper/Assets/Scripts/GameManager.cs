@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     List<GameObject> floorTiles;
     List<GameObject> leftBorderTiles;
     List<GameObject> rightBorderTiles;
-    public GameObject currentTetromino = null;
+    //public GameObject currentTetromino = null;
     public GameObject previousTetromino = null;
 
     public bool isGameOver = false;
@@ -221,7 +221,7 @@ public class GameManager : MonoBehaviour
     {
         deleteFullRows(false);
         previousTetromino = null;
-        currentTetromino = null;
+        //currentTetromino = null;
     }
     #endregion
 
@@ -593,10 +593,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void decreaseRow(int y)
+    public static bool decreaseRow(int y) // returns true if the falling piece clips into the falling row
     {
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         Group activeTetrominoInRow = null;
+        bool currentTetrominoClipped = false;
         for (int x = 0; x < gm.sizeX; ++x)
         {
             if (gameBoard[x][y] != null)
@@ -621,6 +622,8 @@ public class GameManager : MonoBehaviour
                         { 
                             i++;
                         }
+                        currentTetrominoClipped = true;
+                        dropDown = true;
                     }
 
                     if (dropDown)
@@ -643,6 +646,8 @@ public class GameManager : MonoBehaviour
             activeTetrominoInRow.WallKickMove(0, 1); // Attempt to move the tetromino up. This will do nothing if the space is blocked
             activeTetrominoInRow.Fall(1, false, false); // Move the tetromino down. This will put it back in the same place if it was moved up, otherwise it will get the tetromino out of the way
         }
+
+        return currentTetrominoClipped;
     }
 
     public Group GetActiveTetromino()
@@ -667,8 +672,12 @@ public class GameManager : MonoBehaviour
     {
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
+        bool currentTetrominoClipped = false;
         for (int i = y; i < gm.sizeY; ++i)
-            decreaseRow(i);
+            currentTetrominoClipped = currentTetrominoClipped || decreaseRow(i);
+
+        if (currentTetrominoClipped)
+            gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().Fall(1, false, false);
     }
 
     public static bool isRowFull(int y)
@@ -862,8 +871,8 @@ public class GameManager : MonoBehaviour
             if (gm.previousTetromino != null)
                 if (gm.previousTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, sweepMultiplier))// false, highestRowSolved))
                     isDifficultSweep = true;
-            if (gm.currentTetromino != null)
-                if (gm.currentTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, sweepMultiplier))//, isTriggeredByLock, highestRowSolved))
+            if (gm.tetrominoSpawner.currentTetromino != null)
+                if (gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, sweepMultiplier))//, isTriggeredByLock, highestRowSolved))
                     isDifficultSweep = true;
 
             if (isDifficultSweep && gm.previousClearWasDifficultSweep)

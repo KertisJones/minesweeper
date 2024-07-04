@@ -955,7 +955,6 @@ public class Group : MonoBehaviour
 
             // Set this as the previous tetromino
             gm.previousTetromino = this.gameObject;
-            gm.currentTetromino = gm.tetrominoSpawner.currentTetromino;
 
             // Input DAS for next tetromino
             TransferDASToNewTetromino();                
@@ -1521,7 +1520,7 @@ public class Group : MonoBehaviour
         if (childrenTiles.Count == 0)
         {            
             // Detect if TETRISWEEP was achieved (4-row Tetris was solved with minesweeper before the next piece locks) 
-            if (rowsFilled == 4 && (gm.previousTetromino == this.gameObject || gm.currentTetromino == this.gameObject))
+            if (rowsFilled == 4 && (gm.previousTetromino == this.gameObject || gm.tetrominoSpawner.currentTetromino == this.gameObject))
             {
                 gm.tetrisweepsCleared += 1;
                 difficultSweepScored = true;
@@ -1543,7 +1542,7 @@ public class Group : MonoBehaviour
         // Count as a T-spinsweep if 
         if (childrenTiles.Count < 4)
         {
-            if (isTspin && (gm.previousTetromino == this.gameObject || gm.currentTetromino == this.gameObject)) // Detect if T-Sweep was achieved
+            if (isTspin && (gm.previousTetromino == this.gameObject || gm.tetrominoSpawner.currentTetromino == this.gameObject)) // Detect if T-Sweep was achieved
             {                
                 bool isTspinSweep = true;
                 int fullTileCoordY = -100;
@@ -1560,7 +1559,7 @@ public class Group : MonoBehaviour
                     AddTspinsweep(getMultiplier, sweepMultiplier);
                     difficultSweepScored = true;
                     gm.previousTetromino = null;
-                    gm.currentTetromino = null;
+                    gm.tetrominoSpawner.currentTetromino = null;
                 }                
             }
         }
