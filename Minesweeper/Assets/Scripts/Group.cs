@@ -78,6 +78,7 @@ public class Group : MonoBehaviour
     // Aura
     int burningTiles = 0;
     int frozenTiles = 0;
+    int wetTiles = 0;
 
     public Transform pivot;
     public Vector3 pivotStaticBackup = new Vector3();
@@ -318,6 +319,11 @@ public class Group : MonoBehaviour
             }
         }
 
+        /*foreach (Tile child in GetChildTiles())
+        {
+            child.aura = Tile.AuraType.wet;
+        }*/
+
         if (!isHeld)
             LayMines();                 
     }
@@ -336,27 +342,32 @@ public class Group : MonoBehaviour
 
     public void SpawnTetrominoOnBoard(bool firstSpawn)
     {
+        List<Tile> childTiles = GetChildTiles();
         if (firstSpawn)
-        {
-            List<Tile> childTiles = GetChildTiles();
+        {            
             foreach (Tile child in childTiles)
             {
                 if (child.aura == Tile.AuraType.burning)
                     burningTiles++;
-                if (child.aura == Tile.AuraType.frozen)
+                else if (child.aura == Tile.AuraType.frozen)
                     frozenTiles++;
+                else if(child.aura == Tile.AuraType.wet)
+                    wetTiles++;
             }
 
             gm.numBurningTiles += burningTiles;
             gm.numFrozenTiles += frozenTiles;
+            gm.numWetTiles += wetTiles;
 
             UpdateInputValues();
         }
 
         if (burningTiles > 0)
             AudioSource.PlayClipAtPoint(burningIgnitionSounds[Random.Range(0, burningIgnitionSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-        if (frozenTiles > 0)
+        else if (frozenTiles > 0)
             AudioSource.PlayClipAtPoint(frozenWindSounds[Random.Range(0, frozenWindSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        else if (wetTiles > 0)
+            childTiles[0].PlaySoundBubble();
     }
 
     public void LayMines()
@@ -660,6 +671,8 @@ public class Group : MonoBehaviour
                     GetChildTiles()[0].PlaySoundSteamHiss();
                 else if (frozenTiles > 0)
                     GetChildTiles()[0].PlaySoundSnow();
+                else if (wetTiles > 0)
+                    GetChildTiles()[0].PlaySoundSplash();
                 else
                     AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 

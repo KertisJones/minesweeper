@@ -62,6 +62,10 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             {
                 tile.PlaySoundFrozenHit();
             }
+            else if (tile.aura == AuraType.wet)
+            {
+                tile.PlaySoundSwim();
+            }
 
             if (gm.isGameOver || gm.isPaused)
                 return;
@@ -92,6 +96,10 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             else if (tile.aura == AuraType.frozen)
             {
                 tile.PlaySoundFrozenHit();
+            }
+            else if (tile.aura == AuraType.wet)
+            {
+                tile.PlaySoundSwim();
             }
 
             if (gm.isGameOver || gm.isPaused)

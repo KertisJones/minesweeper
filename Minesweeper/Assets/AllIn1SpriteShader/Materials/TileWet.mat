@@ -11,9 +11,11 @@ Material:
   m_Shader: {fileID: 4800000, guid: 79ee6cefbc672a44e97359d4d14ea301, type: 3}
   m_ValidKeywords:
   - BLUR_ON
+  - COLORRAMP_ON
   - COLORSWAP_ON
   - CONTRAST_ON
   - DISTORT_ON
+  - FADE_ON
   - GLOWLIGHT_ON
   - OVERLAYMULT_ON
   - OVERLAY_ON
@@ -32,7 +34,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _ColorRampTex:
-        m_Texture: {fileID: 2800000, guid: 279657edc397ece4b8029c727adf6ddc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2eb26501acf862843a55a2e79af0c3c8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ColorRampTexGradient:
@@ -52,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FadeTex:
-        m_Texture: {fileID: 2800000, guid: 7aad8c583ef292e48b06af0d1f2fab97, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7a6b91fbe1dad3247b0b289e01d4d722, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlowTex:
@@ -110,7 +112,7 @@ Material:
     - _ColorChangeTolerance: 0.25
     - _ColorChangeTolerance2: 0.25
     - _ColorChangeTolerance3: 0.25
-    - _ColorRampBlend: 0
+    - _ColorRampBlend: 0.2
     - _ColorRampLuminosity: 0
     - _ColorRampOutline: 0
     - _ColorSwapBlend: 0
@@ -126,7 +128,7 @@ Material:
     - _FadeAmount: -0.1
     - _FadeBurnGlow: 2
     - _FadeBurnTransition: 0.075
-    - _FadeBurnWidth: 0.025
+    - _FadeBurnWidth: 0.3
     - _FishEyeUvAmount: 0
     - _FlickerAlpha: 0
     - _FlickerFreq: 0.2
@@ -244,10 +246,10 @@ Material:
     - _ColorChangeTarget: {r: 1, g: 0, b: 0, a: 1}
     - _ColorChangeTarget2: {r: 1, g: 0, b: 0, a: 1}
     - _ColorChangeTarget3: {r: 1, g: 0, b: 0, a: 1}
-    - _ColorSwapBlue: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorSwapBlue: {r: 0.033675194, g: 0, b: 1, a: 1}
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
-    - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
+    - _FadeBurnColor: {r: 0.04705883, g: 0.3921569, b: 0.5058824, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
     - _GradBotRightCol: {r: 0, g: 1, b: 0, a: 1}

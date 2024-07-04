@@ -1816,9 +1816,44 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1486bdb7086a0564b93c0fcb83ed7f37, type: 3}
   - {fileID: 8300000, guid: acd32f1d5232bf34ca6a0b6bb95e4483, type: 3}
   - {fileID: 8300000, guid: 484fe9c58b181bb4d9224c0d91afc8f4, type: 3}
+  bubbleSounds:
+  - {fileID: 8300000, guid: f35c5d9b7b13fc742994681d424b5419, type: 3}
+  - {fileID: 8300000, guid: 2be7275e0ede7924db959370f9d16ee1, type: 3}
+  - {fileID: 8300000, guid: f9e623e2049370c4d9e2c7ef7b94e774, type: 3}
+  - {fileID: 8300000, guid: de4769fb61687f24dad9272de3d7e006, type: 3}
+  - {fileID: 8300000, guid: 902a818e13f8f18459f297ac9083bf96, type: 3}
+  - {fileID: 8300000, guid: 693dbcf73f46949439897d5658a8b0c1, type: 3}
+  - {fileID: 8300000, guid: b4b3cc0f78cec0742b2804b6d1a1376c, type: 3}
+  - {fileID: 8300000, guid: c9ed847816cc18f4581eb7aa28786d3c, type: 3}
+  - {fileID: 8300000, guid: a5d873b091a2506499d1cafe1a4295e4, type: 3}
+  - {fileID: 8300000, guid: afe03c86f4430b24c894d7b9ef2f062f, type: 3}
+  - {fileID: 8300000, guid: 2e0ba8dd97e38734598b1db1ad4c3f0c, type: 3}
+  - {fileID: 8300000, guid: f1d1ae96fd01a664195bc96121fb8d85, type: 3}
+  - {fileID: 8300000, guid: 7e23bc6a4bcba4e47ae792ec6810586f, type: 3}
+  - {fileID: 8300000, guid: d7f9dc0f42c819b47a3fc5c4175f1c3a, type: 3}
+  - {fileID: 8300000, guid: 2783d72569babae46a302baee694bf2d, type: 3}
+  - {fileID: 8300000, guid: 75f30d667ff662d458a8f8ee6d6922bb, type: 3}
+  - {fileID: 8300000, guid: 00c4690d4b8515e4dbd50f99b793a134, type: 3}
+  - {fileID: 8300000, guid: 57e82260bd05e5f439882f8508707651, type: 3}
+  splashSounds:
+  - {fileID: 8300000, guid: 5d0ee21539663ba42a8e45b6ac0172e1, type: 3}
+  - {fileID: 8300000, guid: 5379fd03f29a9884e80e6fe9bb5965dd, type: 3}
+  - {fileID: 8300000, guid: 7a081b2ae504ab544906c96ef9fa1764, type: 3}
+  - {fileID: 8300000, guid: 20dccc1d4f422e7448a7db460b0235b9, type: 3}
+  - {fileID: 8300000, guid: 9f19ea649454bae4f8634bffa42170b2, type: 3}
+  - {fileID: 8300000, guid: c782902c6eab4f4468993a08762457a3, type: 3}
+  - {fileID: 8300000, guid: 6e05996d35860be4ba24379ec3513e81, type: 3}
+  - {fileID: 8300000, guid: 17d54e58ae18f8f4196f5c0afe334315, type: 3}
+  swimSounds:
+  - {fileID: 8300000, guid: ef69f7c0e51a9824da1f009205615e32, type: 3}
+  - {fileID: 8300000, guid: dd174206264015e4d9307c811a9ab38e, type: 3}
+  - {fileID: 8300000, guid: 1550a36d55f4f91489c8302f07242721, type: 3}
+  - {fileID: 8300000, guid: ba6bc873c055ee44bbad2f89bb441919, type: 3}
+  - {fileID: 8300000, guid: b78031305e050fc408e566c67e15fdf4, type: 3}
   meltSound: {fileID: 8300000, guid: 446862698979aea4fa42854626c2b5df, type: 3}
   boilSoftSound: {fileID: 8300000, guid: 4a7159796d323a6429b8c8dce2f02801, type: 3}
   fireSizzleSound: {fileID: 8300000, guid: 308258a151716164f89fb8e6d5ca20fd, type: 3}
+  steamLoopSound: {fileID: 8300000, guid: ff46c898d91a93045ba60e915204fa05, type: 3}
   decaySoundSource: {fileID: 981390867651859973}
   solvedMarkColor: {r: 0.88235295, g: 0.88235295, b: 0.88235295, a: 1}
   revealSound: {fileID: 8300000, guid: 7c431c7673dc1ca48b4e4b672083d456, type: 3}

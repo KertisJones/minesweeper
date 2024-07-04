@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
 
     public int numBurningTiles = 0;
     public int numFrozenTiles = 0;
+    public int numWetTiles = 0;
 
     // Options
     /*public enum WallType // your custom enumeration
@@ -932,12 +933,9 @@ public class GameManager : MonoBehaviour
                 if (!(tile.isRevealed && !tile.isMine)
                     && !(!tile.isRevealed && tile.isMine && tile.isFlagged))
                 {
-                    if (tile.aura == Tile.AuraType.frozen)
-                        tile.SetAura(Tile.AuraType.wet);                    
-                    else
+                    if (tile.aura != Tile.AuraType.frozen)
                         isSolved = false;
-                }
-                    
+                }                    
             }
         }
         return isSolved;

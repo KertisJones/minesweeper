@@ -46,6 +46,7 @@ public class Tile : MonoBehaviour
     float burnTime = 15f;
     float meltTime = 15f;
     float putOutTime = 5f;
+    float evaporateTime = 15f;
     float auraDecayClock = 0;
     private bool burnoutInvisible = false;
     float auraClock = 0;
@@ -55,9 +56,13 @@ public class Tile : MonoBehaviour
     public AudioClip[] burningBurnOutFlame;
     public AudioClip[] hardHitSounds;
     public AudioClip[] snowSounds;
+    public AudioClip[] bubbleSounds;
+    public AudioClip[] splashSounds;
+    public AudioClip[] swimSounds;
     public AudioClip meltSound;
     public AudioClip boilSoftSound;
     public AudioClip fireSizzleSound;
+    public AudioClip steamLoopSound;
 
     Tile tileToBurn;
     public AudioSource decaySoundSource;
@@ -101,6 +106,10 @@ public class Tile : MonoBehaviour
         {
             gm.numFrozenTiles -= 1;
         }
+        else if (aura == AuraType.wet)
+        {
+            gm.numWetTiles -= 1;
+        }
     }
 
     // Start is called before the first frame update
@@ -140,6 +149,11 @@ public class Tile : MonoBehaviour
     {
         if (gm.isGameOver && isFlagged && !isMine)
             Reveal(true);
+        if (gm.isGameOver && aura == AuraType.burning)
+        {
+            decaySoundSource.Stop();
+            decaySoundSource.volume = 0;
+        }
 
         if (gm.isGameOver)
             return;
@@ -245,7 +259,9 @@ public class Tile : MonoBehaviour
                 }
 
                 if ((aura == AuraType.frozen && newAuras.Contains(AuraType.burning))
-                    || (aura == AuraType.burning && newAuras.Contains(AuraType.frozen)))
+                    || (aura == AuraType.burning && newAuras.Contains(AuraType.frozen))
+                    || (aura == AuraType.wet && newAuras.Contains(AuraType.burning))
+                    || (aura == AuraType.burning && newAuras.Contains(AuraType.wet)))
                 {
                     PlaySoundSteamHiss();
                 }
@@ -472,7 +488,7 @@ public class Tile : MonoBehaviour
 
                 tileBackground.enabled = true;
 
-                if (aura == AuraType.burning)
+                if (aura == AuraType.burning || aura == AuraType.wet)
                 {
                     auraOverlayImage.enabled = false;
                     auraBackgroundOverlayImage.enabled = true;
@@ -779,14 +795,23 @@ public class Tile : MonoBehaviour
         {
             gm.numBurningTiles += 1;
         }
-
-        if (aura == AuraType.frozen && newAura != AuraType.frozen)
+        // frozen
+        else if (aura == AuraType.frozen && newAura != AuraType.frozen)
         {
             gm.numFrozenTiles -= 1;            
         }
         else if (aura != AuraType.frozen && newAura == AuraType.frozen)
         {
             gm.numFrozenTiles += 1;
+        }
+        // Wet
+        else if (aura == AuraType.wet && newAura != AuraType.wet)
+        {
+            gm.numWetTiles -= 1;
+        }
+        else if (aura != AuraType.wet && newAura == AuraType.wet)
+        {
+            gm.numWetTiles += 1;
         }
 
         // Change Aura
@@ -839,7 +864,7 @@ public class Tile : MonoBehaviour
             unrevealedButtonImage.material.SetFloat("_OverlayTextureScrollYSpeed", 0);
             unrevealedButtonImage.material.SetFloat("_ColorSwapBlend", 0.5f);
         }
-        else if (aura == AuraType.burning)
+        else if (aura == AuraType.burning || aura == AuraType.wet)
         {
             
             unrevealedButtonImage.material = new Material(auraMaterials[(int)AuraType.normal]);
@@ -851,7 +876,6 @@ public class Tile : MonoBehaviour
                 auraOverlayImage.enabled = true;
             else
                 auraBackgroundOverlayImage.enabled = true;
-
         }
         else
         {
@@ -875,35 +899,20 @@ public class Tile : MonoBehaviour
             UpdateAuraBurning();
         else if (aura == AuraType.frozen)
             UpdateAuraFrozen();
+        else if (aura == AuraType.wet)
+            UpdateAuraWet();
     }
 
     private void UpdateAuraBurning()
     {
-        foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
-        {
-            if (t.aura == AuraType.wet)
-            {
-                //SetAura(AuraType.normal);
-                //t.SetAura(AuraType.normal);
-                auraDecayClock += Time.deltaTime;
-            }
-        }
+        bool decayComplete = UpdateAuraDecay(AuraType.wet, steamLoopSound, putOutTime, 0.25f, 0.65f, 1);
 
-        if (auraDecayClock > 0)
-        {
-            //(float fade, float distortion, float glow) = GetAuraBurnoutLerp(auraDecayClock, putOutTime);
-            auraOverlayImage.material.SetFloat("_FadeAmount", GetAuraOverlayFadeoutLerp(auraDecayClock, putOutTime));
-            //auraOverlayImage.material.SetFloat("_FadeAmount", fade); // Fade
-        }
-
-        if (auraDecayClock >= putOutTime)
+        if (decayComplete)
         {
             ResetBurnAura();
             SetAura(AuraType.normal);
             return;
         }
-            
-
 
         if (!group.isFalling)
         {
@@ -920,9 +929,9 @@ public class Tile : MonoBehaviour
                     {
                         PlaySoundSteamHiss();
 
-                        decaySoundSource.clip = fireSizzleSound;
-                        decaySoundSource.Play();
-                        decaySoundSource.DOFade(0.25f * PlayerPrefs.GetFloat("SoundVolume", 0.5f), 0.5f);
+                        tileToBurn.decaySoundSource.clip = fireSizzleSound;
+                        tileToBurn.decaySoundSource.Play();
+                        tileToBurn.decaySoundSource.DOFade(0.25f * PlayerPrefs.GetFloat("SoundVolume", 0.5f), 0.5f);
                     }
                         
                 }
@@ -946,7 +955,7 @@ public class Tile : MonoBehaviour
                         auraClock = 0;
                         BurnFall();
                     }
-                    auraClock += Time.deltaTime;
+                    auraClock += Time.deltaTime * GetAuraDecayRatio();
 
                     (float fade, float distortion, float glow) = GetAuraBurnoutLerp(auraClock, burnTime);
 
@@ -975,27 +984,44 @@ public class Tile : MonoBehaviour
     }
     private void UpdateAuraFrozen()
     {
+        bool decayComplete = UpdateAuraDecay(AuraType.burning, meltSound, meltTime, 0, 1, 1);
+
+        if (decayComplete)
+        {
+            PlaySoundSteamHiss();
+            PlaySoundBubble();
+            SetAura(AuraType.wet);
+        }
+    }
+    private void UpdateAuraWet()
+    {
+        bool decayComplete = UpdateAuraDecay(AuraType.burning, boilSoftSound, evaporateTime, 0, 1, 0.5f);
+
+        if (decayComplete)
+        {
+            PlaySoundSteamHiss();
+            SetAura(AuraType.normal);
+        }
+    }
+    
+    
+    
+    
+    private bool UpdateAuraDecay(AuraType decaySource, AudioClip decayLoopSound, float decayDuration, float fadeMinValue, float fadeMaxValue, float autoRevertDecayMultiplier) //returns true if decayed
+    {
         foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
         {
-            if (t.aura == AuraType.burning)
+            if (t.aura == decaySource)
             {
-                auraDecayClock += Time.deltaTime;
+                auraDecayClock += Time.deltaTime * t.GetAuraDecayRatio();
             }
         }
 
-        /*if (newAuras.Where(s => s == AuraType.burning).Count() > adjacentAuras.Where(s => s == AuraType.burning).Count())
-        {
-            PlaySoundSteamHiss();
-        }*/
-
-        if (!adjacentAuras.Contains(AuraType.burning) && auraDecayClock > 0)
-            auraDecayClock -= Time.deltaTime;
-
-        if (adjacentAuras.Contains(AuraType.burning))
+        if (adjacentAuras.Contains(decaySource))
         {
             if (decaySoundSource.volume == 0)
             {
-                decaySoundSource.clip = meltSound;
+                decaySoundSource.clip = decayLoopSound;
                 decaySoundSource.Play();
                 decaySoundSource.DOFade(0.25f * PlayerPrefs.GetFloat("SoundVolume", 0.5f), 0.5f);
             }
@@ -1006,35 +1032,46 @@ public class Tile : MonoBehaviour
             {
                 decaySoundSource.Stop();
                 decaySoundSource.volume = 0;
-            }                
+            }
 
             if (auraDecayClock > 0)
-                auraDecayClock -= Time.deltaTime;
+                auraDecayClock -= Time.deltaTime * autoRevertDecayMultiplier;
         }
 
         if (auraDecayClock > 0)
         {
-            //(float fade, float distortion, float glow) = GetAuraBurnoutLerp(auraClock, meltTime);
-            auraOverlayImage.material.SetFloat("_FadeAmount", auraDecayClock / meltTime); // Fade            
+            auraOverlayImage.material.SetFloat("_FadeAmount", GetAuraOverlayFadeoutLerp(auraDecayClock, decayDuration, fadeMinValue, fadeMaxValue)); // Fade            
         }
         else if (auraOverlayImage.material.GetFloat("_FadeAmount") > 0)
         {
             auraOverlayImage.material.SetFloat("_FadeAmount", 0); // Reset Fade            
         }
-            
 
-
-        if (auraDecayClock >= meltTime)
+        if (auraDecayClock >= decayDuration)
         {
-            PlaySoundSteamHiss();
-            SetAura(AuraType.wet);
-        }            
+            return true;
+        }
+
+        return false;
     }
-    float GetAuraOverlayFadeoutLerp(float timer, float maxTime)
+    float GetAuraOverlayFadeoutLerp(float timer, float maxTime, float fadeMinValue, float fadeMaxValue)
     {
         float normalizedTime = timer / maxTime;
-        float normalizedOutput = Mathf.Lerp(0.25f, 0.65f, normalizedTime);
+        float normalizedOutput = Mathf.Lerp(fadeMinValue, fadeMaxValue, normalizedTime); //0.25f, 0.65f
         return normalizedOutput;
+    }
+    public float GetAuraDecayRatio()
+    {
+        float decayRate = 1.25f;
+        if (aura == AuraType.burning)
+            decayRate -= auraDecayClock / putOutTime;
+        if (aura == AuraType.frozen)
+            decayRate -= auraDecayClock / meltTime;
+        if (aura == AuraType.wet)
+            decayRate -= auraDecayClock / evaporateTime;
+
+        decayRate = Mathf.Min(decayRate, 1f);
+        return Mathf.Max(decayRate, 0.25f);
     }
     (float fade, float distortion, float glow) GetAuraBurnoutLerp(float timer, float maxTime)
     {
@@ -1098,6 +1135,9 @@ public class Tile : MonoBehaviour
         decaySoundSource.Stop();
         decaySoundSource.volume = 0;
 
+        tileToBurn.decaySoundSource.Stop();
+        tileToBurn.decaySoundSource.volume = 0;
+
         tileToBurn.unrevealedButtonImage.material.SetFloat("_FadeAmount", 0); // Fade
         tileToBurn.tileBackground.material.SetFloat("_FadeAmount", 0); // Fade
 
@@ -1152,16 +1192,26 @@ public class Tile : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(burningPutOutSteamHiss[Random.Range(0, burningPutOutSteamHiss.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
     }
-
     public void PlaySoundFrozenHit()
     {        
         AudioSource.PlayClipAtPoint(hardHitSounds[Random.Range(0, hardHitSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
         PlaySoundSnow();
     }
-
     public void PlaySoundSnow()
     {
         AudioSource.PlayClipAtPoint(snowSounds[Random.Range(0, snowSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+    }
+    public void PlaySoundBubble()
+    {
+        AudioSource.PlayClipAtPoint(bubbleSounds[Random.Range(0, bubbleSounds.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+    }
+    public void PlaySoundSplash()
+    {
+        AudioSource.PlayClipAtPoint(splashSounds[Random.Range(0, splashSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+    }
+    public void PlaySoundSwim()
+    {
+        AudioSource.PlayClipAtPoint(swimSounds[Random.Range(0, swimSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
     }
     #endregion
 }
