@@ -55,6 +55,7 @@ public class Tile : MonoBehaviour
     public AudioClip[] burningPutOutSteamHiss;
     public AudioClip[] burningBurnOutFlame;
     public AudioClip[] hardHitSounds;
+    public AudioClip[] iceBreakSounds;
     public AudioClip[] snowSounds;
     public AudioClip[] bubbleSounds;
     public AudioClip[] splashSounds;
@@ -1196,6 +1197,10 @@ public class Tile : MonoBehaviour
     {        
         AudioSource.PlayClipAtPoint(hardHitSounds[Random.Range(0, hardHitSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
         PlaySoundSnow();
+    }
+    public void PlaySoundIceBreak()
+    {
+        AudioSource.PlayClipAtPoint(iceBreakSounds[Random.Range(0, iceBreakSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
     }
     public void PlaySoundSnow()
     {

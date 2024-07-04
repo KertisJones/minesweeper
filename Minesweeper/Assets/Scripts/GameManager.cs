@@ -578,9 +578,18 @@ public class GameManager : MonoBehaviour
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         for (int x = 0; x < gm.sizeX; ++x)
         {
-            gameBoard[x][y].gameObject.GetComponent<Tile>().isDestroyed = true;
-            Destroy(gameBoard[x][y].gameObject);
-            gameBoard[x][y] = null;
+            Tile tile = gameBoard[x][y].gameObject.GetComponent<Tile>();
+            if (tile.aura == Tile.AuraType.frozen)
+            {
+                tile.PlaySoundIceBreak();
+                tile.SetAura(Tile.AuraType.wet);
+            }
+            else
+            {
+                tile.isDestroyed = true;
+                Destroy(gameBoard[x][y].gameObject);
+                gameBoard[x][y] = null;
+            }
         }
     }
 
@@ -598,12 +607,32 @@ public class GameManager : MonoBehaviour
                 }
                 else // All static tiles should be moved down
                 {
-                    // Move one towards bottom
-                    gameBoard[x][y - 1] = gameBoard[x][y];
-                    gameBoard[x][y] = null;
+                    bool dropDown = false;
+                    // ...unless it has a tile there already (caused by ice or falling piece that didn't kick correctly)
+                    if (gameBoard[x][y - 1] == null)
+                    {
+                        dropDown = true;
+                    }
+                    else if (gameBoard[x][y - 1].GetComponentInParent<Group>().isFalling) // Handle falling minos in the wrong space
+                    {
+                        Group activeMino = gameBoard[x][y - 1].GetComponentInParent<Group>();
+                        int i = 1;
+                        while (!activeMino.WallKickMove(0, i, true, false)) 
+                        { 
+                            i++;
+                        }
+                    }
 
-                    // Update Block position
-                    gameBoard[x][y - 1].GetComponent<Tile>().coordY -= 1;
+                    if (dropDown)
+                    {
+                        // Move one towards bottom
+                        gameBoard[x][y - 1] = gameBoard[x][y];
+                        gameBoard[x][y] = null;
+
+                        // Update Block position
+                        gameBoard[x][y - 1].GetComponent<Tile>().coordY -= 1;
+                    }
+                    
                 }                
             }
         }

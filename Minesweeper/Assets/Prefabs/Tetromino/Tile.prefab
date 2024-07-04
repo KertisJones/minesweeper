@@ -1810,6 +1810,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 82783dfdd873b4c419231d3b97f656a2, type: 3}
   - {fileID: 8300000, guid: f9387be1218c1e547876c1a45c2ddf98, type: 3}
   - {fileID: 8300000, guid: cfadebb46fa094c4f923ab257183fe53, type: 3}
+  iceBreakSounds:
+  - {fileID: 8300000, guid: 3f7e8094cf2df1d4a87790335d24c6d7, type: 3}
+  - {fileID: 8300000, guid: 9479973c0c6cd214a8579677714d117a, type: 3}
+  - {fileID: 8300000, guid: 726160da6e1f2164185060796190ad4b, type: 3}
+  - {fileID: 8300000, guid: ae65899d33d38274b85cf76eeb747785, type: 3}
+  - {fileID: 8300000, guid: 43f8387a6d073ec4bbd1fa543f6ca6f0, type: 3}
+  - {fileID: 8300000, guid: a198a55d171a7f04fac86ea67f0a40b7, type: 3}
+  - {fileID: 8300000, guid: 43702f519a2a51e478f1c0c9679b2d7f, type: 3}
+  - {fileID: 8300000, guid: 7634a87ba966b344d94a5004318b8faa, type: 3}
   snowSounds:
   - {fileID: 8300000, guid: df10186efcbc12b49b894dd8e3958f35, type: 3}
   - {fileID: 8300000, guid: e34e5a793f8647d42984c248e884744c, type: 3}
