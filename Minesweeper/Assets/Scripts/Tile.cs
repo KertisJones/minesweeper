@@ -39,14 +39,19 @@ public class Tile : MonoBehaviour
         normal,
         burning,
         frozen,
-        wet
+        wet,
+        electric,
+        plant,
+        sand,
+        glass,
+        infected
     }
 
     public AuraType aura = AuraType.normal;
     float burnTime = 15f;
     float meltTime = 15f;
-    float putOutTime = 5f;
-    float evaporateTime = 15f;
+    float putOutTime = 6f;
+    float evaporateTime = 10f;
     float auraDecayClock = 0;
     private bool burnoutInvisible = false;
     float auraClock = 0;
@@ -140,6 +145,8 @@ public class Tile : MonoBehaviour
             GetComponentInChildren<Button>().interactable = false;
             GetComponent<ButtonJiggle>().scaleMultiplierEnlarge = ((GetComponent<ButtonJiggle>().scaleMultiplierEnlarge - 1) * 0.25f) + 1;
             tileBackground.enabled = true;
+            if (gm.gameMods.floorAndWallAura != AuraType.normal)
+                SetAura(gm.gameMods.floorAndWallAura);
             //Debug.Log ("Display " + gameObject.name);
             //tileBackground.color = new Color(215, 215, 215, 255);
         }
@@ -313,7 +320,7 @@ public class Tile : MonoBehaviour
         {
             myText = nearbyMines.ToString();
 
-            if (nearbyMines == 0)
+            if (nearbyMines == 0 || aura == AuraType.frozen)
                 myText = "";
             if (isMine)
             {
@@ -451,8 +458,6 @@ public class Tile : MonoBehaviour
         if (burnoutInvisible || aura == AuraType.frozen)
             return;
 
-        
-
         if (!isRevealed && !isFlagged && !isDisplay && (!GetComponentInParent<Group>().isHeld || isForcedReveal))
         {           
             isRevealed = true;
@@ -493,7 +498,6 @@ public class Tile : MonoBehaviour
                 {
                     auraOverlayImage.enabled = false;
                     auraBackgroundOverlayImage.enabled = true;
-
                 }
 
                 //AudioSource.PlayClipAtPoint(revealSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
@@ -600,7 +604,7 @@ public class Tile : MonoBehaviour
                         if (!t.isDisplay)    
                         {
                             t.Reveal(false, true);      
-                            if (t.aura == AuraType.frozen)
+                            if (t.aura == AuraType.frozen && !t.isDisplay && !t.isRevealed)
                                 frozenChord = true;
                         }
                     }                                        
@@ -680,7 +684,7 @@ public class Tile : MonoBehaviour
                     if (!t.isFlagged)
                     {
                         t.FlagToggle();
-                        if (t.aura == AuraType.frozen)
+                        if (t.aura == AuraType.frozen && !t.isDisplay && !t.isRevealed)
                             frozenChord = true;
                     }                                        
                 }
@@ -850,12 +854,12 @@ public class Tile : MonoBehaviour
         }
 
 
-        Material auraMaterialLocal = new Material(auraMaterials[(int)aura]);
-        unrevealedButtonImage.material = auraMaterialLocal;
-        tileBackground.material = auraMaterialLocal;
-        explodedMineBackground.material = auraMaterialLocal;
-        auraOverlayImage.material = auraMaterialLocal;
-        auraBackgroundOverlayImage.material = auraMaterialLocal;
+        //Material auraMaterialLocal = new Material(auraMaterials[(int)aura]);
+        unrevealedButtonImage.material = new Material(auraMaterials[(int)aura]);
+        tileBackground.material = new Material(auraMaterials[(int)aura]);
+        explodedMineBackground.material = new Material(auraMaterials[(int)aura]);
+        auraOverlayImage.material = new Material(auraMaterials[(int)aura]);
+        auraBackgroundOverlayImage.material = new Material(auraMaterials[(int)aura]);
 
         if (aura == AuraType.frozen)
         {
@@ -863,20 +867,34 @@ public class Tile : MonoBehaviour
             unrevealedButtonImage.material = new Material(auraMaterials[(int)AuraType.wet]);
             unrevealedButtonImage.material.SetFloat("_OverlayTextureScrollXSpeed", 0);
             unrevealedButtonImage.material.SetFloat("_OverlayTextureScrollYSpeed", 0);
-            unrevealedButtonImage.material.SetFloat("_ColorSwapBlend", 0.5f);
+            unrevealedButtonImage.material.SetFloat("_ColorSwapBlend", 0.3f);
+
+            if (isDisplay)
+            {
+                auraOverlayImage.enabled = false;
+                auraBackgroundOverlayImage.enabled = true;
+                tileBackground.enabled = true;
+
+                tileBackground.material = new Material(auraMaterials[(int)AuraType.wet]);
+                tileBackground.material.SetFloat("_OverlayTextureScrollXSpeed", 0);
+                tileBackground.material.SetFloat("_OverlayTextureScrollYSpeed", 0);
+                tileBackground.material.SetFloat("_ColorSwapBlend", 0.3f);
+            }
         }
         else if (aura == AuraType.burning || aura == AuraType.wet)
         {
             
             unrevealedButtonImage.material = new Material(auraMaterials[(int)AuraType.normal]);
             tileBackground.material = new Material(auraMaterials[(int)AuraType.normal]);
-            /*unrevealedButtonImage.material.SetFloat("_OverlayTextureScrollXSpeed", 0);
-            unrevealedButtonImage.material.SetFloat("_OverlayTextureScrollYSpeed", 0);
-            unrevealedButtonImage.material.SetFloat("_ColorSwapBlend", 0.5f);*/
-            if (!isRevealed)
+
+            if (!isRevealed && !isDisplay)
                 auraOverlayImage.enabled = true;
             else
+            {
                 auraBackgroundOverlayImage.enabled = true;
+                auraOverlayImage.enabled = false;
+            }
+                
         }
         else
         {
@@ -914,6 +932,9 @@ public class Tile : MonoBehaviour
             SetAura(AuraType.normal);
             return;
         }
+
+        if (isDisplay)
+            return;
 
         if (!group.isFalling)
         {
@@ -996,7 +1017,7 @@ public class Tile : MonoBehaviour
     }
     private void UpdateAuraWet()
     {
-        bool decayComplete = UpdateAuraDecay(AuraType.burning, boilSoftSound, evaporateTime, 0, 1, 0.5f);
+        bool decayComplete = UpdateAuraDecay(AuraType.burning, boilSoftSound, evaporateTime, 0, 1, 0.2f);
 
         if (decayComplete)
         {
@@ -1041,11 +1062,13 @@ public class Tile : MonoBehaviour
 
         if (auraDecayClock > 0)
         {
-            auraOverlayImage.material.SetFloat("_FadeAmount", GetAuraOverlayFadeoutLerp(auraDecayClock, decayDuration, fadeMinValue, fadeMaxValue)); // Fade            
+            auraOverlayImage.material.SetFloat("_FadeAmount", GetAuraOverlayFadeoutLerp(auraDecayClock, decayDuration, fadeMinValue, fadeMaxValue)); // Fade
+            auraBackgroundOverlayImage.material.SetFloat("_FadeAmount", GetAuraOverlayFadeoutLerp(auraDecayClock, decayDuration, fadeMinValue, fadeMaxValue)); // Fade            
         }
         else if (auraOverlayImage.material.GetFloat("_FadeAmount") > 0)
         {
-            auraOverlayImage.material.SetFloat("_FadeAmount", 0); // Reset Fade            
+            auraOverlayImage.material.SetFloat("_FadeAmount", 0); // Reset Fade
+            auraBackgroundOverlayImage.material.SetFloat("_FadeAmount", GetAuraOverlayFadeoutLerp(auraDecayClock, decayDuration, fadeMinValue, fadeMaxValue)); // Fade            
         }
 
         if (auraDecayClock >= decayDuration)

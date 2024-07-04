@@ -289,43 +289,78 @@ public class Group : MonoBehaviour
             }
         }
 
-        if (gm.gameMods.freezerburnDemo)
-        {
-            int r = Random.Range(0, 6);
+        Tile.AuraType spawnAura = RandomSpawnAura();
 
-            switch (r)
-            {
-                case 0:
-                    foreach (Tile child in GetChildTiles())
-                    {
-                        child.aura = Tile.AuraType.burning;
-                    }
-                    break;
-                case 1:
-                    foreach (Tile child in GetChildTiles())
-                    {
-                        child.aura = Tile.AuraType.frozen;
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }        
-        else if (gm.gameMods.invernoDemo)
+        if (spawnAura != Tile.AuraType.normal && spawnAura != Tile.AuraType.infected)
         {
             foreach (Tile child in GetChildTiles())
             {
-                child.aura = Tile.AuraType.frozen;
+                child.aura = spawnAura;
             }
         }
-
-        /*foreach (Tile child in GetChildTiles())
+        else if (spawnAura == Tile.AuraType.infected)
         {
-            child.aura = Tile.AuraType.wet;
-        }*/
+            List<Tile> children = GetChildTiles();
+            children[Random.Range(0, children.Count)].aura = spawnAura;
+        }
 
         if (!isHeld)
             LayMines();                 
+    }
+
+    public Tile.AuraType RandomSpawnAura()
+    {
+        int totalWeight = gm.gameMods.auraNormalWeight +
+            gm.gameMods.auraBurningWeight +
+            gm.gameMods.auraFrozenWeight +
+            gm.gameMods.auraWetWeight +
+            gm.gameMods.auraElectricWeight +
+            gm.gameMods.auraPlantWeight +
+            gm.gameMods.auraSandWeight +
+            gm.gameMods.auraGlassWeight +
+            gm.gameMods.auraInfectedWeight;
+
+        int randomSelection = Random.Range(0, totalWeight);
+        int weightCounter = 0;
+
+        if (randomSelection < gm.gameMods.auraNormalWeight)
+            return Tile.AuraType.normal;            
+        weightCounter += gm.gameMods.auraNormalWeight;
+
+        if (randomSelection < weightCounter + gm.gameMods.auraBurningWeight)
+            return Tile.AuraType.burning;
+        weightCounter += gm.gameMods.auraBurningWeight;
+
+        if (randomSelection < weightCounter + gm.gameMods.auraFrozenWeight)
+            return Tile.AuraType.frozen;
+        weightCounter += gm.gameMods.auraFrozenWeight;
+
+        if (randomSelection < weightCounter + gm.gameMods.auraWetWeight)
+            return Tile.AuraType.wet;
+        weightCounter += gm.gameMods.auraWetWeight;
+        
+        if (randomSelection < weightCounter + gm.gameMods.auraElectricWeight)
+            return Tile.AuraType.electric;
+        weightCounter += gm.gameMods.auraElectricWeight;
+
+        if (randomSelection < weightCounter + gm.gameMods.auraPlantWeight)
+            return Tile.AuraType.plant;
+        weightCounter += gm.gameMods.auraPlantWeight;
+
+        if (randomSelection < weightCounter + gm.gameMods.auraSandWeight)
+            return Tile.AuraType.sand;
+        weightCounter += gm.gameMods.auraSandWeight;
+
+        if (randomSelection < weightCounter + gm.gameMods.auraGlassWeight)
+            return Tile.AuraType.glass;
+        weightCounter += gm.gameMods.auraGlassWeight;
+
+        if (randomSelection < weightCounter + gm.gameMods.auraInfectedWeight)
+            return Tile.AuraType.infected;
+        weightCounter += gm.gameMods.auraInfectedWeight;
+
+        Debug.Log("Aura out of bounds...");
+        return Tile.AuraType.normal;
     }
 
     // Get a list of all child tiles, excluding those that will be destroyed at the end of this Update Cycle

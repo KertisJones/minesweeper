@@ -29,7 +29,22 @@ public class GameModifiers : MonoBehaviour
         playable
     };
     public WallType wallType = WallType.unlock;
-    
+
+    // Auras
+    public int auraNormalWeight = 10;
+    public int auraBurningWeight = 0;
+    public int auraFrozenWeight = 0;
+    public int auraWetWeight = 0;
+    public int auraElectricWeight = 0;
+    public int auraPlantWeight = 0;
+    public int auraSandWeight = 0;
+    public int auraGlassWeight = 0;
+    public int auraInfectedWeight = 0;
+
+    public Tile.AuraType floorAndWallAura = Tile.AuraType.normal;
+
+
+
     // Distractions
     public enum MinesweeperTextType // your custom enumeration
     {
@@ -39,8 +54,8 @@ public class GameModifiers : MonoBehaviour
     };
     public MinesweeperTextType minesweeperTextType = MinesweeperTextType.numbers;
     public bool showTitle = false;
-    public bool freezerburnDemo = false;
-    public bool invernoDemo = false;
+    
+
     
     public void SetGameToThisMode()
     {
@@ -60,11 +75,22 @@ public class GameModifiers : MonoBehaviour
         gameMods.boardSize = boardSize;
         gameMods.wallType = wallType;
 
+        // Auras
+        gameMods.auraNormalWeight = auraNormalWeight;
+        gameMods.auraBurningWeight = auraBurningWeight;
+        gameMods.auraFrozenWeight = auraFrozenWeight;
+        gameMods.auraWetWeight = auraWetWeight;
+        gameMods.auraElectricWeight = auraElectricWeight;
+        gameMods.auraPlantWeight = auraPlantWeight;
+        gameMods.auraSandWeight = auraSandWeight;
+        gameMods.auraGlassWeight = auraGlassWeight;
+        gameMods.auraInfectedWeight = auraInfectedWeight;
+
+        gameMods.floorAndWallAura = floorAndWallAura;
+
         // Distractions
         gameMods.minesweeperTextType = minesweeperTextType;
         gameMods.showTitle = showTitle;
-        gameMods.freezerburnDemo = freezerburnDemo;
-        gameMods.invernoDemo = invernoDemo;
 
         scoreKeeper.ResetScoreKeeper();
     }

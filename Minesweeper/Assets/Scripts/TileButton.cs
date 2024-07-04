@@ -128,6 +128,11 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             {
                 tile.PlaySoundSteamHiss();
             }
+            else if (tile.aura == AuraType.frozen)
+            {
+                tile.PlaySoundFrozenHit();
+                return;
+            }
 
             if (gm.isGameOver || gm.isPaused)
                 return;
@@ -146,6 +151,11 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             if (tile.aura == Tile.AuraType.burning)
             {
                 tile.PlaySoundSteamHiss();
+            }
+            else if (tile.aura == AuraType.frozen)
+            {
+                tile.PlaySoundFrozenHit();
+                return;
             }
 
             if (gm.isGameOver || gm.isPaused)

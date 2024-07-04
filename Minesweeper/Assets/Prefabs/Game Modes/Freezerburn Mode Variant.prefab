@@ -16,8 +16,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
+      propertyPath: auraFrozenWeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
+      propertyPath: auraNormalWeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
       propertyPath: burningTilesDemo
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
+      propertyPath: floorAndWallAura
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
+      propertyPath: auraBurningWeight
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4058370467152388191, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
       propertyPath: m_RootOrder

@@ -15,6 +15,18 @@ PrefabInstance:
       propertyPath: gameModeName
       value: Inferno
       objectReference: {fileID: 0}
+    - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
+      propertyPath: auraNormalWeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
+      propertyPath: floorAndWallAura
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
+      propertyPath: auraBurningWeight
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4058370467152388191, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -61,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7556580089164566377, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
       propertyPath: m_Name
-      value: Marathon Mode
+      value: Inferno Mode
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
