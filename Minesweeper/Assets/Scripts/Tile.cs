@@ -376,7 +376,7 @@ public class Tile : MonoBehaviour
                 auraOverlayImage.enabled = false;
                 auraBackgroundOverlayImage.enabled = true;
 
-                gm.EndGame();
+                gm.EndGame("burn");
                 return;
             }
 
@@ -644,7 +644,7 @@ public class Tile : MonoBehaviour
                     {
                         AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                         burnGameOverImage.enabled = true;
-                        gm.EndGame();
+                        gm.EndGame("burn");
                     }
                 }
             }
@@ -720,7 +720,7 @@ public class Tile : MonoBehaviour
                     {
                         AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                         burnGameOverImage.enabled = true;
-                        gm.EndGame();
+                        gm.EndGame("burn");
                     }
                 }
             }

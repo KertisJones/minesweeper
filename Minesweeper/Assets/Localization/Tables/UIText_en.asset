@@ -628,6 +628,39 @@ MonoBehaviour:
     m_Localized: Pack pieces tight in this tiny 4x4 board.
     m_Metadata:
       m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: Inferno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: Freezerburn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: Turn up the heat! The board is burning down, and there's no margin
+      for error.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: The board has frozen over! Melt ice to reveal its mine count, and
+      be careful where you place your fire.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: 'Don''t play
+
+      with fire!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: Burning Tile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: Be careful clicking on a burning tile, a mistaken chord or flag
+      ends the game!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

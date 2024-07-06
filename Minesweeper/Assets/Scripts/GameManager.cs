@@ -1031,7 +1031,7 @@ public class GameManager : MonoBehaviour
     }*/
     #endregion
     #region Gamestate Logic
-    public void EndGame()
+    public void EndGame(string deathType = "")
     {
         if (cheatGodMode)
             return;
@@ -1069,14 +1069,22 @@ public class GameManager : MonoBehaviour
         GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0), 0.35f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
 
-        StartCoroutine(GameOver());        
+        StartCoroutine(GameOver(deathType));        
     }
 
-    IEnumerator GameOver()
+    IEnumerator GameOver(string deathType = "") // "" = normal, "Burn"
     {
         yield return new WaitForSeconds(1f);
         if (!isTitleMenu)
+        {
+            if (deathType == "")
+                gameOverMenu.GetComponent<GameOverMenu>().SetDeathNormal();
+            else if (deathType.ToLower() == "burn")
+                gameOverMenu.GetComponent<GameOverMenu>().SetDeathBurn();
+
             gameOverMenu.SetActive(true);
+        }
+            
     }
     #endregion
     #region Scoring

@@ -9973,7 +9973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 733553661568815080, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 762934162696265070, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_Color.b
@@ -10065,7 +10065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2591098295207280435, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 3129390007164104433, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10117,7 +10117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4144590894732140212, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 4966820160839136579, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10129,7 +10129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5559937975266099271, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 6283528520868863019, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -10241,7 +10241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8877888582917996143, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 8960552120116225807, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10669,10 +10669,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 780965503}
-    - target: {fileID: 2064147738162804856, guid: 3c0dd675cf17d9547992c8732e00a951, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2064147738162804857, guid: 3c0dd675cf17d9547992c8732e00a951, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10756,10 +10752,6 @@ PrefabInstance:
     - target: {fileID: 2064147738162804857, guid: 3c0dd675cf17d9547992c8732e00a951, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2064147738162804859, guid: 3c0dd675cf17d9547992c8732e00a951, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2064147738162804860, guid: 3c0dd675cf17d9547992c8732e00a951, type: 3}
       propertyPath: m_Name

@@ -240,7 +240,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 963558551576576
-    m_Key: "Menu GameOver\t"
+    m_Key: Menu GameOver
     m_Metadata:
       m_Items: []
   - m_Id: 988652401319936
@@ -613,6 +613,34 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 25684335494422528
     m_Key: Tooltip Tiny
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Key: GameMode Inferno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Key: Tooltip Inferno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Key: GameMode Freezerburn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Key: Tooltip Freezerburn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Key: Scoring Burning Tile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Key: Menu GameOver Burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Key: Menu GameOver BurnSubtitle
     m_Metadata:
       m_Items: []
   m_Metadata:
