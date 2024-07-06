@@ -373,6 +373,9 @@ public class Tile : MonoBehaviour
             {
                 AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                 burnGameOverImage.enabled = true;
+                auraOverlayImage.enabled = false;
+                auraBackgroundOverlayImage.enabled = true;
+
                 gm.EndGame();
                 return;
             }
@@ -1207,9 +1210,10 @@ public class Tile : MonoBehaviour
         decaySoundSource.Stop();
         decaySoundSource.volume = 0;
 
+        gm.GetActiveTetromino().SetMaximumFallDistance();
+
         if (tileAbove != null)
             tileAbove.BurnFall();
-
     }
 
     public void PlaySoundSteamHiss()

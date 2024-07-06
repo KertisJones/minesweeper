@@ -1801,6 +1801,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f82e3a53bd4fbf747b709980121ba503, type: 3}
   - {fileID: 8300000, guid: 482dcb596b95f8f4aa4e1cc0dc6570fb, type: 3}
   - {fileID: 8300000, guid: 73cdb6b72708a424994a3b3765852dc8, type: 3}
+  - {fileID: 8300000, guid: 7abd25f79caf1374083e6c4e4fe26da7, type: 3}
+  - {fileID: 8300000, guid: 58ec651b2724f3a409c319240f3ec5e0, type: 3}
   hardHitSounds:
   - {fileID: 8300000, guid: a8b2b10b35e6a9544b586dea72d80626, type: 3}
   - {fileID: 8300000, guid: c544a4a4156207c4e8ec3dc8c684ea52, type: 3}
@@ -3546,7 +3548,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 725ef04165b06bd479baabb5ea32d93d, type: 2}
+  - {fileID: 2100000, guid: da73e3729e4e375409d1332a78a481c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

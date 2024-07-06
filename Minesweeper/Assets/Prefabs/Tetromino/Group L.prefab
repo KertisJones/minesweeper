@@ -98,12 +98,6 @@ MonoBehaviour:
   frozenWindSounds:
   - {fileID: 8300000, guid: a97efa3a18978eb4f838d0fc4e813f29, type: 3}
   - {fileID: 8300000, guid: fd919fc189a615741a3f6874d2507628, type: 3}
-  FrozenLandSounds:
-  - {fileID: 8300000, guid: df10186efcbc12b49b894dd8e3958f35, type: 3}
-  - {fileID: 8300000, guid: e34e5a793f8647d42984c248e884744c, type: 3}
-  - {fileID: 8300000, guid: 1486bdb7086a0564b93c0fcb83ed7f37, type: 3}
-  - {fileID: 8300000, guid: acd32f1d5232bf34ca6a0b6bb95e4483, type: 3}
-  - {fileID: 8300000, guid: 484fe9c58b181bb4d9224c0d91afc8f4, type: 3}
 --- !u!82 &3316893895164512792
 AudioSource:
   m_ObjectHideFlags: 0
@@ -301,6 +295,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 658720671210819337}
     m_Modifications:
+    - target: {fileID: 581844008375592395, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2115685909155936385, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
       propertyPath: m_textInfo.lineCount
       value: 0

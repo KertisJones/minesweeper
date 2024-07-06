@@ -10,16 +10,22 @@ Material:
   m_Name: PiskelFlame
   m_Shader: {fileID: 4800000, guid: 79ee6cefbc672a44e97359d4d14ea301, type: 3}
   m_ValidKeywords:
-  - ATLAS_ON
+  - ALPHAOUTLINE_ON
+  - COLORRAMP_ON
   - DISTORT_ON
+  - FADE_ON
   - FISHEYE_ON
   - GLOWLIGHT_ON
   - GLOWTEX_ON
   - GLOW_ON
+  - HSV_ON
   - OUTBASE8DIR_ON
   - OUTBASE_ON
   - OUTDIST_ON
   - OUTTEX_ON
+  - OVERLAYMULT_ON
+  - OVERLAY_ON
+  - RECTSIZE_ON
   - WAVEUV_ON
   m_InvalidKeywords:
   - _GLOWAFFECTLIGHT_ON
@@ -69,7 +75,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 577a348bedc21b940988f3c3b25a4fd0, type: 3}
+        m_Texture: {fileID: 2800000, guid: cac1ba879afa8664d9093abfd7ae6e93, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineDistortTex:
@@ -124,10 +130,10 @@ Material:
     - _DistortTexXSpeed: 5
     - _DistortTexYSpeed: 5
     - _EditorDrawers: 14
-    - _FadeAmount: 0.29
-    - _FadeBurnGlow: 2
-    - _FadeBurnTransition: 0.075
-    - _FadeBurnWidth: 0.025
+    - _FadeAmount: -0.1
+    - _FadeBurnGlow: 8
+    - _FadeBurnTransition: 0.01
+    - _FadeBurnWidth: 0.104
     - _FishEyeUvAmount: 0.034
     - _FlickerAlpha: 0
     - _FlickerFreq: 0.2
@@ -137,7 +143,7 @@ Material:
     - _GhostTransparency: 0
     - _GlitchAmount: 3
     - _GlitchSize: 1
-    - _Glow: 0.4
+    - _Glow: 0.5
     - _GlowAffectLight: 1
     - _GlowGlobal: 1
     - _GradBlend: 1
@@ -189,13 +195,13 @@ Material:
     - _OutlineDistortTexYSpeed: 5
     - _OutlineGlow: 11.1
     - _OutlinePixelWidth: 1
-    - _OutlineTexXSpeed: 5
-    - _OutlineTexYSpeed: 5
-    - _OutlineWidth: 0.001
-    - _OverlayBlend: 0.5
+    - _OutlineTexXSpeed: 2.5
+    - _OutlineTexYSpeed: 2.5
+    - _OutlineWidth: 0.003
+    - _OverlayBlend: 0.25
     - _OverlayGlow: 1.5
-    - _OverlayTextureScrollXSpeed: 0.25
-    - _OverlayTextureScrollYSpeed: 0.25
+    - _OverlayTextureScrollXSpeed: 0.125
+    - _OverlayTextureScrollYSpeed: 0.125
     - _PinchUvAmount: 0.35
     - _PixelateSize: 32
     - _PosterizeGamma: 0.75
@@ -248,7 +254,7 @@ Material:
     - _ColorSwapBlue: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
-    - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
+    - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 0.70980394}
     - _GlowColor: {r: 0.63529414, g: 0.16078432, b: 0.10196079, a: 1}
     - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
     - _GradBotRightCol: {r: 0, g: 1, b: 0, a: 1}

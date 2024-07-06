@@ -291,6 +291,9 @@ public class Group : MonoBehaviour
 
         Tile.AuraType spawnAura = RandomSpawnAura();
 
+        if (gm.gameMods.floorAndWallAura == Tile.AuraType.frozen && gm.gameMods.auraBurningWeight > 0 && gm.piecesPlaced == 0)
+            spawnAura = Tile.AuraType.burning;
+
         if (spawnAura != Tile.AuraType.normal && spawnAura != Tile.AuraType.infected)
         {
             foreach (Tile child in GetChildTiles())
