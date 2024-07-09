@@ -2469,6 +2469,10 @@ PrefabInstance:
       value: Game Manager
       objectReference: {fileID: 0}
     - target: {fileID: 9133358887212656223, guid: e160f486b477575479c8609a53e40a7b, type: 3}
+      propertyPath: guiCanvas
+      value: 
+      objectReference: {fileID: 2081153728}
+    - target: {fileID: 9133358887212656223, guid: e160f486b477575479c8609a53e40a7b, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 2020009348}
@@ -5401,7 +5405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1213635708
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9808,7 +9812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1915796634
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11779,6 +11783,10 @@ PrefabInstance:
     - target: {fileID: 6780841686112384306, guid: ae3f2b102257ca44ab06adaf1a37b7cc, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780841686112384307, guid: ae3f2b102257ca44ab06adaf1a37b7cc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6780841686112384462, guid: ae3f2b102257ca44ab06adaf1a37b7cc, type: 3}
       propertyPath: m_RootOrder

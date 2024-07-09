@@ -401,40 +401,48 @@ public class GameManager : MonoBehaviour
             AddSafeTileToEdges();            
         }
 
-        // Position background elements;
+        float cameraSizeYprefer = ((sizeY - 4) / 2f) + 0.5f; //10.5f; Y Bounds
+        float cameraSizeXprefer = (sizeX + 28) * 0.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth); //10f; X Bounds
+
+        float cameraSize = Mathf.Max(cameraSizeXprefer, cameraSizeYprefer);
+        if (sizeX == 10 && sizeY == 24 && (Mathf.Floor(((float)mainCamera.pixelWidth / mainCamera.pixelHeight) * 100) / 100) == Mathf.Floor((16f / 9f) * 100) / 100)
+            cameraSize = cameraSizeYprefer;
+        //Debug.Log(((float)mainCamera.pixelWidth / mainCamera.pixelHeight) + ", " + (16f/9f));
+
+        float cameraX = (sizeX / 2f) - 0.5f; //4.5f;
+        float cameraY = ((sizeY - 4) / 2f) - 1f;//cameraSize - 1.5f; //9
+
+        if (isTitleMenu)
+        {
+            cameraX *= -1;
+        }
+
+        mainCamera.transform.position = new Vector3(cameraX, cameraY, -10);
+        mainCamera.orthographicSize = cameraSize;
+
+        float canvasHeight = (450 / 10.5f) * cameraSize;
+        if (guiCanvas != null)
+        {
+            guiCanvas.transform.position = new Vector3(cameraX, cameraY, 0);
+            guiCanvas.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(canvasHeight * ((float)mainCamera.pixelWidth / mainCamera.pixelHeight), canvasHeight);
+        }
+
+        float backgroundHeight = sizeY + 1;
+        if (cameraSize > cameraSizeYprefer)
+            backgroundHeight = sizeY - 3;
+
+        backgroundWallRight.transform.position = new Vector3(sizeX - 0.5f, -1.5f, 1);
+
+        backgroundWallLeft.GetComponent<SpriteRenderer>().size = new Vector2(1, backgroundHeight);
+        backgroundWallRight.GetComponent<SpriteRenderer>().size = new Vector2(1, backgroundHeight);
+        backgroundFloor.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, 1);
+        backgroundAnimated.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, backgroundHeight - 1);
+
         if (!isTitleMenu)
         {
-            float cameraSizeYprefer = ((sizeY - 4) / 2f) + 0.5f; //10.5f; Y Bounds
-            float cameraSizeXprefer = (sizeX + 28) * 0.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth); //10f; X Bounds
-
-            float cameraSize = Mathf.Max(cameraSizeXprefer, cameraSizeYprefer);
-            if (sizeX == 10 && sizeY == 24 && (Mathf.Floor(((float)mainCamera.pixelWidth / mainCamera.pixelHeight) * 100) / 100) == Mathf.Floor((16f/9f) * 100) /100)
-                cameraSize = cameraSizeYprefer;
-            //Debug.Log(((float)mainCamera.pixelWidth / mainCamera.pixelHeight) + ", " + (16f/9f));
-
-            float cameraX = (sizeX / 2f) - 0.5f; //4.5f;
-            float cameraY = ((sizeY - 4) / 2f) - 1f;//cameraSize - 1.5f; //9
-
-            mainCamera.transform.position = new Vector3(cameraX, cameraY, -10);
-            mainCamera.orthographicSize = cameraSize;
-
-            float canvasHeight = (450 / 10.5f) * cameraSize;
-            if (guiCanvas != null)
-            {
-                guiCanvas.transform.position = new Vector3(cameraX, cameraY, 0);
-                guiCanvas.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(canvasHeight * ((float)mainCamera.pixelWidth / mainCamera.pixelHeight), canvasHeight);
-            }
             
-            float backgroundHeight = sizeY + 1;
-            if (cameraSize > cameraSizeYprefer)
-                backgroundHeight = sizeY - 3;
 
-            backgroundWallRight.transform.position = new Vector3(sizeX - 0.5f, -1.5f, 1);     
             
-            backgroundWallLeft.GetComponent<SpriteRenderer>().size = new Vector2(1, backgroundHeight);
-            backgroundWallRight.GetComponent<SpriteRenderer>().size = new Vector2(1, backgroundHeight);
-            backgroundFloor.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, 1);
-            backgroundAnimated.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, backgroundHeight - 1);
         }
     }
 
