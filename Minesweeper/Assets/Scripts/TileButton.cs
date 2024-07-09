@@ -49,7 +49,7 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     void PressReveal()
     {
-        if (gm == null || tile == null)
+        if (gm == null || tile == null || !CanMinesweepInput())
             return;        
         
         if (hover)
@@ -84,7 +84,7 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     void PressFlag()
     {
-        if (gm == null || tile == null)
+        if (gm == null || tile == null || !CanMinesweepInput())
             return;
                 
         if (hover)
@@ -119,7 +119,7 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     void PressChord()
     {
-        if (gm == null || tile == null)
+        if (gm == null || tile == null || !CanMinesweepInput())
             return;
         
         if (hover && tile.isRevealed)
@@ -143,7 +143,7 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     void PressChordFlag()
     {
-        if (gm == null || tile == null)
+        if (gm == null || tile == null || !CanMinesweepInput())
             return;
         
         if (hover && tile.isRevealed)
@@ -167,6 +167,12 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     #endregion
 
+    bool CanMinesweepInput()
+    {
+        if (Time.time - gm.lastLineClearTime >= PlayerPrefs.GetFloat("LineClearPreventMinesweepDelay", 50) / 1000)
+            return true;
+        return false;
+    }
 
 
     public void OnPointerEnter(PointerEventData eventData) 

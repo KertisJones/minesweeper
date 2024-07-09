@@ -23,11 +23,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3884008333312
-    m_Localized: leko sin
+    m_Localized: leko kama
     m_Metadata:
       m_Items: []
   - m_Id: 688583756210176
-    m_Localized: sike pakala
+    m_Localized: pakala
     m_Metadata:
       m_Items: []
   - m_Id: 690552633810944
@@ -35,11 +35,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 691682109546496
-    m_Localized: nanpa pona pi nanpa wan
+    m_Localized: nanpa pona nanpa wan
     m_Metadata:
       m_Items: []
   - m_Id: 691701722112000
-    m_Localized: nanpa pona pi suno ni
+    m_Localized: nanpa pona nanpa wan pi suno ni
     m_Metadata:
       m_Items: []
   - m_Id: 691795221536768
@@ -51,23 +51,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 692866870403072
-    m_Localized: pini weka linja tu tu
+    m_Localized: pali Tewisi
     m_Metadata:
       m_Items: []
   - m_Id: 693625464807424
-    m_Localized: o pini
+    m_Localized: pini
     m_Metadata:
       m_Items: []
   - m_Id: 693945486008320
-    m_Localized: sina ken ala pini lon ilo Browser
+    m_Localized: sina ken ala pini lon linja pi ilo sona
     m_Metadata:
       m_Items: []
   - m_Id: 694159798165504
-    m_Localized: nanpa pona suli
+    m_Localized: nanpa wawa
     m_Metadata:
       m_Items: []
   - m_Id: 694324101636096
-    m_Localized: pali pi sike pakala pi tawa sike sitelen T
+    m_Localized: pali Tesisi
     m_Metadata:
       m_Items: []
   - m_Id: 694970670374912
@@ -75,27 +75,27 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 696069942927360
-    m_Localized: pini!
+    m_Localized: pini pona a!
     m_Metadata:
       m_Items: []
   - m_Id: 697409771397120
-    m_Localized: musi suli
+    m_Localized: suli
     m_Metadata:
       m_Items: []
   - m_Id: 697412782907392
-    m_Localized: musi suli pi tenpo lili
+    m_Localized: musi suli wawa
     m_Metadata:
       m_Items: []
   - m_Id: 697414372548608
-    m_Localized: musi linja mute mute
+    m_Localized: musi linja 40
     m_Metadata:
       m_Items: []
   - m_Id: 697420861136896
-    m_Localized: musi pi nanpa pona
+    m_Localized: musi tenpo lili
     m_Metadata:
       m_Items: []
   - m_Id: 697421989404672
-    m_Localized: musi pi nanpa pona pi tenpo lili
+    m_Localized: musi wawa tenpo lili
     m_Metadata:
       m_Items: []
   - m_Id: 697429551734784
@@ -127,7 +127,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 926506682408960
-    m_Localized: o tawa monsi
+    m_Localized: tawa monsi
     m_Metadata:
       m_Items: []
   - m_Id: 926602874576896
@@ -143,11 +143,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 926682805428224
-    m_Localized: sitelen tawa ala
+    m_Localized: sitelen tawa li kama sitelen pi tawa ala
     m_Metadata:
       m_Items: []
   - m_Id: 926709879660544
-    m_Localized: sina ken lukin e tenpo pi awen leko
+    m_Localized: ken lukin pi tenpo awen leko
     m_Metadata:
       m_Items: []
   - m_Id: 927883198455808
@@ -187,27 +187,27 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 928708620705792
-    m_Localized: o open e leko
+    m_Localized: o open e leko lili
     m_Metadata:
       m_Items: []
   - m_Id: 928722587738112
-    m_Localized: o open e leko mute
+    m_Localized: o open e leko lili poka
     m_Metadata:
       m_Items: []
   - m_Id: 928735476834304
-    m_Localized: o len e leko
+    m_Localized: o len e leko lili
     m_Metadata:
       m_Items: []
   - m_Id: 928788438310912
-    m_Localized: o len e leko mute
+    m_Localized: o len e leko lili poka
     m_Metadata:
       m_Items: []
   - m_Id: 928909536256000
-    m_Localized: o weka e jaki
+    m_Localized: weka pakala
     m_Metadata:
       m_Items: []
   - m_Id: 933890872041472
-    m_Localized: o kepeken e ilo lawa pona
+    m_Localized: o weka e ante ale
     m_Metadata:
       m_Items: []
   - m_Id: 934286541709312
@@ -215,7 +215,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 934315432075264
-    m_Localized: ilo lawa pi musi Minesweeper
+    m_Localized: ilo lawa pi musi Masipa
     m_Metadata:
       m_Items: []
   - m_Id: 951608887205888
@@ -247,17 +247,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 988652401319936
-    m_Localized: o musi tawa linja ale mute mute luka luka. o kama jo e nanpa pona
-      nanpa wan!
+    m_Localized: o alasa tawa linja 150. o alasa tawa nanpa pona mute!
     m_Metadata:
       m_Items: []
   - m_Id: 988835440746496
-    m_Localized: o weka e linja mute mute lon tenpo lili mute!
+    m_Localized: o alasa weka e linja 40 lon tenpo lili mute!
     m_Metadata:
       m_Items: []
   - m_Id: 989111895711744
-    m_Localized: musi ni li tenpo lili li pilin pali mute ala. linja li weka lon
-      tenpo ala.
+    m_Localized: musi ante ni li pali lili. linja li weka lon tenpo ala!
     m_Metadata:
       m_Items: []
   - m_Id: 989231202689024
@@ -265,21 +263,21 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 989810910027776
-    m_Localized: tenpo lili tu wan la, o kama jo e nanpa pona nanpa wan!
+    m_Localized: o alasa kama jo e nanpa pona nanpa wan lon tenpo tu wan!
     m_Metadata:
       m_Items: []
   - m_Id: 989813380472832
-    m_Localized: tenpo lili tu wan la, linja li weka lon tenpo ala la o kama jo e
-      nanpa pona nanpa wan!
+    m_Localized: musi ante wawa la, o alasa kama jo e nanpa pona nanpa wan lon tenpo
+      tu wan!
     m_Metadata:
       m_Items: []
   - m_Id: 990195708059648
-    m_Localized: o lukin e ni lon ilo Browser
+    m_Localized: 'o luka tawa ni: o lukin e ni lon linja pi ilo sona.'
     m_Metadata:
       m_Items: []
   - m_Id: 990308941684736
-    m_Localized: o kama lon kulupu pi ilo Discord. sina ken kama jo e nanpa pona
-      lon utala pi nanpa pona!
+    m_Localized: 'o kama lon kulupu mi pi ilo Discord tawa ni: sina kama jo e nanpa
+      pona lon lipu nanpa pona!'
     m_Metadata:
       m_Items: []
   - m_Id: 990401673551872
@@ -291,11 +289,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 990814418231296
-    m_Localized: o lipu e nanpa pona sina lon nimi #Tetrisweeper
+    m_Localized: o pana e nanpa pona sina lon nimi #Tetrisweeper
     m_Metadata:
       m_Items: []
   - m_Id: 990813138968576
-    m_Localized: o kama lon kulupu pi ilo Discord!
+    m_Localized: o kama lon kulupu mi pi ilo Discord!
     m_Metadata:
       m_Items: []
   - m_Id: 990815487778816
@@ -312,25 +310,26 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 991654902226944
-    m_Localized: 'weka jaki: o weka e sike pakala ale lon jo. +250 nanpa pona.'
+    m_Localized: 'weka pakala: o weka e pakala ale lon jo. +250 nanpa pona.'
     m_Metadata:
       m_Items: []
   - m_Id: 992047333892096
-    m_Localized: sina pini e linja tu tu la, sina weka e linja tu tu la, leko li
-      pini awen ala la, sina pini weka linja tu tu.
+    m_Localized: 'pali Tewisi li ni: sina pali e linja tu tu li weka e linja ona
+      lon tenpo sama. sina li anpa e leko sin la, linja ona li pali Tewisi ala.'
     m_Metadata:
       m_Items: []
   - m_Id: 992048869007360
-    m_Localized: sina tawa sike sitelen T la, sina weka e linja pi tawa sike la,
-      leko li pini awen ala la, sina pali pi sike pakala pi tawa sike sitelen T.
+    m_Localized: 'pali Tesisi li ni: sina anpa sike e leko Te li pali linja li weka
+      e linja ona lon tenpo sama. sina li anpa e leko sin la, linja ona li pali Tesisi
+      ala.'
     m_Metadata:
       m_Items: []
   - m_Id: 1427307444035584
-    m_Localized: sike
+    m_Localized: nanpa sike
     m_Metadata:
       m_Items: []
   - m_Id: 1427339857616896
-    m_Localized: ni li musi suli. taso, nanpa pi leko li ante tawa sike!
+    m_Localized: nanpa pi leko lili li kama sike lili lon musi ante ni!
     m_Metadata:
       m_Items: []
   - m_Id: 1647393605935104
@@ -338,11 +337,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1647422219476992
-    m_Localized: sina ken kepeken e leko supa lon musi ni.
+    m_Localized: musi ante ni la, sina ken open li ken len e leko lili lon supa.
     m_Metadata:
       m_Items: []
   - m_Id: 2474781692649472
-    m_Localized: wile pi mani musi
+    m_Localized: o jo e wile mani musi
     m_Metadata:
       m_Items: []
   - m_Id: 2474781847838720
@@ -354,7 +353,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2475075038076928
-    m_Localized: o pini weka linja tu tu kepeken nasin sin!
+    m_Localized: o pali Tewisi tawa sewi!
     m_Metadata:
       m_Items: []
   - m_Id: 2512304913506304
@@ -362,15 +361,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5052179397636096
-    m_Localized: o tawa anpa e leko
+    m_Localized: o anpa e leko
     m_Metadata:
       m_Items: []
   - m_Id: 5052349606686720
-    m_Localized: pali Minesweep
+    m_Localized: pali Masipa
     m_Metadata:
       m_Items: []
   - m_Id: 5052351666089984
-    m_Localized: pini weka linja tu tu
+    m_Localized: pali Tewisi
     m_Metadata:
       m_Items: []
   - m_Id: 7178027099217920
@@ -398,19 +397,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7288987847745536
-    m_Localized: 'ARR: tawa poka leko'
+    m_Localized: 'ARR: tenpo sike pi tawa poka'
     m_Metadata:
       m_Items: []
   - m_Id: 7289007573557248
-    m_Localized: 'DAS: tenpo awen pi leko tawa poka'
+    m_Localized: 'DAS: tenpo open pi tawa poka'
     m_Metadata:
       m_Items: []
   - m_Id: 7289023503523840
-    m_Localized: 'DCD: leko li tawa la, tenpo awen pi leko tawa poka'
+    m_Localized: 'DCD: tenpo open kipisi'
     m_Metadata:
       m_Items: []
   - m_Id: 7289036057075712
-    m_Localized: 'SDF: tawa anpa leko'
+    m_Localized: 'SDF: tawa sike pi tawa anpa lili'
     m_Metadata:
       m_Items: []
   - m_Id: 8261547250933760
@@ -422,11 +421,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8261872057835520
-    m_Localized: pona mute tawa...
+    m_Localized: pona suli tawa...
     m_Metadata:
       m_Items: []
   - m_Id: 8635273809223680
-    m_Localized: nimi pi jan pali ante
+    m_Localized: jan pali ante
     m_Metadata:
       m_Items: []
   - m_Id: 8641451649916928
@@ -454,71 +453,71 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23900055583842304
-    m_Localized: leko li lon nasa
+    m_Localized: leko li awen
     m_Metadata:
       m_Items: []
   - m_Id: 23900056825356288
-    m_Localized: tawa sike sitelen T lili pi linja ala
+    m_Localized: pali Tesi lili linja ala
     m_Metadata:
       m_Items: []
   - m_Id: 23900058133979136
-    m_Localized: tawa sike sitelen T pi linja ala
+    m_Localized: pali Tesi linja ala
     m_Metadata:
       m_Items: []
   - m_Id: 23900060650561536
-    m_Localized: tawa sike sitelen T lili pi linja wan
+    m_Localized: pali Tesi lili linja wan
     m_Metadata:
       m_Items: []
   - m_Id: 23900062789656576
-    m_Localized: tawa sike sitelen T pi linja tu
+    m_Localized: pali Tesi linja wan
     m_Metadata:
       m_Items: []
   - m_Id: 23900064362520576
-    m_Localized: tawa sike sitelen T lili p linja tu
+    m_Localized: pali Tesi lili linja tu
     m_Metadata:
       m_Items: []
   - m_Id: 23900065469816832
-    m_Localized: tawa sike sitelen T pi linja tu
+    m_Localized: pali Tesi linja tu
     m_Metadata:
       m_Items: []
   - m_Id: 23900066350620672
-    m_Localized: tawa sike sitelen T pi linja tu wan
+    m_Localized: pali Tesi linja tu wan
     m_Metadata:
       m_Items: []
   - m_Id: 23900067399196672
-    m_Localized: pali mute sike
+    m_Localized: pali suli sike
     m_Metadata:
       m_Items: []
   - m_Id: 23900068477132800
-    m_Localized: 'pali sike: pali linja'
+    m_Localized: pali linja sike
     m_Metadata:
       m_Items: []
   - m_Id: 23900069341159424
-    m_Localized: leko ala (linja wan)
+    m_Localized: weka ale (linja wan)
     m_Metadata:
       m_Items: []
   - m_Id: 23900070171631616
-    m_Localized: leko ala (linja tu)
+    m_Localized: weka ale (linja tu)
     m_Metadata:
       m_Items: []
   - m_Id: 23900070930800640
-    m_Localized: leko ala (linja tu wan)
+    m_Localized: weka ale (linja tu wan)
     m_Metadata:
       m_Items: []
   - m_Id: 23900071694163968
-    m_Localized: leko ala (linja tu tu)
+    m_Localized: weka ale (linja tu tu)
     m_Metadata:
       m_Items: []
   - m_Id: 23900072453332992
-    m_Localized: pali sike pi linja tu tu en leko ala
+    m_Localized: pali Tewi sike en weka ale
     m_Metadata:
       m_Items: []
   - m_Id: 23900073984253952
-    m_Localized: leko ala pi tenpo ala
+    m_Localized: weka ale pi tenpo ala
     m_Metadata:
       m_Items: []
   - m_Id: 23900074789560320
-    m_Localized: nanpa linja
+    m_Localized: linja weka
     m_Metadata:
       m_Items: []
   - m_Id: 23900075540340736
@@ -538,11 +537,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23900078597988352
-    m_Localized: pali pi sike pakala pi tawa sike sitelen T
+    m_Localized: pali Tesisi
     m_Metadata:
       m_Items: []
   - m_Id: 23900079352963072
-    m_Localized: pali mute sike pi weka linja
+    m_Localized: pali suli sike pi linja weka
     m_Metadata:
       m_Items: []
   - m_Id: 23900080103743488
@@ -550,47 +549,97 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23900080942604288
-    m_Localized: weka linja sewi (supa luka wan anu nanpa mute)
+    m_Localized: weka linja lon sewi (linja luka wan anu mute)
     m_Metadata:
       m_Items: []
   - m_Id: 23900081680801792
-    m_Localized: weka linja sewi (supa luka luka wan anu nanpa mute)
+    m_Localized: weka linja lon sewi (linja LLW anu mute)
     m_Metadata:
       m_Items: []
   - m_Id: 23900082452553728
-    m_Localized: weka linja sewi (supa luka luka luka wan anu nanpa mute)
+    m_Localized: weka linja lon sewi (linja LLLW anu mute)
     m_Metadata:
       m_Items: []
   - m_Id: 23900083224305664
-    m_Localized: 'pali sike: open leko'
+    m_Localized: open leko lili sike
     m_Metadata:
       m_Items: []
   - m_Id: 23900084004446208
-    m_Localized: open leko li tan ala e jan
+    m_Localized: open leko lili pi pali ala
     m_Metadata:
       m_Items: []
   - m_Id: 23900084797169664
-    m_Localized: len mute li lon ala
+    m_Localized: ken ala len poka
     m_Metadata:
       m_Items: []
   - m_Id: 23900085510201344
-    m_Localized: open leko sewi (supa luka wan anu nanpa mute)
+    m_Localized: open leko lili lon sewi (linja luka wan anu mute)
     m_Metadata:
       m_Items: []
   - m_Id: 23900086307119104
-    m_Localized: open leko sewi (supa luka luka wan anu nanpa mute)
+    m_Localized: open leko lili lon sewi (linja LLW anu mute)
     m_Metadata:
       m_Items: []
   - m_Id: 23900087116619776
-    m_Localized: open leko sewi (supa luka luka luka anu nanpa mute)
+    m_Localized: open leko lili lon sewi (linja LLLW anu mute)
     m_Metadata:
       m_Items: []
   - m_Id: 23900087833845760
-    m_Localized: pali sike open leko pi lawa jan (leko mute mute luka luka)
+    m_Localized: open leko lili sike kepeken len poka ala kepeken open poka ala (leko
+      lili MMLL)
     m_Metadata:
       m_Items: []
   - m_Id: 23900088626569216
-    m_Localized: sina li pali e leko pi nanpa luka tu wan
+    m_Localized: open leko lili kepeken nanpa luka tu wan.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: leko lili li seli la, sina li len ike anu open poka ike la, musi
+      li pini.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: leko seli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: seli li pakala!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: o anpa e leko lon poki lili. poki li poka tu tu li sewi tu tu.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: lili
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: leko li anpa lon tenpo lili. nanpa wawa li suli la, tenpo awen leko
+      li lili.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: sina anpa lili e leko la, lawa ni li tenpo sike.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: sina tawa sike anu anpa e leko la, tenpo open li lawa DAS ala li
+      lawa DCD.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: sina awen luka e nena poka la, leko li awen li tawa poka lon tenpo
+      sike. lawa ante ni li tenpo awen ona.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: sina awen luka e nena poka la, leko li awen li tawa poka lon tenpo
+      sike. lawa ante ni li tenpo sike ona.
     m_Metadata:
       m_Items: []
   references:

@@ -89,6 +89,8 @@ public class GameManager : MonoBehaviour
     public int tSpinDouble;
     public int tSpinTriple;
 
+    public float lastLineClearTime = 0;
+
     public int numBurningTiles = 0;
     public int numFrozenTiles = 0;
     public int numWetTiles = 0;
@@ -832,6 +834,7 @@ public class GameManager : MonoBehaviour
                 (bool isLinesweep, float lineBurningMultiplier, bool lineContainsFrozenTile) = scoreSolvedRow(y, getMultiplier);
 
                 gm.linesCleared++;
+                gm.lastLineClearTime = Time.time;
                 rowsCleared++;
                 if (isLinesweep)
                 {

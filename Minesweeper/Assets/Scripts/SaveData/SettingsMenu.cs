@@ -19,6 +19,7 @@ public class SettingsMenu : MonoBehaviour
     public LinearRangeSlider delayedAutoShiftSlider;
     public LinearRangeSlider dasCutDelaySlider;
     public LinearRangeSlider softDropFactorSlider;
+    public LinearRangeSlider lineClearPreventMinesweepDelaySlider;
     float masterVolume = 0.5f; //Max 0.5
     float musicVolume = 0.25f; //Max 0.5
     float soundVolume = 0.5f; //Max 1
@@ -31,10 +32,12 @@ public class SettingsMenu : MonoBehaviour
     float delayedAutoShiftDefault = 250;
     float dasCutDelayDefault = 17;
     float softDropFactorDefault = 12;
+    float lineClearPreventMinesweepDelayDefault = 50;
     float autoRepeatRate = 50;
     float delayedAutoShift = 250;
     float dasCutDelay = 17;
     float softDropFactor = 12;
+    float lineClearPreventMinesweepDelay = 50;
 
     private void Awake()
     {
@@ -52,6 +55,7 @@ public class SettingsMenu : MonoBehaviour
         delayedAutoShift = PlayerPrefs.GetFloat("DelayedAutoShift", delayedAutoShiftDefault);
         dasCutDelay = PlayerPrefs.GetFloat("DASCutDelay", dasCutDelayDefault);
         softDropFactor = PlayerPrefs.GetFloat("SoftDropFactor", softDropFactorDefault);
+        lineClearPreventMinesweepDelay = PlayerPrefs.GetFloat("LineClearPreventMinesweepDelay", lineClearPreventMinesweepDelay);
     }
 
     // Start is called before the first frame update
@@ -86,6 +90,11 @@ public class SettingsMenu : MonoBehaviour
 
         softDropFactorSlider.slider.value = softDropFactor;
         softDropFactorSlider.slider.onValueChanged.AddListener(delegate { SoftDropFactorSlider(); });
+
+        lineClearPreventMinesweepDelaySlider.SetAdjustedValue(lineClearPreventMinesweepDelay);
+        lineClearPreventMinesweepDelaySlider.slider.onValueChanged.AddListener(delegate { LineClearPreventMinesweepDelaySlider(); });
+
+        //lineClearPreventMinesweepDelay
     }
 
     // Update is called once per frame
@@ -217,6 +226,12 @@ public class SettingsMenu : MonoBehaviour
         gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().UpdateInputValues();
     }
 
+    public void LineClearPreventMinesweepDelaySlider()
+    {
+        lineClearPreventMinesweepDelay = lineClearPreventMinesweepDelaySlider.GetAdjustedValue();
+        PlayerPrefs.SetFloat("LineClearPreventMinesweepDelay", lineClearPreventMinesweepDelay);
+    }
+
     public void ResetDefaultsHandling()
     {
         /*float autoRepeatRate = 50;
@@ -228,10 +243,12 @@ public class SettingsMenu : MonoBehaviour
         delayedAutoShift = delayedAutoShiftDefault;
         dasCutDelay = dasCutDelayDefault;
         softDropFactor = softDropFactorDefault;
+        lineClearPreventMinesweepDelay = lineClearPreventMinesweepDelayDefault;
 
         autoRepeatRateSlider.SetAdjustedValue(autoRepeatRateDefault);
         delayedAutoShiftSlider.SetAdjustedValue(delayedAutoShiftDefault);
         dasCutDelaySlider.SetAdjustedValue(dasCutDelayDefault);
         softDropFactorSlider.slider.value = softDropFactorDefault;
+        lineClearPreventMinesweepDelaySlider.SetAdjustedValue(lineClearPreventMinesweepDelayDefault);
     }
 }

@@ -657,8 +657,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 33934857829605376
-    m_Localized: Be careful clicking on a burning tile, a mistaken chord or flag
-      ends the game!
+    m_Localized: Be careful clicking on fire, any mistake will end the game
     m_Metadata:
       m_Items: []
   references:

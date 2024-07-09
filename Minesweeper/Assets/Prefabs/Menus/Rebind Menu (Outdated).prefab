@@ -939,7 +939,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &593537493044333185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3860,7 +3860,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rotate Clockwise
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
   m_sharedMaterial: {fileID: 7539457901175315547, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
@@ -5010,7 +5010,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rotate Clockwise
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
   m_sharedMaterial: {fileID: 7539457901175315547, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
@@ -10347,7 +10347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rotate Clockwise
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
   m_sharedMaterial: {fileID: 7539457901175315547, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
@@ -11253,7 +11253,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rotate Clockwise
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
   m_sharedMaterial: {fileID: 7539457901175315547, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
@@ -11932,7 +11932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rotate Clockwise
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
   m_sharedMaterial: {fileID: 7539457901175315547, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
@@ -14759,7 +14759,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rotate Clockwise
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
   m_sharedMaterial: {fileID: 7539457901175315547, guid: 6f0aea2922e38e243af29556a040a321, type: 2}
@@ -17859,7 +17859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -18269,7 +18269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Chord
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -18575,7 +18575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -18873,7 +18873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -19133,6 +19133,10 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 
@@ -19325,7 +19329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -19663,7 +19667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -19961,7 +19965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -20247,7 +20251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -20545,7 +20549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -20855,7 +20859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -21448,7 +21452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -21890,7 +21894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Flag Chord
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -22188,7 +22192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
-      value: Rotate Clockwise
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6540135164687084663, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: m_text
@@ -22416,6 +22420,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593537493044333188}
     m_Modifications:
+    - target: {fileID: 6540135164590530781, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6540135164687529664, guid: b822d9993d0c012438a7ba3cf115a776, type: 3}
       propertyPath: resetButton
       value: 

@@ -513,7 +513,7 @@ public class Group : MonoBehaviour
 
     void OnLineClear()
     {
-        if (gm == null)
+        if (gm == null || !isFalling)
             return;
         
         // Update Speed if level has changed
