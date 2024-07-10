@@ -451,6 +451,16 @@ MonoBehaviour:
     m_Localized: 
     m_Metadata:
       m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: "Retraso de entrada en Buscaminas al borrar una l\xEDnea"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: "La cantidad de tiempo que se ignoran los controles de Buscaminas
+      despu\xE9s de borrar una l\xEDnea, medido en milisegundos. Esto ayudar\xE1
+      a prevenir clics err\xF3neos."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

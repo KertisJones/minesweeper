@@ -163,7 +163,7 @@ public class HoldTetromino : MonoBehaviour
     bool isHoldPossible()
     {
         GameObject currentTetromino = tetrominoSpawner.currentTetromino;
-        if (currentTetromino == heldTetromino || currentTetromino == heldTetrominoPrevious)
+        if (currentTetromino == heldTetromino || currentTetromino == heldTetrominoPrevious || !gm.isStarted)
         {
             return false;
         }

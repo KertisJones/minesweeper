@@ -169,6 +169,8 @@ public class TileButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     bool CanMinesweepInput()
     {
+        if (!gm.isStarted)
+            return false;
         if (Time.time - gm.lastLineClearTime >= PlayerPrefs.GetFloat("LineClearPreventMinesweepDelay", 50) / 1000)
             return true;
         return false;

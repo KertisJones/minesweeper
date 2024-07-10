@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6350641693310309753
+--- !u!1001 &2333368449089988260
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,16 +8,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
-      propertyPath: boardSize.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
-      propertyPath: boardSize.y
-      value: 30
+      propertyPath: targetLines
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
       propertyPath: gameModeName
-      value: Skinny
+      value: 1-Line Impasse
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
+      propertyPath: endlessIsEnabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4058370467152388191, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
       propertyPath: m_RootOrder
@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7556580089164566377, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
       propertyPath: m_Name
-      value: Skinny Mode Variant
+      value: 1-Line Impasse Mode
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}

@@ -634,11 +634,11 @@ MonoBehaviour:
   safeEdgeTilesGained: 0
   sizeX: 10
   sizeY: 24
-  currentTetromino: {fileID: 0}
   previousTetromino: {fileID: 0}
   isGameOver: 0
   isEndless: 0
   isPaused: 0
+  isStarted: 0
   isTitleMenu: 0
   hasQuit: 0
   lineClearInstantly: 0
@@ -661,7 +661,10 @@ MonoBehaviour:
   tSpinSingle: 0
   tSpinDouble: 0
   tSpinTriple: 0
+  lastLineClearTime: 0
   numBurningTiles: 0
+  numFrozenTiles: 0
+  numWetTiles: 0
   tile: {fileID: 4675045439334439888, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
   tileGroup: {fileID: 5635427920445249702, guid: 0eb1fa25a92ff8f47a33fb0cac22aa35, type: 3}
   backgroundAnimated: {fileID: 241208533}
@@ -684,6 +687,10 @@ MonoBehaviour:
   gameOverSound: {fileID: 8300000, guid: a994636b57e1d714b8b09e4270e1b2a3, type: 3}
   multiplierCountdownSound: {fileID: 8300000, guid: 10199842e38ec3b4aadb1ac50fd79a85, type: 3}
   multiplierCountdownSoundFinal: {fileID: 8300000, guid: f96700b5304576543b0ce2d10c9d03a7, type: 3}
+  startupCountdownSound: {fileID: 8300000, guid: ffccde34244e6d64398290f3937d5d3f, type: 3}
+  startupCountdownSoundFinal: {fileID: 8300000, guid: 857ca281b8898fc408bd9109ac009aa7, type: 3}
+  startupCountdownSound2: {fileID: 8300000, guid: 8f6e7f8a604b2c04e92959070c9606f7, type: 3}
+  startupCountdownSoundFinal2: {fileID: 8300000, guid: ad5472a9b7f2e8542a9f889a3c98e6e1, type: 3}
   revealStreakManual100Sound: {fileID: 8300000, guid: ffb63cd94d267bf45988d953e42e65db, type: 3}
 --- !u!82 &9133358887212656289
 AudioSource:

@@ -600,6 +600,17 @@ MonoBehaviour:
     m_Localized: "8 pol\xED odhaleno nebo vytvo\u0159eno"
     m_Metadata:
       m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: "Zpo\u017Ed\u011Bn\xED vstupu v Hleda\u010Di min p\u0159i vy\u010Di\u0161t\u011Bn\xED
+      \u0159ady"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: "Mno\u017Estv\xED \u010Dasu, po kter\xE9 jsou ovl\xE1d\xE1n\xED
+      Hleda\u010De min ignorov\xE1na po vy\u010Di\u0161t\u011Bn\xED \u0159ady, m\u011B\u0159eno
+      v milisekund\xE1ch. To pom\u016F\u017Ee zabr\xE1nit chybn\xFDm kliknut\xEDm."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -595,6 +595,17 @@ MonoBehaviour:
     m_Localized: Spazzata Immediata
     m_Metadata:
       m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: Ritardo di input in Campo Minato durante la cancellazione di una
+      linea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: "Il tempo durante il quale i comandi di Campo Minato vengono ignorati
+      dopo la cancellazione di una linea, misurato in millisecondi. Questo aiuter\xE0
+      a prevenire i clic errati."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

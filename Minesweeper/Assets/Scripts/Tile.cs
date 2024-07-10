@@ -53,7 +53,7 @@ public class Tile : MonoBehaviour
     float putOutTime = 6f;
     float evaporateTime = 10f;
     float auraDecayClock = 0;
-    private bool burnoutInvisible = false;
+    public bool burnoutInvisible = false;
     float auraClock = 0;
     List<AuraType>  adjacentAuras = new List<AuraType>();
     public Material[] auraMaterials;    
@@ -94,8 +94,9 @@ public class Tile : MonoBehaviour
     public SpriteRenderer auraBackgroundOverlayImage;
     TextMeshProUGUI text;
     Light2D light;
-    
-    GameManager gm;
+
+    [HideInInspector]
+    public GameManager gm;
     Camera cam;
     HoldTetromino holdTetromino;
     GameModifiers gameMods;
@@ -322,21 +323,19 @@ public class Tile : MonoBehaviour
 
             if (nearbyMines == 0 || aura == AuraType.frozen)
                 myText = "";
+
             if (isMine)
             {
                 myText = "*";
                 text.GetComponent<TextOutline>().DisableOutline();
             }
-                
-            else if (!gm.isTitleMenu) // During Credits, hide numbers
-            {
-                if (gameMods.minesweeperTextType == GameModifiers.MinesweeperTextType.credits)
-                    myText = "";
-                else if (gameMods.minesweeperTextType == GameModifiers.MinesweeperTextType.dots)
-                    myText = "©";
-            }
-                
-                
+
+            if (gm.textType == GameModifiers.MinesweeperTextType.credits)
+                myText = "";
+            else if (gm.textType == GameModifiers.MinesweeperTextType.dots)
+                myText = "©";
+
+
         }
         else
         {

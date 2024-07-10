@@ -59,7 +59,9 @@ public class SoundManager : MonoBehaviour
         currentBurningTiles = gm.numBurningTiles;
         float tilesNeededForMaxVolume = 40;
         float tilesAdjusted = Mathf.Min(currentBurningTiles, tilesNeededForMaxVolume);
-        fireSource.volume = (tilesAdjusted / tilesNeededForMaxVolume) * PlayerPrefs.GetFloat("SoundVolume", 0.5f);
+
+        if (tilesAdjusted > 0) 
+            fireSource.volume = (tilesAdjusted / tilesNeededForMaxVolume) * PlayerPrefs.GetFloat("SoundVolume", 0.5f);
     }
 
     void LateUpdate()

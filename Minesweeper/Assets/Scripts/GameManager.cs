@@ -7,6 +7,7 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.U2D;
 using DG.Tweening;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
     public float scoreMultiplierDecayPerTick= 0.1f;
     public float scoreMultiplierTimer = 0f;
     private int scoreMultiplierTimerCountdown = -1;
+    private int startupTimerCountdown = 1;
     private float lastMultiplierTick = 0;
     public int comboLinesFilled = -1; // C=-1; +1 when mino locks & line filled; C= when mino locks & line not filled
     public bool lastFillWasDifficult = false; // Difficult fills are Tetrises or T-Spins
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour
     public bool isGameOver = false;
     public bool isEndless = false;
     public bool isPaused = false;
+    public bool isStarted = false;
     public bool isTitleMenu = false;
     bool canPause = true;
     public bool hasQuit = false;
@@ -90,6 +93,10 @@ public class GameManager : MonoBehaviour
     public int tSpinTriple;
 
     public float lastLineClearTime = 0;
+
+    // Game Mods
+    [HideInInspector]
+    public GameModifiers.MinesweeperTextType textType = GameModifiers.MinesweeperTextType.numbers;
 
     public int numBurningTiles = 0;
     public int numFrozenTiles = 0;
@@ -128,6 +135,10 @@ public class GameManager : MonoBehaviour
     public AudioClip gameOverSound;
     public AudioClip multiplierCountdownSound;
     public AudioClip multiplierCountdownSoundFinal;
+    public AudioClip startupCountdownSound;
+    public AudioClip startupCountdownSoundFinal;
+    public AudioClip startupCountdownSound2;
+    public AudioClip startupCountdownSoundFinal2;
     public AudioClip revealStreakManual100Sound;
 
     public delegate void LineClearEvent(int lines);
@@ -166,22 +177,24 @@ public class GameManager : MonoBehaviour
 
         GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().runs += 1;
 
-        if (!isTitleMenu)   
-        {            
-            linesClearedTarget = gameMods.targetLines;
-            timeLimit = gameMods.timeLimit;
+        textType = gameMods.minesweeperTextType;
 
-            if (gameMods.lineClearTrigger == GameModifiers.LineClearTriggerType.clearInstantly)
-                lineClearInstantly = true;
-            else
-                lineClearInstantly = false;
+        linesClearedTarget = gameMods.targetLines;
+        timeLimit = gameMods.timeLimit;
 
-            sizeX = Mathf.Max((int)gameMods.boardSize.x, 4);
-            sizeY = Mathf.Max((int)gameMods.boardSize.y + 4, 8);
-        }
+        if (gameMods.lineClearTrigger == GameModifiers.LineClearTriggerType.clearInstantly)
+            lineClearInstantly = true;
+        else
+            lineClearInstantly = false;
+
+        sizeX = Mathf.Max((int)gameMods.boardSize.x, 4);
+        sizeY = Mathf.Max((int)gameMods.boardSize.y + 4, 8);
 
         BuildGameBoard();        
         startTime = Time.time;
+        if (gameMods.timeLimit == Mathf.Infinity && !gameMods.detailedTimer)
+            isStarted = true;
+
         //PopulateMines();
     }
 
@@ -229,7 +242,34 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
+    {
+        if (!isStarted)
+        {
+            GetComponent<Light2D>().intensity = ((float)startupTimerCountdown / 4) * 0.6f;
+            if (Time.time - startTime >= (float)startupTimerCountdown - 0.5f)
+            {
+                //Debug.Log(startupTimerCountdown);
+                switch (startupTimerCountdown)
+                {
+                    case 4:
+                        AudioSource.PlayClipAtPoint(startupCountdownSoundFinal, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        AudioSource.PlayClipAtPoint(startupCountdownSoundFinal2, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        GetComponent<Light2D>().intensity = 1;
+                        isStarted = true;
+                        startTime = Time.time;
+                        break;
+                    default:                        
+                        AudioSource.PlayClipAtPoint(startupCountdownSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        AudioSource.PlayClipAtPoint(startupCountdownSound2, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        break;
+                }
+                startupTimerCountdown++;
+            }
+            
+        }
+        
+
+
         //Debug.Log((Mathf.Floor(0.04f * 100) / 100) + 0.01f);
         if (scoreMultiplierTimer > 0 && !isGameOver)
             scoreMultiplierTimer -= Time.deltaTime;
@@ -406,6 +446,14 @@ public class GameManager : MonoBehaviour
         float cameraSizeYprefer = ((sizeY - 4) / 2f) + 0.5f; //10.5f; Y Bounds
         float cameraSizeXprefer = (sizeX + 28) * 0.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth); //10f; X Bounds
 
+        if (isTitleMenu)
+        {
+            cameraSizeXprefer = (sizeX * 2 + 18) * 0.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth);
+
+            cameraSizeXprefer = Mathf.Max(cameraSizeXprefer, 10.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth));
+            cameraSizeYprefer = Mathf.Max(cameraSizeYprefer, 10.5f);
+        }
+
         float cameraSize = Mathf.Max(cameraSizeXprefer, cameraSizeYprefer);
         if (sizeX == 10 && sizeY == 24 && (Mathf.Floor(((float)mainCamera.pixelWidth / mainCamera.pixelHeight) * 100) / 100) == Mathf.Floor((16f / 9f) * 100) / 100)
             cameraSize = cameraSizeYprefer;
@@ -416,7 +464,31 @@ public class GameManager : MonoBehaviour
 
         if (isTitleMenu)
         {
-            cameraX *= -1;
+            // cameraSize = ((sizeY - 4) / 2f) + 0.5f;
+            // cameraSize - .5f = (sizeY - 4) / 2f
+            // (cameraSize - .5f) * 2 = sizeY - 4
+            // ((cameraSize - .5f) * 2) + 4 = sizeY
+            float yscaleModifier = (cameraSize - 0.5f);
+            float sizeModifier = Mathf.Max((cameraSize / 10.5f), 1);
+
+            cameraX = Mathf.Max(cameraX - sizeX - 1, -4.5f);
+
+            cameraY = yscaleModifier - sizeModifier;
+            cameraY = Mathf.Max(cameraY, 9);
+
+            Transform buttonsTransform = GameObject.FindObjectOfType<DemoTitleScreen>().gameObject.transform;
+            /*float sizeModifier = Mathf.Max(cameraX / (10.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth)),
+                cameraY / (10.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth)),
+                1);*/
+            
+            
+
+            sizeModifier = Mathf.Max(yscaleModifier / 10.5f, 1);
+
+            
+
+            buttonsTransform.localScale = new Vector3(sizeModifier, sizeModifier, sizeModifier);
+            buttonsTransform.localPosition = new Vector3(Mathf.Min(-7.5f, sizeX / -4), buttonsTransform.localPosition.y);
         }
 
         mainCamera.transform.position = new Vector3(cameraX, cameraY, -10);
@@ -439,13 +511,6 @@ public class GameManager : MonoBehaviour
         backgroundWallRight.GetComponent<SpriteRenderer>().size = new Vector2(1, backgroundHeight);
         backgroundFloor.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, 1);
         backgroundAnimated.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, backgroundHeight - 1);
-
-        if (!isTitleMenu)
-        {
-            
-
-            
-        }
     }
 
     /*void BuildMinesweeperBoard()
@@ -982,7 +1047,8 @@ public class GameManager : MonoBehaviour
                 if (!(tile.isRevealed && !tile.isMine)
                     && !(!tile.isRevealed && tile.isMine && tile.isFlagged))
                 {
-                    if (tile.aura != Tile.AuraType.frozen)
+                    if (tile.aura != Tile.AuraType.frozen
+                        && !tile.burnoutInvisible)
                         isSolved = false;
                 }                    
             }
@@ -1419,6 +1485,8 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver)
             return endtime;
+        if (!isStarted)
+            return 0;
         return Time.time - startTime;
     }
     public float GetScore()

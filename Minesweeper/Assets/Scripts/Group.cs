@@ -530,12 +530,13 @@ public class Group : MonoBehaviour
         // Don't go any further if this shouldn't be moved 
         if (gm == null)
             return;
-        if (gm.isGameOver)
+
+        if (gm.isGameOver 
+            || gm.isPaused 
+            || !gm.isStarted
+            || isDisplay)
             return;
-        if (gm.isPaused)
-            return;
-        if (isDisplay)
-            return;
+
         if (isHeld)
         {
             bottomHeightLowest = 99999; // Reset the minimum bottom height for when this is spawned again
@@ -1147,6 +1148,9 @@ public class Group : MonoBehaviour
 
     void Rotate (int dir = -1)
     {
+        if (!gm.isStarted)
+            return;
+
         Vector3 localPivot = pivotStaticBackup;
         if (pivot != null)
             localPivot = pivot.localPosition;
@@ -1517,6 +1521,9 @@ public class Group : MonoBehaviour
 
     void Move(float dir = 1) // -1 is Left, 1 is Right
     {
+        if (!gm.isStarted) 
+            return;
+
         // Modify position
         transform.position += new Vector3(dir, 0, 0);
 

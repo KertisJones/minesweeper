@@ -595,6 +595,16 @@ MonoBehaviour:
     m_Localized: "8 p\xF3l odkrytych lub stworzonych"
     m_Metadata:
       m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: "Op\xF3\u017Anienie wej\u015Bcia w Saperze przy usuwaniu linii"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: "Czas, przez kt\xF3ry sterowanie w Saperze jest ignorowane po usuni\u0119ciu
+      linii, mierzony w milisekundach. To pomo\u017Ce zapobiec b\u0142\u0119dnym
+      klikni\u0119ciom."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

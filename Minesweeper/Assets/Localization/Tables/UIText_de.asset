@@ -597,6 +597,16 @@ MonoBehaviour:
     m_Localized: 8 Kacheln aufgedeckt oder erstellt
     m_Metadata:
       m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: "Eingabeverz\xF6gerung bei Minesweeper beim L\xF6schen einer Zeile"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: "Die Zeitspanne, in der die Steuerung von Minesweeper nach dem L\xF6schen
+      einer Zeile ignoriert wird, gemessen in Millisekunden. Dies hilft, Fehlklicks
+      zu verhindern."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

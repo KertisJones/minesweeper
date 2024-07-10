@@ -660,6 +660,15 @@ MonoBehaviour:
     m_Localized: Be careful clicking on fire, any mistake will end the game
     m_Metadata:
       m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: Minesweeper Input Delay on Line Clear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: The amount of time that minesweeper controls are ignored after a
+      line clear, measured in milliseconds. This will help prevent misclicks.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

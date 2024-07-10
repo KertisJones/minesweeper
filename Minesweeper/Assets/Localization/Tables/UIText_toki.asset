@@ -642,6 +642,15 @@ MonoBehaviour:
       sike. lawa ante ni li tenpo sike ona.
     m_Metadata:
       m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: pali pi awen toki kepeken lawa linja pi mije poka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: tenpo mute lili pi awen kepeken lawa pi mije poka, la mi weka e
+      ijo pi linja li sin, li pona tawa weka poki ike.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

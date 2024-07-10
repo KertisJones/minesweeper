@@ -600,6 +600,17 @@ MonoBehaviour:
     m_Localized: "R\xE9v\xE9lation \xC9lev\xE9e (Rang\xE9e 16 ou plus)"
     m_Metadata:
       m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: "D\xE9lai de saisie dans le D\xE9mineur lors de la suppression d'une
+      ligne"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: "La dur\xE9e pendant laquelle les contr\xF4les du D\xE9mineur sont
+      ignor\xE9s apr\xE8s la suppression d'une ligne, mesur\xE9e en millisecondes.
+      Cela aidera \xE0 \xE9viter les clics accidentels."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

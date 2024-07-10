@@ -1778,6 +1778,7 @@ MonoBehaviour:
   is8Triggered: 0
   isFailedToChord: 0
   aura: 0
+  burnoutInvisible: 0
   auraMaterials:
   - {fileID: 2100000, guid: 28a9edba0d4fa3445a34d9c2dfe56ea5, type: 2}
   - {fileID: 2100000, guid: 755ab6cf6ce1a5d4eb3b15181790960c, type: 2}
@@ -3137,7 +3138,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &3443823561176173273
 MonoBehaviour:

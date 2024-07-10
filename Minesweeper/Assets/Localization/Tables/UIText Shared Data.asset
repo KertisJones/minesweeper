@@ -643,6 +643,14 @@ MonoBehaviour:
     m_Key: Menu GameOver BurnSubtitle
     m_Metadata:
       m_Items: []
+  - m_Id: 35060915790405632
+    m_Key: Menu lineClearPreventMinesweepDelay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Key: Tooltip lineClearPreventMinesweepDelay
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -19,7 +19,8 @@ public class SetRandomSupporterName : MonoBehaviour
         "Draconis Eltanin", // Italian
         "Alexuty", // Screenshot design
         "Poinl", // Music
-        "Star Cubey",
+        "Star Cubey", // Toki Pona, mod
+        "ThomasZQY", // Chinese
 
         //Special Thanks
         // Influencers
@@ -58,13 +59,15 @@ public class SetRandomSupporterName : MonoBehaviour
         "Alien Sauce_"
     };
     public TextMeshProUGUI supportText;
-    GameModifiers gameMods;
+    GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
-        gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
+        if (GetComponentInParent<Tile>() == null)
+            return;
+        gm = GetComponentInParent<Tile>().gm;
 
-        if(gameMods.minesweeperTextType == GameModifiers.MinesweeperTextType.credits && !GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().isTitleMenu)
+        if(gm.textType == GameModifiers.MinesweeperTextType.credits)// && !GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().isTitleMenu)
             this.gameObject.SetActive(true);
         else
             this.gameObject.SetActive(false);
