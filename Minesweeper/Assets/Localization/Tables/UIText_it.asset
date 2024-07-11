@@ -606,6 +606,10 @@ MonoBehaviour:
       a prevenire i clic errati."
     m_Metadata:
       m_Items: []
+  - m_Id: 35518550016778240
+    m_Localized: Vai!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

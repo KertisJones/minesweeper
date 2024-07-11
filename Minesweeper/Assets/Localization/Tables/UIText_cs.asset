@@ -611,6 +611,10 @@ MonoBehaviour:
       v milisekund\xE1ch. To pom\u016F\u017Ee zabr\xE1nit chybn\xFDm kliknut\xEDm."
     m_Metadata:
       m_Items: []
+  - m_Id: 35518550016778240
+    m_Localized: Jdi!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

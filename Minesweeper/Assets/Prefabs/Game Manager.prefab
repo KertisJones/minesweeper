@@ -662,6 +662,7 @@ MonoBehaviour:
   tSpinDouble: 0
   tSpinTriple: 0
   lastLineClearTime: 0
+  textType: 0
   numBurningTiles: 0
   numFrozenTiles: 0
   numWetTiles: 0
@@ -678,6 +679,7 @@ MonoBehaviour:
   backgroundWallRight: {fileID: 1915796633}
   backgroundFloor: {fileID: 1245195509}
   guiCanvas: {fileID: 0}
+  floatingText: {fileID: 1334009076711670324, guid: 78a18002c80e76c439880221c1fc2321, type: 3}
   lineClearSound: {fileID: 8300000, guid: cad7ca4f9e0fa3e4494e767134f5b835, type: 3}
   lineFullSound1: {fileID: 8300000, guid: a7bde30d6b46a494a89e75341386d6b8, type: 3}
   lineFullSound2: {fileID: 8300000, guid: 0d9fa3c551940cb4db5e834b505cbf76, type: 3}

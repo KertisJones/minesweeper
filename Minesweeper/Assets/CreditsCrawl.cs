@@ -23,17 +23,21 @@ public class CreditsCrawl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        textColor = colorSprite.color;
-        colorSprite.color = Color.clear;
+        if (colorSprite != null)
+        {
+            textColor = colorSprite.color;
+            colorSprite.color = Color.clear;
 
-        colorSprite.DOColor(textColor, 20f).SetUpdate(true).SetEase(Ease.InOutSine);
+            colorSprite.DOColor(textColor, 20f).SetUpdate(true).SetEase(Ease.InOutSine);
+        }
 
         this.transform.DOLocalMoveY(target, creditsDuration).SetEase(Ease.InOutSine).OnComplete(NextScene);
     }
 
     void Update()
     {
-        continueText.color = colorSprite.color;
+        if (continueText != null)
+            continueText.color = colorSprite.color;
     }
 
     void NextScene()

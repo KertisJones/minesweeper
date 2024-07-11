@@ -651,6 +651,10 @@ MonoBehaviour:
     m_Key: Tooltip lineClearPreventMinesweepDelay
     m_Metadata:
       m_Items: []
+  - m_Id: 35518550016778240
+    m_Key: GUI Go
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

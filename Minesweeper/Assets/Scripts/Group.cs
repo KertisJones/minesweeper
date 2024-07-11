@@ -197,7 +197,7 @@ public class Group : MonoBehaviour
         // Don't go any further if this shouldn't be moved 
         if (gm == null)
             return;
-        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
+        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling || !gm.isStarted)
             return;
 
         buttonSoftDropHeld = true;
@@ -218,7 +218,7 @@ public class Group : MonoBehaviour
         // Don't go any further if this shouldn't be moved 
         if (gm == null)
             return;
-        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
+        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling || !gm.isStarted)
             return;
         
         if (canHardDrop) //((Input.GetKeyDown(KeyCode.Space)  || Input.GetKeyDown(KeyCode.Keypad8)) && lastFall > 0 || Input.GetKeyDown(KeyCode.Return)))
@@ -625,7 +625,7 @@ public class Group : MonoBehaviour
     {
         if (gm == null)
             return;
-        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling)
+        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling || !gm.isStarted)
             return;
 
         int distToFall = basicFallDistance;
@@ -639,6 +639,8 @@ public class Group : MonoBehaviour
 
     public void Fall(int fallDistance, bool isHardDrop = false, bool isManualFall = true)
     {
+        if (!gm.isStarted)
+            return;
         if (fallDistance > maximumFallDistance)
             fallDistance = Mathf.Max(maximumFallDistance, 1);
         //if (fallDistance == 0 && !isHardDrop)

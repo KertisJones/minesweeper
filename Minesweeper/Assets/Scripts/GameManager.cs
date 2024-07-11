@@ -8,6 +8,8 @@ using UnityEngine.UI;
 using UnityEngine.U2D;
 using DG.Tweening;
 using UnityEngine.Rendering.Universal;
+using TMPro;
+using UnityEngine.Localization.Settings;
 
 public class GameManager : MonoBehaviour
 {
@@ -125,6 +127,7 @@ public class GameManager : MonoBehaviour
     public GameObject backgroundWallRight;
     public GameObject backgroundFloor;
     public GameObject guiCanvas;
+    public GameObject floatingText;
 
     public AudioClip lineClearSound;
     public AudioClip lineFullSound1;
@@ -248,17 +251,22 @@ public class GameManager : MonoBehaviour
             GetComponent<Light2D>().intensity = ((float)startupTimerCountdown / 4) * 0.6f;
             if (Time.time - startTime >= (float)startupTimerCountdown - 0.5f)
             {
+                GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 2, 0), Quaternion.identity, guiCanvas.transform);
                 //Debug.Log(startupTimerCountdown);
                 switch (startupTimerCountdown)
-                {
-                    case 4:
+                {                    
+                    case 4:                        
+                        floater.GetComponent<TextMeshProUGUI>().text = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Go"); ;
+
                         AudioSource.PlayClipAtPoint(startupCountdownSoundFinal, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                         AudioSource.PlayClipAtPoint(startupCountdownSoundFinal2, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                         GetComponent<Light2D>().intensity = 1;
                         isStarted = true;
                         startTime = Time.time;
                         break;
-                    default:                        
+                    default:
+                        floater.GetComponent<TextMeshProUGUI>().text = (4 - startupTimerCountdown).ToString();
+
                         AudioSource.PlayClipAtPoint(startupCountdownSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                         AudioSource.PlayClipAtPoint(startupCountdownSound2, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                         break;

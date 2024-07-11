@@ -651,6 +651,10 @@ MonoBehaviour:
       ijo pi linja li sin, li pona tawa weka poki ike.
     m_Metadata:
       m_Items: []
+  - m_Id: 35518550016778240
+    m_Localized: "\u8D70\uFF01"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

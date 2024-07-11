@@ -8,6 +8,7 @@ namespace TMPro.Examples
     public class TMP_FrameRateCounter : MonoBehaviour
     {
         public float UpdateInterval = 5.0f;
+        public float scale = 1;
         private float m_LastInterval = 0;
         private int m_Frames = 0;
 
@@ -33,6 +34,8 @@ namespace TMPro.Examples
             Application.targetFrameRate = 9999;
 
             GameObject frameCounter = new GameObject("Frame Counter");
+
+            frameCounter.transform.localScale = new Vector3(scale, scale, scale);
 
             m_TextMeshPro = frameCounter.AddComponent<TextMeshPro>();
             m_TextMeshPro.font = Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");

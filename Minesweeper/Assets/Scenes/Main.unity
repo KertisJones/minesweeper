@@ -2022,6 +2022,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bouncy Logo
       objectReference: {fileID: 0}
+    - target: {fileID: 2107795396953283180, guid: 8b1d3b115b4c94d4a92c9365821fc072, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2107795396953283181, guid: 8b1d3b115b4c94d4a92c9365821fc072, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -10130,6 +10134,14 @@ PrefabInstance:
     - target: {fileID: 5559937975266099271, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_text
       value: "\u987A\u65F6\u9488\u65CB\u8F6C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5573757608210826061, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5573757608210826061, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6283528520868863019, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
