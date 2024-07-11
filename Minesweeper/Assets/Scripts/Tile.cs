@@ -482,6 +482,7 @@ public class Tile : MonoBehaviour
                     auraOverlayImage.enabled = false;
                     auraBackgroundOverlayImage.enabled = false;
                     explodedMineBackground.enabled = true;
+                    UpdateButtonJiggle();
                 }
                 gm.EndGame();
             }
