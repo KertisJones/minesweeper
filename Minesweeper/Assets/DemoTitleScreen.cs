@@ -13,6 +13,11 @@ public class DemoTitleScreen : MonoBehaviour
     public GameObject[] buttonsUnlockedByDemoVisit;
     public GameObject lockedByDemoVisitText;
     public TMP_Text callToActionText;
+
+    // Positioning
+    public GameObject bouncyLogo;
+    public Transform topLeftBounds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +37,8 @@ public class DemoTitleScreen : MonoBehaviour
                 lockedByDemoVisitText.SetActive(true);
                 foreach (GameObject button in buttonsUnlockedByDemoVisit)
                 {
-                    button.GetComponent<Button>().interactable = false; 
-                    button.GetComponent<ButtonJiggle>().jiggleIsEnabled = false;                   
+                    button.GetComponent<Button>().interactable = false;
+                    button.GetComponent<ButtonJiggle>().jiggleIsEnabled = false;
                 }
                 callToActionText.text = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Menu SteamCallToActionUnclicked"); // "Unlock bonus game modes!"
             }
@@ -63,5 +68,22 @@ public class DemoTitleScreen : MonoBehaviour
     public void SetDemoVisitFalse()
     {
         PlayerPrefs.SetInt("DemoVisit", 0);
+    }
+
+    public void ResetStartingPositionsInChildren()
+    {
+        IdleJiggle[] childJigglesIdle = GetComponentsInChildren<IdleJiggle>();
+        foreach (var idleJiggle in childJigglesIdle)
+        {
+            Debug.Log(idleJiggle);
+            idleJiggle.SetNewStartingValues();
+        }
+
+        ButtonJiggle[] childJigglesButton = GetComponentsInChildren<ButtonJiggle>();
+        foreach (var buttonJiggle in childJigglesButton)
+        {
+            Debug.Log(buttonJiggle);
+            buttonJiggle.SetNewStartingValues();
+        }
     }
 }

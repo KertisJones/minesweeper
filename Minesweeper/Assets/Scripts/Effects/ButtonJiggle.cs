@@ -27,12 +27,7 @@ public class ButtonJiggle : MonoBehaviour
     public bool startAtScaleZero = false;
     void Start()
     {
-        //cache the scale of the object
-        startScale = this.transform.localScale;
-        startZPos = this.transform.position.z;
-
-        if (startAtScaleZero)
-            this.transform.localScale = Vector3.zero;        
+        SetNewStartingValues();
     }
 
     /*IEnumerator PlayLoopingAnimations()
@@ -161,6 +156,16 @@ public class ButtonJiggle : MonoBehaviour
                 if (shrinkToZeroTween.IsPlaying())
                     return;
         this.transform.DOScale(startScale, scaleTransitionTime).SetUpdate(true);
+    }
+
+    public void SetNewStartingValues()
+    {
+        //cache the scale of the object
+        startScale = this.transform.localScale;
+        startZPos = this.transform.position.z;
+
+        if (startAtScaleZero)
+            this.transform.localScale = Vector3.zero;
     }
 
 

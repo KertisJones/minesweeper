@@ -12,6 +12,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 763888942114521759, guid: 7911eb493f4fb9d4fa83a93c38eb2c73, type: 3}
+      propertyPath: boardSize.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 763888942114521759, guid: 7911eb493f4fb9d4fa83a93c38eb2c73, type: 3}
       propertyPath: gameModeDisplayName
       value: Dots
       objectReference: {fileID: 0}

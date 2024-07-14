@@ -450,8 +450,66 @@ public class GameManager : MonoBehaviour
             safeEdgeTilesGained = -1;
             AddSafeTileToEdges();            
         }
+        // Get the two points that need to be visible
+        bool previewBuffer = false;
+        float guiBuffer = 12f;
+        Vector3 bottomLeft = new Vector3(-1.5f - guiBuffer, -1.5f);
+        Vector3 topRight = new Vector3(sizeX + 1.5f + guiBuffer, sizeY - 4.5f);
+        if (previewBuffer)
+            topRight.y += 4;
 
-        float cameraSizeYprefer = ((sizeY - 4) / 2f) + 0.5f; //10.5f; Y Bounds
+        DemoTitleScreen demoTitleScreen = GameObject.FindObjectOfType<DemoTitleScreen>();
+        Transform buttonsBoundTransform = null;
+        if (isTitleMenu)
+        {
+            /*cameraSizeXprefer = (sizeX * 2 + 18) * 0.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth);
+
+            cameraSizeXprefer = Mathf.Max(cameraSizeXprefer, 10.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth));
+            cameraSizeYprefer = Mathf.Max(cameraSizeYprefer, 10.5f);*/
+            buttonsBoundTransform = demoTitleScreen.topLeftBounds;
+
+            bottomLeft = new Vector3(Mathf.Min((sizeX + 1.5f) * -1, buttonsBoundTransform.position.x), -1.5f);
+            topRight = new Vector3(sizeX + 1.5f, Mathf.Max(sizeY - 4.5f, buttonsBoundTransform.position.y));
+        }
+
+        Vector3 centerPoint = (bottomLeft + topRight) / 2f;
+        float distance = Vector3.Distance(bottomLeft, topRight);
+        float horizontalDistance = Mathf.Abs(bottomLeft.x - topRight.x);
+        float verticalDistance = Mathf.Abs(bottomLeft.y - topRight.y);
+        //float greaterDistance = Mathf.Max(horizontalDistance, verticalDistance);
+
+
+        float aspectRatio = mainCamera.aspect;
+        float orthographicSize = verticalDistance / 2f;
+        
+
+        
+
+        // Adjust orthographic size based on the aspect ratio
+        if (horizontalDistance / aspectRatio > verticalDistance) // Landscape
+        {
+            orthographicSize = horizontalDistance / (2f * aspectRatio);
+        }
+        else // Portrait
+        {
+            orthographicSize = verticalDistance / 2f;            
+        }
+
+        float sizeModifier = orthographicSize / mainCamera.orthographicSize;
+        mainCamera.transform.position = new Vector3(centerPoint.x, centerPoint.y, mainCamera.transform.position.z);
+        mainCamera.orthographicSize = orthographicSize;
+
+        if (isTitleMenu)
+        {
+            Transform buttonsTransform = demoTitleScreen.gameObject.transform;
+            buttonsTransform.localScale = new Vector3(sizeModifier, sizeModifier, sizeModifier);
+            buttonsTransform.localPosition = new Vector3(bottomLeft.x + horizontalDistance / 4, mainCamera.ScreenToWorldPoint(new Vector3(0, (float)Screen.height / 2, 0)).y);
+            demoTitleScreen.bouncyLogo.transform.position = new Vector3((sizeX / 2f) - 0.5f, topRight.y);
+            demoTitleScreen.ResetStartingPositionsInChildren();
+        }
+        
+
+        /*float cameraSizeYprefer = ((sizeY - 4) / 2f) + 0.5f; //10.5f; Y Bounds
         float cameraSizeXprefer = (sizeX + 28) * 0.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth); //10f; X Bounds
 
         if (isTitleMenu)
@@ -479,15 +537,18 @@ public class GameManager : MonoBehaviour
             float yscaleModifier = (cameraSize - 0.5f);
             float sizeModifier = Mathf.Max((cameraSize / 10.5f), 1);
 
-            cameraX = Mathf.Max(cameraX - sizeX - 1, -4.5f);
+            //cameraX = (cameraSize / 4) - (sizeX * sizeModifier) / 4 - 1; // Mathf.Max(cameraX - sizeX - 1, -4.5f);
+            //cameraX = (cameraSize / ((float)mainCamera.pixelHeight / mainCamera.pixelWidth)) / -4;
+            float camWithCoord00AtBottomLeft = ((float)mainCamera.pixelWidth / mainCamera.pixelHeight) * cameraSize;
+            cameraX = camWithCoord00AtBottomLeft - (sizeX + 1.5f) * 1.5f;// (camWithCoord00AtBottomLeft * -1) + sizeX * 1.5f;// - 1.5f;
 
             cameraY = yscaleModifier - sizeModifier;
             cameraY = Mathf.Max(cameraY, 9);
 
             Transform buttonsTransform = GameObject.FindObjectOfType<DemoTitleScreen>().gameObject.transform;
-            /*float sizeModifier = Mathf.Max(cameraX / (10.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth)),
+            //float sizeModifier = Mathf.Max(cameraX / (10.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth)),
                 cameraY / (10.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth)),
-                1);*/
+                1);
             
             
 
@@ -496,22 +557,28 @@ public class GameManager : MonoBehaviour
             
 
             buttonsTransform.localScale = new Vector3(sizeModifier, sizeModifier, sizeModifier);
-            buttonsTransform.localPosition = new Vector3(Mathf.Min(-7.5f, sizeX / -4), buttonsTransform.localPosition.y);
+            //buttonsTransform.localPosition = new Vector3(Mathf.Min(-7.5f, sizeX / -4), buttonsTransform.localPosition.y);
+            buttonsTransform.localPosition = new Vector3(mainCamera.ScreenToWorldPoint(new Vector3((float)Screen.width / 4, 0, 0)).x * sizeModifier, buttonsTransform.localPosition.y);
+            // buttonsTransform.localPosition = new Vector3(mainCamera.ScreenToWorldPoint(new Vector3((float)mainCamera.pixelWidth / 4,0,0)).x, buttonsTransform.localPosition.y);//Mathf.Min(-7.5f, sizeX / -4)
+
         }
 
         mainCamera.transform.position = new Vector3(cameraX, cameraY, -10);
         mainCamera.orthographicSize = cameraSize;
+        */
 
-        float canvasHeight = (450 / 10.5f) * cameraSize;
+            float canvasHeight = (450 / 10.5f) * mainCamera.orthographicSize;
         if (guiCanvas != null)
         {
-            guiCanvas.transform.position = new Vector3(cameraX, cameraY, 0);
-            guiCanvas.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(canvasHeight * ((float)mainCamera.pixelWidth / mainCamera.pixelHeight), canvasHeight);
+            guiCanvas.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, 0);
+            guiCanvas.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(canvasHeight * aspectRatio, canvasHeight);
         }
 
-        float backgroundHeight = sizeY + 1;
+        /*float backgroundHeight = sizeY + 1;
         if (cameraSize > cameraSizeYprefer)
-            backgroundHeight = sizeY - 3;
+            backgroundHeight = sizeY - 3;*/
+
+        float backgroundHeight = sizeY - 3;
 
         backgroundWallRight.transform.position = new Vector3(sizeX - 0.5f, -1.5f, 1);
 
