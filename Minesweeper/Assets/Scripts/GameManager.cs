@@ -10,6 +10,7 @@ using DG.Tweening;
 using UnityEngine.Rendering.Universal;
 using TMPro;
 using UnityEngine.Localization.Settings;
+using static GameManager;
 
 public class GameManager : MonoBehaviour
 {
@@ -160,6 +161,8 @@ public class GameManager : MonoBehaviour
     public static event TileSolveEvent OnTileSolveOrLandEvent;
     public delegate void TSpinEvent(int dir);
     public static event TSpinEvent OnTSpinEvent;
+    public delegate void ResetStartingPositionsEvent();
+    public static event ResetStartingPositionsEvent OnResetStartingPositionsEvent;
 
     private void OnApplicationQuit() 
     {
@@ -225,6 +228,7 @@ public class GameManager : MonoBehaviour
         OnMinoLockEvent = null;
         OnTileSolveOrLandEvent = null;
         OnTSpinEvent = null;
+        OnResetStartingPositionsEvent = null;
         transform.DOKill();
     }
     void PressEscape()
@@ -450,11 +454,31 @@ public class GameManager : MonoBehaviour
             safeEdgeTilesGained = -1;
             AddSafeTileToEdges();            
         }
+
+        SetCameraScale();
+        /*float backgroundHeight = sizeY + 1;
+        if (cameraSize > cameraSizeYprefer)
+            backgroundHeight = sizeY - 3;*/
+
+        float backgroundHeight = sizeY - 3;
+
+        backgroundWallRight.transform.position = new Vector3(sizeX - 0.5f, -1.5f, 1);
+
+        backgroundWallLeft.GetComponent<SpriteRenderer>().size = new Vector2(1, backgroundHeight);
+        backgroundWallRight.GetComponent<SpriteRenderer>().size = new Vector2(1, backgroundHeight);
+        backgroundFloor.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, 1);
+        backgroundAnimated.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, backgroundHeight - 1);
+    }
+
+    public void SetCameraScale()
+    {
         // Get the two points that need to be visible
-        bool previewBuffer = false;
+        bool previewBuffer = (PlayerPrefs.GetInt("PreviewSpaceAboveBoardEnabled", 0) != 0);
         float guiBuffer = 12f;
-        Vector3 bottomLeft = new Vector3(-1.5f - guiBuffer, -1.5f);
-        Vector3 topRight = new Vector3(sizeX + 1.5f + guiBuffer, sizeY - 4.5f);
+        float borderBufferX = 0f;
+        float borderBufferY = 0f;
+        Vector3 bottomLeft = new Vector3(-1.5f - guiBuffer - borderBufferX, -1.5f - borderBufferY);
+        Vector3 topRight = new Vector3(sizeX + 1.5f + guiBuffer + borderBufferX, sizeY - 4.5f + borderBufferY);
         if (previewBuffer)
             topRight.y += 4;
 
@@ -481,9 +505,6 @@ public class GameManager : MonoBehaviour
 
         float aspectRatio = mainCamera.aspect;
         float orthographicSize = verticalDistance / 2f;
-        
-
-        
 
         // Adjust orthographic size based on the aspect ratio
         if (horizontalDistance / aspectRatio > verticalDistance) // Landscape
@@ -492,7 +513,7 @@ public class GameManager : MonoBehaviour
         }
         else // Portrait
         {
-            orthographicSize = verticalDistance / 2f;            
+            orthographicSize = verticalDistance / 2f;
         }
 
         float sizeModifier = orthographicSize / mainCamera.orthographicSize;
@@ -507,7 +528,7 @@ public class GameManager : MonoBehaviour
             demoTitleScreen.bouncyLogo.transform.position = new Vector3((sizeX / 2f) - 0.5f, topRight.y);
             demoTitleScreen.ResetStartingPositionsInChildren();
         }
-        
+
 
         /*float cameraSizeYprefer = ((sizeY - 4) / 2f) + 0.5f; //10.5f; Y Bounds
         float cameraSizeXprefer = (sizeX + 28) * 0.5f * ((float)mainCamera.pixelHeight / mainCamera.pixelWidth); //10f; X Bounds
@@ -567,25 +588,14 @@ public class GameManager : MonoBehaviour
         mainCamera.orthographicSize = cameraSize;
         */
 
-            float canvasHeight = (450 / 10.5f) * mainCamera.orthographicSize;
+        float canvasHeight = (450 / 10.5f) * mainCamera.orthographicSize;
         if (guiCanvas != null)
         {
             guiCanvas.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, 0);
             guiCanvas.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(canvasHeight * aspectRatio, canvasHeight);
         }
 
-        /*float backgroundHeight = sizeY + 1;
-        if (cameraSize > cameraSizeYprefer)
-            backgroundHeight = sizeY - 3;*/
-
-        float backgroundHeight = sizeY - 3;
-
-        backgroundWallRight.transform.position = new Vector3(sizeX - 0.5f, -1.5f, 1);
-
-        backgroundWallLeft.GetComponent<SpriteRenderer>().size = new Vector2(1, backgroundHeight);
-        backgroundWallRight.GetComponent<SpriteRenderer>().size = new Vector2(1, backgroundHeight);
-        backgroundFloor.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, 1);
-        backgroundAnimated.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, backgroundHeight - 1);
+        TriggerOnResetStartingPositionsEvent();
     }
 
     /*void BuildMinesweeperBoard()
@@ -609,53 +619,53 @@ public class GameManager : MonoBehaviour
         }
     }*/
 
-    /*void PopulateMines(int startX = -10, int startY = -10)
-    {
-        int currentMines = 0;
-
-        while (currentMines < numMines)
+        /*void PopulateMines(int startX = -10, int startY = -10)
         {
-            int randX = Random.Range(0, sizeX - 1);
-            int randY = Random.Range(0, sizeY - 1);
+            int currentMines = 0;
 
-            if (!(randX == startX && randY == startY)
-                && !(randX == startX - 1 && randY + 1 == startY)
-                && !(randX == startX - 1 && randY == startY)
-                && !(randX == startX - 1 && randY - 1 == startY)
-                && !(randX == startX && randY + 1 == startY)
-                && !(randX == startX && randY - 1 == startY)
-                && !(randX == startX + 1 && randY + 1 == startY)
-                && !(randX == startX + 1 && randY == startY)
-                && !(randX == startX + 1 && randY - 1 == startY))
+            while (currentMines < numMines)
             {
-                if (GetGameTile(randX, randY).isMine == false)
+                int randX = Random.Range(0, sizeX - 1);
+                int randY = Random.Range(0, sizeY - 1);
+
+                if (!(randX == startX && randY == startY)
+                    && !(randX == startX - 1 && randY + 1 == startY)
+                    && !(randX == startX - 1 && randY == startY)
+                    && !(randX == startX - 1 && randY - 1 == startY)
+                    && !(randX == startX && randY + 1 == startY)
+                    && !(randX == startX && randY - 1 == startY)
+                    && !(randX == startX + 1 && randY + 1 == startY)
+                    && !(randX == startX + 1 && randY == startY)
+                    && !(randX == startX + 1 && randY - 1 == startY))
                 {
-                    GetGameTile(randX, randY).isMine = true;
-                    DetectProximity(randX, randY);
-                    currentMines += 1;
-                }
-            }                        
-        }
+                    if (GetGameTile(randX, randY).isMine == false)
+                    {
+                        GetGameTile(randX, randY).isMine = true;
+                        DetectProximity(randX, randY);
+                        currentMines += 1;
+                    }
+                }                        
+            }
 
-        minesPlaced = true;
-    }*/
+            minesPlaced = true;
+        }*/
 
-    /*void DetectProximity(int x, int y)
-    {
-        foreach (Tile t in GetNeighborTiles(x, y))
+        /*void DetectProximity(int x, int y)
         {
-            t.nearbyMines += 1;
-        }
-    }*/
+            foreach (Tile t in GetNeighborTiles(x, y))
+            {
+                t.nearbyMines += 1;
+            }
+        }*/
 
-    //public void RevealTile(int x, int y, int nearbyMines, bool isMine)
-    //{
+        //public void RevealTile(int x, int y, int nearbyMines, bool isMine)
+        //{
         //if (!minesPlaced)
-            //PopulateMines(x, y);
-    //}
-    #endregion
-    #region Minesweeper Logic
-    public ArrayList GetNeighborTiles(int x, int y, bool getDiagonals = true)
+        //PopulateMines(x, y);
+        //}
+        #endregion
+        #region Minesweeper Logic
+        public ArrayList GetNeighborTiles(int x, int y, bool getDiagonals = true)
     {
         ArrayList neighbors = new ArrayList();
 
@@ -1607,6 +1617,12 @@ public class GameManager : MonoBehaviour
     {        
         if (OnTSpinEvent != null)
             OnTSpinEvent(dir);
+    }
+
+    public void TriggerOnResetStartingPositionsEvent()
+    {
+        if (OnResetStartingPositionsEvent != null)
+            OnResetStartingPositionsEvent();
     }
 
     public float GetRowHeightPointModifier(int rowHeight)

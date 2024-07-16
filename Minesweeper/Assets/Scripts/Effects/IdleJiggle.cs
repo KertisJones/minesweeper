@@ -8,6 +8,9 @@ using Unity.Mathematics;
 public class IdleJiggle : MonoBehaviour
 {
     private Transform myTransform;
+    private Canvas parentCanvas;
+    private Vector2 parentCanvasDisplaySize = Vector2.zero;
+
     public Vector3 idleMoveDistance = Vector3.zero;
     public float idleMoveDuration = 0f;
     public Ease idleMoveEase = Ease.InOutSine;
@@ -56,8 +59,9 @@ public class IdleJiggle : MonoBehaviour
             //InputManager.Instance.leftPress.started += _ => PressLeft();
             InputManager.Instance.leftPress.canceled += _ => ReleaseLeft();
             //InputManager.Instance.rightPress.started += _ => PressRight();
-            InputManager.Instance.rightPress.canceled += _ => ReleaseRight();
-        }        
+            InputManager.Instance.rightPress.canceled += _ => ReleaseRight();            
+        }
+        GameManager.OnResetStartingPositionsEvent += SetNewStartingValues;
     }
     void OnDisable()
     {
@@ -88,7 +92,9 @@ public class IdleJiggle : MonoBehaviour
             //InputManager.Instance.rightPress.started -= _ => PressRight();
             InputManager.Instance.rightPress.canceled -= _ => ReleaseRight();
         }
-        if(!this.gameObject.scene.isLoaded) 
+        GameManager.OnResetStartingPositionsEvent -= SetNewStartingValues;
+
+        if (!this.gameObject.scene.isLoaded) 
             return;
         transform.DOKill();
         shakePositionTween = null;
@@ -103,6 +109,13 @@ public class IdleJiggle : MonoBehaviour
     void Start()
     {
         myTransform = this.transform;
+        parentCanvas = this.gameObject.GetComponentInParent<Canvas>();
+
+        /*
+        if (parentCanvas != null)
+            if (parentCanvas.renderMode == RenderMode.WorldSpace)
+                parentCanvasDisplaySize = parentCanvas.renderingDisplaySize;*/
+
         if (myTransform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
             return;
         if (!jiggleIsEnabled)
@@ -495,6 +508,7 @@ public class IdleJiggle : MonoBehaviour
     
     public void SetNewStartingValues()
     {
+        Debug.Log("RESET");
         startPositionLocal = this.transform.localPosition;
         startScale = this.transform.localScale;
         startRotation = this.transform.rotation.eulerAngles;
@@ -504,8 +518,14 @@ public class IdleJiggle : MonoBehaviour
     {
         if (this.transform.parent == null)
             return startPositionLocal;
-        return new Vector3(startPositionLocal.x * this.transform.parent.localScale.x,
-        startPositionLocal.y * this.transform.parent.localScale.y,
-        startPositionLocal.z * this.transform.parent.localScale.z) + this.transform.parent.position;
+
+        /*Vector2 displaySizeScale = Vector2.one;
+        if (parentCanvas != null)
+            if (parentCanvas.renderMode == RenderMode.WorldSpace)
+                displaySizeScale = parentCanvasDisplaySize / parentCanvas.renderingDisplaySize;*/
+
+        return new Vector3(startPositionLocal.x * this.transform.parent.lossyScale.x,// * displaySizeScale.x,
+        startPositionLocal.y * this.transform.parent.lossyScale.y,// * displaySizeScale.y,
+        startPositionLocal.z * this.transform.parent.lossyScale.z) + this.transform.parent.position;
     }
 }

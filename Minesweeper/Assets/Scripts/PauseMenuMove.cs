@@ -12,21 +12,42 @@ public class PauseMenuMove : MonoBehaviour {
     GameManager gm;
     TabSelection tabs;
     public GameObject[] objectsToDisableWhileActive;
+
+    void OnEnable()
+    {
+        GameManager.OnResetStartingPositionsEvent += SetScale;
+    }
+    void OnDisable()
+    {
+        GameManager.OnResetStartingPositionsEvent -= SetScale;
+    }
+
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         tabs = GetComponent<TabSelection>();
-        
-        targetActive = mainCamera.ScreenToWorldPoint(new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2, 10));
 
+        SetScale();
+    }
+    public void SetScale()
+    {
+        if (mainCamera == null)
+            return;
+
+        targetActive = mainCamera.ScreenToWorldPoint(new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2, 10));
         targetRest = mainCamera.ScreenToWorldPoint(new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight * 2, 10));
 
         float scaleModifier = mainCamera.orthographicSize / 10.5f;
         speed *= scaleModifier;
         this.transform.localScale = new Vector3(scaleModifier, scaleModifier, scaleModifier);
-        this.transform.position = targetRest;
+
+        if (isActive)
+            this.transform.position = targetActive;
+        else
+            this.transform.position = targetRest;
     }
+
     public bool GetIsActive()
     {
         return isActive;

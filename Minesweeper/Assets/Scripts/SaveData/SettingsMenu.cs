@@ -14,6 +14,7 @@ public class SettingsMenu : MonoBehaviour
     public Slider soundVolumeSlider;
     public Toggle screenShakeToggle;
     public Toggle lockDelayDisplayToggle;
+    public Toggle previewSpaceToggle;
     public TMP_Dropdown languageDropdown;
     public LinearRangeSlider autoRepeatRateSlider;
     public LinearRangeSlider delayedAutoShiftSlider;
@@ -25,6 +26,7 @@ public class SettingsMenu : MonoBehaviour
     float soundVolume = 0.5f; //Max 1
     bool screenShakeEnabled = true;
     bool lockDelayDisplayEnabled = true;
+    bool previewSpaceEnabled = false;
     int languageIndex = 0;
 
     //Handling
@@ -46,6 +48,7 @@ public class SettingsMenu : MonoBehaviour
         soundVolume = PlayerPrefs.GetFloat("SoundVolume", soundVolume);
         screenShakeEnabled = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
         lockDelayDisplayEnabled = (PlayerPrefs.GetInt("LockDelayDisplayEnabled", 0) != 0);
+        previewSpaceEnabled = (PlayerPrefs.GetInt("PreviewSpaceAboveBoardEnabled", 0) != 0);
         //languageIndex = PlayerPrefs.GetInt("LanguageIndex", 1);
         languageIndex = LocalizationSettings.AvailableLocales.Locales.IndexOf(LocalizationSettings.SelectedLocale);
         //controlScheme = PlayerPrefs.GetInt("ControlScheme", 0);
@@ -74,7 +77,10 @@ public class SettingsMenu : MonoBehaviour
         screenShakeToggle.isOn = !screenShakeEnabled;
         screenShakeToggle.onValueChanged.AddListener(delegate  { ScreenShakeToggle(); });
         lockDelayDisplayToggle.isOn = lockDelayDisplayEnabled;
-        lockDelayDisplayToggle.onValueChanged.AddListener(delegate  { LockDelayDisplayToggle(); });
+        lockDelayDisplayToggle.onValueChanged.AddListener(delegate  { LockDelayDisplayToggle(); }); //previewSpaceToggle
+        previewSpaceToggle.isOn = previewSpaceEnabled;
+        previewSpaceToggle.onValueChanged.AddListener(delegate { PreviewSpaceToggle(); }); //previewSpaceToggle
+
         languageDropdown.value = languageIndex;
         languageDropdown.onValueChanged.AddListener(delegate { LanguageSelectDropdown(); });
         //StartCoroutine(SetLocale(languageIndex));
@@ -175,6 +181,12 @@ public class SettingsMenu : MonoBehaviour
     {
         lockDelayDisplayEnabled = lockDelayDisplayToggle.isOn;
         PlayerPrefs.SetInt("LockDelayDisplayEnabled", (lockDelayDisplayEnabled ? 1 : 0));
+    }
+    public void PreviewSpaceToggle()
+    {
+        previewSpaceEnabled = previewSpaceToggle.isOn;
+        PlayerPrefs.SetInt("PreviewSpaceAboveBoardEnabled", (previewSpaceEnabled ? 1 : 0));
+        gm.SetCameraScale();
     }
     public void LanguageSelectDropdown()
     {
