@@ -163,10 +163,7 @@ public class Tile : MonoBehaviour
             decaySoundSource.Stop();
             decaySoundSource.volume = 0;
         }
-
-        if (gm.isGameOver)
-            return;
-
+              
         if (gm.cheatAutoFlagMode)
         {
             if (isMine)
@@ -178,7 +175,10 @@ public class Tile : MonoBehaviour
         UpdateLocation();
         UpdateAura();
         UpdateText();
-        UpdateButtonJiggle(); 
+        UpdateButtonJiggle();
+
+        if (gm.isGameOver)
+            return;
 
         if (!isMine)
         {
