@@ -35,8 +35,8 @@ public class PauseMenuMove : MonoBehaviour {
         if (mainCamera == null)
             return;
 
-        targetActive = mainCamera.ScreenToWorldPoint(new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2, 10));
-        targetRest = mainCamera.ScreenToWorldPoint(new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight * 2, 10));
+        targetActive = mainCamera.ScreenToWorldPoint(new Vector3((float)mainCamera.pixelWidth / 2f, (float)mainCamera.pixelHeight / 2f, 10));
+        targetRest = mainCamera.ScreenToWorldPoint(new Vector3((float)mainCamera.pixelWidth / 2f, (float)mainCamera.pixelHeight * 2f, 10));
 
         float scaleModifier = mainCamera.orthographicSize / 10.5f;
         speed *= scaleModifier;

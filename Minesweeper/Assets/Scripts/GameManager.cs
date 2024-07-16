@@ -163,6 +163,8 @@ public class GameManager : MonoBehaviour
     public static event TSpinEvent OnTSpinEvent;
     public delegate void ResetStartingPositionsEvent();
     public static event ResetStartingPositionsEvent OnResetStartingPositionsEvent;
+    public delegate void KillTweenEvent();
+    public static event KillTweenEvent OnKillTweenEvent;
 
     private void OnApplicationQuit() 
     {
@@ -229,6 +231,7 @@ public class GameManager : MonoBehaviour
         OnTileSolveOrLandEvent = null;
         OnTSpinEvent = null;
         OnResetStartingPositionsEvent = null;
+        OnKillTweenEvent = null;
         transform.DOKill();
     }
     void PressEscape()
@@ -471,14 +474,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetCameraScale()
-    {
+    {       
         // Get the two points that need to be visible
         bool previewBuffer = (PlayerPrefs.GetInt("PreviewSpaceAboveBoardEnabled", 0) != 0);
         float guiBuffer = 12f;
         float borderBufferX = 0f;
         float borderBufferY = 0f;
         Vector3 bottomLeft = new Vector3(-1.5f - guiBuffer - borderBufferX, -1.5f - borderBufferY);
-        Vector3 topRight = new Vector3(sizeX + 1.5f + guiBuffer + borderBufferX, sizeY - 4.5f + borderBufferY);
+        Vector3 topRight = new Vector3(sizeX + 0.5f + guiBuffer + borderBufferX, sizeY - 4.5f + borderBufferY);
         if (previewBuffer)
             topRight.y += 4;
 
@@ -526,7 +529,7 @@ public class GameManager : MonoBehaviour
             buttonsTransform.localScale = new Vector3(sizeModifier, sizeModifier, sizeModifier);
             buttonsTransform.localPosition = new Vector3(bottomLeft.x + horizontalDistance / 4, mainCamera.ScreenToWorldPoint(new Vector3(0, (float)Screen.height / 2, 0)).y);
             demoTitleScreen.bouncyLogo.transform.position = new Vector3((sizeX / 2f) - 0.5f, topRight.y);
-            demoTitleScreen.ResetStartingPositionsInChildren();
+            demoTitleScreen.ResetStartingPositionsInChildren(sizeModifier);
         }
 
 
@@ -1203,6 +1206,8 @@ public class GameManager : MonoBehaviour
         endtime = GetTime();
         isGameOver = true;
 
+        TriggerOnResetStartingPositionsEvent();
+
         if (!isTitleMenu)
             GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().SaveCurrentGame();
         
@@ -1526,6 +1531,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             isPaused = true;            
             canPause = false;
+            TriggerOnKillTweenEvent();
             if (isMarathonOverPause)
             {
                 isEndless = true;
@@ -1547,7 +1553,8 @@ public class GameManager : MonoBehaviour
             if (!isGameOver)
             {
                 Time.timeScale = 1;
-                isPaused = false;       
+                isPaused = false;
+                TriggerOnResetStartingPositionsEvent();
                 pauseMenu.SetActive(false);
                 soundManager.DisablePauseFilter();
                 marathonOverMenu.SetActive(false);
@@ -1623,6 +1630,12 @@ public class GameManager : MonoBehaviour
     {
         if (OnResetStartingPositionsEvent != null)
             OnResetStartingPositionsEvent();
+    }
+
+    public void TriggerOnKillTweenEvent()
+    {
+        if (OnKillTweenEvent != null)
+            OnKillTweenEvent();
     }
 
     public float GetRowHeightPointModifier(int rowHeight)

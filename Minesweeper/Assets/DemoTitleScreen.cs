@@ -70,20 +70,18 @@ public class DemoTitleScreen : MonoBehaviour
         PlayerPrefs.SetInt("DemoVisit", 0);
     }
 
-    public void ResetStartingPositionsInChildren()
+    public void ResetStartingPositionsInChildren(float sizeModifier)
     {
         IdleJiggle[] childJigglesIdle = GetComponentsInChildren<IdleJiggle>();
         foreach (var idleJiggle in childJigglesIdle)
         {
-            Debug.Log(idleJiggle);
-            idleJiggle.SetNewStartingValues();
+            idleJiggle.jumpInPlaceHeight *= sizeModifier;
         }
 
-        ButtonJiggle[] childJigglesButton = GetComponentsInChildren<ButtonJiggle>();
+        /*ButtonJiggle[] childJigglesButton = GetComponentsInChildren<ButtonJiggle>();
         foreach (var buttonJiggle in childJigglesButton)
         {
-            Debug.Log(buttonJiggle);
             buttonJiggle.SetNewStartingValues();
-        }
+        }*/
     }
 }

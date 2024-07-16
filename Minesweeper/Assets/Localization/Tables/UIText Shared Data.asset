@@ -655,6 +655,10 @@ MonoBehaviour:
     m_Key: GUI Go
     m_Metadata:
       m_Items: []
+  - m_Id: 37581987358171136
+    m_Key: Menu ShowPreviewAboveBoard
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

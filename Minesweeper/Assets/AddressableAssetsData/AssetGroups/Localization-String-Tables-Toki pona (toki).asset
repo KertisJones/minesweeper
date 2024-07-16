@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Localization-String-Tables-Toki pona (toki)
   m_EditorClassIdentifier: 
   m_GroupName: Localization-String-Tables-Toki pona (toki)
-  m_Data:
-    m_SerializedData: []
   m_GUID: e757bd3e3d023364b8c5e568370ccc71
   m_SerializeEntries:
   - m_GUID: e2c8d44983c544a47a181ef6f78987f5
@@ -23,6 +21,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-toki
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 5b0d5480aa345ad4985e0663f8cb1279, type: 2}
   m_SchemaSet:
