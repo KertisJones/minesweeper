@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class PauseMenuMove : MonoBehaviour {
     private Camera mainCamera;
@@ -68,23 +69,42 @@ public class PauseMenuMove : MonoBehaviour {
             else
                 tabs.HideTabs();
         }
+
+        bool screenShake = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
+        float transitionTime = 0.25f;
+        if (!screenShake)
+            transitionTime = 0.1f;
+        if (isActive)
+        {            
+            Tween tween = transform.DOMove(targetActive, transitionTime * 2).SetUpdate(true);
+                        
+            if (screenShake)
+                tween.SetEase(Ease.OutElastic, 1f, 0.75f);
+            else
+                tween.SetEase(Ease.InOutSine);
+        }
+        else
+        {
+            transform.DOMove(targetRest, transitionTime).SetUpdate(true).SetEase(Ease.InOutSine);
+        }
     }
 
     void Update()
     {
-        if (isActive)
+        /*if (isActive)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetActive, speed);
         }
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, targetRest, speed);
-        }
+        }*/
         if (gm != null)
         {
-            if (!gm.isPaused && !gm.isGameOver && !gm.isTitleMenu)
+            if (!gm.isPaused && !gm.isGameOver && !gm.isTitleMenu && isActive)
             {
-                isActive = false;
+                //isActive = false;
+                SetActive(false);
             }
         }        
     }
