@@ -25,6 +25,16 @@ public class ButtonJiggle : MonoBehaviour
     //private Tween jumpInPlaceTween;
     private Tween shrinkToZeroTween;
     public bool startAtScaleZero = false;
+
+    void OnEnable()
+    {
+        GameManager.OnKillTweenEvent += Reset;
+    }
+    void OnDisable()
+    {
+        GameManager.OnKillTweenEvent -= Reset;
+    }
+
     void Start()
     {
         SetNewStartingValues();

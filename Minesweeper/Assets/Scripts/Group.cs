@@ -27,6 +27,7 @@ public class Group : MonoBehaviour
     float lockDelay = 0.5f;
     float lastFall = 0;
     float lastMove = 0;
+    float spawnTime = 0;
     // Locking
     public bool isLocking = false;
     public int lockResets = 0;
@@ -252,7 +253,8 @@ public class Group : MonoBehaviour
         basicFallDistance = gm.gameMods.basicFallDistance;
 
         lastDASCutDelay = Time.time;
-
+        lastFall = Time.time;
+        spawnTime = Time.time;
         //Debug.Log("ARR:" + autoRepeatRate + ", DAS:" + dasDelay + ", DCD:" + dasCutDelay + ", SDF:" + softDropFactor);
     }
     #endregion
@@ -575,7 +577,11 @@ public class Group : MonoBehaviour
         if (buttonSoftDropHeld && Time.time - lastSoftDropDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastFall >= fallSpeed / softDropFactor)
             SoftDrop();
 
-        // Basic Fall
+        if (Time.time - spawnTime >= 0.05f)
+        {
+            canHardDrop = true;
+        }
+            // Basic Fall
         if (Time.time - lastFall >= fallSpeed)// || isSoftDrop || isHardDrop)
         {
             canHardDrop = true;

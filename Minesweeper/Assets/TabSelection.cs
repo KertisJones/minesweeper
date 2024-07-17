@@ -13,6 +13,11 @@ public class TabSelection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < TabMenus.Length; i++)
+        {
+            TabMenus[i].SetActive(true);
+        }
+
         for (int i = 0; i < TabButtons.Length; i++)
         {
             int i2 = i;

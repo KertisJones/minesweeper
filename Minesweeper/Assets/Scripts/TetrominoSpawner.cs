@@ -26,7 +26,7 @@ public class TetrominoSpawner : MonoBehaviour
 
         this.transform.position = new Vector3(Mathf.Ceil((gm.sizeX / 2f) - 1), gm.sizeY - 3, 0); // Default is 4,20
         spawnPreview();
-        spawnNext();
+        spawnNext();        
     }
 
     private void spawnPreview()
@@ -51,7 +51,8 @@ public class TetrominoSpawner : MonoBehaviour
     {
         // Spawn Group at current Position
         currentTetromino = nextTetromino;
-        currentTetromino.transform.position = this.transform.position; 
+        currentTetromino.transform.localPosition = Vector3.zero;// = this.transform.position; 
+
         currentTetromino.GetComponent<Group>().isHeld = false;
         if (!currentTetromino.GetComponent<Group>().isValidGridPos() && !currentTetromino.GetComponent<Group>().isDisplay)
             GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().EndGame();
