@@ -32,8 +32,9 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
     public InputAction anyKey; // Any key pressed
     public InputAction inputScroll; // Scroll input
     public InputAction cleansePress;
-    
-    
+    public InputAction fullScreenTogglePress;
+
+
     /*public InputAction inputPressPrimary; // Left Click, (mobile) Tap
     public InputAction inputPressSecondary; // Right Click, (mobile) Hold
     public InputAction primaryTouchContact;
@@ -179,6 +180,7 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
         anyKey = controlInput.TetrisweepMap.AnyKey;
         inputScroll = controlInput.TetrisweepMap.InputScroll;
         cleansePress = controlInput.TetrisweepMap.Cleanse;
+        fullScreenTogglePress = controlInput.TetrisweepMap.FullScreenToggle;
     }
 
     private void OnEnable()

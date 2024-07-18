@@ -5162,6 +5162,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  fullScreenTogglePress:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2acb71fb-6f93-4ed7-80eb-17c9e0683dfc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!4 &948025068
 Transform:
   m_ObjectHideFlags: 0
@@ -11910,6 +11919,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 780965503}
+    - target: {fileID: 3589822924421481590, guid: fbc223cdb4484ba43953054b0a033497, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitToTitleMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 5916558752374800968, guid: fbc223cdb4484ba43953054b0a033497, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 

@@ -32,7 +32,7 @@ public partial class @ControlInput: IInputActionCollection2, IDisposable
                     ""name"": ""Left"",
                     ""type"": ""Button"",
                     ""id"": ""f6830078-347a-4309-845b-95c1f2899195"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
@@ -95,7 +95,7 @@ public partial class @ControlInput: IInputActionCollection2, IDisposable
                     ""name"": ""Escape"",
                     ""type"": ""Button"",
                     ""id"": ""42b8c44d-603a-4eeb-bb72-0f83a0a0b58e"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
@@ -104,7 +104,7 @@ public partial class @ControlInput: IInputActionCollection2, IDisposable
                     ""name"": ""Restart"",
                     ""type"": ""Button"",
                     ""id"": ""67201356-4986-4e45-b867-a67327bb40e3"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
@@ -185,7 +185,16 @@ public partial class @ControlInput: IInputActionCollection2, IDisposable
                     ""name"": ""Cleanse"",
                     ""type"": ""Button"",
                     ""id"": ""9a960323-2b5a-4b20-869f-660b51c7d236"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Full Screen Toggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""751847bd-2485-4b28-8df0-36117b7cc3e2"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
@@ -513,6 +522,17 @@ public partial class @ControlInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""d9a374ca-3cbf-4f93-8cbf-f18f2e3d6bde"",
+                    ""path"": ""<Keyboard>/f11"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Full Screen Toggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""21d490bf-f0a2-4dc1-a2de-521afbb09aee"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -762,6 +782,7 @@ public partial class @ControlInput: IInputActionCollection2, IDisposable
         m_TetrisweepMap_InputScroll = m_TetrisweepMap.FindAction("InputScroll", throwIfNotFound: true);
         m_TetrisweepMap_AnyKey = m_TetrisweepMap.FindAction("AnyKey", throwIfNotFound: true);
         m_TetrisweepMap_Cleanse = m_TetrisweepMap.FindAction("Cleanse", throwIfNotFound: true);
+        m_TetrisweepMap_FullScreenToggle = m_TetrisweepMap.FindAction("Full Screen Toggle", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
     }
@@ -849,6 +870,7 @@ public partial class @ControlInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_TetrisweepMap_InputScroll;
     private readonly InputAction m_TetrisweepMap_AnyKey;
     private readonly InputAction m_TetrisweepMap_Cleanse;
+    private readonly InputAction m_TetrisweepMap_FullScreenToggle;
     public struct TetrisweepMapActions
     {
         private @ControlInput m_Wrapper;
@@ -871,6 +893,7 @@ public partial class @ControlInput: IInputActionCollection2, IDisposable
         public InputAction @InputScroll => m_Wrapper.m_TetrisweepMap_InputScroll;
         public InputAction @AnyKey => m_Wrapper.m_TetrisweepMap_AnyKey;
         public InputAction @Cleanse => m_Wrapper.m_TetrisweepMap_Cleanse;
+        public InputAction @FullScreenToggle => m_Wrapper.m_TetrisweepMap_FullScreenToggle;
         public InputActionMap Get() { return m_Wrapper.m_TetrisweepMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -934,6 +957,9 @@ public partial class @ControlInput: IInputActionCollection2, IDisposable
             @Cleanse.started += instance.OnCleanse;
             @Cleanse.performed += instance.OnCleanse;
             @Cleanse.canceled += instance.OnCleanse;
+            @FullScreenToggle.started += instance.OnFullScreenToggle;
+            @FullScreenToggle.performed += instance.OnFullScreenToggle;
+            @FullScreenToggle.canceled += instance.OnFullScreenToggle;
         }
 
         private void UnregisterCallbacks(ITetrisweepMapActions instance)
@@ -992,6 +1018,9 @@ public partial class @ControlInput: IInputActionCollection2, IDisposable
             @Cleanse.started -= instance.OnCleanse;
             @Cleanse.performed -= instance.OnCleanse;
             @Cleanse.canceled -= instance.OnCleanse;
+            @FullScreenToggle.started -= instance.OnFullScreenToggle;
+            @FullScreenToggle.performed -= instance.OnFullScreenToggle;
+            @FullScreenToggle.canceled -= instance.OnFullScreenToggle;
         }
 
         public void RemoveCallbacks(ITetrisweepMapActions instance)
@@ -1067,6 +1096,7 @@ public partial class @ControlInput: IInputActionCollection2, IDisposable
         void OnInputScroll(InputAction.CallbackContext context);
         void OnAnyKey(InputAction.CallbackContext context);
         void OnCleanse(InputAction.CallbackContext context);
+        void OnFullScreenToggle(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

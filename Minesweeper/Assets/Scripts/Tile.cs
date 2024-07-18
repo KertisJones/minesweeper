@@ -6,9 +6,7 @@ using TMPro;
 using UnityEngine.U2D;
 using TMPro.Examples;
 using DG.Tweening;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine.Rendering.Universal;
-using System.Linq;
 
 public class Tile : MonoBehaviour
 {

@@ -9,7 +9,7 @@
                     "name": "Left",
                     "type": "Button",
                     "id": "f6830078-347a-4309-845b-95c1f2899195",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
@@ -72,7 +72,7 @@
                     "name": "Escape",
                     "type": "Button",
                     "id": "42b8c44d-603a-4eeb-bb72-0f83a0a0b58e",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
@@ -81,7 +81,7 @@
                     "name": "Restart",
                     "type": "Button",
                     "id": "67201356-4986-4e45-b867-a67327bb40e3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
@@ -162,7 +162,16 @@
                     "name": "Cleanse",
                     "type": "Button",
                     "id": "9a960323-2b5a-4b20-869f-660b51c7d236",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Full Screen Toggle",
+                    "type": "Button",
+                    "id": "751847bd-2485-4b28-8df0-36117b7cc3e2",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
@@ -485,6 +494,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9a374ca-3cbf-4f93-8cbf-f18f2e3d6bde",
+                    "path": "<Keyboard>/f11",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Full Screen Toggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

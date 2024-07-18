@@ -15,6 +15,7 @@ public class SettingsMenu : MonoBehaviour
     public Toggle screenShakeToggle;
     public Toggle lockDelayDisplayToggle;
     public Toggle previewSpaceToggle;
+    public Toggle fullScreenToggle;
     public TMP_Dropdown languageDropdown;
     public LinearRangeSlider autoRepeatRateSlider;
     public LinearRangeSlider delayedAutoShiftSlider;
@@ -27,6 +28,7 @@ public class SettingsMenu : MonoBehaviour
     bool screenShakeEnabled = true;
     bool lockDelayDisplayEnabled = true;
     bool previewSpaceEnabled = false;
+    bool fullScreenEnabled = true;
     int languageIndex = 0;
 
     //Handling
@@ -41,6 +43,15 @@ public class SettingsMenu : MonoBehaviour
     float softDropFactor = 12;
     float lineClearPreventMinesweepDelay = 50;
 
+    void OnEnable()
+    {
+        InputManager.Instance.fullScreenTogglePress.started += _ => FullScreenToggleHotkey();
+    }
+    void OnDisable()
+    {
+        InputManager.Instance.fullScreenTogglePress.started -= _ => FullScreenToggleHotkey();
+    }
+
     private void Awake()
     {
         masterVolume = PlayerPrefs.GetFloat("MasterVolume", masterVolume);
@@ -49,6 +60,8 @@ public class SettingsMenu : MonoBehaviour
         screenShakeEnabled = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
         lockDelayDisplayEnabled = (PlayerPrefs.GetInt("LockDelayDisplayEnabled", 0) != 0);
         previewSpaceEnabled = (PlayerPrefs.GetInt("PreviewSpaceAboveBoardEnabled", 0) != 0);
+        fullScreenEnabled = (PlayerPrefs.GetInt("FullScreenEnabled", 1) != 0);
+        Screen.fullScreen = fullScreenEnabled;
         //languageIndex = PlayerPrefs.GetInt("LanguageIndex", 1);
         languageIndex = LocalizationSettings.AvailableLocales.Locales.IndexOf(LocalizationSettings.SelectedLocale);
         //controlScheme = PlayerPrefs.GetInt("ControlScheme", 0);
@@ -65,7 +78,6 @@ public class SettingsMenu : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-
         //if (ScoreKeeper.masterVolume != null)
             //masterVolume = ScoreKeeper.masterVolume;
         masterVolumeSlider.value = masterVolume;
@@ -77,9 +89,11 @@ public class SettingsMenu : MonoBehaviour
         screenShakeToggle.isOn = !screenShakeEnabled;
         screenShakeToggle.onValueChanged.AddListener(delegate  { ScreenShakeToggle(); });
         lockDelayDisplayToggle.isOn = lockDelayDisplayEnabled;
-        lockDelayDisplayToggle.onValueChanged.AddListener(delegate  { LockDelayDisplayToggle(); }); //previewSpaceToggle
+        lockDelayDisplayToggle.onValueChanged.AddListener(delegate  { LockDelayDisplayToggle(); });
         previewSpaceToggle.isOn = previewSpaceEnabled;
-        previewSpaceToggle.onValueChanged.AddListener(delegate { PreviewSpaceToggle(); }); //previewSpaceToggle
+        previewSpaceToggle.onValueChanged.AddListener(delegate { FullScreenToggle(); }); //fullScreenToggle
+        fullScreenToggle.isOn = fullScreenEnabled;
+        fullScreenToggle.onValueChanged.AddListener(delegate { FullScreenToggle(); }); //fullScreenToggle
 
         languageDropdown.value = languageIndex;
         languageDropdown.onValueChanged.AddListener(delegate { LanguageSelectDropdown(); });
@@ -187,6 +201,19 @@ public class SettingsMenu : MonoBehaviour
         previewSpaceEnabled = previewSpaceToggle.isOn;
         PlayerPrefs.SetInt("PreviewSpaceAboveBoardEnabled", (previewSpaceEnabled ? 1 : 0));
         gm.SetCameraScale(false);
+    }
+    public void FullScreenToggle()
+    {
+        fullScreenEnabled = fullScreenToggle.isOn;
+        PlayerPrefs.SetInt("FullScreenEnabled", (fullScreenEnabled ? 1 : 0));
+        Screen.fullScreen = fullScreenEnabled;
+    }
+    public void FullScreenToggleHotkey()
+    {
+        fullScreenEnabled = !fullScreenEnabled;
+        Screen.fullScreen = fullScreenEnabled;
+        fullScreenToggle.isOn = fullScreenEnabled;
+        PlayerPrefs.SetInt("FullScreenEnabled", (fullScreenEnabled ? 1 : 0));        
     }
     public void LanguageSelectDropdown()
     {

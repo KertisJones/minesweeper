@@ -677,6 +677,10 @@ MonoBehaviour:
     m_Localized: Show Preview Space Above Board
     m_Metadata:
       m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: Full Screen
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

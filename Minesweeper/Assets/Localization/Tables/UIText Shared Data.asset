@@ -15,44 +15,140 @@ MonoBehaviour:
   m_TableCollectionName: UIText
   m_TableCollectionNameGuidString: 0dd1e0fbba483424bbb601167d9eb8a1
   m_Entries:
-  - m_Id: 928788438310912
-    m_Key: Binding Chord Flag Tile
+  - m_Id: 15111020544
+    m_Key: GUI Score
     m_Metadata:
       m_Items: []
-  - m_Id: 928722587738112
-    m_Key: Binding Chord Tile
+  - m_Id: 3884008333312
+    m_Key: GUI Next
     m_Metadata:
       m_Items: []
-  - m_Id: 928909536256000
-    m_Key: Binding Cleanse
+  - m_Id: 688583756210176
+    m_Key: GUI Mines
     m_Metadata:
       m_Items: []
-  - m_Id: 928735476834304
-    m_Key: Binding Flag Tile
+  - m_Id: 690552633810944
+    m_Key: GUI Time
     m_Metadata:
       m_Items: []
-  - m_Id: 928694787891200
-    m_Key: Binding Hard Clear
+  - m_Id: 691682109546496
+    m_Key: GUI HighScore
     m_Metadata:
       m_Items: []
-  - m_Id: 928642711412736
-    m_Key: Binding Hard Drop
+  - m_Id: 691701722112000
+    m_Key: GUI HighScoreBestToday
     m_Metadata:
       m_Items: []
-  - m_Id: 928656833634304
-    m_Key: Binding Hold
+  - m_Id: 691795221536768
+    m_Key: GUI HighScoreBestTime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692206200414208
+    m_Key: GUI Lines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692866870403072
+    m_Key: GUI Tetrisweeeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693625464807424
+    m_Key: Menu Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693945486008320
+    m_Key: Menu QuitCancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694159798165504
+    m_Key: GUI Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694324101636096
+    m_Key: GUI Tspinsweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694970670374912
+    m_Key: GameMode Endless
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696069942927360
+    m_Key: GameMode Complete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697409771397120
+    m_Key: GameMode Marathon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697412782907392
+    m_Key: GameMode Flash Marathon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697414372548608
+    m_Key: GameMode 40-Line Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697420861136896
+    m_Key: GameMode Ultra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697421989404672
+    m_Key: GameMode Flash Ultra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697429551734784
+    m_Key: GameMode Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697599509127168
+    m_Key: GameMode Obscured Marathon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925355878637568
+    m_Key: Menu Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925670325608448
+    m_Key: Menu Paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925714365800448
+    m_Key: Menu Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925742983536640
+    m_Key: Menu Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926408846073856
+    m_Key: Menu Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926506682408960
+    m_Key: Menu Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926602874576896
+    m_Key: Menu MasterVolume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926629294497792
+    m_Key: Menu Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926659917111296
+    m_Key: Menu Effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926682805428224
+    m_Key: Menu ReduceAnimations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926709879660544
+    m_Key: Menu LockDelay
     m_Metadata:
       m_Items: []
   - m_Id: 927883198455808
     m_Key: Binding Left
-    m_Metadata:
-      m_Items: []
-  - m_Id: 928682272088064
-    m_Key: Binding Restart
-    m_Metadata:
-      m_Items: []
-  - m_Id: 928708620705792
-    m_Key: Binding Reveal Tile
     m_Metadata:
       m_Items: []
   - m_Id: 928546846400512
@@ -71,180 +167,72 @@ MonoBehaviour:
     m_Key: Binding Soft Drop
     m_Metadata:
       m_Items: []
-  - m_Id: 25682277726937088
-    m_Key: GameMode 20G
+  - m_Id: 928642711412736
+    m_Key: Binding Hard Drop
     m_Metadata:
       m_Items: []
-  - m_Id: 697414372548608
-    m_Key: GameMode 40-Line Sprint
+  - m_Id: 928656833634304
+    m_Key: Binding Hold
     m_Metadata:
       m_Items: []
-  - m_Id: 696069942927360
-    m_Key: GameMode Complete
+  - m_Id: 928682272088064
+    m_Key: Binding Restart
     m_Metadata:
       m_Items: []
-  - m_Id: 697429551734784
-    m_Key: GameMode Credits
+  - m_Id: 928694787891200
+    m_Key: Binding Hard Clear
     m_Metadata:
       m_Items: []
-  - m_Id: 1427307444035584
-    m_Key: GameMode Dots
+  - m_Id: 928708620705792
+    m_Key: Binding Reveal Tile
     m_Metadata:
       m_Items: []
-  - m_Id: 694970670374912
-    m_Key: GameMode Endless
+  - m_Id: 928722587738112
+    m_Key: Binding Chord Tile
     m_Metadata:
       m_Items: []
-  - m_Id: 697412782907392
-    m_Key: GameMode Flash Marathon
+  - m_Id: 928735476834304
+    m_Key: Binding Flag Tile
     m_Metadata:
       m_Items: []
-  - m_Id: 697421989404672
-    m_Key: GameMode Flash Ultra
+  - m_Id: 928788438310912
+    m_Key: Binding Chord Flag Tile
     m_Metadata:
       m_Items: []
-  - m_Id: 33916642458066944
-    m_Key: GameMode Freezerburn
+  - m_Id: 928909536256000
+    m_Key: Binding Cleanse
     m_Metadata:
       m_Items: []
-  - m_Id: 33916605992787968
-    m_Key: GameMode Inferno
+  - m_Id: 933890872041472
+    m_Key: Menu RestoreDefaults
     m_Metadata:
       m_Items: []
-  - m_Id: 697409771397120
-    m_Key: GameMode Marathon
+  - m_Id: 934286541709312
+    m_Key: Menu TetrisControls
     m_Metadata:
       m_Items: []
-  - m_Id: 697599509127168
-    m_Key: GameMode Obscured Marathon
-    m_Metadata:
-      m_Items: []
-  - m_Id: 25684283195645952
-    m_Key: GameMode Tiny
-    m_Metadata:
-      m_Items: []
-  - m_Id: 697420861136896
-    m_Key: GameMode Ultra
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1647393605935104
-    m_Key: GameMode Walls
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5052179397636096
-    m_Key: GUI BlockPlacing
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35518550016778240
-    m_Key: GUI Go
-    m_Metadata:
-      m_Items: []
-  - m_Id: 691682109546496
-    m_Key: GUI HighScore
-    m_Metadata:
-      m_Items: []
-  - m_Id: 691795221536768
-    m_Key: GUI HighScoreBestTime
-    m_Metadata:
-      m_Items: []
-  - m_Id: 691701722112000
-    m_Key: GUI HighScoreBestToday
-    m_Metadata:
-      m_Items: []
-  - m_Id: 694159798165504
-    m_Key: GUI Level
-    m_Metadata:
-      m_Items: []
-  - m_Id: 692206200414208
-    m_Key: GUI Lines
-    m_Metadata:
-      m_Items: []
-  - m_Id: 688583756210176
-    m_Key: GUI Mines
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5052349606686720
-    m_Key: GUI Minesweeping
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3884008333312
-    m_Key: GUI Next
-    m_Metadata:
-      m_Items: []
-  - m_Id: 15111020544
-    m_Key: GUI Score
-    m_Metadata:
-      m_Items: []
-  - m_Id: 692866870403072
-    m_Key: GUI Tetrisweeeps
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5052351666089984
-    m_Key: GUI Tetrisweeping
-    m_Metadata:
-      m_Items: []
-  - m_Id: 690552633810944
-    m_Key: GUI Time
-    m_Metadata:
-      m_Items: []
-  - m_Id: 694324101636096
-    m_Key: GUI Tspinsweeps
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8641451649916928
-    m_Key: Menu AnyKey
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7288987847745536
-    m_Key: Menu ARR
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7178044815958016
-    m_Key: Menu Audio
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7178438203924480
-    m_Key: Menu AudioSettings
-    m_Metadata:
-      m_Items: []
-  - m_Id: 926506682408960
-    m_Key: Menu Back
-    m_Metadata:
-      m_Items: []
-  - m_Id: 951849149521920
-    m_Key: Menu ComingSoon
-    m_Metadata:
-      m_Items: []
-  - m_Id: 926408846073856
-    m_Key: Menu Controls
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8261772770271232
-    m_Key: Menu Created by
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8635273809223680
-    m_Key: Menu CreditsAdditional
-    m_Metadata:
-      m_Items: []
-  - m_Id: 951658765869056
-    m_Key: Menu CustomizeGame
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7289007573557248
-    m_Key: Menu DAS
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7289023503523840
-    m_Key: Menu DCD
+  - m_Id: 934315432075264
+    m_Key: Menu MinesweeperControls
     m_Metadata:
       m_Items: []
   - m_Id: 951608887205888
     m_Key: Menu Edit
     m_Metadata:
       m_Items: []
-  - m_Id: 926659917111296
-    m_Key: Menu Effects
+  - m_Id: 951658765869056
+    m_Key: Menu CustomizeGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951849149521920
+    m_Key: Menu ComingSoon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952127466758144
+    m_Key: Menu Scoring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952161780359168
+    m_Key: Menu Leaderboard
     m_Metadata:
       m_Items: []
   - m_Id: 963399100915712
@@ -255,228 +243,244 @@ MonoBehaviour:
     m_Key: Menu GameOver
     m_Metadata:
       m_Items: []
-  - m_Id: 33934480497434624
-    m_Key: Menu GameOver Burn
+  - m_Id: 988652401319936
+    m_Key: Tooltip Marathon
     m_Metadata:
       m_Items: []
-  - m_Id: 33934857829605376
-    m_Key: Menu GameOver BurnSubtitle
+  - m_Id: 988835440746496
+    m_Key: Tooltip 40-Line Sprint
     m_Metadata:
       m_Items: []
-  - m_Id: 7178065133166592
-    m_Key: Menu Handling
+  - m_Id: 989111895711744
+    m_Key: Tooltip Flash Marathon
     m_Metadata:
       m_Items: []
-  - m_Id: 7178483062005760
-    m_Key: Menu HandlingSettings
+  - m_Id: 989231202689024
+    m_Key: Tooltip ComingSoon
     m_Metadata:
       m_Items: []
-  - m_Id: 952161780359168
-    m_Key: Menu Leaderboard
+  - m_Id: 989810910027776
+    m_Key: Tooltip Ultra
     m_Metadata:
       m_Items: []
-  - m_Id: 35060915790405632
-    m_Key: Menu lineClearPreventMinesweepDelay
+  - m_Id: 989813380472832
+    m_Key: Tooltip Flash Ultra
     m_Metadata:
       m_Items: []
-  - m_Id: 926709879660544
-    m_Key: Menu LockDelay
+  - m_Id: 990195708059648
+    m_Key: Tooltip Scoring
     m_Metadata:
       m_Items: []
-  - m_Id: 2512304913506304
-    m_Key: Menu Locked
+  - m_Id: 990308941684736
+    m_Key: Tooltip Leaderboard
     m_Metadata:
       m_Items: []
-  - m_Id: 926602874576896
-    m_Key: Menu MasterVolume
+  - m_Id: 990401673551872
+    m_Key: Tooltip Credits
     m_Metadata:
       m_Items: []
-  - m_Id: 934315432075264
-    m_Key: Menu MinesweeperControls
+  - m_Id: 990658520145920
+    m_Key: Tooltip :(
     m_Metadata:
       m_Items: []
-  - m_Id: 926629294497792
-    m_Key: Menu Music
+  - m_Id: 990813138968576
+    m_Key: Tooltip Discord
     m_Metadata:
       m_Items: []
-  - m_Id: 2474781847838720
-    m_Key: Menu OnSteam
+  - m_Id: 990814418231296
+    m_Key: Tooltip Twitter
     m_Metadata:
       m_Items: []
-  - m_Id: 925670325608448
-    m_Key: Menu Paused
+  - m_Id: 990815487778816
+    m_Key: Tooltip Itch
     m_Metadata:
       m_Items: []
-  - m_Id: 925355878637568
-    m_Key: Menu Play
+  - m_Id: 990816574103552
+    m_Key: Tooltip YouTube
     m_Metadata:
       m_Items: []
-  - m_Id: 693625464807424
-    m_Key: Menu Quit
+  - m_Id: 990817517821952
+    m_Key: Tooltip BuyMeACoffee
     m_Metadata:
       m_Items: []
-  - m_Id: 693945486008320
-    m_Key: Menu QuitCancel
+  - m_Id: 991654902226944
+    m_Key: Tooltip Cleanse
     m_Metadata:
       m_Items: []
-  - m_Id: 926682805428224
-    m_Key: Menu ReduceAnimations
+  - m_Id: 992047333892096
+    m_Key: Tooltip Tetrisweep
     m_Metadata:
       m_Items: []
-  - m_Id: 933890872041472
-    m_Key: Menu RestoreDefaults
+  - m_Id: 992048869007360
+    m_Key: Tooltip T-Spinsweep
     m_Metadata:
       m_Items: []
-  - m_Id: 925714365800448
-    m_Key: Menu Resume
+  - m_Id: 1427307444035584
+    m_Key: GameMode Dots
     m_Metadata:
       m_Items: []
-  - m_Id: 952127466758144
-    m_Key: Menu Scoring
+  - m_Id: 1427339857616896
+    m_Key: Tooltip Dots
     m_Metadata:
       m_Items: []
-  - m_Id: 7289036057075712
-    m_Key: Menu SDF
+  - m_Id: 1647393605935104
+    m_Key: GameMode Walls
     m_Metadata:
       m_Items: []
-  - m_Id: 925742983536640
-    m_Key: Menu Settings
-    m_Metadata:
-      m_Items: []
-  - m_Id: 37581987358171136
-    m_Key: Menu ShowPreviewAboveBoard
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8261872057835520
-    m_Key: Menu SpecialThanks
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2475075038076928
-    m_Key: Menu SteamCallToActionClicked
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2474861069852672
-    m_Key: Menu SteamCallToActionUnclicked
-    m_Metadata:
-      m_Items: []
-  - m_Id: 934286541709312
-    m_Key: Menu TetrisControls
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8664569943060480
-    m_Key: Menu TetrisweeperSupporters
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8261547250933760
-    m_Key: Menu Translation
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7178027099217920
-    m_Key: Menu Video
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7178359053213696
-    m_Key: Menu VideoSettings
+  - m_Id: 1647422219476992
+    m_Key: Tooltip Walls
     m_Metadata:
       m_Items: []
   - m_Id: 2474781692649472
     m_Key: Menu Wishlist
     m_Metadata:
       m_Items: []
-  - m_Id: 23900088626569216
-    m_Key: Scoring 8
+  - m_Id: 2474781847838720
+    m_Key: Menu OnSteam
     m_Metadata:
       m_Items: []
-  - m_Id: 23900084004446208
-    m_Key: Scoring Automatic Reveal
+  - m_Id: 2474861069852672
+    m_Key: Menu SteamCallToActionUnclicked
     m_Metadata:
       m_Items: []
-  - m_Id: 23900067399196672
-    m_Key: Scoring Back-to-back Difficult Fill
+  - m_Id: 2475075038076928
+    m_Key: Menu SteamCallToActionClicked
     m_Metadata:
       m_Items: []
-  - m_Id: 23900079352963072
-    m_Key: Scoring Back-to-back Difficult Sweep
+  - m_Id: 2512304913506304
+    m_Key: Menu Locked
     m_Metadata:
       m_Items: []
-  - m_Id: 23900072453332992
-    m_Key: Scoring Back-to-Back Tetri-Fill Perfect Clear
+  - m_Id: 5052179397636096
+    m_Key: GUI BlockPlacing
     m_Metadata:
       m_Items: []
-  - m_Id: 33934176091627520
-    m_Key: Scoring Burning Tile
+  - m_Id: 5052349606686720
+    m_Key: GUI Minesweeping
     m_Metadata:
       m_Items: []
-  - m_Id: 23900068477132800
-    m_Key: 'Scoring Combo: Line Filled'
+  - m_Id: 5052351666089984
+    m_Key: GUI Tetrisweeping
     m_Metadata:
       m_Items: []
-  - m_Id: 23900083224305664
-    m_Key: 'Scoring Combo: Tile Revealed'
+  - m_Id: 7178027099217920
+    m_Key: Menu Video
     m_Metadata:
       m_Items: []
-  - m_Id: 23899852948627456
-    m_Key: Scoring Double-Fill
+  - m_Id: 7178044815958016
+    m_Key: Menu Audio
     m_Metadata:
       m_Items: []
-  - m_Id: 23900076320481280
-    m_Key: Scoring Duosweep
+  - m_Id: 7178065133166592
+    m_Key: Menu Handling
     m_Metadata:
       m_Items: []
-  - m_Id: 23900084797169664
-    m_Key: Scoring Failed Chord
+  - m_Id: 7178359053213696
+    m_Key: Menu VideoSettings
     m_Metadata:
       m_Items: []
-  - m_Id: 23900080942604288
-    m_Key: Scoring High Clear 1
+  - m_Id: 7178438203924480
+    m_Key: Menu AudioSettings
     m_Metadata:
       m_Items: []
-  - m_Id: 23900081680801792
-    m_Key: Scoring High Clear 2
+  - m_Id: 7178483062005760
+    m_Key: Menu HandlingSettings
     m_Metadata:
       m_Items: []
-  - m_Id: 23900082452553728
-    m_Key: Scoring High Clear 3
+  - m_Id: 7288987847745536
+    m_Key: Menu ARR
     m_Metadata:
       m_Items: []
-  - m_Id: 23900085510201344
-    m_Key: Scoring High Reveal 1
+  - m_Id: 7289007573557248
+    m_Key: Menu DAS
     m_Metadata:
       m_Items: []
-  - m_Id: 23900086307119104
-    m_Key: Scoring High Reveal 2
+  - m_Id: 7289023503523840
+    m_Key: Menu DCD
     m_Metadata:
       m_Items: []
-  - m_Id: 23900087116619776
-    m_Key: Scoring High Reveal 3
+  - m_Id: 7289036057075712
+    m_Key: Menu SDF
     m_Metadata:
       m_Items: []
-  - m_Id: 23900055583842304
-    m_Key: Scoring In-place Lock
+  - m_Id: 8261547250933760
+    m_Key: Menu Translation
     m_Metadata:
       m_Items: []
-  - m_Id: 23900073984253952
-    m_Key: Scoring Instant Perfect Clear
+  - m_Id: 8261772770271232
+    m_Key: Menu Created by
     m_Metadata:
       m_Items: []
-  - m_Id: 23900080103743488
-    m_Key: Scoring Instant Sweep
+  - m_Id: 8261872057835520
+    m_Key: Menu SpecialThanks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8635273809223680
+    m_Key: Menu CreditsAdditional
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8641451649916928
+    m_Key: Menu AnyKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8664569943060480
+    m_Key: Menu TetrisweeperSupporters
     m_Metadata:
       m_Items: []
   - m_Id: 23899711646720000
     m_Key: Scoring Line-Fill
     m_Metadata:
       m_Items: []
-  - m_Id: 23900074789560320
-    m_Key: Scoring Lines Cleared
+  - m_Id: 23899852948627456
+    m_Key: Scoring Double-Fill
     m_Metadata:
       m_Items: []
-  - m_Id: 23900075540340736
-    m_Key: Scoring Linesweep
+  - m_Id: 23900050827501568
+    m_Key: Scoring Triple-Fill
     m_Metadata:
       m_Items: []
-  - m_Id: 23900087833845760
-    m_Key: Scoring Manual Reveal Streak (50 tiles)
+  - m_Id: 23900053100814336
+    m_Key: Scoring Tetri-Fill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900055583842304
+    m_Key: Scoring In-place Lock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900056825356288
+    m_Key: Scoring T-Spin Mini no lines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900058133979136
+    m_Key: Scoring T-Spin no lines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900060650561536
+    m_Key: Scoring T-Spin Mini Single
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900062789656576
+    m_Key: Scoring T-Spin Single
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900064362520576
+    m_Key: Scoring T-Spin Mini Double
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900065469816832
+    m_Key: Scoring T-Spin Double
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900066350620672
+    m_Key: Scoring T-Spin Triple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900067399196672
+    m_Key: Scoring Back-to-back Difficult Fill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900068477132800
+    m_Key: 'Scoring Combo: Line Filled'
     m_Metadata:
       m_Items: []
   - m_Id: 23900069341159424
@@ -495,84 +499,92 @@ MonoBehaviour:
     m_Key: Scoring Perfect clear 4
     m_Metadata:
       m_Items: []
-  - m_Id: 23900053100814336
-    m_Key: Scoring Tetri-Fill
+  - m_Id: 23900072453332992
+    m_Key: Scoring Back-to-Back Tetri-Fill Perfect Clear
     m_Metadata:
       m_Items: []
-  - m_Id: 23900077788487680
-    m_Key: Scoring Tetrisweep
+  - m_Id: 23900073984253952
+    m_Key: Scoring Instant Perfect Clear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900074789560320
+    m_Key: Scoring Lines Cleared
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900075540340736
+    m_Key: Scoring Linesweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900076320481280
+    m_Key: Scoring Duosweep
     m_Metadata:
       m_Items: []
   - m_Id: 23900077041901568
     m_Key: Scoring Triosweep
     m_Metadata:
       m_Items: []
-  - m_Id: 23900050827501568
-    m_Key: Scoring Triple-Fill
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900065469816832
-    m_Key: Scoring T-Spin Double
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900064362520576
-    m_Key: Scoring T-Spin Mini Double
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900056825356288
-    m_Key: Scoring T-Spin Mini no lines
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900060650561536
-    m_Key: Scoring T-Spin Mini Single
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900058133979136
-    m_Key: Scoring T-Spin no lines
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900062789656576
-    m_Key: Scoring T-Spin Single
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23900066350620672
-    m_Key: Scoring T-Spin Triple
+  - m_Id: 23900077788487680
+    m_Key: Scoring Tetrisweep
     m_Metadata:
       m_Items: []
   - m_Id: 23900078597988352
     m_Key: Scoring T-Spinsweep
     m_Metadata:
       m_Items: []
-  - m_Id: 990658520145920
-    m_Key: Tooltip :(
+  - m_Id: 23900079352963072
+    m_Key: Scoring Back-to-back Difficult Sweep
     m_Metadata:
       m_Items: []
-  - m_Id: 25682727771561984
-    m_Key: Tooltip 20G
+  - m_Id: 23900080103743488
+    m_Key: Scoring Instant Sweep
     m_Metadata:
       m_Items: []
-  - m_Id: 988835440746496
-    m_Key: Tooltip 40-Line Sprint
+  - m_Id: 23900080942604288
+    m_Key: Scoring High Clear 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900081680801792
+    m_Key: Scoring High Clear 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900082452553728
+    m_Key: Scoring High Clear 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900083224305664
+    m_Key: 'Scoring Combo: Tile Revealed'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084004446208
+    m_Key: Scoring Automatic Reveal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084797169664
+    m_Key: Scoring Failed Chord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900085510201344
+    m_Key: Scoring High Reveal 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900086307119104
+    m_Key: Scoring High Reveal 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087116619776
+    m_Key: Scoring High Reveal 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087833845760
+    m_Key: Scoring Manual Reveal Streak (50 tiles)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900088626569216
+    m_Key: Scoring 8
     m_Metadata:
       m_Items: []
   - m_Id: 25670915286097920
     m_Key: Tooltip ARR
-    m_Metadata:
-      m_Items: []
-  - m_Id: 990817517821952
-    m_Key: Tooltip BuyMeACoffee
-    m_Metadata:
-      m_Items: []
-  - m_Id: 991654902226944
-    m_Key: Tooltip Cleanse
-    m_Metadata:
-      m_Items: []
-  - m_Id: 989231202689024
-    m_Key: Tooltip ComingSoon
-    m_Metadata:
-      m_Items: []
-  - m_Id: 990401673551872
-    m_Key: Tooltip Credits
     m_Metadata:
       m_Items: []
   - m_Id: 25670925239181312
@@ -583,80 +595,72 @@ MonoBehaviour:
     m_Key: Tooltip DCD
     m_Metadata:
       m_Items: []
-  - m_Id: 990813138968576
-    m_Key: Tooltip Discord
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1427339857616896
-    m_Key: Tooltip Dots
-    m_Metadata:
-      m_Items: []
-  - m_Id: 989111895711744
-    m_Key: Tooltip Flash Marathon
-    m_Metadata:
-      m_Items: []
-  - m_Id: 989813380472832
-    m_Key: Tooltip Flash Ultra
-    m_Metadata:
-      m_Items: []
-  - m_Id: 33916729900916736
-    m_Key: Tooltip Freezerburn
-    m_Metadata:
-      m_Items: []
-  - m_Id: 33916636179193856
-    m_Key: Tooltip Inferno
-    m_Metadata:
-      m_Items: []
-  - m_Id: 990815487778816
-    m_Key: Tooltip Itch
-    m_Metadata:
-      m_Items: []
-  - m_Id: 990308941684736
-    m_Key: Tooltip Leaderboard
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35064038974021632
-    m_Key: Tooltip lineClearPreventMinesweepDelay
-    m_Metadata:
-      m_Items: []
-  - m_Id: 988652401319936
-    m_Key: Tooltip Marathon
-    m_Metadata:
-      m_Items: []
-  - m_Id: 990195708059648
-    m_Key: Tooltip Scoring
-    m_Metadata:
-      m_Items: []
   - m_Id: 25670929269907456
     m_Key: Tooltip SDF
     m_Metadata:
       m_Items: []
-  - m_Id: 992047333892096
-    m_Key: Tooltip Tetrisweep
+  - m_Id: 25682277726937088
+    m_Key: GameMode 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Key: Tooltip 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Key: GameMode Tiny
     m_Metadata:
       m_Items: []
   - m_Id: 25684335494422528
     m_Key: Tooltip Tiny
     m_Metadata:
       m_Items: []
-  - m_Id: 992048869007360
-    m_Key: Tooltip T-Spinsweep
+  - m_Id: 33916605992787968
+    m_Key: GameMode Inferno
     m_Metadata:
       m_Items: []
-  - m_Id: 990814418231296
-    m_Key: Tooltip Twitter
+  - m_Id: 33916636179193856
+    m_Key: Tooltip Inferno
     m_Metadata:
       m_Items: []
-  - m_Id: 989810910027776
-    m_Key: Tooltip Ultra
+  - m_Id: 33916642458066944
+    m_Key: GameMode Freezerburn
     m_Metadata:
       m_Items: []
-  - m_Id: 1647422219476992
-    m_Key: Tooltip Walls
+  - m_Id: 33916729900916736
+    m_Key: Tooltip Freezerburn
     m_Metadata:
       m_Items: []
-  - m_Id: 990816574103552
-    m_Key: Tooltip YouTube
+  - m_Id: 33934176091627520
+    m_Key: Scoring Burning Tile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Key: Menu GameOver Burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Key: Menu GameOver BurnSubtitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35060915790405632
+    m_Key: Menu lineClearPreventMinesweepDelay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Key: Tooltip lineClearPreventMinesweepDelay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35518550016778240
+    m_Key: GUI Go
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37581987358171136
+    m_Key: Menu ShowPreviewAboveBoard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Key: Menu FullScreen
     m_Metadata:
       m_Items: []
   m_Metadata:
