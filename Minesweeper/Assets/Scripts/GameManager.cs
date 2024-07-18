@@ -1207,9 +1207,10 @@ public class GameManager : MonoBehaviour
             return;
         
         endtime = GetTime();
-        isGameOver = true;
+        isGameOver = true;        
 
-        TriggerOnResetStartingPositionsEvent();
+        if (!canPause)
+            TriggerOnResetStartingPositionsEvent();
 
         if (!isTitleMenu)
             GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().SaveCurrentGame();
@@ -1560,7 +1561,6 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 1;
                 isPaused = false;
-                TriggerOnResetStartingPositionsEvent();
                 pauseMenu.SetActive(false);
                 soundManager.DisablePauseFilter();
                 marathonOverMenu.SetActive(false);
@@ -1576,6 +1576,7 @@ public class GameManager : MonoBehaviour
     IEnumerator ResetPause()
     {
         yield return new WaitForSeconds(0.4f);
+        TriggerOnResetStartingPositionsEvent();
         canPause = true;
     }
     public void Resume()

@@ -5163,7 +5163,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   fullScreenTogglePress:
-    m_Name: 
+    m_Name: Full Screen Toggle Press
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 2acb71fb-6f93-4ed7-80eb-17c9e0683dfc
@@ -11528,6 +11528,10 @@ PrefabInstance:
     - target: {fileID: 2064147738162804857, guid: 3c0dd675cf17d9547992c8732e00a951, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2064147738162804859, guid: 3c0dd675cf17d9547992c8732e00a951, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2064147738162804860, guid: 3c0dd675cf17d9547992c8732e00a951, type: 3}
       propertyPath: m_Name

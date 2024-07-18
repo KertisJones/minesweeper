@@ -91,7 +91,7 @@ public class SettingsMenu : MonoBehaviour
         lockDelayDisplayToggle.isOn = lockDelayDisplayEnabled;
         lockDelayDisplayToggle.onValueChanged.AddListener(delegate  { LockDelayDisplayToggle(); });
         previewSpaceToggle.isOn = previewSpaceEnabled;
-        previewSpaceToggle.onValueChanged.AddListener(delegate { FullScreenToggle(); }); //fullScreenToggle
+        previewSpaceToggle.onValueChanged.AddListener(delegate { PreviewSpaceToggle(); }); //fullScreenToggle
         fullScreenToggle.isOn = fullScreenEnabled;
         fullScreenToggle.onValueChanged.AddListener(delegate { FullScreenToggle(); }); //fullScreenToggle
 
