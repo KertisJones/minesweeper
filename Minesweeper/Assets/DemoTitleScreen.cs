@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using UnityEngine.Localization.Settings;
+using UnityEngine.PlayerLoop;
 
 public class DemoTitleScreen : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class DemoTitleScreen : MonoBehaviour
     public GameObject bouncyLogo;
     public Transform topLeftBounds;
 
+    float steamCallToActionSwitchTime = 10f;
+    float lastCallToActionSwitch = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,13 +43,23 @@ public class DemoTitleScreen : MonoBehaviour
                     button.GetComponent<Button>().interactable = false;
                     button.GetComponent<ButtonJiggle>().jiggleIsEnabled = false;
                 }
-                callToActionText.text = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Menu SteamCallToActionUnclicked"); // "Unlock bonus game modes!"
+                
             }
             else
             {
                 UnlockDemo();
             }
         }
+    }
+
+    private void Update()
+    {
+        if (Time.time - lastCallToActionSwitch < steamCallToActionSwitchTime)
+            callToActionText.text = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Menu SteamCallToActionUnclicked"); // "Unlock bonus game modes!"
+        else if (Time.time - lastCallToActionSwitch < steamCallToActionSwitchTime * 2)
+            callToActionText.text = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Menu SteamCallToActionClicked"); // "Tetrisweep like never before!"
+        else
+            lastCallToActionSwitch = Time.time;
     }
 
     void UnlockDemo()
@@ -57,7 +70,7 @@ public class DemoTitleScreen : MonoBehaviour
             button.GetComponent<Button>().interactable = true;
             button.GetComponent<ButtonJiggle>().jiggleIsEnabled = true;
         }
-        callToActionText.text = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Menu SteamCallToActionClicked"); // "Tetrisweep like never before!"
+        
     }
 
     public void SetDemoVisitTrue()

@@ -475,8 +475,10 @@ public class GameManager : MonoBehaviour
         backgroundAnimated.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, backgroundHeight - 1);
     }
 
-    public void SetCameraScale()
-    {       
+    public void SetCameraScale(bool isStartup = true)
+    {
+        if (!isStartup && isTitleMenu)
+            return;
         // Get the two points that need to be visible
         bool previewBuffer = (PlayerPrefs.GetInt("PreviewSpaceAboveBoardEnabled", 0) != 0);
         float guiBuffer = 12f;

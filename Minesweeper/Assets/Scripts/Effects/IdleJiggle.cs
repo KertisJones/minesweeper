@@ -282,7 +282,7 @@ public class IdleJiggle : MonoBehaviour
         
         if (!IsShakeValid(jiggleRotateIsEnabled, shakeRotationTween))
             return;
-        shakeRotationTween = this.transform.DOShakeRotation(duration, new Vector3(0, 0, strength * 40), 10, 90, !loopTween);
+        shakeRotationTween = this.transform.DOShakeRotation(duration, new Vector3(0, 0, strength * 40), 10, 90, !loopTween).SetUpdate(true);
         if (autoReset)
         {
             //startRotation = this.transform.rotation.eulerAngles;// new Vector3(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z);

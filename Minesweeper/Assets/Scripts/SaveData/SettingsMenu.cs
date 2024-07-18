@@ -186,7 +186,7 @@ public class SettingsMenu : MonoBehaviour
     {
         previewSpaceEnabled = previewSpaceToggle.isOn;
         PlayerPrefs.SetInt("PreviewSpaceAboveBoardEnabled", (previewSpaceEnabled ? 1 : 0));
-        gm.SetCameraScale();
+        gm.SetCameraScale(false);
     }
     public void LanguageSelectDropdown()
     {

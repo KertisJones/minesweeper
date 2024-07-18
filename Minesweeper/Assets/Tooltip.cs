@@ -22,6 +22,15 @@ public class Tooltip : MonoBehaviour
     public Vector3 startScale;
 
     Vector2 mousePosOnScreen = new Vector2();
+
+    void OnEnable()
+    {
+        GameManager.OnKillTweenEvent += HideTooltip;
+    }
+    void OnDisable()
+    {
+        GameManager.OnKillTweenEvent -= HideTooltip;
+    }
     void Awake()
     {
         // If there is an instance, and it's not me, delete myself.    
