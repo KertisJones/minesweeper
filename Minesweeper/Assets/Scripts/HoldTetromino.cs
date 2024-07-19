@@ -20,7 +20,7 @@ public class HoldTetromino : MonoBehaviour
     //public TMPro.TMP_Text cleansePointText;
     public AudioClip cleanseReadySound;
     public AudioClip cleanseActivateSound;
-    private bool cleanseReady = false;
+    //private bool cleanseReady = false;
     public int cleanseRecharge = 0;
     //int manualTileSolveStreak = 0;
     public AudioClip holdSwitchSound;
@@ -276,7 +276,7 @@ public class HoldTetromino : MonoBehaviour
 
         //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(cleanseActivateSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-        cleanseReady = false;
+        //cleanseReady = false;
 
         /*if (cleanseButton != null)
             cleanseButton.GetComponent<ButtonJiggle>().ShrinkToZero();*/
