@@ -444,7 +444,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 25670928355549184
-    m_Localized: 
+    m_Localized: "La cantidad de tiempo que el DAS se detendr\xE1 al soltar o girar
+      el tetromino, medido en milisegundos."
     m_Metadata:
       m_Items: []
   - m_Id: 33934857829605376
@@ -465,10 +466,45 @@ MonoBehaviour:
     m_Localized: "\xA1Ve!"
     m_Metadata:
       m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: Mostrar espacio de vista previa sobre el tablero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: Pantalla completa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: "Qu\xE9 tan r\xE1pido se mueve el tetromino hacia la izquierda o
+      la derecha al mantener presionadas las teclas de movimiento. El retraso entre
+      cada paso se mide en milisegundos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: "El retraso entre mantener presionada una tecla de movimiento y
+      el movimiento autom\xE1tico del tetromino, medido en milisegundos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: "Cu\xE1ntas veces m\xE1s r\xE1pido caer\xE1 el tetromino al mantener
+      presionada la tecla de ca\xEDda suave."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: "1 Sola L\xEDnea"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: "El juego termina tan pronto como limpies una l\xEDnea... pero hay
+      m\xE1s de una forma de obtener puntos."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 1684021998389821470
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00e0afc3216b0200
+        m_Entries: 
+        m_SharedEntries:
+        - id: 680742714597376

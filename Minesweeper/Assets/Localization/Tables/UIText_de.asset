@@ -611,6 +611,44 @@ MonoBehaviour:
     m_Localized: Geh!
     m_Metadata:
       m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: "Vorschauplatz \xFCber dem Spielfeld anzeigen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: Vollbild
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: "Wie schnell sich das Tetromino nach links oder rechts bewegt, w\xE4hrend
+      die Bewegungstasten gedr\xFCckt gehalten werden. Die Verz\xF6gerung zwischen
+      jedem Schritt wird in Millisekunden gemessen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: "Die Verz\xF6gerung zwischen dem Halten einer Bewegungstaste und
+      der automatischen Bewegung des Tetrominos, gemessen in Millisekunden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: Die Zeitspanne, die DAS beim Fallenlassen oder Drehen des Tetrominos
+      pausiert, gemessen in Millisekunden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: "Wie viel schneller das Tetromino f\xE4llt, wenn die Soft-Drop-Taste
+      gedr\xFCckt gehalten wird."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: 1-Linien-Sackgasse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: "Das Spiel endet, sobald du eine Linie abr\xE4umst... aber es gibt
+      mehr als eine M\xF6glichkeit, Punkte zu erzielen."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

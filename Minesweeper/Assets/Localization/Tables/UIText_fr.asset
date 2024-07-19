@@ -615,10 +615,41 @@ MonoBehaviour:
     m_Localized: Va!
     m_Metadata:
       m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: "Afficher l'espace de pr\xE9visualisation au-dessus du plateau"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: "Plein \xE9cran"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: "La rapidit\xE9 avec laquelle le t\xE9trimino se d\xE9place vers
+      la gauche ou la droite en maintenant les touches de d\xE9placement enfonc\xE9es.
+      Le d\xE9lai entre chaque \xE9tape est mesur\xE9 en millisecondes."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: "Le d\xE9lai entre l'appui sur une touche de d\xE9placement et le
+      d\xE9placement automatique du t\xE9trimino, mesur\xE9 en millisecondes."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: "La dur\xE9e pendant laquelle le DAS s'arr\xEAtera lors de la chute
+      ou de la rotation du t\xE9trimino, mesur\xE9e en millisecondes."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: "Combien de fois plus vite le t\xE9trimino tombera en maintenant
+      la touche de chute douce enfonc\xE9e."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 1684021998389821469
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00e0afc3216b0200
+        m_Entries: 
+        m_SharedEntries:
+        - id: 680742714597376

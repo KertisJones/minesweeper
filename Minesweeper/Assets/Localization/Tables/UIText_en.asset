@@ -681,6 +681,15 @@ MonoBehaviour:
     m_Localized: Full Screen
     m_Metadata:
       m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: 1-Line Impasse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: "The game ends as soon as you clear a line\u2026 but there\u2019s
+      more than one way to score points."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -615,6 +615,45 @@ MonoBehaviour:
     m_Localized: Jdi!
     m_Metadata:
       m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: "Zobrazit n\xE1hled prostoru nad deskou"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: "Cel\xE1 obrazovka"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: "Jak rychle se tetromino pohybuje doleva nebo doprava p\u0159i dr\u017Een\xED
+      kl\xE1ves pro pohyb. Zpo\u017Ed\u011Bn\xED mezi jednotliv\xFDmi kroky je m\u011B\u0159eno
+      v milisekund\xE1ch."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: "Zpo\u017Ed\u011Bn\xED mezi dr\u017Een\xEDm kl\xE1vesy pohybu a
+      automatick\xFDm pohybem tetromina, m\u011B\u0159eno v milisekund\xE1ch."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: "Mno\u017Estv\xED \u010Dasu, po kter\xE9 DAS pozastav\xED p\u0159i
+      upu\u0161t\u011Bn\xED nebo ot\xE1\u010Den\xED tetromina, m\u011B\u0159eno v
+      milisekund\xE1ch."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: "Kolikr\xE1t rychleji bude tetromino padat p\u0159i dr\u017Een\xED
+      kl\xE1vesy m\u011Bkk\xE9ho p\xE1du."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: "Jen jeden \u0159\xE1dek"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: "Hra skon\u010D\xED po odstran\u011Bn\xED jednoho \u0159\xE1dku...
+      to ale nen\xED jedin\xFD zp\u016Fsob, jak z\xEDskat sk\xF3re."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

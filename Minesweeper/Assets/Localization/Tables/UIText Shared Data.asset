@@ -663,6 +663,14 @@ MonoBehaviour:
     m_Key: Menu FullScreen
     m_Metadata:
       m_Items: []
+  - m_Id: 38389880462499840
+    m_Key: Gamemode 1-Line Impasse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Key: Tooltip Gamemode 1-Line Impasse
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

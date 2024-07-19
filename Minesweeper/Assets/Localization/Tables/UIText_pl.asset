@@ -609,6 +609,44 @@ MonoBehaviour:
     m_Localized: "Id\u017A!"
     m_Metadata:
       m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: "Poka\u017C miejsce podgl\u0105du nad plansz\u0105"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: "Pe\u0142ny ekran"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: "Jak szybko tetromino porusza si\u0119 w lewo lub prawo przy trzymaniu
+      klawiszy ruchu. Op\xF3\u017Anienie mi\u0119dzy ka\u017Cdym krokiem mierzone
+      jest w milisekundach."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: "Op\xF3\u017Anienie mi\u0119dzy przytrzymaniem klawisza ruchu a
+      automatycznym ruchem tetromina, mierzone w milisekundach."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: "Czas, przez kt\xF3ry DAS zatrzymuje si\u0119 przy opuszczaniu lub
+      obracaniu tetromina, mierzony w milisekundach."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: "Ile razy szybciej tetromino b\u0119dzie spada\u0107, gdy przytrzymasz
+      klawisz mi\u0119kkiego opadania."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: 1 liniowy martwy koniec
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: "Gra si\u0119 ko\u0144czy, gdy wype\u0142nisz lini\u0119... Ale
+      jest wi\u0119cej sposob\xF3w na zdobycie punkt\xF3w."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

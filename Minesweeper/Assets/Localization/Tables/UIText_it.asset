@@ -610,6 +610,44 @@ MonoBehaviour:
     m_Localized: Vai!
     m_Metadata:
       m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: Mostra lo spazio di anteprima sopra la tavola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: Schermo intero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: "La velocit\xE0 con cui il tetramino si muove a sinistra o a destra
+      tenendo premuti i tasti di movimento. Il ritardo tra ogni passo \xE8 misurato
+      in millisecondi."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: Il ritardo tra la pressione di un tasto di movimento e il movimento
+      automatico del tetramino, misurato in millisecondi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: "La quantit\xE0 di tempo che il DAS si fermer\xE0 quando si lascia
+      cadere o si ruota il tetramino, misurata in millisecondi."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: "Quante volte pi\xF9 velocemente cadr\xE0 il tetramino tenendo premuto
+      il tasto di discesa rapida."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: Stallo di una riga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: Il gioco termina appena rimuovi una riga... Ma ci sono molti altri
+      modi per ottenere punti.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

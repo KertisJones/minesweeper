@@ -215,7 +215,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 934315432075264
-    m_Localized: ilo lawa pi musi Masipa
+    m_Localized: ilo lawa pi musi Mansipa
     m_Metadata:
       m_Items: []
   - m_Id: 951608887205888
@@ -365,7 +365,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5052349606686720
-    m_Localized: pali Masipa
+    m_Localized: pali Mansipa
     m_Metadata:
       m_Items: []
   - m_Id: 5052351666089984
@@ -643,16 +643,42 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 35060915790405632
-    m_Localized: pali pi awen toki kepeken lawa linja pi mije poka
+    m_Localized: tenpo open musi Mansipa tan weka linja
     m_Metadata:
       m_Items: []
   - m_Id: 35064038974021632
-    m_Localized: tenpo mute lili pi awen kepeken lawa pi mije poka, la mi weka e
-      ijo pi linja li sin, li pona tawa weka poki ike.
+    m_Localized: sina weka e linja la, tenpo open ni li kama. tenpo open kama la,
+      sina ken ala musi Mansipa. tan ni la, sina ken ala pakala lon musi Masipa.
     m_Metadata:
       m_Items: []
   - m_Id: 35518550016778240
-    m_Localized: "\u8D70\uFF01"
+    m_Localized: musi!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: seli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: seli mute! tomo musi li seli mute. o musi kepeken pakala ala!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: seli en lete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: 'tomo musi li lete mute. o seli e lete mute tawa ni: o lukin e nanpa
+      leko. o kepeken seli kepeken pakala ala!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: kama poka kepeken sijelo poka sin nanpa sewi la jan ken lukin e
+      ona.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: selo lukin ale
     m_Metadata:
       m_Items: []
   references:
