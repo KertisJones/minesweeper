@@ -4321,6 +4321,14 @@ PrefabInstance:
       propertyPath: percentageOffset
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 5930388677341721429, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 926629294497792
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930388677341721429, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:0dd1e0fbba483424bbb601167d9eb8a1
+      objectReference: {fileID: 0}
     - target: {fileID: 5938560997629228981, guid: 640607ce4e5690c4d9b113bcafeceaf8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -5353,7 +5361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1532701414915100715, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
-      value: 
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 1532701414915100715, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -5373,7 +5381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2450028317646061081, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
-      value: 
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 2450028317646061081, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -5405,7 +5413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2547200451147902467, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
-      value: 
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 2547200451147902467, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -5469,7 +5477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5735428543936608911, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
-      value: 
+      value: "\u53CC\u51FB"
       objectReference: {fileID: 0}
     - target: {fileID: 5735428543936608911, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -5493,7 +5501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5927857351700717444, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
-      value: 
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 5927857351700717444, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -5557,7 +5565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5979545991129058875, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
-      value: 
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 5979545991129058875, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -5617,7 +5625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6192803703639833954, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
-      value: 
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 6192803703639833954, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -5757,7 +5765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7055287407257833176, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
-      value: 
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 7055287407257833176, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -5801,7 +5809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7734176181436736636, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
-      value: 
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 7734176181436736636, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -5829,7 +5837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7766333287689538042, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
-      value: 
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 7766333287689538042, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -5849,7 +5857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776939525465708376, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
-      value: 
+      value: "\u6807\u96F7\u53CC\u51FB"
       objectReference: {fileID: 0}
     - target: {fileID: 7776939525465708376, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -5865,7 +5873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8475879005825423797, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
-      value: 
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 8475879005825423797, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -5885,7 +5893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8906026431029653343, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_text
-      value: 
+      value: "\u987A\u65F6\u9488\u65CB\u8F6C"
       objectReference: {fileID: 0}
     - target: {fileID: 8906026431029653343, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
