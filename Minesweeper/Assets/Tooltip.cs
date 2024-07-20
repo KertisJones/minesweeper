@@ -151,9 +151,9 @@ public class Tooltip : MonoBehaviour
         
         Instance.isActive = true;     
         //Instance.isVisible = false;
-        Instance.timeDelay = 0;   
+        Instance.timeDelay = 0;
 
-        string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Tooltip " + tooltipNewString); // Returns translation of tooltip
+        string localizedText = GameManager.GetTranslation("UIText", "Tooltip " + tooltipNewString); // Returns translation of tooltip
         Instance.tooltipString = localizedText;
     }
 

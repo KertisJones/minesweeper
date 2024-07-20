@@ -9,6 +9,8 @@ using UnityEngine.PlayerLoop;
 
 public class DemoTitleScreen : MonoBehaviour
 {
+    GameManager gm;
+
     public GameObject playFrameStandard;
     public GameObject playFrameDemo;
     public GameObject[] buttonsUnlockedByDemoVisit;
@@ -24,6 +26,8 @@ public class DemoTitleScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
         if (ScoreKeeper.versionType == ScoreKeeper.VersionType.standard || ScoreKeeper.versionType == ScoreKeeper.VersionType.beta)
         {
             playFrameStandard.SetActive(true);
@@ -55,9 +59,9 @@ public class DemoTitleScreen : MonoBehaviour
     private void Update()
     {
         if (Time.time - lastCallToActionSwitch < steamCallToActionSwitchTime)
-            callToActionText.text = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Menu SteamCallToActionUnclicked"); // "Unlock bonus game modes!"
+            callToActionText.text = GameManager.GetTranslation("UIText", "Menu SteamCallToActionUnclicked"); // "Unlock bonus game modes!"
         else if (Time.time - lastCallToActionSwitch < steamCallToActionSwitchTime * 2)
-            callToActionText.text = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Menu SteamCallToActionClicked"); // "Tetrisweep like never before!"
+            callToActionText.text = GameManager.GetTranslation("UIText", "Menu SteamCallToActionClicked"); // "Tetrisweep like never before!"
         else
             lastCallToActionSwitch = Time.time;
     }

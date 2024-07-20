@@ -616,6 +616,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game GUI Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7798947809604349220, guid: b887b2730492a574d901b05fff8ab8b9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7798947809604349222, guid: b887b2730492a574d901b05fff8ab8b9, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
@@ -867,6 +871,7 @@ GameObject:
   m_Component:
   - component: {fileID: 98075033}
   - component: {fileID: 98075034}
+  - component: {fileID: 98075035}
   m_Layer: 0
   m_Name: Hold Frame Right
   m_TagString: Untagged
@@ -944,6 +949,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &98075035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98075032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308584b1011476548b67f4bfd217d82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  webGLDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1001 &116903585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3066,6 +3084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 534250864}
   - component: {fileID: 534250865}
+  - component: {fileID: 534250866}
   m_Layer: 0
   m_Name: Hold Frame Top
   m_TagString: Untagged
@@ -3143,6 +3162,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &534250866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534250863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308584b1011476548b67f4bfd217d82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  webGLDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &534289767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894320597419646559, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
@@ -4644,6 +4676,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game GUI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7798947809604349220, guid: b887b2730492a574d901b05fff8ab8b9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7798947809604349222, guid: b887b2730492a574d901b05fff8ab8b9, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
@@ -4716,6 +4752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 886441175}
   - component: {fileID: 886441176}
+  - component: {fileID: 886441177}
   m_Layer: 0
   m_Name: Hold Frame Left
   m_TagString: Untagged
@@ -4793,6 +4830,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &886441177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886441174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308584b1011476548b67f4bfd217d82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  webGLDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1001 &895487549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9974,6 +10024,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1919787198}
   - component: {fileID: 1919787199}
+  - component: {fileID: 1919787200}
   m_Layer: 0
   m_Name: Hold Frame Bottom
   m_TagString: Untagged
@@ -10051,6 +10102,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1919787200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919787197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308584b1011476548b67f4bfd217d82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  webGLDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1001 &1937719020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11663,6 +11727,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hold Frame
       objectReference: {fileID: 0}
+    - target: {fileID: 3455087921565693665, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3455087921565693666, guid: c46df567a66810a4a86e9459765cae68, type: 3}
       propertyPath: cleanseButton
       value: 
@@ -11722,8 +11790,92 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3455087921430732610, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3455087922529534452}
+    - targetCorrespondingSourceObject: {fileID: 3455087921946097719, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3455087922529534451}
+    - targetCorrespondingSourceObject: {fileID: 3455087921388393502, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3455087922529534450}
+    - targetCorrespondingSourceObject: {fileID: 3455087921008552511, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3455087922529534449}
   m_SourcePrefab: {fileID: 100100000, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+--- !u!1 &3455087922529534445 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3455087921008552511, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+  m_PrefabInstance: {fileID: 3455087922529534444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3455087922529534446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3455087921388393502, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+  m_PrefabInstance: {fileID: 3455087922529534444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3455087922529534447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3455087921946097719, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+  m_PrefabInstance: {fileID: 3455087922529534444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3455087922529534448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3455087921430732610, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+  m_PrefabInstance: {fileID: 3455087922529534444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3455087922529534449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3455087922529534445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308584b1011476548b67f4bfd217d82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  webGLDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!114 &3455087922529534450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3455087922529534446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308584b1011476548b67f4bfd217d82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  webGLDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!114 &3455087922529534451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3455087922529534447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308584b1011476548b67f4bfd217d82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  webGLDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!114 &3455087922529534452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3455087922529534448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308584b1011476548b67f4bfd217d82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  webGLDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1001 &4691702043744173457
 PrefabInstance:
   m_ObjectHideFlags: 0

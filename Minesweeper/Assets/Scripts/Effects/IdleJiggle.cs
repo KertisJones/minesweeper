@@ -28,7 +28,9 @@ public class IdleJiggle : MonoBehaviour
     private Tween jumpInYTween;
     private Sequence punchDownSequence;
 
+    [SerializeField]
     private Vector3 startPositionLocal;
+    [SerializeField]
     private Vector3 parentStartPosition = Vector3.zero;
     private Vector3 startScale;   
     private Vector3 startRotation; 
@@ -116,10 +118,12 @@ public class IdleJiggle : MonoBehaviour
         myTransform = this.transform;
         parentCanvas = this.gameObject.GetComponentInParent<Canvas>();
 
-        
+
         if (parentCanvas != null)
             if (parentCanvas.renderMode == RenderMode.WorldSpace)
                 parentCanvasDisplaySize = parentCanvas.renderingDisplaySize;
+
+        SetNewStartingValues();
 
         if (myTransform == null)// || (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) == 0))
             return;
@@ -128,8 +132,8 @@ public class IdleJiggle : MonoBehaviour
         if (!this.gameObject.activeInHierarchy)
             return;
 
-        SetNewStartingValues();
-        
+
+
         if (idleMoveDistance != Vector3.zero && idleMoveDuration > 0)
         {
             if (idleMoveDistance.x != 0)

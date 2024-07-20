@@ -11,6 +11,7 @@ using UnityEngine.Rendering.Universal;
 using TMPro;
 using UnityEngine.Localization.Settings;
 using static GameManager;
+using UnityEngine.Localization.Tables;
 
 public class GameManager : MonoBehaviour
 {
@@ -208,6 +209,12 @@ public class GameManager : MonoBehaviour
         //PopulateMines();
     }
 
+    public IEnumerator Start()
+    {
+        yield return LocalizationSettings.InitializationOperation;
+        //Debug.Log(LocalizationSettings.SelectedLocale);
+    }
+
     #region Input
     void OnEnable()
     {
@@ -265,7 +272,7 @@ public class GameManager : MonoBehaviour
                 switch (startupTimerCountdown)
                 {                    
                     case 4:                        
-                        floater.GetComponent<TextMeshProUGUI>().text = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Go"); ;
+                        floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI Go");
 
                         AudioSource.PlayClipAtPoint(startupCountdownSoundFinal, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                         AudioSource.PlayClipAtPoint(startupCountdownSoundFinal2, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
@@ -1600,6 +1607,28 @@ public class GameManager : MonoBehaviour
         return new Vector2(Mathf.Round(v.x), Mathf.Round(v.y));
     }
 
+    public static string GetTranslation(string tableName, string entryName, int depth = 0)
+    {
+        StringTable table = LocalizationSettings.StringDatabase.GetTableAsync(tableName).Result;
+        
+        if (table == null)
+        {
+            //Debug.Log(entryName + ", " + depth);
+            if (depth > 10)
+                return entryName;
+            return GetTranslation(tableName, entryName, depth + 1);
+        }
+        else
+            return table.GetEntry(entryName).GetLocalizedString();
+            //[entryName].LocalizedValue;
+/*#if !UNITY_EDITOR && UNITY_WEBGL
+            return LocalizationSettings.StringDatabase.GetTable(tableName)[entryName].LocalizedValue;
+#endif
+        return LocalizationSettings.StringDatabase.GetLocalizedString(tableName, entryName);*/
+    }
+    
+    #endregion
+    #region Event Triggers
     public void TriggerOnHardDropEvent()
     {
         if (OnHardDropEvent != null)

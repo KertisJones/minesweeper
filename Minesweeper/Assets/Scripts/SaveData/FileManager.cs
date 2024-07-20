@@ -27,8 +27,16 @@ public static class FileManager
 
         try
         {
-            result = File.ReadAllText(fullPath);
-            return true;
+            if (File.Exists(fullPath))
+            {
+                result = File.ReadAllText(fullPath);
+                return true;
+            }
+            else
+            {
+                result = "";
+                return false;
+            }
         }
         catch (Exception e)
         {

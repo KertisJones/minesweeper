@@ -34,27 +34,34 @@ public class RebindingDisplay : MonoBehaviour
     private TMP_Text rebindText;
     [SerializeField]
     private Button resetButton;
-/*
-Move Left: Left | A; Num 4
-Move Right: Right | D; Num 6
-Soft Drop: Down | S; Num 2
-Hard Drop: Space | Enter; Num 8, Num Enter
-Rotate Clockwise: Up, X | W, E; Num 1, Num 5, Num 9
-Rotate Counter-Clockwise: Left Control, Z | Q; Num 3, Num 7
-// Rotate 180: Alt | R
-Hold: Shift | C; Num 0
+    /*
+    Move Left: Left | A; Num 4
+    Move Right: Right | D; Num 6
+    Soft Drop: Down | S; Num 2
+    Hard Drop: Space | Enter; Num 8, Num Enter
+    Rotate Clockwise: Up, X | W, E; Num 1, Num 5, Num 9
+    Rotate Counter-Clockwise: Left Control, Z | Q; Num 3, Num 7
+    // Rotate 180: Alt | R
+    Hold: Shift | C; Num 0
 
-Reveal Tile: LMB | N
-Flag Tile: RMB | M
-Chord Tile: MMB | ,
-Hard Clear: T | F1, Backspace
-Cleanse: F | F2
-*/
+    Reveal Tile: LMB | N
+    Flag Tile: RMB | M
+    Chord Tile: MMB | ,
+    Hard Clear: T | F1, Backspace
+    Cleanse: F | F2
+    */
     private void Start() 
-    {
-        UpdateUI();    
+    {        
+        UpdateUI();
+        StartCoroutine(StartLocale());
     }
-    
+
+    public IEnumerator StartLocale()
+    {
+        yield return LocalizationSettings.InitializationOperation;
+        //Debug.Log(LocalizationSettings.SelectedLocale);
+    }
+
     private void OnEnable()
     {
         rebindButton.onClick.AddListener(() => DoRebind());
@@ -102,10 +109,15 @@ Cleanse: F | F2
     {
         InputAction action = InputManager.GetAction(actionName);
         if (actionText != null)
-            actionText.text = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Binding " + actionName); // Returns translation of binding name, ex. "Rotate Clockwise"
-            //actionText.text = actionName;
+            GameManager.GetTranslation("UIText", "Binding " + actionName);
+        //actionText.text = LocalizationSettings.StringDatabase.GetTable("UIText")["Binding " + actionName].LocalizedValue;
 
-        if(rebindText != null)
+        //actionText.text = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Binding " + actionName);
+        //LocalizationSettings.StringDatabase.GetTable("UIText")["Binding " + actionName].LocalizedValue;
+        //.GetTranslation("UIText", "Binding " + actionName); // Returns translation of binding name, ex. "Rotate Clockwise"
+        //actionText.text = actionName;
+
+        if (rebindText != null)
         {
             //rebindText.text = inputActionReference.action.bindings[bindingIndex].ToDisplayString(displayStringOptions);//.effectivePath;
             

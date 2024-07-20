@@ -138,8 +138,8 @@ public class DisplayText : MonoBehaviour
             string suffix = " *";
             if (unknownMines < 0)
                 suffix = "? *";
-            
-            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Mines"); // "Mines"
+
+            string localizedText = GameManager.GetTranslation("UIText", "GUI Mines"); // "Mines"
             this.GetComponent<TextMeshProUGUI>().text = localizedText+ ": " + unknownMines + suffix;
         }
         else if (displayType == TextType.minesTotal)
@@ -152,7 +152,7 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.time)
         {
-            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Time"); // "Time"
+            string localizedText = GameManager.GetTranslation("UIText", "GUI Time"); // "Time"
             if (gm.gameMods.timeLimit < Mathf.Infinity)
                 this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + GetTimeString(gm.gameMods.timeLimit - gm.GetTime());
             else
@@ -191,32 +191,32 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.bestScoreTitle)
         {
-            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI HighScore"); // "High Score"
+            string localizedText = GameManager.GetTranslation("UIText", "GUI HighScore"); // "High Score"
             if (!gm.gameMods.detailedTimer || gm.gameMods.timeLimit < Mathf.Infinity) // Normal score mode
             {
                 if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
-                    localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI HighScoreBestToday"); // "Best Today"
+                    localizedText = GameManager.GetTranslation("UIText", "GUI HighScoreBestToday"); // "Best Today"
                 
                 if (sk.bestScoreToday == sk.bestScore)
-                    localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI HighScore"); // "High Score"
+                    localizedText = GameManager.GetTranslation("UIText", "GUI HighScore"); // "High Score"
             }
             else // 40L sprint mode
             {
-                localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI HighScoreBestTime"); // "Best Time"
+                localizedText = GameManager.GetTranslation("UIText", "GUI HighScoreBestTime"); // "Best Time"
 
                 if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTime < gm.GetTime()) // Best Score Today
-                    localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI HighScoreBestToday"); // "Best Today"
+                    localizedText = GameManager.GetTranslation("UIText", "GUI HighScoreBestToday"); // "Best Today"
             }            
             this.GetComponent<TextMeshProUGUI>().text = localizedText + ":"; 
         }
         else if (displayType == TextType.linesCleared)
         {
-            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Lines"); // "Lines"
+            string localizedText = GameManager.GetTranslation("UIText", "GUI Lines"); // "Lines"
             this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + gm.linesCleared;
         }
         else if (displayType == TextType.tetrisweepsCleard)
         {
-            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Tetrisweeeps"); // "Tetrisweeps"
+            string localizedText = GameManager.GetTranslation("UIText", "GUI Tetrisweeeps"); // "Tetrisweeps"
             if (gm.tetrisweepsCleared == 0)
                 this.GetComponent<TextMeshProUGUI>().text = "";
             else
@@ -228,10 +228,10 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.quit)
         {
-            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Menu Quit"); // "Quit"
+            string localizedText = GameManager.GetTranslation("UIText", "Menu Quit"); // "Quit"
             if (Application.platform == RuntimePlatform.WebGLPlayer && gm.hasQuit)
             {
-                localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Menu QuitCancel"); // "Can't Quit in Browser"
+                localizedText = GameManager.GetTranslation("UIText", "Menu QuitCancel"); // "Can't Quit in Browser"
                 this.GetComponent<TextMeshProUGUI>().text = localizedText;
                 this.GetComponent<TextMeshProUGUI>().fontSize = 8;
             }                
@@ -244,7 +244,7 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.level)
         {
-            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Level"); // "Level"
+            string localizedText = GameManager.GetTranslation("UIText", "GUI Level"); // "Level"
             this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + gm.level;
         }
         else if (displayType == TextType.tSpinSweeps)
@@ -253,7 +253,7 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TextMeshProUGUI>().text = "";
             else
             {
-                string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GUI Tspinsweeps"); // "T-Spinsweeps"
+                string localizedText = GameManager.GetTranslation("UIText", "GUI Tspinsweeps"); // "T-Spinsweeps"
                 this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + gm.tSpinsweepsCleared;
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                 this.GetComponent<VertexColorCyclerGradient>().enabled = true;
@@ -319,10 +319,10 @@ public class DisplayText : MonoBehaviour
             if (gameMods.gameModeDisplayName != "")
                 gameMode = gameMods.gameModeDisplayName;
             
-            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GameMode " + gameMode); // Returns translation of game mode name, ex. "Marathon"
+            string localizedText = GameManager.GetTranslation("UIText", "GameMode " + gameMode); // Returns translation of game mode name, ex. "Marathon"
 
             if (gm.isEndless && !gm.marathonOverMenu.GetIsActive())
-                localizedText += " (" + LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GameMode Endless") + ")"; // " (Endless)"
+                localizedText += " (" + GameManager.GetTranslation("UIText", "GameMode Endless") + ")"; // " (Endless)"
             this.GetComponent<TextMeshProUGUI>().text = localizedText;
         }
         else if (displayType == TextType.gameModeNameComplete)
@@ -331,9 +331,9 @@ public class DisplayText : MonoBehaviour
             if (gameMods.gameModeDisplayName != "")
                 gameMode = gameMods.gameModeDisplayName;
             
-            string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GameMode " + gameMode); // Returns translation of game mode name, ex. "Marathon"
+            string localizedText = GameManager.GetTranslation("UIText", "GameMode " + gameMode); // Returns translation of game mode name, ex. "Marathon"
             
-            this.GetComponent<TextMeshProUGUI>().text = localizedText + " " + LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "GameMode Complete") + "!";
+            this.GetComponent<TextMeshProUGUI>().text = localizedText + " " + GameManager.GetTranslation("UIText", "GameMode Complete") + "!";
         }
         else if (displayType == TextType.revealCombo)
         {
@@ -355,7 +355,7 @@ public class DisplayText : MonoBehaviour
             if (gameMods.gameModeDisplayName != "")
                 gameMode = gameMods.gameModeDisplayName;
             
-            //string localizedText = LocalizationSettings.StringDatabase.GetLocalizedString("UIText", "Tooltip " + gameMode); // Returns translation of game mode description, ex. "Marathon"
+            //string localizedText = GameManager.GetTranslation("UIText", "Tooltip " + gameMode); // Returns translation of game mode description, ex. "Marathon"
             Tooltip.ShowTooltip_Static(gameMode);
         }
     }

@@ -61,7 +61,11 @@ public class SettingsMenu : MonoBehaviour
         lockDelayDisplayEnabled = (PlayerPrefs.GetInt("LockDelayDisplayEnabled", 0) != 0);
         previewSpaceEnabled = (PlayerPrefs.GetInt("PreviewSpaceAboveBoardEnabled", 0) != 0);
         fullScreenEnabled = (PlayerPrefs.GetInt("FullScreenEnabled", 1) != 0);
+
+#if !UNITY_WEBGL
         Screen.fullScreen = fullScreenEnabled;
+#endif
+
         //languageIndex = PlayerPrefs.GetInt("LanguageIndex", 1);
         languageIndex = LocalizationSettings.AvailableLocales.Locales.IndexOf(LocalizationSettings.SelectedLocale);
         //controlScheme = PlayerPrefs.GetInt("ControlScheme", 0);
