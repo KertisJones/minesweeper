@@ -172,6 +172,8 @@ MonoBehaviour:
   jumpInPlaceDuration: 0.3
   jumpInPlaceLoopDuration: -1
   jumpInPlaceSequenceNextObject: {fileID: 0}
+  startPositionLocal: {x: 0, y: 0, z: 0}
+  parentStartPosition: {x: 0, y: 0, z: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 0
   jiggleScaleIsEnabled: 1

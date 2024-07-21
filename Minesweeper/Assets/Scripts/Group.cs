@@ -1611,8 +1611,8 @@ public class Group : MonoBehaviour
                 {
                     AddTspinsweep(getMultiplier, sweepMultiplier);
                     difficultSweepScored = true;
-                    gm.previousTetromino = null;
-                    gm.tetrominoSpawner.currentTetromino = null;
+                    /*gm.previousTetromino = null;
+                    gm.tetrominoSpawner.currentTetromino = null;*/
                 }                
             }
         }

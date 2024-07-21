@@ -31,7 +31,10 @@ public class FloatingText : MonoBehaviour
     {
         textBox.color = textColorHoldingSprite.color;
         if (textBox.color == Color.clear)
+        {
+            this.DOKill();
+            textColorHoldingSprite.DOKill();
             Destroy(this.gameObject);
+        }        
     }
-
 }

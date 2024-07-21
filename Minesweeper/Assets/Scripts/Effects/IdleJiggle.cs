@@ -195,7 +195,7 @@ public class IdleJiggle : MonoBehaviour
         
     }
 
-    void MinorShake()
+    public void MinorShake()
     {
         Shake(0.1f, 0.05f);
     }

@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 {
     private Camera mainCamera;
     [HideInInspector]
+    public ScoreKeeper scoreKeeper;
+    [HideInInspector]
     public GameModifiers gameMods;
     [HideInInspector]
     public SoundManager soundManager;
@@ -98,6 +100,9 @@ public class GameManager : MonoBehaviour
     public int tSpinTriple;
 
     public float lastLineClearTime = 0;
+
+    private bool isBestToday = false;
+    private bool isHighScore = false;
 
     // Game Mods
     [HideInInspector]
@@ -182,11 +187,12 @@ public class GameManager : MonoBehaviour
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         inputManager = InputManager.Instance;
         soundManager = GetComponent<SoundManager>();
-        gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
+        scoreKeeper = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>();
+        gameMods = scoreKeeper.GetComponent<GameModifiers>();
         tetrominoSpawner = GameObject.FindObjectOfType<TetrominoSpawner>();
         demoTitleScreen = GameObject.FindObjectOfType<DemoTitleScreen>();
 
-        GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().runs += 1;
+        scoreKeeper.runs += 1;
 
         textType = gameMods.minesweeperTextType;
 
@@ -1220,7 +1226,7 @@ public class GameManager : MonoBehaviour
             TriggerOnResetStartingPositionsEvent();
 
         if (!isTitleMenu)
-            GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().SaveCurrentGame();
+            scoreKeeper.SaveCurrentGame();
         
         soundManager.DisablePauseFilter();
         soundManager.StopMultiplierDrain();
@@ -1280,6 +1286,30 @@ public class GameManager : MonoBehaviour
             pieChart.SetValues(scoreByPointSourceType);
         
         score += tempScore;
+
+        //floater.GetComponent<TextMeshProUGUI>().text = "+" + tempScore.ToString("#,#")
+
+        if (score >= scoreKeeper.bestScoreToday)
+        {
+            if (!isHighScore && score >= scoreKeeper.bestScore  && scoreKeeper.bestScore > 0 && !isEndless)
+            {
+                GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
+                floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScore") + "!";
+                isHighScore = true;
+                isBestToday = true;
+            }
+
+            if (!isBestToday && scoreKeeper.bestScoreToday > 0 && !isEndless)
+            {
+                GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
+                floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScoreBestToday") + "!";
+                isBestToday = true;
+            }
+            
+            
+        }
+            
+        
     }
 
     public void SetScoreMultiplier(int mult, float duration, bool isSweep = false)
@@ -1548,7 +1578,7 @@ public class GameManager : MonoBehaviour
                 isEndless = true;
                 marathonOverMenu.SetActive(true);              
                 if (!isTitleMenu)
-                    GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>().SaveCurrentGame();  
+                    scoreKeeper.SaveCurrentGame();  
             }
             else
             {

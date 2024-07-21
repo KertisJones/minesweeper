@@ -23,7 +23,9 @@ public class ManageFullscreenSwitch : MonoBehaviour
 #if !UNITY_EDITOR && UNITY_WEBGL
             return;
 #endif
-        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        GameObject gmObject = GameObject.FindGameObjectWithTag("GameController");
+        if (gmObject != null)
+            gm = gmObject.GetComponent<GameManager>();
         _fullscreen = Screen.fullScreen;
         lastScreenSize = new Vector2(Screen.width, Screen.height);
         SetFullScreenValues();
@@ -33,8 +35,9 @@ public class ManageFullscreenSwitch : MonoBehaviour
 #if !UNITY_EDITOR && UNITY_WEBGL
             return;
 #endif
+
         Vector2 screenSize = new Vector2(Screen.width, Screen.height);
-        if (this.lastScreenSize != screenSize)
+        if (this.lastScreenSize != screenSize && gm != null)
         {
             this.lastScreenSize = screenSize;
             gm.SetCameraScale();

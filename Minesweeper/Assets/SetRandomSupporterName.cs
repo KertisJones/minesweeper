@@ -64,10 +64,19 @@ public class SetRandomSupporterName : MonoBehaviour
     void Start()
     {
         if (GetComponentInParent<Tile>() == null)
+        {
+            this.gameObject.SetActive(false);
             return;
+        }
+            
         gm = GetComponentInParent<Tile>().gm;
+        if (gm == null)
+        {
+            this.gameObject.SetActive(false);
+            return;
+        }
 
-        if(gm.textType == GameModifiers.MinesweeperTextType.credits)// && !GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().isTitleMenu)
+        if (gm.textType == GameModifiers.MinesweeperTextType.credits)// && !GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().isTitleMenu)
             this.gameObject.SetActive(true);
         else
             this.gameObject.SetActive(false);

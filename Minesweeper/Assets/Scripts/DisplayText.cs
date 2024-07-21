@@ -45,8 +45,8 @@ public class DisplayText : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        sk = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>();
-        gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
+        sk = gm.scoreKeeper;
+        gameMods = gm.gameMods;
 
         startColor = this.GetComponent<TextMeshProUGUI>().color;
         startFontSize = this.GetComponent<TextMeshProUGUI>().fontSize;

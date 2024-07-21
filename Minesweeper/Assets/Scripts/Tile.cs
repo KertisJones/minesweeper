@@ -124,7 +124,7 @@ public class Tile : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         holdTetromino = GameObject.FindGameObjectWithTag("Hold").GetComponent<HoldTetromino>();
-        gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
+        gameMods = gm.gameMods;
                 
         group = GetComponentInParent<Group>();
         unrevealedButtonImage = GetComponentInChildren<TileButton>().GetComponent<Image>();
@@ -133,6 +133,9 @@ public class Tile : MonoBehaviour
         auraOverlayImage.color = unrevealedButtonImage.color;
 
         Vector2 v = GameManager.roundVec2(transform.position);
+        /*if (group  != null)
+            if (group.isSetupTetromino)
+                Debug.Log(transform.position + ", " + v);*/
         coordX = (int)v.x;
         coordY = (int)v.y;
         
@@ -827,9 +830,9 @@ public class Tile : MonoBehaviour
 
         // Has Outline
         if (aura == AuraType.burning || aura == AuraType.frozen)
-            this.transform.position += new Vector3(this.transform.position.x, this.transform.position.y, -0.05f);
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -0.05f);
         else
-            this.transform.position += new Vector3(this.transform.position.x, this.transform.position.y, 0f);
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 0f);
 
         // Text needs outline
         if (aura == AuraType.burning)

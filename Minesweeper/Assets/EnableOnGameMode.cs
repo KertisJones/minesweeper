@@ -33,8 +33,9 @@ public class EnableOnGameMode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameMods = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<GameModifiers>();
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        gameMods = gm.gameMods;
+        
 
         bool isEnabled = false;
         if (onShowTitle && gameMods.showTitle)
