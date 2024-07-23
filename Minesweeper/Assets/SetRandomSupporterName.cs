@@ -72,7 +72,7 @@ public class SetRandomSupporterName : MonoBehaviour
         gm = GetComponentInParent<Tile>().gm;
         if (gm == null)
         {
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
             return;
         }
 

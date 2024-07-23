@@ -3385,6 +3385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3195370508645847130}
   - component: {fileID: 1119563470503757537}
+  - component: {fileID: 2299522169906557827}
   m_Layer: 0
   m_Name: BackgroundOverlay
   m_TagString: Untagged
@@ -3466,6 +3467,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2299522169906557827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8370170168070414244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308584b1011476548b67f4bfd217d82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  webGLDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &8794194749562887434
 GameObject:
   m_ObjectHideFlags: 0
