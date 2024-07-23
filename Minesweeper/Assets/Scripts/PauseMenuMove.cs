@@ -70,6 +70,7 @@ public class PauseMenuMove : MonoBehaviour {
                 tabs.HideTabs();
         }
 
+        transform.DOKill();
         bool screenShake = PlayerPrefs.GetFloat("ShakeStrength", 1) > 0;
         float transitionTime = 0.25f;
         if (!screenShake)
