@@ -70,7 +70,7 @@ public class PauseMenuMove : MonoBehaviour {
                 tabs.HideTabs();
         }
 
-        bool screenShake = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
+        bool screenShake = PlayerPrefs.GetFloat("ShakeStrength", 1) > 0;
         float transitionTime = 0.25f;
         if (!screenShake)
             transitionTime = 0.1f;
@@ -79,7 +79,7 @@ public class PauseMenuMove : MonoBehaviour {
             Tween tween = transform.DOMove(targetActive, transitionTime * 2).SetUpdate(true);
                         
             if (screenShake)
-                tween.SetEase(Ease.OutElastic, 1f, 0.75f);
+                tween.SetEase(Ease.OutElastic, PlayerPrefs.GetFloat("ShakeStrength", 1), 0.75f);
             else
                 tween.SetEase(Ease.InOutSine);
         }

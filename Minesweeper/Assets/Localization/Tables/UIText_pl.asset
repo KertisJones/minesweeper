@@ -647,6 +647,14 @@ MonoBehaviour:
       jest wi\u0119cej sposob\xF3w na zdobycie punkt\xF3w."
     m_Metadata:
       m_Items: []
+  - m_Id: 40055335533572096
+    m_Localized: "Przezroczysto\u015B\u0107 siatki"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055569626066944
+    m_Localized: "Si\u0142a wstrz\u0105su"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -644,6 +644,14 @@ MonoBehaviour:
       la touche de chute douce enfonc\xE9e."
     m_Metadata:
       m_Items: []
+  - m_Id: 40055335533572096
+    m_Localized: "Opacit\xE9 de la grille"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055569626066944
+    m_Localized: Force de secousse
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

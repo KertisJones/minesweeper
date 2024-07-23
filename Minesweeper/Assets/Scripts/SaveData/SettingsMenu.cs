@@ -9,29 +9,40 @@ public class SettingsMenu : MonoBehaviour
 {
     GameManager gm;
     public PauseMenuMove pauseMenuMove;
-    public Slider masterVolumeSlider;
-    public Slider musicVolumeSlider;
-    public Slider soundVolumeSlider;
-    public Toggle screenShakeToggle;
+
+    // Video
+    public LinearRangeSlider gridOpacitySlider;
+    public LinearRangeSlider shakeStrengthSlider;
+    //public Toggle screenShakeToggle;
     public Toggle lockDelayDisplayToggle;
     public Toggle previewSpaceToggle;
     public Toggle fullScreenToggle;
     public TMP_Dropdown languageDropdown;
-    public LinearRangeSlider autoRepeatRateSlider;
-    public LinearRangeSlider delayedAutoShiftSlider;
-    public LinearRangeSlider dasCutDelaySlider;
-    public LinearRangeSlider softDropFactorSlider;
-    public LinearRangeSlider lineClearPreventMinesweepDelaySlider;
-    float masterVolume = 0.5f; //Max 0.5
-    float musicVolume = 0.25f; //Max 0.5
-    float soundVolume = 0.5f; //Max 1
-    bool screenShakeEnabled = true;
+
+    float gridOpacity = 0f;
+    float shakeStrength = 1f;
+    //bool screenShakeEnabled = true;
     bool lockDelayDisplayEnabled = true;
     bool previewSpaceEnabled = false;
     bool fullScreenEnabled = true;
     int languageIndex = 0;
 
-    //Handling
+    // Audio
+    public Slider masterVolumeSlider;
+    public Slider musicVolumeSlider;
+    public Slider soundVolumeSlider;
+
+    float masterVolume = 0.5f; //Max 0.5
+    float musicVolume = 0.25f; //Max 0.5
+    float soundVolume = 0.5f; //Max 1
+
+    // Handling
+    public LinearRangeSlider autoRepeatRateSlider;
+    public LinearRangeSlider delayedAutoShiftSlider;
+    public LinearRangeSlider dasCutDelaySlider;
+    public LinearRangeSlider softDropFactorSlider;
+    public LinearRangeSlider lineClearPreventMinesweepDelaySlider;
+
     float autoRepeatRateDefault = 50;
     float delayedAutoShiftDefault = 250;
     float dasCutDelayDefault = 17;
@@ -57,7 +68,10 @@ public class SettingsMenu : MonoBehaviour
         masterVolume = PlayerPrefs.GetFloat("MasterVolume", masterVolume);
         musicVolume = PlayerPrefs.GetFloat("MusicVolume", musicVolume);
         soundVolume = PlayerPrefs.GetFloat("SoundVolume", soundVolume);
-        screenShakeEnabled = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
+        //screenShakeEnabled = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
+
+        gridOpacity = PlayerPrefs.GetFloat("GridOpacity", gridOpacity);
+        shakeStrength = PlayerPrefs.GetFloat("ShakeStrength", shakeStrength);
         lockDelayDisplayEnabled = (PlayerPrefs.GetInt("LockDelayDisplayEnabled", 0) != 0);
         previewSpaceEnabled = (PlayerPrefs.GetInt("PreviewSpaceAboveBoardEnabled", 0) != 0);
         fullScreenEnabled = (PlayerPrefs.GetInt("FullScreenEnabled", 1) != 0);
@@ -84,14 +98,23 @@ public class SettingsMenu : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         //if (ScoreKeeper.masterVolume != null)
             //masterVolume = ScoreKeeper.masterVolume;
+
+        // Audio
         masterVolumeSlider.value = masterVolume;
         masterVolumeSlider.onValueChanged.AddListener(delegate { MasterVolumeSlider(); });
         musicVolumeSlider.value = musicVolume;
         musicVolumeSlider.onValueChanged.AddListener(delegate { MusicVolumeSlider(); });
         soundVolumeSlider.value = soundVolume;
         soundVolumeSlider.onValueChanged.AddListener(delegate { SoundVolumeSlider(); });
-        screenShakeToggle.isOn = !screenShakeEnabled;
-        screenShakeToggle.onValueChanged.AddListener(delegate  { ScreenShakeToggle(); });
+
+        // Vidoe
+        gridOpacitySlider.SetAdjustedValue(gridOpacity);
+        gridOpacitySlider.slider.onValueChanged.AddListener(delegate { GridOpacitySlider(); });
+        shakeStrengthSlider.SetAdjustedValue(shakeStrength);
+        shakeStrengthSlider.slider.onValueChanged.AddListener(delegate { ShakeStrengthSlider(); });
+
+        /*screenShakeToggle.isOn = !screenShakeEnabled;
+        screenShakeToggle.onValueChanged.AddListener(delegate  { ScreenShakeToggle(); });*/
         lockDelayDisplayToggle.isOn = lockDelayDisplayEnabled;
         lockDelayDisplayToggle.onValueChanged.AddListener(delegate  { LockDelayDisplayToggle(); });
         previewSpaceToggle.isOn = previewSpaceEnabled;
@@ -103,6 +126,7 @@ public class SettingsMenu : MonoBehaviour
         languageDropdown.onValueChanged.AddListener(delegate { LanguageSelectDropdown(); });
         //StartCoroutine(SetLocale(languageIndex));
 
+        // Handling
         autoRepeatRateSlider.SetAdjustedValue(autoRepeatRate);
         autoRepeatRateSlider.slider.onValueChanged.AddListener(delegate { AutoRepeatRateSlider(); });
 
@@ -190,11 +214,24 @@ public class SettingsMenu : MonoBehaviour
         soundVolume = soundVolumeSlider.value;
         PlayerPrefs.SetFloat("SoundVolume", soundVolume);
     }
-    public void ScreenShakeToggle() // Sets the Screen Shake from PlayerPrefs
+
+    public void GridOpacitySlider() // Sets the Master Volume Slider from PlayerPrefs
+    {
+        gridOpacity = gridOpacitySlider.GetAdjustedValue();
+        PlayerPrefs.SetFloat("GridOpacity", gridOpacity);
+        gm.SetGridOpacity();
+    }
+
+    public void ShakeStrengthSlider() // Sets the Master Volume Slider from PlayerPrefs
+    {
+        shakeStrength = shakeStrengthSlider.GetAdjustedValue();
+        PlayerPrefs.SetFloat("ShakeStrength", shakeStrength);
+    }
+    /*public void ScreenShakeToggle() // Sets the Screen Shake from PlayerPrefs
     {
         screenShakeEnabled = !screenShakeToggle.isOn;
         PlayerPrefs.SetInt("ScreenShakeEnabled", (screenShakeEnabled ? 1 : 0));
-    }
+    }*/
     public void LockDelayDisplayToggle() // Sets the Lock Delay Display from PlayerPrefs
     {
         lockDelayDisplayEnabled = lockDelayDisplayToggle.isOn;

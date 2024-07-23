@@ -654,6 +654,14 @@ MonoBehaviour:
       to ale nen\xED jedin\xFD zp\u016Fsob, jak z\xEDskat sk\xF3re."
     m_Metadata:
       m_Items: []
+  - m_Id: 40055335533572096
+    m_Localized: "Pr\u016Fhlednost m\u0159\xED\u017Eky"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055569626066944
+    m_Localized: "S\xEDla t\u0159esu"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour
     public GameObject backgroundWallLeft;
     public GameObject backgroundWallRight;
     public GameObject backgroundFloor;
+    public GameObject backgroundGrid;
     public GameObject guiCanvas;
     public GameObject floatingText;
 
@@ -485,7 +486,9 @@ public class GameManager : MonoBehaviour
         backgroundWallLeft.GetComponent<SpriteRenderer>().size = new Vector2(1, backgroundHeight);
         backgroundWallRight.GetComponent<SpriteRenderer>().size = new Vector2(1, backgroundHeight);
         backgroundFloor.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, 1);
-        backgroundAnimated.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, backgroundHeight - 1);
+        backgroundGrid.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, sizeY);
+        SetGridOpacity();
+        backgroundAnimated.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, backgroundHeight - 1); 
     }
 
     public void SetCameraScale(bool isStartup = true)
@@ -612,7 +615,7 @@ public class GameManager : MonoBehaviour
         {
             guiCanvas.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, 0);
             guiCanvas.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(canvasHeight * aspectRatio, canvasHeight);
-        }
+        }               
 
         TriggerOnResetStartingPositionsEvent();
     }
@@ -1656,7 +1659,14 @@ public class GameManager : MonoBehaviour
 #endif
         return LocalizationSettings.StringDatabase.GetLocalizedString(tableName, entryName);*/
     }
-    
+
+    #endregion
+    #region Extra Helpers
+    public void SetGridOpacity()
+    {
+        Color gridColor = backgroundGrid.GetComponent<SpriteRenderer>().color;
+        backgroundGrid.GetComponent<SpriteRenderer>().color = new Color(gridColor.r, gridColor.g, gridColor.b, PlayerPrefs.GetFloat("GridOpacity", 0));
+    }
     #endregion
     #region Event Triggers
     public void TriggerOnHardDropEvent()

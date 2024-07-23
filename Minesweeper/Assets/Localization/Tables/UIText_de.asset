@@ -649,6 +649,14 @@ MonoBehaviour:
       mehr als eine M\xF6glichkeit, Punkte zu erzielen."
     m_Metadata:
       m_Items: []
+  - m_Id: 40055335533572096
+    m_Localized: Gitter-Transparenz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055569626066944
+    m_Localized: "Sch\xFCttelst\xE4rke"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

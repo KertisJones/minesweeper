@@ -11,6 +11,8 @@ public class IdleJiggle : MonoBehaviour
     private Canvas parentCanvas;
     private Vector2 parentCanvasDisplaySize = Vector2.zero;
 
+    private float shakeStrength = 1f;
+
     public Vector3 idleMoveDistance = Vector3.zero;
     public float idleMoveDuration = 0f;
     public Ease idleMoveEase = Ease.InOutSine;
@@ -118,6 +120,8 @@ public class IdleJiggle : MonoBehaviour
         myTransform = this.transform;
         parentCanvas = this.gameObject.GetComponentInParent<Canvas>();
 
+        shakeStrength = PlayerPrefs.GetFloat("ShakeStrength", 1);
+
 
         if (parentCanvas != null)
             if (parentCanvas.renderMode == RenderMode.WorldSpace)
@@ -137,11 +141,11 @@ public class IdleJiggle : MonoBehaviour
         if (idleMoveDistance != Vector3.zero && idleMoveDuration > 0)
         {
             if (idleMoveDistance.x != 0)
-                this.transform.DOMoveX(transform.position.x + idleMoveDistance.x, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
+                this.transform.DOMoveX(transform.position.x + idleMoveDistance.x * shakeStrength, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
             if (idleMoveDistance.y != 0)
-                this.transform.DOMoveY(transform.position.y + idleMoveDistance.y, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
+                this.transform.DOMoveY(transform.position.y + idleMoveDistance.y * shakeStrength, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
             if (idleMoveDistance.z != 0)
-                this.transform.DOMoveZ(transform.position.z + idleMoveDistance.z, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
+                this.transform.DOMoveZ(transform.position.z + idleMoveDistance.z * shakeStrength, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
         }
 
         StartCoroutine(JumpInPlaceLoop());
@@ -197,7 +201,7 @@ public class IdleJiggle : MonoBehaviour
 
     public void MinorShake()
     {
-        Shake(0.1f, 0.05f);
+        Shake(0.1f, 0.03f);
     }
 
     public void PressLeft()
@@ -272,7 +276,7 @@ public class IdleJiggle : MonoBehaviour
         
         if (!IsShakeValid(jiggleMoveIsEnabled, shakePositionTween))
             return;
-        shakePositionTween = this.transform.DOShakePosition(duration, new Vector3(strength, strength, 0), 10, 90, false, !loopTween);
+        shakePositionTween = this.transform.DOShakePosition(duration, new Vector3(strength * shakeStrength, strength * shakeStrength, 0), 10, 90, false, !loopTween);
         if (autoReset)
             shakePositionTween.OnKill(ResetPosition);
         if (loopTween)
@@ -286,7 +290,7 @@ public class IdleJiggle : MonoBehaviour
         
         if (!IsShakeValid(jiggleRotateIsEnabled, shakeRotationTween))
             return;
-        shakeRotationTween = this.transform.DOShakeRotation(duration, new Vector3(0, 0, strength * 40), 10, 90, !loopTween).SetUpdate(true);
+        shakeRotationTween = this.transform.DOShakeRotation(duration, new Vector3(0, 0, strength * 40 * shakeStrength), 10, 90, !loopTween).SetUpdate(true);
         if (autoReset)
         {
             //startRotation = this.transform.rotation.eulerAngles;// new Vector3(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z);
@@ -303,7 +307,7 @@ public class IdleJiggle : MonoBehaviour
         
         if (!IsShakeValid(jiggleScaleIsEnabled, shakeScaleTween))
             return;
-        shakeScaleTween = this.transform.DOShakeScale(duration, strength, 10, 90, !loopTween);
+        shakeScaleTween = this.transform.DOShakeScale(duration, strength * shakeStrength, 10, 90, !loopTween);
         if (autoReset)
             shakeScaleTween.OnKill(ResetScale);
         if (loopTween)
@@ -326,8 +330,8 @@ public class IdleJiggle : MonoBehaviour
                 if (tweenToCheckIfPlaying.IsPlaying())
                     return false;
 
-        bool screenShake = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
-        if (!screenShake)
+        shakeStrength = PlayerPrefs.GetFloat("ShakeStrength", 1f);
+        if (shakeStrength <= 0)
             return false;
 
         return true;
@@ -393,7 +397,7 @@ public class IdleJiggle : MonoBehaviour
 
         LeanXKill();
 
-        leanTweenX = this.transform.DOMoveX(GetStartPositionLocalToWorldSpace().x + leanDistance * dir, leanDuration).SetEase(idleMoveEase);
+        leanTweenX = this.transform.DOMoveX(GetStartPositionLocalToWorldSpace().x + leanDistance * dir * shakeStrength, leanDuration).SetEase(idleMoveEase);
     }
 
     public void LeanY(int dir)
@@ -403,7 +407,7 @@ public class IdleJiggle : MonoBehaviour
 
         LeanYKill();
 
-        leanTweenY = this.transform.DOMoveY(GetStartPositionLocalToWorldSpace().y + leanDistance * dir, leanDuration).SetEase(idleMoveEase);
+        leanTweenY = this.transform.DOMoveY(GetStartPositionLocalToWorldSpace().y + leanDistance * dir * shakeStrength, leanDuration).SetEase(idleMoveEase);
     }
 
     public void PunchRotate(int dir)
@@ -411,7 +415,7 @@ public class IdleJiggle : MonoBehaviour
         if (!IsShakeValid(true))
             return;
         
-        this.transform.DOPunchRotation(new Vector3(0, 0, -1 * dir), leanDuration).SetUpdate(true).OnKill(ResetRotation);
+        this.transform.DOPunchRotation(new Vector3(0, 0, -1 * dir * shakeStrength), leanDuration).SetUpdate(true).OnKill(ResetRotation);
     }
 
     #region Jumping
@@ -545,7 +549,7 @@ public class IdleJiggle : MonoBehaviour
         
         float startPosY = GetStartPositionLocalToWorldSpace().y;        
 
-        s.Append(this.transform.DOMoveY(startPosY + jumpPower, duration / 2).SetEase(Ease.OutQuad));
+        s.Append(this.transform.DOMoveY(startPosY + jumpPower * shakeStrength, duration / 2).SetEase(Ease.OutQuad));
         s.Append(this.transform.DOMoveY(startPosY, duration / 2).SetEase(Ease.OutQuad));
 
         jumpInYTween = s;

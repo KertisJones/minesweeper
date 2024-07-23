@@ -681,6 +681,14 @@ MonoBehaviour:
     m_Localized: selo lukin ale
     m_Metadata:
       m_Items: []
+  - m_Id: 40055335533572096
+    m_Localized: lukin pona pi linja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055569626066944
+    m_Localized: wawa pi uta ala
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

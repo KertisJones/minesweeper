@@ -22,8 +22,8 @@ public class FloatingText : MonoBehaviour
 
         textColorHoldingSprite.color = textBox.color;
 
-        transform.DOScale(scaleTarget, duration).SetEase(ease);
-        textColorHoldingSprite.DOColor(Color.clear, duration).SetEase(ease);
+        transform.DOScale(scaleTarget, duration).SetEase(ease).SetUpdate(true);
+        textColorHoldingSprite.DOColor(Color.clear, duration).SetEase(ease).SetUpdate(true);
     }
 
     // Update is called once per frame

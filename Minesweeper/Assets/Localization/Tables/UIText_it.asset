@@ -648,6 +648,14 @@ MonoBehaviour:
       modi per ottenere punti.
     m_Metadata:
       m_Items: []
+  - m_Id: 40055335533572096
+    m_Localized: "Opacit\xE0 della griglia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055569626066944
+    m_Localized: "Intensit\xE0 della scossa"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
