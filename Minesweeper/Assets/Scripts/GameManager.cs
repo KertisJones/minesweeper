@@ -1292,7 +1292,7 @@ public class GameManager : MonoBehaviour
 
         //floater.GetComponent<TextMeshProUGUI>().text = "+" + tempScore.ToString("#,#")
 
-        if (score >= scoreKeeper.bestScoreToday)
+        if (score >= scoreKeeper.bestScoreToday && !isTitleMenu)
         {
             if (!isHighScore && score >= scoreKeeper.bestScore  && scoreKeeper.bestScore > 0 && !isEndless)
             {
@@ -1307,12 +1307,8 @@ public class GameManager : MonoBehaviour
                 GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
                 floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScoreBestToday") + "!";
                 isBestToday = true;
-            }
-            
-            
-        }
-            
-        
+            }            
+        }        
     }
 
     public void SetScoreMultiplier(int mult, float duration, bool isSweep = false)
