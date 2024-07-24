@@ -1561,9 +1561,9 @@ public class GameManager : MonoBehaviour
     {
         Pause(pause, false, true);
     }
-    public void Pause(bool pause, bool isMarathonOverPause = false, bool bypassTitlePause = false) 
+    public void Pause(bool pause, bool isMarathonOverPause = false, bool bypassTitlePause = false)
     {
-        if (isGameOver)
+        if (isGameOver && !isTitleMenu)
             return;
         /*if (isTitleMenu && !bypassTitlePause)
             return;*/
@@ -1573,15 +1573,15 @@ public class GameManager : MonoBehaviour
         if (pause)
         {
             Time.timeScale = 0;
-            isPaused = true;            
+            isPaused = true;
             canPause = false;
             TriggerOnKillTweenEvent();
             if (isMarathonOverPause)
             {
                 isEndless = true;
-                marathonOverMenu.SetActive(true);              
+                marathonOverMenu.SetActive(true);
                 if (!isTitleMenu)
-                    scoreKeeper.SaveCurrentGame();  
+                    scoreKeeper.SaveCurrentGame();
             }
             else
             {
@@ -1589,14 +1589,17 @@ public class GameManager : MonoBehaviour
                 {
                     settingsMenu.SetActive(true);
                     demoTitleScreen.gameObject.SetActive(false);
-                }                    
+                }
                 else
-                    pauseMenu.SetActive(true);                    
+                    pauseMenu.SetActive(true);
                 soundManager.EnablePauseFilter();
             }
         }
         else
         {
+            settingsMenu.SetActive(false);
+            if (isTitleMenu)
+                demoTitleScreen.gameObject.SetActive(true);
             if (!isGameOver)
             {
                 Time.timeScale = 1;
@@ -1604,15 +1607,13 @@ public class GameManager : MonoBehaviour
                 pauseMenu.SetActive(false);
                 soundManager.DisablePauseFilter();
                 marathonOverMenu.SetActive(false);
-                settingsMenu.SetActive(false);
-                if (isTitleMenu)
-                    demoTitleScreen.gameObject.SetActive(true);
                 /*if (!bypassTitlePause)
                     settingsMenu.SetActive(false);*/
                 StartCoroutine(ResetPause());
             }
-        }        
+        }
     }
+    
     IEnumerator ResetPause()
     {
         yield return new WaitForSeconds(0.4f);

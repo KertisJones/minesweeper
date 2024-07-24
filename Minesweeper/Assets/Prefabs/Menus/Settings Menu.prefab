@@ -1914,6 +1914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuMove: {fileID: 7129975174766691702}
+  scrollRect: {fileID: 187044419635824390}
   gridOpacitySlider: {fileID: 7696295718685087266}
   shakeStrengthSlider: {fileID: 615756458516824563}
   lockDelayDisplayToggle: {fileID: 3493140770048738137}
@@ -4944,6 +4945,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
+--- !u!114 &187044419635824390 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6554252692752750442, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
+  m_PrefabInstance: {fileID: 6371997475186675820}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &492346608530884928 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6825428780843669804, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}

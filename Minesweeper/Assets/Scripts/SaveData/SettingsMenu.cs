@@ -9,6 +9,7 @@ public class SettingsMenu : MonoBehaviour
 {
     GameManager gm;
     public PauseMenuMove pauseMenuMove;
+    public ScrollRect scrollRect;
 
     // Video
     public LinearRangeSlider gridOpacitySlider;
@@ -79,8 +80,8 @@ public class SettingsMenu : MonoBehaviour
 #if !UNITY_WEBGL
         Screen.fullScreen = fullScreenEnabled;
 #endif
-#if UNITY_WEBGL
-        GetComponentInChildren<ScrollRect>().scrollSensitivity *= 0.01f;
+#if !UNITY_EDITOR && UNITY_WEBGL
+        scrollRect.scrollSensitivity *= 0.01f;
 #endif
 
         //languageIndex = PlayerPrefs.GetInt("LanguageIndex", 1);

@@ -3724,7 +3724,6 @@ GameObject:
   - component: {fileID: 7095111356794976448}
   - component: {fileID: 7095111356794976451}
   - component: {fileID: 7095111356794976454}
-  - component: {fileID: 7095111356794976455}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -3846,31 +3845,6 @@ MonoBehaviour:
   targetActive: {x: 4.5, y: 10, z: -2}
   speed: 0.8
   objectsToDisableWhileActive: []
---- !u!114 &7095111356794976455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7095111356794976317}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46109f8ed4e070940baf1c8c8d035671, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuMove: {fileID: 7095111356794976454}
-  masterVolumeSlider: {fileID: 7095111355795910151}
-  musicVolumeSlider: {fileID: 7095111355310800186}
-  soundVolumeSlider: {fileID: 7095111354946729402}
-  screenShakeToggle: {fileID: 0}
-  lockDelayDisplayToggle: {fileID: 0}
-  previewSpaceToggle: {fileID: 0}
-  languageDropdown: {fileID: 0}
-  autoRepeatRateSlider: {fileID: 0}
-  delayedAutoShiftSlider: {fileID: 0}
-  dasCutDelaySlider: {fileID: 0}
-  softDropFactorSlider: {fileID: 0}
-  lineClearPreventMinesweepDelaySlider: {fileID: 0}
 --- !u!1001 &492018933551397446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3879,6 +3853,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7095111356794976450}
     m_Modifications:
+    - target: {fileID: 3964747062639559796, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_text
       value: Quit
@@ -4005,6 +3983,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7095111356794976450}
     m_Modifications:
+    - target: {fileID: 3964747062639559796, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_text
       value: Resume
@@ -4131,6 +4113,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7095111356794976450}
     m_Modifications:
+    - target: {fileID: 3964747062639559796, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_text
       value: Settings
@@ -4297,6 +4283,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7095111356794976450}
     m_Modifications:
+    - target: {fileID: 3964747062639559796, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3964747063960252086, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_text
       value: Restart
