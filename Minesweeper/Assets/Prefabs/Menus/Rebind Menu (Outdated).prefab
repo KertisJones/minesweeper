@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 5
+  m_ScrollSensitivity: 500
   m_Viewport: {fileID: 593537493020011651}
   m_HorizontalScrollbar: {fileID: 593537494437829208}
   m_VerticalScrollbar: {fileID: 593537493581379211}
@@ -936,7 +936,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &593537493044333185
 MonoBehaviour:
   m_ObjectHideFlags: 0

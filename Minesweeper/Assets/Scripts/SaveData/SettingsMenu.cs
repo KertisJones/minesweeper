@@ -79,6 +79,9 @@ public class SettingsMenu : MonoBehaviour
 #if !UNITY_WEBGL
         Screen.fullScreen = fullScreenEnabled;
 #endif
+#if UNITY_WEBGL
+        GetComponentInChildren<ScrollRect>().scrollSensitivity *= 0.01f;
+#endif
 
         //languageIndex = PlayerPrefs.GetInt("LanguageIndex", 1);
         languageIndex = LocalizationSettings.AvailableLocales.Locales.IndexOf(LocalizationSettings.SelectedLocale);
