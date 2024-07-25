@@ -165,9 +165,9 @@ public class DisplayText : MonoBehaviour
                 // Display Best Score Today while your current score is under Best Score Today, unless it's the first run of the game.
                 // Otherwise, display your total high score
 
-                if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
-                    this.GetComponent<TextMeshProUGUI>().text = sk.bestScoreToday.ToString("#,#");
-                else if (sk.bestScore > 0) // Best Score Total
+                /*if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
+                    this.GetComponent<TextMeshProUGUI>().text = sk.bestScoreToday.ToString("#,#");*/
+                if (sk.bestScore > 0) // Best Score Total
                     this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString("#,#"); 
                 else // Hi Score = 0 
                     this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString();
@@ -178,14 +178,14 @@ public class DisplayText : MonoBehaviour
             else // 40L sprint mode
             {
                 string bestTimeStr = GetTimeString(sk.bestTime);
-                string bestTimeTodayStr = GetTimeString(sk.bestTimeToday);
+                //string bestTimeTodayStr = GetTimeString(sk.bestTimeToday);
                 
                 //this.GetComponent<TextMeshProUGUI>().text = bestTimeStr + ", " + bestTimeTodayStr;
 
                 this.GetComponent<TextMeshProUGUI>().text = bestTimeStr;
 
-                if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTime < gm.GetTime()) // Best Score Today
-                    this.GetComponent<TextMeshProUGUI>().text = bestTimeTodayStr;
+                /*if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTime < gm.GetTime()) // Best Score Today
+                    this.GetComponent<TextMeshProUGUI>().text = bestTimeTodayStr;*/
                 
             }
         }
@@ -194,20 +194,20 @@ public class DisplayText : MonoBehaviour
             string localizedText = GameManager.GetTranslation("UIText", "GUI HighScore"); // "High Score"
             if (!gm.gameMods.detailedTimer || gm.gameMods.timeLimit < Mathf.Infinity) // Normal score mode
             {
-                if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
+                /*if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
                     localizedText = GameManager.GetTranslation("UIText", "GUI HighScoreBestToday"); // "Best Today"
                 
-                if (sk.bestScoreToday == sk.bestScore)
-                    localizedText = GameManager.GetTranslation("UIText", "GUI HighScore"); // "High Score"
+                if (sk.bestScoreToday == sk.bestScore)*/
+                localizedText = GameManager.GetTranslation("UIText", "GUI HighScore"); // "High Score"
             }
             else // 40L sprint mode
             {
                 localizedText = GameManager.GetTranslation("UIText", "GUI HighScoreBestTime"); // "Best Time"
 
-                if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTime < gm.GetTime()) // Best Score Today
-                    localizedText = GameManager.GetTranslation("UIText", "GUI HighScoreBestToday"); // "Best Today"
+                /*if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTime < gm.GetTime()) // Best Score Today
+                    localizedText = GameManager.GetTranslation("UIText", "GUI HighScoreBestToday"); // "Best Today"*/
             }            
-            this.GetComponent<TextMeshProUGUI>().text = localizedText + ":"; 
+            this.GetComponent<TextMeshProUGUI>().text = localizedText + ""; 
         }
         else if (displayType == TextType.linesCleared)
         {

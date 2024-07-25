@@ -103,6 +103,8 @@ public class GameManager : MonoBehaviour
 
     private bool isBestToday = false;
     private bool isHighScore = false;
+    private float highScoreStarting;
+    private float bestTodayStarting;
 
     // Game Mods
     [HideInInspector]
@@ -192,6 +194,9 @@ public class GameManager : MonoBehaviour
         gameMods = scoreKeeper.GetComponent<GameModifiers>();
         tetrominoSpawner = GameObject.FindObjectOfType<TetrominoSpawner>();
         demoTitleScreen = GameObject.FindObjectOfType<DemoTitleScreen>();
+
+        highScoreStarting = scoreKeeper.bestScore;
+        bestTodayStarting = scoreKeeper.bestTimeToday;
 
         scoreKeeper.runs += 1;
 
@@ -1252,6 +1257,7 @@ public class GameManager : MonoBehaviour
 
         if (!isTitleMenu)
             GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>().Stop();
+        
 
         GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0), 0.35f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
@@ -1292,9 +1298,9 @@ public class GameManager : MonoBehaviour
 
         //floater.GetComponent<TextMeshProUGUI>().text = "+" + tempScore.ToString("#,#")
 
-        if (score >= scoreKeeper.bestScoreToday && !isTitleMenu)
+        if (score >= bestTodayStarting && !isTitleMenu && !gameMods.detailedTimer) // Normal score mode
         {
-            if (!isHighScore && score >= scoreKeeper.bestScore  && scoreKeeper.bestScore > 0 && !isEndless)
+            if (!isHighScore && score >= highScoreStarting  && highScoreStarting > 0 && !isEndless)
             {
                 GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
                 floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScore") + "!";
@@ -1302,7 +1308,7 @@ public class GameManager : MonoBehaviour
                 isBestToday = true;
             }
 
-            if (!isBestToday && scoreKeeper.bestScoreToday > 0 && !isEndless)
+            if (!isBestToday && bestTodayStarting > 0 && !isEndless)
             {
                 GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
                 floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScoreBestToday") + "!";
@@ -1574,10 +1580,7 @@ public class GameManager : MonoBehaviour
             TriggerOnKillTweenEvent();
             if (isMarathonOverPause)
             {
-                isEndless = true;
-                marathonOverMenu.SetActive(true);
-                if (!isTitleMenu)
-                    scoreKeeper.SaveCurrentGame();
+                GameWin();                
             }
             else
             {
@@ -1610,6 +1613,34 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    private void GameWin()
+    {
+        isEndless = true;
+        marathonOverMenu.SetActive(true);
+        if (!isTitleMenu)
+        {
+            scoreKeeper.SaveCurrentGame();
+
+            if (gameMods.detailedTimer)
+            {
+                Debug.Log(GetTime() + ": ...best? " + scoreKeeper.bestTimeToday + " isEndless=" + isEndless);
+                if (scoreKeeper.bestTime == GetTime())
+                {
+                    Debug.Log("Best Time! " + GetTime());
+                    GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.4f, 0), Quaternion.identity, guiCanvas.transform);
+                    floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScore") + "!";
+                    floater.GetComponent<FloatingText>().duration = 3f;
+                }
+                else if (scoreKeeper.bestTimeToday == GetTime())
+                {
+                    Debug.Log("Best Time Today! " + GetTime());
+                    GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.4f, 0), Quaternion.identity, guiCanvas.transform);
+                    floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScoreBestToday") + "!";
+                    floater.GetComponent<FloatingText>().duration = 3f;
+                }
+            }
+        }
+    }
     IEnumerator ResetPause()
     {
         yield return new WaitForSeconds(0.4f);
