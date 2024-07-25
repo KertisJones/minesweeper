@@ -636,7 +636,7 @@ public class Group : MonoBehaviour
 
         int distToFall = basicFallDistance;
         if (softDropFactor == Mathf.Infinity)
-            distToFall = maximumFallDistance;
+            distToFall = Mathf.Max(maximumFallDistance, 1);
         
         if (!isLocking && bottomHeight <= bottomHeightLowest)
             gm.AddScore(distToFall, 0, false);
