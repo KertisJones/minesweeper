@@ -64,38 +64,30 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
                 gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (musicSource == null)
             musicSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
-        /*if (cameraShake == null)
-            cameraShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();*/
-        
-        if ((gm.GetScore() > bestScore) && !(gm.isEndless && !gm.marathonOverMenu.GetIsActive())) // Endless mode has not yet begun
+
+        if (!gm.isTitleMenu)
         {
-            bestScore = gm.GetScore();            
+            if ((gm.GetScore() > bestScore) && !(gm.isEndless && !gm.marathonOverMenu.GetIsActive())) // Endless mode has not yet begun
+            {
+                bestScore = gm.GetScore();
+            }
+            if ((gm.GetScore() > bestScoreToday) && !(gm.isEndless && !gm.marathonOverMenu.GetIsActive())) // Endless mode has not yet begun
+            {
+                bestScoreToday = gm.GetScore();
+            }
+            if (gm.GetScore() > bestScoreEndless)
+            {
+                bestScoreEndless = gm.GetScore();
+            }
+            if (gm.GetScore() > bestScoreTodayEndless)
+            {
+                bestScoreTodayEndless = gm.GetScore();
+            }
         }
-        if ((gm.GetScore() > bestScoreToday) && !(gm.isEndless && !gm.marathonOverMenu.GetIsActive())) // Endless mode has not yet begun
-        {
-            bestScoreToday = gm.GetScore();            
-        }
-        if (gm.GetScore() > bestScoreEndless)
-        {
-            bestScoreEndless = gm.GetScore();            
-        }
-        if (gm.GetScore() > bestScoreTodayEndless)
-        {
-            bestScoreTodayEndless = gm.GetScore();            
-        }        
-            
+
         AudioListener.volume = PlayerPrefs.GetFloat("MasterVolume", 1f);
         if (musicSource != null)
             musicSource.volume = PlayerPrefs.GetFloat("MusicVolume", 0.25f);
-
-        /*if (cameraShake != null)
-        {
-            cameraShake.isActive = (PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0);
-        }*/
-            //(PlayerPrefs.GetInt("ScreenShakeEnabled", 1) != 0)
-        
-        /*if (GameObject.FindGameObjectWithTag("Volume") != null)
-            AudioListener.volume = GameObject.FindGameObjectWithTag("Volume").GetComponent<Slider>().value;*/
     }
 
     public void SaveCurrentGame() 
