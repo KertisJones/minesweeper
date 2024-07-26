@@ -103,8 +103,10 @@ public class GameManager : MonoBehaviour
 
     private bool isBestToday = false;
     private bool isHighScore = false;
+    private bool isHighScoreEndless = false;
     private float highScoreStarting;
     private float bestTodayStarting;
+    private float highScoreEndlessStarting;
 
     // Game Mods
     [HideInInspector]
@@ -198,6 +200,7 @@ public class GameManager : MonoBehaviour
 
         highScoreStarting = scoreKeeper.bestScore;
         bestTodayStarting = scoreKeeper.bestScoreToday;
+        highScoreEndlessStarting = scoreKeeper.bestScoreEndless;
 
         scoreKeeper.runs += 1;
 
@@ -1316,7 +1319,15 @@ public class GameManager : MonoBehaviour
                 floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScoreBestToday") + "!";
                 AudioSource.PlayClipAtPoint(fanfareSounds[Random.Range(0, fanfareSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                 isBestToday = true;
-            }            
+            }
+
+            if (!isHighScoreEndless && score >= highScoreEndlessStarting && highScoreEndlessStarting > highScoreStarting && isEndless)
+            {
+                GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
+                floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScore") + "!";
+                AudioSource.PlayClipAtPoint(fanfareSounds[Random.Range(0, fanfareSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                isHighScoreEndless = true;
+            }
         }        
     }
 
