@@ -11775,6 +11775,10 @@ PrefabInstance:
       value: Flash Ultra
       objectReference: {fileID: 0}
     - target: {fileID: 4062949866295212772, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062949866295212772, guid: 3c05b26696738d243bbc804dc566c2f7, type: 3}
       propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
       value: 697421989404672
       objectReference: {fileID: 0}
