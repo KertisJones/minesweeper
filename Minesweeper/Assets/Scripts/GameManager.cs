@@ -1587,7 +1587,8 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             isPaused = true;
-            canPause = false;
+            if (!isTitleMenu)
+                canPause = false;
             TriggerOnKillTweenEvent();
             if (isMarathonOverPause)
             {
