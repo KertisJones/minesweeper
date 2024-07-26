@@ -858,6 +858,10 @@ MonoBehaviour:
   startupCountdownSound2: {fileID: 8300000, guid: 8f6e7f8a604b2c04e92959070c9606f7, type: 3}
   startupCountdownSoundFinal2: {fileID: 8300000, guid: ad5472a9b7f2e8542a9f889a3c98e6e1, type: 3}
   revealStreakManual100Sound: {fileID: 8300000, guid: ffb63cd94d267bf45988d953e42e65db, type: 3}
+  fanfareSounds:
+  - {fileID: 8300000, guid: c280775ae0ecfe741be6d3a832c599b5, type: 3}
+  - {fileID: 8300000, guid: 60fbb075e5abc6e46915e29f4c6c103c, type: 3}
+  - {fileID: 8300000, guid: 902b3d1f9b5f5ea47a4ba0179e911d99, type: 3}
 --- !u!82 &9133358887212656289
 AudioSource:
   m_ObjectHideFlags: 0
