@@ -88,12 +88,13 @@ public class Group : MonoBehaviour
     public AudioClip moveSound;
     public AudioClip downSound;
     public AudioClip turnSound;
+    public AudioClip fallSound;
     public AudioClip landSound;
     public AudioClip lockSound;
     public AudioClip lockFinalSound;
     public AudioClip tetrisweepSound;
     public AudioClip tSpinSound;
-    public AudioClip placedAboveBoardWarningSound;
+    public AudioClip placedAboveBoardWarningSound;    
     public AudioClip[] burningIgnitionSounds;
     public AudioClip[] frozenWindSounds;
 
@@ -203,9 +204,11 @@ public class Group : MonoBehaviour
 
         buttonSoftDropHeld = true;
         lastSoftDropDown = Time.time;
-
-        gm.soundManager.PlayClip(downSound, 0.9f, true);
         
+        AudioSource landSource = gm.soundManager.PlayClip(downSound, 0.9f, true);
+        float pitchChange = -0.2f + (0.4f * ((float)bottomHeight / (float)gm.sizeY));
+        landSource.pitch += pitchChange;
+
         SoftDrop();
     }
     
@@ -636,6 +639,13 @@ public class Group : MonoBehaviour
         int distToFall = basicFallDistance;
         if (softDropFactor == Mathf.Infinity)
             distToFall = Mathf.Max(maximumFallDistance, 1);
+
+        if (maximumFallDistance > 0)
+        {
+            AudioSource fallSource = gm.soundManager.PlayClip(fallSound, 0.2f, true);
+            float pitchChange = -0.4f + (0.8f * ((float)bottomHeight / (float)gm.sizeY));
+            fallSource.pitch += pitchChange;
+        }
         
         if (!isLocking && bottomHeight <= bottomHeightLowest)
             gm.AddScore(distToFall, 0, false);
@@ -659,6 +669,8 @@ public class Group : MonoBehaviour
         {
             if (fallDistance >= 1)
                 lastSuccessfulMovementWasRotation = false;
+
+            //gm.soundManager.PlayClip(fallSound, 0.25f, true);            
 
             isWallKickThisTick = false;
 
@@ -1188,7 +1200,7 @@ public class Group : MonoBehaviour
             UpdateGrid();
             LockDelayReset();
 
-            AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            gm.soundManager.PlayClip(turnSound, 0.75f, true);
         }
         else
         {
@@ -1506,7 +1518,7 @@ public class Group : MonoBehaviour
 
                 if (playSound)
                 {
-                    AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                    gm.soundManager.PlayClip(turnSound, 0.75f, true);
                 }                
             }
             else
