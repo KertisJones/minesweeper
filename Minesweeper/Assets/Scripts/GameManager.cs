@@ -290,8 +290,9 @@ public class GameManager : MonoBehaviour
                     case 4:                        
                         floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI Go");
 
-                        AudioSource.PlayClipAtPoint(startupCountdownSoundFinal, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-                        AudioSource.PlayClipAtPoint(startupCountdownSoundFinal2, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        soundManager.PlayClip(startupCountdownSoundFinal, 1, false);
+                        soundManager.PlayClip(startupCountdownSoundFinal2, 1, false);
+
                         GetComponent<Light2D>().intensity = 1;
                         isStarted = true;
                         startTime = Time.time;
@@ -299,8 +300,8 @@ public class GameManager : MonoBehaviour
                     default:
                         floater.GetComponent<TextMeshProUGUI>().text = (4 - startupTimerCountdown).ToString();
 
-                        AudioSource.PlayClipAtPoint(startupCountdownSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
-                        AudioSource.PlayClipAtPoint(startupCountdownSound2, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        soundManager.PlayClip(startupCountdownSound, 1, false);
+                        soundManager.PlayClip(startupCountdownSound2, 1, false);
                         break;
                 }
                 startupTimerCountdown++;
@@ -321,10 +322,10 @@ public class GameManager : MonoBehaviour
                 switch (scoreMultiplierTimerCountdown)
                 {
                     case 0:
-                        AudioSource.PlayClipAtPoint(multiplierCountdownSoundFinal, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        soundManager.PlayClip(multiplierCountdownSoundFinal, 0.5f, true);
                         break;
                     default:
-                        AudioSource.PlayClipAtPoint(multiplierCountdownSound, new Vector3(0, 0, 0), 1f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        soundManager.PlayClip(multiplierCountdownSound, 1, false);
                         break;                    
                 }
                 scoreMultiplierTimerCountdown--;
@@ -982,8 +983,7 @@ public class GameManager : MonoBehaviour
         
         perfectClears += 1;        
 
-        GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-        AudioSource.PlayClipAtPoint(perfectClearSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        soundManager.PlayClip(perfectClearSound, 1, true);
     }
     #endregion
     #region Tetrisweeper Solved Logic
@@ -1040,8 +1040,7 @@ public class GameManager : MonoBehaviour
 
         if (rowsCleared > 0)
         {
-            gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(gm.lineClearSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            gm.soundManager.PlayClip(gm.lineClearSound, 0.5f, true);
 
             if (OnLineClearEvent != null)
                 OnLineClearEvent(rowsCleared);
@@ -1261,10 +1260,8 @@ public class GameManager : MonoBehaviour
 
         if (!isTitleMenu)
             GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>().Stop();
-        
 
-        GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-        AudioSource.PlayClipAtPoint(gameOverSound, new Vector3(0, 0, 0), 0.35f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        soundManager.PlayClip(gameOverSound, 0.35f, true);
 
         StartCoroutine(GameOver(deathType));        
     }
@@ -1308,7 +1305,8 @@ public class GameManager : MonoBehaviour
             {
                 GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
                 floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScore") + "!";
-                AudioSource.PlayClipAtPoint(fanfareSounds[Random.Range(0, fanfareSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+
+                soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);
                 isHighScore = true;
                 isBestToday = true;
             }
@@ -1317,7 +1315,7 @@ public class GameManager : MonoBehaviour
             {
                 GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
                 floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScoreBestToday") + "!";
-                AudioSource.PlayClipAtPoint(fanfareSounds[Random.Range(0, fanfareSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);
                 isBestToday = true;
             }
 
@@ -1325,7 +1323,7 @@ public class GameManager : MonoBehaviour
             {
                 GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
                 floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScore") + "!";
-                AudioSource.PlayClipAtPoint(fanfareSounds[Random.Range(0, fanfareSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);
                 isHighScoreEndless = true;
             }
         }        
@@ -1487,8 +1485,7 @@ public class GameManager : MonoBehaviour
             if (gm.comboLinesFilled > 0)
                 gm.AddScore(50 * gm.comboLinesFilled, 0);
 
-            gm.GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(clipToPlay, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));            
+            gm.soundManager.PlayClip(clipToPlay, 1, true);
         }        
         return fullRows;
     }
@@ -1528,7 +1525,7 @@ public class GameManager : MonoBehaviour
             AddScore(2500, 2);
             SetScoreMultiplier(10, 10, true);
 
-            AudioSource.PlayClipAtPoint(revealStreakManual100Sound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f)); 
+            soundManager.PlayClip(revealStreakManual100Sound, 1, true);
             
             ResetRevealStreakManual();
         }
@@ -1644,12 +1641,12 @@ public class GameManager : MonoBehaviour
                     GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.4f, 0), Quaternion.identity, guiCanvas.transform);
                     floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScore") + "!";
                     floater.GetComponent<FloatingText>().duration = 3f;
-                    AudioSource.PlayClipAtPoint(fanfareSounds[Random.Range(0, fanfareSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                    soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);
                 }
                 else if (scoreKeeper.bestTimeToday == GetTime() && scoreKeeper.runs > 1)
                 {
                     Debug.Log("Best Time Today! " + GetTime());
-                    AudioSource.PlayClipAtPoint(fanfareSounds[Random.Range(0, fanfareSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                    soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);
                     GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.4f, 0), Quaternion.identity, guiCanvas.transform);
                     floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScoreBestToday") + "!";
                     floater.GetComponent<FloatingText>().duration = 3f;                    

@@ -9,7 +9,7 @@ public class WebGLMaterialSwitcher : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-#if UNITY_WEBGL
+#if !UNITY_EDITOR && UNITY_WEBGL
         if (webGLDefaultMaterial != null)
         {
             if (GetComponent<SpriteRenderer>() != null)

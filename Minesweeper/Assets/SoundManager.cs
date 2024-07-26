@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class SoundManager : MonoBehaviour
 {
@@ -75,10 +76,10 @@ public class SoundManager : MonoBehaviour
             
             if (n1 >= tileRevealSounds.Length)
                 n2 = (tileRevealSounds.Length - 2) - (n1 % tileRevealSounds.Length);
-            
+
             //Debug.Log("n1:" + n1 + ", n2:" + n2 + ", len:" + tileRevealSounds.Length);
-            
-            AudioSource.PlayClipAtPoint(tileRevealSounds[n2], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+
+            PlayClip(tileRevealSounds[n2], 0.8f, false);
             tilesRevealedPitch++;
 
             /*switch (tilesRevealedPitch)
@@ -155,7 +156,7 @@ public class SoundManager : MonoBehaviour
         tileRevealComboIsActive = false;
 
         if (playSoundEffect && tilesRevealedManually > 4)
-            AudioSource.PlayClipAtPoint(tileRevealComboResetSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));        
+            gm.soundManager.PlayClip(tileRevealComboResetSound, 1, true);
         tilesRevealedManually = 0;
 
         gm.ResetRevealCombo();
@@ -221,5 +222,22 @@ public class SoundManager : MonoBehaviour
             multiplierDrainSource.DOFade(0, 0.5f).SetUpdate(true);//.OnKill(multiplierDrainSource.Stop);
         else
             multiplierDrainSource.volume = 0;*/
+    }
+
+    public AudioSource PlayClip(AudioClip clip, float volume, bool doRandomPitch)
+    {
+        var tempAudio = new GameObject("TempAudio"); // create the temp object
+        tempAudio.transform.position = this.transform.position; // set its position
+      
+        var tempAudioSource = tempAudio.AddComponent(typeof(AudioSource)) as AudioSource; // add an audio source      
+        tempAudioSource.clip = clip; // define the clip
+        tempAudioSource.volume = volume * PlayerPrefs.GetFloat("SoundVolume", 0.5f);
+
+        if (doRandomPitch)
+            tempAudioSource.pitch = Random.Range(0.9f, 1.1f);
+
+        tempAudioSource.Play(); // start the sound      
+        Destroy(tempAudio, clip.length); // destroy object after clip duration      
+        return tempAudioSource; // return the AudioSource reference
     }
 }

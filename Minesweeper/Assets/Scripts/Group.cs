@@ -204,8 +204,7 @@ public class Group : MonoBehaviour
         buttonSoftDropHeld = true;
         lastSoftDropDown = Time.time;
 
-        GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-        AudioSource.PlayClipAtPoint(downSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        gm.soundManager.PlayClip(downSound, 0.9f, true);
         
         SoftDrop();
     }
@@ -403,9 +402,9 @@ public class Group : MonoBehaviour
         }
 
         if (burningTiles > 0)
-            AudioSource.PlayClipAtPoint(burningIgnitionSounds[Random.Range(0, burningIgnitionSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            gm.soundManager.PlayClip(burningIgnitionSounds[Random.Range(0, burningIgnitionSounds.Length)], 1, true);
         else if (frozenTiles > 0)
-            AudioSource.PlayClipAtPoint(frozenWindSounds[Random.Range(0, frozenWindSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            gm.soundManager.PlayClip(frozenWindSounds[Random.Range(0, frozenWindSounds.Length)], 1, true);
         else if (wetTiles > 0)
             childTiles[0].PlaySoundBubble();
     }
@@ -712,8 +711,6 @@ public class Group : MonoBehaviour
             
             if (rumble)
             {
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                
                 if (burningTiles > 0)
                     GetChildTiles()[0].PlaySoundSteamHiss();
                 else if (frozenTiles > 0)
@@ -721,7 +718,12 @@ public class Group : MonoBehaviour
                 else if (wetTiles > 0)
                     GetChildTiles()[0].PlaySoundSplash();
                 else
-                    AudioSource.PlayClipAtPoint(landSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                {
+                    AudioSource landSource = gm.soundManager.PlayClip(landSound, 1, true);
+                    float pitchChange = -0.2f + (0.4f * ((float)bottomHeight / (float)gm.sizeY));
+                    landSource.pitch += pitchChange;
+                }
+                    
 
                 //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
                 gm.TriggerOnTileSolveOrLandEvent();
@@ -954,7 +956,7 @@ public class Group : MonoBehaviour
                 if (rowsFilled > 0)
                 {
                     //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                    AudioSource.PlayClipAtPoint(tSpinSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                    gm.soundManager.PlayClip(tSpinSound, 1, true);
                 }
             }            
         }
@@ -973,11 +975,11 @@ public class Group : MonoBehaviour
         }
         
         if (isTetrominoOffScreen == 0 && lockResets >= lockResetMax)
-            AudioSource.PlayClipAtPoint(lockFinalSound, new Vector3(0, 0, 0), 0.3f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            gm.soundManager.PlayClip(lockFinalSound, 0.3f, true);
         if (isTetrominoOffScreen == 0 && !isHardDrop)
-            AudioSource.PlayClipAtPoint(lockSound, new Vector3(0, 0, 0), 0.3f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            gm.soundManager.PlayClip(lockSound, 0.3f, true);
         else if (isTetrominoOffScreen == 1)
-            AudioSource.PlayClipAtPoint(placedAboveBoardWarningSound, new Vector3(0, 0, 0), 0.6f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            gm.soundManager.PlayClip(placedAboveBoardWarningSound, 0.6f, true);
             
         //GameManager.deleteFullRows();
         if (!gm.isGameOver)
@@ -1186,7 +1188,6 @@ public class Group : MonoBehaviour
             UpdateGrid();
             LockDelayReset();
 
-            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
             AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
         }
         else
@@ -1505,7 +1506,6 @@ public class Group : MonoBehaviour
 
                 if (playSound)
                 {
-                    GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                     AudioSource.PlayClipAtPoint(turnSound, new Vector3(0, 0, 0), 0.75f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
                 }                
             }
@@ -1544,8 +1544,10 @@ public class Group : MonoBehaviour
 
             DetectIfLanded();
 
-            GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(moveSound, new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            AudioSource moveSource = gm.soundManager.PlayClip(moveSound, 0.75f, true);
+            float posX = GetChildTiles()[0].coordX;
+            float pitchChange = -0.2f + (0.4f * ((float)posX / (float)gm.sizeX));
+            moveSource.pitch += pitchChange;
 
             lastSuccessfulMovementWasRotation = false;
         }
@@ -1583,8 +1585,7 @@ public class Group : MonoBehaviour
                 if (getMultiplier)
                     gm.SetScoreMultiplier(20, 30);
 
-                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-                AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                gm.soundManager.PlayClip(tetrisweepSound, 1, true);
 
                 if (topHeight > gm.safeEdgeTilesGained - 1)
                     gm.AddSafeTileToEdges();                
@@ -1633,8 +1634,7 @@ public class Group : MonoBehaviour
         if (getMultiplier)
             gm.SetScoreMultiplier(25, 30);
 
-        GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-        AudioSource.PlayClipAtPoint(tetrisweepSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        gm.soundManager.PlayClip(tetrisweepSound, 1, true);
 
         if (topHeight > gm.safeEdgeTilesGained - 1)
             gm.AddSafeTileToEdges();

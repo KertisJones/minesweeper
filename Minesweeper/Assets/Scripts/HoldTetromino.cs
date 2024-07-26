@@ -120,7 +120,7 @@ public class HoldTetromino : MonoBehaviour
         GameObject currentTetromino = tetrominoSpawner.currentTetromino;
         if (!isHoldPossible())
         {
-            AudioSource.PlayClipAtPoint(holdFailedSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            gm.soundManager.PlayClip(holdFailedSound, 1, true);
             return;
         }
         
@@ -134,7 +134,7 @@ public class HoldTetromino : MonoBehaviour
 
         UpdateProgressBar();
 
-        AudioSource.PlayClipAtPoint(holdSwitchSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        gm.soundManager.PlayClip(holdSwitchSound, 1, true);
 
         if (cleanseProgressBar != null)
             cleanseProgressBar.ChangeColor(heldTetromino.GetComponentInChildren<Button>().image.color);
@@ -275,7 +275,7 @@ public class HoldTetromino : MonoBehaviour
         //cleanseProgressBar.GetComponent<IdleJiggle>().jumpInPlaceHeight = cleanseButton.GetComponent<IdleJiggle>().jumpInPlaceHeight;
 
         //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-        AudioSource.PlayClipAtPoint(cleanseActivateSound, new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        gm.soundManager.PlayClip(cleanseActivateSound, 1, true);
         //cleanseReady = false;
 
         /*if (cleanseButton != null)

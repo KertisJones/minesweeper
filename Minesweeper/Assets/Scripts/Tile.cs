@@ -371,7 +371,7 @@ public class Tile : MonoBehaviour
         {
             if (!isMine && aura == Tile.AuraType.burning)
             {
-                AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                gm.soundManager.PlayClip(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], 1, true);
                 burnGameOverImage.enabled = true;
                 auraOverlayImage.enabled = false;
                 auraBackgroundOverlayImage.enabled = true;
@@ -413,7 +413,7 @@ public class Tile : MonoBehaviour
         else
         {
             //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
-            AudioSource.PlayClipAtPoint(unflagSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+            gm.soundManager.PlayClip(unflagSound, 0.5f, true);
             gm.soundManager.ResetTileRevealPitch();
 
             gm.ResetScoreMultiplier();
@@ -622,7 +622,7 @@ public class Tile : MonoBehaviour
             else if (!revealedThisFrame) // Failed Chord
             {                
                 bool realFail = false;
-                AudioSource.PlayClipAtPoint(chordFailSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                gm.soundManager.PlayClip(chordFailSound, 0.5f, true);
                 gm.soundManager.ResetTileRevealPitch();
 
                 foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
@@ -643,7 +643,7 @@ public class Tile : MonoBehaviour
 
                     if (aura == Tile.AuraType.burning)
                     {
-                        AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        gm.soundManager.PlayClip(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], 1, true);
                         burnGameOverImage.enabled = true;
                         gm.EndGame("burn");
                     }
@@ -699,8 +699,8 @@ public class Tile : MonoBehaviour
             }
             else // Failed Chord
             {
-                bool realFail = false;                
-                AudioSource.PlayClipAtPoint(chordFailSound, new Vector3(0, 0, 0), 0.5f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                bool realFail = false;
+                gm.soundManager.PlayClip(chordFailSound, 0.5f, true);
                 gm.soundManager.ResetTileRevealPitch();
 
                 foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
@@ -719,7 +719,7 @@ public class Tile : MonoBehaviour
 
                     if (aura == Tile.AuraType.burning)
                     {
-                        AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        gm.soundManager.PlayClip(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], 1, true);
                         burnGameOverImage.enabled = true;
                         gm.EndGame("burn");
                     }
@@ -910,6 +910,8 @@ public class Tile : MonoBehaviour
     {
         if (aura == AuraType.normal)
             return;
+        if (gm.isGameOver)
+            return;
 
         List<AuraType> newAuras = new List<AuraType>();
         foreach (Tile t in gm.GetNeighborTiles(coordX, coordY))
@@ -967,7 +969,7 @@ public class Tile : MonoBehaviour
                     if (auraClock >= burnTime / 3)
                     {
                         auraClock = 0;
-                        AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        gm.soundManager.PlayClip(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], 0.8f, true);
                         BurnFall();
                     }
                 }
@@ -997,7 +999,7 @@ public class Tile : MonoBehaviour
 
                     if (auraClock > 14.5 && !tileToBurn.burnoutInvisible)
                     {
-                        AudioSource.PlayClipAtPoint(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+                        gm.soundManager.PlayClip(burningBurnOutFlame[Random.Range(0, burningBurnOutFlame.Length)], 0.8f, true);
                         tileToBurn.burnoutInvisible = true;
                     }
                 }
@@ -1219,32 +1221,32 @@ public class Tile : MonoBehaviour
 
     public void PlaySoundSteamHiss()
     {
-        AudioSource.PlayClipAtPoint(burningPutOutSteamHiss[Random.Range(0, burningPutOutSteamHiss.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        gm.soundManager.PlayClip(burningPutOutSteamHiss[Random.Range(0, burningPutOutSteamHiss.Length)], 1, true);
     }
     public void PlaySoundFrozenHit()
-    {        
-        AudioSource.PlayClipAtPoint(hardHitSounds[Random.Range(0, hardHitSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+    {
+        gm.soundManager.PlayClip(hardHitSounds[Random.Range(0, hardHitSounds.Length)], 1, true);
         PlaySoundSnow();
     }
     public void PlaySoundIceBreak()
     {
-        AudioSource.PlayClipAtPoint(iceBreakSounds[Random.Range(0, iceBreakSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        gm.soundManager.PlayClip(iceBreakSounds[Random.Range(0, iceBreakSounds.Length)], 1, true);
     }
     public void PlaySoundSnow()
     {
-        AudioSource.PlayClipAtPoint(snowSounds[Random.Range(0, snowSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        gm.soundManager.PlayClip(snowSounds[Random.Range(0, snowSounds.Length)], 1, true);
     }
     public void PlaySoundBubble()
     {
-        AudioSource.PlayClipAtPoint(bubbleSounds[Random.Range(0, bubbleSounds.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        gm.soundManager.PlayClip(bubbleSounds[Random.Range(0, bubbleSounds.Length)], 0.8f, true);
     }
     public void PlaySoundSplash()
     {
-        AudioSource.PlayClipAtPoint(splashSounds[Random.Range(0, splashSounds.Length)], new Vector3(0, 0, 0), 0.8f * PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        gm.soundManager.PlayClip(splashSounds[Random.Range(0, splashSounds.Length)], 0.8f, true);
     }
     public void PlaySoundSwim()
     {
-        AudioSource.PlayClipAtPoint(swimSounds[Random.Range(0, swimSounds.Length)], new Vector3(0, 0, 0), PlayerPrefs.GetFloat("SoundVolume", 0.5f));
+        gm.soundManager.PlayClip(swimSounds[Random.Range(0, swimSounds.Length)], 1, true);
     }
     #endregion
 }
