@@ -211,8 +211,8 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.linesCleared)
         {
-            string localizedText = GameManager.GetTranslation("UIText", "GUI Lines"); // "Lines"
-            this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + gm.linesCleared;
+            //string localizedText = GameManager.GetTranslation("UIText", "GUI Lines"); // "Lines"
+            this.GetComponent<TextMeshProUGUI>().text = gm.linesCleared.ToString(); // localizedText + ": " + gm.linesCleared;
         }
         else if (displayType == TextType.tetrisweepsCleard)
         {
@@ -244,8 +244,8 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.level)
         {
-            string localizedText = GameManager.GetTranslation("UIText", "GUI Level"); // "Level"
-            this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + gm.level;
+            //string localizedText = GameManager.GetTranslation("UIText", "GUI Level"); // "Level"
+            this.GetComponent<TextMeshProUGUI>().text = gm.level.ToString(); // localizedText + ": " + gm.level;
         }
         else if (displayType == TextType.tSpinSweeps)
         {

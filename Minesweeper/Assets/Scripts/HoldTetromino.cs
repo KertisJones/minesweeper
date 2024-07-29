@@ -206,6 +206,7 @@ public class HoldTetromino : MonoBehaviour
         tetromino.GetComponent<Group>().UpdateGrid();
 
         tetrominoSpawner.currentTetromino = tetromino;
+        gm.TriggerOnNewPieceEvent();
     }
 
     bool CleanseIsPossible()

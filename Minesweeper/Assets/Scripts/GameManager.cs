@@ -178,6 +178,8 @@ public class GameManager : MonoBehaviour
     public static event ResetStartingPositionsEvent OnResetStartingPositionsEvent;
     public delegate void KillTweenEvent();
     public static event KillTweenEvent OnKillTweenEvent;
+    public delegate void NewPieceEvent();
+    public static event NewPieceEvent OnNewPieceEvent;
 
     private void OnApplicationQuit() 
     {
@@ -222,6 +224,10 @@ public class GameManager : MonoBehaviour
         if (gameMods.timeLimit == Mathf.Infinity && !gameMods.detailedTimer)
             isStarted = true;
 
+        // Fixed Marathon: 10 per level
+        while (linesCleared >= level * 10)
+            level += 1;
+
         //PopulateMines();
     }
 
@@ -257,6 +263,7 @@ public class GameManager : MonoBehaviour
         OnTSpinEvent = null;
         OnResetStartingPositionsEvent = null;
         OnKillTweenEvent = null;
+        OnNewPieceEvent = null;
         transform.DOKill();
     }
     void PressEscape()
@@ -385,8 +392,8 @@ public class GameManager : MonoBehaviour
         }
 
         // Fixed Marathon: 10 per level
-        if (linesCleared >= level * 10)
-            level += 1;
+        /**if (linesCleared >= level * 10)
+            level += 1;*/
 
         if (timeLimit < Mathf.Infinity)
             if (GetTime() >= timeLimit)
@@ -1042,6 +1049,10 @@ public class GameManager : MonoBehaviour
         {
             gm.soundManager.PlayClip(gm.lineClearSound, 0.5f, true);
 
+            // Fixed Marathon: 10 per level
+            while (gm.linesCleared >= gm.level * 10)
+                gm.level += 1;
+
             if (OnLineClearEvent != null)
                 OnLineClearEvent(rowsCleared);
 
@@ -1694,7 +1705,9 @@ public class GameManager : MonoBehaviour
             return GetTranslation(tableName, entryName, depth + 1);
         }
         else
-            return table.GetEntry(entryName).GetLocalizedString();
+            if (table.GetEntry(entryName) != null)
+                return table.GetEntry(entryName).GetLocalizedString();
+        return "";
             //[entryName].LocalizedValue;
 /*#if !UNITY_EDITOR && UNITY_WEBGL
             return LocalizationSettings.StringDatabase.GetTable(tableName)[entryName].LocalizedValue;
@@ -1757,6 +1770,12 @@ public class GameManager : MonoBehaviour
     {
         if (OnKillTweenEvent != null)
             OnKillTweenEvent();
+    }
+
+    public void TriggerOnNewPieceEvent()
+    {
+        if (OnNewPieceEvent != null)
+            OnNewPieceEvent();
     }
 
     public float GetRowHeightPointModifier(int rowHeight)
