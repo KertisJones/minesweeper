@@ -152,11 +152,11 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.time)
         {
-            string localizedText = GameManager.GetTranslation("UIText", "GUI Time"); // "Time"
+            string localizedText = ""; // GameManager.GetTranslation("UIText", "GUI Time") + ": "; // "Time"
             if (gm.gameMods.timeLimit < Mathf.Infinity)
-                this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + GetTimeString(gm.gameMods.timeLimit - gm.GetTime());
+                this.GetComponent<TextMeshProUGUI>().text = localizedText + GetTimeString(gm.gameMods.timeLimit - gm.GetTime());
             else
-                this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + GetTimeString(gm.GetTime());
+                this.GetComponent<TextMeshProUGUI>().text = localizedText + GetTimeString(gm.GetTime());
         }
         else if (displayType == TextType.bestScore)
         {
@@ -377,11 +377,11 @@ public class DisplayText : MonoBehaviour
         
         if (gameMods.detailedTimer)
         {
-            return string.Format("{0:00}:{1:00}.{2:000}", minutes, seconds, milliseconds);
+            return string.Format("{0:0}:{1:00}.{2:000}", minutes, seconds, milliseconds);
         }
         else
         {
-            return string.Format("{0:00}:{1:00}", minutes, seconds);
+            return string.Format("{0:0}:{1:00}", minutes, seconds);
         }            
     }
 }
