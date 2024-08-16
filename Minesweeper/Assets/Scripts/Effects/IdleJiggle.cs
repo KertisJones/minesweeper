@@ -141,11 +141,11 @@ public class IdleJiggle : MonoBehaviour
         if (idleMoveDistance != Vector3.zero && idleMoveDuration > 0)
         {
             if (idleMoveDistance.x != 0)
-                this.transform.DOMoveX(transform.position.x + idleMoveDistance.x * shakeStrength, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
+                this.transform.DOLocalMoveX(transform.position.x + idleMoveDistance.x * shakeStrength, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
             if (idleMoveDistance.y != 0)
-                this.transform.DOMoveY(transform.position.y + idleMoveDistance.y * shakeStrength, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
+                this.transform.DOLocalMoveY(transform.position.y + idleMoveDistance.y * shakeStrength, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
             if (idleMoveDistance.z != 0)
-                this.transform.DOMoveZ(transform.position.z + idleMoveDistance.z * shakeStrength, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
+                this.transform.DOLocalMoveZ(transform.position.z + idleMoveDistance.z * shakeStrength, idleMoveDuration).SetLoops(-1, LoopType.Yoyo).SetEase(idleMoveEase);
         }
 
         StartCoroutine(JumpInPlaceLoop());
@@ -195,7 +195,7 @@ public class IdleJiggle : MonoBehaviour
 
             punchDownSequence.Append(DOJumpY(jumpInPlaceHeight * -1, jumpInPlaceHeight));
         }
-        punchDownSequence.Append(this.transform.DOMoveY(GetStartPositionLocalToWorldSpace().y, 0.05f));
+        punchDownSequence.Append(this.transform.DOLocalMoveY(startPositionLocal.y, 0.05f));
         
     }
 
@@ -397,7 +397,7 @@ public class IdleJiggle : MonoBehaviour
 
         LeanXKill();
 
-        leanTweenX = this.transform.DOMoveX(GetStartPositionLocalToWorldSpace().x + leanDistance * dir * shakeStrength, leanDuration).SetEase(idleMoveEase);
+        leanTweenX = this.transform.DOLocalMoveX(startPositionLocal.x + leanDistance * dir * shakeStrength, leanDuration).SetEase(idleMoveEase);
     }
 
     public void LeanY(int dir)
@@ -407,7 +407,7 @@ public class IdleJiggle : MonoBehaviour
 
         LeanYKill();
 
-        leanTweenY = this.transform.DOMoveY(GetStartPositionLocalToWorldSpace().y + leanDistance * dir * shakeStrength, leanDuration).SetEase(idleMoveEase);
+        leanTweenY = this.transform.DOLocalMoveY(startPositionLocal.y + leanDistance * dir * shakeStrength, leanDuration).SetEase(idleMoveEase);
     }
 
     public void PunchRotate(int dir)
@@ -498,15 +498,15 @@ public class IdleJiggle : MonoBehaviour
     {
         ResetPositionX();
         ResetPositionY();
-        this.transform.DOMoveZ(GetStartPositionLocalToWorldSpace().z, 0.15f).SetUpdate(true);
+        this.transform.DOLocalMoveZ(startPositionLocal.z, 0.15f).SetUpdate(true);
     }
     void ResetPositionX()
     {
-        this.transform.DOMoveX(GetStartPositionLocalToWorldSpace().x, 0.15f).SetUpdate(true);
+        this.transform.DOLocalMoveX(startPositionLocal.x, 0.15f).SetUpdate(true);
     }
     void ResetPositionY()
     {
-        this.transform.DOMoveY(GetStartPositionLocalToWorldSpace().y, 0.15f).SetUpdate(true);
+        this.transform.DOLocalMoveY(startPositionLocal.y, 0.15f).SetUpdate(true);
     }
     void ResetScale()
     {
@@ -547,10 +547,10 @@ public class IdleJiggle : MonoBehaviour
         if (!IsShakeValid(true, jumpInYTween))
             return s;
         
-        float startPosY = GetStartPositionLocalToWorldSpace().y;        
+        float startPosY = startPositionLocal.y;        
 
-        s.Append(this.transform.DOMoveY(startPosY + jumpPower * shakeStrength, duration / 2).SetEase(Ease.OutQuad));
-        s.Append(this.transform.DOMoveY(startPosY, duration / 2).SetEase(Ease.OutQuad));
+        s.Append(this.transform.DOLocalMoveY(startPosY + jumpPower * shakeStrength, duration / 2).SetEase(Ease.OutQuad));
+        s.Append(this.transform.DOLocalMoveY(startPosY, duration / 2).SetEase(Ease.OutQuad));
 
         jumpInYTween = s;
 
@@ -567,23 +567,23 @@ public class IdleJiggle : MonoBehaviour
         startRotation = this.transform.rotation.eulerAngles;
         //startRotation = new Vector3(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z);
     }
-    Vector3 GetStartPositionLocalToWorldSpace()
+    /*Vector3 GetStartPositionLocalToWorldSpace()
     {
         if (this.transform.parent == null)
             return startPositionLocal;
 
         Vector3 parentPositionToCenterAt = this.transform.parent.position;
         Vector2 displaySizeScale = Vector2.one;
-        /*if (parentCanvas != null)
-            if (parentCanvas.renderMode == RenderMode.WorldSpace)
-            {
-                parentPositionToCenterAt = parentStartPosition;
-                displaySizeScale = new Vector2 (parentCanvas.renderingDisplaySize.x / parentCanvasDisplaySize.x, parentCanvas.renderingDisplaySize.y / parentCanvasDisplaySize.y);
-            }*/
+        //if (parentCanvas != null)
+            //if (parentCanvas.renderMode == RenderMode.WorldSpace)
+            //{
+                //parentPositionToCenterAt = parentStartPosition;
+                //displaySizeScale = new Vector2 (parentCanvas.renderingDisplaySize.x / parentCanvasDisplaySize.x, parentCanvas.renderingDisplaySize.y / parentCanvasDisplaySize.y);
+            //}
 
 
         return new Vector3(startPositionLocal.x * this.transform.parent.lossyScale.x * displaySizeScale.x,
         startPositionLocal.y * this.transform.parent.lossyScale.y * displaySizeScale.y,
         startPositionLocal.z * this.transform.parent.lossyScale.z) + parentPositionToCenterAt;
-    }
+    }*/
 }
