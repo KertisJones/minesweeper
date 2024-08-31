@@ -416,8 +416,8 @@ MonoBehaviour:
   scaleMultiplierShrink: 0.95
   scaleTransitionTime: 0.15
   scalePositionOffset: 0
-  enlargeSound: {fileID: 0}
-  shrinkSound: {fileID: 0}
+  enlargeSound: {fileID: 8300000, guid: 18d995c62d65dab459537e3a177c601e, type: 3}
+  shrinkSound: {fileID: 8300000, guid: e0e8ed38e929d9d41ab768d63d4f976f, type: 3}
   jiggleIsEnabled: 1
   reorderToLastSibling: 0
   startAtScaleZero: 0

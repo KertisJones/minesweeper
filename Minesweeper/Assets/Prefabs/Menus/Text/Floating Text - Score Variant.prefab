@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1611217656, guid: 78a18002c80e76c439880221c1fc2321, type: 3}
       propertyPath: duration
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1611217656, guid: 78a18002c80e76c439880221c1fc2321, type: 3}
       propertyPath: scaleTarget.x
-      value: 0.9
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1611217656, guid: 78a18002c80e76c439880221c1fc2321, type: 3}
       propertyPath: scaleTarget.y
-      value: 0.9
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1611217656, guid: 78a18002c80e76c439880221c1fc2321, type: 3}
       propertyPath: scaleTarget.z
-      value: 0.9
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1334009076711670324, guid: 78a18002c80e76c439880221c1fc2321, type: 3}
       propertyPath: m_Name
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1334009076711670326, guid: 78a18002c80e76c439880221c1fc2321, type: 3}
       propertyPath: m_fontSize
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1334009076711670326, guid: 78a18002c80e76c439880221c1fc2321, type: 3}
       propertyPath: m_margin.z
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1334009076711670326, guid: 78a18002c80e76c439880221c1fc2321, type: 3}
       propertyPath: m_fontSizeBase
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1334009076711670326, guid: 78a18002c80e76c439880221c1fc2321, type: 3}
       propertyPath: m_enableAutoSizing

@@ -29,9 +29,9 @@ public class FloatingText : MonoBehaviour
 
         startingScale = this.transform.localScale;
         startingColor = textBox.color;
-        textColorHoldingSprite.color = textBox.color;        
+        textColorHoldingSprite.color = textBox.color;
 
-        scaleTween = transform.DOScale(scaleTarget, duration).SetEase(ease).SetUpdate(true);
+        scaleTween = transform.DOBlendableScaleBy(scaleTarget - this.transform.localScale, duration).SetEase(ease).SetUpdate(true);
         colorTween = textColorHoldingSprite.DOColor(Color.clear, duration).SetEase(ease).SetUpdate(true);
     }
 
@@ -47,6 +47,9 @@ public class FloatingText : MonoBehaviour
 
     public void RefreshFade()
     {        
+        if (scaleTween != null)
+            scaleTween.Kill();
+
         this.DOKill();
         textColorHoldingSprite.DOKill();
 
@@ -56,7 +59,7 @@ public class FloatingText : MonoBehaviour
         textColorHoldingSprite.color = startingColor;
         textBox.color = startingColor;
 
-        scaleTween = transform.DOScale(scaleTarget, duration).SetEase(ease).SetUpdate(true);
+        scaleTween = transform.DOBlendableScaleBy(scaleTarget - startingScale, duration).SetEase(ease).SetUpdate(true);
         colorTween = textColorHoldingSprite.DOColor(Color.clear, duration).SetEase(ease).SetUpdate(true);
     }
 

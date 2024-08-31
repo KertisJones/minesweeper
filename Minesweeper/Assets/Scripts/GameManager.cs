@@ -1397,7 +1397,8 @@ public class GameManager : MonoBehaviour
         if (floatingTextQueue != null && scoreSourceName != "")
         {
             if (scoreSourceName == "Scoring Tile Revealed")
-                floatingTextQueue.UpdateSingularFloater(newScore, scoreSourceName, translationKeyPrefix1, translationKeyPrefix2, translationKeySuffix, comboCountOverride);
+                floatingTextQueue.SpawnText(tempScore, scoreSourceName, combineExistingScoreFloatingText, translationKeyPrefix1, translationKeyPrefix2, translationKeySuffix, comboCountOverride, 10);
+            //floatingTextQueue.UpdateSingularFloater(newScore, scoreSourceName, translationKeyPrefix1, translationKeyPrefix2, translationKeySuffix, comboCountOverride);
             else
                 floatingTextQueue.SpawnText(tempScore, scoreSourceName, combineExistingScoreFloatingText, translationKeyPrefix1, translationKeyPrefix2, translationKeySuffix, comboCountOverride);
         }
@@ -1625,7 +1626,7 @@ public class GameManager : MonoBehaviour
                     return;                      
         revealComboDrainTween = DOTween.To(()=>revealCombo, x=> revealCombo = x, 0, 31f);*/
         revealCombo = 0;
-        floatingTextQueue.ResetSingularFloater();
+        floatingTextQueue.DisableCombineExistingScoresOnFloater("Scoring Tile Revealed");
     }
 
     public void AddRevealStreakManual()

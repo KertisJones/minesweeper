@@ -7,6 +7,8 @@ using DG.Tweening;
 public class ButtonJiggle : MonoBehaviour
 {
     private Vector3 startScale;
+    private Vector3 targetScaleEnlarge;
+    private Vector3 targetScaleShrink;
     private float startZPos;
 
     public float scaleMultiplierEnlarge = 1.1f;
@@ -24,6 +26,7 @@ public class ButtonJiggle : MonoBehaviour
     private Tween shrinkTween;
     //private Tween jumpInPlaceTween;
     private Tween shrinkToZeroTween;
+    private Tween resetTween;
     public bool startAtScaleZero = false;
 
     void OnEnable()
@@ -74,6 +77,8 @@ public class ButtonJiggle : MonoBehaviour
             return;
         if (!jiggleIsEnabled)
             return;
+        
+
         if (reorderToLastSibling)
             this.transform.SetAsLastSibling();
 
@@ -89,12 +94,18 @@ public class ButtonJiggle : MonoBehaviour
                 GetComponent<AudioSource>().Play();
         }
 
-        //animate on point hover
-        enlargeTween = this.transform.DOScale(startScale * scaleMultiplierEnlarge, scaleTransitionTime).SetUpdate(true);
-        this.transform.DOMoveZ(transform.position.z + scalePositionOffset, scaleTransitionTime).SetUpdate(true);   
         if (GetComponent<IdleJiggle>() != null)
-            GetComponent<IdleJiggle>().ShakeRotation(GetComponent<IdleJiggle>().jumpInPlaceDuration, 0.15f);     
-        
+            GetComponent<IdleJiggle>().ShakeRotation(GetComponent<IdleJiggle>().jumpInPlaceDuration, 0.15f);
+
+        if (resetTween != null)
+            if (resetTween.IsActive())
+                if (resetTween.IsPlaying())
+                    return;
+
+        //animate on point hover
+        enlargeTween = this.transform.DOBlendableScaleBy(targetScaleEnlarge - transform.localScale, scaleTransitionTime).SetUpdate(true);
+        this.transform.DOMoveZ(transform.position.z + scalePositionOffset, scaleTransitionTime).SetUpdate(true);   
+                
     }
 
     public void JumpInPlace()
@@ -128,20 +139,24 @@ public class ButtonJiggle : MonoBehaviour
             else if (!shrinkTween.IsPlaying())
                 GetComponent<AudioSource>().Play();
         }
-        
+
         //animate on point click
-        shrinkTween = this.transform.DOScale(startScale * scaleMultiplierShrink, scaleTransitionTime).SetUpdate(true);
+        shrinkTween = this.transform.DOBlendableScaleBy(targetScaleShrink - transform.localScale, scaleTransitionTime).SetUpdate(true);
         this.transform.DOMoveZ(transform.position.z - scalePositionOffset, scaleTransitionTime).SetUpdate(true);
     }
 
 
 
     public void ShrinkToZero(bool autoReset = false)
-    {        
+    {
         if (autoReset)
-            this.transform.DOScale(Vector3.zero, scaleTransitionTime).SetUpdate(true).OnKill(ResetScale);
+        {
+            shrinkToZeroTween = this.transform.DOBlendableScaleBy(transform.localScale * -1, scaleTransitionTime).SetUpdate(true).OnKill(ResetScale);
+        }
         else
-            shrinkToZeroTween = this.transform.DOScale(Vector3.zero, scaleTransitionTime).SetUpdate(true);            
+        {
+            shrinkToZeroTween = this.transform.DOBlendableScaleBy(transform.localScale * -1, scaleTransitionTime).SetUpdate(true);
+        }
     }
 
     public void Reset()
@@ -165,13 +180,23 @@ public class ButtonJiggle : MonoBehaviour
             if (shrinkToZeroTween.IsActive())
                 if (shrinkToZeroTween.IsPlaying())
                     return;
-        this.transform.DOScale(startScale, scaleTransitionTime).SetUpdate(true);
+        if (enlargeTween != null)
+            enlargeTween.Kill();
+        if (shrinkTween != null)
+            shrinkTween.Kill();
+        if (resetTween  != null) 
+            resetTween.Kill();
+        
+        //transform.localScale = new Vector3(Mathf.Max(0, transform.localScale.x), Mathf.Max(0, transform.localScale.y), Mathf.Max(0, transform.localScale.z));
+        resetTween = this.transform.DOBlendableScaleBy(startScale - transform.localScale, scaleTransitionTime).SetUpdate(true);
     }
 
     public void SetNewStartingValues()
     {
         //cache the scale of the object
         startScale = this.transform.localScale;
+        targetScaleEnlarge = startScale * scaleMultiplierEnlarge;
+        targetScaleShrink = startScale * scaleMultiplierShrink;
         startZPos = this.transform.position.z;
 
         if (startAtScaleZero)

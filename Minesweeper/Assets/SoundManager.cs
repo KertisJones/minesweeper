@@ -144,7 +144,7 @@ public class SoundManager : MonoBehaviour
             tileRevealedThisFrame = true;        
             tileRevealComboIsActive = true;
             tilesRevealedCooldownTimer = 1.5f;
-            gm.floatingTextQueue.RefreshSingularFloater();
+            gm.floatingTextQueue.RefreshFloater("Scoring Tile Revealed");
             if (isManual)
                 tilesRevealedManually++;
         }
