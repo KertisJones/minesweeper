@@ -695,6 +695,10 @@ MonoBehaviour:
     m_Key: Scoring Tile Revealed
     m_Metadata:
       m_Items: []
+  - m_Id: 54015456424914944
+    m_Key: Scoring Tetrisweep Staggered
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -1053,7 +1053,7 @@ public class Group : MonoBehaviour
     void ClearRows(bool getMultiplier = true)
     {
         // Clear filled horizontal lines
-        int rowsCleared = GameManager.deleteFullRows(getMultiplier, rowsFilled, getMultiplier);
+        int rowsCleared = GameManager.deleteFullRows(getMultiplier, rowsFilled, this.gameObject);
         if (rowsCleared > 0)
         {
             // Cascade this block down if a line cleared that would have allowed the mino to hard drop farther down.
@@ -1583,12 +1583,15 @@ public class Group : MonoBehaviour
         lastMove = Time.time;
     }
 
-    public bool CheckForTetrisweeps(bool getMultiplier = true, float sweepMultiplier = 1, bool isInstantSweep = false) //bool isInstantSweep = false, int highestRowSolved = -1)
+    public (bool, bool) CheckForTetrisweeps(bool getMultiplier = true, float sweepMultiplier = 1, bool isInstantSweep = false) //bool isInstantSweep = false, int highestRowSolved = -1)
     {
         if (isFalling || difficultSweepScored)
-            return false;            
+            return (false, false);            
         // The child object isn't destroyed until the next Update loop, so you should check for its destroyed tag.
         List<Tile> childrenTiles = GetChildTiles();
+
+        bool isTetrisweep = false;
+        bool isTspinsweep = false;
 
         // This tetromino has been fully cleared. Score points and delete this object.
         if (childrenTiles.Count == 0)
@@ -1597,6 +1600,7 @@ public class Group : MonoBehaviour
             if (rowsFilled == 4 && (gm.previousTetromino == this.gameObject || gm.tetrominoSpawner.currentTetromino == this.gameObject))
             {
                 gm.tetrisweepsCleared += 1;
+                isTetrisweep = true;
                 difficultSweepScored = true;
 
                 // Special challenge created by Random595! https://youtu.be/QR4j_RgvFsY
@@ -1616,18 +1620,18 @@ public class Group : MonoBehaviour
         if (childrenTiles.Count < 4)
         {
             if (isTspin && (gm.previousTetromino == this.gameObject || gm.tetrominoSpawner.currentTetromino == this.gameObject)) // Detect if T-Sweep was achieved
-            {                
-                bool isTspinSweep = true;
+            {
+                isTspinsweep = true;
                 int fullTileCoordY = -100;
                 foreach (Tile tile in childrenTiles)
                 {
                     if (GameManager.isRowFull(tile.coordY))
                     {
-                        isTspinSweep = false;
+                        isTspinsweep = false;
                         fullTileCoordY = tile.coordY;
                     }                        
                 }
-                if (isTspinSweep)
+                if (isTspinsweep)
                 {
                     AddTspinsweep(getMultiplier, sweepMultiplier, isInstantSweep);
                     difficultSweepScored = true;
@@ -1636,7 +1640,7 @@ public class Group : MonoBehaviour
                 }                
             }
         }
-        return difficultSweepScored;
+        return (isTetrisweep, isTspinsweep);
     }
 
     void AddTspinsweep(bool getMultiplier, float sweepMultiplier = 1, bool isInstantSweep = false)
