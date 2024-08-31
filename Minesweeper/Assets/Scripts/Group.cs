@@ -228,7 +228,7 @@ public class Group : MonoBehaviour
         {            
             if (maximumFallDistance > 0)
             {
-                gm.AddScore(maximumFallDistance * 2, 0, false);
+                gm.AddScore(maximumFallDistance * 2, "", 0);
                 gm.SetScoreMultiplier(2, 1f);
                 gm.TriggerOnHardDropEvent();
             }
@@ -648,7 +648,7 @@ public class Group : MonoBehaviour
         }
         
         if (!isLocking && bottomHeight <= bottomHeightLowest)
-            gm.AddScore(distToFall, 0, false);
+            gm.AddScore(distToFall, "", 0);
         Fall(distToFall);
     }
 
@@ -875,19 +875,21 @@ public class Group : MonoBehaviour
             {
                 isTspin = true;
 
+                string scoreTranslationKey = "";
+
                 if (rowsFilled == 0) // T-Spin no lines
                 {
                     if (isWallKickThisTick) // T-Spin Mini no lines	
                     {
                         //Debug.Log("T-Spin Mini (No Lines)");
                         gm.tSpinMiniNoLines++;
-                        gm.AddScore(100, 0);
+                        gm.AddScore(100, "Scoring T-Spin Mini no lines", 0);
                     }
                     else // T-Spin no lines
                     {
                         //Debug.Log("T-Spin (No Lines)");
                         gm.tSpinNoLines++;
-                        gm.AddScore(400, 0);                        
+                        gm.AddScore(400, "Scoring T-Spin no lines", 0);                        
                     }
                     gm.SetScoreMultiplier(1, 5);
                 }
@@ -897,23 +899,25 @@ public class Group : MonoBehaviour
                     if (isWallKickThisTick)
                     {
                         //Debug.Log("T-Spin Mini Single");
+                        scoreTranslationKey = "Scoring T-Spin Mini Single";
                         gm.tSpinMiniSingle++;
                         actionScore = 200;
                     }
                     else
                     {
                         //Debug.Log("T-Spin Single");
+                        scoreTranslationKey = "Scoring T-Spin Single";
                         gm.tSpinSingle++;
                     }
                     
                     if (gm.lastFillWasDifficult)
                     {
-                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f), 0);
+                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f), scoreTranslationKey, 0, "Scoring Back-to-back");
                         gm.SetScoreMultiplier(10, 10);
                     }                        
                     else
                     {
-                        gm.AddScore(actionScore, 0);
+                        gm.AddScore(actionScore, scoreTranslationKey, 0);
                         gm.SetScoreMultiplier(5, 10);
                     }                                          
                     fillWasDifficult = true;
@@ -924,23 +928,25 @@ public class Group : MonoBehaviour
                     if (isWallKickThisTick)
                     {
                         //Debug.Log("T-Spin Mini Double");
+                        scoreTranslationKey = "Scoring T-Spin Mini Double";
                         gm.tSpinMiniDouble++;
                         actionScore = 400;
                     }
                     else
                     {
                         //Debug.Log("T-Spin Double");
+                        scoreTranslationKey = "Scoring T-Spin Double";
                         gm.tSpinDouble++;
                     }
 
                     if (gm.lastFillWasDifficult)
                     {
-                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f), 0);
+                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f), scoreTranslationKey, 0, "Scoring Back-to-back");
                         gm.SetScoreMultiplier(20, 10);
                     }                        
                     else
                     {
-                        gm.AddScore(actionScore, 0);
+                        gm.AddScore(actionScore, scoreTranslationKey, 0);
                         gm.SetScoreMultiplier(10, 10);
                     }                    
                     fillWasDifficult = true;
@@ -948,16 +954,17 @@ public class Group : MonoBehaviour
                 else if (rowsFilled == 3) // T-Spin Triple
                 {
                     //Debug.Log("T-Spin Triple");
+                    scoreTranslationKey = "Scoring T-Spin Triple";
                     gm.tSpinTriple++;
                     int actionScore = 1600;
                     if (gm.lastFillWasDifficult)
                     {
-                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f), 0);
+                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f), scoreTranslationKey, 0, "Scoring Back-to-back");
                         gm.SetScoreMultiplier(40, 10);
                     }                        
                     else
                     {
-                        gm.AddScore(actionScore, 0);
+                        gm.AddScore(actionScore, scoreTranslationKey, 0);
                         gm.SetScoreMultiplier(20, 10);
                     }
                     fillWasDifficult = true;
@@ -1576,7 +1583,7 @@ public class Group : MonoBehaviour
         lastMove = Time.time;
     }
 
-    public bool CheckForTetrisweeps(bool getMultiplier = true, float sweepMultiplier = 1) //bool isInstantSweep = false, int highestRowSolved = -1)
+    public bool CheckForTetrisweeps(bool getMultiplier = true, float sweepMultiplier = 1, bool isInstantSweep = false) //bool isInstantSweep = false, int highestRowSolved = -1)
     {
         if (isFalling || difficultSweepScored)
             return false;            
@@ -1622,7 +1629,7 @@ public class Group : MonoBehaviour
                 }
                 if (isTspinSweep)
                 {
-                    AddTspinsweep(getMultiplier, sweepMultiplier);
+                    AddTspinsweep(getMultiplier, sweepMultiplier, isInstantSweep);
                     difficultSweepScored = true;
                     /*gm.previousTetromino = null;
                     gm.tetrominoSpawner.currentTetromino = null;*/
@@ -1632,16 +1639,25 @@ public class Group : MonoBehaviour
         return difficultSweepScored;
     }
 
-    void AddTspinsweep(bool getMultiplier, float sweepMultiplier = 1) //, bool isInstantSweep)
+    void AddTspinsweep(bool getMultiplier, float sweepMultiplier = 1, bool isInstantSweep = false)
     {
+        string scoreTranslationKeyPrefix1 = "";
+        string scoreTranslationKeyPrefix2 = "";
+
         gm.tSpinsweepsCleared += 1;
 
         float actionScore = 595;
         actionScore *= sweepMultiplier;
         if (gm.previousClearWasDifficultSweep)
-            actionScore *= 1.5f; 
+        {
+            actionScore *= 1.5f;
+            scoreTranslationKeyPrefix1 = "Scoring Back-to-back";
+        }
+        
+        if (isInstantSweep)
+            scoreTranslationKeyPrefix2 = "Scoring Instant";
 
-        gm.AddScore((int)actionScore, 1); 
+        gm.AddScore((int)actionScore, "Scoring T-Spinsweep", 1, scoreTranslationKeyPrefix1, scoreTranslationKeyPrefix2); 
         
         if (getMultiplier)
             gm.SetScoreMultiplier(25, 30);

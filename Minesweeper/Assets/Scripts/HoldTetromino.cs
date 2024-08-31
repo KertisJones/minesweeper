@@ -264,7 +264,7 @@ public class HoldTetromino : MonoBehaviour
             tile.Reveal(true);
         }
         
-        gm.AddScore(250, 2);
+        gm.AddScore(250, "Binding Cleanse", 2);
         cleanseRecharge = 0;
         if (cleanseProgressBar != null)
         {

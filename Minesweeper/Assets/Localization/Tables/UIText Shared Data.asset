@@ -679,6 +679,22 @@ MonoBehaviour:
     m_Key: Menu Shake Strength
     m_Metadata:
       m_Items: []
+  - m_Id: 53604674075783168
+    m_Key: Scoring Instant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Key: Scoring Back-to-back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Key: Scoring Line Cleared
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Key: Scoring Tile Revealed
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

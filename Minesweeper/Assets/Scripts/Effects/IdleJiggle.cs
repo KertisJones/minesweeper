@@ -494,6 +494,18 @@ public class IdleJiggle : MonoBehaviour
         this.transform.localScale = startScale;
         this.transform.localRotation = Quaternion.Euler(startRotation);
     }
+    public void ForceResetPosition()
+    {
+        if (myTransform == null)
+            return;
+
+        ShakePositionKill();
+        LeanXKill();
+        LeanYKill();
+        JumpYKill();
+        PunchDownKill();
+        this.transform.localPosition = startPositionLocal;        
+    }
     void ResetPosition()
     {
         ResetPositionX();
@@ -560,12 +572,16 @@ public class IdleJiggle : MonoBehaviour
     
     public void SetNewStartingValues()
     {
-        startPositionLocal = this.transform.localPosition;
-        if (this.transform.parent != null )
-            parentStartPosition = this.transform.parent.position;
+        SetNewStartingPosition();
         startScale = this.transform.localScale;
         startRotation = this.transform.rotation.eulerAngles;
         //startRotation = new Vector3(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z);
+    }
+    public void SetNewStartingPosition()
+    {
+        startPositionLocal = this.transform.localPosition;
+        if (this.transform.parent != null)
+            parentStartPosition = this.transform.parent.position;
     }
     /*Vector3 GetStartPositionLocalToWorldSpace()
     {

@@ -202,7 +202,7 @@ public class Tile : MonoBehaviour
                 }
                 if (neighborsAreLocked)
                 {
-                    gm.AddScore(8888, 2);
+                    gm.AddScore(8888, "Scoring 8", 2);
                     gm.SetScoreMultiplier(8, 1f, true);
                     if (gm.safeEdgeTilesGained < 8)
                         gm.AddSafeTileToEdges();

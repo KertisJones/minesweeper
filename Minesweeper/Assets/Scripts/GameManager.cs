@@ -143,6 +143,7 @@ public class GameManager : MonoBehaviour
     public GameObject framePreview;
     public GameObject frameHold;
     public GameObject floatingText;
+    public FloatingTextQueue floatingTextQueue;
 
     public AudioClip lineClearSound;
     public AudioClip lineFullSound1;
@@ -944,31 +945,40 @@ public class GameManager : MonoBehaviour
             rowsActuallyFilled = rowsCleared;
         
         float pcScore = 800;
-
+        string scoreTranslationKey = "";
+        string scoreTranslationKeyPrefix1 = "";
+        string scoreTranslationKeyPrefix2 = "";
         // Give rewards for a perfect clear!
         if (rowsActuallyFilled == 0 || rowsActuallyFilled == 1)
         {
             pcScore = 800 + (100 * (rowsCleared - 1));        
             SetScoreMultiplier(10, 30);
             previousPCWasTetris = false;
+            scoreTranslationKey = "Scoring Perfect clear 1";
         }
         else if (rowsActuallyFilled == 2)
         {
             pcScore = 1200 + (150 * (rowsCleared - 2));        
             SetScoreMultiplier(25, 30);
             previousPCWasTetris = false;
+            scoreTranslationKey = "Scoring Perfect clear 2";
         }
         else if (rowsActuallyFilled == 3)
         {
             pcScore = 1800 + (200 * (rowsCleared - 3));        
             SetScoreMultiplier(50, 30);
             previousPCWasTetris = false;
+            scoreTranslationKey = "Scoring Perfect clear 3";
         }
         else if (rowsActuallyFilled >= 4)
         {
             pcScore = 500 * rowsCleared;
+            scoreTranslationKey = "Scoring Perfect clear 4";
             if (previousPCWasTetris)
-                pcScore = pcScore * 1.6f;            
+            {
+                pcScore = pcScore * 1.6f;
+                scoreTranslationKeyPrefix1 = "Scoring Back-to-back";
+            }                
             SetScoreMultiplier(100, 30);
             previousPCWasTetris = true;
         }
@@ -977,9 +987,10 @@ public class GameManager : MonoBehaviour
         {
             AddSafeTileToEdges();
             pcScore = pcScore * 1.5f;
+            scoreTranslationKeyPrefix2 = "Scoring Instant";
         }
 
-        AddScore(((int)pcScore), 0);
+        AddScore(((int)pcScore), scoreTranslationKey, 0, scoreTranslationKeyPrefix1, scoreTranslationKeyPrefix2);
 
         /*if (previousTetromino.GetComponent<Group>().rowsFilled == 4) // Tetrisweep Perfect Clear!
         {
@@ -1062,6 +1073,32 @@ public class GameManager : MonoBehaviour
             if (OnLineClearEvent != null)
                 OnLineClearEvent(rowsCleared);
 
+            string scoreTranslationKeyLineClear = "Scoring Lines Cleared";
+            if (rowsCleared == 1)
+                scoreTranslationKeyLineClear = "Scoring Line Cleared";
+            string scoreTranslationKeyLinesweep = "";
+            string scoreTranslationKeyPrefix1 = "";
+            string scoreTranslationKeyPrefix2 = "";
+
+            switch (linesweepsCleared)
+            {
+                case 1:
+                    scoreTranslationKeyLinesweep = "Scoring Linesweep";
+                    break;
+                case 2:
+                    scoreTranslationKeyLinesweep = "Scoring Duosweep";
+                    break;
+                case 3:
+                    scoreTranslationKeyLinesweep = "Scoring Triosweep";
+                    break;
+                case 4:
+                    scoreTranslationKeyLinesweep = "Scoring Tetrisweep";
+                    break;
+                default: // Pentominos go here...
+                    scoreTranslationKeyLinesweep = "Scoring Tetrisweep";
+                    break;
+            }
+
             // Calculate Multipliers
             float clearMultiplier = 1;
 
@@ -1072,7 +1109,10 @@ public class GameManager : MonoBehaviour
 
             float sweepMultiplier = clearMultiplier;
             if (isTriggeredByLock) // Instant Sweep multiplier
+            {
                 sweepMultiplier *= 1.5f;
+                scoreTranslationKeyPrefix2 = "Scoring Instant";
+            }                
 
             // Check for difficult sweeps, to find back-to-back. The below back-to-back bonus will also need to be applied inside the Tspinsweep separately.
             bool isDifficultSweep = false;
@@ -1080,20 +1120,20 @@ public class GameManager : MonoBehaviour
                 if (gm.previousTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, sweepMultiplier))// false, highestRowSolved))
                     isDifficultSweep = true;
             if (gm.tetrominoSpawner.currentTetromino != null)
-                if (gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, sweepMultiplier))//, isTriggeredByLock, highestRowSolved))
+                if (gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, sweepMultiplier, isTriggeredByLock))//, isTriggeredByLock, highestRowSolved))
                     isDifficultSweep = true;
 
             if (isDifficultSweep && gm.previousClearWasDifficultSweep)
+            {
                 sweepMultiplier *= 1.5f;
-
-
-
+                scoreTranslationKeyPrefix1 = "Scoring Back-to-back";
+            }
+                
             // Lines Cleared Points
             float lineClearScore = 100 * rowsCleared;
             lineClearScore *= clearMultiplier;
             //lineClearScore *= gm.GetRowHeightPointModifier(highestRowSolved);
-
-            gm.AddScore((int)lineClearScore, 1);
+                        
             
             //gm.AddScore(75 * (rowsCleared * rowsCleared), 1);
             //gm.SetScoreMultiplier(0.2f * (y + 1), 2f);
@@ -1111,11 +1151,15 @@ public class GameManager : MonoBehaviour
                 float linesweepScore = 100 * (linesweepsCleared * linesweepsCleared);
                 linesweepScore *= sweepMultiplier;
 
-                gm.AddScore(Mathf.FloorToInt(linesweepScore), 1);
+                gm.AddScore(Mathf.FloorToInt(linesweepScore) + (int)lineClearScore, scoreTranslationKeyLinesweep, 1, scoreTranslationKeyPrefix1, scoreTranslationKeyPrefix2); // TODO high clear
 
                 if (getMultiplier)
                     gm.SetScoreMultiplier(10 * linesweepsCleared, 10f);
             } 
+            else
+            {
+                gm.AddScore((int)lineClearScore, scoreTranslationKeyLineClear, 1, "", "", "", true, true, false, rowsCleared); // TODO high clear
+            }
 
             gm.previousClearWasDifficultSweep = isDifficultSweep;
             //currentTetromino = null;
@@ -1299,7 +1343,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Scoring
-    public void AddScore(int newScore, int scoreSourceType, bool levelMultiplierActive = true, bool scoreMultiplierActive = true) 
+    public void AddScore(int newScore, string scoreSourceName, int scoreSourceType, string translationKeyPrefix1 = "", string translationKeyPrefix2 = "", string translationKeySuffix = "", bool levelMultiplierActive = true, bool scoreMultiplierActive = true, bool combineExistingScoreFloatingText = false, int comboCountOverride = 1)
     {
         float tempScore = newScore;
         if (scoreMultiplierActive)
@@ -1307,6 +1351,8 @@ public class GameManager : MonoBehaviour
                 tempScore = tempScore * (1 + GetScoreMultiplier());
         if (levelMultiplierActive)
             tempScore = tempScore * level;      
+
+        tempScore = Mathf.Floor(tempScore);
 
         scoreByPointSourceType[scoreSourceType] += tempScore; // 0=Block Placing, 1=Line Clearing, 2=Minesweeping, 3=Misc.
         if (pieChart != null)
@@ -1316,12 +1362,25 @@ public class GameManager : MonoBehaviour
 
         //floater.GetComponent<TextMeshProUGUI>().text = "+" + tempScore.ToString("#,#")
 
+        Transform scoreFloaterSpawnPoint = transform;
+        //GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
+        //floater.GetComponent<TextMeshProUGUI>().text = "+" + tempScore.ToString("#,#") + " " + "Placeholder Text";//GetTranslation("UIText", scoreSourceName);
+
+        if (floatingTextQueue != null && scoreSourceName != "")
+        {
+            if (scoreSourceName == "Scoring Tile Revealed")
+                floatingTextQueue.UpdateSingularFloater(newScore, scoreSourceName, translationKeyPrefix1, translationKeyPrefix2, translationKeySuffix, comboCountOverride);
+            else
+                floatingTextQueue.SpawnText(tempScore, scoreSourceName, combineExistingScoreFloatingText, translationKeyPrefix1, translationKeyPrefix2, translationKeySuffix, comboCountOverride);
+        }
+            
+
         if (score >= bestTodayStarting && !isTitleMenu && !gameMods.detailedTimer) // Normal score mode
         {
             if (!isHighScore && score >= highScoreStarting  && highScoreStarting > 0 && !isEndless)
             {
-                GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
-                floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScore") + "!";
+                GameObject highScoreFloater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
+                highScoreFloater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScore") + "!";
 
                 soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);
                 isHighScore = true;
@@ -1330,16 +1389,16 @@ public class GameManager : MonoBehaviour
 
             if (!isBestToday && bestTodayStarting > 0 && !isEndless)
             {
-                GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
-                floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScoreBestToday") + "!";
+                GameObject highScoreFloater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
+                highScoreFloater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScoreBestToday") + "!";
                 soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);
                 isBestToday = true;
             }
 
             if (!isHighScoreEndless && score >= highScoreEndlessStarting && highScoreEndlessStarting > highScoreStarting && isEndless)
             {
-                GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
-                floater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScore") + "!";
+                GameObject highScoreFloater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
+                highScoreFloater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScore") + "!";
                 soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);
                 isHighScoreEndless = true;
             }
@@ -1470,17 +1529,17 @@ public class GameManager : MonoBehaviour
             switch (fullRows) {
                 case 1:
                     clipToPlay = gm.lineFullSound1;
-                    gm.AddScore(100, 0);
+                    gm.AddScore(100, "Scoring Line-Fill", 0);
                     gm.SetScoreMultiplier(3, 5f);
                     break;
                 case 2:
                     clipToPlay = gm.lineFullSound2;
-                    gm.AddScore(300, 0);
+                    gm.AddScore(300, "Scoring Double-Fill", 0);
                     gm.SetScoreMultiplier(5, 5f);
                     break;
                 case 3:
                     clipToPlay = gm.lineFullSound3;
-                    gm.AddScore(500, 0);
+                    gm.AddScore(500, "Scoring Triple-Fill", 0);
                     gm.SetScoreMultiplier(8, 5f);
                     break;
                 default:
@@ -1488,19 +1547,19 @@ public class GameManager : MonoBehaviour
                     int actionScore = 800;
                     if (gm.lastFillWasDifficult)
                     {
-                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f), 0);
+                        gm.AddScore(Mathf.RoundToInt(actionScore * 1.5f), "Scoring Tetri-Fill", 0, "Scoring Back-to-back");
                         gm.SetScoreMultiplier(20, 5f);
                     }                        
                     else
                     {
-                        gm.AddScore(actionScore, 0);
+                        gm.AddScore(actionScore, "Scoring Tetri-Fill", 0);
                         gm.SetScoreMultiplier(10, 5f);
                     }
                     break;
             }
             // C-c-c-Combo!
             if (gm.comboLinesFilled > 0)
-                gm.AddScore(50 * gm.comboLinesFilled, 0);
+                gm.AddScore(50 * gm.comboLinesFilled, "Scoring Combo: Line Filled", 0, "", "", "", true, true, true, gm.comboLinesFilled + 1);
 
             gm.soundManager.PlayClip(clipToPlay, 1, true);
         }        
@@ -1520,7 +1579,7 @@ public class GameManager : MonoBehaviour
         
         revealScore *= GetRowHeightPointModifier(rowHeight);
         
-        AddScore(Mathf.FloorToInt(10 * revealScore), 2);
+        AddScore(Mathf.FloorToInt(10 * revealScore), "Scoring Tile Revealed", 2, "", "", "", true, true, true, revealCombo); // TODO automatic, failed, high reveal...
     }
 
     public void ResetRevealCombo()
@@ -1531,6 +1590,7 @@ public class GameManager : MonoBehaviour
                     return;                      
         revealComboDrainTween = DOTween.To(()=>revealCombo, x=> revealCombo = x, 0, 31f);*/
         revealCombo = 0;
+        floatingTextQueue.ResetSingularFloater();
     }
 
     public void AddRevealStreakManual()
@@ -1539,7 +1599,7 @@ public class GameManager : MonoBehaviour
 
         if (revealStreakManual >= 50)
         {
-            AddScore(2500, 2);
+            AddScore(2500, "Scoring Manual Reveal Streak (50 tiles)", 2);
             SetScoreMultiplier(10, 10, true);
 
             soundManager.PlayClip(revealStreakManual100Sound, 1, true);
