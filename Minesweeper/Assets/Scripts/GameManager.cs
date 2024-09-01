@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     private float lastMultiplierTick = 0;
     public int comboLinesFilled = -1; // C=-1; +1 when mino locks & line filled; C= when mino locks & line not filled
     public bool lastFillWasDifficult = false; // Difficult fills are Tetrises or T-Spins
+    public bool previousClearWasDifficultSweep = false;
     public bool perfectClearThisRound = true;
     public bool previousPCWasTetris = false;
     public int linesClearedTarget = 150;    
@@ -50,8 +51,7 @@ public class GameManager : MonoBehaviour
     public int revealCombo = 0;
     public int revealStreakManual = 0;
     //[HideInInspector]
-    //public Tween revealComboDrainTween;
-    public bool previousClearWasDifficultSweep = false;
+    //public Tween revealComboDrainTween;    
     public int level = 1;
     public int currentMines = 0;
     public int currentFlags = 0;
@@ -1042,16 +1042,18 @@ public class GameManager : MonoBehaviour
                 gm.linesCleared++;
                 gm.lastLineClearTime = Time.time;
                 rowsCleared++;
-                if (isDelayedLinesweep)
-                {
-                    delayedLinesweepsCleared++;
-                    gm.linesweepsCleared += 1;
-                }
+                
                 if (isInstantLinesweep)
                 {
                     instantLinesweepsCleared++;
                     gm.linesweepsCleared += 1;
                 }
+                else if (isDelayedLinesweep)
+                {
+                    delayedLinesweepsCleared++;
+                    gm.linesweepsCleared += 1;
+                }
+
                 burningMultiplier += lineBurningMultiplier;
                 containsFrozenTile = containsFrozenTile || lineContainsFrozenTile;
             }
@@ -1101,15 +1103,15 @@ public class GameManager : MonoBehaviour
             bool isDifficultSweep = false;
 
             // Linesweep: Row was solved before the next tetromino was placed
-            if (delayedLinesweepsCleared > 0)
-            {
-                isDifficultSweep = gm.ScoreLinesweepHelper(delayedLinesweepsCleared, gm.previousTetromino, false, lineClearMultiplier, getMultiplier) || isDifficultSweep;
-            }
             if (instantLinesweepsCleared > 0)
             {
                 // tetrominoThatJustLocked should be gm.tetrominoSpawner.currentTetromino
-                isDifficultSweep = gm.ScoreLinesweepHelper(instantLinesweepsCleared, tetrominoThatJustLocked, true, lineClearMultiplier, getMultiplier) || isDifficultSweep; 
+                isDifficultSweep = gm.ScoreLinesweepHelper(instantLinesweepsCleared, tetrominoThatJustLocked, null, true, lineClearMultiplier, getMultiplier) || isDifficultSweep;
             }
+            if (delayedLinesweepsCleared > 0)
+            {
+                isDifficultSweep = gm.ScoreLinesweepHelper(delayedLinesweepsCleared, gm.previousTetromino, gm.tetrominoSpawner.currentTetromino, false, lineClearMultiplier, getMultiplier) || isDifficultSweep;
+            }            
             if (normalRowsCleared > 0)
             {
                 // Lines Cleared Points
@@ -1119,6 +1121,7 @@ public class GameManager : MonoBehaviour
                 gm.AddScore((int)lineClearScore, scoreTranslationKeyLineClear, 1, "", "", "", true, true, false, rowsCleared); // TODO high clear
             }
 
+            Debug.Log("Is Difficult sweep? " + isDifficultSweep);
             gm.previousClearWasDifficultSweep = isDifficultSweep;
         }
 
@@ -1129,7 +1132,7 @@ public class GameManager : MonoBehaviour
         return rowsCleared;
     }
 
-    private bool ScoreLinesweepHelper(int linesweepsCleared, GameObject tetrominoToCheckForSweeps, bool isInstant, float lineClearMultiplier, bool getMultiplier)
+    private bool ScoreLinesweepHelper(int linesweepsCleared, GameObject tetrominoToCheckForSweeps1, GameObject tetrominoToCheckForSweeps2, bool isInstant, float lineClearMultiplier, bool getMultiplier)
     {
         string scoreTranslationKeyLinesweep = "";
         string scoreTranslationKeyPrefix1 = "";
@@ -1145,17 +1148,15 @@ public class GameManager : MonoBehaviour
         // Check for difficult sweeps, to find back-to-back. The below back-to-back bonus will also need to be applied inside the Tspinsweep separately.
         bool isTetrisweep = false;
         bool isTspinsweep = false;
-        if (tetrominoToCheckForSweeps != null)
-        {
-            (isTetrisweep, isTspinsweep) = tetrominoToCheckForSweeps.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, sweepMultiplier, isInstant);
-        }
+        bool isTetrisweep2 = false;
+        bool isTspinsweep2 = false;
 
-        bool isDifficultSweep = isTetrisweep || isTspinsweep;
-        if (isDifficultSweep && previousClearWasDifficultSweep)
-        {
-            sweepMultiplier *= 1.5f;
-            scoreTranslationKeyPrefix1 = "Scoring Back-to-back";
-        }
+        if (tetrominoToCheckForSweeps1 != null)
+            (isTetrisweep, isTspinsweep) = tetrominoToCheckForSweeps1.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, sweepMultiplier, isInstant, true);
+        if (tetrominoToCheckForSweeps2 != null)
+            (isTetrisweep2, isTspinsweep2) = tetrominoToCheckForSweeps2.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, sweepMultiplier, isInstant, true);
+
+        Debug.Log("Lines: " + linesweepsCleared + " isInstant: " + isInstant + "! ..... Previous (or Just Locked) Tetrisweep: " + isTetrisweep + ", Previous (or Just Locked) Tspinsweep: " + isTspinsweep + ", Current Tetrisweep: " + isTetrisweep2 + ", Current Tspinsweep: " + isTspinsweep2);
 
         // Get Translation key...
         switch (linesweepsCleared)
@@ -1170,11 +1171,19 @@ public class GameManager : MonoBehaviour
                 scoreTranslationKeyLinesweep = "Scoring Triosweep";
                 break;
             case 4:
+                //isTetrisweep = true;
                 scoreTranslationKeyLinesweep = "Scoring Tetrisweep";
                 break;
-            default: // Pentominos go here...
+            default: // Pentominos go here...                
                 scoreTranslationKeyLinesweep = "Scoring Tetrisweep";
                 break;
+        }
+
+        bool isDifficultSweep = isTetrisweep || isTspinsweep || isTetrisweep2 || isTspinsweep2;
+        if (isDifficultSweep && previousClearWasDifficultSweep)
+        {
+            sweepMultiplier *= 1.5f;
+            scoreTranslationKeyPrefix1 = "Scoring Back-to-back";
         }
 
         // Linesweep Score...

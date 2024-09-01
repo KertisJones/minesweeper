@@ -1009,10 +1009,13 @@ public class Group : MonoBehaviour
 
             // Combo Checks!
             if (rowsFilled > 0)
+            {
+                gm.lastFillWasDifficult = fillWasDifficult;
                 gm.comboLinesFilled++;
+            }
             else
                 gm.comboLinesFilled = -1;            
-            gm.lastFillWasDifficult = fillWasDifficult;
+            
             gm.piecesPlaced += 1;            
             gm.perfectClearThisRound = false;
 
@@ -1583,7 +1586,7 @@ public class Group : MonoBehaviour
         lastMove = Time.time;
     }
 
-    public (bool, bool) CheckForTetrisweeps(bool getMultiplier = true, float sweepMultiplier = 1, bool isInstantSweep = false) //bool isInstantSweep = false, int highestRowSolved = -1)
+    public (bool, bool) CheckForTetrisweeps(bool getMultiplier = true, float sweepMultiplier = 1, bool isInstantSweep = false, bool overrideIsValidPiece = false) //bool isInstantSweep = false, int highestRowSolved = -1)
     {
         if (isFalling || difficultSweepScored)
             return (false, false);            
@@ -1597,7 +1600,7 @@ public class Group : MonoBehaviour
         if (childrenTiles.Count == 0)
         {            
             // Detect if TETRISWEEP was achieved (4-row Tetris was solved with minesweeper before the next piece locks) 
-            if (rowsFilled == 4 && (gm.previousTetromino == this.gameObject || gm.tetrominoSpawner.currentTetromino == this.gameObject))
+            if (rowsFilled == 4 && (gm.previousTetromino == this.gameObject || gm.tetrominoSpawner.currentTetromino == this.gameObject || overrideIsValidPiece))
             {
                 gm.tetrisweepsCleared += 1;
                 isTetrisweep = true;

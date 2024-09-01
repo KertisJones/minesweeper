@@ -218,7 +218,12 @@ public class FloatingTextQueue : MonoBehaviour
             {
                 Floater floater = textQueue[i];
                 floater.DisableCombineExistingScores();
-                textQueue[i] = floater;
+                
+
+                if (floater.floatingText == null)
+                    textQueue.RemoveAt(i);
+                else
+                    textQueue[i] = floater;
             }
         }
     }
