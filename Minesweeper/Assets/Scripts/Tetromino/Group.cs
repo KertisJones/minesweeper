@@ -449,7 +449,7 @@ public class Group : MonoBehaviour
         {
             foreach (Tile child in childTiles) 
             {
-                child.Reveal();//.isRevealed = true;
+                child.Reveal(true);//.isRevealed = true;
             }
         }
     }

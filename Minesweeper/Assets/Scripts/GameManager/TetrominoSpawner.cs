@@ -156,7 +156,7 @@ public class TetrominoSpawner : MonoBehaviour
             float totalDistance = totalHeight - topHeight;
             int totalObjectsToCenter = totalCount - 1;
             float distancePerIndex = totalDistance / totalObjectsToCenter;
-            Debug.Log(totalDistance + ", " + distancePerIndex);
+            //Debug.Log(totalDistance + ", " + distancePerIndex);
             spawnPos.y += index * distancePerIndex;
         }
         else

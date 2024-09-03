@@ -545,7 +545,8 @@ public class Tile : MonoBehaviour
             }
 
             //DetectProximity();
-            ZeroCascade();
+            if (!isForcedReveal)
+                ZeroCascade();
             GetComponent<ButtonJiggle>().scaleMultiplierEnlarge = ((GetComponent<ButtonJiggle>().scaleMultiplierEnlarge - 1) * 0.25f) + 1;
 
             GetComponentInChildren<Button>().interactable = false;
@@ -553,7 +554,7 @@ public class Tile : MonoBehaviour
             //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake(screenShakeDuration, screenShakeStrength);
             gm.TriggerOnTileSolveOrLandEvent();
 
-            if (gm.lineClearInstantly)
+            if (gm.lineClearInstantly && !isForcedReveal)
                 GameManager.deleteFullRows();
             GameManager.markSolvedRows();
             GameManager.CheckForPossiblePerfectClear();
