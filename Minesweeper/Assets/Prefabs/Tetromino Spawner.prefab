@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &77997061819583629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 218299161859246260}
+  - component: {fileID: 8363554750600825104}
+  m_Layer: 0
+  m_Name: Tetromino Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &218299161859246260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77997061819583629}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4, y: 21, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8363554750600825104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77997061819583629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2504c2c70d3522d41b96483aa1eb247c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previewTarget: {fileID: 0}
+  groups:
+  - {fileID: 4171321229741126624, guid: f8eb7923fbc59a044b7a9fd0d0742a68, type: 3}
+  - {fileID: 587917321819818592, guid: 7e240a2d6a53fac4e8dfcdb674d2a27c, type: 3}
+  - {fileID: 8216512838658175497, guid: 93999914ce74500468bda03794b16b52, type: 3}
+  - {fileID: 5635427920445249702, guid: 1d14026711c125a46b3ee4ab2bc9fc44, type: 3}
+  - {fileID: 5654239573006305394, guid: c3f9a2ae9471add40b6435101caf685a, type: 3}
+  - {fileID: 2885834540060685055, guid: 6d1a1f3ae2c1769429283a76dd4f23f4, type: 3}
+  - {fileID: 2154150086583572294, guid: 91e60c4313b719f4e993720443543837, type: 3}
+  currentTetromino: {fileID: 0}
+  tetrominoPreviewList: []
+  groupStack: []
+  previewCount: 5

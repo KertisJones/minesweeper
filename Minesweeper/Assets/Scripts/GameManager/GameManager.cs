@@ -1121,7 +1121,7 @@ public class GameManager : MonoBehaviour
                 gm.AddScore((int)lineClearScore, scoreTranslationKeyLineClear, 1, "", "", "", true, true, false, rowsCleared); // TODO high clear
             }
 
-            Debug.Log("Is Difficult sweep? " + isDifficultSweep);
+            //Debug.Log("Is Difficult sweep? " + isDifficultSweep);
             gm.previousClearWasDifficultSweep = isDifficultSweep;
         }
 
@@ -1156,7 +1156,7 @@ public class GameManager : MonoBehaviour
         if (tetrominoToCheckForSweeps2 != null)
             (isTetrisweep2, isTspinsweep2) = tetrominoToCheckForSweeps2.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, sweepMultiplier, isInstant, true);
 
-        Debug.Log("Lines: " + linesweepsCleared + " isInstant: " + isInstant + "! ..... Previous (or Just Locked) Tetrisweep: " + isTetrisweep + ", Previous (or Just Locked) Tspinsweep: " + isTspinsweep + ", Current Tetrisweep: " + isTetrisweep2 + ", Current Tspinsweep: " + isTspinsweep2);
+        //Debug.Log("Lines: " + linesweepsCleared + " isInstant: " + isInstant + "! ..... Previous (or Just Locked) Tetrisweep: " + isTetrisweep + ", Previous (or Just Locked) Tspinsweep: " + isTspinsweep + ", Current Tetrisweep: " + isTetrisweep2 + ", Current Tspinsweep: " + isTspinsweep2);
 
         // Get Translation key...
         switch (linesweepsCleared)

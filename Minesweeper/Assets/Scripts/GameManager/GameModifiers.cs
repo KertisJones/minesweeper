@@ -15,6 +15,7 @@ public class GameModifiers : MonoBehaviour
     };
     public LineClearTriggerType lineClearTrigger = LineClearTriggerType.clearOnLock;
     public int targetLines = 150;
+    public int previewCount = 5;
     public int basicFallDistance = 1;
     public bool detailedTimer = false;
     public float timeLimit = Mathf.Infinity;
@@ -66,6 +67,7 @@ public class GameModifiers : MonoBehaviour
         gameMods.gameModeDisplayName = gameModeDisplayName;
         gameMods.lineClearTrigger = lineClearTrigger;
         gameMods.targetLines = targetLines;
+        gameMods.previewCount = previewCount;
         gameMods.basicFallDistance = basicFallDistance;
         gameMods.detailedTimer = detailedTimer;
         gameMods.timeLimit = timeLimit;

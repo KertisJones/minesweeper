@@ -1005,7 +1005,7 @@ public class Group : MonoBehaviour
         {
             // Spawn next Group; if playere scored a Tetris, spawn a fully revealed Tetronimo
             // Spawn the next mino *before* deleting rows, or else it will soft lock
-            gm.tetrominoSpawner.spawnNext(fillWasDifficult);
+            gm.tetrominoSpawner.SpawnNext(fillWasDifficult);
 
             // Combo Checks!
             if (rowsFilled > 0)

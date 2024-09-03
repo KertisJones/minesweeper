@@ -252,6 +252,10 @@ public class Tile : MonoBehaviour
 
     private void UpdateLocation()
     {
+        if (group != null)
+            if (group.isHeld)
+                return;
+
         this.transform.position = new Vector3(coordX, coordY, this.transform.position.z);
 
         if (coordX != coordXPrevious || coordY != coordYPrevious)

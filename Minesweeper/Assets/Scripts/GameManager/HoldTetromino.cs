@@ -182,15 +182,16 @@ public class HoldTetromino : MonoBehaviour
         if (tetromino == null)
             return;
         //Debug.Log("HOLD! RemoveFromBoard");
-        tetromino.transform.position = targetPosition.position;
+        tetromino.transform.position = TetrominoSpawner.GetPreviewPosition(targetPosition.position, tetromino.GetComponent<Group>().tetrominoType);
         tetromino.transform.rotation = new Quaternion(0, 0, 0, 0);
         tetromino.GetComponent<Group>().isHeld = true;        
         tetromino.GetComponent<Group>().UpdateGrid();
 
         if (heldTetromino == null)
         {
-            swapPartner = tetrominoSpawner.nextTetromino;
-            tetrominoSpawner.spawnNext();
+            //swapPartner = tetrominoSpawner.nextTetromino;
+            tetrominoSpawner.SpawnNext();
+            swapPartner = tetrominoSpawner.currentTetromino;
         }            
         else
             tetrominoSpawner.currentTetromino = null;
