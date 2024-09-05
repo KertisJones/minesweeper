@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d429075bb349a9448930c336a6c1c284
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140341
+  packageName: Anti Cheat Free - 2024
+  packageVersion: 2024.3.1
+  assetPath: Assets/GUPS/AntiCheat/Source/Monitor/Android/Store/EAppStore.cs
+  uploadId: 675034

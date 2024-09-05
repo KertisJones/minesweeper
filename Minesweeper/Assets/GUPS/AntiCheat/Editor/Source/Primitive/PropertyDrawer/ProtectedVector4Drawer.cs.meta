@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0d6929636626c5045bcf9dcbe254d67c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140341
+  packageName: Anti Cheat Free - 2024
+  packageVersion: 2024.3.1
+  assetPath: Assets/GUPS/AntiCheat/Editor/Source/Primitive/PropertyDrawer/ProtectedVector4Drawer.cs
+  uploadId: 675034

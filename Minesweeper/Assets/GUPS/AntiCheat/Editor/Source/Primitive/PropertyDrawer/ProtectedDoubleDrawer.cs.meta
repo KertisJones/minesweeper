@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 54853ef476025334697bdac5fa0adca6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140341
+  packageName: Anti Cheat Free - 2024
+  packageVersion: 2024.3.1
+  assetPath: Assets/GUPS/AntiCheat/Editor/Source/Primitive/PropertyDrawer/ProtectedDoubleDrawer.cs
+  uploadId: 675034

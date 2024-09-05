@@ -29,6 +29,7 @@ public class PreviewFrame : MonoBehaviour
             wallBottom.transform.localPosition -= new Vector3(0, (wallHeight - 4), 1);
             backgroundLines.transform.localPosition -= new Vector3(0, (wallHeight - 4), 1);
             gameModeName.transform.localPosition -= new Vector3(0, (wallHeight - 4) * 10, 0);
+            gameModeName.GetComponent<IdleJiggle>().SetNewStartingPosition();
         }
 
     }

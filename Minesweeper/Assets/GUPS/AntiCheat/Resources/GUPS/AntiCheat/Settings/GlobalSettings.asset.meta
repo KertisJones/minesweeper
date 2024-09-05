@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 92986eb750db0b7418966af4c3661b13
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140341
+  packageName: Anti Cheat Free - 2024
+  packageVersion: 2024.3.1
+  assetPath: Assets/GUPS/AntiCheat/Resources/GUPS/AntiCheat/Settings/GlobalSettings.asset
+  uploadId: 675034

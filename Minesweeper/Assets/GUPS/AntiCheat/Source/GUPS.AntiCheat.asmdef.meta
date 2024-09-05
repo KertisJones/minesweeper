@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 66723abb139b36344a663372d7df6518
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140341
+  packageName: Anti Cheat Free - 2024
+  packageVersion: 2024.3.1
+  assetPath: Assets/GUPS/AntiCheat/Source/GUPS.AntiCheat.asmdef
+  uploadId: 675034

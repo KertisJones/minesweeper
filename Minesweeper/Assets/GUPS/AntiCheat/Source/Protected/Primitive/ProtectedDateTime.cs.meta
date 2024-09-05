@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2ee80a4bb0e9f1348b3c5beefed8c33e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140341
+  packageName: Anti Cheat Free - 2024
+  packageVersion: 2024.3.1
+  assetPath: Assets/GUPS/AntiCheat/Source/Protected/Primitive/ProtectedDateTime.cs
+  uploadId: 675034

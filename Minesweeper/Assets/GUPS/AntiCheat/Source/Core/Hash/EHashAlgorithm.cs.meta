@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c55e43d32af734b43a8cca2672b129e7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140341
+  packageName: Anti Cheat Free - 2024
+  packageVersion: 2024.3.1
+  assetPath: Assets/GUPS/AntiCheat/Source/Core/Hash/EHashAlgorithm.cs
+  uploadId: 675034

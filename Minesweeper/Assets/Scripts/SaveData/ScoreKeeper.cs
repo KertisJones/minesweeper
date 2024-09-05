@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using GUPS.AntiCheat.Protected;
 
 public class ScoreKeeper : MonoBehaviour, ISaveable
 {
-    public float bestScore;
-    public float bestScoreToday = 0;
-    public float bestScoreEndless;
-    public float bestScoreTodayEndless = 0;
-    public float bestTime;
-    public float bestTimeToday;
-    public int runs;
+    public ProtectedFloat bestScore;
+    public ProtectedFloat bestScoreToday = 0;
+    public ProtectedFloat bestScoreEndless;
+    public ProtectedFloat bestScoreTodayEndless = 0;
+    public ProtectedFloat bestTime;
+    public ProtectedFloat bestTimeToday;
+    public ProtectedInt32 runs;
     //public static float masterVolume  = 0.2f;
     GameManager gm;
     AudioSource musicSource;

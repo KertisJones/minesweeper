@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320a4d71c64282e479383ac79e0e76f4, type: 3}
+  m_Name: GlobalSettings
+  m_EditorClassIdentifier: 
+  Android_Enable_Development: 0
+  Android_AllowAllAppStores: 0
+  Android_AllowedAppStores: 0206070a0d
+  Android_AllowedCustomAppStores: []
+  Android_VerifyAppHash: 0
+  Android_AppHashAlgorithm: 3
+  Android_AppHashEndpoint: https://your-server.com/hash?version={version}
+  Android_VerifyAppFingerprint: 0
+  Android_AppFingerprintAlgorithm: 3
+  Android_AppFingerprint: YO:UR:FI:NG:ER:PR:IN:T
+  Android_UseWhitelistingForLibraries: 1
+  Android_WhitelistedLibraries:
+  - libmain.so
+  - libmono-native.so
+  - libmonobdwgc-2.0.so
+  - libMonoPosixHelper.so
+  - libunity.so
+  Android_BlacklistedLibraries: []
+  Android_UseBlacklistingforApplication: 0
+  Android_BlacklistedApplications:
+  - com.cheating.app
+  - catch_.me_.if_.you_.can_

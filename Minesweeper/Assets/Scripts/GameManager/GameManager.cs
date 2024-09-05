@@ -12,6 +12,7 @@ using TMPro;
 using UnityEngine.Localization.Settings;
 using static GameManager;
 using UnityEngine.Localization.Tables;
+using GUPS.AntiCheat.Protected;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,40 +26,40 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public TetrominoSpawner tetrominoSpawner;
     private DemoTitleScreen demoTitleScreen;
-    float startTime;
-    float endtime;
+    ProtectedFloat startTime;
+    ProtectedFloat endtime;
     [HideInInspector]
-    public float timeLimit = Mathf.Infinity;
-    private float score = 0;
+    public ProtectedFloat timeLimit = Mathf.Infinity;
+    private ProtectedFloat score = 0;
     private float[] scoreByPointSourceType = new float[5];
     [SerializeField]
-    public int scoreMultiplier = 0;
-    public int scoreMultiplierLimit = 5000;
-    public float scoreMultiplierDecayPerTick= 0.1f;
-    public float scoreMultiplierTimer = 0f;
-    private int scoreMultiplierTimerCountdown = -1;
-    private int startupTimerCountdown = 1;
-    private float lastMultiplierTick = 0;
-    public int comboLinesFilled = -1; // C=-1; +1 when mino locks & line filled; C= when mino locks & line not filled
+    public ProtectedInt32 scoreMultiplier = 0;
+    public ProtectedInt32 scoreMultiplierLimit = 5000;
+    public ProtectedFloat scoreMultiplierDecayPerTick = 0.1f;
+    public ProtectedFloat scoreMultiplierTimer = 0f;
+    private ProtectedInt32 scoreMultiplierTimerCountdown = -1;
+    private ProtectedInt32 startupTimerCountdown = 1;
+    private ProtectedFloat lastMultiplierTick = 0;
+    public ProtectedInt32 comboLinesFilled = -1; // C=-1; +1 when mino locks & line filled; C= when mino locks & line not filled
     public bool lastFillWasDifficult = false; // Difficult fills are Tetrises or T-Spins
     public bool previousClearWasDifficultSweep = false;
     public bool perfectClearThisRound = true;
     public bool previousPCWasTetris = false;
-    public int linesClearedTarget = 150;    
-    public int linesCleared = 0;
-    public int tetrisweepsCleared = 0;
-    public int tSpinsweepsCleared = 0;
-    public int revealCombo = 0;
-    public int revealStreakManual = 0;
+    public ProtectedInt32 linesClearedTarget = 150;    
+    public ProtectedInt32 linesCleared = 0;
+    public ProtectedInt32 tetrisweepsCleared = 0;
+    public ProtectedInt32 tSpinsweepsCleared = 0;
+    public ProtectedInt32 revealCombo = 0;
+    public ProtectedInt32 revealStreakManual = 0;
     //[HideInInspector]
     //public Tween revealComboDrainTween;    
-    public int level = 1;
-    public int currentMines = 0;
-    public int currentFlags = 0;
-    public int safeEdgeTilesGained = 0;
-    public int sizeX = 10;
-    public int sizeY = 24;
-    public static int numMines = 5;
+    public ProtectedInt32 level = 1;
+    public ProtectedInt32 currentMines = 0;
+    public ProtectedInt32 currentFlags = 0;
+    public ProtectedInt32 safeEdgeTilesGained = 0;
+    public ProtectedInt32 sizeX = 10;
+    public ProtectedInt32 sizeY = 24;
+    public static ProtectedInt32 numMines = 5;
 
     //private bool minesPlaced = false;
 
@@ -68,53 +69,53 @@ public class GameManager : MonoBehaviour
     List<GameObject> rightBorderTiles;
     //public GameObject currentTetromino = null;
     public GameObject previousTetromino = null;
-
-    public bool isGameOver = false;
-    public bool isEndless = false;
-    public bool isPaused = false;
-    public bool isStarted = false;
-    public bool isTitleMenu = false;
-    bool canPause = true;
-    public bool hasQuit = false;
-    public bool lineClearInstantly = false;
-    public bool cheatGodMode = false;
-    public bool cheatAutoFlagMode = false;
+    
+    public ProtectedBool isGameOver = false;
+    public ProtectedBool isEndless = false;
+    public ProtectedBool isPaused = false;
+    public ProtectedBool isStarted = false;
+    public ProtectedBool isTitleMenu = false;
+    ProtectedBool canPause = true;
+    public ProtectedBool hasQuit = false;
+    public ProtectedBool lineClearInstantly = false;
+    public ProtectedBool cheatGodMode = false;
+    public ProtectedBool cheatAutoFlagMode = false;
 
     // Statistics
-    public int piecesPlaced;
-    public int holds;
-    public int linesweepsCleared;
-    public float highestScoreMultiplier;
-    public int minesSweeped;
-    public int perfectClears;
-    public int singlesFilled;
-    public int doublesFilled;
-    public int triplesFilled;
-    public int tetrisesFilled;
-    public int tSpinMiniNoLines;
-    public int tSpinMiniSingle;
-    public int tSpinMiniDouble;
-    public int tSpinNoLines;
-    public int tSpinSingle;
-    public int tSpinDouble;
-    public int tSpinTriple;
+    public ProtectedInt32 piecesPlaced;
+    public ProtectedInt32 holds;
+    public ProtectedInt32 linesweepsCleared;
+    public ProtectedFloat highestScoreMultiplier;
+    public ProtectedInt32 minesSweeped;
+    public ProtectedInt32 perfectClears;
+    public ProtectedInt32 singlesFilled;
+    public ProtectedInt32 doublesFilled;
+    public ProtectedInt32 triplesFilled;
+    public ProtectedInt32 tetrisesFilled;
+    public ProtectedInt32 tSpinMiniNoLines;
+    public ProtectedInt32 tSpinMiniSingle;
+    public ProtectedInt32 tSpinMiniDouble;
+    public ProtectedInt32 tSpinNoLines;
+    public ProtectedInt32 tSpinSingle;
+    public ProtectedInt32 tSpinDouble;
+    public ProtectedInt32 tSpinTriple;
 
-    public float lastLineClearTime = 0;
+    public ProtectedFloat lastLineClearTime = 0;
 
     private bool isBestToday = false;
     private bool isHighScore = false;
     private bool isHighScoreEndless = false;
-    private float highScoreStarting;
-    private float bestTodayStarting;
-    private float highScoreEndlessStarting;
+    private ProtectedFloat highScoreStarting;
+    private ProtectedFloat bestTodayStarting;
+    private ProtectedFloat highScoreEndlessStarting;
 
     // Game Mods
     [HideInInspector]
     public GameModifiers.MinesweeperTextType textType = GameModifiers.MinesweeperTextType.numbers;
 
-    public int numBurningTiles = 0;
-    public int numFrozenTiles = 0;
-    public int numWetTiles = 0;
+    public ProtectedInt32 numBurningTiles = 0;
+    public ProtectedInt32 numFrozenTiles = 0;
+    public ProtectedInt32 numWetTiles = 0;
 
     // Options
     /*public enum WallType // your custom enumeration

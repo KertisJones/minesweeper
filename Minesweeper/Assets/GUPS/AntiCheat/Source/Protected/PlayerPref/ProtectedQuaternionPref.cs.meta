@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: cef2b1bc70401864b84329bb4041e925
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140341
+  packageName: Anti Cheat Free - 2024
+  packageVersion: 2024.3.1
+  assetPath: Assets/GUPS/AntiCheat/Source/Protected/PlayerPref/ProtectedQuaternionPref.cs
+  uploadId: 675034

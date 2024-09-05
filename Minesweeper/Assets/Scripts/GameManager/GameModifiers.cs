@@ -1,11 +1,12 @@
+using GUPS.AntiCheat.Protected;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameModifiers : MonoBehaviour
 {   
-    public string gameModeName = "Marathon";
-    public string gameModeDisplayName = "";
+    public ProtectedString gameModeName = "Marathon";
+    public ProtectedString gameModeDisplayName = "";
 
     // Game Rules
     public enum LineClearTriggerType // your custom enumeration
@@ -14,12 +15,12 @@ public class GameModifiers : MonoBehaviour
         clearInstantly
     };
     public LineClearTriggerType lineClearTrigger = LineClearTriggerType.clearOnLock;
-    public int targetLines = 150;
-    public int previewCount = 5;
-    public int basicFallDistance = 1;
-    public bool detailedTimer = false;
-    public float timeLimit = Mathf.Infinity;
-    public bool endlessIsEnabled = true;    
+    public ProtectedInt32 targetLines = 150;
+    public ProtectedInt32 previewCount = 5;
+    public ProtectedInt32 basicFallDistance = 1;
+    public ProtectedBool detailedTimer = false;
+    public ProtectedFloat timeLimit = Mathf.Infinity;
+    public ProtectedBool endlessIsEnabled = true;    
 
     // Game Board Setup
     public Vector2 boardSize = new Vector2 (10, 20);
@@ -32,15 +33,15 @@ public class GameModifiers : MonoBehaviour
     public WallType wallType = WallType.unlock;
 
     // Auras
-    public int auraNormalWeight = 10;
-    public int auraBurningWeight = 0;
-    public int auraFrozenWeight = 0;
-    public int auraWetWeight = 0;
-    public int auraElectricWeight = 0;
-    public int auraPlantWeight = 0;
-    public int auraSandWeight = 0;
-    public int auraGlassWeight = 0;
-    public int auraInfectedWeight = 0;
+    public ProtectedInt32 auraNormalWeight = 10;
+    public ProtectedInt32 auraBurningWeight = 0;
+    public ProtectedInt32 auraFrozenWeight = 0;
+    public ProtectedInt32 auraWetWeight = 0;
+    public ProtectedInt32 auraElectricWeight = 0;
+    public ProtectedInt32 auraPlantWeight = 0;
+    public ProtectedInt32 auraSandWeight = 0;
+    public ProtectedInt32 auraGlassWeight = 0;
+    public ProtectedInt32 auraInfectedWeight = 0;
 
     public Tile.AuraType floorAndWallAura = Tile.AuraType.normal;
 
@@ -54,7 +55,7 @@ public class GameModifiers : MonoBehaviour
         dots
     };
     public MinesweeperTextType minesweeperTextType = MinesweeperTextType.numbers;
-    public bool showTitle = false;
+    public ProtectedBool showTitle = false;
     
 
     

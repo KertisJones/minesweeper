@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b019f44b00efdd448af51fb501ad31fd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140341
+  packageName: Anti Cheat Free - 2024
+  packageVersion: 2024.3.1
+  assetPath: Assets/GUPS/AntiCheat/Editor/Source/Helper/TextureHelper.cs
+  uploadId: 675034

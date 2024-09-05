@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 66e85397493e88744a0bf646c7e59d95
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140341
+  packageName: Anti Cheat Free - 2024
+  packageVersion: 2024.3.1
+  assetPath: Assets/GUPS/AntiCheat/Editor/Source/Primitive/PropertyDrawer/ProtectedFloatDrawer.cs
+  uploadId: 675034

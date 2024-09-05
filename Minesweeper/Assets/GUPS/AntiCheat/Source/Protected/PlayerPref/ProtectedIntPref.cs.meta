@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 418dd830c6c446a4d93e308f36613cfd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140341
+  packageName: Anti Cheat Free - 2024
+  packageVersion: 2024.3.1
+  assetPath: Assets/GUPS/AntiCheat/Source/Protected/PlayerPref/ProtectedIntPref.cs
+  uploadId: 675034

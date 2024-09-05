@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8721942a48e7d3947ba8a29f55c4eb9f
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140341
+  packageName: Anti Cheat Free - 2024
+  packageVersion: 2024.3.1
+  assetPath: Assets/GUPS/AntiCheat/Resources/Prefabs/Detectors/Primitive Cheating
+    Detector.prefab
+  uploadId: 675034

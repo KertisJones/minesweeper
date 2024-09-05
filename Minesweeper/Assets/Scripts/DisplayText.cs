@@ -168,7 +168,7 @@ public class DisplayText : MonoBehaviour
                 /*if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
                     this.GetComponent<TextMeshProUGUI>().text = sk.bestScoreToday.ToString("#,#");*/
                 if (sk.bestScore > 0) // Best Score Total
-                    this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString("#,#"); 
+                    this.GetComponent<TextMeshProUGUI>().text = ((float)sk.bestScore).ToString("#,#"); 
                 else // Hi Score = 0 
                     this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString();
                 
@@ -337,7 +337,7 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.revealCombo)
         {
-            this.GetComponent<TextMeshProUGUI>().text = gm.revealCombo.ToString("#,#.#");
+            this.GetComponent<TextMeshProUGUI>().text = ((float)gm.revealCombo).ToString("#,#.#");
 
             /*this.GetComponent<TextMeshProUGUI>().color = startColor;
             if (gm.revealComboDrainTween != null)

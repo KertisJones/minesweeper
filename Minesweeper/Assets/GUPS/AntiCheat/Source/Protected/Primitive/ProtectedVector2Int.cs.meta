@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 65d6b0f6e4044b544905dde7dfc50410
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140341
+  packageName: Anti Cheat Free - 2024
+  packageVersion: 2024.3.1
+  assetPath: Assets/GUPS/AntiCheat/Source/Protected/Primitive/ProtectedVector2Int.cs
+  uploadId: 675034
