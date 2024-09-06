@@ -1638,7 +1638,8 @@ public class GameManager : MonoBehaviour
                     return;                      
         revealComboDrainTween = DOTween.To(()=>revealCombo, x=> revealCombo = x, 0, 31f);*/
         revealCombo = 0;
-        floatingTextQueue.DisableCombineExistingScoresOnFloater("Scoring Tile Revealed");
+        if (floatingTextQueue != null)
+            floatingTextQueue.DisableCombineExistingScoresOnFloater("Scoring Tile Revealed");
     }
 
     public void AddRevealStreakManual()
