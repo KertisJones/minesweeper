@@ -214,7 +214,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 934286541709312
-    m_Localized: "Contr\xF4les de Chute de Bloc\r"
+    m_Localized: "Contr\xF4les de Chute de Bloc\n"
     m_Metadata:
       m_Items: []
   - m_Id: 934315432075264
@@ -650,6 +650,84 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 40055569626066944
     m_Localized: Force de secousse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: "Les t\xE9triminos tombent instantan\xE9ment, et le d\xE9lai de
+      verrouillage diminue avec votre niveau !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: Minuscule
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: "Empilez les pi\xE8ces bien serr\xE9es sur ce petit plateau de 4x4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: Enfer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: "Montez la temp\xE9rature ! Le plateau est en train de br\xFBler,
+      et il n\u2019y a pas de marge d\u2019erreur."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: "Gel br\xFBlant"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: "Le plateau a gel\xE9 ! Faites fondre la glace pour r\xE9v\xE9ler
+      le nombre de mines, et faites attention \xE0 l\u2019endroit o\xF9 vous placez
+      votre feu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: Case en feu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: Ne jouez pas avec le feu !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: "Faites attention en cliquant sur le feu, toute erreur mettra fin
+      \xE0 la partie."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: Impasse 1-Ligne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: "Le jeu se termine d\xE8s que vous effacez une ligne\u2026 mais
+      il y a plus d'une fa\xE7on de marquer des points."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: "Instantan\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: "Cons\xE9cutif"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: "Ligne nettoy\xE9e"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: "Case r\xE9v\xE9l\xE9e"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: Tetrisweep en escalier
     m_Metadata:
       m_Items: []
   references:

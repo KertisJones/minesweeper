@@ -17,7 +17,708 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 0dd1e0fbba483424bbb601167d9eb8a1, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 15111020544
+    m_Localized: Poeng
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3884008333312
+    m_Localized: Neste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 688583756210176
+    m_Localized: Miner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 690552633810944
+    m_Localized: Tid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691682109546496
+    m_Localized: "H\xF8yeste poengsum"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691701722112000
+    m_Localized: Best i dag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691795221536768
+    m_Localized: Beste tid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692206200414208
+    m_Localized: Linjer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692866870403072
+    m_Localized: Tetrisweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693625464807424
+    m_Localized: Avslutt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693945486008320
+    m_Localized: Kan ikke avslutte i nettleseren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694159798165504
+    m_Localized: "Niv\xE5"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694324101636096
+    m_Localized: T-Spinsweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694970670374912
+    m_Localized: "Endel\xF8s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696069942927360
+    m_Localized: "Fullf\xF8rt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697409771397120
+    m_Localized: Maraton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697412782907392
+    m_Localized: Flash Maraton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697414372548608
+    m_Localized: 40-Linjers Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697420861136896
+    m_Localized: 'Ultra: Tidstrial'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697421989404672
+    m_Localized: Flash Ultra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697429551734784
+    m_Localized: Krediteringer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697599509127168
+    m_Localized: Skjult Maraton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925355878637568
+    m_Localized: Spill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925670325608448
+    m_Localized: Pauset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925714365800448
+    m_Localized: Gjenoppta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925742983536640
+    m_Localized: Innstillinger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926408846073856
+    m_Localized: Kontroller
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926506682408960
+    m_Localized: Tilbake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926602874576896
+    m_Localized: Mastervolum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926629294497792
+    m_Localized: Musikk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926659917111296
+    m_Localized: Effekter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926682805428224
+    m_Localized: Reduser animasjoner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926709879660544
+    m_Localized: "Vis l\xE5seforsinkelse"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 927883198455808
+    m_Localized: Venstre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928546846400512
+    m_Localized: "H\xF8yre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928580065288192
+    m_Localized: "Rot\xE9r med klokken"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928615494574080
+    m_Localized: "Rot\xE9r mot klokken"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928630334021632
+    m_Localized: Myk fall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928642711412736
+    m_Localized: Hard fall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928656833634304
+    m_Localized: Hold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928682272088064
+    m_Localized: "Start p\xE5 nytt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928694787891200
+    m_Localized: Hard klaring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928708620705792
+    m_Localized: Avdekk felt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928722587738112
+    m_Localized: Akkord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928735476834304
+    m_Localized: Flagg felt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928788438310912
+    m_Localized: Flagg akkord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928909536256000
+    m_Localized: Rens
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933890872041472
+    m_Localized: Gjenopprett standarder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934286541709312
+    m_Localized: Blokk fallkontroller
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934315432075264
+    m_Localized: Minesveiper-kontroller
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951608887205888
+    m_Localized: Rediger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951658765869056
+    m_Localized: Tilpass spill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951849149521920
+    m_Localized: Kommer snart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952127466758144
+    m_Localized: Poengsystem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952161780359168
+    m_Localized: Resultattavle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963399100915712
+    m_Localized: "Endel\xF8s modus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963558551576576
+    m_Localized: Spill over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988652401319936
+    m_Localized: "Overlev opptil 150 linjer, og pr\xF8v \xE5 f\xE5 h\xF8yest mulig
+      poengsum!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988835440746496
+    m_Localized: "Fjern 40 linjer s\xE5 raskt som mulig!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989111895711744
+    m_Localized: Den enklere, raskere versjonen av Maraton hvor linjer fjernes umiddelbart!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989231202689024
+    m_Localized: Kommer snart...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989810910027776
+    m_Localized: "F\xE5 h\xF8yest mulig poengsum p\xE5 tre minutter!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989813380472832
+    m_Localized: "F\xE5 h\xF8yest mulig poengsum p\xE5 tre minutter ved hjelp av
+      Flash-regler!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990195708059648
+    m_Localized: "Klikk for \xE5 se i nettleseren din"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990308941684736
+    m_Localized: "Bli med i v\xE5rt Community Discord for \xE5 f\xE5 navnet ditt
+      p\xE5 den offisielle resultatlisten!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990401673551872
+    m_Localized: Takk for at du spiller!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990658520145920
+    m_Localized: :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990813138968576
+    m_Localized: Bli med i den offisielle Tetrisweeper Community Discord!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990814418231296
+    m_Localized: "Del dine h\xF8ye poeng med #Tetrisweeper"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990815487778816
+    m_Localized: "Last ned frittst\xE5ende versjon"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990816574103552
+    m_Localized: "Sjekk ut spillelisten v\xE5r!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990817517821952
+    m_Localized: "Vil du kj\xF8pe meg en kaffe? Takk for st\xF8tten!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 991654902226944
+    m_Localized: 'Rens: Fjern alle miner i hold, +250 poeng'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992047333892096
+    m_Localized: "Tetrisweep er n\xE5r du fjerner alle 4 linjene i en 4-linjers tetris
+      du nettopp har fylt, f\xF8r neste tetromino l\xE5ses p\xE5 plass."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992048869007360
+    m_Localized: "T-Spinsweep er n\xE5r du f\xE5r en T-spin og fjerner hver linje
+      T tetrominoen fylte, f\xF8r neste tetromino l\xE5ses p\xE5 plass."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427307444035584
+    m_Localized: Prikker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427339857616896
+    m_Localized: Maratonmodus, men flistallene er erstattet med prikker!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647393605935104
+    m_Localized: Vegger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647422219476992
+    m_Localized: "I stedet for \xE5 l\xE5se opp sikre felter mens du spiller, er
+      veggene p\xE5 spillbrettet n\xE5 spillbare felter."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781692649472
+    m_Localized: "\xD8nskeliste"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781847838720
+    m_Localized: "P\xE5 Steam"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474861069852672
+    m_Localized: "L\xE5s opp bonusspillmoduser!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2475075038076928
+    m_Localized: "Tetrisweep som aldri f\xF8r!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2512304913506304
+    m_Localized: "L\xE5st!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052179397636096
+    m_Localized: Blokkplassering
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052349606686720
+    m_Localized: Minesveiping
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052351666089984
+    m_Localized: Tetrisweeping
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178027099217920
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178044815958016
+    m_Localized: Lyd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178065133166592
+    m_Localized: "H\xE5ndtering"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178359053213696
+    m_Localized: Videoinnstillinger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178438203924480
+    m_Localized: Lydinnstillinger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178483062005760
+    m_Localized: "H\xE5ndteringsinnstillinger"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7288987847745536
+    m_Localized: 'ARR: Automatisk repetisjonsrate'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289007573557248
+    m_Localized: 'DAS: Forsinket automatisk skift'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289023503523840
+    m_Localized: 'DCD: DAS-kuttforsinkelse'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289036057075712
+    m_Localized: 'SDF: Myk fallfaktor'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261547250933760
+    m_Localized: Lokalisering
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261772770271232
+    m_Localized: Skapt av
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261872057835520
+    m_Localized: Spesiell takk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8635273809223680
+    m_Localized: Ekstra krediteringer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8641451649916928
+    m_Localized: "Trykk p\xE5 en hvilken som helst tast for \xE5 fortsette..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8664569943060480
+    m_Localized: "Tetrisweeper st\xF8ttespillere"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899711646720000
+    m_Localized: Linje-Fyll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899852948627456
+    m_Localized: Dobbel-Fyll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900050827501568
+    m_Localized: Trippel-Fyll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900053100814336
+    m_Localized: Tetri-Fyll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900055583842304
+    m_Localized: "P\xE5 plass l\xE5s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900056825356288
+    m_Localized: T-Spin Mini ingen linjer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900058133979136
+    m_Localized: T-Spin ingen linjer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900060650561536
+    m_Localized: T-Spin Mini Enkel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900062789656576
+    m_Localized: T-Spin Enkel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900064362520576
+    m_Localized: T-Spin Mini Dobbel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900065469816832
+    m_Localized: T-Spin Dobbel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900066350620672
+    m_Localized: T-Spin Trippel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900067399196672
+    m_Localized: Rygg-mot-rygg Vanskelig Fyll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900068477132800
+    m_Localized: 'Kombinasjon: Linje fylt'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900069341159424
+    m_Localized: Perfekt klar (Enkel-linje)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070171631616
+    m_Localized: Perfekt klar (Dobbel-linje)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070930800640
+    m_Localized: Perfekt klar (Trippel-linje)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900071694163968
+    m_Localized: Perfekt klar (Tetri-Fyll)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900072453332992
+    m_Localized: Rygg-mot-rygg Tetri-Fyll Perfekt Klar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900073984253952
+    m_Localized: "\xD8yeblikkelig Perfekt Klar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900074789560320
+    m_Localized: Rensede linjer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900075540340736
+    m_Localized: Linjefjerning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900076320481280
+    m_Localized: Duo-fjerning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077041901568
+    m_Localized: Trio-fjerning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077788487680
+    m_Localized: Tetrisweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900078597988352
+    m_Localized: T-Spinsweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900079352963072
+    m_Localized: Rygg-mot-rygg Vanskelig Feiing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080103743488
+    m_Localized: "\xD8yeblikkelig Feiing"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080942604288
+    m_Localized: "H\xF8y klaring (Rad 6 eller h\xF8yere)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900081680801792
+    m_Localized: "H\xF8y klaring (Rad 11 eller h\xF8yere)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900082452553728
+    m_Localized: "H\xF8y klaring (Rad 16 eller h\xF8yere)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900083224305664
+    m_Localized: "Kombinasjon: Felt avsl\xF8rt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084004446208
+    m_Localized: "Automatisk avsl\xF8ring"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084797169664
+    m_Localized: Mislykket akkord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900085510201344
+    m_Localized: "H\xF8y avsl\xF8ring (Rad 6 eller h\xF8yere)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900086307119104
+    m_Localized: "H\xF8y avsl\xF8ring (Rad 11 eller h\xF8yere)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087116619776
+    m_Localized: "H\xF8y avsl\xF8ring (Rad 16 eller h\xF8yere)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087833845760
+    m_Localized: "Manuell avsl\xF8ringsrekke (50 felter)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900088626569216
+    m_Localized: "8 Felt avsl\xF8rt eller opprettet"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: "Hvor raskt tetrominoen beveger seg til venstre eller h\xF8yre mens
+      du holder nede bevegelsestastene. Forsinkelsen mellom hvert trinn m\xE5les
+      i millisekunder."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: "Forsinkelsen mellom \xE5 holde nede en bevegelsestast og at tetrominoen
+      automatisk beveger seg, m\xE5les i millisekunder."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: "Tiden DAS vil pause n\xE5r tetrominoen faller eller roteres, m\xE5les
+      i millisekunder."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: "Hvor mange ganger raskere tetrominoen vil falle n\xE5r du holder
+      nede myk falltast."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: "Tetrominoer faller \xF8yeblikkelig, og l\xE5seforsinkelsen avtar
+      med niv\xE5et ditt!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: Liten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: "Pakk stykker tett p\xE5 dette lille 4x4-brettet."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: Inferno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: Skrudd opp varmen! Brettet brenner ned, og det er ingen rom for
+      feil.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: Frostbrent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: "Brettet har frosset! Smelt is for \xE5 avsl\xF8re minetallene,
+      og v\xE6r forsiktig hvor du plasserer ilden din."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: Brennende felt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: Ikke lek med ild!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: "V\xE6r forsiktig n\xE5r du klikker p\xE5 ild, en feil vil avslutte
+      spillet"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: Minesveiper inndataforsinkelse ved linjeklarering
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: "Tiden minesveiperkontroller ignoreres etter en linjeklarering,
+      m\xE5les i millisekunder. Dette vil hjelpe med \xE5 forhindre feilklikk."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35518550016778240
+    m_Localized: "G\xE5!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: "Vis forh\xE5ndsvisning over brettet"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: Full skjerm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: "1-linjes fastl\xE5sing"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: "Spillet avsluttes s\xE5 snart du fjerner en linje\u2026 men det
+      er mer enn \xE9n m\xE5te \xE5 f\xE5 poeng p\xE5."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055335533572096
+    m_Localized: Rutenettets opasitet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055569626066944
+    m_Localized: Riste styrke
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: "\xD8yeblikkelig"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: Rygg-mot-rygg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: Linje klarert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: "Felt avsl\xF8rt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: "Tetrisweep forskj\xF8vet"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -657,6 +657,74 @@ MonoBehaviour:
     m_Localized: "Sch\xFCttelst\xE4rke"
     m_Metadata:
       m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: "Tetrominos fallen sofort, und die Sperrverz\xF6gerung nimmt mit
+      deinem Level ab!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: Winzig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: Packe die Teile eng auf diesem kleinen 4x4-Brett.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: Inferno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: "Erh\xF6he die Hitze! Das Spielfeld brennt nieder, und es gibt keinen
+      Spielraum f\xFCr Fehler."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: Gefrierbrand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: "Das Spielfeld ist eingefroren! Schmelze das Eis, um die Anzahl
+      der Minen zu enth\xFCllen, und sei vorsichtig, wo du dein Feuer platzierst."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: Brennendes Feld
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: Spiel nicht mit dem Feuer!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: Sei vorsichtig, wenn du auf das Feuer klickst, jeder Fehler beendet
+      das Spiel.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: Sofort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: "R\xFCcken an R\xFCcken"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: "Reihe ger\xE4umt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: Feld aufgedeckt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: Gestaffelter Tetrisweep
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

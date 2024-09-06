@@ -17,7 +17,711 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 0dd1e0fbba483424bbb601167d9eb8a1, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 15111020544
+    m_Localized: "Pontua\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3884008333312
+    m_Localized: "Pr\xF3ximo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 688583756210176
+    m_Localized: Minas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 690552633810944
+    m_Localized: Tempo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691682109546496
+    m_Localized: "Maior Pontua\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691701722112000
+    m_Localized: Melhor do Dia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691795221536768
+    m_Localized: Melhor Tempo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692206200414208
+    m_Localized: Linhas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692866870403072
+    m_Localized: Tetrisweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693625464807424
+    m_Localized: Sair
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693945486008320
+    m_Localized: "N\xE3o \xE9 poss\xEDvel sair no navegador"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694159798165504
+    m_Localized: "N\xEDvel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694324101636096
+    m_Localized: T-Spinsweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694970670374912
+    m_Localized: Infinito
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696069942927360
+    m_Localized: Completo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697409771397120
+    m_Localized: Maratona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697412782907392
+    m_Localized: "Maratona R\xE1pida"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697414372548608
+    m_Localized: Sprint de 40 Linhas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697420861136896
+    m_Localized: 'Ultra: Prova de Tempo'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697421989404672
+    m_Localized: "Ultra R\xE1pido"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697429551734784
+    m_Localized: "Cr\xE9ditos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697599509127168
+    m_Localized: Maratona Oculta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925355878637568
+    m_Localized: Jogar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925670325608448
+    m_Localized: Pausado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925714365800448
+    m_Localized: Retomar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925742983536640
+    m_Localized: "Configura\xE7\xF5es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926408846073856
+    m_Localized: Controles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926506682408960
+    m_Localized: Voltar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926602874576896
+    m_Localized: Volume Principal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926629294497792
+    m_Localized: "M\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926659917111296
+    m_Localized: Efeitos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926682805428224
+    m_Localized: "Reduzir Anima\xE7\xF5es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926709879660544
+    m_Localized: Mostrar Atraso de Bloqueio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 927883198455808
+    m_Localized: Esquerda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928546846400512
+    m_Localized: Direita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928580065288192
+    m_Localized: Girar para a Direita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928615494574080
+    m_Localized: Girar para a Esquerda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928630334021632
+    m_Localized: Queda Suave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928642711412736
+    m_Localized: "Queda R\xE1pida"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928656833634304
+    m_Localized: Segurar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928682272088064
+    m_Localized: Reiniciar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928694787891200
+    m_Localized: Limpeza Completa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928708620705792
+    m_Localized: Revelar Bloco
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928722587738112
+    m_Localized: Acorde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928735476834304
+    m_Localized: Marcar Bloco
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928788438310912
+    m_Localized: Marcar Acorde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928909536256000
+    m_Localized: Purificar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933890872041472
+    m_Localized: "Restaurar Padr\xF5es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934286541709312
+    m_Localized: Controles de Queda de Blocos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934315432075264
+    m_Localized: Controles do Minesweeper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951608887205888
+    m_Localized: Editar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951658765869056
+    m_Localized: Personalizar Jogo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951849149521920
+    m_Localized: Em Breve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952127466758144
+    m_Localized: "Pontua\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952161780359168
+    m_Localized: Placar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963399100915712
+    m_Localized: Modo Infinito
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963558551576576
+    m_Localized: Fim de Jogo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988652401319936
+    m_Localized: "Sobreviva at\xE9 150 linhas e tente alcan\xE7ar a maior pontua\xE7\xE3o
+      poss\xEDvel!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988835440746496
+    m_Localized: "Limpe 40 linhas o mais r\xE1pido poss\xEDvel!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989111895711744
+    m_Localized: "A vers\xE3o mais f\xE1cil e acelerada da Maratona, onde as linhas
+      s\xE3o limpas instantaneamente!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989231202689024
+    m_Localized: Em breve...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989810910027776
+    m_Localized: "Alcance a maior pontua\xE7\xE3o poss\xEDvel em tr\xEAs minutos!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989813380472832
+    m_Localized: "Alcance a maior pontua\xE7\xE3o poss\xEDvel em tr\xEAs minutos,
+      usando as regras r\xE1pidas!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990195708059648
+    m_Localized: Clique para ver no seu navegador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990308941684736
+    m_Localized: "Junte-se ao nosso Discord da Comunidade para ter seu nome na tabela
+      de classifica\xE7\xE3o oficial!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990401673551872
+    m_Localized: Obrigado por jogar!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990658520145920
+    m_Localized: :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990813138968576
+    m_Localized: Junte-se ao Discord Oficial da Comunidade Tetrisweeper!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990814418231296
+    m_Localized: "Compartilhe suas pontua\xE7\xF5es altas com #Tetrisweeper"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990815487778816
+    m_Localized: "Baixe a vers\xE3o independente"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990816574103552
+    m_Localized: Confira nossa playlist da comunidade!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990817517821952
+    m_Localized: "Quer me comprar um caf\xE9? Obrigado pelo seu apoio!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 991654902226944
+    m_Localized: 'Purificar: Limpe todas as minas em espera, +250 pontos'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992047333892096
+    m_Localized: "Tetrisweep ocorre quando voc\xEA limpa todas as 4 linhas em um
+      Tetris de 4 linhas que acabou de preencher, antes que o pr\xF3ximo tetromino
+      se encaixe."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992048869007360
+    m_Localized: "T-Spinsweep ocorre quando voc\xEA faz um T-spin e limpa todas as
+      linhas que o tetromino T preencheu, antes que o pr\xF3ximo tetromino se encaixe."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427307444035584
+    m_Localized: Pontos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427339857616896
+    m_Localized: "Modo Maratona, mas os n\xFAmeros dos blocos s\xE3o substitu\xEDdos
+      por pontos!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647393605935104
+    m_Localized: Paredes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647422219476992
+    m_Localized: "Em vez de desbloquear blocos seguros enquanto joga, as paredes
+      do tabuleiro agora s\xE3o blocos jog\xE1veis."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781692649472
+    m_Localized: Lista de Desejos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781847838720
+    m_Localized: No Steam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474861069852672
+    m_Localized: "Desbloqueie modos de jogo b\xF4nus!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2475075038076928
+    m_Localized: Tetrisweep como nunca antes!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2512304913506304
+    m_Localized: Bloqueado!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052179397636096
+    m_Localized: "Coloca\xE7\xE3o de Blocos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052349606686720
+    m_Localized: Limpeza de Minas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052351666089984
+    m_Localized: Tetrisweeping
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178027099217920
+    m_Localized: "V\xEDdeo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178044815958016
+    m_Localized: "\xC1udio"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178065133166592
+    m_Localized: Manuseio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178359053213696
+    m_Localized: "Configura\xE7\xF5es de V\xEDdeo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178438203924480
+    m_Localized: "Configura\xE7\xF5es de \xC1udio"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178483062005760
+    m_Localized: "Configura\xE7\xF5es de Manuseio"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7288987847745536
+    m_Localized: "ARR: Taxa de Repeti\xE7\xE3o Autom\xE1tica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289007573557248
+    m_Localized: "DAS: Deslocamento Autom\xE1tico Atrasado"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289023503523840
+    m_Localized: 'DCD: Atraso de Corte de DAS'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289036057075712
+    m_Localized: 'SDF: Fator de Queda Suave'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261547250933760
+    m_Localized: "Localiza\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261772770271232
+    m_Localized: Criado por
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261872057835520
+    m_Localized: Agradecimentos Especiais
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8635273809223680
+    m_Localized: "Cr\xE9ditos Adicionais"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8641451649916928
+    m_Localized: Pressione qualquer tecla para continuar...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8664569943060480
+    m_Localized: Apoiadores do Tetrisweeper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899711646720000
+    m_Localized: Preenchimento de Linha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899852948627456
+    m_Localized: Preenchimento Duplo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900050827501568
+    m_Localized: Preenchimento Triplo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900053100814336
+    m_Localized: Preenchimento de Tetris
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900055583842304
+    m_Localized: Bloqueio no Local
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900056825356288
+    m_Localized: T-Spin Mini sem linhas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900058133979136
+    m_Localized: T-Spin sem linhas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900060650561536
+    m_Localized: T-Spin Mini Simples
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900062789656576
+    m_Localized: T-Spin Simples
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900064362520576
+    m_Localized: T-Spin Mini Duplo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900065469816832
+    m_Localized: T-Spin Duplo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900066350620672
+    m_Localized: T-Spin Triplo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900067399196672
+    m_Localized: "Preenchimento Dif\xEDcil Consecutivo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900068477132800
+    m_Localized: 'Combo: Linha Preenchida'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900069341159424
+    m_Localized: "Limpeza Perfeita (Linha \xDAnica)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070171631616
+    m_Localized: Limpeza Perfeita (Linha Dupla)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070930800640
+    m_Localized: Limpeza Perfeita (Linha Tripla)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900071694163968
+    m_Localized: Limpeza Perfeita (Preenchimento de Tetris)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900072453332992
+    m_Localized: Limpeza Perfeita Consecutiva de Preenchimento de Tetris
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900073984253952
+    m_Localized: "Limpeza Perfeita Instant\xE2nea"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900074789560320
+    m_Localized: Linhas Limpas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900075540340736
+    m_Localized: Limpeza de Linhas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900076320481280
+    m_Localized: Duolimpeza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077041901568
+    m_Localized: Trilimpeza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077788487680
+    m_Localized: Tetrisweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900078597988352
+    m_Localized: T-Spinsweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900079352963072
+    m_Localized: "Limpeza Dif\xEDcil Consecutiva"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080103743488
+    m_Localized: "Limpeza Instant\xE2nea"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080942604288
+    m_Localized: Limpeza Alta (Linha 6 ou superior)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900081680801792
+    m_Localized: Limpeza Alta (Linha 11 ou superior)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900082452553728
+    m_Localized: Limpeza Alta (Linha 16 ou superior)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900083224305664
+    m_Localized: 'Combo: Bloco Revelado'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084004446208
+    m_Localized: "Revela\xE7\xE3o Autom\xE1tica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084797169664
+    m_Localized: Acorde Falhou
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900085510201344
+    m_Localized: "Revela\xE7\xE3o Alta (Linha 6 ou superior)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900086307119104
+    m_Localized: "Revela\xE7\xE3o Alta (Linha 11 ou superior)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087116619776
+    m_Localized: "Revela\xE7\xE3o Alta (Linha 16 ou superior)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087833845760
+    m_Localized: "Sequ\xEAncia de Revela\xE7\xE3o Manual (50 blocos)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900088626569216
+    m_Localized: 8 Blocos Revelados ou Criados
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: "Qu\xE3o rapidamente o tetromino se move para a esquerda ou direita
+      enquanto segura as teclas de movimento. O atraso entre cada passo \xE9 medido
+      em milissegundos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: O atraso entre manter pressionada uma tecla de movimento e o tetromino
+      se mover automaticamente, medido em milissegundos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: O tempo que o DAS vai pausar ao deixar cair ou girar o tetromino,
+      medido em milissegundos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: "Quantas vezes mais r\xE1pido o tetromino cair\xE1 ao manter pressionada
+      a tecla de queda suave."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: "Tetrominos caem instantaneamente, e o atraso de bloqueio diminui
+      conforme o seu n\xEDvel!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: Pequeno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: "Empacote as pe\xE7as apertadas neste pequeno tabuleiro 4x4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: Inferno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: "Aumente o calor! O tabuleiro est\xE1 pegando fogo, e n\xE3o h\xE1
+      margem para erro."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: "Congela\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: O tabuleiro congelou! Derreta o gelo para revelar a contagem de
+      minas e tenha cuidado onde colocar o fogo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: Bloco em Chamas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: "N\xE3o brinque com fogo!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: "Cuidado ao clicar no fogo, qualquer erro terminar\xE1 o jogo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: Atraso de Entrada do Minesweeper na Limpeza de Linha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: "O tempo que os controles do minesweeper s\xE3o ignorados ap\xF3s
+      a limpeza de uma linha, medido em milissegundos. Isso ajudar\xE1 a evitar cliques
+      incorretos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35518550016778240
+    m_Localized: "V\xE1!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: "Mostrar Espa\xE7o de Pr\xE9-visualiza\xE7\xE3o Acima do Tabuleiro"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: Tela Cheia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: Impasse de 1 Linha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: "O jogo termina assim que voc\xEA limpa uma linha... mas h\xE1 mais
+      de uma maneira de ganhar pontos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055335533572096
+    m_Localized: Opacidade da Grade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055569626066944
+    m_Localized: "For\xE7a da Sacudida"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: "Instant\xE2neo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: Consecutivo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: Linha Limpa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: Bloco Revelado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: Tetrisweep Escalonado
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

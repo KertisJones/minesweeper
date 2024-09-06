@@ -15,7 +15,7 @@ MonoBehaviour:
   assetVersion: 2
   m_TextWrappingMode: 1
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   m_enableTintAllSprites: 0
   m_enableParseEscapeCharacters: 1
@@ -37,7 +37,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2f692d2a95edf6b4e90ef7e4864c482f, type: 2}
   - {fileID: 11400000, guid: a132461982d54034ca37595c39c2e48e, type: 2}
   - {fileID: 11400000, guid: fa84260193a4a2e46a596eb7f810a6d1, type: 2}
-  - {fileID: 11400000, guid: 2f692d2a95edf6b4e90ef7e4864c482f, type: 2}
+  - {fileID: 11400000, guid: 475ae21efccdc26498bcc229f2a97271, type: 2}
   m_matchMaterialPreset: 1
   m_HideSubTextObjects: 1
   m_defaultSpriteAsset: {fileID: 11400000, guid: c41005c129ba4d66911b75229fd70b45, type: 2}

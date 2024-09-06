@@ -277,8 +277,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 990308941684736
-    m_Localized: "\"Do\u0142\u0105cz do naszej spo\u0142eczno\u015Bci Discord aby
-      wpisa\u0107 si\u0119 w oficjaln\u0105 tablic\u0119 wynik\xF3w!\r"
+    m_Localized: "Do\u0142\u0105cz do naszej spo\u0142eczno\u015Bci Discord aby wpisa\u0107
+      si\u0119 w oficjaln\u0105 tablic\u0119 wynik\xF3w!"
     m_Metadata:
       m_Items: []
   - m_Id: 990401673551872
@@ -323,7 +323,7 @@ MonoBehaviour:
   - m_Id: 992048869007360
     m_Localized: "T-Spinsweep jest wyedy gdy otrzymasz T-spin i odkryjesz wszystkie
       linie kt\xF3re wype\u0142ni\u0142o tetrimino T, zanim nast\u0119pne tetrimino
-      spadnie na plansz\u0119.\r"
+      spadnie na plansz\u0119.\n"
     m_Metadata:
       m_Items: []
   - m_Id: 1427307444035584
@@ -340,7 +340,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1647422219476992
     m_Localized: "Zamiast odblokowywania bezpiecznych p\xF3l podczas gdy, \u015Bciany
-      planszy s\u0105 teraz grywalnymi polami\r"
+      planszy s\u0105 teraz grywalnymi polami\n"
     m_Metadata:
       m_Items: []
   - m_Id: 2474781692649472
@@ -376,7 +376,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7178027099217920
-    m_Localized: "Wideo\r"
+    m_Localized: 'Wideo
+
+'
     m_Metadata:
       m_Items: []
   - m_Id: 7178044815958016
@@ -428,7 +430,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8635273809223680
-    m_Localized: "Dodatkowe zas\u0142ugi\r"
+    m_Localized: "Dodatkowe zas\u0142ugi\n"
     m_Metadata:
       m_Items: []
   - m_Id: 8641451649916928
@@ -484,7 +486,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23900066350620672
-    m_Localized: "T-Spin potr\xF3jny\r"
+    m_Localized: "T-Spin potr\xF3jny\n"
     m_Metadata:
       m_Items: []
   - m_Id: 23900067399196672
@@ -564,7 +566,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23900083224305664
-    m_Localized: "Combo: Pole odkryte\r"
+    m_Localized: 'Combo: Pole odkryte
+
+'
     m_Metadata:
       m_Items: []
   - m_Id: 23900084004446208
@@ -653,6 +657,74 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 40055569626066944
     m_Localized: "Si\u0142a wstrz\u0105su"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: "Tetromino spadaj\u0105 natychmiast, a op\xF3\u017Anienie blokady
+      maleje wraz z poziomem!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: "Ma\u0142y"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: "Umie\u015B\u0107 elementy ciasno na tej ma\u0142ej planszy 4x4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: "Piek\u0142o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: "Podkr\u0119\u0107 temperatur\u0119! Plansza p\u0142onie i nie ma
+      miejsca na b\u0142\u0119dy."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: "Zamarzni\u0119cie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: "Plansza zamarz\u0142a! Roztop l\xF3d, aby ujawni\u0107 liczb\u0119
+      min, i uwa\u017Caj, gdzie umieszczasz sw\xF3j ogie\u0144."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: "P\u0142on\u0105cy kafelek"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: "Nie baw si\u0119 ogniem!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: "Uwa\u017Caj, klikaj\u0105c na ogie\u0144, ka\u017Cdy b\u0142\u0105d
+      zako\u0144czy gr\u0119."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: Natychmiastowy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: "Z rz\u0119du"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: Linia wyczyszczona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: Kafelek odkryty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: Stopniowy Tetrisweep
     m_Metadata:
       m_Items: []
   references:

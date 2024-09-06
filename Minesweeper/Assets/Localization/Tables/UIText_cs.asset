@@ -175,7 +175,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 928656833634304
-    m_Localized: "Dr\u017Eeno"
+    m_Localized: "P\u0159idr\u017Eet"
     m_Metadata:
       m_Items: []
   - m_Id: 928682272088064
@@ -660,6 +660,74 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 40055569626066944
     m_Localized: "S\xEDla t\u0159esu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: "Tetromina padaj\xED okam\u017Eit\u011B a zpo\u017Ed\u011Bn\xED
+      z\xE1mku se sni\u017Euje s va\u0161\xED \xFArovn\xED!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: Mini
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: "Um\xEDst\u011Bte d\xEDly t\u011Bsn\u011B na tuto malou desku 4x4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: Peklo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: "Zvy\u0161te teplotu! Deska ho\u0159\xED a nen\xED \u017E\xE1dn\xFD
+      prostor pro chybu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: "Mraziv\xE9 sp\xE1len\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: "Deska zamrzla! Rozpus\u0165te led, abyste odhalili po\u010Det min,
+      a bu\u010Fte opatrn\xED, kam um\xEDst\xEDte ohe\u0148."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: "Ho\u0159\xEDc\xED pol\xED\u010Dko"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: "Nehrajte si s ohn\u011Bm!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: "Bu\u010Fte opatrn\xED p\u0159i kliknut\xED na ohe\u0148, jak\xE1koli
+      chyba ukon\u010D\xED hru."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: "Okam\u017Eit\xFD"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: "Po sob\u011B jdouc\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: "Vy\u010Di\u0161t\u011Bn\xE1 \u0159ada"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: "Odhalen\xE9 pol\xED\u010Dko"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: "Tetrisweep s p\u0159est\xE1vkami"
     m_Metadata:
       m_Items: []
   references:

@@ -17,7 +17,716 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 0dd1e0fbba483424bbb601167d9eb8a1, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 15111020544
+    m_Localized: "Pontsz\xE1m"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3884008333312
+    m_Localized: "K\xF6vetkez\u0151"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 688583756210176
+    m_Localized: "Akn\xE1k"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 690552633810944
+    m_Localized: "Id\u0151"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691682109546496
+    m_Localized: "Legmagasabb Pontsz\xE1m"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691701722112000
+    m_Localized: Legjobb Ma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691795221536768
+    m_Localized: "Legjobb Id\u0151"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692206200414208
+    m_Localized: Sorok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692866870403072
+    m_Localized: Tetrisweep-ek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693625464807424
+    m_Localized: "Kil\xE9p\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693945486008320
+    m_Localized: "Nem lehet kil\xE9pni a b\xF6ng\xE9sz\u0151ben"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694159798165504
+    m_Localized: Szint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694324101636096
+    m_Localized: T-Spinsweep-ek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694970670374912
+    m_Localized: "V\xE9gtelen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696069942927360
+    m_Localized: Teljes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697409771397120
+    m_Localized: Maraton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697412782907392
+    m_Localized: Flash Maraton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697414372548608
+    m_Localized: 40-soros Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697420861136896
+    m_Localized: "Ultra: Id\u0151futam"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697421989404672
+    m_Localized: Flash Ultra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697429551734784
+    m_Localized: Kreditek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697599509127168
+    m_Localized: Elrejtett Maraton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925355878637568
+    m_Localized: "J\xE1t\xE9k"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925670325608448
+    m_Localized: "Sz\xFCnet"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925714365800448
+    m_Localized: "Folytat\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925742983536640
+    m_Localized: "Be\xE1ll\xEDt\xE1sok"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926408846073856
+    m_Localized: "Ir\xE1ny\xEDt\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926506682408960
+    m_Localized: Vissza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926602874576896
+    m_Localized: "F\u0151 Hanger\u0151"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926629294497792
+    m_Localized: Zene
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926659917111296
+    m_Localized: "Hat\xE1sok"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926682805428224
+    m_Localized: "Anim\xE1ci\xF3k Cs\xF6kkent\xE9se"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926709879660544
+    m_Localized: "Z\xE1r\xE1si K\xE9sleltet\xE9s Mutat\xE1sa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 927883198455808
+    m_Localized: Balra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928546846400512
+    m_Localized: Jobbra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928580065288192
+    m_Localized: "Forgat\xE1s az \xF3ramutat\xF3 j\xE1r\xE1s\xE1val megegyez\u0151
+      ir\xE1nyban"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928615494574080
+    m_Localized: "Forgat\xE1s az \xF3ramutat\xF3 j\xE1r\xE1s\xE1val ellent\xE9tes
+      ir\xE1nyban"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928630334021632
+    m_Localized: "Lass\xFA Ejt\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928642711412736
+    m_Localized: "Gyors Ejt\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928656833634304
+    m_Localized: "Tart\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928682272088064
+    m_Localized: "\xDAjrakezd\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928694787891200
+    m_Localized: "Er\u0151s Tiszt\xEDt\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928708620705792
+    m_Localized: "Csempe Felfed\xE9se"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928722587738112
+    m_Localized: Akkord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928735476834304
+    m_Localized: "Z\xE1szl\xF3 Csempe"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928788438310912
+    m_Localized: "Z\xE1szl\xF3 Akkord"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928909536256000
+    m_Localized: "Tiszt\xEDt\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933890872041472
+    m_Localized: "Alap\xE9rtelmez\xE9sek Vissza\xE1ll\xEDt\xE1sa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934286541709312
+    m_Localized: "Blokk Ejt\xE9si Ir\xE1ny\xEDt\xE1sok"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934315432075264
+    m_Localized: "Aknakeres\u0151 Ir\xE1ny\xEDt\xE1sok"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951608887205888
+    m_Localized: "Szerkeszt\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951658765869056
+    m_Localized: "J\xE1t\xE9k Testreszab\xE1sa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951849149521920
+    m_Localized: Hamarosan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952127466758144
+    m_Localized: "Pontoz\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952161780359168
+    m_Localized: Ranglista
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963399100915712
+    m_Localized: "V\xE9gtelen M\xF3d"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963558551576576
+    m_Localized: "J\xE1t\xE9k V\xE9ge"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988652401319936
+    m_Localized: "\xC9ld t\xFAl 150 sorig, \xE9s pr\xF3b\xE1ld meg el\xE9rni a lehet\u0151
+      legmagasabb pontsz\xE1mot!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988835440746496
+    m_Localized: "Tiszt\xEDts meg 40 sort a lehet\u0151 leggyorsabban!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989111895711744
+    m_Localized: "A Maraton k\xF6nnyebb, gyorsabb \xFCtem\u0171 verzi\xF3ja, ahol
+      a sorok azonnal t\xF6rl\u0151dnek!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989231202689024
+    m_Localized: Hamarosan...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989810910027776
+    m_Localized: "\xC9rj el a lehet\u0151 legmagasabb pontsz\xE1mot h\xE1rom perc
+      alatt!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989813380472832
+    m_Localized: "\xC9rj el a lehet\u0151 legmagasabb pontsz\xE1mot h\xE1rom perc
+      alatt, Flash szab\xE1lyok haszn\xE1lat\xE1val!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990195708059648
+    m_Localized: "Kattints ide, hogy megtekintsd a b\xF6ng\xE9sz\u0151dben"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990308941684736
+    m_Localized: "Csatlakozz a k\xF6z\xF6ss\xE9gi Discordunkhoz, hogy a neved felker\xFClj\xF6n
+      a hivatalos ranglist\xE1ra!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990401673551872
+    m_Localized: "K\xF6sz\xF6nj\xFCk, hogy j\xE1tszott\xE1l!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990658520145920
+    m_Localized: :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990813138968576
+    m_Localized: "Csatlakozz a hivatalos Tetrisweeper k\xF6z\xF6ss\xE9gi Discordhoz!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990814418231296
+    m_Localized: "Oszd meg magas pontsz\xE1maidat a #Tetrisweeper haszn\xE1lat\xE1val"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990815487778816
+    m_Localized: "T\xF6ltsd le az \xF6n\xE1ll\xF3 verzi\xF3t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990816574103552
+    m_Localized: "Tekintsd meg k\xF6z\xF6ss\xE9gi lej\xE1tsz\xE1si list\xE1nkat!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990817517821952
+    m_Localized: "Szeretn\xE9l k\xE1v\xE9t venni nekem? K\xF6sz\xF6n\xF6m a t\xE1mogat\xE1st!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 991654902226944
+    m_Localized: "Tiszt\xEDt\xE1s: T\xF6r\xF6ld az \xF6sszes akn\xE1t a tartal\xE9kban,
+      +250 pont"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992047333892096
+    m_Localized: "A Tetrisweep az, amikor az \xF6sszes 4 sort megtiszt\xEDtod egy
+      4-soros tetrisben, amelyet \xE9ppen kit\xF6lt\xF6tt\xE9l, miel\u0151tt a k\xF6vetkez\u0151
+      tetromino z\xE1rol\xF3dik."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992048869007360
+    m_Localized: "A T-Spinsweep az, amikor T-spint \xE9rsz el, \xE9s megtiszt\xEDtasz
+      minden sort, amelyet a T-tetromino kit\xF6lt\xF6tt, miel\u0151tt a k\xF6vetkez\u0151
+      tetromino z\xE1rol\xF3dik."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427307444035584
+    m_Localized: Pontok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427339857616896
+    m_Localized: "Maraton m\xF3d, de a csempe sz\xE1mait pontok helyettes\xEDtik!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647393605935104
+    m_Localized: Falak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647422219476992
+    m_Localized: "Ahelyett, hogy biztons\xE1gos csemp\xE9ket nyitn\xE1l meg j\xE1t\xE9k
+      k\xF6zben, a j\xE1t\xE9kt\xE1bla falai most j\xE1tszhat\xF3 csemp\xE9k."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781692649472
+    m_Localized: "K\xEDv\xE1ns\xE1glista"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781847838720
+    m_Localized: Steam-en
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474861069852672
+    m_Localized: "Oldd fel a b\xF3nusz j\xE1t\xE9km\xF3dokat!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2475075038076928
+    m_Localized: "Tetrisweep, mint m\xE9g soha!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2512304913506304
+    m_Localized: "Z\xE1rolva!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052179397636096
+    m_Localized: "Blokk Elhelyez\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052349606686720
+    m_Localized: "Aknakeres\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052351666089984
+    m_Localized: Tetrisweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178027099217920
+    m_Localized: "Vide\xF3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178044815958016
+    m_Localized: Hang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178065133166592
+    m_Localized: "Kezel\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178359053213696
+    m_Localized: "Vide\xF3be\xE1ll\xEDt\xE1sok"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178438203924480
+    m_Localized: "Hangbe\xE1ll\xEDt\xE1sok"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178483062005760
+    m_Localized: "Kezel\xE9si be\xE1ll\xEDt\xE1sok"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7288987847745536
+    m_Localized: "ARR: Automatikus Ism\xE9tl\xE9si Sebess\xE9g"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289007573557248
+    m_Localized: "DAS: K\xE9sleltetett Automatikus Elmozdul\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289023503523840
+    m_Localized: "DCD: DAS V\xE1g\xE1si K\xE9sleltet\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289036057075712
+    m_Localized: "SDF: Lass\xFA Ejt\xE9s Faktor"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261547250933760
+    m_Localized: "Lokaliz\xE1ci\xF3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261772770271232
+    m_Localized: "K\xE9sz\xEDtette"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261872057835520
+    m_Localized: "K\xFCl\xF6n k\xF6sz\xF6net"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8635273809223680
+    m_Localized: "Tov\xE1bbi K\xF6sz\xF6net"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8641451649916928
+    m_Localized: "Nyomj meg egy gombot a folytat\xE1shoz..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8664569943060480
+    m_Localized: "Tetrisweeper T\xE1mogat\xF3k"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899711646720000
+    m_Localized: "Sor-Kit\xF6lt\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899852948627456
+    m_Localized: "Dupla-Kit\xF6lt\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900050827501568
+    m_Localized: "Tripla-Kit\xF6lt\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900053100814336
+    m_Localized: "Tetri-Kit\xF6lt\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900055583842304
+    m_Localized: "Helybeni Z\xE1r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900056825356288
+    m_Localized: "T-Spin Mini sor n\xE9lk\xFCl"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900058133979136
+    m_Localized: "T-Spin sor n\xE9lk\xFCl"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900060650561536
+    m_Localized: T-Spin Mini Egyes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900062789656576
+    m_Localized: T-Spin Egyes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900064362520576
+    m_Localized: T-Spin Mini Dupla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900065469816832
+    m_Localized: T-Spin Dupla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900066350620672
+    m_Localized: T-Spin Tripla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900067399196672
+    m_Localized: "Egym\xE1s Ut\xE1n Neh\xE9z Kit\xF6lt\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900068477132800
+    m_Localized: "Komb\xF3: Sor Kit\xF6ltve"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900069341159424
+    m_Localized: "T\xF6k\xE9letes Tiszt\xEDt\xE1s (Egy sor)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070171631616
+    m_Localized: "T\xF6k\xE9letes Tiszt\xEDt\xE1s (K\xE9t sor)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070930800640
+    m_Localized: "T\xF6k\xE9letes Tiszt\xEDt\xE1s (H\xE1rom sor)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900071694163968
+    m_Localized: "T\xF6k\xE9letes Tiszt\xEDt\xE1s (Tetri-Kit\xF6lt\xE9s)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900072453332992
+    m_Localized: "Egym\xE1s Ut\xE1n Tetri-Kit\xF6lt\xE9s T\xF6k\xE9letes Tiszt\xEDt\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900073984253952
+    m_Localized: "Azonnali T\xF6k\xE9letes Tiszt\xEDt\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900074789560320
+    m_Localized: "Sorok Tiszt\xEDtva"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900075540340736
+    m_Localized: "Sor-sepr\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900076320481280
+    m_Localized: "Duo-sepr\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077041901568
+    m_Localized: "Trio-sepr\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077788487680
+    m_Localized: Tetrisweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900078597988352
+    m_Localized: T-Spinsweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900079352963072
+    m_Localized: "Egym\xE1s Ut\xE1n Neh\xE9z Sepr\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080103743488
+    m_Localized: "Azonnali Sepr\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080942604288
+    m_Localized: "Magas Tiszt\xEDt\xE1s (6. sor vagy magasabb)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900081680801792
+    m_Localized: "Magas Tiszt\xEDt\xE1s (11. sor vagy magasabb)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900082452553728
+    m_Localized: "Magas Tiszt\xEDt\xE1s (16. sor vagy magasabb)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900083224305664
+    m_Localized: "Komb\xF3: Csempe Felfedve"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084004446208
+    m_Localized: "Automatikus Felfed\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084797169664
+    m_Localized: Sikertelen Akkord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900085510201344
+    m_Localized: "Magas Felfed\xE9s (6. sor vagy magasabb)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900086307119104
+    m_Localized: "Magas Felfed\xE9s (11. sor vagy magasabb)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087116619776
+    m_Localized: "Magas Felfed\xE9s (16. sor vagy magasabb)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087833845760
+    m_Localized: "K\xE9zi Felfed\xE9s Sorozat (50 csempe)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900088626569216
+    m_Localized: "8 Csempe Felfedve vagy L\xE9trehozva"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: "Milyen gyorsan mozog a tetromino balra vagy jobbra, mik\xF6zben
+      a mozg\xE1s gombokat nyomva tartja. A l\xE9p\xE9sek k\xF6z\xF6tti k\xE9sleltet\xE9s
+      millisekundumban m\xE9rve."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: "A k\xE9sleltet\xE9s a mozg\xE1s gomb nyomva tart\xE1sa \xE9s a
+      tetromino automatikus mozg\xE1sa k\xF6z\xF6tt, millisekundumban m\xE9rve."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: "Az id\u0151, amelyre a DAS sz\xFCnetel, amikor a tetromin\xF3t
+      ejti vagy forgatja, millisekundumban m\xE9rve."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: "H\xE1nyszor gyorsabban esik a tetromino, amikor lenyomva tartja
+      a lass\xFA ejt\xE9s gombot."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: "A tetromin\xF3k azonnal esnek, \xE9s a z\xE1r\xE1si k\xE9sleltet\xE9s
+      cs\xF6kken a szinttel!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: "Apr\xF3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: "Szedd szorosan a darabokat ezen az apr\xF3 4x4-es t\xE1bl\xE1n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: Pokol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: "N\xF6veld a h\u0151t! A t\xE1bla \xE9g, \xE9s nincs hely a hib\xE1knak."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: "Fagy\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: "A t\xE1bla befagyott! Olvaszd ki a jeget, hogy felfedd a b\xE1ny\xE1k
+      sz\xE1m\xE1t, \xE9s l\xE9gy \xF3vatos, hov\xE1 teszed a t\xFCzet."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: "\xC9g\u0151 Csempe"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: "Ne j\xE1tssz a t\u0171zzel!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: "Vigy\xE1zz, amikor t\u0171zre kattintasz, b\xE1rmilyen hiba v\xE9get
+      vet a j\xE1t\xE9knak"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: "Aknakeres\u0151 Bemeneti K\xE9sleltet\xE9s Sor Tiszt\xEDt\xE1sa
+      Ut\xE1n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: "Az id\u0151, amely alatt az aknakeres\u0151 ir\xE1ny\xEDt\xE1s
+      figyelmen k\xEDv\xFCl hagy\xE1sa a sor tiszt\xEDt\xE1sa ut\xE1n, millisekundumban
+      m\xE9rve. Ez seg\xEDt elker\xFClni a hib\xE1s kattint\xE1sokat."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35518550016778240
+    m_Localized: Menj!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: "Mutasd az El\u0151n\xE9zet Teret a T\xE1bla F\xF6l\xF6tt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: "Teljes K\xE9perny\u0151"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: 1-Soros Patthelyzet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: "A j\xE1t\xE9k v\xE9get \xE9r, amint megtiszt\xEDtasz egy sort...
+      de t\xF6bbf\xE9lek\xE9ppen is lehet pontot szerezni."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055335533572096
+    m_Localized: "R\xE1cs \xC1tl\xE1tsz\xF3s\xE1g"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055569626066944
+    m_Localized: "R\xE1z\xE1s Er\u0151ss\xE9g"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: Azonnali
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: "Egym\xE1s Ut\xE1n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: "Sor Tiszt\xEDtva"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: Csempe Felfedve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: "Tetrisweep L\xE9p\xE9sekben"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

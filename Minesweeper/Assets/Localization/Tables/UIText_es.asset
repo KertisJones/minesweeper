@@ -20,11 +20,11 @@ MonoBehaviour:
     - rid: 1684021998389821470
   m_TableData:
   - m_Id: 15111020544
-    m_Localized: Puntaje
+    m_Localized: "Puntuaci\xF3n"
     m_Metadata:
       m_Items: []
   - m_Id: 934315432075264
-    m_Localized: Controles de Buscaminas
+    m_Localized: Controles de buscaminas
     m_Metadata:
       m_Items: []
   - m_Id: 3884008333312
@@ -48,15 +48,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 691682109546496
-    m_Localized: Mejor Puntaje
+    m_Localized: "Puntuaci\xF3n m\xE1s alta"
     m_Metadata:
       m_Items: []
   - m_Id: 691701722112000
-    m_Localized: Mejor de Hoy
+    m_Localized: Mejor de hoy
     m_Metadata:
       m_Items: []
   - m_Id: 691795221536768
-    m_Localized: Mejor Tiempo
+    m_Localized: Mejor tiempo
     m_Metadata:
       m_Items: []
   - m_Id: 692206200414208
@@ -68,7 +68,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 693945486008320
-    m_Localized: No puedes Salir en Navegador
+    m_Localized: No se puede salir en el navegador
     m_Metadata:
       m_Items: []
   - m_Id: 694159798165504
@@ -80,7 +80,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 696069942927360
-    m_Localized: Completo
+    m_Localized: Completado
     m_Metadata:
       m_Items: []
   - m_Id: 697409771397120
@@ -88,21 +88,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 697412782907392
-    m_Localized: "Marat\xF3n Rel\xE1mpago"
+    m_Localized: "Marat\xF3n Flash"
     m_Metadata:
       m_Items: []
   - m_Id: 697414372548608
-    m_Localized: "40-L\xEDneas Sprint"
+    m_Localized: "Sprint de 40 L\xEDneas"
     m_Metadata:
       m_Items: []
   - m_Id: 697420861136896
-    m_Localized: 'Ultra:
-
-      Contrarreloj'
+    m_Localized: 'Ultra: Contrarreloj'
     m_Metadata:
       m_Items: []
   - m_Id: 697421989404672
-    m_Localized: "Ultra Rel\xE1mpago"
+    m_Localized: Ultra Flash
     m_Metadata:
       m_Items: []
   - m_Id: 697429551734784
@@ -114,7 +112,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 928656833634304
-    m_Localized: Sostener
+    m_Localized: Mantener
     m_Metadata:
       m_Items: []
   - m_Id: 925355878637568
@@ -122,15 +120,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 925670325608448
-    m_Localized: En Pausa
+    m_Localized: Pausado
     m_Metadata:
       m_Items: []
   - m_Id: 925714365800448
-    m_Localized: Continuar
+    m_Localized: Reanudar
     m_Metadata:
       m_Items: []
   - m_Id: 925742983536640
-    m_Localized: Ajustes
+    m_Localized: Configuraciones
     m_Metadata:
       m_Items: []
   - m_Id: 926408846073856
@@ -138,11 +136,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 926506682408960
-    m_Localized: Volver
+    m_Localized: Regresar
     m_Metadata:
       m_Items: []
   - m_Id: 926602874576896
-    m_Localized: Volumen Principal
+    m_Localized: Volumen Maestro
     m_Metadata:
       m_Items: []
   - m_Id: 926629294497792
@@ -158,11 +156,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 926709879660544
-    m_Localized: Mostrar Retraso de Bloqueo
+    m_Localized: Mostrar Retardo de Bloqueo
     m_Metadata:
       m_Items: []
   - m_Id: 927883198455808
-    m_Localized: Izquierdo
+    m_Localized: Izquierda
     m_Metadata:
       m_Items: []
   - m_Id: 928546846400512
@@ -170,19 +168,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 928580065288192
-    m_Localized: Rotar en Sentido Horario
+    m_Localized: Rotar en sentido horario
     m_Metadata:
       m_Items: []
   - m_Id: 928615494574080
-    m_Localized: Rotar en Sentido Antihorario
+    m_Localized: Rotar en sentido antihorario
     m_Metadata:
       m_Items: []
   - m_Id: 928630334021632
-    m_Localized: "Ca\xEDda Lenta"
+    m_Localized: "Ca\xEDda lenta"
     m_Metadata:
       m_Items: []
   - m_Id: 928642711412736
-    m_Localized: "Ca\xEDda R\xE1pida"
+    m_Localized: "Ca\xEDda r\xE1pida"
     m_Metadata:
       m_Items: []
   - m_Id: 928682272088064
@@ -190,11 +188,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 928694787891200
-    m_Localized: "Despeje R\xE1pido"
+    m_Localized: "Limpieza r\xE1pida"
     m_Metadata:
       m_Items: []
   - m_Id: 928708620705792
-    m_Localized: Revelar Casilla
+    m_Localized: Revelar casilla
     m_Metadata:
       m_Items: []
   - m_Id: 928722587738112
@@ -202,11 +200,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 928735476834304
-    m_Localized: Marcar Casilla
+    m_Localized: Marcar casilla
     m_Metadata:
       m_Items: []
   - m_Id: 928788438310912
-    m_Localized: Acorde de Bandera
+    m_Localized: Acorde de bandera
     m_Metadata:
       m_Items: []
   - m_Id: 928909536256000
@@ -214,11 +212,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 933890872041472
-    m_Localized: Restaurar Valores Predeterminados
+    m_Localized: Restablecer valores predeterminados
     m_Metadata:
       m_Items: []
   - m_Id: 934286541709312
-    m_Localized: "Controles de Ca\xEDda de Bloques"
+    m_Localized: "Controles de ca\xEDda de bloques"
     m_Metadata:
       m_Items: []
   - m_Id: 951608887205888
@@ -226,27 +224,27 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 951658765869056
-    m_Localized: Personalizar Juego
+    m_Localized: Personalizar juego
     m_Metadata:
       m_Items: []
   - m_Id: 951849149521920
-    m_Localized: "Pr\xF3ximo Pronto"
+    m_Localized: "Pr\xF3ximamente"
     m_Metadata:
       m_Items: []
   - m_Id: 952161780359168
-    m_Localized: "Tabla de Clasificaci\xF3n"
+    m_Localized: Tabla de posiciones
     m_Metadata:
       m_Items: []
   - m_Id: 952127466758144
-    m_Localized: Reglas de Puntaje
+    m_Localized: "Puntuaci\xF3n"
     m_Metadata:
       m_Items: []
   - m_Id: 963399100915712
-    m_Localized: Modo Infinito
+    m_Localized: Modo infinito
     m_Metadata:
       m_Items: []
   - m_Id: 963558551576576
-    m_Localized: Juego Terminado
+    m_Localized: Juego terminado
     m_Metadata:
       m_Items: []
   - m_Id: 990658520145920
@@ -254,21 +252,21 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 988652401319936
-    m_Localized: "\xA1Sobrevive hasta 150 l\xEDneas e intenta obtener la puntuaci\xF3n
-      m\xE1s alta posible!"
+    m_Localized: "\xA1Sobrevive hasta 150 l\xEDneas e intenta obtener la mayor puntuaci\xF3n
+      posible!"
     m_Metadata:
       m_Items: []
   - m_Id: 988835440746496
-    m_Localized: "\xA1Haz 40 l\xEDneas lo m\xE1s r\xE1pido posible!"
+    m_Localized: "\xA1Limpia 40 l\xEDneas lo m\xE1s r\xE1pido posible!"
     m_Metadata:
       m_Items: []
   - m_Id: 989111895711744
-    m_Localized: "\xA1La versi\xF3n m\xE1s f\xE1cil y r\xE1pida de Marat\xF3n donde
+    m_Localized: "\xA1La versi\xF3n m\xE1s f\xE1cil y r\xE1pida del Marat\xF3n donde
       las l\xEDneas se eliminan instant\xE1neamente!"
     m_Metadata:
       m_Items: []
   - m_Id: 989231202689024
-    m_Localized: "Pr\xF3ximo pronto..."
+    m_Localized: "Pr\xF3ximamente..."
     m_Metadata:
       m_Items: []
   - m_Id: 989810910027776
@@ -276,17 +274,17 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 989813380472832
-    m_Localized: "\xA1Obt\xE9n la puntuaci\xF3n m\xE1s alta posible en tres minutos,
-      usando reglas Rel\xE1mpago!"
+    m_Localized: "\xA1Obt\xE9n la mayor puntuaci\xF3n posible en tres minutos usando
+      las reglas del modificador Flash!"
     m_Metadata:
       m_Items: []
   - m_Id: 990195708059648
-    m_Localized: Haga clic para ver en su navegador
+    m_Localized: Haz clic para ver en tu navegador
     m_Metadata:
       m_Items: []
   - m_Id: 990308941684736
     m_Localized: "\xA1\xDAnete a nuestro servidor de Discord de la comunidad para
-      que tu nombre aparezca en la tabla de clasificaci\xF3n oficial!"
+      que tu nombre aparezca en la tabla de posiciones oficial!"
     m_Metadata:
       m_Items: []
   - m_Id: 990401673551872
@@ -307,7 +305,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 990816574103552
-    m_Localized: "\xA1Mira nuestra lista de reproducci\xF3n comunitaria!"
+    m_Localized: "\xA1Consulta nuestra lista de reproducci\xF3n de la comunidad!"
     m_Metadata:
       m_Items: []
   - m_Id: 990817517821952
@@ -315,18 +313,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 991654902226944
-    m_Localized: 'Limpiar: Limpia todas las minas retenidas, +250 puntos'
+    m_Localized: 'Limpieza: Elimina todas las minas en espera, +250 puntos'
     m_Metadata:
       m_Items: []
   - m_Id: 992047333892096
-    m_Localized: "Tetrisweep es cuando borras las 4 l\xEDneas en un tetris de 4 l\xEDneas
-      que acabas de llenar, antes de que el siguiente tetromino encaje en su lugar."
+    m_Localized: "Tetrisweep es cuando despejas las 4 l\xEDneas de un tetris de 4
+      l\xEDneas que acabas de llenar, antes de que el siguiente tetromin\xF3 se bloquee
+      en su lugar."
     m_Metadata:
       m_Items: []
   - m_Id: 992048869007360
-    m_Localized: "T-Spinsweep es cuando obtienes un T-spin y borras cada l\xEDnea
-      que llen\xF3 el tetromino T, antes de que el siguiente tetromino encaje en
-      su lugar."
+    m_Localized: "T-Spinsweep es cuando logras un T-spin y limpias todas las l\xEDneas
+      que el tetromin\xF3 en forma de T llen\xF3, antes de que el siguiente tetromin\xF3
+      se bloquee en su lugar."
     m_Metadata:
       m_Items: []
   - m_Id: 1427307444035584
@@ -334,7 +333,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1427339857616896
-    m_Localized: "Modo marat\xF3n, \xA1pero los n\xFAmeros de los mosaicos se reemplazan
+    m_Localized: "\xA1Modo marat\xF3n, pero los n\xFAmeros de las casillas se sustituyen
       por puntos!"
     m_Metadata:
       m_Items: []
@@ -343,8 +342,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1647422219476992
-    m_Localized: En lugar de desbloquear fichas seguras mientras juegas, las paredes
-      del tablero de juego ahora son fichas jugables.
+    m_Localized: En lugar de desbloquear casillas seguras mientras juegas, las paredes
+      del tablero de juego ahora son casillas jugables.
     m_Metadata:
       m_Items: []
   - m_Id: 2474781847838720
@@ -360,7 +359,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2474781692649472
-    m_Localized: Lista de Deseos
+    m_Localized: Lista de deseos
     m_Metadata:
       m_Items: []
   - m_Id: 2512304913506304
@@ -376,7 +375,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5052349606686720
-    m_Localized: Barrido de Minas
+    m_Localized: "B\xFAsqueda de minas"
     m_Metadata:
       m_Items: []
   - m_Id: 5052351666089984
@@ -396,35 +395,35 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7178359053213696
-    m_Localized: Ajustes de Video
+    m_Localized: Configuraciones de video
     m_Metadata:
       m_Items: []
   - m_Id: 7178438203924480
-    m_Localized: Ajustes de Audio
+    m_Localized: Configuraciones de audio
     m_Metadata:
       m_Items: []
   - m_Id: 7178483062005760
-    m_Localized: Ajustes de Manejo
+    m_Localized: Configuraciones de manejo
     m_Metadata:
       m_Items: []
   - m_Id: 7288987847745536
-    m_Localized: "ARR: Tasa de Repetici\xF3n Autom\xE1tica"
+    m_Localized: "ARR: Tasa de repetici\xF3n autom\xE1tica"
     m_Metadata:
       m_Items: []
   - m_Id: 7289007573557248
-    m_Localized: "DAS: Desplazamiento Autom\xE1tico Retardado"
+    m_Localized: "DAS: Desplazamiento autom\xE1tico retrasado"
     m_Metadata:
       m_Items: []
   - m_Id: 7289023503523840
-    m_Localized: 'DCD: Retardo de Corte DAS'
+    m_Localized: 'DCD: Retardo de corte de DAS'
     m_Metadata:
       m_Items: []
   - m_Id: 7289036057075712
-    m_Localized: "SDF: Factor de Ca\xEDda Suave"
+    m_Localized: "SDF: Factor de ca\xEDda suave"
     m_Metadata:
       m_Items: []
   - m_Id: 8261547250933760
-    m_Localized: "Traducci\xF3n"
+    m_Localized: "Localizaci\xF3n"
     m_Metadata:
       m_Items: []
   - m_Id: 8261772770271232
@@ -432,7 +431,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8635273809223680
-    m_Localized: "Cr\xE9ditos Adicionales"
+    m_Localized: "Cr\xE9ditos adicionales"
     m_Metadata:
       m_Items: []
   - m_Id: 8641451649916928
@@ -445,25 +444,26 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 25670928355549184
     m_Localized: "La cantidad de tiempo que el DAS se detendr\xE1 al soltar o girar
-      el tetromino, medido en milisegundos."
+      el tetromin\xF3, medido en milisegundos."
     m_Metadata:
       m_Items: []
   - m_Id: 33934857829605376
-    m_Localized: 
+    m_Localized: "Ten cuidado al hacer clic en el fuego, cualquier error terminar\xE1
+      el juego."
     m_Metadata:
       m_Items: []
   - m_Id: 35060915790405632
-    m_Localized: "Retraso de entrada en Buscaminas al borrar una l\xEDnea"
+    m_Localized: "Retraso de entrada en buscaminas al limpiar una l\xEDnea"
     m_Metadata:
       m_Items: []
   - m_Id: 35064038974021632
-    m_Localized: "La cantidad de tiempo que se ignoran los controles de Buscaminas
-      despu\xE9s de borrar una l\xEDnea, medido en milisegundos. Esto ayudar\xE1
+    m_Localized: "La cantidad de tiempo que se ignoran los controles de buscaminas
+      despu\xE9s de limpiar una l\xEDnea, medido en milisegundos. Esto ayudar\xE1
       a prevenir clics err\xF3neos."
     m_Metadata:
       m_Items: []
   - m_Id: 35518550016778240
-    m_Localized: "\xA1Ve!"
+    m_Localized: "\xA1Vamos!"
     m_Metadata:
       m_Items: []
   - m_Id: 37581987358171136
@@ -475,23 +475,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 25670915286097920
-    m_Localized: "Qu\xE9 tan r\xE1pido se mueve el tetromino hacia la izquierda o
-      la derecha al mantener presionadas las teclas de movimiento. El retraso entre
+    m_Localized: "Qu\xE9 tan r\xE1pido se mueve el tetromin\xF3 hacia la izquierda
+      o la derecha al mantener presionadas las teclas de movimiento. El retraso entre
       cada paso se mide en milisegundos."
     m_Metadata:
       m_Items: []
   - m_Id: 25670925239181312
     m_Localized: "El retraso entre mantener presionada una tecla de movimiento y
-      el movimiento autom\xE1tico del tetromino, medido en milisegundos."
+      el movimiento autom\xE1tico del tetromin\xF3, medido en milisegundos."
     m_Metadata:
       m_Items: []
   - m_Id: 25670929269907456
-    m_Localized: "Cu\xE1ntas veces m\xE1s r\xE1pido caer\xE1 el tetromino al mantener
+    m_Localized: "Cu\xE1ntas veces m\xE1s r\xE1pido caer\xE1 el tetromin\xF3 al mantener
       presionada la tecla de ca\xEDda suave."
     m_Metadata:
       m_Items: []
   - m_Id: 38389880462499840
-    m_Localized: "1 Sola L\xEDnea"
+    m_Localized: "Impas de 1 l\xEDnea"
     m_Metadata:
       m_Items: []
   - m_Id: 38389882937139200
@@ -504,7 +504,227 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 40055569626066944
-    m_Localized: Fuerza de sacudida
+    m_Localized: "Fuerza de vibraci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899711646720000
+    m_Localized: "Relleno de l\xEDnea"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899852948627456
+    m_Localized: Doble relleno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900050827501568
+    m_Localized: Triple relleno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900053100814336
+    m_Localized: Relleno Tetri
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900055583842304
+    m_Localized: Bloqueo en el lugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900056825356288
+    m_Localized: "T-Spin mini sin l\xEDneas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900058133979136
+    m_Localized: "T-Spin sin l\xEDneas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900060650561536
+    m_Localized: T-Spin mini simple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900062789656576
+    m_Localized: T-Spin simple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900064362520576
+    m_Localized: T-Spin mini doble
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900065469816832
+    m_Localized: T-Spin doble
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900066350620672
+    m_Localized: T-Spin triple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900067399196672
+    m_Localized: "Relleno dif\xEDcil consecutivo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900068477132800
+    m_Localized: "Combo: L\xEDnea rellenada"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900069341159424
+    m_Localized: "Limpieza perfecta (una l\xEDnea)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070171631616
+    m_Localized: "Limpieza perfecta (doble l\xEDnea)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070930800640
+    m_Localized: "Limpieza perfecta (triple l\xEDnea)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900071694163968
+    m_Localized: Limpieza perfecta (relleno Tetri)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900072453332992
+    m_Localized: Limpieza perfecta consecutiva de relleno Tetri
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900073984253952
+    m_Localized: "Limpieza perfecta instant\xE1nea"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900074789560320
+    m_Localized: "L\xEDneas limpiadas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900075540340736
+    m_Localized: "Barrido de l\xEDneas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900076320481280
+    m_Localized: Duo barrido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077041901568
+    m_Localized: "Tr\xEDo barrido"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077788487680
+    m_Localized: Tetrisweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900078597988352
+    m_Localized: T-Spinsweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900079352963072
+    m_Localized: "Barrido dif\xEDcil consecutivo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080103743488
+    m_Localized: "Barrido instant\xE1neo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080942604288
+    m_Localized: Limpieza alta (fila 6 o superior)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900081680801792
+    m_Localized: Limpieza alta (fila 11 o superior)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900082452553728
+    m_Localized: Limpieza alta (fila 16 o superior)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900083224305664
+    m_Localized: 'Combo: Azulejo revelado'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084004446208
+    m_Localized: "Revelado autom\xE1tico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084797169664
+    m_Localized: Acorde fallido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900085510201344
+    m_Localized: Revelado alto (fila 6 o superior)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900086307119104
+    m_Localized: Revelado alto (fila 11 o superior)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087116619776
+    m_Localized: Revelado alto (fila 16 o superior)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087833845760
+    m_Localized: "Racha de revelaci\xF3n manual (50 azulejos)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900088626569216
+    m_Localized: 8 azulejos revelados o creados
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: "\xA1Los tetromin\xF3s caen instant\xE1neamente y la demora de bloqueo
+      disminuye con tu nivel!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: "Peque\xF1o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: "Empaca las piezas bien apretadas en este peque\xF1o tablero de
+      4x4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: Infierno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: "\xA1Sube la temperatura! El tablero se est\xE1 quemando y no hay
+      margen de error."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: "Quemadura por congelaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: "\xA1El tablero se ha congelado! Derrite el hielo para revelar su
+      cantidad de minas y ten cuidado donde colocas tu fuego."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: Azulejo en llamas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: "\xA1No juegues con fuego!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: "Instant\xE1neo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: Consecutivo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: "L\xEDnea limpiada"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: Azulejo revelado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: Tetrisweep escalonado
     m_Metadata:
       m_Items: []
   references:

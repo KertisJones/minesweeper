@@ -17,7 +17,710 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 0dd1e0fbba483424bbb601167d9eb8a1, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 15111020544
+    m_Localized: Pisteet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3884008333312
+    m_Localized: Seuraava
+    m_Metadata:
+      m_Items: []
+  - m_Id: 688583756210176
+    m_Localized: Miinat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 690552633810944
+    m_Localized: Aika
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691682109546496
+    m_Localized: "Enn\xE4tys"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691701722112000
+    m_Localized: "Paras T\xE4n\xE4\xE4n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691795221536768
+    m_Localized: Paras Aika
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692206200414208
+    m_Localized: Rivit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692866870403072
+    m_Localized: Tetrisweepit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693625464807424
+    m_Localized: Lopeta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693945486008320
+    m_Localized: Ei voi lopettaa selaimessa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694159798165504
+    m_Localized: Taso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694324101636096
+    m_Localized: T-Spinsweepit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694970670374912
+    m_Localized: Loputon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696069942927360
+    m_Localized: Valmis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697409771397120
+    m_Localized: Maraton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697412782907392
+    m_Localized: Flash Maraton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697414372548608
+    m_Localized: 40-Rivin Sprintti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697420861136896
+    m_Localized: 'Ultra: Aikakoe'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697421989404672
+    m_Localized: Flash Ultra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697429551734784
+    m_Localized: "Tekij\xE4t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697599509127168
+    m_Localized: Peitetty Maraton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925355878637568
+    m_Localized: Pelaa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925670325608448
+    m_Localized: Tauko
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925714365800448
+    m_Localized: Jatka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925742983536640
+    m_Localized: Asetukset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926408846073856
+    m_Localized: Ohjaimet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926506682408960
+    m_Localized: Takaisin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926602874576896
+    m_Localized: "P\xE4\xE4volyymi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926629294497792
+    m_Localized: Musiikki
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926659917111296
+    m_Localized: Tehosteet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926682805428224
+    m_Localized: "V\xE4henn\xE4 Animaatioita"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926709879660544
+    m_Localized: "N\xE4yt\xE4 Lukitusviive"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 927883198455808
+    m_Localized: Vasen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928546846400512
+    m_Localized: Oikea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928580065288192
+    m_Localized: "K\xE4\xE4nn\xE4 My\xF6t\xE4p\xE4iv\xE4\xE4n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928615494574080
+    m_Localized: "K\xE4\xE4nn\xE4 Vastap\xE4iv\xE4\xE4n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928630334021632
+    m_Localized: "Pehme\xE4 Pudotus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928642711412736
+    m_Localized: Kova Pudotus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928656833634304
+    m_Localized: "Pid\xE4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928682272088064
+    m_Localized: Aloita Alusta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928694787891200
+    m_Localized: Kova Tyhjennys
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928708620705792
+    m_Localized: Paljasta Ruutu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928722587738112
+    m_Localized: Avaus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928735476834304
+    m_Localized: Liputa Ruutu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928788438310912
+    m_Localized: Liputus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928909536256000
+    m_Localized: Puhdista
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933890872041472
+    m_Localized: Palauta Oletukset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934286541709312
+    m_Localized: Blokin Pudotusohjaimet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934315432075264
+    m_Localized: Miinaharavaohjaimet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951608887205888
+    m_Localized: Muokkaa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951658765869056
+    m_Localized: Mukauta Peli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951849149521920
+    m_Localized: Tulossa Pian
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952127466758144
+    m_Localized: Pisteytys
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952161780359168
+    m_Localized: Tulostaulu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963399100915712
+    m_Localized: Loputon Pelitila
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963558551576576
+    m_Localized: Peli Ohi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988652401319936
+    m_Localized: "Selviydy 150 riviin asti ja yrit\xE4 saada mahdollisimman korkea
+      pistem\xE4\xE4r\xE4!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988835440746496
+    m_Localized: "Tyhjenn\xE4 40 rivi\xE4 mahdollisimman nopeasti!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989111895711744
+    m_Localized: "Helpompi, nopeampi versio Maratonista, jossa rivit tyhjentyv\xE4t
+      v\xE4litt\xF6m\xE4sti!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989231202689024
+    m_Localized: Tulossa pian...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989810910027776
+    m_Localized: "Saavuta mahdollisimman korkea pistem\xE4\xE4r\xE4 kolmessa minuutissa!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989813380472832
+    m_Localized: "Saavuta mahdollisimman korkea pistem\xE4\xE4r\xE4 kolmessa minuutissa
+      k\xE4ytt\xE4m\xE4ll\xE4 Flash-s\xE4\xE4nt\xF6j\xE4!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990195708059648
+    m_Localized: "Napsauta n\xE4hd\xE4ksesi selaimessasi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990308941684736
+    m_Localized: Liity Community Discord -kanavalle saadaksesi nimesi viralliselle
+      tulostaululle!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990401673551872
+    m_Localized: Kiitos pelaamisesta!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990658520145920
+    m_Localized: :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990813138968576
+    m_Localized: Liity viralliseen Tetrisweeper Community Discord -kanavaan!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990814418231296
+    m_Localized: Jaa korkeat pisteesi tunnisteella #Tetrisweeper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990815487778816
+    m_Localized: Lataa erillinen versio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990816574103552
+    m_Localized: "Tutustu yhteis\xF6n soittolistaan!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990817517821952
+    m_Localized: Haluatko tarjota kahvin? Kiitos tuestasi!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 991654902226944
+    m_Localized: "Puhdista: Poista kaikki miinat pidossa, +250 pistett\xE4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992047333892096
+    m_Localized: "Tetrisweep on, kun tyhjenn\xE4t kaikki 4 rivi\xE4 nelj\xE4n rivin
+      tetrist\xE4, jonka juuri t\xE4ytit, ennen kuin seuraava tetromino lukittuu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992048869007360
+    m_Localized: "T-Spinsweep on, kun teet T-spin-vedon ja tyhjenn\xE4t kaikki linjat,
+      jotka T-tetromino t\xE4ytti, ennen kuin seuraava tetromino lukittuu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427307444035584
+    m_Localized: Pisteet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427339857616896
+    m_Localized: "Maraton-pelitila, mutta ruudun numerot on korvattu pisteill\xE4!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647393605935104
+    m_Localized: "Sein\xE4t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647422219476992
+    m_Localized: "Sen sijaan, ett\xE4 avattaisiin turvallisia ruutuja pelin aikana,
+      pelilaudan seinist\xE4 tulee pelattavia ruutuja."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781692649472
+    m_Localized: Toivelista
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781847838720
+    m_Localized: Steamissa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474861069852672
+    m_Localized: Avaa bonuspelitilat!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2475075038076928
+    m_Localized: Tetrisweep kuin ei koskaan ennen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2512304913506304
+    m_Localized: Lukittu!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052179397636096
+    m_Localized: Blokin Asettaminen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052349606686720
+    m_Localized: Miinaharavointi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052351666089984
+    m_Localized: Tetrisweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178027099217920
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178044815958016
+    m_Localized: "\xC4\xE4ni"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178065133166592
+    m_Localized: "K\xE4sittely"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178359053213696
+    m_Localized: Videoasetukset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178438203924480
+    m_Localized: "\xC4\xE4niasetukset"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178483062005760
+    m_Localized: "K\xE4sittelyasetukset"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7288987847745536
+    m_Localized: 'ARR: Automaattinen Toistonopeus'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289007573557248
+    m_Localized: "DAS: Viiv\xE4stetty Automaattinen Siirtym\xE4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289023503523840
+    m_Localized: 'DCD: DAS Leikkausviive'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289036057075712
+    m_Localized: "SDF: Pehme\xE4n Pudotuksen Kerroin"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261547250933760
+    m_Localized: "K\xE4\xE4nn\xF6s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261772770271232
+    m_Localized: Luonut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261872057835520
+    m_Localized: Erityiset kiitokset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8635273809223680
+    m_Localized: "Lis\xE4luotot"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8641451649916928
+    m_Localized: "Paina mit\xE4 tahansa n\xE4pp\xE4int\xE4 jatkaaksesi..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8664569943060480
+    m_Localized: Tetrisweeperin Tukijat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899711646720000
+    m_Localized: "Rivit\xE4ytt\xF6"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899852948627456
+    m_Localized: "Kaksoist\xE4ytt\xF6"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900050827501568
+    m_Localized: "Kolmoist\xE4ytt\xF6"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900053100814336
+    m_Localized: "Tetri-T\xE4ytt\xF6"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900055583842304
+    m_Localized: Paikallaan Lukitus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900056825356288
+    m_Localized: "T-Spin Mini ilman rivej\xE4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900058133979136
+    m_Localized: "T-Spin ilman rivej\xE4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900060650561536
+    m_Localized: T-Spin Mini Yksi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900062789656576
+    m_Localized: T-Spin Yksi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900064362520576
+    m_Localized: T-Spin Mini Kaksois
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900065469816832
+    m_Localized: T-Spin Kaksois
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900066350620672
+    m_Localized: T-Spin Kolminkertainen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900067399196672
+    m_Localized: "Selk\xE4 selk\xE4\xE4 vasten Vaikea T\xE4ytt\xF6"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900068477132800
+    m_Localized: "Yhdistelm\xE4: Rivi T\xE4ytetty"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900069341159424
+    m_Localized: "T\xE4ydellinen tyhjennys (Yksirivi)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070171631616
+    m_Localized: "T\xE4ydellinen tyhjennys (Kaksirivi)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070930800640
+    m_Localized: "T\xE4ydellinen tyhjennys (Kolmirivi)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900071694163968
+    m_Localized: "T\xE4ydellinen tyhjennys (Tetri-T\xE4ytt\xF6)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900072453332992
+    m_Localized: "Selk\xE4 selk\xE4\xE4 vasten Tetri-T\xE4ytt\xF6 T\xE4ydellinen
+      Tyhjennys"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900073984253952
+    m_Localized: "V\xE4lit\xF6n T\xE4ydellinen Tyhjennys"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900074789560320
+    m_Localized: Rivit Tyhjennetty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900075540340736
+    m_Localized: Rivisweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900076320481280
+    m_Localized: Duosweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077041901568
+    m_Localized: Triosweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077788487680
+    m_Localized: Tetrisweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900078597988352
+    m_Localized: T-Spinsweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900079352963072
+    m_Localized: "Selk\xE4 selk\xE4\xE4 vasten Vaikea Sweep"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080103743488
+    m_Localized: "V\xE4lit\xF6n Sweep"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080942604288
+    m_Localized: Korkea Tyhjennys (Rivi 6 tai korkeampi)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900081680801792
+    m_Localized: Korkea Tyhjennys (Rivi 11 tai korkeampi)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900082452553728
+    m_Localized: Korkea Tyhjennys (Rivi 16 tai korkeampi)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900083224305664
+    m_Localized: "Yhdistelm\xE4: Ruutu Paljastettu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084004446208
+    m_Localized: Automaattinen Paljastus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084797169664
+    m_Localized: "Ep\xE4onnistunut Avaus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900085510201344
+    m_Localized: Korkea Paljastus (Rivi 6 tai korkeampi)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900086307119104
+    m_Localized: Korkea Paljastus (Rivi 11 tai korkeampi)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087116619776
+    m_Localized: Korkea Paljastus (Rivi 16 tai korkeampi)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087833845760
+    m_Localized: Manuaalinen Paljastusputki (50 ruutua)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900088626569216
+    m_Localized: 8 Ruutua Paljastettu tai Luotu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: "Kuinka nopeasti tetromino liikkuu vasemmalle tai oikealle pit\xE4ess\xE4si
+      liikett\xE4 painettuna. Viive jokaisen askeleen v\xE4lill\xE4 mitataan millisekunteina."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: "Viive liiken\xE4pp\xE4imen pit\xE4misen ja tetrominon automaattisen
+      liikkumisen v\xE4lill\xE4 mitataan millisekunteina."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: "Aika, jonka DAS keskeytt\xE4\xE4 tetrominon pudottamisen tai k\xE4\xE4nt\xE4misen
+      aikana, mitataan millisekunteina."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: "Kuinka monta kertaa nopeammin tetromino putoaa, kun pid\xE4t pehme\xE4n
+      pudotusn\xE4pp\xE4imen painettuna."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: "Tetrominot putoavat v\xE4litt\xF6m\xE4sti, ja lukitusviive v\xE4henee
+      tason my\xF6t\xE4!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: Pieni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: "Pakkaa palat tiukasti t\xE4h\xE4n pieneen 4x4 laudan p\xE4\xE4lle."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: Inferno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: "Lis\xE4\xE4 l\xE4mp\xF6\xE4! Laudan reuna on polttava, eik\xE4
+      virheille ole varaa."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: Freezerburn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: "Lauta on j\xE4\xE4tynyt! Sulata j\xE4\xE4 paljastaaksesi sen miinam\xE4\xE4r\xE4n,
+      ja ole varovainen minne sijoitat tulen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: Palava Ruutu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: "\xC4l\xE4 leiki tulella!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: "Ole varovainen napsauttamalla tulen p\xE4\xE4lle, jokainen virhe
+      p\xE4\xE4tt\xE4\xE4 pelin"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: "Miinaharavan Sy\xF6tt\xF6viive Rivin Tyhjent\xE4misen J\xE4lkeen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: "Aika, jonka miinaharavaohjaimet ohitetaan rivin tyhjent\xE4misen
+      j\xE4lkeen, mitataan millisekunteina. T\xE4m\xE4 auttaa est\xE4m\xE4\xE4n v\xE4\xE4r\xE4t
+      klikkaukset."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35518550016778240
+    m_Localized: Mene!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: "N\xE4yt\xE4 Esikatselutila Laudan Yl\xE4puolella"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: "Koko N\xE4ytt\xF6"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: 1-Rivin Umpikuja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: "Peli p\xE4\xE4ttyy heti, kun tyhjenn\xE4t rivin\u2026 mutta pisteit\xE4
+      voi saada monella eri tavalla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055335533572096
+    m_Localized: "Ristikko L\xE4pin\xE4kyvyys"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055569626066944
+    m_Localized: "T\xE4rin\xE4n Vahvuus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: "V\xE4lit\xF6n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: "Selk\xE4 selk\xE4\xE4 vasten"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: Rivi Tyhjennetty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: Ruutu Paljastettu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: Tetrisweep-porrastettu
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

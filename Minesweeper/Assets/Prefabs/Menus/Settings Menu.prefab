@@ -3238,7 +3238,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1970496157093280813, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_text
-      value: Deutsch
+      value: Dansk
       objectReference: {fileID: 0}
     - target: {fileID: 1970496157093280813, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -3250,7 +3250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.size
-      value: 10
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[0].m_Text
@@ -3258,15 +3258,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[1].m_Text
-      value: Deutsch
+      value: Dansk
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[2].m_Text
-      value: English
+      value: Deutsch
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[3].m_Text
-      value: "Espa\xF1ol (Am\xE9rica Latina)"
+      value: English
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[4].m_Text
@@ -3274,23 +3274,107 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[5].m_Text
-      value: "Fran\xE7ais"
+      value: "Espa\xF1ol (Latinoam\xE9rica)"
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[6].m_Text
-      value: Italiano
+      value: "Fran\xE7ais"
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[7].m_Text
-      value: Polski
+      value: Bahasa Indonesia
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[8].m_Text
-      value: Toki Pona
+      value: Italiano
       objectReference: {fileID: 0}
     - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Options.m_Options.Array.data[9].m_Text
+      value: "\u65E5\u672C\u8A9E - Japanese"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[10].m_Text
+      value: "\uD55C\uAD6D\uC5B4 - Korean"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[11].m_Text
+      value: Magyar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[12].m_Text
+      value: Nederlands
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[13].m_Text
+      value: Norsk
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[14].m_Text
+      value: Polski
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[15].m_Text
+      value: "Portugu\xEAs (Brasil)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[16].m_Text
+      value: "Portugu\xEAs (Portugal)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[17].m_Text
+      value: "Rom\xE2n\u0103"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[18].m_Text
+      value: Suomi
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[19].m_Text
+      value: Svenska
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[20].m_Text
+      value: Toki Pona
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[21].m_Text
+      value: "T\xFCrk\xE7e"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[22].m_Text
       value: "\u7B80\u4F53\u4E2D\u6587 - Chinese (Simplified)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[1].m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[1].m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[1].m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[1].m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[3].m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[3].m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[3].m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220419932491462947, guid: 7c51202569987c746a040fe484a5537d, type: 3}
+      propertyPath: m_Options.m_Options.Array.data[3].m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5964181043013156599, guid: 7c51202569987c746a040fe484a5537d, type: 3}
       propertyPath: m_Name
@@ -4504,9 +4588,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tab - Video
       objectReference: {fileID: 0}
+    - target: {fileID: 3964747064262966838, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
-      value: 7178359053213696
+      value: 7178027099217920
       objectReference: {fileID: 0}
     - target: {fileID: 5135066048523142294, guid: 465d30b60c6df634eb21e2777ae31514, type: 3}
       propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
@@ -4782,7 +4870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4446949520791961467, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0.9999998
       objectReference: {fileID: 0}
     - target: {fileID: 5603070513650156389, guid: 0fe11ecc706e9884cb61b568e061b2d2, type: 3}
       propertyPath: m_AnchorMax.y

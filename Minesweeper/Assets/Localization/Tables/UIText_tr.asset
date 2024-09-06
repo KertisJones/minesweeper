@@ -17,7 +17,714 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 0dd1e0fbba483424bbb601167d9eb8a1, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 15111020544
+    m_Localized: Puan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3884008333312
+    m_Localized: Sonraki
+    m_Metadata:
+      m_Items: []
+  - m_Id: 688583756210176
+    m_Localized: "May\u0131nlar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 690552633810944
+    m_Localized: "S\xFCre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691682109546496
+    m_Localized: "En Y\xFCksek Puan"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691701722112000
+    m_Localized: "Bug\xFCn\xFCn En \u0130yisi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691795221536768
+    m_Localized: "En \u0130yi S\xFCre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692206200414208
+    m_Localized: "Sat\u0131rlar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692866870403072
+    m_Localized: Tetrisweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693625464807424
+    m_Localized: "\xC7\u0131k"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693945486008320
+    m_Localized: "Taray\u0131c\u0131da \xC7\u0131k\u0131lamaz"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694159798165504
+    m_Localized: Seviye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694324101636096
+    m_Localized: T-Spinsweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694970670374912
+    m_Localized: Sonsuz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696069942927360
+    m_Localized: Tamamla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697409771397120
+    m_Localized: Maraton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697412782907392
+    m_Localized: "Fla\u015F Maraton"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697414372548608
+    m_Localized: "40 Sat\u0131r Sprint"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697420861136896
+    m_Localized: 'Ultra: Zaman Denemesi'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697421989404672
+    m_Localized: "Fla\u015F Ultra"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697429551734784
+    m_Localized: Krediler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697599509127168
+    m_Localized: Gizli Maraton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925355878637568
+    m_Localized: Oyna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925670325608448
+    m_Localized: Durduruldu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925714365800448
+    m_Localized: Devam Et
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925742983536640
+    m_Localized: Ayarlar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926408846073856
+    m_Localized: Kontroller
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926506682408960
+    m_Localized: Geri
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926602874576896
+    m_Localized: Ana Ses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926629294497792
+    m_Localized: "M\xFCzik"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926659917111296
+    m_Localized: Efektler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926682805428224
+    m_Localized: "Animasyonlar\u0131 Azalt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926709879660544
+    m_Localized: "Kilitleme Gecikmesini G\xF6ster"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 927883198455808
+    m_Localized: Sol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928546846400512
+    m_Localized: "Sa\u011F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928580065288192
+    m_Localized: "Saat Y\xF6n\xFCnde D\xF6nd\xFCr"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928615494574080
+    m_Localized: "Saat Y\xF6n\xFCn\xFCn Tersine D\xF6nd\xFCr"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928630334021632
+    m_Localized: "Yumu\u015Fak D\xFC\u015F\xFC\u015F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928642711412736
+    m_Localized: "Sert D\xFC\u015F\xFC\u015F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928656833634304
+    m_Localized: Tut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928682272088064
+    m_Localized: "Yeniden Ba\u015Flat"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928694787891200
+    m_Localized: Sert Temizleme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928708620705792
+    m_Localized: "Ta\u015F\u0131 Ortaya \xC7\u0131kar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928722587738112
+    m_Localized: Akort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928735476834304
+    m_Localized: "Ta\u015F\u0131 \u0130\u015Faretle"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928788438310912
+    m_Localized: "Akort \u0130\u015Faretle"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928909536256000
+    m_Localized: Temizle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933890872041472
+    m_Localized: "Varsay\u0131lanlar\u0131 Geri Y\xFCkle"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934286541709312
+    m_Localized: "Blok D\xFC\u015F\xFCrme Kontrolleri"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934315432075264
+    m_Localized: Minesweeper Kontrolleri
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951608887205888
+    m_Localized: "D\xFCzenle"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951658765869056
+    m_Localized: "Oyunu \xD6zelle\u015Ftir"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951849149521920
+    m_Localized: "Yak\u0131nda Geliyor"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952127466758144
+    m_Localized: Puanlama
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952161780359168
+    m_Localized: Lider Tablosu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963399100915712
+    m_Localized: Sonsuz Mod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963558551576576
+    m_Localized: Oyun Bitti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988652401319936
+    m_Localized: "150 sat\u0131ra kadar hayatta kal\u0131n ve m\xFCmk\xFCn olan en
+      y\xFCksek puan\u0131 elde etmeye \xE7al\u0131\u015F\u0131n!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988835440746496
+    m_Localized: "40 sat\u0131r\u0131 olabildi\u011Fince h\u0131zl\u0131 temizleyin!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989111895711744
+    m_Localized: "Sat\u0131rlar\u0131n an\u0131nda temizlendi\u011Fi, Maraton'un
+      daha kolay ve h\u0131zl\u0131 tempolu versiyonu!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989231202689024
+    m_Localized: "Yak\u0131nda geliyor..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989810910027776
+    m_Localized: "\xDC\xE7 dakika i\xE7inde m\xFCmk\xFCn olan en y\xFCksek puan\u0131
+      al\u0131n!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989813380472832
+    m_Localized: "Fla\u015F kurallar\u0131 kullanarak \xFC\xE7 dakika i\xE7inde m\xFCmk\xFCn
+      olan en y\xFCksek puan\u0131 al\u0131n!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990195708059648
+    m_Localized: "Taray\u0131c\u0131n\u0131zda g\xF6r\xFCnt\xFClemek i\xE7in t\u0131klay\u0131n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990308941684736
+    m_Localized: "Ad\u0131n\u0131z\u0131 resmi lider tablosuna eklemek i\xE7in Topluluk
+      Discord'umuza kat\u0131l\u0131n!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990401673551872
+    m_Localized: "Oynad\u0131\u011F\u0131n\u0131z i\xE7in te\u015Fekk\xFCrler!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990658520145920
+    m_Localized: :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990813138968576
+    m_Localized: "Resmi Tetrisweeper Topluluk Discord'una Kat\u0131l\u0131n!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990814418231296
+    m_Localized: "Y\xFCksek puanlar\u0131n\u0131z\u0131 #Tetrisweeper ile payla\u015F\u0131n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990815487778816
+    m_Localized: "Ba\u011F\u0131ms\u0131z s\xFCr\xFCm\xFC indirin"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990816574103552
+    m_Localized: "Topluluk oynatma listemize g\xF6z at\u0131n!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990817517821952
+    m_Localized: "Bana bir kahve almak ister misin? Deste\u011Finiz i\xE7in te\u015Fekk\xFCrler!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 991654902226944
+    m_Localized: "Temizle: Beklemedeki t\xFCm may\u0131nlar\u0131 temizle, +250 puan"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992047333892096
+    m_Localized: "Tetrisweep, 4 sat\u0131rl\u0131k bir tetris'te t\xFCm 4 sat\u0131r\u0131
+      temizledi\u011Finizde, bir sonraki tetromino yerine kilitlenmeden \xF6nce olur."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992048869007360
+    m_Localized: "T-Spinsweep, bir T-spin yapt\u0131\u011F\u0131n\u0131zda ve bir
+      sonraki tetromino yerine kilitlenmeden \xF6nce T tetromino taraf\u0131ndan
+      doldurulan her sat\u0131r\u0131 temizledi\u011Finizde olur."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427307444035584
+    m_Localized: Noktalar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427339857616896
+    m_Localized: "Maraton modu, ancak karo numaralar\u0131 noktalarla de\u011Fi\u015Ftirildi!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647393605935104
+    m_Localized: Duvarlar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647422219476992
+    m_Localized: "Oynarken g\xFCvenli karolar\u0131 a\xE7mak yerine, oyun tahtas\u0131n\u0131n
+      duvarlar\u0131 art\u0131k oynanabilir karolar haline geldi."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781692649472
+    m_Localized: "\u0130stek Listesi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781847838720
+    m_Localized: Steam'de
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474861069852672
+    m_Localized: "Bonus oyun modlar\u0131n\u0131n kilidini a\xE7\u0131n!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2475075038076928
+    m_Localized: "Tetrisweep hi\xE7 olmad\u0131\u011F\u0131 gibi!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2512304913506304
+    m_Localized: Kilitli!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052179397636096
+    m_Localized: "Blok Yerle\u015Ftirme"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052349606686720
+    m_Localized: "May\u0131n Tarama"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052351666089984
+    m_Localized: Tetrisweeping
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178027099217920
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178044815958016
+    m_Localized: Ses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178065133166592
+    m_Localized: Kontrol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178359053213696
+    m_Localized: "Video Ayarlar\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178438203924480
+    m_Localized: "Ses Ayarlar\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178483062005760
+    m_Localized: "Kontrol Ayarlar\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7288987847745536
+    m_Localized: "ARR: Otomatik Tekrarlama H\u0131z\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289007573557248
+    m_Localized: "DAS: Gecikmeli Otomatik Kayd\u0131rma"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289023503523840
+    m_Localized: 'DCD: DAS Kesme Gecikmesi'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289036057075712
+    m_Localized: "SDF: Yumu\u015Fak D\xFC\u015F\xFC\u015F Fakt\xF6r\xFC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261547250933760
+    m_Localized: "Yerelle\u015Ftirme"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261772770271232
+    m_Localized: "Olu\u015Fturan"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261872057835520
+    m_Localized: "\xD6zel te\u015Fekk\xFCrler"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8635273809223680
+    m_Localized: Ekstra Krediler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8641451649916928
+    m_Localized: "Devam etmek i\xE7in herhangi bir tu\u015Fa bas\u0131n..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8664569943060480
+    m_Localized: "Tetrisweeper Destek\xE7ileri"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899711646720000
+    m_Localized: "Sat\u0131r-Doldurma"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899852948627456
+    m_Localized: "\xC7ift-Doldurma"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900050827501568
+    m_Localized: "\xDC\xE7l\xFC-Doldurma"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900053100814336
+    m_Localized: Tetri-Doldurma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900055583842304
+    m_Localized: Yerinde Kilit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900056825356288
+    m_Localized: "T-Spin Mini sat\u0131r yok"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900058133979136
+    m_Localized: "T-Spin sat\u0131r yok"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900060650561536
+    m_Localized: T-Spin Mini Tekli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900062789656576
+    m_Localized: T-Spin Tekli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900064362520576
+    m_Localized: "T-Spin Mini \xC7iftli"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900065469816832
+    m_Localized: "T-Spin \xC7iftli"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900066350620672
+    m_Localized: "T-Spin \xDC\xE7l\xFC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900067399196672
+    m_Localized: Art Arda Zor Doldurma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900068477132800
+    m_Localized: "Kombinasyon: Sat\u0131r Dolduruldu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900069341159424
+    m_Localized: "M\xFCkemmel temizleme (Tek sat\u0131r)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070171631616
+    m_Localized: "M\xFCkemmel temizleme (\xC7ift sat\u0131r)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070930800640
+    m_Localized: "M\xFCkemmel temizleme (\xDC\xE7l\xFC sat\u0131r)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900071694163968
+    m_Localized: "M\xFCkemmel temizleme (Tetri-Doldurma)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900072453332992
+    m_Localized: "Art Arda Tetri-Doldurma M\xFCkemmel Temizleme"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900073984253952
+    m_Localized: "An\u0131nda M\xFCkemmel Temizleme"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900074789560320
+    m_Localized: "Temizlenen Sat\u0131rlar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900075540340736
+    m_Localized: "Sat\u0131r Tarama"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900076320481280
+    m_Localized: Duo Tarama
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077041901568
+    m_Localized: Trio Tarama
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077788487680
+    m_Localized: Tetrisweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900078597988352
+    m_Localized: T-Spinsweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900079352963072
+    m_Localized: Art Arda Zor Tarama
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080103743488
+    m_Localized: "An\u0131nda Tarama"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080942604288
+    m_Localized: "Y\xFCksek Temizleme (6. S\u0131ra veya daha y\xFCksek)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900081680801792
+    m_Localized: "Y\xFCksek Temizleme (11. S\u0131ra veya daha y\xFCksek)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900082452553728
+    m_Localized: "Y\xFCksek Temizleme (16. S\u0131ra veya daha y\xFCksek)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900083224305664
+    m_Localized: "Kombinasyon: Ta\u015F Ortaya \xC7\u0131kar\u0131ld\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084004446208
+    m_Localized: "Otomatik Ortaya \xC7\u0131karma"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084797169664
+    m_Localized: "Ba\u015Far\u0131s\u0131z Akort"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900085510201344
+    m_Localized: "Y\xFCksek Ortaya \xC7\u0131karma (6. S\u0131ra veya daha y\xFCksek)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900086307119104
+    m_Localized: "Y\xFCksek Ortaya \xC7\u0131karma (11. S\u0131ra veya daha y\xFCksek)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087116619776
+    m_Localized: "Y\xFCksek Ortaya \xC7\u0131karma (16. S\u0131ra veya daha y\xFCksek)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087833845760
+    m_Localized: "Manuel Ortaya \xC7\u0131karma Serisi (50 ta\u015F)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900088626569216
+    m_Localized: "8 Ta\u015F Ortaya \xC7\u0131kar\u0131ld\u0131 veya Olu\u015Fturuldu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: "Tetromino hareket tu\u015Flar\u0131na bas\u0131l\u0131 tutarken
+      ne kadar h\u0131zl\u0131 hareket eder. Her ad\u0131m aras\u0131ndaki gecikme
+      milisaniye cinsinden \xF6l\xE7\xFCl\xFCr."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: "Bir hareket tu\u015Funa bas\u0131l\u0131 tutma ile tetromino'nun
+      otomatik hareket etmesi aras\u0131ndaki gecikme, milisaniye cinsinden \xF6l\xE7\xFCl\xFCr."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: "DAS'\u0131n tetromino'yu d\xFC\u015F\xFCrme veya d\xF6nd\xFCrme
+      s\u0131ras\u0131nda duraklayaca\u011F\u0131 s\xFCre, milisaniye cinsinden \xF6l\xE7\xFCl\xFCr."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: "Yumu\u015Fak d\xFC\u015F\xFC\u015F tu\u015Funa bas\u0131l\u0131
+      tutarken tetromino'nun ne kadar daha h\u0131zl\u0131 d\xFC\u015Fece\u011Fi."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: "Tetromino'lar an\u0131nda d\xFC\u015Fer ve kilit gecikmesi seviyenizle
+      azal\u0131r!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: Minik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: "Bu k\xFC\xE7\xFCk 4x4 tahtada par\xE7alar\u0131 s\u0131k\u0131ca
+      paketleyin."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: Cehennem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: "Is\u0131y\u0131 y\xFCkseltin! Tahta yan\u0131yor ve hata pay\u0131
+      yok."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: "Buz Yan\u0131\u011F\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: "Tahta donmu\u015F! May\u0131n say\u0131s\u0131n\u0131 ortaya \xE7\u0131karmak
+      i\xE7in buzu eritin ve ate\u015Fi nereye koydu\u011Funuza dikkat edin."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: "Yanan Ta\u015F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: "Ate\u015Fle oynamay\u0131n!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: "Ate\u015Fe t\u0131klarken dikkatli olun, herhangi bir hata oyunu
+      sona erdirir"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: "Sat\u0131r Temizlemede May\u0131n Taray\u0131c\u0131 Giri\u015F
+      Gecikmesi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: "Bir sat\u0131r temizlendikten sonra minesweeper kontrollerinin
+      g\xF6rmezden gelindi\u011Fi s\xFCre, milisaniye cinsinden \xF6l\xE7\xFCl\xFCr.
+      Bu, yanl\u0131\u015F t\u0131klamalar\u0131 \xF6nlemeye yard\u0131mc\u0131 olur."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35518550016778240
+    m_Localized: "Ba\u015Fla!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: "Tahta \xDCzerindeki \xD6nizleme Alan\u0131n\u0131 G\xF6ster"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: Tam Ekran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: "1-Sat\u0131r A\xE7maz"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: "Bir sat\u0131r\u0131 temizledi\u011Finiz anda oyun biter\u2026
+      ama puan kazanman\u0131n birden fazla yolu var."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055335533572096
+    m_Localized: "Izgara Opakl\u0131\u011F\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055569626066944
+    m_Localized: "Sars\u0131nt\u0131 G\xFCc\xFC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: "An\u0131nda"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: Art Arda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: "Temizlenen Sat\u0131r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: "Ortaya \xC7\u0131kar\u0131lan Ta\u015F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: Tetrisweep Kademeli
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

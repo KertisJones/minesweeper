@@ -673,20 +673,48 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 37581987358171136
-    m_Localized: kama poka kepeken sijelo poka sin nanpa sewi la jan ken lukin e
-      ona.
+    m_Localized: leko li sewi e supa musi la sina ken lukin e leko.
     m_Metadata:
       m_Items: []
   - m_Id: 38041025724276736
-    m_Localized: selo lukin ale
+    m_Localized: sinpin ale
     m_Metadata:
       m_Items: []
   - m_Id: 40055335533572096
-    m_Localized: lukin pona pi linja
+    m_Localized: nanpa pi ken lukin pi linja supa
     m_Metadata:
       m_Items: []
   - m_Id: 40055569626066944
-    m_Localized: wawa pi uta ala
+    m_Localized: nanpa pi tawa supa musi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: linja wan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: sina weka e linja la musi li pini. taso sina ken pona e nanpa pona
+      kepekan nasin ante...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: tenpo ala
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: sike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: linja weka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: open leko
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: pali Tewisi pi tenpo ala
     m_Metadata:
       m_Items: []
   references:

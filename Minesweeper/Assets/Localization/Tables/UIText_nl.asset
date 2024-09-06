@@ -17,7 +17,705 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 0dd1e0fbba483424bbb601167d9eb8a1, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 15111020544
+    m_Localized: Scoren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3884008333312
+    m_Localized: Volgende
+    m_Metadata:
+      m_Items: []
+  - m_Id: 688583756210176
+    m_Localized: Mijnen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 690552633810944
+    m_Localized: Tijd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691682109546496
+    m_Localized: Hoogste Scoren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691701722112000
+    m_Localized: Beste Vandaag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691795221536768
+    m_Localized: Beste Tijd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692206200414208
+    m_Localized: Regels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692866870403072
+    m_Localized: Tetrisvegen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693625464807424
+    m_Localized: Stop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693945486008320
+    m_Localized: Kan Niet Stoppen In Browser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694159798165504
+    m_Localized: Niveau
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694324101636096
+    m_Localized: T-Spinsvegen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694970670374912
+    m_Localized: Eindeloos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696069942927360
+    m_Localized: Voltooid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697409771397120
+    m_Localized: Marathon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697412782907392
+    m_Localized: Flash Marathon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697414372548608
+    m_Localized: 40-Regel Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697420861136896
+    m_Localized: 'Ultra: Tijdrit'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697421989404672
+    m_Localized: Flash Ultra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697429551734784
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697599509127168
+    m_Localized: Verduisterde Marathon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925355878637568
+    m_Localized: Speel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925670325608448
+    m_Localized: Gepauzeerd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925714365800448
+    m_Localized: Hervat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925742983536640
+    m_Localized: Instellingen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926408846073856
+    m_Localized: Bediening
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926506682408960
+    m_Localized: Terug
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926602874576896
+    m_Localized: Master Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926629294497792
+    m_Localized: Muziek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926659917111296
+    m_Localized: Effecten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926682805428224
+    m_Localized: Verminder Animaties
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926709879660544
+    m_Localized: Toon Vergrendelingsvertraging
+    m_Metadata:
+      m_Items: []
+  - m_Id: 927883198455808
+    m_Localized: Links
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928546846400512
+    m_Localized: Rechts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928580065288192
+    m_Localized: Draai Met De Klok Mee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928615494574080
+    m_Localized: Draai Tegen De Klok In
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928630334021632
+    m_Localized: Zachte Val
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928642711412736
+    m_Localized: Harde Val
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928656833634304
+    m_Localized: Vasthouden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928682272088064
+    m_Localized: Herstarten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928694787891200
+    m_Localized: Harde Reiniging
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928708620705792
+    m_Localized: Onthul Tegel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928722587738112
+    m_Localized: Aanslag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928735476834304
+    m_Localized: Vlag Tegel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928788438310912
+    m_Localized: Vlag Aanslag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928909536256000
+    m_Localized: Zuiveren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933890872041472
+    m_Localized: Standaarden Herstellen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934286541709312
+    m_Localized: Blok Vallende Besturing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934315432075264
+    m_Localized: Mijnenveger Besturing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951608887205888
+    m_Localized: Bewerken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951658765869056
+    m_Localized: Pas Spel Aan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951849149521920
+    m_Localized: Komt Binnenkort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952127466758144
+    m_Localized: Scoren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952161780359168
+    m_Localized: Ranglijst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963399100915712
+    m_Localized: Eindeloze Modus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963558551576576
+    m_Localized: Spel Over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988652401319936
+    m_Localized: Overleef tot 150 regels, en probeer de hoogste scoren te behalen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988835440746496
+    m_Localized: Verwijder 40 regels zo snel mogelijk!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989111895711744
+    m_Localized: De eenvoudigere, snellere versie van Marathon waarbij regels direct
+      worden gewist!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989231202689024
+    m_Localized: Komt binnenkort...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989810910027776
+    m_Localized: Behaal de hoogste scoren in drie minuten!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989813380472832
+    m_Localized: Behaal de hoogste scoren in drie minuten, volgens Flash-regels!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990195708059648
+    m_Localized: Klik om te bekijken in je browser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990308941684736
+    m_Localized: "Doe mee met onze Community Discord om je naam op het offici\xEBle
+      scorebord te krijgen!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990401673551872
+    m_Localized: Bedankt voor het spelen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990658520145920
+    m_Localized: :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990813138968576
+    m_Localized: "Doe mee met de offici\xEBle Tetrisweeper Community Discord!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990814418231296
+    m_Localized: Deel je hoogste scoren met #Tetrisweeper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990815487778816
+    m_Localized: Download de zelfstandige versie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990816574103552
+    m_Localized: Bekijk onze community-afspeellijst!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990817517821952
+    m_Localized: Wil je me een kop koffie kopen? Bedankt voor je steun!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 991654902226944
+    m_Localized: 'Zuiveren: Verwijder alle mijnen in de houder, +250 punten'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992047333892096
+    m_Localized: Tetrisveeg is wanneer je alle 4 regels in een 4-regel tetris wist,
+      voordat de volgende tetromino op zijn plaats vergrendelt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992048869007360
+    m_Localized: T-Spinsveeg is wanneer je een T-spin scoort en elke regel wist die
+      de T-tetromino vulde, voordat de volgende tetromino op zijn plaats vergrendelt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427307444035584
+    m_Localized: Punten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427339857616896
+    m_Localized: Marathon modus, maar tegelnummers worden vervangen door stippen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647393605935104
+    m_Localized: Muren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647422219476992
+    m_Localized: In plaats van veilige tegels te ontgrendelen terwijl je speelt,
+      zijn de muren van het speelbord nu speelbare tegels.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781692649472
+    m_Localized: Verlanglijst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781847838720
+    m_Localized: Op Steam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474861069852672
+    m_Localized: Ontgrendel bonusspelmodi!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2475075038076928
+    m_Localized: Tetrisveeg zoals nooit tevoren!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2512304913506304
+    m_Localized: Vergrendeld!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052179397636096
+    m_Localized: Blok Plaatsen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052349606686720
+    m_Localized: Mijnenvegen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052351666089984
+    m_Localized: Tetrisvegen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178027099217920
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178044815958016
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178065133166592
+    m_Localized: Besturing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178359053213696
+    m_Localized: Video-instellingen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178438203924480
+    m_Localized: Audio-instellingen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178483062005760
+    m_Localized: Besturingsinstellingen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7288987847745536
+    m_Localized: 'ARR: Automatische Herhalingssnelheid'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289007573557248
+    m_Localized: 'DAS: Vertraagde Automatische Verschuiving'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289023503523840
+    m_Localized: 'DCD: DAS Snijvertraging'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289036057075712
+    m_Localized: 'SDF: Zachte Valsnelheid'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261547250933760
+    m_Localized: Lokalisatie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261772770271232
+    m_Localized: Gemaakt door
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261872057835520
+    m_Localized: Speciale dank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8635273809223680
+    m_Localized: Aanvullende Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8641451649916928
+    m_Localized: Druk op een toets om door te gaan...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8664569943060480
+    m_Localized: Tetrisweeper Ondersteuners
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899711646720000
+    m_Localized: Regel-Vulling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899852948627456
+    m_Localized: Dubbel-Vulling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900050827501568
+    m_Localized: Drievoudig-Vulling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900053100814336
+    m_Localized: Tetri-Vulling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900055583842304
+    m_Localized: Plaats Vergrendelen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900056825356288
+    m_Localized: T-Spin Mini geen regels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900058133979136
+    m_Localized: T-Spin geen regels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900060650561536
+    m_Localized: T-Spin Mini Enkel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900062789656576
+    m_Localized: T-Spin Enkel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900064362520576
+    m_Localized: T-Spin Mini Dubbel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900065469816832
+    m_Localized: T-Spin Dubbel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900066350620672
+    m_Localized: T-Spin Drievoudig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900067399196672
+    m_Localized: Rug-aan-Rug Moeilijke Vulling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900068477132800
+    m_Localized: 'Combo: Regel Gevuld'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900069341159424
+    m_Localized: Perfecte Reinigen (Enkele Regel)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070171631616
+    m_Localized: Perfecte Reinigen (Dubbele Regel)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070930800640
+    m_Localized: Perfecte Reinigen (Drievoudige Regel)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900071694163968
+    m_Localized: Perfecte Reinigen (Tetri-Vulling)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900072453332992
+    m_Localized: Rug-aan-Rug Tetri-Vulling Perfecte Reinigen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900073984253952
+    m_Localized: Directe Perfecte Reinigen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900074789560320
+    m_Localized: Regels Gewist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900075540340736
+    m_Localized: Regelveeg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900076320481280
+    m_Localized: Duoveeg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077041901568
+    m_Localized: Trio-veeg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077788487680
+    m_Localized: Tetrisveeg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900078597988352
+    m_Localized: T-Spinsveeg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900079352963072
+    m_Localized: Rug-aan-Rug Moeilijke Veeg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080103743488
+    m_Localized: Directe Veeg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080942604288
+    m_Localized: Hoge Reiniging (Rij 6 of hoger)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900081680801792
+    m_Localized: Hoge Reiniging (Rij 11 of hoger)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900082452553728
+    m_Localized: Hoge Reiniging (Rij 16 of hoger)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900083224305664
+    m_Localized: 'Combo: Tegel Onthuld'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084004446208
+    m_Localized: Automatische Onthulling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084797169664
+    m_Localized: Mislukte Aanslag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900085510201344
+    m_Localized: Hoge Onthulling (Rij 6 of hoger)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900086307119104
+    m_Localized: Hoge Onthulling (Rij 11 of hoger)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087116619776
+    m_Localized: Hoge Onthulling (Rij 16 of hoger)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087833845760
+    m_Localized: Handmatige Onthullingsreeks (50 tegels)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900088626569216
+    m_Localized: 8 Tegels Onthuld of Gemaakt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: Hoe snel de tetromino naar links of rechts beweegt terwijl de bewegingstoetsen
+      ingedrukt worden. De vertraging tussen elke stap wordt gemeten in milliseconden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: De vertraging tussen het ingedrukt houden van een bewegingstoets
+      en de automatische beweging van de tetromino, gemeten in milliseconden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: De tijd die DAS zal pauzeren bij het laten vallen of draaien van
+      de tetromino, gemeten in milliseconden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: Hoeveel keer sneller de tetromino zal vallen wanneer de zachte valtoets
+      ingedrukt wordt gehouden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: Tetromino's vallen onmiddellijk, en de vergrendelingsvertraging
+      neemt af met je niveau!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: Klein
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: Plaats stukken strak op dit kleine 4x4 bord.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: Inferno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: Zet de hitte op! Het bord brandt af, en er is geen marge voor fouten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: Vriesbrand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: Het bord is bevroren! Smelt ijs om de mijntelling te onthullen,
+      en wees voorzichtig waar je je vuur plaatst.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: Brandende Tegel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: Speel niet met vuur!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: "Wees voorzichtig bij het klikken op vuur, elke fout be\xEBindigt
+      het spel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: Mijnenveger Invoer Vertraging bij Regel Wissen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: De tijd dat mijnenvegerbesturingen worden genegeerd na een regel
+      wissen, gemeten in milliseconden. Dit helpt misclicks te voorkomen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35518550016778240
+    m_Localized: Ga!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: Toon Voorvertoningsruimte Boven Bord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: Volledig Scherm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: 1-Regel Impasse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: "Het spel eindigt zodra je een regel wist\u2026 maar er zijn meer
+      manieren om punten te scoren."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055335533572096
+    m_Localized: Rasterdoorzichtigheid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055569626066944
+    m_Localized: Schudkracht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: Direct
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: Rug-aan-Rug
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: Regel Gewist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: Tegel Onthuld
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: Tetrisveeg Vertraagd
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

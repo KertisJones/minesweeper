@@ -17,7 +17,718 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 0dd1e0fbba483424bbb601167d9eb8a1, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 15111020544
+    m_Localized: Scor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3884008333312
+    m_Localized: "Urm\u0103torul"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 688583756210176
+    m_Localized: Mine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 690552633810944
+    m_Localized: Timp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691682109546496
+    m_Localized: Scor Maxim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691701722112000
+    m_Localized: Cel Mai Bun Azi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691795221536768
+    m_Localized: Cel Mai Bun Timp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692206200414208
+    m_Localized: Linii
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692866870403072
+    m_Localized: Tetrisweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693625464807424
+    m_Localized: "Ie\u015Fire"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693945486008320
+    m_Localized: "Nu se poate ie\u015Fi \xEEn browser"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694159798165504
+    m_Localized: Nivel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694324101636096
+    m_Localized: T-Spinsweeps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694970670374912
+    m_Localized: "F\u0103r\u0103 Sf\xE2r\u0219it"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696069942927360
+    m_Localized: Complet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697409771397120
+    m_Localized: Maraton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697412782907392
+    m_Localized: Maraton Rapid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697414372548608
+    m_Localized: Sprint de 40 de Linii
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697420861136896
+    m_Localized: 'Ultra: Proba de Timp'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697421989404672
+    m_Localized: Ultra Rapid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697429551734784
+    m_Localized: Credite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697599509127168
+    m_Localized: Maraton Ascuns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925355878637568
+    m_Localized: "Joac\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925670325608448
+    m_Localized: "Pauz\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925714365800448
+    m_Localized: Reia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 925742983536640
+    m_Localized: "Set\u0103ri"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926408846073856
+    m_Localized: Controale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926506682408960
+    m_Localized: "\xCEnapoi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926602874576896
+    m_Localized: Volum Principal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926629294497792
+    m_Localized: "Muzic\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926659917111296
+    m_Localized: Efecte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926682805428224
+    m_Localized: "Reducere Anima\u021Bii"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 926709879660544
+    m_Localized: "Afi\u0219are \xCEnt\xE2rziere Blocare"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 927883198455808
+    m_Localized: "St\xE2nga"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928546846400512
+    m_Localized: Dreapta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928580065288192
+    m_Localized: "Rotire \xEEn sens orar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928615494574080
+    m_Localized: "Rotire \xEEn sens anti-orar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928630334021632
+    m_Localized: "C\u0103dere U\u0219oar\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928642711412736
+    m_Localized: "C\u0103dere Rapid\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928656833634304
+    m_Localized: "\u021Aine"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928682272088064
+    m_Localized: "Reporne\u0219te"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928694787891200
+    m_Localized: "Cur\u0103\u021Bare Total\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928708620705792
+    m_Localized: "Dezv\u0103luie Bloc"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928722587738112
+    m_Localized: Acord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928735476834304
+    m_Localized: "Marcheaz\u0103 Bloc"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928788438310912
+    m_Localized: "Marcheaz\u0103 Acord"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 928909536256000
+    m_Localized: "Purific\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933890872041472
+    m_Localized: "Restabile\u0219te Implicit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934286541709312
+    m_Localized: "Controale pentru c\u0103derea blocurilor"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 934315432075264
+    m_Localized: Controale Minesweeper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951608887205888
+    m_Localized: "Editeaz\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951658765869056
+    m_Localized: "Personalizeaz\u0103 Jocul"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 951849149521920
+    m_Localized: "\xCEn Cur\xE2nd"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952127466758144
+    m_Localized: Punctaj
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952161780359168
+    m_Localized: Clasament
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963399100915712
+    m_Localized: "Mod F\u0103r\u0103 Sf\xE2r\u0219it"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 963558551576576
+    m_Localized: "Sf\xE2r\u0219itul Jocului"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988652401319936
+    m_Localized: "Supravie\u021Buie\u0219te p\xE2n\u0103 la 150 de linii \u0219i
+      \xEEncearc\u0103 s\u0103 ob\u021Bii cel mai mare scor posibil!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988835440746496
+    m_Localized: "Cur\u0103\u021B\u0103 40 de linii c\xE2t de repede posibil!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989111895711744
+    m_Localized: "Versiunea mai u\u0219oar\u0103 \u0219i mai rapid\u0103 a Maratonului,
+      unde liniile sunt cur\u0103\u021Bate instantaneu!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989231202689024
+    m_Localized: "\xCEn cur\xE2nd..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989810910027776
+    m_Localized: "Ob\u021Bine cel mai mare scor posibil \xEEn trei minute!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 989813380472832
+    m_Localized: "Ob\u021Bine cel mai mare scor posibil \xEEn trei minute, folosind
+      regulile rapide!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990195708059648
+    m_Localized: "Clic pentru a vizualiza \xEEn browserul t\u0103u"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990308941684736
+    m_Localized: "Al\u0103tur\u0103-te Discord-ului Comunit\u0103\u021Bii pentru
+      a-\u021Bi pune numele pe clasamentul oficial!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990401673551872
+    m_Localized: "Mul\u021Bumim pentru c\u0103 ai jucat!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990658520145920
+    m_Localized: :(
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990813138968576
+    m_Localized: "Al\u0103tur\u0103-te Discord-ului Comunit\u0103\u021Bii Oficiale
+      Tetrisweeper!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990814418231296
+    m_Localized: "\xCEmp\u0103rt\u0103\u0219e\u0219te scorurile tale mari cu #Tetrisweeper"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990815487778816
+    m_Localized: "Descarc\u0103 versiunea independent\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990816574103552
+    m_Localized: "Verific\u0103 playlist-ul comunit\u0103\u021Bii noastre!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 990817517821952
+    m_Localized: "Vrei s\u0103-mi cumperi o cafea? Mul\u021Bumesc pentru sprijinul
+      t\u0103u!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 991654902226944
+    m_Localized: "Purific\u0103: Cur\u0103\u021B\u0103 toate minele din hold, +250
+      puncte"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992047333892096
+    m_Localized: "Tetrisweep este atunci c\xE2nd cur\u0103\u021Ba\u021Bi toate cele
+      4 linii \xEEntr-un Tetris de 4 linii pe care tocmai l-a\u021Bi completat, \xEEnainte
+      ca urm\u0103torul tetromino s\u0103 se blocheze \xEEn pozi\u021Bie."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 992048869007360
+    m_Localized: "T-Spinsweep este atunci c\xE2nd faci un T-spin \u0219i cure\u021Bi
+      fiecare linie pe care tetromino T a completat-o, \xEEnainte ca urm\u0103torul
+      tetromino s\u0103 se blocheze \xEEn pozi\u021Bie."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427307444035584
+    m_Localized: Puncte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1427339857616896
+    m_Localized: "Mod Maraton, dar numerele blocurilor sunt \xEEnlocuite cu puncte!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647393605935104
+    m_Localized: "Pere\u021Bi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647422219476992
+    m_Localized: "\xCEn loc s\u0103 debloca\u021Bi blocuri sigure pe m\u0103sur\u0103
+      ce juca\u021Bi, pere\u021Bii tablei de joc devin acum blocuri jucabile."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781692649472
+    m_Localized: "Lista de Dorin\u021Be"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474781847838720
+    m_Localized: Pe Steam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2474861069852672
+    m_Localized: "Deblocheaz\u0103 moduri de joc bonus!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2475075038076928
+    m_Localized: "Tetrisweep ca niciodat\u0103 \xEEnainte!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2512304913506304
+    m_Localized: Blocat!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052179397636096
+    m_Localized: Plasarea Blocurilor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052349606686720
+    m_Localized: "Cur\u0103\u021Barea Minelor"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5052351666089984
+    m_Localized: Tetrisweeping
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178027099217920
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178044815958016
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178065133166592
+    m_Localized: Manipulare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178359053213696
+    m_Localized: "Set\u0103ri Video"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178438203924480
+    m_Localized: "Set\u0103ri Audio"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7178483062005760
+    m_Localized: "Set\u0103ri de Manipulare"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7288987847745536
+    m_Localized: "ARR: Rata de Repeti\u021Bie Automat\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289007573557248
+    m_Localized: "DAS: Deplasare Automat\u0103 \xCEnt\xE2rziat\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289023503523840
+    m_Localized: "DCD: \xCEnt\xE2rziere T\u0103iere DAS"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7289036057075712
+    m_Localized: "SDF: Factor de C\u0103dere U\u0219oar\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261547250933760
+    m_Localized: Localizare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261772770271232
+    m_Localized: Creat de
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8261872057835520
+    m_Localized: "Mul\u021Bumiri speciale"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8635273809223680
+    m_Localized: Credite Suplimentare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8641451649916928
+    m_Localized: "Apas\u0103 orice tast\u0103 pentru a continua..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8664569943060480
+    m_Localized: Suporterii Tetrisweeper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899711646720000
+    m_Localized: Umplere Linie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23899852948627456
+    m_Localized: "Umplere Dubl\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900050827501568
+    m_Localized: "Umplere Tripl\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900053100814336
+    m_Localized: Umplere Tetris
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900055583842304
+    m_Localized: "Blocare \xEEn Pozi\u021Bie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900056825356288
+    m_Localized: "T-Spin Mini f\u0103r\u0103 linii"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900058133979136
+    m_Localized: "T-Spin f\u0103r\u0103 linii"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900060650561536
+    m_Localized: T-Spin Mini Simplu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900062789656576
+    m_Localized: T-Spin Simplu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900064362520576
+    m_Localized: T-Spin Mini Dublu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900065469816832
+    m_Localized: T-Spin Dublu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900066350620672
+    m_Localized: T-Spin Triplu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900067399196672
+    m_Localized: "Umplere Dificil\u0103 Consecutiv\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900068477132800
+    m_Localized: "Combo: Linie Umplut\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900069341159424
+    m_Localized: "Cur\u0103\u021Bare Perfect\u0103 (Linie Simpl\u0103)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070171631616
+    m_Localized: "Cur\u0103\u021Bare Perfect\u0103 (Linie Dubl\u0103)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900070930800640
+    m_Localized: "Cur\u0103\u021Bare Perfect\u0103 (Linie Tripl\u0103)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900071694163968
+    m_Localized: "Cur\u0103\u021Bare Perfect\u0103 (Umplere Tetris)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900072453332992
+    m_Localized: "Cur\u0103\u021Bare Perfect\u0103 Consecutiv\u0103 de Umplere Tetris"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900073984253952
+    m_Localized: "Cur\u0103\u021Bare Perfect\u0103 Instantanee"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900074789560320
+    m_Localized: "Linii Cur\u0103\u021Bate"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900075540340736
+    m_Localized: "Cur\u0103\u021Bare Linii"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900076320481280
+    m_Localized: "Duo-cur\u0103\u021Bare"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077041901568
+    m_Localized: "Trio-cur\u0103\u021Bare"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900077788487680
+    m_Localized: Tetrisweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900078597988352
+    m_Localized: T-Spinsweep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900079352963072
+    m_Localized: "Cur\u0103\u021Bare Dificil\u0103 Consecutiv\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080103743488
+    m_Localized: "Cur\u0103\u021Bare Instantanee"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900080942604288
+    m_Localized: "Cur\u0103\u021Bare \xCEnalt\u0103 (Linia 6 sau mai sus)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900081680801792
+    m_Localized: "Cur\u0103\u021Bare \xCEnalt\u0103 (Linia 11 sau mai sus)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900082452553728
+    m_Localized: "Cur\u0103\u021Bare \xCEnalt\u0103 (Linia 16 sau mai sus)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900083224305664
+    m_Localized: "Combo: Bloc Dezv\u0103luit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084004446208
+    m_Localized: "Dezv\u0103luire Automat\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900084797169664
+    m_Localized: "Acord E\u0219uat"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900085510201344
+    m_Localized: "Dezv\u0103luire \xCEnalt\u0103 (Linia 6 sau mai sus)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900086307119104
+    m_Localized: "Dezv\u0103luire \xCEnalt\u0103 (Linia 11 sau mai sus)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087116619776
+    m_Localized: "Dezv\u0103luire \xCEnalt\u0103 (Linia 16 sau mai sus)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900087833845760
+    m_Localized: "Serie de Dezv\u0103luire Manual\u0103 (50 blocuri)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23900088626569216
+    m_Localized: "8 Blocuri Dezv\u0103luite sau Create"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670915286097920
+    m_Localized: "C\xE2t de repede se mi\u0219c\u0103 tetromino-ul spre st\xE2nga
+      sau dreapta \xEEn timp ce \u021Bii ap\u0103sate tastele de mi\u0219care. \xCEnt\xE2rzierea
+      dintre fiecare pas este m\u0103surat\u0103 \xEEn milisecunde."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670925239181312
+    m_Localized: "\xCEnt\xE2rzierea dintre ap\u0103sarea unei taste de mi\u0219care
+      \u0219i mi\u0219carea automat\u0103 a tetromino-ului, m\u0103surat\u0103 \xEEn
+      milisecunde."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670928355549184
+    m_Localized: "Timpul \xEEn care DAS va face pauz\u0103 atunci c\xE2nd las\u0103
+      s\u0103 cad\u0103 sau rote\u0219te tetromino-ul, m\u0103surat \xEEn milisecunde."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25670929269907456
+    m_Localized: "De c\xE2te ori mai repede va c\u0103dea tetromino-ul c\xE2nd \u021Bii
+      ap\u0103sat\u0103 tasta de c\u0103dere u\u0219oar\u0103."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: "Tetromino-urile cad instantaneu, iar \xEEnt\xE2rzierea de blocare
+      scade odat\u0103 cu nivelul t\u0103u!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: Mic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: "\xCEmpacheteaz\u0103 piesele str\xE2ns pe aceast\u0103 tabl\u0103
+      mic\u0103 de 4x4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: Infern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: "Cre\u0219te temperatura! Tabl\u0103 arde, \u0219i nu exist\u0103
+      marj\u0103 pentru eroare."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: "\xCEnghe\u021B"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: "Tabla a \xEEnghe\u021Bat! Topi\u021Bi ghea\u021Ba pentru a dezv\u0103lui
+      num\u0103rul de mine \u0219i ave\u021Bi grij\u0103 unde pune\u021Bi focul."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: "Bloc \xEEn Fl\u0103c\u0103ri"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: Nu te juca cu focul!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: "Fii atent c\xE2nd dai clic pe foc, orice gre\u0219eal\u0103 va
+      termina jocul"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35060915790405632
+    m_Localized: "\xCEnt\xE2rzierea Intr\u0103rii Minesweeper la Cur\u0103\u021Barea
+      Liniei"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35064038974021632
+    m_Localized: "Timpul \xEEn care controalele minesweeper-ului sunt ignorate dup\u0103
+      cur\u0103\u021Barea unei linii, m\u0103surat \xEEn milisecunde. Acest lucru
+      va ajuta la prevenirea clicurilor gre\u0219ite."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35518550016778240
+    m_Localized: Start!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37581987358171136
+    m_Localized: "Arat\u0103 Spa\u021Biul de Previziune deasupra Tablei"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38041025724276736
+    m_Localized: Ecran Complet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389880462499840
+    m_Localized: Impasse de 1 Linie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38389882937139200
+    m_Localized: "Jocul se termin\u0103 imediat ce cure\u021Bi o linie... dar exist\u0103
+      mai multe moduri de a ob\u021Bine puncte."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055335533572096
+    m_Localized: "Opacitate Gril\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40055569626066944
+    m_Localized: "Intensitatea Scutur\u0103rii"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: Instant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: Consecutiv
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: "Linie Cur\u0103\u021Bat\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: "Bloc Dezv\u0103luit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: "Tetrisweep E\u0219alonat"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

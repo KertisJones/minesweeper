@@ -596,14 +596,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 35060915790405632
-    m_Localized: Ritardo di input in Campo Minato durante la cancellazione di una
-      linea
+    m_Localized: Ritardo di input di Minesweeper a riga rimossa
     m_Metadata:
       m_Items: []
   - m_Id: 35064038974021632
-    m_Localized: "Il tempo durante il quale i comandi di Campo Minato vengono ignorati
-      dopo la cancellazione di una linea, misurato in millisecondi. Questo aiuter\xE0
-      a prevenire i clic errati."
+    m_Localized: L'intervallo di tempo in cui i controlli di minesweeper sono ignorati
+      dopo aver rimosso una rig, misurato in millisecondi. Questo aiuta ad evitare
+      click errati.
     m_Metadata:
       m_Items: []
   - m_Id: 35518550016778240
@@ -611,17 +610,16 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 37581987358171136
-    m_Localized: Mostra lo spazio di anteprima sopra la tavola
+    m_Localized: Mostra spazio di anteprima sopra l'area di gioco
     m_Metadata:
       m_Items: []
   - m_Id: 38041025724276736
-    m_Localized: Schermo intero
+    m_Localized: Schermo Intero
     m_Metadata:
       m_Items: []
   - m_Id: 25670915286097920
-    m_Localized: "La velocit\xE0 con cui il tetramino si muove a sinistra o a destra
-      tenendo premuti i tasti di movimento. Il ritardo tra ogni passo \xE8 misurato
-      in millisecondi."
+    m_Localized: "Quanto rapidamente i tetramini si muovono a sinistra o destra premendo
+      i tasti di movimento. L'intervallo tra ogni passo \xE8 misurato in millisecondi."
     m_Metadata:
       m_Items: []
   - m_Id: 25670925239181312
@@ -630,13 +628,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 25670928355549184
-    m_Localized: "La quantit\xE0 di tempo che il DAS si fermer\xE0 quando si lascia
-      cadere o si ruota il tetramino, misurata in millisecondi."
+    m_Localized: 'L''intervallo di tempo per cui il DAS si interrompe quando i tetramini
+      scendono o ruotano, misurato in millisecondi. '
     m_Metadata:
       m_Items: []
   - m_Id: 25670929269907456
-    m_Localized: "Quante volte pi\xF9 velocemente cadr\xE0 il tetramino tenendo premuto
-      il tasto di discesa rapida."
+    m_Localized: "Quante volte pi\xF9 velocemente cade il tetramino quando il tasto
+      di discesa rapida \xE8 premuto."
     m_Metadata:
       m_Items: []
   - m_Id: 38389880462499840
@@ -653,7 +651,75 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 40055569626066944
-    m_Localized: "Intensit\xE0 della scossa"
+    m_Localized: "Intensit\xE0 delle scosse"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682277726937088
+    m_Localized: 20G
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25682727771561984
+    m_Localized: I tetramini scendono istantaneamente, and il ritardo di fermo si
+      riduce con il tuo livello!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684283195645952
+    m_Localized: Piccola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25684335494422528
+    m_Localized: 'Compatta per bene i pezzi in questa piccola area 4x4. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916605992787968
+    m_Localized: Inferno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916636179193856
+    m_Localized: "Alza la temperatura! L'area di gioco va a fuoco, e non c'\xE8 margine
+      d'errore."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916642458066944
+    m_Localized: Bruciatura da gelo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33916729900916736
+    m_Localized: "L'area di gioco \xE8 gelata! Fondi il ghiaccio per rivelare il
+      conteggio delle mine, e fai attenzione dove piazzi il tuo fuoco."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934176091627520
+    m_Localized: Tessera infuocata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934480497434624
+    m_Localized: Non giocare col fuoco!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33934857829605376
+    m_Localized: "Fai attenzione quando clicchi sul fuoco, ogni errore terminer\xE0
+      la partita"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604674075783168
+    m_Localized: Istantaneo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53604947716370432
+    m_Localized: Consecutivo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53619736878411776
+    m_Localized: Linea liberata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53644324463079424
+    m_Localized: Casella rivelata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54015456424914944
+    m_Localized: Tetrisweep a intervalli
     m_Metadata:
       m_Items: []
   references:
