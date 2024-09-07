@@ -60,6 +60,14 @@ PrefabInstance:
       propertyPath: gameModeName
       value: 1-Line Sprint
       objectReference: {fileID: 0}
+    - target: {fileID: 8789393750871421733, guid: ca9d59e0ea9e7664dacf4c08938fcd97, type: 3}
+      propertyPath: targetLines.fakeValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789393750871421733, guid: ca9d59e0ea9e7664dacf4c08938fcd97, type: 3}
+      propertyPath: gameModeName.fakeValue
+      value: 1-Line Sprint
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

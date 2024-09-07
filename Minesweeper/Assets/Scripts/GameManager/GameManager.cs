@@ -1103,7 +1103,7 @@ public class GameManager : MonoBehaviour
             int normalRowsCleared = (rowsCleared - delayedLinesweepsCleared) - instantLinesweepsCleared;
             bool isDifficultSweep = false;
 
-            Debug.Log("Instant: " + instantLinesweepsCleared + ", Delayed: " + delayedLinesweepsCleared + ", Normal: " + normalRowsCleared + "... " + tetrominoThatJustLocked);
+            //Debug.Log("Instant: " + instantLinesweepsCleared + ", Delayed: " + delayedLinesweepsCleared + ", Normal: " + normalRowsCleared + "... " + tetrominoThatJustLocked);
 
             // Linesweep: Row was solved before the next tetromino was placed
             if (instantLinesweepsCleared > 0)
@@ -1159,7 +1159,7 @@ public class GameManager : MonoBehaviour
         if (tetrominoToCheckForSweeps2 != null)
             (isTetrisweep2, isTspinsweep2) = tetrominoToCheckForSweeps2.GetComponent<Group>().CheckForTetrisweeps(getMultiplier, sweepMultiplier, isInstant, true);
 
-        Debug.Log("Lines: " + linesweepsCleared + " isInstant: " + isInstant + "! ..... Previous (or Just Locked) Tetrisweep: " + isTetrisweep + ", Previous (or Just Locked) Tspinsweep: " + isTspinsweep + ", Current Tetrisweep: " + isTetrisweep2 + ", Current Tspinsweep: " + isTspinsweep2);
+        //Debug.Log("Lines: " + linesweepsCleared + " isInstant: " + isInstant + "! ..... Previous (or Just Locked) Tetrisweep: " + isTetrisweep + ", Previous (or Just Locked) Tspinsweep: " + isTspinsweep + ", Current Tetrisweep: " + isTetrisweep2 + ", Current Tspinsweep: " + isTspinsweep2);
 
         // Get Translation key...
         switch (linesweepsCleared)
