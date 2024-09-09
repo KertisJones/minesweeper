@@ -725,6 +725,14 @@ MonoBehaviour:
     m_Localized: Tetrisweep Kademeli
     m_Metadata:
       m_Items: []
+  - m_Id: 57250668348862464
+    m_Localized: Steam'e ekle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57250970259058688
+    m_Localized: "Bize kat\u0131l"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

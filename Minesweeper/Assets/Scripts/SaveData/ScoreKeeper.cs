@@ -18,14 +18,17 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
     GameManager gm;
     AudioSource musicSource;
 
-    public enum VersionType
+    /*public enum VersionType
     {
         standard,
         beta,
         demoOnline,
         demoSteam
     }
-    public static VersionType versionType = VersionType.demoOnline;
+    public static VersionType versionType = VersionType.demoOnline;*/
+    public static bool versionIsDRMFree = false; // False=Steam, True=Itch
+    public static bool versionIsDemo = true; // 
+    public static bool versionIsBeta = false;
     //CameraShake cameraShake;
     // Start is called before the first frame update
     void Awake()

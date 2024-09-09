@@ -37,7 +37,8 @@ public class DisplayText : MonoBehaviour
         gameModeName,
         gameModeNameComplete,
         versionNumber,
-        revealCombo
+        revealCombo,
+        scoreTitle
     };
     public TextType displayType;  // t$$anonymous$$s public var should appear as a drop down
 
@@ -53,14 +54,25 @@ public class DisplayText : MonoBehaviour
 
         if (displayType == TextType.versionNumber)
         {
-            if (ScoreKeeper.versionType == ScoreKeeper.VersionType.standard)
+            string versionStr = "v" + Application.version;
+
+            if (ScoreKeeper.versionIsBeta)
+                versionStr += "-Beta";
+            if (ScoreKeeper.versionIsDRMFree)
+                versionStr += " DRM-Free";
+            if (ScoreKeeper.versionIsDemo)
+                versionStr += " Demo";
+
+            /*if (ScoreKeeper.versionType == ScoreKeeper.VersionType.standard)
                 this.GetComponent<TextMeshProUGUI>().text = "v" + Application.version;
             else if (ScoreKeeper.versionType == ScoreKeeper.VersionType.beta)
                 this.GetComponent<TextMeshProUGUI>().text = "v" + Application.version + " Beta";
             else if (ScoreKeeper.versionType == ScoreKeeper.VersionType.demoOnline)
                 this.GetComponent<TextMeshProUGUI>().text = "v" + Application.version + " Demo-B";
             else if (ScoreKeeper.versionType == ScoreKeeper.VersionType.demoSteam)
-                this.GetComponent<TextMeshProUGUI>().text = "v" + Application.version + " Demo-A";
+                this.GetComponent<TextMeshProUGUI>().text = "v" + Application.version + " Demo-A";*/
+
+            this.GetComponent<TextMeshProUGUI>().text = versionStr;
         }
     }
 
@@ -73,11 +85,41 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TextMeshProUGUI>().text = gm.GetScore().ToString("#,#");
             else
                 this.GetComponent<TextMeshProUGUI>().text = gm.GetScore().ToString();
-            
+
             if (sk.bestScoreToday <= gm.GetScore() && sk.runs > 1 && sk.bestScoreToday > 0)
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
             if (sk.bestScore <= gm.GetScore() && sk.bestScore > 0)
+            {
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
+                this.GetComponent<VertexColorCyclerGradient>().enabled = true;
+            }
+
+            /*if (!gm.gameMods.detailedTimer || gm.gameMods.timeLimit < Mathf.Infinity) // Normal score mode
+            {
+                
+            }
+            else // 40L Sprint mode
+            {
+                displayType = TextType.bestScore;
+            }*/
+
+        }
+        else if (displayType == TextType.scoreTitle)
+        {
+            string localizedText = GameManager.GetTranslation("UIText", "GUI Score"); // "High Score"
+            if (sk.bestScore <= gm.GetScore() && sk.bestScore > 0)
+            {
+                this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
+            }
+
+            /*if (!gm.gameMods.detailedTimer || gm.gameMods.timeLimit < Mathf.Infinity) // Normal score mode
+            {
+                
+            }
+            else // 40L Sprint Mode
+            {
+                displayType = TextType.bestScoreTitle;
+            }*/
         }
         else if (displayType == TextType.scoreMultiplier)
         {
@@ -102,8 +144,8 @@ public class DisplayText : MonoBehaviour
                 suffix = "..";
             else if (gm.scoreMultiplierTimer <= 3)
                 suffix = ".";
-            
-            
+
+
             string scoreStr = (100 + gm.scoreMultiplier).ToString();
             string scoreStrFront = scoreStr.Substring(0, scoreStr.Length - 2);
             string scoreStrBack = "";
@@ -128,7 +170,7 @@ public class DisplayText : MonoBehaviour
                 else
                     this.GetComponent<TextMeshProUGUI>().color = startColor;
             }
-                
+
         }
         else if (displayType == TextType.minesMissing)
         {
@@ -140,7 +182,7 @@ public class DisplayText : MonoBehaviour
                 suffix = "? *";
 
             string localizedText = GameManager.GetTranslation("UIText", "GUI Mines"); // "Mines"
-            this.GetComponent<TextMeshProUGUI>().text = localizedText+ ": " + unknownMines + suffix;
+            this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + unknownMines + suffix;
         }
         else if (displayType == TextType.minesTotal)
         {
@@ -160,33 +202,45 @@ public class DisplayText : MonoBehaviour
         }
         else if (displayType == TextType.bestScore)
         {
-            if (!gm.gameMods.detailedTimer) // Normal score mode
-            {            
+            if (!gm.gameMods.detailedTimer || gm.gameMods.timeLimit < Mathf.Infinity) // Normal score mode
+            {
                 // Display Best Score Today while your current score is under Best Score Today, unless it's the first run of the game.
                 // Otherwise, display your total high score
 
                 /*if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
                     this.GetComponent<TextMeshProUGUI>().text = sk.bestScoreToday.ToString("#,#");*/
                 if (sk.bestScore > 0) // Best Score Total
-                    this.GetComponent<TextMeshProUGUI>().text = ((float)sk.bestScore).ToString("#,#"); 
+                    this.GetComponent<TextMeshProUGUI>().text = ((float)sk.bestScore).ToString("#,#");
                 else // Hi Score = 0 
                     this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString();
-                
+
                 if (sk.bestScore <= gm.GetScore() && sk.bestScore > 0)
+                {
                     this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
+                    this.GetComponent<VertexColorCyclerGradient>().enabled = true;
+                }
+                //if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday <= gm.GetScore())
+                //this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
             }
             else // 40L sprint mode
             {
                 string bestTimeStr = GetTimeString(sk.bestTime);
                 //string bestTimeTodayStr = GetTimeString(sk.bestTimeToday);
-                
+
                 //this.GetComponent<TextMeshProUGUI>().text = bestTimeStr + ", " + bestTimeTodayStr;
 
                 this.GetComponent<TextMeshProUGUI>().text = bestTimeStr;
 
+                if (sk.bestTime >= gm.GetTime() && sk.bestTime < Mathf.Infinity)
+                {
+                    this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
+                    this.GetComponent<VertexColorCyclerGradient>().enabled = true;
+                }
+                //if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTimeToday >= gm.GetTime())
+                //this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                 /*if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTime < gm.GetTime()) // Best Score Today
                     this.GetComponent<TextMeshProUGUI>().text = bestTimeTodayStr;*/
-                
+
             }
         }
         else if (displayType == TextType.bestScoreTitle)
@@ -199,15 +253,25 @@ public class DisplayText : MonoBehaviour
                 
                 if (sk.bestScoreToday == sk.bestScore)*/
                 localizedText = GameManager.GetTranslation("UIText", "GUI HighScore"); // "High Score"
+
+                if (sk.bestScore <= gm.GetScore() && sk.bestScore > 0)
+                {
+                    this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
+                }
             }
             else // 40L sprint mode
             {
                 localizedText = GameManager.GetTranslation("UIText", "GUI HighScoreBestTime"); // "Best Time"
 
+                if (sk.bestTime >= gm.GetTime() && sk.bestTime < Mathf.Infinity)
+                {
+                    this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
+                }
+
                 /*if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTime < gm.GetTime()) // Best Score Today
                     localizedText = GameManager.GetTranslation("UIText", "GUI HighScoreBestToday"); // "Best Today"*/
-            }            
-            this.GetComponent<TextMeshProUGUI>().text = localizedText + ""; 
+            }
+            this.GetComponent<TextMeshProUGUI>().text = localizedText + "";
         }
         else if (displayType == TextType.linesCleared)
         {
@@ -234,13 +298,13 @@ public class DisplayText : MonoBehaviour
                 localizedText = GameManager.GetTranslation("UIText", "Menu QuitCancel"); // "Can't Quit in Browser"
                 this.GetComponent<TextMeshProUGUI>().text = localizedText;
                 this.GetComponent<TextMeshProUGUI>().fontSize = 8;
-            }                
-            else
-            {                
-                this.GetComponent<TextMeshProUGUI>().text = localizedText;
-                this.GetComponent<TextMeshProUGUI>().fontSize = startFontSize;                
             }
-                
+            else
+            {
+                this.GetComponent<TextMeshProUGUI>().text = localizedText;
+                this.GetComponent<TextMeshProUGUI>().fontSize = startFontSize;
+            }
+
         }
         else if (displayType == TextType.level)
         {
@@ -257,7 +321,7 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TextMeshProUGUI>().text = localizedText + ": " + gm.tSpinsweepsCleared;
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                 this.GetComponent<VertexColorCyclerGradient>().enabled = true;
-            }            
+            }
         }
         else if (displayType == TextType.TESTCurrentMinoLockDelay)
         {
@@ -266,7 +330,7 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TextMeshProUGUI>().text = "";
                 return;
             }
-                
+
             Group activeTetromino = gm.GetActiveTetromino();
             if (activeTetromino == null)
             {
@@ -276,7 +340,7 @@ public class DisplayText : MonoBehaviour
             {
                 int resets = 15 - activeTetromino.lockResets;
                 //if (resets < 0)
-                    //resets = 0;
+                //resets = 0;
 
                 if (activeTetromino.lockDelayTimer > 0 && activeTetromino.isLocking)
                     this.GetComponent<TextMeshProUGUI>().text = "Lock: " + activeTetromino.lockDelayTimer.ToString("#,#.#") + ", Resets: " + resets; // TODO I'm gonna remove this maybe?
@@ -292,9 +356,10 @@ public class DisplayText : MonoBehaviour
                 this.GetComponent<TextMeshProUGUI>().text = "Null";
             }
             else
-            {                
+            {
                 // 0 = spawn state, 1 = counter-clockwise rotation from spawn, 2 = 2 successive rotations from spawn, 3 = clockwise rotation from spawn
-                switch (activeTetromino.currentRotation) {
+                switch (activeTetromino.currentRotation)
+                {
                     case 0:
                         this.GetComponent<TextMeshProUGUI>().text = "0: spawn state";
                         break;
@@ -307,7 +372,7 @@ public class DisplayText : MonoBehaviour
                     case 3:
                         this.GetComponent<TextMeshProUGUI>().text = "3: clockwise";
                         break;
-                    default :
+                    default:
                         this.GetComponent<TextMeshProUGUI>().text = "?: no rotation found?";
                         break;
                 }
@@ -318,7 +383,7 @@ public class DisplayText : MonoBehaviour
             string gameMode = gameMods.gameModeName;
             if (gameMods.gameModeDisplayName != "")
                 gameMode = gameMods.gameModeDisplayName;
-            
+
             string localizedText = GameManager.GetTranslation("UIText", "GameMode " + gameMode); // Returns translation of game mode name, ex. "Marathon"
 
             if (gm.isEndless && !gm.marathonOverMenu.GetIsActive())
@@ -330,9 +395,9 @@ public class DisplayText : MonoBehaviour
             string gameMode = gameMods.gameModeName;
             if (gameMods.gameModeDisplayName != "")
                 gameMode = gameMods.gameModeDisplayName;
-            
+
             string localizedText = GameManager.GetTranslation("UIText", "GameMode " + gameMode); // Returns translation of game mode name, ex. "Marathon"
-            
+
             this.GetComponent<TextMeshProUGUI>().text = localizedText + " " + GameManager.GetTranslation("UIText", "GameMode Complete") + "!";
         }
         else if (displayType == TextType.revealCombo)
@@ -343,7 +408,7 @@ public class DisplayText : MonoBehaviour
             if (gm.revealComboDrainTween != null)
                 if (gm.revealComboDrainTween.IsActive())
                     if (gm.revealComboDrainTween.IsPlaying())
-                        this.GetComponent<TextMeshProUGUI>().color = Color.red;*/                           
+                        this.GetComponent<TextMeshProUGUI>().color = Color.red;*/
         }
     }
 

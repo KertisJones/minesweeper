@@ -2967,19 +2967,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3067704539968990640, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3067704539968990640, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3067704539968990640, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3067704539968990640, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3129390007164104433, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3027,19 +3027,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5248815726007794273, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5248815726007794273, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5248815726007794273, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5248815726007794273, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5549548319623920593, guid: 9bc2b14e648bdc94587a90e9c7938f35, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -9806,6 +9806,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1605694133}
+    - target: {fileID: 1990836587575422912, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1990836587575422913, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9890,13 +9894,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Title Menu Buttons
       objectReference: {fileID: 0}
+    - target: {fileID: 1990836587684698822, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: jumpInPlaceHeight
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1990836587729669033, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_Creator
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1990836588498827583, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: jumpInPlaceHeight
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1990836588660408860, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990836588798066636, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: jumpInPlaceHeight
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990836588798066646, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: url
+      value: 'https://discord.gg/SWKRhnvNnd '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990836588851189093, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: jumpInPlaceHeight
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990836589033287493, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: jumpInPlaceHeight
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2727730742899390220, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target

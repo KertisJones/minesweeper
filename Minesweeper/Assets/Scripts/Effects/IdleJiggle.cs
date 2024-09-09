@@ -431,11 +431,16 @@ public class IdleJiggle : MonoBehaviour
                 if (jumpInYTween.IsPlaying())
                     return;
         
+        bool isButtonScaled = false;
+
+        if (GetComponent<ButtonJiggle>() != null)
+            isButtonScaled = GetComponent<ButtonJiggle>().isScaled;
+
         if (jumpInPlaceHeight != 0)
         {
             if (autoJump)
             {                       
-                if (this.transform.localScale.x != startScale.x)
+                if (isButtonScaled) //this.transform.localScale.x != startScale.x)
                     JumpInPlaceSequencerSend();
                 else
                 {

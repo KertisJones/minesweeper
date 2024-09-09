@@ -719,6 +719,14 @@ MonoBehaviour:
     m_Localized: "Tetrisweep forskj\xF8vet"
     m_Metadata:
       m_Items: []
+  - m_Id: 57250668348862464
+    m_Localized: "Legg til p\xE5 Steam"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57250970259058688
+    m_Localized: "Bli med i v\xE5r"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

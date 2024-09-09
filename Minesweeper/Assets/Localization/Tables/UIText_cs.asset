@@ -730,6 +730,14 @@ MonoBehaviour:
     m_Localized: "Tetrisweep s p\u0159est\xE1vkami"
     m_Metadata:
       m_Items: []
+  - m_Id: 57250668348862464
+    m_Localized: "P\u0159idat na Steam"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57250970259058688
+    m_Localized: "P\u0159ipojte se k na\u0161emu"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

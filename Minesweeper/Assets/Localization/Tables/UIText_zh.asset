@@ -703,6 +703,14 @@ MonoBehaviour:
     m_Localized: "\u534A\u77AC\u6D88Tetrisweep"
     m_Metadata:
       m_Items: []
+  - m_Id: 57250668348862464
+    m_Localized: "\u6DFB\u52A0\u5230Steam"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57250970259058688
+    m_Localized: "\u52A0\u5165\u6211\u4EEC\u7684"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

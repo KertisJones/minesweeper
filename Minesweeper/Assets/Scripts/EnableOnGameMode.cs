@@ -7,9 +7,12 @@ public class EnableOnGameMode : MonoBehaviour
     GameModifiers gameMods;
     GameManager gm;
     public bool inverseToDisableOnGameMode = false;
+
+    public bool onDemoMode = false;
+
     public bool onShowTitle = false;
     public bool onShowCredits = false;
-    public bool onEndlessIsEnabled = false;
+    public bool onEndlessIsEnabled = false;    
 
     void OnEnable()
     {
@@ -43,6 +46,8 @@ public class EnableOnGameMode : MonoBehaviour
         if (onShowCredits && gameMods.minesweeperTextType == GameModifiers.MinesweeperTextType.credits)
             isEnabled = true;
         if (onEndlessIsEnabled && gameMods.endlessIsEnabled)
+            isEnabled = true;
+        if (onDemoMode && ScoreKeeper.versionIsDemo)
             isEnabled = true;
         
         // INVERSE?

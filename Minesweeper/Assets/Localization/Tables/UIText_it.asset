@@ -722,6 +722,14 @@ MonoBehaviour:
     m_Localized: Tetrisweep a intervalli
     m_Metadata:
       m_Items: []
+  - m_Id: 57250668348862464
+    m_Localized: Aggiungi a Steam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57250970259058688
+    m_Localized: Unisciti al nostro
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

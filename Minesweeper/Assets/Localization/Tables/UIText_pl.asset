@@ -727,6 +727,14 @@ MonoBehaviour:
     m_Localized: Stopniowy Tetrisweep
     m_Metadata:
       m_Items: []
+  - m_Id: 57250668348862464
+    m_Localized: Dodaj do Steam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57250970259058688
+    m_Localized: "Do\u0142\u0105cz do naszego"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

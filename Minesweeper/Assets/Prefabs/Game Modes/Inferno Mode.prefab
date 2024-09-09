@@ -38,11 +38,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
       propertyPath: auraNormalWeight.fakeValue
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1704021292695955724, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
       propertyPath: auraBurningWeight.fakeValue
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4058370467152388191, guid: 0e00be14b438de44d82c067b2a94abdf, type: 3}
       propertyPath: m_RootOrder

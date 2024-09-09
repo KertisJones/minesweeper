@@ -29,6 +29,8 @@ public class ButtonJiggle : MonoBehaviour
     private Tween resetTween;
     public bool startAtScaleZero = false;
 
+    public bool isScaled = false;
+
     void OnEnable()
     {
         GameManager.OnKillTweenEvent += Reset;
@@ -102,6 +104,8 @@ public class ButtonJiggle : MonoBehaviour
                 if (resetTween.IsPlaying())
                     return;
 
+        isScaled = true;
+
         //animate on point hover
         enlargeTween = this.transform.DOBlendableScaleBy(targetScaleEnlarge - transform.localScale, scaleTransitionTime).SetUpdate(true);
         this.transform.DOMoveZ(transform.position.z + scalePositionOffset, scaleTransitionTime).SetUpdate(true);   
@@ -140,6 +144,8 @@ public class ButtonJiggle : MonoBehaviour
                 GetComponent<AudioSource>().Play();
         }
 
+        isScaled = true;
+
         //animate on point click
         shrinkTween = this.transform.DOBlendableScaleBy(targetScaleShrink - transform.localScale, scaleTransitionTime).SetUpdate(true);
         this.transform.DOMoveZ(transform.position.z - scalePositionOffset, scaleTransitionTime).SetUpdate(true);
@@ -149,6 +155,8 @@ public class ButtonJiggle : MonoBehaviour
 
     public void ShrinkToZero(bool autoReset = false)
     {
+        isScaled = true;
+
         if (autoReset)
         {
             shrinkToZeroTween = this.transform.DOBlendableScaleBy(transform.localScale * -1, scaleTransitionTime).SetUpdate(true).OnKill(ResetScale);
@@ -186,7 +194,9 @@ public class ButtonJiggle : MonoBehaviour
             shrinkTween.Kill();
         if (resetTween  != null) 
             resetTween.Kill();
-        
+
+        isScaled = false;
+
         //transform.localScale = new Vector3(Mathf.Max(0, transform.localScale.x), Mathf.Max(0, transform.localScale.y), Mathf.Max(0, transform.localScale.z));
         resetTween = this.transform.DOBlendableScaleBy(startScale - transform.localScale, scaleTransitionTime).SetUpdate(true);
     }

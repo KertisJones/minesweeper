@@ -748,6 +748,14 @@ MonoBehaviour:
     m_Localized: "\uD14C\uD2B8\uB9AC\uC2A4\uC715 \uC2A4\uD0DC\uAC70\uB4DC"
     m_Metadata:
       m_Items: []
+  - m_Id: 57250668348862464
+    m_Localized: "Steam\uC5D0 \uCD94\uAC00"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57250970259058688
+    m_Localized: "\uC6B0\uB9AC\uC758"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

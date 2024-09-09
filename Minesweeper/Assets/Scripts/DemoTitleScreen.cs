@@ -28,18 +28,18 @@ public class DemoTitleScreen : MonoBehaviour
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
-        if (ScoreKeeper.versionType == ScoreKeeper.VersionType.standard || ScoreKeeper.versionType == ScoreKeeper.VersionType.beta)
+        if (!ScoreKeeper.versionIsDemo) //ScoreKeeper.versionType == ScoreKeeper.VersionType.standard || ScoreKeeper.versionType == ScoreKeeper.VersionType.beta)
         {
             playFrameStandard.SetActive(true);
             playFrameDemo.SetActive(false);
         }
-        else if (ScoreKeeper.versionType == ScoreKeeper.VersionType.demoOnline || ScoreKeeper.versionType == ScoreKeeper.VersionType.demoSteam)
+        else // if (ScoreKeeper.versionType == ScoreKeeper.VersionType.demoOnline || ScoreKeeper.versionType == ScoreKeeper.VersionType.demoSteam)
         {
             playFrameStandard.SetActive(false);
             playFrameDemo.SetActive(true);
 
             // Disable variant modes until player clicks on the steam page
-            if (PlayerPrefs.GetInt("DemoVisit", 0) == 0 && ScoreKeeper.versionType == ScoreKeeper.VersionType.demoOnline)
+            if (PlayerPrefs.GetInt("DemoVisit", 0) == 0 && (ScoreKeeper.versionIsDRMFree && ScoreKeeper.versionIsDemo))// ScoreKeeper.versionType == ScoreKeeper.VersionType.demoOnline)
             {
                 lockedByDemoVisitText.SetActive(true);
                 foreach (GameObject button in buttonsUnlockedByDemoVisit)

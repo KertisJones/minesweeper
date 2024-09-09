@@ -727,6 +727,14 @@ MonoBehaviour:
     m_Localized: "Tetrisweep L\xE9p\xE9sekben"
     m_Metadata:
       m_Items: []
+  - m_Id: 57250668348862464
+    m_Localized: "Hozz\xE1ad\xE1s a Steamhez"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57250970259058688
+    m_Localized: Csatlakozzon a
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
