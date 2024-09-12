@@ -142,7 +142,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 1.9.0a
+  bundleVersion: 1.9.0a1
   preloadedAssets:
   - {fileID: 11400000, guid: e17439b794e6f1c499ea5b0778872630, type: 2}
   metroInputSource: 0
@@ -733,8 +733,8 @@ PlayerSettings:
     PS4: DOTWEEN
     PS5: DOTWEEN
     Stadia: DOTWEEN
-    Standalone: DOTWEEN
-    WebGL: DOTWEEN
+    Standalone: DOTWEEN;STEAMWORKS_NET
+    WebGL: DOTWEEN;STEAMWORKS_NET
     Windows Store Apps: DOTWEEN
     XboxOne: DOTWEEN
     iPhone: DOTWEEN
