@@ -524,6 +524,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8985097393797653990}
     m_Modifications:
+    - target: {fileID: 3287004390953578251, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
+      propertyPath: CurveScale
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3287004390953578251, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
+      propertyPath: AngleMultiplier
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3287004390953578251, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
+      propertyPath: SpeedMultiplier
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8130327923279866520, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
       propertyPath: m_text
       value: High Score
