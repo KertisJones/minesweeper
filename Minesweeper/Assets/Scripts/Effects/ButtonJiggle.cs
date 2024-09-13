@@ -159,7 +159,7 @@ public class ButtonJiggle : MonoBehaviour
 
         if (autoReset)
         {
-            shrinkToZeroTween = this.transform.DOBlendableScaleBy(transform.localScale * -1, scaleTransitionTime).SetUpdate(true).OnKill(ResetScale);
+            shrinkToZeroTween = this.transform.DOBlendableScaleBy(transform.localScale * -1, scaleTransitionTime).SetUpdate(true).OnComplete(ResetScale);
         }
         else
         {
@@ -184,16 +184,19 @@ public class ButtonJiggle : MonoBehaviour
     }
     void ResetScale()
     {
-        if (shrinkToZeroTween != null)
+        /*if (shrinkToZeroTween != null)
             if (shrinkToZeroTween.IsActive())
                 if (shrinkToZeroTween.IsPlaying())
-                    return;
+                    return;*/
         if (enlargeTween != null)
             enlargeTween.Kill();
         if (shrinkTween != null)
             shrinkTween.Kill();
-        if (resetTween  != null) 
+        if (resetTween != null) 
             resetTween.Kill();
+        if (shrinkToZeroTween != null)
+            shrinkToZeroTween.Kill();
+
 
         isScaled = false;
 
