@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using GUPS.AntiCheat.Protected;
 //using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public class HoldTetromino : MonoBehaviour
@@ -21,7 +22,8 @@ public class HoldTetromino : MonoBehaviour
     public AudioClip cleanseReadySound;
     public AudioClip cleanseActivateSound;
     //private bool cleanseReady = false;
-    public int cleanseRecharge = 0;
+    public ProtectedInt32 cleanseRechargeMax = 150;
+    private ProtectedInt32 cleanseRechargeCount = 0;
     //int manualTileSolveStreak = 0;
     public AudioClip holdSwitchSound;
     public AudioClip holdFailedSound;
@@ -35,6 +37,8 @@ public class HoldTetromino : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        if (cleanseProgressBar != null)
+            cleanseProgressBar.maximum = cleanseRechargeMax;
     }
 
     // Update is called once per frame
@@ -59,7 +63,14 @@ public class HoldTetromino : MonoBehaviour
                 cleanseReady = true;
             }*/
         }
-        
+
+        if (IsHeldTetrominoCleansed())
+            UpdateProgressBar();
+        else
+        {
+            if (cleanseProgressBar.transform.localScale.x <= 0)
+                UpdateProgressBar();
+        }
         /*else
         {
             if (cleanseReady)
@@ -213,7 +224,7 @@ public class HoldTetromino : MonoBehaviour
     bool CleanseIsPossible()
     {
         // Don't allow Cleanse if player doesn't have enough edge tiles to spend
-        if (cleanseRecharge < 100)
+        if (cleanseRechargeCount < cleanseRechargeMax)
             return false;
 
         if (heldTetromino == null)
@@ -266,7 +277,7 @@ public class HoldTetromino : MonoBehaviour
         }
         
         gm.AddScore(250, "Binding Cleanse", 2);
-        cleanseRecharge = 0;
+        cleanseRechargeCount = 0;
         if (cleanseProgressBar != null)
         {
             cleanseProgressBar.current = 0;
@@ -288,7 +299,7 @@ public class HoldTetromino : MonoBehaviour
         UpdateProgressBar();
     }
 
-    public void AddToCleanseRecharge()//bool isPerfect, bool isEasyTile = false)
+    public void AddToCleanseRecharge(int amount)//bool isPerfect, bool isEasyTile = false)
     {
         // Scoring
         /*if (manualTileSolveStreak < 100)
@@ -298,10 +309,10 @@ public class HoldTetromino : MonoBehaviour
         if (!IsHeldTetrominoCleansed())
         {
             // Cleanse Recharge
-            if (cleanseRecharge < 100)
-                cleanseRecharge++;
+            if (cleanseRechargeCount < cleanseRechargeMax)
+                cleanseRechargeCount += amount;
             if (cleanseProgressBar != null)
-                cleanseProgressBar.current = cleanseRecharge;
+                cleanseProgressBar.current = cleanseRechargeCount;
         }
         
     }

@@ -1895,11 +1895,13 @@ public class GameManager : MonoBehaviour
 
     public float GetRowHeightPointModifier(int rowHeight)
     {
-        if (rowHeight > 16)
+        float adjustedHeight = (rowHeight / 20f) * (sizeY - 4);
+
+        if (adjustedHeight > 16)
             return 1.75f;
-        else if (rowHeight > 11)
+        else if (adjustedHeight > 11)
             return 1.5f;
-        else if (rowHeight > 6)
+        else if (adjustedHeight > 6)
             return 1.25f;
         
         return 1;

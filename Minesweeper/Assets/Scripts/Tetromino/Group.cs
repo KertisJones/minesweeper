@@ -7,6 +7,7 @@ public class Group : MonoBehaviour
 {
     GameManager gm;
     private InputManager inputManager;
+    HoldTetromino holdTetromino;
 
     public enum TetrominoType // your custom enumeration
     {
@@ -265,6 +266,7 @@ public class Group : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        holdTetromino = GameObject.FindGameObjectWithTag("Hold").GetComponent<HoldTetromino>();
 
         UpdateInputValues();        
 
@@ -825,7 +827,7 @@ public class Group : MonoBehaviour
         isFalling = false;
         isLocking = false;
         
-        SetTileOverlayColor(new Color(0.1f, 0.1f, 0.1f, 0.1f));
+        SetTileOverlayColor(new Color(0.1f, 0.1f, 0.1f, 0.1f));        
 
         // Score filled horizontal lines
         rowsFilled = GameManager.scoreFullRows(this.transform);
@@ -845,7 +847,7 @@ public class Group : MonoBehaviour
                 break;
             default:            
                 break;
-        }
+        }        
 
         // Will the next tetromino be safe?
         bool fillWasDifficult = (rowsFilled == 4);
@@ -980,14 +982,14 @@ public class Group : MonoBehaviour
             }            
         }
 
-        int isTetrominoOffScreen = CheckIfTetrominoIsOffScreen();
+        int isTetrominoOffScreen = CheckIfTetrominoIsOffScreen(); // 0=On Screen, 1=Partially off screen, 2=Offscreen 
         // End Game if block is completely off screen
         if (isTetrominoOffScreen == 2)
         {
             // Uh oh, the game's over. Check if the player could be saved by hard clearing solved rows.
             ClearRows(false);            
 
-            isTetrominoOffScreen = CheckIfTetrominoIsOffScreen();
+            isTetrominoOffScreen = CheckIfTetrominoIsOffScreen(); // 0=On Screen, 1=Partially off screen, 2=Offscreen 
             // Check if the tetromino is still off screen. If so, the game is over.
             if (isTetrominoOffScreen == 2)
                 gm.EndGame();
@@ -1018,6 +1020,12 @@ public class Group : MonoBehaviour
             
             gm.piecesPlaced += 1;            
             gm.perfectClearThisRound = false;
+
+            // Cleanse Recharge
+            float adjustedTopHeight = (topHeight / 20f) * (gm.sizeY - 4);
+            holdTetromino.AddToCleanseRecharge(Mathf.Max(1, Mathf.FloorToInt(adjustedTopHeight / 3f)));
+            if (rowsFilled > 0)
+                holdTetromino.AddToCleanseRecharge((rowsFilled + gm.comboLinesFilled) * 5);
 
             // Clear filled horizontal lines
             ClearRows();      
@@ -1118,7 +1126,7 @@ public class Group : MonoBehaviour
     }
 
     // Failsafe in case block is completely off screen
-    int CheckIfTetrominoIsOffScreen() // 0=On Screen, 1=Partially off screen, 2=Offscreen
+    int CheckIfTetrominoIsOffScreen() // 0=On Screen, 1=Partially off screen, 2=Offscreen 
     {
         bool tetrominoIsOffScreen = true;
         bool tetrominoIsPartiallyOnScreen = false;

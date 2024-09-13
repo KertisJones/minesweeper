@@ -155,6 +155,14 @@ public class ButtonJiggle : MonoBehaviour
 
     public void ShrinkToZero(bool autoReset = false)
     {
+        if (shrinkToZeroTween != null)
+            if (shrinkToZeroTween.IsActive())
+                if (shrinkToZeroTween.IsPlaying())
+                {
+                    //Debug.Log("Shrink to Zero...DENIED!");
+                    return;
+                }            
+        //Debug.Log("Shrink to Zero. AutoReset=" + autoReset);
         isScaled = true;
 
         if (autoReset)
@@ -188,6 +196,7 @@ public class ButtonJiggle : MonoBehaviour
             if (shrinkToZeroTween.IsActive())
                 if (shrinkToZeroTween.IsPlaying())
                     return;*/
+        
         if (enlargeTween != null)
             enlargeTween.Kill();
         if (shrinkTween != null)
@@ -195,7 +204,18 @@ public class ButtonJiggle : MonoBehaviour
         if (resetTween != null) 
             resetTween.Kill();
         if (shrinkToZeroTween != null)
-            shrinkToZeroTween.Kill();
+        {
+            if (shrinkToZeroTween.IsActive())
+                if (shrinkToZeroTween.IsPlaying())
+                {
+                    //Debug.Log("ResetScale... onComplete=" + shrinkToZeroTween.onComplete);
+                    if (shrinkToZeroTween.onComplete != null)
+                        shrinkToZeroTween.Kill();
+                    else
+                        return;
+                }            
+        }
+        //Debug.Log("ResetScale");
 
 
         isScaled = false;

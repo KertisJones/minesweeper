@@ -96,7 +96,7 @@ public class Tile : MonoBehaviour
     [HideInInspector]
     public GameManager gm;
     Camera cam;
-    HoldTetromino holdTetromino;
+    //HoldTetromino holdTetromino;
     GameModifiers gameMods;
     [HideInInspector]
     public Group group;
@@ -123,7 +123,7 @@ public class Tile : MonoBehaviour
         text = GetComponentInChildren<TextMeshProUGUI>();
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        holdTetromino = GameObject.FindGameObjectWithTag("Hold").GetComponent<HoldTetromino>();
+        //holdTetromino = GameObject.FindGameObjectWithTag("Hold").GetComponent<HoldTetromino>();
         gameMods = gm.gameMods;
                 
         group = GetComponentInParent<Group>();
@@ -512,7 +512,7 @@ public class Tile : MonoBehaviour
 
                 if (!isFailedToChord)
                 {
-                    holdTetromino.AddToCleanseRecharge();//.AddToManualSolveStreak();
+                    //holdTetromino.AddToCleanseRecharge(); // Cleanse works with piece locking now... 
                     if (isManual)
                         gm.AddRevealStreakManual();
                 }
