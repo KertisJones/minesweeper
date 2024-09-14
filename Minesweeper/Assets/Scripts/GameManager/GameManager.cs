@@ -295,7 +295,7 @@ public class GameManager : MonoBehaviour
         if (pCallback.m_bActive != 0)
         {
             //Debug.Log("Steam Overlay has been activated");
-            if (!isPaused)
+            if (!isPaused && !isTitleMenu)
                 Pause(true);
         }
         /*else
