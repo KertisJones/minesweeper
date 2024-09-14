@@ -259,7 +259,6 @@ public class GameManager : MonoBehaviour
         inputManager.escapePress.started -= _ => PressEscape();
         inputManager.restartPress.started -= _ => PressRestart();
         inputManager.hardClearPress.started -= _ => PressHardClear();
-        Debug.Log("DISABLED GAME MANAGER??");
     }
 
     void OnDestroy()

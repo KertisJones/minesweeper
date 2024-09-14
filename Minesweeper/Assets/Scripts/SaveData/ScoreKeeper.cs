@@ -43,7 +43,7 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
         demoSteam
     }
     public static VersionType versionType = VersionType.demoOnline;*/
-    public static bool versionIsDRMFree = true; // False=Steam, True=Itch
+    public static bool versionIsDRMFree = false; // False=Steam, True=Itch
     public static bool versionIsDemo = true; // 
     public static bool versionIsBeta = false;
     //CameraShake cameraShake;
