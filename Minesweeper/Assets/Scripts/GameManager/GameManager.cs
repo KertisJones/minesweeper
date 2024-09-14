@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
 {
     private Camera mainCamera;
     [HideInInspector]
-    public ScoreKeeper scoreKeeper;
-    [HideInInspector]
     public GameModifiers gameMods;
     [HideInInspector]
     public SoundManager soundManager;
@@ -202,16 +200,15 @@ public class GameManager : MonoBehaviour
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         inputManager = InputManager.Instance;
         soundManager = GetComponent<SoundManager>();
-        scoreKeeper = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>();
-        gameMods = scoreKeeper.GetComponent<GameModifiers>();
+        gameMods = ScoreKeeper.Instance.GetComponent<GameModifiers>();
         tetrominoSpawner = GameObject.FindObjectOfType<TetrominoSpawner>();
         demoTitleScreen = GameObject.FindObjectOfType<DemoTitleScreen>();
 
-        highScoreStarting = scoreKeeper.bestScore;
-        bestTodayStarting = scoreKeeper.bestScoreToday;
-        highScoreEndlessStarting = scoreKeeper.bestScoreEndless;
+        highScoreStarting = ScoreKeeper.Instance.bestScore;
+        bestTodayStarting = ScoreKeeper.Instance.bestScoreToday;
+        highScoreEndlessStarting = ScoreKeeper.Instance.bestScoreEndless;
 
-        scoreKeeper.runs += 1;
+        ScoreKeeper.Instance.runs += 1;
 
         textType = gameMods.minesweeperTextType;
 
@@ -262,6 +259,7 @@ public class GameManager : MonoBehaviour
         inputManager.escapePress.started -= _ => PressEscape();
         inputManager.restartPress.started -= _ => PressRestart();
         inputManager.hardClearPress.started -= _ => PressHardClear();
+        Debug.Log("DISABLED GAME MANAGER??");
     }
 
     void OnDestroy()
@@ -1361,7 +1359,7 @@ public class GameManager : MonoBehaviour
             TriggerOnResetStartingPositionsEvent();
 
         if (!isTitleMenu)
-            scoreKeeper.SaveCurrentGame();
+            ScoreKeeper.Instance.SaveCurrentGame();
         
         soundManager.DisablePauseFilter();
         soundManager.StopMultiplierDrain();
@@ -1780,12 +1778,12 @@ public class GameManager : MonoBehaviour
         marathonOverMenu.SetActive(true);
         if (!isTitleMenu)
         {
-            scoreKeeper.SaveCurrentGame();
+            ScoreKeeper.Instance.SaveCurrentGame();
 
             if (gameMods.detailedTimer)
             {
-                Debug.Log(GetTime() + ": ...best? " + scoreKeeper.bestTimeToday + " isEndless=" + isEndless);
-                if (scoreKeeper.bestTime == GetTime())
+                Debug.Log(GetTime() + ": ...best? " + ScoreKeeper.Instance.bestTimeToday + " isEndless=" + isEndless);
+                if (ScoreKeeper.Instance.bestTime == GetTime())
                 {
                     Debug.Log("Best Time! " + GetTime());
                     GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.4f, 0), Quaternion.identity, guiCanvas.transform);
@@ -1793,7 +1791,7 @@ public class GameManager : MonoBehaviour
                     floater.GetComponent<FloatingText>().duration = 3f;
                     soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);
                 }
-                else if (scoreKeeper.bestTimeToday == GetTime() && scoreKeeper.runs > 1)
+                else if (ScoreKeeper.Instance.bestTimeToday == GetTime() && ScoreKeeper.Instance.runs > 1)
                 {
                     Debug.Log("Best Time Today! " + GetTime());
                     soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);

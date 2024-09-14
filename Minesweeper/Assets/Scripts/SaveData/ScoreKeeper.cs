@@ -5,8 +5,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using GUPS.AntiCheat.Protected;
 
+[RequireComponent(typeof(GameModifiers))]
 public class ScoreKeeper : MonoBehaviour, ISaveable
 {
+    protected static ScoreKeeper s_instance;
+    public static ScoreKeeper Instance
+    {
+        get
+        {
+            if (s_instance == null)
+            {
+                return new GameObject("ScoreKeeper").AddComponent<ScoreKeeper>();
+            }
+            else
+            {
+                return s_instance;
+            }
+        }
+    }
+
     public ProtectedFloat bestScore;
     public ProtectedFloat bestScoreToday = 0;
     public ProtectedFloat bestScoreEndless;
@@ -21,31 +38,37 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
     /*public enum VersionType
     {
         standard,
-        beta,
+        beta,j
         demoOnline,
         demoSteam
     }
     public static VersionType versionType = VersionType.demoOnline;*/
-    public static bool versionIsDRMFree = false; // False=Steam, True=Itch
+    public static bool versionIsDRMFree = true; // False=Steam, True=Itch
     public static bool versionIsDemo = true; // 
     public static bool versionIsBeta = false;
     //CameraShake cameraShake;
     // Start is called before the first frame update
     void Awake()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("ScoreKeeper");
-        DOTween.SetTweensCapacity(2000, 100);
+        // Only one instance of SteamManager at a time!
+        if (s_instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        s_instance = this;
+        DontDestroyOnLoad(this.gameObject);
 
+        /*GameObject[] objs = GameObject.FindGameObjectsWithTag("ScoreKeeper");
         if (objs.Length > 1)
         {
             Destroy(this.gameObject);
-        }
+        }*/
 
         //masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
 
-        ResetScoreKeeper();
-
-        DontDestroyOnLoad(this.gameObject);
+        DOTween.SetTweensCapacity(2000, 100);
+        ResetScoreKeeper();        
     }
 
     public void ResetScoreKeeper() 

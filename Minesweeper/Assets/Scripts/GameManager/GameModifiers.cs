@@ -61,8 +61,7 @@ public class GameModifiers : MonoBehaviour
     
     public void SetGameToThisMode()
     {
-        ScoreKeeper scoreKeeper = GameObject.FindGameObjectWithTag("ScoreKeeper").GetComponent<ScoreKeeper>();
-        GameModifiers gameMods = scoreKeeper.GetComponent<GameModifiers>();
+        GameModifiers gameMods = ScoreKeeper.Instance.GetComponent<GameModifiers>();
 
         gameMods.gameModeName = gameModeName;
         gameMods.gameModeDisplayName = gameModeDisplayName;
@@ -95,6 +94,6 @@ public class GameModifiers : MonoBehaviour
         gameMods.minesweeperTextType = minesweeperTextType;
         gameMods.showTitle = showTitle;
 
-        scoreKeeper.ResetScoreKeeper();
+        ScoreKeeper.Instance.ResetScoreKeeper();
     }
 }

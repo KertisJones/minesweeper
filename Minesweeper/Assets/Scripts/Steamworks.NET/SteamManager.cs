@@ -26,7 +26,7 @@ public class SteamManager : MonoBehaviour {
     protected static bool s_EverInitialized = false;
 
 	protected static SteamManager s_instance;
-	protected static SteamManager Instance {
+	public static SteamManager Instance {
 		get {
 			if (s_instance == null) {
 				return new GameObject("SteamManager").AddComponent<SteamManager>();
@@ -45,6 +45,9 @@ public class SteamManager : MonoBehaviour {
 	}
 
 	protected SteamAPIWarningMessageHook_t m_SteamAPIWarningMessageHook;
+
+	public AchievementManager achievementManager;
+	public LeaderboardManager leaderboardManager;
 
 	[AOT.MonoPInvokeCallback(typeof(SteamAPIWarningMessageHook_t))]
 	protected static void SteamAPIDebugTextHook(int nSeverity, System.Text.StringBuilder pchDebugText) {
@@ -99,7 +102,7 @@ public class SteamManager : MonoBehaviour {
 			// See the Valve documentation for more information: https://partner.steamgames.com/doc/sdk/api#initialization_and_shutdown
 			if (!ScoreKeeper.versionIsDRMFree)
 			{
-                if (SteamAPI.RestartAppIfNecessary((AppId_t)2918460)) //(AppId_t.Invalid))
+                if (SteamAPI.RestartAppIfNecessary(GetSteamID())) //(AppId_t.Invalid))
                 {
                     Debug.Log("[Steamworks.NET] Shutting down because RestartAppIfNecessary returned true. Steam will restart the application.");
 
@@ -132,7 +135,10 @@ public class SteamManager : MonoBehaviour {
 		}
 
 		s_EverInitialized = true;
-	}
+
+        achievementManager = GetComponent<AchievementManager>();
+		leaderboardManager = GetComponent<LeaderboardManager>();
+    }
 
 	// This should only ever get called on first load and after an Assembly reload, You should never Disable the Steamworks Manager yourself.
 	protected virtual void OnEnable() {
@@ -177,6 +183,23 @@ public class SteamManager : MonoBehaviour {
 		// Run Steam client callbacks
 		SteamAPI.RunCallbacks();
 	}
+
+	public static AppId_t GetSteamID()
+	{
+        if (!ScoreKeeper.versionIsDRMFree)
+        {
+            if (ScoreKeeper.versionIsDemo) // Tetrisweeper Demo ID - 3219610
+            {
+                return (AppId_t)3219610;
+            }
+            else // Tetrisweeper ID - 2918460
+            {
+				return (AppId_t)2918460;
+			}
+        }
+		
+		return AppId_t.Invalid;
+    }
 #else
 	public static bool Initialized {
 		get {

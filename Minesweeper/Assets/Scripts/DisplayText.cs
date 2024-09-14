@@ -10,7 +10,6 @@ using DG.Tweening;
 public class DisplayText : MonoBehaviour
 {
     GameManager gm;
-    ScoreKeeper sk;
     GameModifiers gameMods;
     /*float timer = 0.0f;
     int colorIndex = 0;
@@ -46,7 +45,7 @@ public class DisplayText : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        sk = gm.scoreKeeper;
+        //ScoreKeeper.Instance = gm.scoreKeeper;
         gameMods = gm.gameMods;
 
         startColor = this.GetComponent<TextMeshProUGUI>().color;
@@ -86,9 +85,9 @@ public class DisplayText : MonoBehaviour
             else
                 this.GetComponent<TextMeshProUGUI>().text = gm.GetScore().ToString();
 
-            if (sk.bestScoreToday <= gm.GetScore() && sk.runs > 1 && sk.bestScoreToday > 0)
+            if (ScoreKeeper.Instance.bestScoreToday <= gm.GetScore() && ScoreKeeper.Instance.runs > 1 && ScoreKeeper.Instance.bestScoreToday > 0)
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
-            if (sk.bestScore <= gm.GetScore() && sk.bestScore > 0)
+            if (ScoreKeeper.Instance.bestScore <= gm.GetScore() && ScoreKeeper.Instance.bestScore > 0)
             {
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                 this.GetComponent<VertexColorCyclerGradient>().enabled = true;
@@ -107,7 +106,7 @@ public class DisplayText : MonoBehaviour
         else if (displayType == TextType.scoreTitle)
         {
             string localizedText = GameManager.GetTranslation("UIText", "GUI Score"); // "High Score"
-            if (sk.bestScore <= gm.GetScore() && sk.bestScore > 0)
+            if (ScoreKeeper.Instance.bestScore <= gm.GetScore() && ScoreKeeper.Instance.bestScore > 0)
             {
                 this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
             }
@@ -207,38 +206,38 @@ public class DisplayText : MonoBehaviour
                 // Display Best Score Today while your current score is under Best Score Today, unless it's the first run of the game.
                 // Otherwise, display your total high score
 
-                /*if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
-                    this.GetComponent<TextMeshProUGUI>().text = sk.bestScoreToday.ToString("#,#");*/
-                if (sk.bestScore > 0) // Best Score Total
-                    this.GetComponent<TextMeshProUGUI>().text = ((float)sk.bestScore).ToString("#,#");
+                /*if (ScoreKeeper.Instance.bestScoreToday > 0 && ScoreKeeper.Instance.runs > 1 && ScoreKeeper.Instance.bestScoreToday > gm.GetScore()) // Best Score Today
+                    this.GetComponent<TextMeshProUGUI>().text = ScoreKeeper.Instance.bestScoreToday.ToString("#,#");*/
+                if (ScoreKeeper.Instance.bestScore > 0) // Best Score Total
+                    this.GetComponent<TextMeshProUGUI>().text = ((float)ScoreKeeper.Instance.bestScore).ToString("#,#");
                 else // Hi Score = 0 
-                    this.GetComponent<TextMeshProUGUI>().text = sk.bestScore.ToString();
+                    this.GetComponent<TextMeshProUGUI>().text = ScoreKeeper.Instance.bestScore.ToString();
 
-                if (sk.bestScore <= gm.GetScore() && sk.bestScore > 0)
+                if (ScoreKeeper.Instance.bestScore <= gm.GetScore() && ScoreKeeper.Instance.bestScore > 0)
                 {
                     this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                     this.GetComponent<VertexColorCyclerGradient>().enabled = true;
                 }
-                //if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday <= gm.GetScore())
+                //if (ScoreKeeper.Instance.bestScoreToday > 0 && ScoreKeeper.Instance.runs > 1 && ScoreKeeper.Instance.bestScoreToday <= gm.GetScore())
                 //this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
             }
             else // 40L sprint mode
             {
-                string bestTimeStr = GetTimeString(sk.bestTime);
-                //string bestTimeTodayStr = GetTimeString(sk.bestTimeToday);
+                string bestTimeStr = GetTimeString(ScoreKeeper.Instance.bestTime);
+                //string bestTimeTodayStr = GetTimeString(ScoreKeeper.Instance.bestTimeToday);
 
                 //this.GetComponent<TextMeshProUGUI>().text = bestTimeStr + ", " + bestTimeTodayStr;
 
                 this.GetComponent<TextMeshProUGUI>().text = bestTimeStr;
 
-                if (sk.bestTime >= gm.GetTime() && sk.bestTime < Mathf.Infinity)
+                if (ScoreKeeper.Instance.bestTime >= gm.GetTime() && ScoreKeeper.Instance.bestTime < Mathf.Infinity)
                 {
                     this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                     this.GetComponent<VertexColorCyclerGradient>().enabled = true;
                 }
-                //if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTimeToday >= gm.GetTime())
+                //if (ScoreKeeper.Instance.bestTimeToday < Mathf.Infinity && ScoreKeeper.Instance.runs > 1 && ScoreKeeper.Instance.bestTimeToday >= gm.GetTime())
                 //this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
-                /*if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTime < gm.GetTime()) // Best Score Today
+                /*if (ScoreKeeper.Instance.bestTimeToday < Mathf.Infinity && ScoreKeeper.Instance.runs > 1 && ScoreKeeper.Instance.bestTime < gm.GetTime()) // Best Score Today
                     this.GetComponent<TextMeshProUGUI>().text = bestTimeTodayStr;*/
 
             }
@@ -248,13 +247,13 @@ public class DisplayText : MonoBehaviour
             string localizedText = GameManager.GetTranslation("UIText", "GUI HighScore"); // "High Score"
             if (!gm.gameMods.detailedTimer || gm.gameMods.timeLimit < Mathf.Infinity) // Normal score mode
             {
-                /*if (sk.bestScoreToday > 0 && sk.runs > 1 && sk.bestScoreToday > gm.GetScore()) // Best Score Today
+                /*if (ScoreKeeper.Instance.bestScoreToday > 0 && ScoreKeeper.Instance.runs > 1 && ScoreKeeper.Instance.bestScoreToday > gm.GetScore()) // Best Score Today
                     localizedText = GameManager.GetTranslation("UIText", "GUI HighScoreBestToday"); // "Best Today"
                 
-                if (sk.bestScoreToday == sk.bestScore)*/
+                if (ScoreKeeper.Instance.bestScoreToday == ScoreKeeper.Instance.bestScore)*/
                 localizedText = GameManager.GetTranslation("UIText", "GUI HighScore"); // "High Score"
 
-                if (sk.bestScore <= gm.GetScore() && sk.bestScore > 0)
+                if (ScoreKeeper.Instance.bestScore <= gm.GetScore() && ScoreKeeper.Instance.bestScore > 0)
                 {
                     this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                 }
@@ -263,12 +262,12 @@ public class DisplayText : MonoBehaviour
             {
                 localizedText = GameManager.GetTranslation("UIText", "GUI HighScoreBestTime"); // "Best Time"
 
-                if (sk.bestTime >= gm.GetTime() && sk.bestTime < Mathf.Infinity)
+                if (ScoreKeeper.Instance.bestTime >= gm.GetTime() && ScoreKeeper.Instance.bestTime < Mathf.Infinity)
                 {
                     this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                 }
 
-                /*if (sk.bestTimeToday < Mathf.Infinity && sk.runs > 1 && sk.bestTime < gm.GetTime()) // Best Score Today
+                /*if (ScoreKeeper.Instance.bestTimeToday < Mathf.Infinity && ScoreKeeper.Instance.runs > 1 && ScoreKeeper.Instance.bestTime < gm.GetTime()) // Best Score Today
                     localizedText = GameManager.GetTranslation("UIText", "GUI HighScoreBestToday"); // "Best Today"*/
             }
             this.GetComponent<TextMeshProUGUI>().text = localizedText + "";
