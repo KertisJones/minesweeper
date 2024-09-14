@@ -64,12 +64,15 @@ public class HoldTetromino : MonoBehaviour
             }*/
         }
 
-        if (IsHeldTetrominoCleansed())
-            UpdateProgressBar();
-        else
+        if (cleanseProgressBar != null)
         {
-            if (cleanseProgressBar.transform.localScale.x <= 0)
+            if (IsHeldTetrominoCleansed())
                 UpdateProgressBar();
+            else
+            {
+                if (cleanseProgressBar.transform.localScale.x <= 0)
+                    UpdateProgressBar();
+            }
         }
         /*else
         {

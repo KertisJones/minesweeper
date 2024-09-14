@@ -13,7 +13,7 @@ using UnityEngine.Localization.Settings;
 using static GameManager;
 using UnityEngine.Localization.Tables;
 using GUPS.AntiCheat.Protected;
-
+using Steamworks;
 public class GameManager : MonoBehaviour
 {
     private Camera mainCamera;
@@ -185,6 +185,9 @@ public class GameManager : MonoBehaviour
     public delegate void NewPieceEvent();
     public static event NewPieceEvent OnNewPieceEvent;
 
+    // Steamworks
+    protected Callback<GameOverlayActivated_t> m_GameOverlayActivated;
+
     private void OnApplicationQuit() 
     {
         DOTween.KillAll();
@@ -247,6 +250,12 @@ public class GameManager : MonoBehaviour
         inputManager.escapePress.started += _ => PressEscape();
         inputManager.restartPress.started += _ => PressRestart();
         inputManager.hardClearPress.started += _ => PressHardClear();
+
+        if (SteamManager.Initialized)
+        {
+            m_GameOverlayActivated = Callback<GameOverlayActivated_t>.Create(OnGameOverlayActivated);
+        }
+
     }
     void OnDisable()
     {
@@ -284,6 +293,20 @@ public class GameManager : MonoBehaviour
         previousTetromino = null;
         //currentTetromino = null;
     }
+    private void OnGameOverlayActivated(GameOverlayActivated_t pCallback)
+    {
+        if (pCallback.m_bActive != 0)
+        {
+            //Debug.Log("Steam Overlay has been activated");
+            if (!isPaused)
+                Pause(true);
+        }
+        /*else
+        {
+            Debug.Log("Steam Overlay has been closed");
+        }*/
+    }
+
     #endregion
 
     // Update is called once per frame

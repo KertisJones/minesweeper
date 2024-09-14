@@ -67,7 +67,11 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
             if (GameObject.FindGameObjectWithTag("GameController") != null)
                 gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         if (musicSource == null)
-            musicSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
+            if (GameObject.FindGameObjectWithTag("Audio") != null)
+                musicSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
+        
+        if (gm == null)
+            return;
 
         if (!gm.isTitleMenu)
         {
