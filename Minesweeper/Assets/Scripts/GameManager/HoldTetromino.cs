@@ -311,6 +311,8 @@ public class HoldTetromino : MonoBehaviour
             // Cleanse Recharge
             if (cleanseRechargeCount < cleanseRechargeMax)
                 cleanseRechargeCount += amount;
+            cleanseRechargeCount = Mathf.Min(cleanseRechargeMax, cleanseRechargeCount);
+
             if (cleanseProgressBar != null)
                 cleanseProgressBar.current = cleanseRechargeCount;
         }
