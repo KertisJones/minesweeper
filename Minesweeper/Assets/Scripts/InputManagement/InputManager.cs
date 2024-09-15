@@ -254,6 +254,8 @@ public class InputManager : MonoBehaviour //: Singleton.Behaviour<InputManager>
             return;
 
         statusText.text = $"Press a {actionToRebind.expectedControlType}";
+        if (excludeMouse)
+            statusText.text = $"Press a Key";
 
         actionToRebind.Disable();
 
