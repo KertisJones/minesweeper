@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class ButtonJiggle : MonoBehaviour
 {
+    [SerializeField]
     private Vector3 startScale;
     private Vector3 targetScaleEnlarge;
     private Vector3 targetScaleShrink;
@@ -40,7 +41,7 @@ public class ButtonJiggle : MonoBehaviour
         GameManager.OnKillTweenEvent -= Reset;
     }
 
-    void Start()
+    void Awake()
     {
         SetNewStartingValues();
     }
@@ -153,8 +154,9 @@ public class ButtonJiggle : MonoBehaviour
 
 
 
-    public void ShrinkToZero(bool autoReset = false)
+    public void ShrinkToZero(bool autoReset = false, float overrideTransitionTime = -1)
     {
+        //Debug.Log(name + " Shrink to Zero!");
         if (shrinkToZeroTween != null)
             if (shrinkToZeroTween.IsActive())
                 if (shrinkToZeroTween.IsPlaying())
@@ -164,23 +166,25 @@ public class ButtonJiggle : MonoBehaviour
                 }            
         //Debug.Log("Shrink to Zero. AutoReset=" + autoReset);
         isScaled = true;
+        if (overrideTransitionTime < 0)
+            overrideTransitionTime = scaleTransitionTime;
 
         if (autoReset)
         {
-            shrinkToZeroTween = this.transform.DOBlendableScaleBy(transform.localScale * -1, scaleTransitionTime).SetUpdate(true).OnComplete(ResetScale);
+            shrinkToZeroTween = this.transform.DOBlendableScaleBy(transform.localScale * -1, overrideTransitionTime).SetUpdate(true).OnComplete(ResetScale);
         }
         else
         {
-            shrinkToZeroTween = this.transform.DOBlendableScaleBy(transform.localScale * -1, scaleTransitionTime).SetUpdate(true);
+            shrinkToZeroTween = this.transform.DOBlendableScaleBy(transform.localScale * -1, overrideTransitionTime).SetUpdate(true);
         }
     }
 
     public void Reset()
-    {
+    {        
         //if (transform == null)
-            //return;
+        //return;
         //animate on pointer exit
-        
+
         ResetPosition();
         ResetScale();
         
@@ -220,6 +224,7 @@ public class ButtonJiggle : MonoBehaviour
 
         isScaled = false;
 
+        //Debug.Log(name + " ResetScale ButtonJiggle! " + startScale + ", " + transform.localScale);
         //transform.localScale = new Vector3(Mathf.Max(0, transform.localScale.x), Mathf.Max(0, transform.localScale.y), Mathf.Max(0, transform.localScale.z));
         resetTween = this.transform.DOBlendableScaleBy(startScale - transform.localScale, scaleTransitionTime).SetUpdate(true);
     }

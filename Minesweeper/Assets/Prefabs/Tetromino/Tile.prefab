@@ -642,6 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebf89b859a146f47b89a7c2c749a6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startScale: {x: 0, y: 0, z: 0}
   scaleMultiplierEnlarge: 2.5
   scaleMultiplierShrink: 1
   scaleTransitionTime: 0.15
@@ -651,6 +652,7 @@ MonoBehaviour:
   jiggleIsEnabled: 1
   reorderToLastSibling: 0
   startAtScaleZero: 0
+  isScaled: 0
 --- !u!114 &2370020835508928947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,6 +2063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebf89b859a146f47b89a7c2c749a6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startScale: {x: 0.251, y: 0.251, z: 1}
   scaleMultiplierEnlarge: 1.1
   scaleMultiplierShrink: 0.9
   scaleTransitionTime: 0.15
@@ -2069,7 +2072,8 @@ MonoBehaviour:
   shrinkSound: {fileID: 0}
   jiggleIsEnabled: 1
   reorderToLastSibling: 0
-  startAtScaleZero: 0
+  startAtScaleZero: 1
+  isScaled: 0
 --- !u!82 &981390867651859973
 AudioSource:
   m_ObjectHideFlags: 0

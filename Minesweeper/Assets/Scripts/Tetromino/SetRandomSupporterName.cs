@@ -28,6 +28,7 @@ public class SetRandomSupporterName : MonoBehaviour
         "Random 595",
         "Stickman comic", // Playtesting maniac
         // Moderators
+        "jemmr",
         "JMaxchill",
         "Kusane",
         "Niv",

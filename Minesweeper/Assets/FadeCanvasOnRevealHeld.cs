@@ -57,7 +57,7 @@ public class FadeCanvasOnRevealHeld : MonoBehaviour
             return;
 
         hideTween = DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 0, fadeTime);
-         
+        hideTween.SetUpdate(true);
     }
 
     public void ShowCanvas()
@@ -70,6 +70,7 @@ public class FadeCanvasOnRevealHeld : MonoBehaviour
                 return;
         
         showTween = DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 1, fadeTime);
+        showTween.SetUpdate(true);
     }
 
     public bool IsPointerOverUIObject()

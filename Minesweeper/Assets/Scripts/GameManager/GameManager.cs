@@ -115,6 +115,9 @@ public class GameManager : MonoBehaviour
     public ProtectedInt32 numFrozenTiles = 0;
     public ProtectedInt32 numWetTiles = 0;
 
+    [HideInInspector]
+    public bool isHitstopPaused = false;
+
     // Options
     /*public enum WallType // your custom enumeration
     {
@@ -1035,7 +1038,7 @@ public class GameManager : MonoBehaviour
     public static int deleteFullRows(bool getMultiplier = true, int rowsFilled = 0, GameObject tetrominoThatJustLocked = null) //, bool isTriggeredByLock = false)
     {
         GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        if (gm.isGameOver)
+        if (gm.isGameOver || gm.isHitstopPaused)
             return 0;
         
         int rowsCleared = 0;
@@ -1080,16 +1083,27 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // Delete the finished Rows
+        // Hitstop pause
+        if (rowsCleared > 0)
+        {
+            if (!gm.isHitstopPaused)
+            {
+                Time.timeScale = 0f;
+                gm.isHitstopPaused = true;
+            }
+            //FADEOUT TODO
+            gm.StartCoroutine(gm.DeleteFullRowsDelayedHelper(0.15f, rowsCleared, rowsFilled, instantLinesweepsCleared));
+        }
+        /*// Delete the finished Rows
         for (int y = 0; y < gm.sizeY; ++y)
         {
             if (isRowSolved(y))
             {
-                deleteRow(y);
+                deleteRow(y);                
                 decreaseRowsAbove(y + 1);
                 --y;
             }
-        }        
+        }       */ 
 
         if (rowsCleared > 0)
         {
@@ -1147,13 +1161,31 @@ public class GameManager : MonoBehaviour
             //Debug.Log("Is Difficult sweep? " + isDifficultSweep);
             gm.previousClearWasDifficultSweep = isDifficultSweep;
         }
-
-        gm.CheckForPerfectClear(rowsCleared, rowsFilled, instantLinesweepsCleared > 0);
-        GameManager.markSolvedRows();
+        
         if (gm.linesCleared >= gm.linesClearedTarget && gm.isEndless == false) 
             gm.Pause(true, true);
         return rowsCleared;
     }
+
+    IEnumerator DeleteFullRowsDelayedHelper(float duration, int rowsCleared, int rowsFilled, int instantLinesweepsCleared)
+    {
+        yield return new WaitForSecondsRealtime(duration);
+        Time.timeScale = 1f;
+        isHitstopPaused = false;
+        // Delete the finished Rows
+        for (int y = 0; y < sizeY; ++y)
+        {
+            if (isRowSolved(y))
+            {
+                deleteRow(y);
+                decreaseRowsAbove(y + 1);
+                --y;
+            }
+        }
+        CheckForPerfectClear(rowsCleared, rowsFilled, instantLinesweepsCleared > 0);
+        GameManager.markSolvedRows();
+    }
+
 
     private bool ScoreLinesweepHelper(int linesweepsCleared, GameObject tetrominoToCheckForSweeps1, GameObject tetrominoToCheckForSweeps2, bool isInstant, float lineClearMultiplier, bool getMultiplier)
     {
@@ -1532,6 +1564,9 @@ public class GameManager : MonoBehaviour
         {
             if (gameBoard[x][y] != null)
             {
+                gameBoard[x][y].GetComponent<ButtonJiggle>().ShrinkToZero(false);
+
+
                 if (gameBoard[x][y].GetComponent<Tile>().isMine)
                 {
                     //rowScore += 50;
@@ -1849,7 +1884,6 @@ public class GameManager : MonoBehaviour
 #endif
         return LocalizationSettings.StringDatabase.GetLocalizedString(tableName, entryName);*/
     }
-
     #endregion
     #region Extra Helpers
     public void SetGridOpacity()

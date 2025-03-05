@@ -98,6 +98,7 @@ public class Tile : MonoBehaviour
     Camera cam;
     //HoldTetromino holdTetromino;
     GameModifiers gameMods;
+    ButtonJiggle buttonJiggle;
     [HideInInspector]
     public Group group;
 
@@ -116,20 +117,26 @@ public class Tile : MonoBehaviour
             gm.numWetTiles -= 1;
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         //holdTetromino = GameObject.FindGameObjectWithTag("Hold").GetComponent<HoldTetromino>();
         gameMods = gm.gameMods;
-                
+        buttonJiggle = GetComponent<ButtonJiggle>();
+
         group = GetComponentInParent<Group>();
         unrevealedButtonImage = GetComponentInChildren<TileButton>().GetComponent<Image>();
         light = GetComponentInChildren<Light2D>();
+    }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+
+        buttonJiggle.Reset();
         auraOverlayImage.color = unrevealedButtonImage.color;
 
         Vector2 v = GameManager.roundVec2(transform.position);
@@ -145,7 +152,7 @@ public class Tile : MonoBehaviour
         if (isDisplay)
         {
             GetComponentInChildren<Button>().interactable = false;
-            GetComponent<ButtonJiggle>().scaleMultiplierEnlarge = ((GetComponent<ButtonJiggle>().scaleMultiplierEnlarge - 1) * 0.25f) + 1;
+            buttonJiggle.scaleMultiplierEnlarge = ((buttonJiggle.scaleMultiplierEnlarge - 1) * 0.25f) + 1;
             tileBackground.enabled = true;
             if (gm.gameMods.floorAndWallAura != AuraType.normal)
                 SetAura(gm.gameMods.floorAndWallAura);
@@ -547,7 +554,7 @@ public class Tile : MonoBehaviour
             //DetectProximity();
             if (!isForcedReveal)
                 ZeroCascade();
-            GetComponent<ButtonJiggle>().scaleMultiplierEnlarge = ((GetComponent<ButtonJiggle>().scaleMultiplierEnlarge - 1) * 0.25f) + 1;
+            buttonJiggle.scaleMultiplierEnlarge = ((buttonJiggle.scaleMultiplierEnlarge - 1) * 0.25f) + 1;
 
             GetComponentInChildren<Button>().interactable = false;
 
@@ -757,8 +764,8 @@ public class Tile : MonoBehaviour
     private void UpdateButtonJiggle() 
     {
         bool shouldButtonJiggleBeActive = CheckButtonJiggle();
-        if (shouldButtonJiggleBeActive != GetComponent<ButtonJiggle>().jiggleIsEnabled)
-            GetComponent<ButtonJiggle>().jiggleIsEnabled = shouldButtonJiggleBeActive;
+        if (shouldButtonJiggleBeActive != buttonJiggle.jiggleIsEnabled)
+            buttonJiggle.jiggleIsEnabled = shouldButtonJiggleBeActive;
     }
     private bool CheckButtonJiggle()
     {

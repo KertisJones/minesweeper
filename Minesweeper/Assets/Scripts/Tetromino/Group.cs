@@ -143,7 +143,7 @@ public class Group : MonoBehaviour
         buttonLeftHeld = true;
         buttonLeftHeldSecondary = true;
         buttonRightHeld = false;
-        lastLeftButtonDown = Time.time;
+        lastLeftButtonDown = Time.unscaledTime;
         Move(-1);
     }
     void ReleaseLeft()
@@ -165,7 +165,7 @@ public class Group : MonoBehaviour
         buttonRightHeld = true;
         buttonRightHeldSecondary = true;
         buttonLeftHeld = false;
-        lastRightButtonDown = Time.time;
+        lastRightButtonDown = Time.unscaledTime;
         Move(1);
     }
     void ReleaseRight()
@@ -200,11 +200,11 @@ public class Group : MonoBehaviour
         // Don't go any further if this shouldn't be moved 
         if (gm == null)
             return;
-        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling || !gm.isStarted)
+        if (gm.isGameOver || gm.isPaused || isDisplay || isHeld || !isFalling || !gm.isStarted || gm.isHitstopPaused)
             return;
 
         buttonSoftDropHeld = true;
-        lastSoftDropDown = Time.time;
+        lastSoftDropDown = Time.unscaledTime;
         
         AudioSource landSource = gm.soundManager.PlayClip(downSound, 0.9f, true);
         float pitchChange = -0.2f + (0.4f * ((float)bottomHeight / (float)gm.sizeY));
@@ -555,7 +555,7 @@ public class Group : MonoBehaviour
         // Move Left
         if (buttonLeftHeld)
         {
-            if (Time.time - lastLeftButtonDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastMove >= autoRepeatRate)
+            if (Time.unscaledTime - lastLeftButtonDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastMove >= autoRepeatRate)
             {
                 Move(-1);            
                 // ARR 0 moves to maximum distance instead of by framerate
@@ -567,7 +567,7 @@ public class Group : MonoBehaviour
         // Move Right
         if (buttonRightHeld)
         {
-            if (Time.time - lastRightButtonDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastMove >= autoRepeatRate)
+            if (Time.unscaledTime - lastRightButtonDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastMove >= autoRepeatRate)
             {
                 Move(1);
                 // ARR 0 moves to maximum distance instead of by framerate
@@ -578,7 +578,7 @@ public class Group : MonoBehaviour
 
         // Move Downwards and Fall
         // Soft Drop
-        if (buttonSoftDropHeld && Time.time - lastSoftDropDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastFall >= fallSpeed / softDropFactor)
+        if (buttonSoftDropHeld && Time.unscaledTime - lastSoftDropDown >= dasDelay && Time.time - lastDASCutDelay >= dasCutDelay && Time.time - lastFall >= fallSpeed / softDropFactor)
             SoftDrop();
 
         if (Time.time - spawnTime >= 0.05f)
@@ -656,7 +656,7 @@ public class Group : MonoBehaviour
 
     public void Fall(int fallDistance, bool isHardDrop = false, bool isManualFall = true)
     {
-        if (!gm.isStarted)
+        if (!gm.isStarted || gm.isHitstopPaused)
             return;
         if (fallDistance > maximumFallDistance)
             fallDistance = Mathf.Max(maximumFallDistance, 1);
@@ -864,6 +864,11 @@ public class Group : MonoBehaviour
         {
             // Three of the 4 squares diagonally adjacent to the T's center are occupied. The walls and floor surrounding the playfield are considered "occupied".
             int filledDiagonalTiles = 0;
+
+            if (pivot.position.x == 0 || pivot.position.x == gm.sizeX - 1)
+            {
+                filledDiagonalTiles = 2;
+            }
             if (gm.GetGameTile(Mathf.RoundToInt(pivot.position.x + 1), Mathf.RoundToInt(pivot.position.y + 1)) != null)
                 filledDiagonalTiles++;
             if (gm.GetGameTile(Mathf.RoundToInt(pivot.position.x - 1), Mathf.RoundToInt(pivot.position.y - 1)) != null)
@@ -1188,7 +1193,7 @@ public class Group : MonoBehaviour
 
     void Rotate (int dir = -1)
     {
-        if (!gm.isStarted)
+        if (!gm.isStarted || gm.isHitstopPaused)
             return;
 
         Vector3 localPivot = pivotStaticBackup;
@@ -1559,8 +1564,9 @@ public class Group : MonoBehaviour
 
     void Move(float dir = 1) // -1 is Left, 1 is Right
     {
-        if (!gm.isStarted) 
+        if (!gm.isStarted || gm.isHitstopPaused) 
             return;
+
 
         // Modify position
         transform.position += new Vector3(dir, 0, 0);
