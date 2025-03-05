@@ -218,6 +218,10 @@ public class HoldTetromino : MonoBehaviour
         //Debug.Log("HOLD! AddToBoard");
         tetromino.transform.position = tetrominoSpawner.transform.position;
         tetromino.GetComponent<Group>().isHeld = false;
+
+        if (!tetromino.GetComponent<Group>().isValidGridPos())
+            gm.EndGame();
+
         tetromino.GetComponent<Group>().UpdateGrid();
 
         tetrominoSpawner.currentTetromino = tetromino;
