@@ -724,6 +724,15 @@ MonoBehaviour:
     m_Localized: Word lid van onze
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: Lijnverwijderingsvertraging
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: Wanneer ingeschakeld, speelt het verwijderen van lijnen een animatie
+      af die 150 milliseconden duurt. Het spel wordt gedurende deze tijd gepauzeerd.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -737,6 +737,16 @@ MonoBehaviour:
     m_Localized: "Al\u0103tur\u0103-te"
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: "\xCEnt\xE2rziere la \u0219tergerea liniei"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "C\xE2nd este activat, \u0219tergerea liniilor va reda o anima\u021Bie
+      care dureaz\u0103 150 de milisecunde. Jocul este pus pe pauz\u0103 \xEEn acest
+      timp."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -725,6 +725,15 @@ MonoBehaviour:
     m_Localized: Jo e kulupu mi
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: linja weka tenpo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: sina ken lukin e linja weka lon tenpo lili 150. musi li moli lon
+      tenpo ni.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

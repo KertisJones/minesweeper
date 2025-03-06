@@ -735,6 +735,15 @@ MonoBehaviour:
     m_Localized: Csatlakozzon a
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: "Sor t\xF6rl\xE9si k\xE9sleltet\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "Ha enged\xE9lyezve van, a sorok t\xF6rl\xE9se egy 150 milliszekundumos
+      anim\xE1ci\xF3t j\xE1tszik le. A j\xE1t\xE9k ez id\u0151 alatt sz\xFCnetel."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -707,6 +707,14 @@ MonoBehaviour:
     m_Key: GUI Join our
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Key: Menu Line Clear Delay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Key: Tooltip Line Clear Delay
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

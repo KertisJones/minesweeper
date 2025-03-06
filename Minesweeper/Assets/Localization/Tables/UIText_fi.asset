@@ -729,6 +729,15 @@ MonoBehaviour:
     m_Localized: "Liity meid\xE4n"
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: Rivin tyhjennysviive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "Kun k\xE4yt\xF6ss\xE4, rivien tyhjennys n\xE4ytt\xE4\xE4 animaation,
+      joka kest\xE4\xE4 150 millisekuntia. Peli on tauolla t\xE4n\xE4 aikana."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

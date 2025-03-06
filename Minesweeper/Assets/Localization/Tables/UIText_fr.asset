@@ -738,6 +738,16 @@ MonoBehaviour:
     m_Localized: Rejoignez notre
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: "D\xE9lai d\u2019effacement de ligne"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "Lorsqu\u2019il est activ\xE9, l\u2019effacement des lignes joue
+      une animation durant 150 millisecondes. Le jeu est mis en pause pendant ce
+      temps.\n"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

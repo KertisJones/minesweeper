@@ -1092,7 +1092,10 @@ public class GameManager : MonoBehaviour
                 gm.isHitstopPaused = true;
             }
             //FADEOUT TODO
-            gm.StartCoroutine(gm.DeleteFullRowsDelayedHelper(0.15f, rowsCleared, rowsFilled, instantLinesweepsCleared));
+            float delayTime = 0.15f;
+            if (PlayerPrefs.GetInt("LineClearDelayEnabled", 1) == 0) // If Line Clear Delay is disabled, set delay time to 0.
+                delayTime = 0;
+            gm.StartCoroutine(gm.DeleteFullRowsDelayedHelper(delayTime, rowsCleared, rowsFilled, instantLinesweepsCleared));
         }
         /*// Delete the finished Rows
         for (int y = 0; y < gm.sizeY; ++y)

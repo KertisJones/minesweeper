@@ -733,6 +733,15 @@ MonoBehaviour:
     m_Localized: "Bize kat\u0131l"
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: "Sat\u0131r temizleme gecikmesi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "Etkinle\u015Ftirildi\u011Finde, sat\u0131r temizleme 150 milisaniye
+      s\xFCren bir animasyon oynat\u0131r. Bu s\xFCre boyunca oyun duraklat\u0131l\u0131r."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -43,6 +43,7 @@ public class SettingsMenu : MonoBehaviour
     public LinearRangeSlider dasCutDelaySlider;
     public LinearRangeSlider softDropFactorSlider;
     public LinearRangeSlider lineClearPreventMinesweepDelaySlider;
+    public Toggle lineClearDelayToggle;
 
     float autoRepeatRateDefault = 50;
     float delayedAutoShiftDefault = 250;
@@ -54,6 +55,7 @@ public class SettingsMenu : MonoBehaviour
     float dasCutDelay = 17;
     float softDropFactor = 12;
     float lineClearPreventMinesweepDelay = 50;
+    bool lineClearDelayEnabled = true;
 
     void OnEnable()
     {
@@ -94,6 +96,7 @@ public class SettingsMenu : MonoBehaviour
         dasCutDelay = PlayerPrefs.GetFloat("DASCutDelay", dasCutDelayDefault);
         softDropFactor = PlayerPrefs.GetFloat("SoftDropFactor", softDropFactorDefault);
         lineClearPreventMinesweepDelay = PlayerPrefs.GetFloat("LineClearPreventMinesweepDelay", lineClearPreventMinesweepDelay);
+        lineClearDelayEnabled = (PlayerPrefs.GetInt("LineClearDelayEnabled", 1) != 0);
     }
 
     // Start is called before the first frame update
@@ -145,6 +148,9 @@ public class SettingsMenu : MonoBehaviour
 
         lineClearPreventMinesweepDelaySlider.SetAdjustedValue(lineClearPreventMinesweepDelay);
         lineClearPreventMinesweepDelaySlider.slider.onValueChanged.AddListener(delegate { LineClearPreventMinesweepDelaySlider(); });
+
+        lineClearDelayToggle.isOn = lineClearDelayEnabled;
+        lineClearDelayToggle.onValueChanged.AddListener(delegate { LineClearDelayToggle(); });
 
         //lineClearPreventMinesweepDelay
     }
@@ -316,6 +322,12 @@ public class SettingsMenu : MonoBehaviour
         PlayerPrefs.SetFloat("LineClearPreventMinesweepDelay", lineClearPreventMinesweepDelay);
     }
 
+    public void LineClearDelayToggle()
+    {
+        lineClearDelayEnabled = lineClearDelayToggle.isOn;
+        PlayerPrefs.SetInt("LineClearDelayEnabled", (lineClearDelayEnabled ? 1 : 0));
+    }
+
     public void ResetDefaultsHandling()
     {
         /*float autoRepeatRate = 50;
@@ -334,5 +346,9 @@ public class SettingsMenu : MonoBehaviour
         dasCutDelaySlider.SetAdjustedValue(dasCutDelayDefault);
         softDropFactorSlider.slider.value = softDropFactorDefault;
         lineClearPreventMinesweepDelaySlider.SetAdjustedValue(lineClearPreventMinesweepDelayDefault);
+
+        lineClearDelayEnabled = true;
+        lineClearDelayToggle.isOn = true;
+        PlayerPrefs.SetInt("LineClearDelayEnabled", 1);
     }
 }

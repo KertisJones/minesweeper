@@ -738,6 +738,16 @@ MonoBehaviour:
     m_Localized: "\xDAnete a nuestro"
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: "Retraso de limpieza de l\xEDnea"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "Cuando est\xE1 activado, el borrado de l\xEDneas reproducir\xE1
+      una animaci\xF3n que dura 150 milisegundos. El juego se pausa durante este
+      tiempo."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

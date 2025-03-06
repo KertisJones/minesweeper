@@ -727,6 +727,15 @@ MonoBehaviour:
     m_Localized: "G\xE5 med i v\xE5r"
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: "F\xF6rdr\xF6jning av linjerensning"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "N\xE4r aktiverat spelas en animation p\xE5 150 millisekunder upp
+      vid rensning av linjer. Spelet pausas under denna tid."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

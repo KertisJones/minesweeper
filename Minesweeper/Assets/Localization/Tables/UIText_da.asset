@@ -727,6 +727,15 @@ MonoBehaviour:
     m_Localized: Deltag i vores
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: Linjerensningsforsinkelse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "N\xE5r det er aktiveret, vil linjerensninger afspille en animation,
+      der varer 150 millisekunder. Spillet er sat p\xE5 pause i denne tid."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

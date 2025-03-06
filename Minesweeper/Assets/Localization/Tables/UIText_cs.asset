@@ -738,6 +738,15 @@ MonoBehaviour:
     m_Localized: "P\u0159ipojte se k na\u0161emu"
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: "Zpo\u017Ed\u011Bn\xED vymaz\xE1n\xED \u0159\xE1dku"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "Kdy\u017E je povoleno, maz\xE1n\xED \u0159\xE1dk\u016F spust\xED
+      animaci trvaj\xEDc\xED 150 milisekund. B\u011Bhem t\xE9to doby je hra pozastavena."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

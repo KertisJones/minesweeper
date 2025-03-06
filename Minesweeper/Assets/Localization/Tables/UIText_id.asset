@@ -725,6 +725,17 @@ MonoBehaviour:
     m_Localized: Bergabunglah dengan
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: Jeda pembersihan garis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: 'Saat diaktifkan, pembersihan garis akan menampilkan animasi yang
+      berlangsung selama 150 milidetik. Permainan dijeda selama waktu ini.
+
+'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

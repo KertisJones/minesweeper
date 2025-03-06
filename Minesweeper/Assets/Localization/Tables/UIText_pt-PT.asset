@@ -731,6 +731,17 @@ MonoBehaviour:
     m_Localized: Junte-se ao nosso
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: Atraso na limpeza da linha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "Quando ativado, a limpeza de linhas reproduzir\xE1 uma anima\xE7\xE3o
+      que dura 150 milissegundos. O jogo fica pausado durante esse tempo.\nQuando
+      ativado, a limpeza de linhas reproduzir\xE1 uma anima\xE7\xE3o que dura 150
+      milissegundos. O jogo fica pausado durante esse tempo."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

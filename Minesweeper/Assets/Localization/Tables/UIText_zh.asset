@@ -711,6 +711,15 @@ MonoBehaviour:
     m_Localized: "\u52A0\u5165\u6211\u4EEC\u7684"
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: "\u7EBF\u8DEF\u6E05\u9664\u5EF6\u8FDF"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "\u542F\u7528\u540E\uFF0C\u6E05\u9664\u7EBF\u8DEF\u65F6\u4F1A\u64AD\u653E\u4E00\u4E2A\u6301\u7EED
+      150 \u6BEB\u79D2\u7684\u52A8\u753B\u3002\u5728\u6B64\u671F\u95F4\uFF0C\u6E38\u620F\u5C06\u6682\u505C\u3002"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

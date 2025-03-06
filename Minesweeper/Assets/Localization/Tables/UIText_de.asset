@@ -733,6 +733,15 @@ MonoBehaviour:
     m_Localized: Treten Sie unserem
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: "Zeilenl\xF6schverz\xF6gerung"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "Wenn aktiviert, spielt das L\xF6schen von Zeilen eine Animation
+      ab, die 150 Millisekunden dauert. Das Spiel ist w\xE4hrend dieser Zeit pausiert."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

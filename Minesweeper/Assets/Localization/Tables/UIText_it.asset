@@ -730,6 +730,15 @@ MonoBehaviour:
     m_Localized: Unisciti al nostro
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: Ritardo di cancellazione della linea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "Quando abilitato, la cancellazione delle linee riprodurr\xE0 un'animazione
+      della durata di 150 millisecondi. Il gioco \xE8 in pausa durante questo tempo.\n"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

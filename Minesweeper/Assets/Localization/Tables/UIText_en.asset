@@ -726,6 +726,15 @@ MonoBehaviour:
     m_Localized: Join our
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: Line Clear Delay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: While enabled, line clears will play an animation that lasts 150
+      milliseconds. The game is paused during this time.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

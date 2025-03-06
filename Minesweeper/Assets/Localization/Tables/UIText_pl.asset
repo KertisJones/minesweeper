@@ -735,6 +735,15 @@ MonoBehaviour:
     m_Localized: "Do\u0142\u0105cz do naszego"
     m_Metadata:
       m_Items: []
+  - m_Id: 121750644019159040
+    m_Localized: "Op\xF3\u017Anienie czyszczenia linii"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 121750759047946240
+    m_Localized: "Gdy w\u0142\u0105czone, czyszczenie linii odtworzy animacj\u0119
+      trwaj\u0105c\u0105 150 milisekund. W tym czasie gra jest wstrzymana."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
