@@ -945,13 +945,14 @@ public class GameManager : MonoBehaviour
                     return;
         }
         int rowsFilled = 0;
-        if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().previousTetromino != null)
-            rowsFilled = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().previousTetromino.GetComponent<Group>().rowsFilled;
+        if (gm.previousTetromino != null)
+            rowsFilled = gm.previousTetromino.GetComponent<Group>().rowsFilled;
         deleteFullRows(true, rowsFilled);
     }
 
     public void CheckForPerfectClear(int rowsCleared, int rowsFilled, bool isInstantPC)
     {
+        //Debug.Log(rowsCleared + ", " + rowsFilled + ", " + isInstantPC);
         if (perfectClearThisRound)
             return;
         if (linesCleared == 0)
@@ -1189,7 +1190,8 @@ public class GameManager : MonoBehaviour
                 --y;
             }
         }
-        tetrominoThatJustLocked.GetComponent<Group>().CascadeTetromino();
+        if (tetrominoThatJustLocked != null)
+            tetrominoThatJustLocked.GetComponent<Group>().CascadeTetromino();
         CheckForPerfectClear(rowsCleared, rowsFilled, instantLinesweepsCleared > 0);
         GameManager.markSolvedRows();
     }
