@@ -1090,7 +1090,7 @@ public class Group : MonoBehaviour
         }
     }
 
-    void CascadeTetromino()
+    public void CascadeTetromino()
     {
         List<Tile> children = GetChildTiles();
         //Debug.Log(children.Count);

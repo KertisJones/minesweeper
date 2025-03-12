@@ -1098,7 +1098,7 @@ public class GameManager : MonoBehaviour
             float delayTime = 0.15f;
             if (PlayerPrefs.GetInt("LineClearDelayEnabled", 1) == 0) // If Line Clear Delay is disabled, set delay time to 0.
                 delayTime = 0;
-            gm.StartCoroutine(gm.DeleteFullRowsDelayedHelper(delayTime, rowsCleared, rowsFilled, instantLinesweepsCleared));
+            gm.StartCoroutine(gm.DeleteFullRowsDelayedHelper(delayTime, rowsCleared, rowsFilled, instantLinesweepsCleared, tetrominoThatJustLocked));
         }
         /*// Delete the finished Rows
         for (int y = 0; y < gm.sizeY; ++y)
@@ -1168,12 +1168,13 @@ public class GameManager : MonoBehaviour
             gm.previousClearWasDifficultSweep = isDifficultSweep;
         }
         
+        // Did you win?
         if (gm.linesCleared >= gm.linesClearedTarget && gm.isEndless == false) 
             gm.Pause(true, true);
         return rowsCleared;
     }
 
-    IEnumerator DeleteFullRowsDelayedHelper(float duration, int rowsCleared, int rowsFilled, int instantLinesweepsCleared)
+    IEnumerator DeleteFullRowsDelayedHelper(float duration, int rowsCleared, int rowsFilled, int instantLinesweepsCleared, GameObject tetrominoThatJustLocked)
     {
         yield return new WaitForSecondsRealtime(duration);
         Time.timeScale = 1f;
@@ -1188,6 +1189,7 @@ public class GameManager : MonoBehaviour
                 --y;
             }
         }
+        tetrominoThatJustLocked.GetComponent<Group>().CascadeTetromino();
         CheckForPerfectClear(rowsCleared, rowsFilled, instantLinesweepsCleared > 0);
         GameManager.markSolvedRows();
     }
