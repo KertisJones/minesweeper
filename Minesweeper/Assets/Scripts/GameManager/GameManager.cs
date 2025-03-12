@@ -185,6 +185,8 @@ public class GameManager : MonoBehaviour
     public static event KillTweenEvent OnKillTweenEvent;
     public delegate void NewPieceEvent();
     public static event NewPieceEvent OnNewPieceEvent;
+    public delegate void MultiplierEvent();
+    public static event MultiplierEvent OnMultiplierEvent;
 
     // Steamworks
     protected Callback<GameOverlayActivated_t> m_GameOverlayActivated;
@@ -277,6 +279,7 @@ public class GameManager : MonoBehaviour
         OnResetStartingPositionsEvent = null;
         OnKillTweenEvent = null;
         OnNewPieceEvent = null;
+        OnMultiplierEvent = null;
         transform.DOKill();
     }
     void PressEscape()
@@ -1537,6 +1540,8 @@ public class GameManager : MonoBehaviour
         if (GetScoreMultiplier() > highestScoreMultiplier)
             highestScoreMultiplier = GetScoreMultiplier();
         lastMultiplierTick = Time.time;
+
+        TriggerOnMultiplierEvent();
     }
 
     public void ResetScoreMultiplier()
@@ -1948,6 +1953,12 @@ public class GameManager : MonoBehaviour
     {
         if (OnNewPieceEvent != null)
             OnNewPieceEvent();
+    }
+
+    public void TriggerOnMultiplierEvent()
+    {
+        if (OnMultiplierEvent != null)
+            OnMultiplierEvent();
     }
 
     public float GetRowHeightPointModifier(int rowHeight)

@@ -4508,7 +4508,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fe7d916942cc5484ea44fb12a5ec532c, type: 2}
+  - {fileID: 2100000, guid: d841f4886bd34fc42b01528955098210, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4549,7 +4549,7 @@ Transform:
   m_GameObject: {fileID: 762695801}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.34, y: 10.69, z: 2.62}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15100,6 +15100,10 @@ PrefabInstance:
       propertyPath: revealStreakManualProgressBar
       value: 
       objectReference: {fileID: 1599639042}
+    - target: {fileID: 9133358887212656223, guid: e160f486b477575479c8609a53e40a7b, type: 3}
+      propertyPath: scoreMultiplierLimit.fakeValue
+      value: 4900
+      objectReference: {fileID: 0}
     - target: {fileID: 9133358887212656288, guid: e160f486b477575479c8609a53e40a7b, type: 3}
       propertyPath: m_RootOrder
       value: 0

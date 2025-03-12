@@ -1,17 +1,78 @@
 using UnityEngine;
-
+using UnityEngine.UIElements;
+using DG.Tweening;
 public class BackgroundShaderWrapper : MonoBehaviour
 {
     private Material material;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private GameManager gm;
+    private float levelScaledTime = 0;
+    private Color gradiantTempTop = Color.black;
+    private Color gradiantTempBottom = Color.black;
+    void OnEnable()
+    {
+        //GameManager.OnLineClearEvent += _ => LineClear(_);
+        GameManager.OnNewPieceEvent += NewPiece;
+        GameManager.OnMinoLockEvent += LockPiece;
+        //GameManager.OnMultiplierEvent += Multiplier;
+    }
+    void OnDisable()
+    {
+        //GameManager.OnLineClearEvent -= _ => LineClear(_);
+        GameManager.OnNewPieceEvent -= NewPiece;
+        GameManager.OnMinoLockEvent -= LockPiece;
+        //GameManager.OnMultiplierEvent -= Multiplier;
+    }
+
     void Start()
     {
         material = GetComponent<SpriteRenderer>().material;
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
+        NewPiece();
     }
 
     // Update is called once per frame
     void Update()
     {
-        material.SetFloat("_UnscaledTime", Time.unscaledTime);
+        UpdateSpeed();
     }
+
+    public void UpdateSpeed()
+    {
+        float maxSpeed = 3f;
+        float speedIncreasePerLevel = maxSpeed / 19f;
+        float currentSpeed = 1 + ((gm.level - 1) * speedIncreasePerLevel);
+        if (gm.level >= 20)
+            currentSpeed = 1 + maxSpeed;
+
+
+        levelScaledTime += Time.unscaledDeltaTime * currentSpeed;
+        material.SetFloat("_UnscaledTime", levelScaledTime);
+    }
+
+    void NewPiece()
+    {
+        if (gm != null)
+        {
+            if (gm.tetrominoSpawner.currentTetromino != null)
+                material.DOColor(gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().GetTileColor() * new Color(0.725f, 0.725f, 0.725f), "_GradiantColor01", 2.5f);
+        }
+    }
+
+    void LockPiece()
+    {
+        if (gm != null)
+        {
+            if (gm.previousTetromino != null)
+                material.DOColor(gm.previousTetromino.GetComponent<Group>().GetTileColor() * new Color(0.725f, 0.725f, 0.725f), "_GradiantColor02", 2.5f);
+        }
+    }
+    /*void Multiplier()
+    {
+        if (gm != null)
+        {
+            if (gm.scoreMultiplierLimit >= gm.scoreMultiplierLimit)
+                material.DOColor(Color.white, "_OverlayColor", 1f);
+        }
+    }*/
 }

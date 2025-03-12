@@ -631,6 +631,11 @@ public class Group : MonoBehaviour
         }
     }
 
+    public Color GetTileColor()
+    {
+        return GetComponentInChildren<UnityEngine.UI.Button>().image.color;
+    }
+
     void SoftDrop()
     {
         if (gm == null)
@@ -1034,11 +1039,12 @@ public class Group : MonoBehaviour
 
             // Clear filled horizontal lines
             ClearRows();      
-
-            gm.TriggerOnMinoLockEvent();      
-
+            
             // Set this as the previous tetromino
             gm.previousTetromino = this.gameObject;
+
+            gm.TriggerOnMinoLockEvent();
+
 
             // Input DAS for next tetromino
             TransferDASToNewTetromino();                

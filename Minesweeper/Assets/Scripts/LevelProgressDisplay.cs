@@ -56,7 +56,7 @@ public class LevelProgressDisplay : MonoBehaviour
     {
         if (gm != null)
         {
-            Color color = gm.tetrominoSpawner.currentTetromino.GetComponentInChildren<Button>().image.color;            
+            Color color = gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().GetTileColor();            
             progressBarFill.material = new Material(progressBarFill.material);
             progressBarFill.material.SetColor("_OutlineColor", color);
 

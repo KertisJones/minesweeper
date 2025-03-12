@@ -151,7 +151,7 @@ public class HoldTetromino : MonoBehaviour
         gm.soundManager.PlayClip(holdSwitchSound, 1, true);
 
         if (cleanseProgressBar != null)
-            cleanseProgressBar.ChangeColor(heldTetromino.GetComponentInChildren<Button>().image.color);
+            cleanseProgressBar.ChangeColor(heldTetromino.GetComponent<Group>().GetTileColor());
 
         // Input DAS for next tetromino
         if (heldTetrominoPrevious != null)
