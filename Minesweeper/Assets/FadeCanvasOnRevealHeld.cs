@@ -50,8 +50,9 @@ public class FadeCanvasOnRevealHeld : MonoBehaviour
             showTween.Kill();
 
         if (hideTween != null)// && !IsPointerOverUIObject())
-            if (hideTween.IsPlaying())
-                return;
+            if (hideTween.IsActive())
+                if (hideTween.IsPlaying())
+                    return;
         
         if (IsPointerOverUIObject())
             return;
@@ -66,8 +67,9 @@ public class FadeCanvasOnRevealHeld : MonoBehaviour
             hideTween.Kill();
 
         if (showTween != null)
-            if (showTween.IsPlaying())
-                return;
+            if (showTween.IsActive())
+                if (showTween.IsPlaying())
+                    return;
         
         showTween = DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, 1, fadeTime);
         showTween.SetUpdate(true);
