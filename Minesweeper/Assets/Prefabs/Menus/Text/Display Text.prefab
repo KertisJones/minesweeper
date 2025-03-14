@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1144233882930900047}
   - component: {fileID: 4582485765982420591}
   - component: {fileID: 3916438659980442557}
+  - component: {fileID: -303525396230485550}
   m_Layer: 5
   m_Name: Display Text
   m_TagString: Untagged
@@ -38,7 +39,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -116,15 +116,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -163,6 +165,8 @@ MonoBehaviour:
   jumpInPlaceDuration: 0.3
   jumpInPlaceLoopDuration: -1
   jumpInPlaceSequenceNextObject: {fileID: 0}
+  startPositionLocal: {x: 0, y: 0, z: 0}
+  parentStartPosition: {x: 0, y: 0, z: 0}
   jiggleIsEnabled: 1
   jiggleRotateIsEnabled: 1
   jiggleScaleIsEnabled: 1
@@ -348,6 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebf89b859a146f47b89a7c2c749a6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startScale: {x: 0, y: 0, z: 0}
   scaleMultiplierEnlarge: 1.1
   scaleMultiplierShrink: 0.9
   scaleTransitionTime: 0.15
@@ -357,6 +362,7 @@ MonoBehaviour:
   jiggleIsEnabled: 1
   reorderToLastSibling: 0
   startAtScaleZero: 0
+  isScaled: 0
 --- !u!82 &4582485765982420591
 AudioSource:
   m_ObjectHideFlags: 0
@@ -368,6 +374,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -465,3 +472,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0279084d102fcf1409cb55fe4144d000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-303525396230485550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7262600841605568563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e2bf7dae2fb314cba8e60d4ac1ac21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineWidth: 0.1
+  color: {r: 0, g: 0, b: 0, a: 1}
+  startEnabled: 1
