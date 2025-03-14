@@ -4450,7 +4450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &762695802
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15136,6 +15136,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 9133358887212656223, guid: e160f486b477575479c8609a53e40a7b, type: 3}
+      propertyPath: confetti
+      value: 
+      objectReference: {fileID: 534254616812195504, guid: a59fc1e92bdf9d64a85fe8a3510f185d, type: 3}
     - target: {fileID: 9133358887212656223, guid: e160f486b477575479c8609a53e40a7b, type: 3}
       propertyPath: pieChart
       value: 

@@ -21,7 +21,7 @@ public class FloatingText : MonoBehaviour
 
     private Color textColor;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         textBox = GetComponent<TextMeshProUGUI>();

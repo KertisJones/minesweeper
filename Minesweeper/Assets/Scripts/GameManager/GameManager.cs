@@ -147,6 +147,7 @@ public class GameManager : MonoBehaviour
     public GameObject frameHold;
     public GameObject floatingText;
     public FloatingTextQueue floatingTextQueue;
+    public GameObject confetti;
 
     public AudioClip lineClearSound;
     public AudioClip lineFullSound1;
@@ -1479,32 +1480,36 @@ public class GameManager : MonoBehaviour
 
         if (score >= bestTodayStarting && !isTitleMenu && !gameMods.detailedTimer) // Normal score mode
         {
+            
             if (!isHighScore && score >= highScoreStarting  && highScoreStarting > 0 && !isEndless)
             {
-                GameObject highScoreFloater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
-                highScoreFloater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScore") + "!";
-
-                soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);
+                PlayFanfare("UIText", "GUI HighScore");
                 isHighScore = true;
                 isBestToday = true;
             }
 
             if (!isBestToday && bestTodayStarting > 0 && !isEndless)
             {
-                GameObject highScoreFloater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
-                highScoreFloater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScoreBestToday") + "!";
-                soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);
+                PlayFanfare("UIText", "GUI HighScoreBestToday");
                 isBestToday = true;
             }
 
             if (!isHighScoreEndless && score >= highScoreEndlessStarting && highScoreEndlessStarting > highScoreStarting && isEndless)
             {
-                GameObject highScoreFloater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0), Quaternion.identity, guiCanvas.transform);
-                highScoreFloater.GetComponent<TextMeshProUGUI>().text = GetTranslation("UIText", "GUI HighScore") + "!";
-                soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);
+                PlayFanfare("UIText", "GUI HighScore");
                 isHighScoreEndless = true;
             }
         }        
+    }
+
+    public void PlayFanfare(string translationTableName, string translationEntryName)
+    {
+        Vector3 spawnPoint = new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 1.5f, 0);
+        GameObject fanfareFloater = Instantiate(floatingText, spawnPoint, Quaternion.identity, guiCanvas.transform);
+        fanfareFloater.GetComponent<TextMeshProUGUI>().text = GetTranslation(translationTableName, translationEntryName) + "!";
+        fanfareFloater.GetComponent<FloatingText>().duration = 3;
+        Instantiate(confetti, spawnPoint, Quaternion.identity, guiCanvas.transform);
+        soundManager.PlayClip(fanfareSounds[Random.Range(0, fanfareSounds.Length)], 1, true);
     }
 
     public void SetScoreMultiplier(int mult, float duration, bool isSweep = false)
