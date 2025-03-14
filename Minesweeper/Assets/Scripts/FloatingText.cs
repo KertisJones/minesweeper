@@ -21,7 +21,7 @@ public class FloatingText : MonoBehaviour
 
     private Color textColor;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         textBox = GetComponent<TextMeshProUGUI>();
@@ -30,7 +30,9 @@ public class FloatingText : MonoBehaviour
         startingScale = this.transform.localScale;
         startingColor = textBox.color;
         textColorHoldingSprite.color = textBox.color;
-
+    }
+    void Start()
+    {
         scaleTween = transform.DOBlendableScaleBy(scaleTarget - this.transform.localScale, duration).SetEase(ease).SetUpdate(true);
         colorTween = textColorHoldingSprite.DOColor(Color.clear, duration).SetEase(ease).SetUpdate(true);
     }
