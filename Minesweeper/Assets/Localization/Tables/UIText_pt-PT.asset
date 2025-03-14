@@ -742,6 +742,14 @@ MonoBehaviour:
       milissegundos. O jogo fica pausado durante esse tempo."
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: Sprint de 1 Linhas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: "Limpe 1 linha o mais r\xE1pido poss\xEDvel!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

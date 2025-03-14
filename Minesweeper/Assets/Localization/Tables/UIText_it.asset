@@ -739,6 +739,14 @@ MonoBehaviour:
       della durata di 150 millisecondi. Il gioco \xE8 in pausa durante questo tempo.\n"
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: Sprint 1 linee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: "Svuota 1 riga pi\xF9 velocemente possibile!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

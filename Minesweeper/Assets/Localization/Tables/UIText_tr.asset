@@ -742,6 +742,14 @@ MonoBehaviour:
       s\xFCren bir animasyon oynat\u0131r. Bu s\xFCre boyunca oyun duraklat\u0131l\u0131r."
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: "1 Sat\u0131r Sprint"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: "1 sat\u0131r\u0131 olabildi\u011Fince h\u0131zl\u0131 temizleyin!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

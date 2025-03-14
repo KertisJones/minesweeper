@@ -715,6 +715,14 @@ MonoBehaviour:
     m_Key: Tooltip Line Clear Delay
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Key: GameMode 1-Line Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Key: Tooltip 1-Line Sprint
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -234,6 +234,12 @@ public class GameManager : MonoBehaviour
         startTime = Time.time;
         if (gameMods.timeLimit == Mathf.Infinity && !gameMods.detailedTimer)
             isStarted = true;
+        else
+        {
+            // This means we'll have a countdown to start. Let's start the page black!
+            mainCamera.GetComponent<LoadNewScene>().fadeIn = false;
+            mainCamera.GetComponent<LoadNewScene>().blackScreen.gameObject.SetActive(true);
+        }
 
         // Fixed Marathon: 10 per level
         while (linesCleared >= level * 10)
@@ -318,8 +324,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (!isStarted)
-        {
-            GetComponent<Light2D>().intensity = ((float)startupTimerCountdown / 4) * 0.6f;
+        {            
+            mainCamera.GetComponent<LoadNewScene>().blackScreen.color = new Color(0, 0, 0, 1 - (float)(startupTimerCountdown + 1) / 6);
+            //GetComponent<Light2D>().intensity = ((float)startupTimerCountdown / 4) * 0.6f;
             if (Time.time - startTime >= (float)startupTimerCountdown - 0.5f)
             {
                 GameObject floater = Instantiate(floatingText, new Vector3((sizeX / 2f) - 0.5f, (sizeY - 4) / 2, 0), Quaternion.identity, guiCanvas.transform);
@@ -333,6 +340,7 @@ public class GameManager : MonoBehaviour
                         soundManager.PlayClip(startupCountdownSoundFinal2, 1, false);
 
                         GetComponent<Light2D>().intensity = 1;
+                        mainCamera.GetComponent<LoadNewScene>().blackScreen.color = Color.clear;
                         isStarted = true;
                         startTime = Time.time;
                         break;
@@ -1168,10 +1176,7 @@ public class GameManager : MonoBehaviour
             //Debug.Log("Is Difficult sweep? " + isDifficultSweep);
             gm.previousClearWasDifficultSweep = isDifficultSweep;
         }
-        
-        // Did you win?
-        if (gm.linesCleared >= gm.linesClearedTarget && gm.isEndless == false) 
-            gm.Pause(true, true);
+                
         return rowsCleared;
     }
 
@@ -1194,6 +1199,10 @@ public class GameManager : MonoBehaviour
             tetrominoThatJustLocked.GetComponent<Group>().CascadeTetromino();
         CheckForPerfectClear(rowsCleared, rowsFilled, instantLinesweepsCleared > 0);
         GameManager.markSolvedRows();
+
+        // Did you win?
+        if (linesCleared >= linesClearedTarget && isEndless == false)
+            Pause(true, true);
     }
 
 

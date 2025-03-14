@@ -742,6 +742,14 @@ MonoBehaviour:
       ab, die 150 Millisekunden dauert. Das Spiel ist w\xE4hrend dieser Zeit pausiert."
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: 1-Liniensprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: "L\xF6se 1 Linie so schnell wie m\xF6glich!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

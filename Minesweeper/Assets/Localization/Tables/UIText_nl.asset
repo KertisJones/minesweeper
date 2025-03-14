@@ -733,6 +733,14 @@ MonoBehaviour:
       af die 150 milliseconden duurt. Het spel wordt gedurende deze tijd gepauzeerd.
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: 1-Regel Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: Verwijder 1 regel zo snel mogelijk!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

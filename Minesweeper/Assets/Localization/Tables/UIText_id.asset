@@ -736,6 +736,14 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: Sprint 1-Garis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: Bersihkan 1 garis secepat mungkin!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

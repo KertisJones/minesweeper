@@ -230,10 +230,16 @@ public class DisplayText : MonoBehaviour
 
                 this.GetComponent<TextMeshProUGUI>().text = bestTimeStr;
 
-                if (ScoreKeeper.Instance.bestTime >= gm.GetTime() && ScoreKeeper.Instance.bestTime < Mathf.Infinity)
+                //Debug.Log("BestTime: " + ScoreKeeper.Instance.bestTime + ", currentTime: " + gm.GetTime());
+                if (ScoreKeeper.Instance.bestTime >= gm.GetTime() && gm.isEndless && !gm.isGameOver)
                 {
                     this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                     this.GetComponent<VertexColorCyclerGradient>().enabled = true;
+                }
+                else
+                {
+                    this.GetComponent<TMPro.Examples.VertexJitter>().enabled = false;
+                    this.GetComponent<VertexColorCyclerGradient>().enabled = false;
                 }
                 //if (ScoreKeeper.Instance.bestTimeToday < Mathf.Infinity && ScoreKeeper.Instance.runs > 1 && ScoreKeeper.Instance.bestTimeToday >= gm.GetTime())
                 //this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
@@ -262,7 +268,7 @@ public class DisplayText : MonoBehaviour
             {
                 localizedText = GameManager.GetTranslation("UIText", "GUI HighScoreBestTime"); // "Best Time"
 
-                if (ScoreKeeper.Instance.bestTime >= gm.GetTime() && ScoreKeeper.Instance.bestTime < Mathf.Infinity)
+                if (ScoreKeeper.Instance.bestTime >= gm.GetTime() && gm.isEndless && !gm.isGameOver)
                 {
                     this.GetComponent<TMPro.Examples.VertexJitter>().enabled = true;
                 }
@@ -438,14 +444,17 @@ public class DisplayText : MonoBehaviour
         int milliseconds = (int)(time * 1000f) % 1000;
         int seconds = ((int)time % 60);
         int minutes = ((int) time / 60);
-        
+
+        string monospaceString = "<mspace=1em>";
+        string monospaceStringPunctuation = "<mspace=0.5em>";
         if (gameMods.detailedTimer)
         {
-            return string.Format("{0:0}:{1:00}.{2:000}", minutes, seconds, milliseconds);
+            
+            return string.Format(monospaceString + "{0:0}" + monospaceStringPunctuation + ":" + monospaceString + "{1:00}" + monospaceStringPunctuation + "." + monospaceString  + "{2:000}", minutes, seconds, milliseconds);
         }
         else
         {
-            return string.Format("{0:0}:{1:00}", minutes, seconds);
+            return string.Format(monospaceString + "{0:0}" + monospaceStringPunctuation + ":" + monospaceString + "{1:00}", minutes, seconds);
         }            
     }
 }

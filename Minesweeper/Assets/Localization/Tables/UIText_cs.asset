@@ -747,6 +747,14 @@ MonoBehaviour:
       animaci trvaj\xEDc\xED 150 milisekund. B\u011Bhem t\xE9to doby je hra pozastavena."
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: "1 \u0159\xE1dkov\xFD sprint"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: "Vyma\u017E 1 \u0159\xE1dek jak nejrychleji to um\xED\u0161!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

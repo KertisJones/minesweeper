@@ -9,10 +9,11 @@ using UnityEngine.UI;
 public class LoadNewScene : MonoBehaviour
 {
     public Image blackScreen;
+    public bool fadeIn = true;
 
     public void Start()
     {
-        if (blackScreen != null)
+        if (fadeIn && blackScreen != null)
         {
             blackScreen.gameObject.SetActive(true);
             blackScreen.DOFade(0, 3f).SetUpdate(true);

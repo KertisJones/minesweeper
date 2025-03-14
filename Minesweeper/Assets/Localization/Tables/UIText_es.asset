@@ -745,6 +745,14 @@ MonoBehaviour:
       tiempo."
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: "Sprint de 1 L\xEDneas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: "\xA1Limpia 1 l\xEDnea lo m\xE1s r\xE1pido posible!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

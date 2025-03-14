@@ -735,6 +735,14 @@ MonoBehaviour:
       milliseconds. The game is paused during this time.
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: 1-Line Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: Clear 1 line as fast as possible!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

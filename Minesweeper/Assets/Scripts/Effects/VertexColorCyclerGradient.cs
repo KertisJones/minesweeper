@@ -54,7 +54,7 @@ public class VertexColorCyclerGradient : MonoBehaviour
                 // If No Characters then just yield and wait for some text to be added
                 if (characterCount == 0)
                 {
-                    yield return new WaitForSeconds(0.25f);
+                    yield return new WaitForSecondsRealtime(0.25f);
                     continue;
                 }
 
@@ -75,7 +75,7 @@ public class VertexColorCyclerGradient : MonoBehaviour
                     float offsetNext = (((currentCharacter + 1) % characterCount) / characterCount);
                     c0 = gradientText.Evaluate((totalTime + offset) % 1);
                     c1 = gradientText.Evaluate((totalTime + offsetNext) % 1);
-                    totalTime += Time.deltaTime;
+                    totalTime += Time.unscaledDeltaTime;
 
                     newVertexColors[vertexIndex + 0] = c0;
                     newVertexColors[vertexIndex + 1] = c0;
@@ -91,7 +91,7 @@ public class VertexColorCyclerGradient : MonoBehaviour
 
                 currentCharacter = (currentCharacter + 1) % characterCount;
 
-                yield return new WaitForSeconds(gradientSpeed);
+                yield return new WaitForSecondsRealtime(gradientSpeed);
             }
         }
 

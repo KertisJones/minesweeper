@@ -736,6 +736,14 @@ MonoBehaviour:
       i 150 millisekunder. Spillet er satt p\xE5 pause i denne perioden."
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: 1-Linjers Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: "Fjern 1 linje s\xE5 raskt som mulig!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

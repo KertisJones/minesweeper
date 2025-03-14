@@ -738,6 +738,14 @@ MonoBehaviour:
       joka kest\xE4\xE4 150 millisekuntia. Peli on tauolla t\xE4n\xE4 aikana."
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: 1-Rivin Sprintti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: "Tyhjenn\xE4 1 rivi mahdollisimman nopeasti!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -744,6 +744,14 @@ MonoBehaviour:
       trwaj\u0105c\u0105 150 milisekund. W tym czasie gra jest wstrzymana."
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: Sprint 1 linii
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: "Zdob\u0105d\u017A 1 lini\u0119 jak najszybciej!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

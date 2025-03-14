@@ -159,7 +159,7 @@ public class ButtonJiggle : MonoBehaviour
     }
     public void ShrinkToZero(bool autoReset = false, float overrideTransitionTime = -1)
     {
-        Debug.Log(name + " Shrink to Zero?");
+        //Debug.Log(name + " Shrink to Zero?");
         if (shrinkToZeroTween != null)
             if (shrinkToZeroTween.IsActive())
                 if (shrinkToZeroTween.IsPlaying())
@@ -167,7 +167,7 @@ public class ButtonJiggle : MonoBehaviour
                     //Debug.Log("Shrink to Zero...DENIED!");
                     return;
                 }            
-        Debug.Log("Shrink to Zero. AutoReset=" + autoReset + ", override=" + overrideTransitionTime);
+        //Debug.Log("Shrink to Zero. AutoReset=" + autoReset + ", override=" + overrideTransitionTime);
         isScaled = true;
         if (overrideTransitionTime < 0)
             overrideTransitionTime = scaleTransitionTime;

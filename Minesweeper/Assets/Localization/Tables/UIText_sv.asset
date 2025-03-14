@@ -736,6 +736,14 @@ MonoBehaviour:
       vid rensning av linjer. Spelet pausas under denna tid."
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: 1-Linjers Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: "Rensa 1 linje s\xE5 snabbt som m\xF6jligt!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

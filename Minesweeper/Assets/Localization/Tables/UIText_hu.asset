@@ -744,6 +744,14 @@ MonoBehaviour:
       anim\xE1ci\xF3t j\xE1tszik le. A j\xE1t\xE9k ez id\u0151 alatt sz\xFCnetel."
     m_Metadata:
       m_Items: []
+  - m_Id: 124931417172242432
+    m_Localized: 1-soros Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124932309430726656
+    m_Localized: "Tiszt\xEDts meg 1 sort a lehet\u0151 leggyorsabban!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
