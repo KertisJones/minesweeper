@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public ProtectedFloat scoreMultiplierDecayPerTick = 0.1f;
     public ProtectedFloat scoreMultiplierTimer = 0f;
     private ProtectedInt32 scoreMultiplierTimerCountdown = -1;
+    private ProtectedFloat scoreMultiplierAtDrain = 0;
     private ProtectedInt32 startupTimerCountdown = 1;
     private ProtectedFloat lastMultiplierTick = 0;
     public ProtectedInt32 comboLinesFilled = -1; // C=-1; +1 when mino locks & line filled; C= when mino locks & line not filled
@@ -393,7 +394,10 @@ public class GameManager : MonoBehaviour
             if (scoreMultiplier > scoreMultiplierLimit * 0.8f)
                 tickTime = 0.0003125f; // x3.5 / sec
             if (scoreMultiplier > scoreMultiplierLimit * 0.9f)
-                tickTime = 0.00015625f; // x4 / sec            
+                tickTime = 0.00015625f; // x4 / sec
+
+            SetMultiplierBackground();
+
             if (Time.time - lastMultiplierTick >= tickTime && !isGameOver)
             {
                 if (GetScoreMultiplier() > 0)
@@ -414,16 +418,11 @@ public class GameManager : MonoBehaviour
                     {
                         backgroundAnimated.SetActive(false);
                         soundManager.StopMultiplierDrain();
-                    }
-                        
+                    }                        
                 }
             }
             scoreMultiplierTimer = 0;
         }
-
-        // Fixed Marathon: 10 per level
-        /**if (linesCleared >= level * 10)
-            level += 1;*/
 
         if (timeLimit < Mathf.Infinity)
             if (GetTime() >= timeLimit)
@@ -1537,14 +1536,16 @@ public class GameManager : MonoBehaviour
             if (Mathf.FloorToInt(scoreMultiplierTimer) > scoreMultiplierTimerCountdown && Mathf.FloorToInt(scoreMultiplierTimer) >= 1)
                 scoreMultiplierTimerCountdown = Mathf.Min(Mathf.FloorToInt(scoreMultiplierTimer), 3);
             soundManager.StopMultiplierDrain();
+            scoreMultiplierAtDrain = GetScoreMultiplier();
+            SetMultiplierBackground();
         }
 
         if (GetScoreMultiplier() > 0)
             backgroundAnimated.SetActive(true);
         if (GetScoreMultiplier() > highestScoreMultiplier)
             highestScoreMultiplier = GetScoreMultiplier();
+        
         lastMultiplierTick = Time.time;
-
         TriggerOnMultiplierEvent();
     }
 
@@ -1560,6 +1561,18 @@ public class GameManager : MonoBehaviour
     {
         //scoreMultiplier = Mathf.Floor(scoreMultiplier * 100) / 100;
         return scoreMultiplier / 100f;
+    }
+
+    private void SetMultiplierBackground()
+    {
+        //Debug.Log(GetScoreMultiplier() + " / " + scoreMultiplierAtDrain + " = " + Mathf.Clamp(GetScoreMultiplier() / scoreMultiplierAtDrain, 0, 1));
+        float tweenedAlpha = Mathf.SmoothStep(0.25f, 1, GetScoreMultiplier() / scoreMultiplierAtDrain);
+        backgroundAnimated.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, tweenedAlpha);
+
+        foreach (SpriteRenderer bg in backgroundAnimated.GetComponentsInChildren<SpriteRenderer>())
+        {
+            bg.color = new Color(1, 1, 1, tweenedAlpha);
+        }
     }
 
     // Returns true if this row was a linesweep
