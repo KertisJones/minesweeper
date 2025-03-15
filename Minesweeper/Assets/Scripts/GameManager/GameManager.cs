@@ -1404,8 +1404,8 @@ public class GameManager : MonoBehaviour
         endtime = GetTime();
         isGameOver = true;        
 
-        if (!canPause)
-            TriggerOnResetStartingPositionsEvent();
+        /*if (!canPause)
+            TriggerOnResetStartingPositionsEvent();*/
 
         if (!isTitleMenu)
             ScoreKeeper.Instance.SaveCurrentGame();
@@ -1878,7 +1878,7 @@ public class GameManager : MonoBehaviour
     IEnumerator ResetPause()
     {
         yield return new WaitForSeconds(0.4f);
-        TriggerOnResetStartingPositionsEvent();
+        //TriggerOnResetStartingPositionsEvent();
         canPause = true;
     }
     public void Resume()

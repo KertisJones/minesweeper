@@ -925,7 +925,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28a9edba0d4fa3445a34d9c2dfe56ea5, type: 2}
+  - {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3134,7 +3134,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28a9edba0d4fa3445a34d9c2dfe56ea5, type: 2}
+  - {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4545,6 +4545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a3496b1c86fd064aa1649086d3ad921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  updateColorsWithNext: 1
 --- !u!4 &762754064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4810221121193479904, guid: f8eb7923fbc59a044b7a9fd0d0742a68, type: 3}
@@ -5395,7 +5396,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28a9edba0d4fa3445a34d9c2dfe56ea5, type: 2}
+  - {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7644,6 +7645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a3496b1c86fd064aa1649086d3ad921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  updateColorsWithNext: 0
 --- !u!212 &1342375091
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11050,7 +11052,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28a9edba0d4fa3445a34d9c2dfe56ea5, type: 2}
+  - {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12557,7 +12559,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28a9edba0d4fa3445a34d9c2dfe56ea5, type: 2}
+  - {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14002,21 +14004,25 @@ PrefabInstance:
       propertyPath: volume
       value: 
       objectReference: {fileID: 2035364043}
+    - target: {fileID: 2976017470943411431, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
+      propertyPath: backgrounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4673811131632921685, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
       propertyPath: m_Name
       value: Effect Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 5282180108453841135, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.8850403
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5282180108453841135, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.3231683
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5282180108453841135, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.055834655
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5282180108453841135, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14554,6 +14560,18 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4668
       objectReference: {fileID: 0}
+    - target: {fileID: 3455087921008552505, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
+    - target: {fileID: 3455087921388393496, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
+    - target: {fileID: 3455087921430732611, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
     - target: {fileID: 3455087921565693665, guid: c46df567a66810a4a86e9459765cae68, type: 3}
       propertyPath: m_Name
       value: Hold Frame
@@ -14606,6 +14624,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3455087921946097713, guid: c46df567a66810a4a86e9459765cae68, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
     - target: {fileID: 3754446723188342154, guid: c46df567a66810a4a86e9459765cae68, type: 3}
       propertyPath: m_SizeDelta.x
       value: 40
@@ -15140,10 +15162,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1213635708, guid: e160f486b477575479c8609a53e40a7b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
+    - target: {fileID: 1245195510, guid: e160f486b477575479c8609a53e40a7b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
     - target: {fileID: 1343775969, guid: e160f486b477575479c8609a53e40a7b, type: 3}
       propertyPath: m_OverlapOperation
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1915796634, guid: e160f486b477575479c8609a53e40a7b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
     - target: {fileID: 3375936691496468382, guid: e160f486b477575479c8609a53e40a7b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15
@@ -15152,6 +15186,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 4928729261363254072, guid: e160f486b477575479c8609a53e40a7b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d61a045bfaa92954488561521cd529c6, type: 2}
     - target: {fileID: 6489017920875984086, guid: e160f486b477575479c8609a53e40a7b, type: 3}
       propertyPath: m_IsActive
       value: 1
