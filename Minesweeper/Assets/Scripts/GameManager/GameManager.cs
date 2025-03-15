@@ -355,8 +355,6 @@ public class GameManager : MonoBehaviour
             }
             
         }
-        
-
 
         //Debug.Log((Mathf.Floor(0.04f * 100) / 100) + 0.01f);
         if (scoreMultiplierTimer > 0 && !isGameOver)
@@ -1182,6 +1180,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DeleteFullRowsDelayedHelper(float duration, int rowsCleared, int rowsFilled, int instantLinesweepsCleared, GameObject tetrominoThatJustLocked)
     {
+        //Debug.Log("DeleteFullRowsDelayedHelper");
         yield return new WaitForSecondsRealtime(duration);
         Time.timeScale = 1f;
         isHitstopPaused = false;
@@ -1604,6 +1603,7 @@ public class GameManager : MonoBehaviour
             if (gameBoard[x][y] != null)
             {
                 gameBoard[x][y].GetComponent<ButtonJiggle>().ShrinkToZero(false);
+                gameBoard[x][y].GetComponent<Tile>().isMarkCleared = true;
 
 
                 if (gameBoard[x][y].GetComponent<Tile>().isMine)

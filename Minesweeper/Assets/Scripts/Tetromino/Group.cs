@@ -1616,8 +1616,16 @@ public class Group : MonoBehaviour
         bool isTetrisweep = false;
         bool isTspinsweep = false;
 
+        int clearedTiles = 0;
+            //(childrenTiles.Count == 0);
+        foreach (Tile child in childrenTiles)
+        {
+            if (child.isMarkCleared)
+                clearedTiles++;
+        }
+
         // This tetromino has been fully cleared. Score points and delete this object.
-        if (childrenTiles.Count == 0)
+        if (childrenTiles.Count == clearedTiles)
         {            
             // Detect if TETRISWEEP was achieved (4-row Tetris was solved with minesweeper before the next piece locks) 
             if (rowsFilled == 4 && (gm.previousTetromino == this.gameObject || gm.tetrominoSpawner.currentTetromino == this.gameObject || overrideIsValidPiece))
@@ -1637,10 +1645,11 @@ public class Group : MonoBehaviour
                     gm.AddSafeTileToEdges();                
             }
             // Clean up
-            Destroy(this.gameObject);
+            if (childrenTiles.Count == 0)
+                Destroy(this.gameObject);
         }
         // Count as a T-spinsweep if 
-        if (childrenTiles.Count < 4)
+        if (childrenTiles.Count < 4 || clearedTiles > 0)
         {
             if (isTspin && (gm.previousTetromino == this.gameObject || gm.tetrominoSpawner.currentTetromino == this.gameObject)) // Detect if T-Sweep was achieved
             {

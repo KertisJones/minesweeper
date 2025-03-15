@@ -8,7 +8,8 @@ public class BackgroundShaderWrapper : MonoBehaviour
     private float levelScaledTime = 0;
     private Color gradiantTempTop = Color.black;
     private Color gradiantTempBottom = Color.black;
-    private Color colorMultiplier = new Color(0.725f, 0.725f, 0.725f);
+    private Color colorMultiplier = new Color(0.725f, 0.725f, 0.725f); //828282
+    public bool updateColorsWithNext = false;
     void OnEnable()
     {
         //GameManager.OnLineClearEvent += _ => LineClear(_);
@@ -53,7 +54,7 @@ public class BackgroundShaderWrapper : MonoBehaviour
 
     void NewPiece()
     {
-        if (gm != null)
+        if (gm != null && updateColorsWithNext)
         {
             if (gm.tetrominoSpawner.currentTetromino != null)
                 material.DOColor(gm.tetrominoSpawner.currentTetromino.GetComponent<Group>().GetTileColor() * colorMultiplier, "_GradiantColor01", 2.5f);
@@ -62,7 +63,7 @@ public class BackgroundShaderWrapper : MonoBehaviour
 
     void LockPiece()
     {
-        if (gm != null)
+        if (gm != null && updateColorsWithNext)
         {
             if (gm.previousTetromino != null)
                 material.DOColor(gm.previousTetromino.GetComponent<Group>().GetTileColor() * colorMultiplier, "_GradiantColor02", 2.5f);

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TileNormal
+  m_Name: GridNormal
   m_Shader: {fileID: 4800000, guid: 79ee6cefbc672a44e97359d4d14ea301, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -17,7 +17,6 @@ Material:
   - GLOWLIGHT_ON
   - GLOWTEX_ON
   - GLOW_ON
-  - OUTBASE8DIR_ON
   m_InvalidKeywords:
   - _GLOWAFFECTLIGHT_ON
   m_LightmapFlags: 4
@@ -189,7 +188,7 @@ Material:
     - _OutlinePixelWidth: 1
     - _OutlineTexXSpeed: 10
     - _OutlineTexYSpeed: 0
-    - _OutlineWidth: 0.05
+    - _OutlineWidth: 0.004
     - _OverlayBlend: 1
     - _OverlayGlow: 1
     - _OverlayTextureScrollXSpeed: 0.25
@@ -256,7 +255,7 @@ Material:
     - _HitEffectColor: {r: 1, g: 0.49983108, b: 0, a: 0.5254902}
     - _HologramStripeColor: {r: 0, g: 1, b: 1, a: 1}
     - _InnerOutlineColor: {r: 1, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _OverlayColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}

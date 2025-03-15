@@ -29,7 +29,8 @@ public class Tile : MonoBehaviour
     public bool isRowSolved = false;
     public bool is8Triggered = false;
     public bool isFailedToChord = false;
-    private bool revealedThisFrame = false;    
+    private bool revealedThisFrame = false;
+    public bool isMarkCleared = false;
 
     // Auras
     public enum AuraType

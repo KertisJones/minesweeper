@@ -445,7 +445,7 @@ public class DisplayText : MonoBehaviour
         int seconds = ((int)time % 60);
         int minutes = ((int) time / 60);
 
-        string monospaceString = "<mspace=1em>";
+        string monospaceString = "<mspace=1.1em>";
         string monospaceStringPunctuation = "<mspace=0.5em>";
         if (gameMods.detailedTimer)
         {
