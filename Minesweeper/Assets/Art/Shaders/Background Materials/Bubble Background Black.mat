@@ -52,10 +52,10 @@ Material:
     - _QueueOffset: 0
     - _UnscaledTime: 0
     m_Colors:
-    - _BubbleColorBack: {r: 0.20000002, g: 0.20392159, b: 0.20000002, a: 0}
-    - _BubbleColorFront: {r: 0.20000002, g: 0.20392159, b: 0.20000002, a: 0}
-    - _GradiantColor01: {r: 0, g: 0, b: 0, a: 0}
-    - _GradiantColor02: {r: 0.12941177, g: 0.12941177, b: 0.12941177, a: 0}
+    - _BubbleColorBack: {r: 0.05882353, g: 0.05882353, b: 0.05882353, a: 0}
+    - _BubbleColorFront: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 0}
+    - _GradiantColor01: {r: 0.12941177, g: 0.12941177, b: 0.12941177, a: 0}
+    - _GradiantColor02: {r: 0, g: 0, b: 0, a: 0}
     - _GradiantColor03: {r: 0, g: 0, b: 0, a: 0}
     - _OverlayColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

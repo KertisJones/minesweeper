@@ -7526,12 +7526,12 @@ GameObject:
   - component: {fileID: 1342375091}
   - component: {fileID: 1342375090}
   m_Layer: 0
-  m_Name: Background (1)
+  m_Name: Background TESTING
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1342375090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7568,7 +7568,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 163e1c8cc3ee79d498972e38631955a8, type: 2}
+  - {fileID: 2100000, guid: 10df75a9f54e3e3469c5f5444fc4a493, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7586,9 +7586,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 812338045
-  m_SortingLayer: 1
-  m_SortingOrder: 100
+  m_SortingLayerID: 505304587
+  m_SortingLayer: -1
+  m_SortingOrder: -6
   m_Sprite: {fileID: 21300000, guid: de2a52d3af901d94ea65a3a820579f4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8514,6 +8514,22 @@ PrefabInstance:
     - target: {fileID: 361335556512063182, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
       propertyPath: displayType
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058315863747214203, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
+      propertyPath: color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058315863747214203, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
+      propertyPath: color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058315863747214203, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
+      propertyPath: color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058315863747214203, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
+      propertyPath: color.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8130327923279866520, guid: d62a8e425ddcd334b93b7171a621d1e7, type: 3}
       propertyPath: m_text
@@ -13887,6 +13903,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34116f96987833a45bda529218afa7b0, type: 3}
+--- !u!1001 &856094258941661103
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1267127546025419372, guid: 03949eee7b1082244bbaf7af1b575fed, type: 3}
+      propertyPath: m_Name
+      value: Background Hex Lattice Shiny
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591253190776883864, guid: 03949eee7b1082244bbaf7af1b575fed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591253190776883864, guid: 03949eee7b1082244bbaf7af1b575fed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591253190776883864, guid: 03949eee7b1082244bbaf7af1b575fed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591253190776883864, guid: 03949eee7b1082244bbaf7af1b575fed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591253190776883864, guid: 03949eee7b1082244bbaf7af1b575fed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591253190776883864, guid: 03949eee7b1082244bbaf7af1b575fed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591253190776883864, guid: 03949eee7b1082244bbaf7af1b575fed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591253190776883864, guid: 03949eee7b1082244bbaf7af1b575fed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591253190776883864, guid: 03949eee7b1082244bbaf7af1b575fed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591253190776883864, guid: 03949eee7b1082244bbaf7af1b575fed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03949eee7b1082244bbaf7af1b575fed, type: 3}
 --- !u!1001 &1299417262326374042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13909,7 +13982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2976017470943411431, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
       propertyPath: backgroundTypes.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2976017470943411431, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
       propertyPath: backgroundTypes.Array.data[0].Name
@@ -13937,7 +14010,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2976017470943411431, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
       propertyPath: backgroundTypes.Array.data[6].Name
-      value: Checkerboard
+      value: Hex Lattice
+      objectReference: {fileID: 0}
+    - target: {fileID: 2976017470943411431, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
+      propertyPath: backgroundTypes.Array.data[7].Name
+      value: Hex Lattice Shiny
       objectReference: {fileID: 0}
     - target: {fileID: 2976017470943411431, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
       propertyPath: backgroundTypes.Array.data[0].Background
@@ -13966,7 +14043,11 @@ PrefabInstance:
     - target: {fileID: 2976017470943411431, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
       propertyPath: backgroundTypes.Array.data[6].Background
       value: 
-      objectReference: {fileID: 7385484400352240446, guid: 6d68dc8473f93f549a5539ced745cdf6, type: 3}
+      objectReference: {fileID: 213876683045855619, guid: 23a10d7839e90bb4bbb8c70de60df935, type: 3}
+    - target: {fileID: 2976017470943411431, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
+      propertyPath: backgroundTypes.Array.data[7].Background
+      value: 
+      objectReference: {fileID: 1267127546025419372, guid: 03949eee7b1082244bbaf7af1b575fed, type: 3}
     - target: {fileID: 4673811131632921685, guid: 2a91f198c01cd1a439d39838aa319c24, type: 3}
       propertyPath: m_Name
       value: Effect Spawner
@@ -15308,5 +15389,6 @@ SceneRoots:
   - {fileID: 1810393521}
   - {fileID: 201341345}
   - {fileID: 1315288393}
+  - {fileID: 856094258941661103}
   - {fileID: 1342375092}
   - {fileID: 1299417262326374042}
