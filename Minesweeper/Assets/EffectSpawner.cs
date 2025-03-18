@@ -15,11 +15,62 @@ public class EffectSpawner : MonoBehaviour
     FullScreenPassRendererFeature fullscreenRenderer;
 
     public bool isCRT;
+
+    [System.Serializable]
+    public struct BackgroundType
+    {
+        public string Name;
+        public GameObject Background;
+        public BackgroundType(string name, GameObject background)
+        {
+            this.Name = name;
+            this.Background = background;
+        }
+    }
+
+    public BackgroundType[] backgroundTypes;
+    private GameObject activeBackground;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        SetUpVolumeReferences();
 
+        SetActiveBackground("random");
+
+        if (isCRT)
+            ActivateCRT();
+        else
+            DeactivateCRT();
+    }
+
+    public void SetActiveBackground(string newBackgroundName)
+    {
+        if (activeBackground != null)
+            GameObject.Destroy(activeBackground);
+        GameObject newBackground = null;
+        if (newBackgroundName == "default")
+            return;
+        else if (newBackgroundName == "random")
+        {
+            newBackground = backgroundTypes[Random.Range(0, backgroundTypes.Length)].Background;
+        }
+        else
+        {
+            foreach (BackgroundType bg in backgroundTypes)
+            {
+                if (bg.Name == newBackgroundName)
+                    newBackground = bg.Background;
+            }
+        }
+        if (newBackground != null)
+            activeBackground = Instantiate(newBackground, this.transform);
+    }
+
+    void SetUpVolumeReferences()
+    {
         LensDistortion ld;
         if (volume.profile.TryGet<LensDistortion>(out ld))
         {
@@ -38,17 +89,6 @@ public class EffectSpawner : MonoBehaviour
         {
             fullscreenRenderer = fs;
         }
-
-        if (isCRT)
-            ActivateCRT();
-        else
-            DeactivateCRT();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void ActivateCRT()

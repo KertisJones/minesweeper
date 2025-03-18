@@ -42,6 +42,7 @@ public class IdleJiggle : MonoBehaviour
     public bool jiggleMoveIsEnabled = true;
     public bool jiggleOnActionIsEnabled = true;
     public bool jiggleLeanIsEnabled = false;
+    public bool alwaysResetToZero = false;
 
     // Input Handling
     private bool buttonLeftHeld = false;
@@ -58,7 +59,11 @@ public class IdleJiggle : MonoBehaviour
             GameManager.OnGameOverEvent += GameOver;
             GameManager.OnHardDropEvent += PunchDown;
             GameManager.OnTileSolveOrLandEvent += MinorShake;
-            GameManager.OnTSpinEvent += dir => PunchRotate(dir);
+
+            if (false)
+                GameManager.OnTSpinEvent += dir => PunchRotate(dir);
+            else
+                GameManager.OnTSpinEvent += dir => Rotate(dir);
 
             GameManager.OnLeftStuckEvent += PressLeft;
             GameManager.OnRightStuckEvent += PressRight;
@@ -90,7 +95,11 @@ public class IdleJiggle : MonoBehaviour
             GameManager.OnGameOverEvent -= GameOver;
             GameManager.OnHardDropEvent -= PunchDown;
             GameManager.OnTileSolveOrLandEvent -= MinorShake;
-            GameManager.OnTSpinEvent -= dir => PunchRotate(dir);
+
+            if (false)
+                GameManager.OnTSpinEvent -= dir => PunchRotate(dir);
+            else
+                GameManager.OnTSpinEvent -= dir => Rotate(dir);
 
             GameManager.OnLeftStuckEvent -= PressLeft;
             GameManager.OnRightStuckEvent -= PressRight;
@@ -418,6 +427,13 @@ public class IdleJiggle : MonoBehaviour
         this.transform.DOPunchRotation(new Vector3(0, 0, -1 * dir * shakeStrength), leanDuration).SetUpdate(true).OnKill(ResetRotation);
     }
 
+    public void Rotate(int dir)
+    {
+        if (!IsShakeValid(true))
+            return;
+        this.transform.DOBlendableRotateBy(new Vector3(0, 0, -1 * dir * shakeStrength), leanDuration).SetUpdate(true).OnKill(SetNewStartingRotation);
+    }
+
     #region Jumping
     public void JumpInPlace()
     {
@@ -576,11 +592,21 @@ public class IdleJiggle : MonoBehaviour
     #endregion
     
     public void SetNewStartingValues()
-    {
+    {        
         SetNewStartingPosition();
         startScale = this.transform.localScale;
-        startRotation = this.transform.rotation.eulerAngles;
+        SetNewStartingRotation();
         //startRotation = new Vector3(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z);
+
+        if (alwaysResetToZero)
+        {
+            startPositionLocal = Vector3.zero;
+            startRotation = Vector3.zero;
+        }
+    }
+    void SetNewStartingRotation()
+    {
+        startRotation = this.transform.rotation.eulerAngles;
     }
     public void SetNewStartingPosition()
     {

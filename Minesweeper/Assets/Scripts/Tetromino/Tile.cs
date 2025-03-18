@@ -505,7 +505,6 @@ public class Tile : MonoBehaviour
             }
             else if (!gm.isGameOver)
             {
-                //GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
                 gm.soundManager.PlayTileRevealSound(isManual);
 
                 tileBackground.enabled = true;
@@ -551,7 +550,11 @@ public class Tile : MonoBehaviour
                     //}
                 }
             }
-
+            else
+            {
+                //If revealed on the same frame the game ends, the tile will be revealed but won't show the background. Simple fix for that. Maybe it'll trigger when it's not supposed to but it'll be covered anyways.
+                tileBackground.enabled = true;
+            }
             //DetectProximity();
             if (!isForcedReveal)
                 ZeroCascade();

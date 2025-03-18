@@ -47,4 +47,5 @@ MonoBehaviour:
   volume: {fileID: 0}
   renderer2DData: {fileID: 11400000, guid: bb4305d8e284ab94abb0fc3478415e62, type: 2}
   materialCRT: {fileID: 2100000, guid: 163e1c8cc3ee79d498972e38631955a8, type: 2}
-  isCRT: 1
+  isCRT: 0
+  backgroundTypes: []

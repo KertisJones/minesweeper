@@ -461,6 +461,7 @@ MonoBehaviour:
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
   jiggleLeanIsEnabled: 0
+  alwaysResetToZero: 1
 --- !u!114 &320558228436509833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,6 +683,7 @@ MonoBehaviour:
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
   jiggleLeanIsEnabled: 0
+  alwaysResetToZero: 0
 --- !u!1 &1809547958692683718
 GameObject:
   m_ObjectHideFlags: 0
