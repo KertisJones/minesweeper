@@ -13,6 +13,8 @@ public class DemoTitleScreen : MonoBehaviour
 
     public GameObject playFrameStandard;
     public GameObject playFrameDemo;
+    public GameObject socialButtonsSteam;
+    public GameObject socialButtonsDRMFree;
     public GameObject[] buttonsUnlockedByDemoVisit;
     public GameObject lockedByDemoVisitText;
     public TMP_Text callToActionText;
@@ -27,6 +29,17 @@ public class DemoTitleScreen : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
+        if (ScoreKeeper.versionIsDRMFree)
+        {
+            socialButtonsDRMFree.SetActive(true);
+            socialButtonsSteam.SetActive(false);
+        }
+        else
+        {
+            socialButtonsDRMFree.SetActive(false);
+            socialButtonsSteam.SetActive(true);
+        }
 
         if (!ScoreKeeper.versionIsDemo) //ScoreKeeper.versionType == ScoreKeeper.VersionType.standard || ScoreKeeper.versionType == ScoreKeeper.VersionType.beta)
         {

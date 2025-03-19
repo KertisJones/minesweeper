@@ -18,7 +18,7 @@ public class SetRandomSupporterName : MonoBehaviour
         "Eleanor silly", // French // omerien
         "Draconis Eltanin", // Italian
         "Alexuty", // Screenshot design
-        "Poinl", // Music
+        //"Poinl", // Music..... bye bye Poinl.
         "Star Cubey", // Toki Pona, mod
         "ThomasZQY", // Chinese
 

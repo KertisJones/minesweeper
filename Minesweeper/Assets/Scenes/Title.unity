@@ -10007,6 +10007,10 @@ PrefabInstance:
       propertyPath: jiggleMoveIsEnabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1990836588798066645, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -15
+      objectReference: {fileID: 0}
     - target: {fileID: 1990836588798066646, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: url
       value: 'https://discord.gg/SWKRhnvNnd '
