@@ -183,7 +183,7 @@ public class IdleJiggle : MonoBehaviour
 
         punchDownSequence = DOTween.Sequence();
         
-        if (jumpInPlaceLoopDuration > 0)
+        if (jumpInPlaceLoopDuration > 0 && jumpInPlaceSequenceNextObject == null)
         {
             if (jumpInYTween != null)
                 if (jumpInYTween.IsActive())
@@ -192,7 +192,7 @@ public class IdleJiggle : MonoBehaviour
 
             punchDownSequence.Append(DOJumpY(jumpInPlaceHeight + .3f, jumpInPlaceDuration * 1.5f).OnPlay(() => ShakeRotation(jumpInPlaceDuration * 1.5f, .15f, true, true)).OnComplete(JumpInPlaceSequencerSend));
         }
-        else
+        else // Social media buttons in the title screen
         {
             /*if (jumpInYTween != null)
                 if (jumpInYTween.IsActive())
@@ -202,7 +202,7 @@ public class IdleJiggle : MonoBehaviour
                         jumpInYTween = null;
                     }*/
 
-            punchDownSequence.Append(DOJumpY(jumpInPlaceHeight * -1, jumpInPlaceHeight));
+            punchDownSequence.Append(DOJumpY(jumpInPlaceHeight * -1, jumpInPlaceDuration));
         }
         punchDownSequence.Append(this.transform.DOLocalMoveY(startPositionLocal.y, 0.05f));
         

@@ -162,7 +162,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28a9edba0d4fa3445a34d9c2dfe56ea5, type: 2}
+  - {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -263,7 +263,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28a9edba0d4fa3445a34d9c2dfe56ea5, type: 2}
+  - {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -364,7 +364,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28a9edba0d4fa3445a34d9c2dfe56ea5, type: 2}
+  - {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -569,7 +569,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28a9edba0d4fa3445a34d9c2dfe56ea5, type: 2}
+  - {fileID: 2100000, guid: d61a045bfaa92954488561521cd529c6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -641,7 +641,7 @@ Transform:
   m_GameObject: {fileID: 8816841075118222203}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9, y: 7, z: 0}
+  m_LocalPosition: {x: 15, y: 14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -771,64 +771,112 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad782ec5250bafd42af3b3deea4dd698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreKeeper: {fileID: 0}
   gameMods: {fileID: 0}
   soundManager: {fileID: 0}
   tetrominoSpawner: {fileID: 0}
-  timeLimit: Infinity
-  scoreMultiplier: 0
-  scoreMultiplierLimit: 4900
-  scoreMultiplierDecayPerTick: 0.1
-  scoreMultiplierTimer: 0
-  comboLinesFilled: -1
+  timeLimit:
+    fakeValue: Infinity
+  scoreMultiplier:
+    fakeValue: 0
+  scoreMultiplierLimit:
+    fakeValue: 4900
+  scoreMultiplierDecayPerTick:
+    fakeValue: 0.1
+  scoreMultiplierTimer:
+    fakeValue: 0
+  comboLinesFilled:
+    fakeValue: -1
   lastFillWasDifficult: 0
+  previousClearWasDifficultSweep: 0
   perfectClearThisRound: 0
   previousPCWasTetris: 0
-  linesClearedTarget: 150
-  linesCleared: 0
-  tetrisweepsCleared: 0
-  tSpinsweepsCleared: 0
-  revealCombo: 0
-  revealStreakManual: 0
-  previousClearWasDifficultSweep: 0
-  level: 1
-  currentMines: 0
-  currentFlags: 0
-  safeEdgeTilesGained: 0
-  sizeX: 10
-  sizeY: 24
+  linesClearedTarget:
+    fakeValue: 150
+  linesCleared:
+    fakeValue: 0
+  tetrisweepsCleared:
+    fakeValue: 0
+  tSpinsweepsCleared:
+    fakeValue: 0
+  revealCombo:
+    fakeValue: 0
+  revealStreakManual:
+    fakeValue: 0
+  level:
+    fakeValue: 1
+  currentMines:
+    fakeValue: 0
+  currentFlags:
+    fakeValue: 0
+  safeEdgeTilesGained:
+    fakeValue: 0
+  sizeX:
+    fakeValue: 10
+  sizeY:
+    fakeValue: 24
   previousTetromino: {fileID: 0}
-  isGameOver: 0
-  isEndless: 0
-  isPaused: 0
-  isStarted: 0
-  isTitleMenu: 0
-  hasQuit: 0
-  lineClearInstantly: 0
-  cheatGodMode: 0
-  cheatAutoFlagMode: 0
-  piecesPlaced: 0
-  holds: 0
-  linesweepsCleared: 0
-  highestScoreMultiplier: 0
-  minesSweeped: 0
-  perfectClears: 0
-  singlesFilled: 0
-  doublesFilled: 0
-  triplesFilled: 0
-  tetrisesFilled: 0
-  tSpinMiniNoLines: 0
-  tSpinMiniSingle: 0
-  tSpinMiniDouble: 0
-  tSpinNoLines: 0
-  tSpinSingle: 0
-  tSpinDouble: 0
-  tSpinTriple: 0
-  lastLineClearTime: 0
+  isGameOver:
+    fakeValue: 0
+  isEndless:
+    fakeValue: 0
+  isPaused:
+    fakeValue: 0
+  isStarted:
+    fakeValue: 0
+  isTitleMenu:
+    fakeValue: 0
+  hasQuit:
+    fakeValue: 0
+  lineClearInstantly:
+    fakeValue: 0
+  cheatGodMode:
+    fakeValue: 0
+  cheatAutoFlagMode:
+    fakeValue: 0
+  piecesPlaced:
+    fakeValue: 0
+  holds:
+    fakeValue: 0
+  linesweepsCleared:
+    fakeValue: 0
+  highestScoreMultiplier:
+    fakeValue: 0
+  minesSweeped:
+    fakeValue: 0
+  perfectClears:
+    fakeValue: 0
+  singlesFilled:
+    fakeValue: 0
+  doublesFilled:
+    fakeValue: 0
+  triplesFilled:
+    fakeValue: 0
+  tetrisesFilled:
+    fakeValue: 0
+  tSpinMiniNoLines:
+    fakeValue: 0
+  tSpinMiniSingle:
+    fakeValue: 0
+  tSpinMiniDouble:
+    fakeValue: 0
+  tSpinNoLines:
+    fakeValue: 0
+  tSpinSingle:
+    fakeValue: 0
+  tSpinDouble:
+    fakeValue: 0
+  tSpinTriple:
+    fakeValue: 0
+  lastLineClearTime:
+    fakeValue: 0
   textType: 0
-  numBurningTiles: 0
-  numFrozenTiles: 0
-  numWetTiles: 0
+  numBurningTiles:
+    fakeValue: 0
+  numFrozenTiles:
+    fakeValue: 0
+  numWetTiles:
+    fakeValue: 0
+  isHitstopPaused: 0
   tile: {fileID: 4675045439334439888, guid: 15d42faac085dfb45a8158f0df133b68, type: 3}
   tileGroup: {fileID: 5635427920445249702, guid: 0eb1fa25a92ff8f47a33fb0cac22aa35, type: 3}
   backgroundAnimated: {fileID: 241208533}
@@ -843,7 +891,11 @@ MonoBehaviour:
   backgroundFloor: {fileID: 1245195509}
   backgroundGrid: {fileID: 6489017920875984086}
   guiCanvas: {fileID: 0}
+  framePreview: {fileID: 0}
+  frameHold: {fileID: 0}
   floatingText: {fileID: 1334009076711670324, guid: 78a18002c80e76c439880221c1fc2321, type: 3}
+  floatingTextQueue: {fileID: 0}
+  confetti: {fileID: 5843124111637828233, guid: fe962918da98d4a4eb3cbaf26e1407d9, type: 3}
   lineClearSound: {fileID: 8300000, guid: cad7ca4f9e0fa3e4494e767134f5b835, type: 3}
   lineFullSound1: {fileID: 8300000, guid: a7bde30d6b46a494a89e75341386d6b8, type: 3}
   lineFullSound2: {fileID: 8300000, guid: 0d9fa3c551940cb4db5e834b505cbf76, type: 3}
@@ -1124,7 +1176,7 @@ MonoBehaviour:
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: -1
   m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 0
+  m_OverlapOperation: 1
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0

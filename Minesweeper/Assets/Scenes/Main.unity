@@ -14813,6 +14813,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5334874339762506073, guid: ac9b3079c2dfcf0458d7092c7c20ade6, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 45c43bd8d5e4c8d46a9233cefd66fd3d, type: 3}
+    - target: {fileID: 5334874339762506073, guid: ac9b3079c2dfcf0458d7092c7c20ade6, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 45c43bd8d5e4c8d46a9233cefd66fd3d, type: 3}
     - target: {fileID: 7377500789027285317, guid: ac9b3079c2dfcf0458d7092c7c20ade6, type: 3}
       propertyPath: m_Name
       value: Audio Listener
@@ -15202,61 +15210,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 241208533, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1213635708, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
-    - target: {fileID: 1245195510, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
-    - target: {fileID: 1343775969, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: m_OverlapOperation
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1915796634, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: a61be14db090df94cac86ae24910acf5, type: 2}
-    - target: {fileID: 3375936691496468382, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3375936691496468382, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 4928729261363254072, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: d61a045bfaa92954488561521cd529c6, type: 2}
-    - target: {fileID: 6489017920875984086, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8581338599377879319, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8581338599377879319, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: m_Size.y
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 9133358887212656222, guid: e160f486b477575479c8609a53e40a7b, type: 3}
       propertyPath: m_Name
       value: Game Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 9133358887212656223, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: confetti
-      value: 
-      objectReference: {fileID: 534254616812195504, guid: a59fc1e92bdf9d64a85fe8a3510f185d, type: 3}
-    - target: {fileID: 9133358887212656223, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: pieChart
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9133358887212656223, guid: e160f486b477575479c8609a53e40a7b, type: 3}
       propertyPath: frameHold
@@ -15294,14 +15250,6 @@ PrefabInstance:
       propertyPath: revealStreakManualProgressBar
       value: 
       objectReference: {fileID: 1599639042}
-    - target: {fileID: 9133358887212656223, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: scoreMultiplierLimit.fakeValue
-      value: 4900
-      objectReference: {fileID: 0}
-    - target: {fileID: 9133358887212656288, guid: e160f486b477575479c8609a53e40a7b, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9133358887212656288, guid: e160f486b477575479c8609a53e40a7b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

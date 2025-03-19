@@ -1378,6 +1378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackScreen: {fileID: 0}
+  fadeIn: 1
 --- !u!224 &408692650 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7262600841605568560, guid: 3680f29d36250b64d975c0cac66d7b50, type: 3}
@@ -3426,6 +3427,7 @@ MonoBehaviour:
   jiggleMoveIsEnabled: 1
   jiggleOnActionIsEnabled: 1
   jiggleLeanIsEnabled: 0
+  alwaysResetToZero: 0
 --- !u!1001 &1093596628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4862,8 +4864,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c0c07077dd550f84c8edb96fefa9736f, type: 3}
-  m_Resource: {fileID: 8300000, guid: c0c07077dd550f84c8edb96fefa9736f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 45c43bd8d5e4c8d46a9233cefd66fd3d, type: 3}
+  m_Resource: {fileID: 8300000, guid: 45c43bd8d5e4c8d46a9233cefd66fd3d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.16727273
   m_Pitch: 1

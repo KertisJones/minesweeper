@@ -2712,6 +2712,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5334874339762506073, guid: ac9b3079c2dfcf0458d7092c7c20ade6, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 45c43bd8d5e4c8d46a9233cefd66fd3d, type: 3}
+    - target: {fileID: 5334874339762506073, guid: ac9b3079c2dfcf0458d7092c7c20ade6, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 45c43bd8d5e4c8d46a9233cefd66fd3d, type: 3}
     - target: {fileID: 7377500789027285317, guid: ac9b3079c2dfcf0458d7092c7c20ade6, type: 3}
       propertyPath: m_Name
       value: Audio Listener
@@ -4418,7 +4426,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   fullScreenTogglePress:
-    m_Name: 
+    m_Name: Full Screen Toggle Press
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 11cb0882-65b0-4d4a-9ef2-a70114dbec11
@@ -9861,7 +9869,7 @@ PrefabInstance:
       objectReference: {fileID: 1605694133}
     - target: {fileID: 1146894950075290991, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1260121644338619201, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -9971,6 +9979,10 @@ PrefabInstance:
       propertyPath: jumpInPlaceHeight
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1990836587684698822, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: jiggleMoveIsEnabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1990836587729669033, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_Creator
       value: 
@@ -9979,13 +9991,21 @@ PrefabInstance:
       propertyPath: jumpInPlaceHeight
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1990836588498827583, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: jiggleMoveIsEnabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1990836588660408860, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1990836588798066636, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: jumpInPlaceHeight
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990836588798066636, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: jiggleMoveIsEnabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1990836588798066646, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: url
@@ -9995,9 +10015,17 @@ PrefabInstance:
       propertyPath: jumpInPlaceHeight
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1990836588851189093, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: jiggleMoveIsEnabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1990836589033287493, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: jumpInPlaceHeight
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990836589033287493, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
+      propertyPath: jiggleMoveIsEnabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2139849486881118988, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -10081,7 +10109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5650987136847719403, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5839611551140989159, guid: 69f0ee4106ec43f41bab64b236c1939f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
