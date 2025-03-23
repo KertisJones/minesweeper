@@ -171,9 +171,6 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
 
     public void PopulateSaveData(SaveData a_SaveData)
     {
-        /*
-          
-        */
         a_SaveData.m_HiScore = bestScore;
         if (gm.linesCleared > a_SaveData.m_linesClearedBest)
             a_SaveData.m_linesClearedBest = gm.linesCleared;
@@ -216,40 +213,7 @@ public class ScoreKeeper : MonoBehaviour, ISaveable
         || gm.tetrisweepsCleared >= a_SaveData.m_tetrisweepsClearedBest 
         || gm.tSpinsweepsCleared >= a_SaveData.m_tSpinsweepsClearedBest
         || gm.GetTime() <= a_SaveData.m_gameTimeBest)
-            a_SaveData.m_GameStatsData.Add(PopulateSaveDataHighScores());
-    }
-
-    public SaveData.GameStatsData PopulateSaveDataHighScores()
-    {
-        SaveData.GameStatsData gameStatsData = new SaveData.GameStatsData();
-        gameStatsData.dateTime = System.DateTime.Now;
-        gameStatsData.m_score = gm.GetScore();
-        gameStatsData.m_isEndless = gm.isEndless && !gm.marathonOverMenu.GetIsActive();
-        gameStatsData.m_gameTime = gm.GetTime();
-        gameStatsData.m_level = gm.level;
-        gameStatsData.m_linesCleared = gm.linesCleared;
-        gameStatsData.m_tetrisweepsCleared = gm.tetrisweepsCleared;
-        gameStatsData.m_tSpinsweepsCleared = gm.tSpinsweepsCleared;
-
-        gameStatsData.m_piecesPlaced = gm.piecesPlaced;
-        gameStatsData.m_holds = gm.holds;
-        gameStatsData.m_linesweepsCleared = gm.linesweepsCleared;
-        gameStatsData.m_highestScoreMultiplier = gm.highestScoreMultiplier;
-        gameStatsData.m_minesSweeped = gm.minesSweeped;
-        gameStatsData.m_perfectClears = gm.perfectClears;
-        gameStatsData.m_singlesFilled = gm.singlesFilled;
-        gameStatsData.m_doublesFilled = gm.doublesFilled;
-        gameStatsData.m_triplesFilled = gm.triplesFilled;
-        gameStatsData.m_tetrisesFilled = gm.tetrisesFilled;
-        gameStatsData.m_tSpinMiniNoLines = gm.tSpinMiniNoLines;
-        gameStatsData.m_tSpinMiniSingle = gm.tSpinMiniSingle;
-        gameStatsData.m_tSpinMiniDouble = gm.tSpinMiniDouble;
-        gameStatsData.m_tSpinNoLines = gm.tSpinNoLines;
-        gameStatsData.m_tSpinSingle = gm.tSpinSingle;
-        gameStatsData.m_tSpinDouble = gm.tSpinDouble;
-        gameStatsData.m_tSpinTriple = gm.tSpinTriple;
-        return gameStatsData;
-        
+            a_SaveData.m_GameStatsData.Add(new SaveData.GameStatsData(gm)); // Add record of the high score to the list
     }
 
     public void LoadFromSaveData (SaveData a_SaveData) 

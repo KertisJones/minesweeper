@@ -111,7 +111,7 @@ PrefabInstance:
     - target: {fileID: 3732184589435491372, guid: 71357fd0941f2cb47a1d9e31b203893b, type: 3}
       propertyPath: jumpInPlaceSequenceNextObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1442391380309435757}
     - target: {fileID: 3732184589578530316, guid: 71357fd0941f2cb47a1d9e31b203893b, type: 3}
       propertyPath: jumpInPlaceSequenceNextObject
       value: 
@@ -139,3 +139,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71357fd0941f2cb47a1d9e31b203893b, type: 3}
+--- !u!114 &1442391380309435757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3732184589578530316, guid: 71357fd0941f2cb47a1d9e31b203893b, type: 3}
+  m_PrefabInstance: {fileID: 2868517317009869665}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26651055de1a09548b2c97a6f5255fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

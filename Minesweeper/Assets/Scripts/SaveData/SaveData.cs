@@ -1,4 +1,5 @@
 ﻿using GUPS.AntiCheat.Protected;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,6 +34,37 @@ public class SaveData
         public ProtectedInt32 m_tSpinSingle;
         public ProtectedInt32 m_tSpinDouble;
         public ProtectedInt32 m_tSpinTriple;
+
+        public GameStatsData(GameManager gm)
+        {
+            //Populate with data from current GM
+            dateTime = System.DateTime.Now;
+            m_score = gm.GetScore();
+            m_isEndless = gm.isEndless && !gm.marathonOverMenu.GetIsActive();
+            m_gameTime = gm.GetTime();
+            m_level = gm.level;
+            m_linesCleared = gm.linesCleared;
+            m_tetrisweepsCleared = gm.tetrisweepsCleared;
+            m_tSpinsweepsCleared = gm.tSpinsweepsCleared;
+
+            m_piecesPlaced = gm.piecesPlaced;
+            m_holds = gm.holds;
+            m_linesweepsCleared = gm.linesweepsCleared;
+            m_highestScoreMultiplier = gm.highestScoreMultiplier;
+            m_minesSweeped = gm.minesSweeped;
+            m_perfectClears = gm.perfectClears;
+            m_singlesFilled = gm.singlesFilled;
+            m_doublesFilled = gm.doublesFilled;
+            m_triplesFilled = gm.triplesFilled;
+            m_tetrisesFilled = gm.tetrisesFilled;
+            m_tSpinMiniNoLines = gm.tSpinMiniNoLines;
+            m_tSpinMiniSingle = gm.tSpinMiniSingle;
+            m_tSpinMiniDouble = gm.tSpinMiniDouble;
+            m_tSpinNoLines = gm.tSpinNoLines;
+            m_tSpinSingle = gm.tSpinSingle;
+            m_tSpinDouble = gm.tSpinDouble;
+            m_tSpinTriple = gm.tSpinTriple;
+        }
     }
     public ProtectedFloat m_HiScore;
     public ProtectedFloat m_HiScoreEndless;
@@ -67,12 +99,27 @@ public class SaveData
     
     public string ToJson()
     {
-        return JsonUtility.ToJson(this);
+        try
+        {
+            return JsonUtility.ToJson(this);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to convert SaveData ToJson with exception {e}");
+            return "";
+        }
     }
 
     public void LoadFromJson(string a_Json)
     {
-        JsonUtility.FromJsonOverwrite(a_Json, this);
+        try
+        {
+            JsonUtility.FromJsonOverwrite(a_Json, this);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to SaveData LoadFromJson with exception {e}");
+        }        
     }
 }
 
